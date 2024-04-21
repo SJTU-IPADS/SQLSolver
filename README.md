@@ -241,20 +241,24 @@ This repository includes the source code and benchmarks.
 
 ## Citation
 If you use SQLSolver in your projects or research, please kindly cite our [paper](https://dl.acm.org/doi/abs/10.1145/3626768):
-> @article{sqlsolver,  
-> author = {Ding, Haoran and Wang, Zhaoguo and Yang, Yicun and Zhang, Dexin and Xu, Zhenglin and Chen, Haibo and Piskac, Ruzica and Li, Jinyang},  
-> title = {Proving Query Equivalence Using Linear Integer Arithmetic},  
-> year = {2023},  
-> issue_date = {December 2023},  
-> publisher = {Association for Computing Machinery},  
-> address = {New York, NY, USA},  
-> volume = {1},  
-> number = {4},  
-> journal = {Proc. ACM Manag. Data},  
-> month = {Dec},  
-> articleno = {227},  
-> numpages = {26},  
-> }
+
+```
+@article{sqlsolver,  
+  author = {Ding, Haoran and Wang, Zhaoguo and Yang, Yicun and Zhang, Dexin and Xu, Zhenglin and Chen, Haibo and Piskac, Ruzica and Li, Jinyang},  
+  title = {Proving Query Equivalence Using Linear Integer Arithmetic},  
+  year = {2023},  
+  issue_date = {December 2023},  
+  publisher = {Association for Computing Machinery},  
+  address = {New York, NY, USA},  
+  volume = {1},  
+  number = {4},  
+  journal = {Proc. ACM Manag. Data},  
+  month = {Dec},  
+  articleno = {227},  
+  numpages = {26},  
+}
+```
+
 
 ## Contact
 
