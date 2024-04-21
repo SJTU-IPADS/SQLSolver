@@ -109,7 +109,7 @@ and the corresponding lines in both files will be considered as pairs of SQL sta
 java -jar sqlsolver.jar -sql1=<path/to/query1> -sql2=<path/to/query2> -schema=<path/to/schema> [-print] [-output=<path/to/output>]
 ```
 
-Since SQLSolver uses the parser of [Calcite](https://calcite.apache.org/) to parse SQL queries, please ensure that queries in SQL files satisfy the syntax requirements of Calcite parser.
+Since SQLSolver uses the parser of [Calcite](https://calcite.apache.org/) to parse SQL queries, **please ensure that queries in SQL files satisfy the syntax requirements of Calcite parser**.
 
 #### Example
 
