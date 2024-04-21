@@ -1,0 +1,160 @@
+SELECT founder FROM manufacturers WHERE name  =  'Sony'
+select manufacturers.founder from Manufacturers where  manufacturers.name = "Sony"
+SELECT founder FROM manufacturers WHERE name  =  'Sony'
+select manufacturers.founder from Manufacturers where  manufacturers.name = "Sony"
+SELECT headquarter FROM manufacturers WHERE founder  =  'James'
+select manufacturers.headquarter from Manufacturers where  manufacturers.founder = "James"
+SELECT headquarter FROM manufacturers WHERE founder  =  'James'
+select manufacturers.headquarter from Manufacturers where  manufacturers.founder = "James"
+SELECT name ,  headquarter FROM manufacturers ORDER BY revenue DESC
+select manufacturers.name , manufacturers.headquarter from Manufacturers   order by manufacturers.revenue desc
+SELECT name ,  headquarter FROM manufacturers ORDER BY revenue DESC
+select manufacturers.name , manufacturers.headquarter from Manufacturers   order by manufacturers.revenue desc
+SELECT avg(revenue) ,  max(revenue) ,  sum(revenue) FROM manufacturers
+select avg(manufacturers.revenue) , max(manufacturers.revenue) , sum(manufacturers.revenue) from Manufacturers
+SELECT avg(revenue) ,  max(revenue) ,  sum(revenue) FROM manufacturers
+select avg(manufacturers.revenue) , max(manufacturers.revenue) , sum(manufacturers.revenue) from Manufacturers
+SELECT count(*) FROM manufacturers WHERE founder  =  'Andy'
+select count(*) from Manufacturers where  manufacturers.founder = "Andy"
+SELECT count(*) FROM manufacturers WHERE founder  =  'Andy'
+select count(*) from Manufacturers where  manufacturers.founder = "Andy"
+SELECT sum(revenue) FROM manufacturers WHERE headquarter  =  'Austin'
+select sum(manufacturers.revenue) from Manufacturers where  manufacturers.headquarter = "Austin"
+SELECT sum(revenue) FROM manufacturers WHERE headquarter  =  'Austin'
+select sum(manufacturers.revenue) from Manufacturers where  manufacturers.headquarter = "Austin"
+SELECT DISTINCT headquarter FROM manufacturers
+select distinct manufacturers.headquarter from Manufacturers
+SELECT DISTINCT headquarter FROM manufacturers
+select distinct manufacturers.headquarter from Manufacturers
+SELECT count(*) FROM manufacturers WHERE headquarter  =  'Tokyo' OR headquarter  =  'Beijing'
+select count(*) from Manufacturers where  manufacturers.headquarter = "Tokyo" or manufacturers.headquarter = "Beijing"
+SELECT count(*) FROM manufacturers WHERE headquarter  =  'Tokyo' OR headquarter  =  'Beijing'
+select count(*) from Manufacturers where  manufacturers.headquarter = "Tokyo" or manufacturers.headquarter = "Beijing"
+SELECT founder FROM manufacturers WHERE name LIKE 'S%'
+select manufacturers.founder from Manufacturers where  manufacturers.name like "S%"
+SELECT founder FROM manufacturers WHERE name LIKE 'S%'
+select manufacturers.founder from Manufacturers where  manufacturers.name like "S%"
+SELECT name FROM manufacturers WHERE revenue BETWEEN 100 AND 150
+select manufacturers.name from Manufacturers where  manufacturers.revenue between 100 and 150
+SELECT name FROM manufacturers WHERE revenue BETWEEN 100 AND 150
+select manufacturers.name from Manufacturers where  manufacturers.revenue between 100 and 150
+SELECT sum(revenue) FROM manufacturers WHERE Headquarter  =  'Tokyo' OR Headquarter  =  'Taiwan'
+select sum(manufacturers.revenue) from Manufacturers where  manufacturers.headquarter = "Tokyo" or manufacturers.headquarter = "Taiwan"
+SELECT sum(revenue) FROM manufacturers WHERE Headquarter  =  'Tokyo' OR Headquarter  =  'Taiwan'
+select sum(manufacturers.revenue) from Manufacturers where  manufacturers.headquarter = "Tokyo" or manufacturers.headquarter = "Taiwan"
+SELECT T1.name FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code WHERE T2.name  =  'Creative Labs' INTERSECT SELECT T1.name FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code WHERE T2.name  =  'Sony'
+select products.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code where  manufacturers.name = "Creative Labs"   intersect select products.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code where  manufacturers.name = "Sony"
+SELECT T1.name FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code WHERE T2.name  =  'Creative Labs' INTERSECT SELECT T1.name FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code WHERE T2.name  =  'Sony'
+select products.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code where  manufacturers.name = "Creative Labs"   intersect select products.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code where  manufacturers.name = "Sony"
+SELECT name ,  headquarter ,  founder FROM manufacturers ORDER BY revenue DESC LIMIT 1
+select manufacturers.name , manufacturers.headquarter , manufacturers.founder from Manufacturers   order by manufacturers.revenue desc limit 1
+SELECT name ,  headquarter ,  founder FROM manufacturers ORDER BY revenue DESC LIMIT 1
+select manufacturers.name , manufacturers.headquarter , manufacturers.founder from Manufacturers   order by manufacturers.revenue desc limit 1
+SELECT name ,  headquarter ,  revenue FROM manufacturers ORDER BY revenue DESC
+select manufacturers.name , manufacturers.headquarter , manufacturers.revenue from Manufacturers   order by manufacturers.revenue desc
+SELECT name ,  headquarter ,  revenue FROM manufacturers ORDER BY revenue DESC
+select manufacturers.name , manufacturers.headquarter , manufacturers.revenue from Manufacturers   order by manufacturers.revenue desc
+SELECT name FROM manufacturers WHERE revenue  >  (SELECT avg(revenue) FROM manufacturers)
+select manufacturers.name from Manufacturers where  manufacturers.revenue > (select avg(manufacturers.revenue) from Manufacturers  )
+SELECT name FROM manufacturers WHERE revenue  >  (SELECT avg(revenue) FROM manufacturers)
+select manufacturers.name from Manufacturers where  manufacturers.revenue > (select avg(manufacturers.revenue) from Manufacturers  )
+SELECT name FROM manufacturers WHERE revenue  <  (SELECT min(revenue) FROM manufacturers WHERE headquarter  =  'Austin')
+select manufacturers.name from Manufacturers where  manufacturers.revenue < (select min(manufacturers.revenue) from Manufacturers where  manufacturers.headquarter = "Austin"  )
+SELECT name FROM manufacturers WHERE revenue  <  (SELECT min(revenue) FROM manufacturers WHERE headquarter  =  'Austin')
+select manufacturers.name from Manufacturers where  manufacturers.revenue < (select min(manufacturers.revenue) from Manufacturers where  manufacturers.headquarter = "Austin"  )
+SELECT sum(revenue) FROM manufacturers WHERE revenue  >  (SELECT min(revenue) FROM manufacturers WHERE headquarter  =  'Austin')
+select sum(manufacturers.revenue) from Manufacturers where  manufacturers.revenue > (select min(manufacturers.revenue) from Manufacturers where  manufacturers.headquarter = "Austin"  )
+SELECT sum(revenue) FROM manufacturers WHERE revenue  >  (SELECT min(revenue) FROM manufacturers WHERE headquarter  =  'Austin')
+select sum(manufacturers.revenue) from Manufacturers where  manufacturers.revenue > (select min(manufacturers.revenue) from Manufacturers where  manufacturers.headquarter = "Austin"  )
+SELECT sum(revenue) ,  founder FROM manufacturers GROUP BY founder
+select sum(manufacturers.revenue) , manufacturers.founder from Manufacturers  group by manufacturers.founder
+SELECT sum(revenue) ,  founder FROM manufacturers GROUP BY founder
+select sum(manufacturers.revenue) , manufacturers.founder from Manufacturers  group by manufacturers.founder
+SELECT name ,  max(revenue) ,  Headquarter FROM manufacturers GROUP BY Headquarter
+select manufacturers.name , max(manufacturers.revenue) , manufacturers.headquarter from Manufacturers  group by manufacturers.headquarter
+SELECT name ,  max(revenue) ,  Headquarter FROM manufacturers GROUP BY Headquarter
+select manufacturers.name , max(manufacturers.revenue) , manufacturers.headquarter from Manufacturers  group by manufacturers.headquarter
+SELECT sum(revenue) ,  name FROM manufacturers GROUP BY name
+select sum(manufacturers.revenue) , manufacturers.name from Manufacturers  group by manufacturers.name
+SELECT sum(revenue) ,  name FROM manufacturers GROUP BY name
+select sum(manufacturers.revenue) , manufacturers.name from Manufacturers  group by manufacturers.name
+SELECT avg(T1.price) ,  T2.name FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code GROUP BY T2.name
+select avg(products.price) , manufacturers.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code  group by manufacturers.name
+SELECT avg(T1.price) ,  T2.name FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code GROUP BY T2.name
+select avg(products.price) , manufacturers.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code  group by manufacturers.name
+SELECT count(DISTINCT T1.name) ,  T2.Headquarter FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code GROUP BY T2.Headquarter
+select count( distinct products.name) , manufacturers.headquarter from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code  group by manufacturers.headquarter
+SELECT count(DISTINCT T1.name) ,  T2.Headquarter FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code GROUP BY T2.Headquarter
+select count( distinct products.name) , manufacturers.headquarter from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code  group by manufacturers.headquarter
+SELECT count(DISTINCT name) FROM products WHERE name NOT IN (SELECT T1.name FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code WHERE T2.name  =  'Sony')
+select count( distinct products.name) from Products where  products.name not in (select products.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code where  manufacturers.name = "Sony"  )
+SELECT count(DISTINCT name) FROM products WHERE name NOT IN (SELECT T1.name FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code WHERE T2.name  =  'Sony')
+select count( distinct products.name) from Products where  products.name not in (select products.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code where  manufacturers.name = "Sony"  )
+SELECT name FROM manufacturers EXCEPT SELECT T2.name FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code WHERE T1.name  =  'DVD drive'
+select manufacturers.name from Manufacturers   except select manufacturers.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code where  products.name = "DVD drive"
+SELECT name FROM manufacturers EXCEPT SELECT T2.name FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code WHERE T1.name  =  'DVD drive'
+select manufacturers.name from Manufacturers   except select manufacturers.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code where  products.name = "DVD drive"
+SELECT count(*) ,  T2.name FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code GROUP BY T2.name
+select count(*) , manufacturers.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code  group by manufacturers.name
+SELECT count(*) ,  T2.name FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code GROUP BY T2.name
+select count(*) , manufacturers.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code  group by manufacturers.name
+SELECT Name FROM Products
+select products.name from Products
+SELECT Name FROM Products
+select products.name from Products
+SELECT name ,  price FROM products
+select products.name , products.price from Products
+SELECT name ,  price FROM products
+select products.name , products.price from Products
+SELECT name FROM products WHERE price  <=  200
+select products.name from Products where  products.price < 200
+SELECT name FROM products WHERE price  <=  200
+select products.name from Products where  products.price < 200
+SELECT * FROM products WHERE price BETWEEN 60 AND 120
+select * from Products where  products.price between 60 and 120
+SELECT * FROM products WHERE price BETWEEN 60 AND 120
+select * from Products where  products.price between 60 and 120
+SELECT avg(price) FROM products
+select avg(products.price) from Products
+SELECT avg(price) FROM products
+select avg(products.price) from Products
+SELECT avg(price) FROM products WHERE Manufacturer  =  2
+select avg(products.price) from Products where  products.manufacturer = 2
+SELECT avg(price) FROM products WHERE Manufacturer  =  2
+select avg(products.price) from Products where  products.manufacturer = 2
+SELECT count(*) FROM products WHERE price >= 180
+select count(*) from Products where  products.price >= 180
+SELECT count(*) FROM products WHERE price >= 180
+select count(*) from Products where  products.price >= 180
+SELECT name ,  price FROM products WHERE price  >=  180 ORDER BY price DESC ,  name ASC
+select products.name , products.price from Products where  products.price >= 180   order by products.price,products.name asc
+SELECT name ,  price FROM products WHERE price  >=  180 ORDER BY price DESC ,  name ASC
+select products.name , products.price from Products where  products.price >= 180   order by products.price,products.name asc
+SELECT * FROM products AS T1 JOIN Manufacturers AS T2 ON T1.manufacturer  =  T2.code
+select * from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code
+SELECT * FROM products AS T1 JOIN Manufacturers AS T2 ON T1.manufacturer  =  T2.code
+select * from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code
+SELECT AVG(Price) ,  Manufacturer FROM Products GROUP BY Manufacturer
+select avg(products.price) , products.manufacturer from Products  group by products.manufacturer
+SELECT AVG(Price) ,  Manufacturer FROM Products GROUP BY Manufacturer
+select avg(products.price) , products.manufacturer from Products  group by products.manufacturer
+SELECT avg(T1.Price) ,  T2.name FROM products AS T1 JOIN Manufacturers AS T2 ON T1.manufacturer  =  T2.code GROUP BY T2.name
+select avg(products.price) , manufacturers.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code  group by manufacturers.name
+SELECT avg(T1.Price) ,  T2.name FROM products AS T1 JOIN Manufacturers AS T2 ON T1.manufacturer  =  T2.code GROUP BY T2.name
+select avg(products.price) , manufacturers.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code  group by manufacturers.name
+SELECT avg(T1.Price) ,  T2.name FROM products AS T1 JOIN Manufacturers AS T2 ON T1.manufacturer  =  T2.code GROUP BY T2.name HAVING avg(T1.price) >= 150
+select avg(products.price) , manufacturers.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code  group by manufacturers.name having  avg(products.price) >= 150
+SELECT avg(T1.Price) ,  T2.name FROM products AS T1 JOIN Manufacturers AS T2 ON T1.manufacturer  =  T2.code GROUP BY T2.name HAVING avg(T1.price) >= 150
+select avg(products.price) , manufacturers.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code  group by manufacturers.name having  avg(products.price) >= 150
+SELECT name ,  price FROM Products ORDER BY price ASC LIMIT 1
+select products.name , products.price from Products   order by products.price asc limit 1
+SELECT name ,  price FROM Products ORDER BY price ASC LIMIT 1
+select products.name , products.price from Products   order by products.price asc limit 1
+SELECT T1.Name ,  max(T1.Price) ,  T2.name FROM products AS T1 JOIN Manufacturers AS T2 ON T1.manufacturer  =  T2.code GROUP BY T2.name
+select products.name , max(products.price) , manufacturers.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code  group by manufacturers.name
+SELECT T1.Name ,  max(T1.Price) ,  T2.name FROM products AS T1 JOIN Manufacturers AS T2 ON T1.manufacturer  =  T2.code GROUP BY T2.name
+select products.name , max(products.price) , manufacturers.name from Products join Manufacturers on Products.Manufacturer = Manufacturers.Code  group by manufacturers.name
+SELECT code ,  name ,  min(price) FROM products GROUP BY name
+select products.code , products.name , min(products.price) from Products  group by products.name
+SELECT code ,  name ,  min(price) FROM products GROUP BY name
+select products.code , products.name , min(products.price) from Products  group by products.name

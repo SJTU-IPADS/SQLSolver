@@ -1,0 +1,96 @@
+SELECT T1.Date_Claim_Made ,  T1.Claim_id FROM Claims AS T1 JOIN Settlements AS T2 ON T1.Claim_id  =  T2.Claim_id GROUP BY T1.Claim_id HAVING count(*)  >  2 UNION SELECT T1.Date_Claim_Made ,  T1.Claim_id FROM Claims AS T1 JOIN Settlements AS T2 ON T1.Claim_id  =  T2.Claim_id WHERE T1.Amount_Claimed  =  ( SELECT max(Amount_Claimed) FROM Claims )
+select claims.date_claim_made , claims.claim_id from Settlements join Claims on Settlements.Claim_ID = Claims.Claim_ID  group by claims.claim_id having  count(*) > 2  union select claims.date_claim_made , claims.claim_id from Settlements join Claims on Settlements.Claim_ID = Claims.Claim_ID where  claims.amount_claimed = (select max(claims.amount_claimed) from Claims  )
+SELECT T1.Date_Claim_Made ,  T1.Claim_id FROM Claims AS T1 JOIN Settlements AS T2 ON T1.Claim_id  =  T2.Claim_id GROUP BY T1.Claim_id HAVING count(*)  >  2 UNION SELECT T1.Date_Claim_Made ,  T1.Claim_id FROM Claims AS T1 JOIN Settlements AS T2 ON T1.Claim_id  =  T2.Claim_id WHERE T1.Amount_Claimed  =  ( SELECT max(Amount_Claimed) FROM Claims )
+select claims.date_claim_made , claims.claim_id from Settlements join Claims on Settlements.Claim_ID = Claims.Claim_ID  group by claims.claim_id having  count(*) > 2  union select claims.date_claim_made , claims.claim_id from Settlements join Claims on Settlements.Claim_ID = Claims.Claim_ID where  claims.amount_claimed = (select max(claims.amount_claimed) from Claims  )
+SELECT T1.customer_details ,  T1.customer_id FROM Customers AS T1 JOIN Customer_Policies AS T2 ON T1.Customer_id  =  T2.customer_id GROUP BY T1.customer_id HAVING count(*)  >=  2 EXCEPT SELECT T1.customer_details ,  T1.customer_id FROM Customers AS T1 JOIN Customer_Policies AS T2 ON T1.Customer_id  =  T2.customer_id JOIN Claims AS T3 ON T2.policy_id  =  T3.policy_id
+select customers.customer_details , customers.customer_id from Customer_Policies join Customers on Customer_Policies.Customer_ID = Customers.Customer_ID  group by customers.customer_id having  count(*) >= 2  except select customers.customer_details , customers.customer_id from Claims join Customer_Policies on Claims.Policy_ID = Customer_Policies.Policy_ID join Customers on Customer_Policies.Customer_ID = Customers.Customer_ID
+SELECT T1.customer_details ,  T1.customer_id FROM Customers AS T1 JOIN Customer_Policies AS T2 ON T1.Customer_id  =  T2.customer_id GROUP BY T1.customer_id HAVING count(*)  >=  2 EXCEPT SELECT T1.customer_details ,  T1.customer_id FROM Customers AS T1 JOIN Customer_Policies AS T2 ON T1.Customer_id  =  T2.customer_id JOIN Claims AS T3 ON T2.policy_id  =  T3.policy_id
+select customers.customer_details , customers.customer_id from Customer_Policies join Customers on Customer_Policies.Customer_ID = Customers.Customer_ID  group by customers.customer_id having  count(*) >= 2  except select customers.customer_details , customers.customer_id from Claims join Customer_Policies on Claims.Policy_ID = Customer_Policies.Policy_ID join Customers on Customer_Policies.Customer_ID = Customers.Customer_ID
+SELECT Payment_Method_Code ,  Date_Payment_Made ,  Amount_Payment FROM Payments ORDER BY Date_Payment_Made ASC
+select payments.payment_method_code , payments.date_payment_made , payments.amount_payment from Payments   order by payments.date_payment_made asc
+SELECT Payment_Method_Code ,  Date_Payment_Made ,  Amount_Payment FROM Payments ORDER BY Date_Payment_Made ASC
+select payments.payment_method_code , payments.date_payment_made , payments.amount_payment from Payments   order by payments.date_payment_made asc
+SELECT Amount_Settled ,  Amount_Claimed FROM Claims ORDER BY Amount_Claimed DESC LIMIT 1
+select claims.amount_settled , claims.amount_claimed from Claims   order by claims.amount_claimed desc limit 1
+SELECT Amount_Settled ,  Amount_Claimed FROM Claims ORDER BY Amount_Claimed DESC LIMIT 1
+select claims.amount_settled , claims.amount_claimed from Claims   order by claims.amount_claimed desc limit 1
+SELECT Amount_Settled ,  Amount_Claimed FROM Claims ORDER BY Amount_Settled ASC LIMIT 1
+select claims.amount_settled , claims.amount_claimed from Claims   order by claims.amount_settled asc limit 1
+SELECT Amount_Settled ,  Amount_Claimed FROM Claims ORDER BY Amount_Settled ASC LIMIT 1
+select claims.amount_settled , claims.amount_claimed from Claims   order by claims.amount_settled asc limit 1
+SELECT Date_Claim_Made ,  Date_Claim_Settled FROM Claims WHERE Amount_Claimed  >  ( SELECT avg(Amount_Claimed) FROM Claims )
+select claims.date_claim_made , claims.date_claim_settled from Claims where  claims.amount_claimed > (select avg(claims.amount_claimed) from Claims  )
+SELECT Date_Claim_Made ,  Date_Claim_Settled FROM Claims WHERE Amount_Claimed  >  ( SELECT avg(Amount_Claimed) FROM Claims )
+select claims.date_claim_made , claims.date_claim_settled from Claims where  claims.amount_claimed > (select avg(claims.amount_claimed) from Claims  )
+SELECT Date_Claim_Made FROM Claims WHERE Amount_Settled  <=  ( SELECT avg(Amount_Settled) FROM Claims )
+select claims.date_claim_made from Claims where  claims.amount_settled < (select avg(claims.amount_settled) from Claims  )
+SELECT Date_Claim_Made FROM Claims WHERE Amount_Settled  <=  ( SELECT avg(Amount_Settled) FROM Claims )
+select claims.date_claim_made from Claims where  claims.amount_settled < (select avg(claims.amount_settled) from Claims  )
+SELECT T1.Claim_id ,  count(*) FROM Claims AS T1 JOIN Settlements AS T2 ON T1.claim_id  =  T2.claim_id GROUP BY T1.claim_id
+select claims.claim_id , count(*) from Settlements join Claims on Settlements.Claim_ID = Claims.Claim_ID  group by claims.claim_id
+SELECT T1.Claim_id ,  count(*) FROM Claims AS T1 JOIN Settlements AS T2 ON T1.claim_id  =  T2.claim_id GROUP BY T1.claim_id
+select claims.claim_id , count(*) from Settlements join Claims on Settlements.Claim_ID = Claims.Claim_ID  group by claims.claim_id
+SELECT T1.claim_id ,  T1.date_claim_made ,  count(*) FROM Claims AS T1 JOIN Settlements AS T2 ON T1.claim_id  =  T2.claim_id GROUP BY T1.claim_id ORDER BY count(*) DESC LIMIT 1
+select claims.claim_id , claims.date_claim_made , count(*) from Settlements join Claims on Settlements.Claim_ID = Claims.Claim_ID  group by claims.claim_id  order by count(*) desc limit 1
+SELECT T1.claim_id ,  T1.date_claim_made ,  count(*) FROM Claims AS T1 JOIN Settlements AS T2 ON T1.claim_id  =  T2.claim_id GROUP BY T1.claim_id ORDER BY count(*) DESC LIMIT 1
+select claims.claim_id , claims.date_claim_settled , count(*) from Settlements join Claims on Settlements.Claim_ID = Claims.Claim_ID  group by claims.claim_id  order by count(*) desc limit 1
+SELECT count(*) ,  T1.claim_id FROM Claims AS T1 JOIN Settlements AS T2 ON T1.claim_id  =  T2.claim_id GROUP BY T1.claim_id ORDER BY T1.Date_Claim_Settled DESC LIMIT 1
+select count(*) , claims.claim_id from Settlements join Claims on Settlements.Claim_ID = Claims.Claim_ID  group by claims.claim_id  order by claims.date_claim_settled desc limit 1
+SELECT count(*) ,  T1.claim_id FROM Claims AS T1 JOIN Settlements AS T2 ON T1.claim_id  =  T2.claim_id GROUP BY T1.claim_id ORDER BY T1.Date_Claim_Settled DESC LIMIT 1
+select count(*) , claims.claim_id from Settlements join Claims on Settlements.Claim_ID = Claims.Claim_ID  group by claims.claim_id  order by claims.date_claim_settled desc limit 1
+SELECT Date_Claim_Made FROM Claims ORDER BY Date_Claim_Made ASC LIMIT 1
+select claims.date_claim_made from Claims   order by claims.date_claim_made asc limit 1
+SELECT Date_Claim_Made FROM Claims ORDER BY Date_Claim_Made ASC LIMIT 1
+select claims.date_claim_made from Claims   order by claims.date_claim_made asc limit 1
+SELECT sum(Amount_Settled) FROM Settlements
+select sum(settlements.amount_settled) from Settlements
+SELECT sum(Amount_Settled) FROM Settlements
+select sum(settlements.amount_settled) from Settlements
+SELECT T1.customer_details ,  T1.customer_id FROM Customers AS T1 JOIN Customer_Policies AS T2 ON T1.Customer_id  =  T2.Customer_id GROUP BY T1.customer_id HAVING count(*)  >  1
+select customers.customer_details , customers.customer_id from Customer_Policies join Customers on Customer_Policies.Customer_ID = Customers.Customer_ID  group by customers.customer_id having  count(*) > 1
+SELECT T1.customer_details ,  T1.customer_id FROM Customers AS T1 JOIN Customer_Policies AS T2 ON T1.Customer_id  =  T2.Customer_id GROUP BY T1.customer_id HAVING count(*)  >  1
+select customers.customer_details , customers.customer_id from Customer_Policies join Customers on Customer_Policies.Customer_ID = Customers.Customer_ID  group by customers.customer_id having  count(*) > 1
+SELECT Date_Claim_Made ,  Date_Claim_Settled FROM Settlements
+select settlements.date_claim_made , settlements.date_claim_settled from Settlements
+SELECT Date_Claim_Made ,  Date_Claim_Settled FROM Settlements
+select settlements.date_claim_made , settlements.date_claim_settled from Settlements
+SELECT Payment_Method_Code FROM Payments GROUP BY Payment_Method_Code ORDER BY count(*) DESC LIMIT 1
+select payments.payment_method_code from Payments  group by payments.payment_method_code  order by count(*) desc limit 1
+SELECT Payment_Method_Code FROM Payments GROUP BY Payment_Method_Code ORDER BY count(*) DESC LIMIT 1
+select payments.payment_method_code from Payments  group by payments.payment_method_code  order by count(*) desc limit 1
+SELECT Payment_Method_Code FROM Payments GROUP BY Payment_Method_Code ORDER BY count(*) ASC LIMIT 1
+select payments.payment_method_code from Payments  group by payments.payment_method_code  order by count(*) asc limit 1
+SELECT Payment_Method_Code FROM Payments GROUP BY Payment_Method_Code ORDER BY count(*) ASC LIMIT 1
+select payments.payment_method_code from Payments  group by payments.payment_method_code  order by count(*) asc limit 1
+SELECT sum(Amount_Payment) FROM Payments
+select sum(payments.amount_payment) from Payments
+SELECT sum(Amount_Payment) FROM Payments
+select sum(payments.amount_payment) from Payments
+SELECT DISTINCT customer_details FROM Customers
+select distinct customers.customer_details from Customers
+SELECT DISTINCT customer_details FROM Customers
+select distinct customers.customer_details from Customers
+SELECT Policy_Type_Code FROM Customer_Policies GROUP BY Policy_Type_Code ORDER BY count(*) DESC LIMIT 1
+select customer_policies.policy_type_code from Customer_Policies  group by customer_policies.policy_type_code  order by count(*) desc limit 1
+SELECT Policy_Type_Code FROM Customer_Policies GROUP BY Policy_Type_Code ORDER BY count(*) DESC LIMIT 1
+select customer_policies.policy_type_code from Customer_Policies  group by customer_policies.policy_type_code  order by count(*) desc limit 1
+SELECT count(*) FROM Settlements
+select count(*) from Settlements
+SELECT count(*) FROM Settlements
+select count(*) from Settlements
+SELECT Payment_ID ,  Date_Payment_Made ,  Amount_Payment FROM Payments WHERE Payment_Method_Code  =  'Visa'
+select payments.payment_id , payments.date_payment_made , payments.amount_payment from Payments where  payments.payment_method_code = "Visa"
+SELECT Payment_ID ,  Date_Payment_Made ,  Amount_Payment FROM Payments WHERE Payment_Method_Code  =  'Visa'
+select payments.payment_id , payments.date_payment_made , payments.amount_payment from Payments where  payments.payment_method_code = "Visa"
+SELECT customer_details FROM Customers EXCEPT SELECT T1.customer_details FROM Customers AS T1 JOIN Customer_Policies AS T2 ON T1.customer_id  =  T2.customer_id
+select customers.customer_details from Customers   except select customers.customer_details from Customer_Policies join Customers on Customer_Policies.Customer_ID = Customers.Customer_ID
+SELECT customer_details FROM Customers EXCEPT SELECT T1.customer_details FROM Customers AS T1 JOIN Customer_Policies AS T2 ON T1.customer_id  =  T2.customer_id
+select customers.customer_details from Customers   except select customers.customer_details from Customer_Policies join Customers on Customer_Policies.Customer_ID = Customers.Customer_ID
+SELECT T1.claim_id ,  T1.date_claim_made ,  T1.Date_Claim_Settled FROM Claims AS T1 JOIN Settlements AS T2 ON T1.Claim_id  =  T2.Claim_id GROUP BY T1.claim_id HAVING count(*)  =  1
+select claims.claim_id , claims.date_claim_made , claims.date_claim_settled from Settlements join Claims on Settlements.Claim_ID = Claims.Claim_ID  group by claims.claim_id having  count(*) = 1
+SELECT T1.claim_id ,  T1.date_claim_made ,  T1.Date_Claim_Settled FROM Claims AS T1 JOIN Settlements AS T2 ON T1.Claim_id  =  T2.Claim_id GROUP BY T1.claim_id HAVING count(*)  =  1
+select claims.claim_id , claims.date_claim_made , claims.date_claim_settled from Settlements join Claims on Settlements.Claim_ID = Claims.Claim_ID  group by claims.claim_id having  count(*) = 1
+SELECT sum(Amount_Claimed) FROM Claims
+select sum(claims.amount_claimed) from Claims
+SELECT sum(Amount_Claimed) FROM Claims
+select sum(claims.amount_claimed) from Claims

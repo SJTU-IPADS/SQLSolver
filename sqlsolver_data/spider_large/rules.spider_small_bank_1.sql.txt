@@ -1,0 +1,100 @@
+SELECT sum(T2.balance) FROM accounts AS T1 JOIN savings AS T2 ON T1.custid  =  T2.custid WHERE T1.name != 'Brown'
+select sum(savings.balance) from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid where  accounts.name != "Brown"
+SELECT sum(T2.balance) FROM accounts AS T1 JOIN savings AS T2 ON T1.custid  =  T2.custid WHERE T1.name != 'Brown'
+select sum(savings.balance) from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid where  accounts.name != "Brown"
+SELECT count(*) FROM accounts
+select count(*) from ACCOUNTS
+SELECT count(*) FROM accounts
+select count(*) from ACCOUNTS
+SELECT sum(balance) FROM checking
+select sum(checking.balance) from CHECKING
+SELECT sum(balance) FROM checking
+select sum(checking.balance) from CHECKING
+SELECT avg(balance) FROM checking
+select avg(checking.balance) from CHECKING
+SELECT avg(balance) FROM checking
+select avg(checking.balance) from CHECKING
+SELECT count(*) FROM savings WHERE balance  >  (SELECT avg(balance) FROM savings)
+select count(*) from SAVINGS where  savings.balance > (select avg(savings.balance) from SAVINGS  )
+SELECT count(*) FROM savings WHERE balance  >  (SELECT avg(balance) FROM savings)
+select count(*) from SAVINGS where  savings.balance > (select avg(savings.balance) from SAVINGS  )
+SELECT T1.custid ,  T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid WHERE T2.balance  <  (SELECT max(balance) FROM checking)
+select accounts.custid , accounts.name from CHECKING join ACCOUNTS on CHECKING.custid = ACCOUNTS.custid where  checking.balance < (select max(CHECKING.balance) from CHECKING  )
+SELECT T1.custid ,  T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid WHERE T2.balance  <  (SELECT max(balance) FROM checking)
+select accounts.custid , accounts.name from CHECKING join ACCOUNTS on CHECKING.custid = ACCOUNTS.custid where  checking.balance < (select max(CHECKING.balance) from CHECKING  )
+SELECT T2.balance FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid WHERE T1.name LIKE '%ee%'
+select checking.balance from CHECKING join ACCOUNTS on CHECKING.custid = ACCOUNTS.custid where  accounts.name like "%ee%"
+SELECT T2.balance FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid WHERE T1.name LIKE '%ee%'
+select checking.balance from CHECKING join ACCOUNTS on CHECKING.custid = ACCOUNTS.custid where  accounts.name like "%ee%"
+SELECT T2.balance ,  T3.balance FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid WHERE T1.name  =  'Brown'
+select checking.balance , savings.balance from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid join CHECKING on ACCOUNTS.custid = CHECKING.custid where  accounts.name = "Brown"
+SELECT T2.balance ,  T3.balance FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid WHERE T1.name  =  'Brown'
+select checking.balance , savings.balance from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid join CHECKING on ACCOUNTS.custid = CHECKING.custid where  accounts.name = "Brown"
+SELECT T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid WHERE T2.balance  >  (SELECT avg(balance) FROM checking) INTERSECT SELECT T1.name FROM accounts AS T1 JOIN savings AS T2 ON T1.custid  =  T2.custid WHERE T2.balance  <  (SELECT avg(balance) FROM savings)
+select accounts.name from CHECKING join ACCOUNTS on CHECKING.custid = ACCOUNTS.custid where  checking.balance > (select avg(checking.balance) from CHECKING  )   intersect select accounts.name from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid where  savings.balance < (select avg(SAVINGS.balance) from SAVINGS  )
+SELECT T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid WHERE T2.balance  >  (SELECT avg(balance) FROM checking) INTERSECT SELECT T1.name FROM accounts AS T1 JOIN savings AS T2 ON T1.custid  =  T2.custid WHERE T2.balance  <  (SELECT avg(balance) FROM savings)
+select accounts.name from CHECKING join ACCOUNTS on CHECKING.custid = ACCOUNTS.custid where  checking.balance > (select avg(checking.balance) from CHECKING  )   intersect select accounts.name from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid where  savings.balance < (select avg(SAVINGS.balance) from SAVINGS  )
+SELECT T2.balance FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid WHERE T1.name IN (SELECT T1.name FROM accounts AS T1 JOIN savings AS T2 ON T1.custid  =  T2.custid WHERE T2.balance  >  (SELECT avg(balance) FROM savings))
+select checking.balance from CHECKING join ACCOUNTS on CHECKING.custid = ACCOUNTS.custid where  accounts.name in (select ACCOUNTS.name from ACCOUNTS join SAVINGS on ACCOUNTS.custid = SAVINGS.custid where  savings.balance > (select avg(SAVINGS.balance) from SAVINGS  )  )
+SELECT T2.balance FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid WHERE T1.name IN (SELECT T1.name FROM accounts AS T1 JOIN savings AS T2 ON T1.custid  =  T2.custid WHERE T2.balance  >  (SELECT avg(balance) FROM savings))
+select checking.balance from CHECKING join ACCOUNTS on CHECKING.custid = ACCOUNTS.custid where  accounts.name in (select ACCOUNTS.name from ACCOUNTS join SAVINGS on ACCOUNTS.custid = SAVINGS.custid where  savings.balance > (select avg(SAVINGS.balance) from SAVINGS  )  )
+SELECT name FROM accounts ORDER BY name
+select accounts.name from ACCOUNTS   order by accounts.name asc
+SELECT name FROM accounts ORDER BY name
+select accounts.name from ACCOUNTS   order by accounts.name asc
+SELECT T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid ORDER BY T2.balance + T3.balance LIMIT 1
+sql placeholder
+SELECT T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid ORDER BY T2.balance + T3.balance LIMIT 1
+sql placeholder
+SELECT T1.name ,  T2.balance + T3.balance FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid WHERE T3.balance  >  (SELECT avg(balance) FROM savings)
+select sum(checking.balance) , savings.balance from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid join CHECKING on ACCOUNTS.custid = CHECKING.custid where  savings.balance > (select avg(savings.balance) from SAVINGS  )
+SELECT T1.name ,  T2.balance + T3.balance FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid WHERE T3.balance  >  (SELECT avg(balance) FROM savings)
+sql placeholder
+SELECT T1.name ,  T2.balance FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid ORDER BY T3.balance LIMIT 1
+select checking.balance , accounts.name from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid join CHECKING on ACCOUNTS.custid = CHECKING.custid   order by savings.balance asc limit 1
+SELECT T1.name ,  T2.balance FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid ORDER BY T3.balance LIMIT 1
+select accounts.name , checking.balance from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid join CHECKING on ACCOUNTS.custid = CHECKING.custid   order by savings.balance asc limit 1
+SELECT count(*) ,  T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid GROUP BY T1.name
+select count(*) , accounts.name from CHECKING join ACCOUNTS on CHECKING.custid = ACCOUNTS.custid  group by accounts.name
+SELECT count(*) ,  T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid GROUP BY T1.name
+select count(*) , accounts.name from CHECKING join ACCOUNTS on CHECKING.custid = ACCOUNTS.custid  group by accounts.name
+SELECT sum(T2.balance) ,  T1.name FROM accounts AS T1 JOIN savings AS T2 ON T1.custid  =  T2.custid GROUP BY T1.name
+select sum(savings.balance) , accounts.name from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid  group by accounts.name
+SELECT sum(T2.balance) ,  T1.name FROM accounts AS T1 JOIN savings AS T2 ON T1.custid  =  T2.custid GROUP BY T1.name
+select sum(savings.balance) , accounts.name from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid  group by accounts.name
+SELECT T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid WHERE T2.balance  <  (SELECT avg(balance) FROM checking)
+select accounts.name from CHECKING join ACCOUNTS on CHECKING.custid = ACCOUNTS.custid where  checking.balance < (select avg(CHECKING.balance) from CHECKING  )
+SELECT T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid WHERE T2.balance  <  (SELECT avg(balance) FROM checking)
+select accounts.name from CHECKING join ACCOUNTS on CHECKING.custid = ACCOUNTS.custid where  checking.balance < (select avg(CHECKING.balance) from CHECKING  )
+SELECT T3.balance FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid ORDER BY T2.balance DESC LIMIT 1
+select savings.balance from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid join CHECKING on ACCOUNTS.custid = CHECKING.custid   order by checking.balance desc limit 1
+SELECT T3.balance FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid ORDER BY T2.balance DESC LIMIT 1
+select savings.balance from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid join CHECKING on ACCOUNTS.custid = CHECKING.custid   order by checking.balance desc limit 1
+SELECT T1.balance + T2.balance FROM checking AS T1 JOIN savings AS T2 ON T1.custid  =  T2.custid ORDER BY T1.balance + T2.balance
+select sum(checking.balance) , sum(savings.balance) from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid join CHECKING on ACCOUNTS.custid = CHECKING.custid   order by checking.balance + savings.balance asc
+SELECT T1.balance + T2.balance FROM checking AS T1 JOIN savings AS T2 ON T1.custid  =  T2.custid ORDER BY T1.balance + T2.balance
+select sum(checking.balance) , sum(savings.balance) from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid join CHECKING on ACCOUNTS.custid = CHECKING.custid   order by checking.balance + savings.balance asc
+SELECT T2.balance ,  T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid ORDER BY T3.balance LIMIT 1
+select checking.balance , accounts.name from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid join CHECKING on ACCOUNTS.custid = CHECKING.custid   order by savings.balance asc limit 1
+SELECT T2.balance ,  T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid ORDER BY T3.balance LIMIT 1
+select checking.balance , accounts.name from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid join CHECKING on ACCOUNTS.custid = CHECKING.custid   order by savings.balance asc limit 1
+SELECT T2.balance ,  T3.balance ,  T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid
+select checking.balance , savings.balance , accounts.name from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid join CHECKING on ACCOUNTS.custid = CHECKING.custid
+SELECT T2.balance ,  T3.balance ,  T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid
+select checking.balance , savings.balance , accounts.name from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid join CHECKING on ACCOUNTS.custid = CHECKING.custid
+SELECT T2.balance ,  T3.balance ,  T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid ORDER BY T2.balance + T3.balance DESC
+select checking.balance , savings.balance , accounts.name from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid join CHECKING on ACCOUNTS.custid = CHECKING.custid   order by checking.balance + savings.balance desc
+SELECT T2.balance ,  T3.balance ,  T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid ORDER BY T2.balance + T3.balance DESC
+select checking.balance , savings.balance , accounts.name from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid join CHECKING on ACCOUNTS.custid = CHECKING.custid   order by checking.balance + savings.balance desc
+SELECT T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid WHERE T2.balance  >  T3.balance
+select accounts.name from CHECKING join ACCOUNTS on CHECKING.custid = ACCOUNTS.custid where  checking.balance > (select savings.balance from SAVINGS  )
+SELECT T1.name FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid WHERE T2.balance  >  T3.balance
+select accounts.name from CHECKING join ACCOUNTS on CHECKING.custid = ACCOUNTS.custid where  checking.balance > (select savings.balance from SAVINGS  )
+SELECT T1.name ,  T3.balance + T2.balance FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid WHERE T3.balance  <  T2.balance
+select sum(checking.balance) , sum(savings.balance) from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid join CHECKING on ACCOUNTS.custid = CHECKING.custid where  savings.balance < (select checking.balance from CHECKING  )
+SELECT T1.name ,  T3.balance + T2.balance FROM accounts AS T1 JOIN checking AS T2 ON T1.custid  =  T2.custid JOIN savings AS T3 ON T1.custid  =  T3.custid WHERE T3.balance  <  T2.balance
+select sum(checking.balance) , accounts.name from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid join CHECKING on ACCOUNTS.custid = CHECKING.custid where  savings.balance < (select checking.balance from CHECKING  )  group by accounts.name
+SELECT T1.name ,  T2.balance FROM accounts AS T1 JOIN savings AS T2 ON T1.custid  =  T2.custid ORDER BY T2.balance DESC LIMIT 3
+select accounts.name , savings.balance from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid   order by savings.balance desc limit 3
+SELECT T1.name ,  T2.balance FROM accounts AS T1 JOIN savings AS T2 ON T1.custid  =  T2.custid ORDER BY T2.balance DESC LIMIT 3
+select accounts.name , savings.balance from SAVINGS join ACCOUNTS on SAVINGS.custid = ACCOUNTS.custid   order by savings.balance desc limit 3

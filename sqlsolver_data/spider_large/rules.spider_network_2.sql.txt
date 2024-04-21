@@ -1,0 +1,172 @@
+SELECT count(T2.friend) FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T1.name  =  'Dan'
+select count( distinct personfriend.friend) from PersonFriend join Person on PersonFriend.friend = Person.name where  person.name = "Dan"
+SELECT count(T2.friend) FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T1.name  =  'Dan'
+select count( distinct personfriend.friend) from PersonFriend join Person on PersonFriend.friend = Person.name where  person.name = "Dan"
+SELECT count(*) FROM Person WHERE gender  =  'female'
+select count(*) from Person where  person.gender = "female"
+SELECT count(*) FROM Person WHERE gender  =  'female'
+select count(*) from Person where  person.gender = "female"
+SELECT avg(age) FROM Person
+select avg(person.age) from Person
+SELECT avg(age) FROM Person
+select avg(person.age) from Person
+SELECT count(DISTINCT city) FROM Person
+select count( distinct person.city) from Person
+SELECT count(DISTINCT city) FROM Person
+select count( distinct person.city) from Person
+SELECT count(DISTINCT job) FROM Person
+select count( distinct person.job) from Person
+SELECT count(DISTINCT job) FROM Person
+select count( distinct person.job) from Person
+SELECT name FROM Person WHERE age  =  (SELECT max(age) FROM person)
+select person.name from Person   order by person.age desc limit 1
+SELECT name FROM Person WHERE age  =  (SELECT max(age) FROM person)
+select person.name from Person where  person.age = (select max(person.age) from Person  )
+SELECT name FROM Person WHERE job  =  'student' AND age  =  (SELECT max(age) FROM person WHERE job  =  'student' )
+select person.name from Person where  person.job = "student" and person.age = (select max(person.age) from Person where  person.job = "student"  )
+SELECT name FROM Person WHERE job  =  'student' AND age  =  (SELECT max(age) FROM person WHERE job  =  'student' )
+select person.name from Person where  person.job = "student" and person.age = (select max(person.age) from Person where  person.job = "student"  )
+SELECT name FROM Person WHERE gender  =  'male' AND age  =  (SELECT min(age) FROM person WHERE gender  =  'male' )
+select person.name from Person where  person.gender = "male" and person.age = (select min(person.age) from Person where  person.gender = "male"  )
+SELECT name FROM Person WHERE gender  =  'male' AND age  =  (SELECT min(age) FROM person WHERE gender  =  'male' )
+select person.name from Person where  person.gender = "male" and person.age = (select min(person.age) from Person where  person.gender = "male"  )
+SELECT age FROM Person WHERE job  =  'doctor' AND name  =  'Zach'
+select person.age from Person where  person.job = "doctor" and person.name = "Zach"
+SELECT age FROM Person WHERE job  =  'doctor' AND name  =  'Zach'
+select person.age from Person where  person.job = "doctor" and person.name = "Zach"
+SELECT name FROM Person WHERE age  <  30
+select person.name from Person where  person.age < 30
+SELECT name FROM Person WHERE age  <  30
+select person.name from Person where  person.age < 30
+SELECT count(*) FROM Person WHERE age  >  30 AND job  =  'engineer'
+select count(*) from Person where  person.age > 30 and person.job = "engineer"
+SELECT count(*) FROM Person WHERE age  >  30 AND job  =  'engineer'
+select count(*) from Person where  person.age > 30 and person.job = "engineer"
+SELECT avg(age) ,  gender FROM Person GROUP BY gender
+select avg(person.age) , person.gender from Person  group by person.gender
+SELECT avg(age) ,  gender FROM Person GROUP BY gender
+select avg(person.age) , person.gender from Person  group by person.gender
+SELECT avg(age) ,  job FROM Person GROUP BY job
+select avg(person.age) , person.job from Person  group by person.job
+SELECT avg(age) ,  job FROM Person GROUP BY job
+select avg(person.age) , person.job from Person  group by person.job
+SELECT avg(age) ,  job FROM Person WHERE gender  =  'male' GROUP BY job
+select avg(person.age) , person.job from Person where  person.gender = "male"  group by person.job
+SELECT avg(age) ,  job FROM Person WHERE gender  =  'male' GROUP BY job
+select avg(person.age) , person.job from Person where  person.gender = "male"  group by person.job
+SELECT min(age) ,  job FROM Person GROUP BY job
+select min(person.age) , person.job from Person  group by person.job
+SELECT min(age) ,  job FROM Person GROUP BY job
+select min(person.age) , person.job from Person  group by person.job
+SELECT count(*) ,  gender FROM Person WHERE age  <  40 GROUP BY gender
+select count(*) , person.gender from Person where  person.age < 40  group by person.gender
+SELECT count(*) ,  gender FROM Person WHERE age  <  40 GROUP BY gender
+select count(*) , person.gender from Person where  person.age < 40  group by person.gender
+SELECT name FROM Person WHERE age  >  (SELECT min(age) FROM person WHERE job  =  'engineer') ORDER BY age
+select person.name from Person where  person.age > (select min(person.age) from Person where  person.job = "engineer"  )    order by person.age asc
+SELECT name FROM Person WHERE age  >  (SELECT min(age) FROM person WHERE job  =  'engineer') ORDER BY age
+select person.name from Person where  person.age > (select min(person.age) from Person where  person.job = "engineer"  )    order by person.age asc
+SELECT count(*) FROM Person WHERE age  >  (SELECT max(age) FROM person WHERE job  =  'engineer')
+select count(*) from Person where  person.age > (select max(person.age) from Person where  person.job = "engineer"  )
+SELECT count(*) FROM Person WHERE age  >  (SELECT max(age) FROM person WHERE job  =  'engineer')
+select count(*) from Person where  person.age > (select max(person.age) from Person where  person.job = "engineer"  )
+SELECT name ,  job FROM Person ORDER BY name
+select person.name , person.job from Person   order by person.name asc
+SELECT name ,  job FROM Person ORDER BY name
+select person.name , person.job from Person   order by person.name asc
+SELECT name FROM Person ORDER BY age DESC
+select person.name from Person   order by person.age desc
+SELECT name FROM Person ORDER BY age DESC
+select person.name from Person   order by person.age desc
+SELECT name FROM Person WHERE gender  =  'male' ORDER BY age
+select person.name from Person where  person.gender = "male"   order by person.age asc
+SELECT name FROM Person WHERE gender  =  'male' ORDER BY age
+select person.name from Person where  person.gender = "male"   order by person.age asc
+SELECT T1.name ,  T1.age FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend  =  'Dan' INTERSECT SELECT T1.name ,   T1.age FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend  =  'Alice'
+select person.name , person.age from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend = "Dan"   intersect select person.name , person.age from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend = "Alice"
+SELECT T1.name ,  T1.age FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend  =  'Dan' INTERSECT SELECT T1.name ,   T1.age FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend  =  'Alice'
+select person.name , person.age from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend = "Dan"   intersect select person.name , person.age from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend = "Alice"
+SELECT DISTINCT T1.name ,  T1.age FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend  =  'Dan' OR T2.friend  =  'Alice'
+select distinct person.name , person.age from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend = "Dan" or personfriend.friend = "Alice"
+SELECT DISTINCT T1.name ,  T1.age FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend  =  'Dan' OR T2.friend  =  'Alice'
+select distinct person.name , person.age from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend = "Dan" or personfriend.friend = "Alice"
+SELECT T1.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend IN (SELECT name FROM Person WHERE age  >  40) INTERSECT SELECT T1.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend IN (SELECT name FROM Person WHERE age  <  30)
+select person.name from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend in (select person.name from Person where  person.age > 40  )    intersect select personfriend.name from PersonFriend where  personfriend.friend in (select person.name from Person where  person.age < 30  )
+SELECT T1.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend IN (SELECT name FROM Person WHERE age  >  40) INTERSECT SELECT T1.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend IN (SELECT name FROM Person WHERE age  <  30)
+select person.name from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend in (select person.name from Person where  person.age > 40  )    intersect select personfriend.name from PersonFriend where  personfriend.friend in (select person.name from Person where  person.age < 30  )
+SELECT T1.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend IN (SELECT name FROM Person WHERE age  >  40) EXCEPT SELECT T1.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend IN (SELECT name FROM Person WHERE age  <  30)
+select person.name from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend in (select person.name from Person where  person.age > 40  )    except select personfriend.name from PersonFriend where  personfriend.friend in (select person.name from Person where  person.age < 30  )
+SELECT T1.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend IN (SELECT name FROM Person WHERE age  >  40) EXCEPT SELECT T1.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend IN (SELECT name FROM Person WHERE age  <  30)
+select person.name from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend in (select person.name from Person where  person.age > 40  )    except select personfriend.name from PersonFriend where  personfriend.friend in (select person.name from Person where  person.age < 30  )
+SELECT name FROM person EXCEPT SELECT T2.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T1.job  =  'student'
+select person.name from Person   except select person.name from Person where  person.job = "student"
+SELECT name FROM person EXCEPT SELECT T2.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T1.job  =  'student'
+select person.name from Person   except select person.name from Person where  person.job = "student"
+SELECT name FROM PersonFriend GROUP BY name HAVING count(*)  =  1
+select personfriend.name from PersonFriend  group by personfriend.name having  count(*) = 1
+SELECT name FROM PersonFriend GROUP BY name HAVING count(*)  =  1
+select personfriend.name from PersonFriend  group by personfriend.name having  count(*) = 1
+SELECT T2.friend FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T1.name  =  'Bob'
+select personfriend.friend from PersonFriend where  personfriend.name = "Bob"
+SELECT T2.friend FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T1.name  =  'Bob'
+select personfriend.friend from PersonFriend where  personfriend.name = "Bob"
+SELECT T1.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend  =  'Bob'
+select person.name from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend = "Bob"
+SELECT T1.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend  =  'Bob'
+select person.name from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend = "Bob"
+SELECT T1.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend  =  'Zach' AND T1.gender  =  'female'
+select person.name from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend = "Zach" and person.gender = "female"
+SELECT T1.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend  =  'Zach' AND T1.gender  =  'female'
+select person.name from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend = "Zach" and person.gender = "female"
+SELECT T2.friend FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T2.name  =  'Alice' AND T1.gender  =  'female'
+select personfriend.friend from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.name = "Alice" and person.gender = "female"
+SELECT T2.friend FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T2.name  =  'Alice' AND T1.gender  =  'female'
+select personfriend.friend from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend = "Alice" and person.gender = "female"
+SELECT T2.friend FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T2.name  =  'Alice' AND T1.gender  =  'male' AND T1.job  =  'doctor'
+select personfriend.friend from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend = "Alice" and person.gender = "male" and person.job = "doctor"
+SELECT T2.friend FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T2.name  =  'Alice' AND T1.gender  =  'male' AND T1.job  =  'doctor'
+select personfriend.friend from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend = "Alice" and person.job = "doctor"
+SELECT T2.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T1.city  =  'new york city'
+select personfriend.name from PersonFriend join Person on PersonFriend.friend = Person.name where  person.city = "new york city"
+SELECT T2.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T1.city  =  'new york city'
+select personfriend.name from PersonFriend join Person on PersonFriend.friend = Person.name where  person.city = "new york city"
+SELECT DISTINCT T2.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T1.age  <  (SELECT avg(age) FROM person)
+select distinct personfriend.name from PersonFriend join Person on PersonFriend.friend = Person.name where  person.age < (select avg(Person.age) from Person  )
+SELECT DISTINCT T2.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T1.age  <  (SELECT avg(age) FROM person)
+select distinct personfriend.name from PersonFriend join Person on PersonFriend.friend = Person.name where  person.age < (select avg(Person.age) from Person  )
+SELECT DISTINCT T2.name ,  T2.friend ,  T1.age FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T1.age  >  (SELECT avg(age) FROM person)
+select distinct personfriend.name , personfriend.friend , person.age from PersonFriend join Person on PersonFriend.friend = Person.name where  person.age > (select avg(person.age) from Person  )
+SELECT DISTINCT T2.name ,  T2.friend ,  T1.age FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T1.age  >  (SELECT avg(age) FROM person)
+select distinct personfriend.name , personfriend.friend , person.age from PersonFriend join Person on PersonFriend.friend = Person.name where  person.age > (select avg(person.age) from Person  )
+SELECT friend FROM PersonFriend WHERE name =  'Zach' AND YEAR  =  (SELECT max(YEAR) FROM PersonFriend WHERE name =  'Zach')
+select personfriend.friend from PersonFriend where  personfriend.friend = "Zach" and personfriend.year = (select max(personfriend.year) from PersonFriend where  personfriend.name = "Zach"  )
+SELECT friend FROM PersonFriend WHERE name =  'Zach' AND YEAR  =  (SELECT max(YEAR) FROM PersonFriend WHERE name =  'Zach')
+select personfriend.friend from PersonFriend where  personfriend.name = "Zach" and personfriend.year = (select max(personfriend.year) from PersonFriend where  personfriend.name = "Zach"  )
+SELECT T1.age FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T2.name =  'Zach' AND T2.year  =  (SELECT max(YEAR) FROM PersonFriend WHERE name =  'Zach')
+select person.age from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.name = "Zach" and personfriend.year = (select max(personfriend.year) from PersonFriend where  personfriend.name = "Zach"  )
+SELECT T1.age FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T2.name =  'Zach' AND T2.year  =  (SELECT max(YEAR) FROM PersonFriend WHERE name =  'Zach')
+select person.age from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.name = "Zach" and personfriend.year = (select max(personfriend.year) from PersonFriend where  personfriend.name = "Zach"  )
+SELECT name FROM PersonFriend WHERE friend =  'Alice' AND YEAR  =  (SELECT min(YEAR) FROM PersonFriend WHERE friend =  'Alice')
+select person.name from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend = "Alice" and personfriend.year = (select min(personfriend.year) from PersonFriend where  personfriend.friend = "Alice"  )
+SELECT name FROM PersonFriend WHERE friend =  'Alice' AND YEAR  =  (SELECT min(YEAR) FROM PersonFriend WHERE friend =  'Alice')
+select person.name from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend = "Alice" and personfriend.year = (select min(personfriend.year) from PersonFriend where  personfriend.friend = "Alice"  )
+SELECT T1.name ,  T1.age ,  T1.job FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend =  'Alice' AND T2.year  =  (SELECT max(YEAR) FROM PersonFriend WHERE friend =  'Alice')
+select person.name , person.age , person.job from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend = "Alice" and personfriend.year = (select max(personfriend.year) from PersonFriend where  personfriend.friend = "Alice"  )
+SELECT T1.name ,  T1.age ,  T1.job FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.name WHERE T2.friend =  'Alice' AND T2.year  =  (SELECT max(YEAR) FROM PersonFriend WHERE friend =  'Alice')
+select person.name , person.age , person.job from PersonFriend join Person on PersonFriend.friend = Person.name where  personfriend.friend = "Alice" and personfriend.year = (select max(personfriend.year) from PersonFriend where  personfriend.friend = "Alice"  )
+SELECT name FROM person EXCEPT SELECT name FROM PersonFriend
+select person.name from Person   except select personfriend.name from PersonFriend
+SELECT name FROM person EXCEPT SELECT name FROM PersonFriend
+select person.name from Person   except select personfriend.name from PersonFriend
+SELECT T2.name ,  avg(T1.age) FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend GROUP BY T2.name ORDER BY avg(T1.age) DESC LIMIT 1
+select personfriend.name , avg(person.age) from PersonFriend join Person on PersonFriend.friend = Person.name  group by personfriend.name  order by avg(person.age) desc limit 1
+SELECT T2.name ,  avg(T1.age) FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend GROUP BY T2.name ORDER BY avg(T1.age) DESC LIMIT 1
+select personfriend.name , avg(person.age) from PersonFriend join Person on PersonFriend.friend = Person.name  group by personfriend.name  order by avg(person.age) desc limit 1
+SELECT count(DISTINCT name) FROM PersonFriend WHERE friend NOT IN (SELECT name FROM person WHERE city  =  'Austin')
+select count( distinct personfriend.name) from PersonFriend where  personfriend.friend not in (select Person.name from Person where  person.city = "Austin"  )
+SELECT count(DISTINCT name) FROM PersonFriend WHERE friend NOT IN (SELECT name FROM person WHERE city  =  'Austin')
+select count( distinct personfriend.name) from PersonFriend where  personfriend.friend not in (select Person.name from Person where  person.city = "Austin"  )
+SELECT DISTINCT T4.name FROM PersonFriend AS T1 JOIN Person AS T2 ON T1.name  =  T2.name JOIN PersonFriend AS T3 ON T1.friend  =  T3.name JOIN PersonFriend AS T4 ON T3.friend  =  T4.name WHERE T2.name  =  'Alice' AND T4.name != 'Alice'
+select distinct personfriend.name from PersonFriend where  personfriend.name = "Alice"   except select distinct personfriend.name from PersonFriend where  personfriend.name = "Alice"
+SELECT DISTINCT T4.name FROM PersonFriend AS T1 JOIN Person AS T2 ON T1.name  =  T2.name JOIN PersonFriend AS T3 ON T1.friend  =  T3.name JOIN PersonFriend AS T4 ON T3.friend  =  T4.name WHERE T2.name  =  'Alice' AND T4.name != 'Alice'
+select distinct personfriend.name from PersonFriend join Person on PersonFriend.friend = Person.name where  person.name = "Alice" and personfriend.name != "Alice"

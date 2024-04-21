@@ -1,0 +1,96 @@
+SELECT count(*) FROM scientists
+select count(*) from Scientists
+SELECT count(*) FROM scientists
+select count(*) from Scientists
+SELECT sum(hours) FROM projects
+select sum(projects.hours) from Projects
+SELECT sum(hours) FROM projects
+select sum(projects.hours) from Projects
+SELECT count(DISTINCT scientist) FROM assignedto
+select count( distinct assignedto.scientist) from AssignedTo
+SELECT count(DISTINCT scientist) FROM assignedto
+select count( distinct assignedto.scientist) from AssignedTo
+SELECT count(DISTINCT name) FROM projects
+select count( distinct projects.name) from Projects
+SELECT count(DISTINCT name) FROM projects
+select count( distinct projects.name) from Projects
+SELECT avg(hours) FROM projects
+select avg(projects.hours) from Projects
+SELECT avg(hours) FROM projects
+select avg(projects.hours) from Projects
+SELECT name FROM projects ORDER BY hours DESC LIMIT 1
+select projects.name from Projects   order by projects.hours desc limit 1
+SELECT name FROM projects ORDER BY hours DESC LIMIT 1
+select projects.name from Projects   order by projects.hours desc limit 1
+SELECT name FROM projects WHERE hours  >  (SELECT avg(hours) FROM projects)
+select projects.name from Projects where  projects.hours > (select avg(projects.hours) from Projects  )
+SELECT name FROM projects WHERE hours  >  (SELECT avg(hours) FROM projects)
+select projects.name from Projects where  projects.hours > (select avg(projects.hours) from Projects  )
+SELECT T1.name ,  T1.hours FROM projects AS T1 JOIN assignedto AS T2 ON T1.code  =  T2.project GROUP BY T2.project ORDER BY count(*) DESC LIMIT 1
+select projects.name , projects.hours from AssignedTo join Projects on AssignedTo.Project = Projects.Code  group by assignedto.project  order by count(*) desc limit 1
+SELECT T1.name ,  T1.hours FROM projects AS T1 JOIN assignedto AS T2 ON T1.code  =  T2.project GROUP BY T2.project ORDER BY count(*) DESC LIMIT 1
+select projects.name , projects.hours from AssignedTo join Projects on AssignedTo.Project = Projects.Code  group by assignedto.project  order by count(*) desc limit 1
+SELECT T2.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T3.name LIKE '%Smith%'
+select projects.name from AssignedTo join Projects on AssignedTo.Project = Projects.Code join Scientists on AssignedTo.Scientist = Scientists.SSN where  scientists.name like "%Smith%"
+SELECT T2.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T3.name LIKE '%Smith%'
+select projects.name from AssignedTo join Projects on AssignedTo.Project = Projects.Code join Scientists on AssignedTo.Scientist = Scientists.SSN where  scientists.name like "%Smith%"
+SELECT sum(T2.hours) FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T3.name  =  'Michael Rogers' OR T3.name  =  'Carol Smith'
+select sum(projects.hours) from AssignedTo join Projects on AssignedTo.Project = Projects.Code join Scientists on AssignedTo.Scientist = Scientists.SSN where  scientists.name = "Michael Rogers" or scientists.name = "Carol Smith"
+SELECT sum(T2.hours) FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T3.name  =  'Michael Rogers' OR T3.name  =  'Carol Smith'
+select sum(projects.hours) from AssignedTo join Projects on AssignedTo.Project = Projects.Code join Scientists on AssignedTo.Scientist = Scientists.SSN where  scientists.name = "Michael Rogers" or scientists.name = "Carol Smith"
+SELECT name FROM projects WHERE hours BETWEEN 100 AND 300
+select projects.name from Projects where  projects.hours between 100 and 300
+SELECT name FROM projects WHERE hours BETWEEN 100 AND 300
+select projects.name from Projects where  projects.hours between 100 and 300
+SELECT T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.name  =  'Matter of Time' INTERSECT SELECT T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.name  =  'A Puzzling Parallax'
+select scientists.name from AssignedTo join Projects on AssignedTo.Project = Projects.Code join Scientists on AssignedTo.Scientist = Scientists.SSN where  projects.name = "Matter of Time"   intersect select scientists.name from AssignedTo join Projects on AssignedTo.Project = Projects.Code join Scientists on AssignedTo.Scientist = Scientists.SSN where  projects.name = "A Puzzling Parallax"
+SELECT T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.name  =  'Matter of Time' INTERSECT SELECT T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.name  =  'A Puzzling Parallax'
+select scientists.name from AssignedTo join Projects on AssignedTo.Project = Projects.Code join Scientists on AssignedTo.Scientist = Scientists.SSN where  projects.name = "Matter of Time"   intersect select scientists.name from AssignedTo join Projects on AssignedTo.Project = Projects.Code join Scientists on AssignedTo.Scientist = Scientists.SSN where  projects.name = "A Puzzling Parallax"
+SELECT name FROM scientists ORDER BY name
+select scientists.name from Scientists   order by scientists.name asc
+SELECT name FROM scientists ORDER BY name
+select scientists.name from Scientists   order by scientists.name asc
+SELECT count(*) ,  T1.name FROM projects AS T1 JOIN assignedto AS T2 ON T1.code  =  T2.project GROUP BY T1.name
+select count(*) , projects.name from AssignedTo join Projects on AssignedTo.Project = Projects.Code  group by projects.name
+SELECT count(*) ,  T1.name FROM projects AS T1 JOIN assignedto AS T2 ON T1.code  =  T2.project GROUP BY T1.name
+select count(*) , projects.name from AssignedTo join Projects on AssignedTo.Project = Projects.Code  group by projects.name
+SELECT count(*) ,  T1.name FROM projects AS T1 JOIN assignedto AS T2 ON T1.code  =  T2.project WHERE T1.hours  >  300 GROUP BY T1.name
+select count(*) , projects.name from AssignedTo join Projects on AssignedTo.Project = Projects.Code where  projects.hours > 300  group by projects.name
+SELECT count(*) ,  T1.name FROM projects AS T1 JOIN assignedto AS T2 ON T1.code  =  T2.project WHERE T1.hours  >  300 GROUP BY T1.name
+select count(*) , projects.name from AssignedTo join Projects on AssignedTo.Project = Projects.Code where  projects.hours > 300  group by projects.name
+SELECT count(*) ,  T1.name FROM scientists AS T1 JOIN assignedto AS T2 ON T1.ssn  =  T2.scientist GROUP BY T1.name
+select count(*) , scientists.name from AssignedTo join Scientists on AssignedTo.Scientist = Scientists.SSN  group by scientists.name
+SELECT count(*) ,  T1.name FROM scientists AS T1 JOIN assignedto AS T2 ON T1.ssn  =  T2.scientist GROUP BY T1.name
+select count(*) , scientists.name from AssignedTo join Scientists on AssignedTo.Scientist = Scientists.SSN  group by scientists.name
+SELECT T3.ssn ,  T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.hours  =  (SELECT max(hours) FROM projects)
+select scientists.ssn , scientists.name from AssignedTo join Projects on AssignedTo.Project = Projects.Code join Scientists on AssignedTo.Scientist = Scientists.SSN where  projects.hours = (select max(Projects.Hours) from Projects  )
+SELECT T3.ssn ,  T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.hours  =  (SELECT max(hours) FROM projects)
+select scientists.ssn , scientists.name from AssignedTo join Projects on AssignedTo.Project = Projects.Code join Scientists on AssignedTo.Scientist = Scientists.SSN where  projects.hours = (select max(Projects.Hours) from Projects  )
+SELECT T2.name FROM assignedto AS T1 JOIN scientists AS T2 ON T1.scientist  =  T2.ssn
+select scientists.name from AssignedTo join Scientists on AssignedTo.Scientist = Scientists.SSN
+SELECT T2.name FROM assignedto AS T1 JOIN scientists AS T2 ON T1.scientist  =  T2.ssn
+select scientists.name from AssignedTo join Scientists on AssignedTo.Scientist = Scientists.SSN
+SELECT Name FROM Projects WHERE Code NOT IN (SELECT Project FROM AssignedTo)
+select projects.name from Projects where  projects.code not in (select AssignedTo.Project from AssignedTo  )
+SELECT Name FROM Projects WHERE Code NOT IN (SELECT Project FROM AssignedTo)
+select projects.name from Projects where  projects.code not in (select AssignedTo.Project from AssignedTo  )
+SELECT Name FROM scientists WHERE ssn NOT IN (SELECT scientist FROM AssignedTo)
+select scientists.name from Scientists where  scientists.ssn not in (select AssignedTo.Scientist from AssignedTo  )
+SELECT Name FROM scientists WHERE ssn NOT IN (SELECT scientist FROM AssignedTo)
+select scientists.name from Scientists where  scientists.ssn not in (select AssignedTo.Scientist from AssignedTo  )
+SELECT count(*) FROM scientists WHERE ssn NOT IN (SELECT scientist FROM AssignedTo)
+select count(*) from Scientists where  scientists.ssn not in (select AssignedTo.Scientist from AssignedTo  )
+SELECT count(*) FROM scientists WHERE ssn NOT IN (SELECT scientist FROM AssignedTo)
+select count(*) from Scientists where  scientists.ssn not in (select AssignedTo.Scientist from AssignedTo  )
+SELECT name FROM scientists EXCEPT SELECT T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.hours  =  (SELECT max(hours) FROM projects)
+select scientists.name from Scientists   except select scientists.name from AssignedTo join Projects on AssignedTo.Project = Projects.Code join Scientists on AssignedTo.Scientist = Scientists.SSN where  projects.hours = (select max(Projects.Hours) from Projects  )
+SELECT name FROM scientists EXCEPT SELECT T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.hours  =  (SELECT max(hours) FROM projects)
+select scientists.name from Scientists   except select scientists.name from AssignedTo join Projects on AssignedTo.Project = Projects.Code join Scientists on AssignedTo.Scientist = Scientists.SSN where  projects.hours = (select max(Projects.Hours) from Projects  )
+SELECT T1.Name ,  T3.Name ,  T3.Hours FROM Scientists AS T1 JOIN AssignedTo AS T2 ON T1.SSN = T2.Scientist JOIN Projects AS T3 ON T2.Project = T3.Code ORDER BY T3.Name ,  T1.Name
+select scientists.name , projects.name , projects.hours from AssignedTo join Projects on AssignedTo.Project = Projects.Code join Scientists on AssignedTo.Scientist = Scientists.SSN   order by projects.name,scientists.name asc
+SELECT T1.Name ,  T3.Name ,  T3.Hours FROM Scientists AS T1 JOIN AssignedTo AS T2 ON T1.SSN = T2.Scientist JOIN Projects AS T3 ON T2.Project = T3.Code ORDER BY T3.Name ,  T1.Name
+select scientists.name , projects.name , projects.hours from AssignedTo join Projects on AssignedTo.Project = Projects.Code join Scientists on AssignedTo.Scientist = Scientists.SSN   order by projects.name,scientists.name asc
+SELECT T2.name ,  T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.hours  =  (SELECT min(hours) FROM projects)
+select projects.name , scientists.name from AssignedTo join Projects on AssignedTo.Project = Projects.Code join Scientists on AssignedTo.Scientist = Scientists.SSN where  projects.hours = (select min(projects.hours) from Projects  )
+SELECT T2.name ,  T3.name FROM assignedto AS T1 JOIN projects AS T2 ON T1.project  =  T2.code JOIN scientists AS T3 ON T1.scientist  =  T3.SSN WHERE T2.hours  =  (SELECT min(hours) FROM projects)
+select projects.name , scientists.name from AssignedTo join Projects on AssignedTo.Project = Projects.Code join Scientists on AssignedTo.Scientist = Scientists.SSN where  projects.hours = (select min(projects.hours) from Projects  )

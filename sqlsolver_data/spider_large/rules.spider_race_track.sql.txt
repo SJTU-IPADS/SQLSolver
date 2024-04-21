@@ -1,0 +1,84 @@
+SELECT count(*) FROM track
+select count(*) from track
+SELECT count(*) FROM track
+select count(*) from track
+SELECT name ,  LOCATION FROM track
+select track.name , track.location from track
+SELECT name ,  LOCATION FROM track
+select track.name , track.location from track
+SELECT name ,  seating FROM track WHERE year_opened  >  2000 ORDER BY seating
+select track.name , track.seating from track where  track.year_opened > 2000   order by track.seating asc
+SELECT name ,  seating FROM track WHERE year_opened  >  2000 ORDER BY seating
+select track.name , track.seating from track where  track.year_opened > 2000   order by track.seating asc
+SELECT name ,  LOCATION ,  seating FROM track ORDER BY year_opened DESC LIMIT 1
+select track.name , track.location , track.seating from track   order by track.year_opened desc limit 1
+SELECT name ,  LOCATION ,  seating FROM track ORDER BY year_opened DESC LIMIT 1
+select track.name , track.location , track.seating from track   order by track.year_opened desc limit 1
+SELECT min(seating) ,  max(seating) ,  avg(seating) FROM track
+select min(track.seating) , max(track.seating) , avg(track.seating) from track
+SELECT min(seating) ,  max(seating) ,  avg(seating) FROM track
+select min(track.seating) , max(track.seating) , avg(track.seating) from track
+SELECT name ,  LOCATION ,  year_opened FROM track WHERE seating  >  (SELECT avg(seating) FROM track)
+select track.name , track.location , track.year_opened from track where  track.seating > (select avg(track.seating) from track  )
+SELECT name ,  LOCATION ,  year_opened FROM track WHERE seating  >  (SELECT avg(seating) FROM track)
+select track.name , track.location , track.year_opened from track where  track.seating > (select avg(track.seating) from track  )
+SELECT DISTINCT LOCATION FROM track
+select distinct track.location from track
+SELECT DISTINCT LOCATION FROM track
+select distinct track.location from track
+SELECT count(*) FROM race
+select count(*) from race
+SELECT count(*) FROM race
+select count(*) from race
+SELECT DISTINCT CLASS FROM race
+select distinct race.class from race
+SELECT DISTINCT CLASS FROM race
+select distinct race.class from race
+SELECT name ,  CLASS ,  date FROM race
+select race.name , race.class , race.date from race
+SELECT name ,  CLASS ,  date FROM race
+select race.name , race.class , race.date from race
+SELECT CLASS ,  count(*) FROM race GROUP BY CLASS
+select race.class , count(*) from race  group by race.class
+SELECT CLASS ,  count(*) FROM race GROUP BY CLASS
+select race.class , count(*) from race  group by race.class
+SELECT CLASS FROM race GROUP BY CLASS ORDER BY count(*) DESC LIMIT 1
+select race.class from race  group by race.class  order by count(*) desc limit 1
+SELECT CLASS FROM race GROUP BY CLASS ORDER BY count(*) DESC LIMIT 1
+select race.class from race  group by race.class  order by count(*) desc limit 1
+SELECT CLASS FROM race GROUP BY CLASS HAVING count(*)  >=  2
+select race.class from race  group by race.class having  count(*) >= 2
+SELECT CLASS FROM race GROUP BY CLASS HAVING count(*)  >=  2
+select race.class from race  group by race.class having  count(*) >= 2
+SELECT name FROM track EXCEPT SELECT T2.name FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id WHERE T1.class  =  'GT'
+select track.name from track   except select track.name from race join track on race.Track_ID = track.Track_ID where  race.class = "GT"
+SELECT name FROM track EXCEPT SELECT T2.name FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id WHERE T1.class  =  'GT'
+select track.name from track   except select track.name from race join track on race.Track_ID = track.Track_ID where  race.class = "GT"
+SELECT name FROM track WHERE track_id NOT IN (SELECT track_id FROM race)
+select track.name from track where  track.track_id not in (select race.Track_ID from race  )
+SELECT name FROM track WHERE track_id NOT IN (SELECT track_id FROM race)
+select track.name from track where  track.track_id not in (select race.Track_ID from race  )
+SELECT year_opened FROM track WHERE seating BETWEEN 4000 AND 5000
+select track.year_opened from track where  track.seating between 4000 and 5000
+SELECT year_opened FROM track WHERE seating BETWEEN 4000 AND 5000
+select track.year_opened from track where  track.seating between 4000 and 5000
+SELECT T2.name ,  count(*) FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id GROUP BY T1.track_id
+select track.name , count(*) from race join track on race.Track_ID = track.Track_ID  group by race.track_id
+SELECT T2.name ,  count(*) FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id GROUP BY T1.track_id
+select track.name , count(*) from race join track on race.Track_ID = track.Track_ID  group by race.track_id
+SELECT T2.name FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id GROUP BY T1.track_id ORDER BY count(*) DESC LIMIT 1
+select track.name from race join track on race.Track_ID = track.Track_ID  group by race.track_id  order by count(*) desc limit 1
+SELECT T2.name FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id GROUP BY T1.track_id ORDER BY count(*) DESC LIMIT 1
+select track.name from race join track on race.Track_ID = track.Track_ID  group by race.track_id  order by count(*) desc limit 1
+SELECT T1.name ,  T1.date ,  T2.name FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id
+select race.name , race.date , track.name from race join track on race.Track_ID = track.Track_ID
+SELECT T1.name ,  T1.date ,  T2.name FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id
+select race.name , race.date , track.name from race join track on race.Track_ID = track.Track_ID
+SELECT T2.name ,  T2.location FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id GROUP BY T1.track_id HAVING count(*)  =  1
+select track.name , track.location from race join track on race.Track_ID = track.Track_ID  group by race.track_id having  count(*) = 1
+SELECT T2.name ,  T2.location FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id GROUP BY T1.track_id HAVING count(*)  =  1
+select track.name , track.location from race join track on race.Track_ID = track.Track_ID  group by race.track_id having  count(*) = 1
+SELECT LOCATION FROM track WHERE seating  >  90000 INTERSECT SELECT LOCATION FROM track WHERE seating  <  70000
+select track.location from track where  track.seating > 90000   intersect select track.location from track where  track.seating < 70000
+SELECT LOCATION FROM track WHERE seating  >  90000 INTERSECT SELECT LOCATION FROM track WHERE seating  <  70000
+select track.location from track where  track.seating > 90000   intersect select track.location from track where  track.seating < 70000

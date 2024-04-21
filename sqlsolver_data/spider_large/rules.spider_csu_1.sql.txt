@@ -1,0 +1,140 @@
+SELECT campus FROM campuses WHERE county  =  "Los Angeles"
+select campuses.campus from Campuses where  campuses.county = "Los Angeles"
+SELECT campus FROM campuses WHERE county  =  "Los Angeles"
+select campuses.campus from Campuses where  campuses.county = "Los Angeles"
+SELECT campus FROM campuses WHERE LOCATION  =  "Chico"
+select campuses.campus from Campuses where  campuses.location = "Chico"
+SELECT campus FROM campuses WHERE LOCATION  =  "Chico"
+select campuses.campus from Campuses where  campuses.location = "Chico"
+SELECT campus FROM campuses WHERE YEAR  =  1958
+select campuses.campus from Campuses where  campuses.year = 1958
+SELECT campus FROM campuses WHERE YEAR  =  1958
+select campuses.campus from Campuses where  campuses.year = 1958
+SELECT campus FROM campuses WHERE YEAR  <  1800
+select campuses.campus from Campuses where  campuses.year < 1800
+SELECT campus FROM campuses WHERE YEAR  <  1800
+select campuses.campus from Campuses where  campuses.year < 1800
+SELECT campus FROM campuses WHERE YEAR  >=  1935 AND YEAR  <=  1939
+select campuses.campus from Campuses where  campuses.year >= 1935 and campuses.year < 1939
+SELECT campus FROM campuses WHERE YEAR  >=  1935 AND YEAR  <=  1939
+select campuses.campus from Campuses where  campuses.year >= 1935 and campuses.year < 1939
+SELECT campus FROM campuses WHERE LOCATION  =  "Northridge" AND county  =  "Los Angeles" UNION SELECT campus FROM campuses WHERE LOCATION  =  "San Francisco" AND county  =  "San Francisco"
+select campuses.campus from Campuses where  campuses.location = "Northridge" and campuses.county = "Los Angeles"   union select campuses.campus from Campuses where  campuses.location = "San Francisco" and campuses.county = "San Francisco"
+SELECT campus FROM campuses WHERE LOCATION  =  "Northridge" AND county  =  "Los Angeles" UNION SELECT campus FROM campuses WHERE LOCATION  =  "San Francisco" AND county  =  "San Francisco"
+select campuses.location from Campuses where  campuses.location = "Northridge" and campuses.county = "Los Angeles"   union select campuses.location from Campuses where  campuses.location = "San Francisco" and campuses.county = "San Francisco"
+SELECT campusfee FROM campuses AS T1 JOIN csu_fees AS T2 ON T1.id  =  t2.campus WHERE t1.campus  =  "San Jose State University" AND T2.year  =  1996
+select csu_fees.campusfee from csu_fees join Campuses on csu_fees.Campus = Campuses.Id where  campuses.campus = "San Jose State University" and csu_fees.year = 1996
+SELECT campusfee FROM campuses AS T1 JOIN csu_fees AS T2 ON T1.id  =  t2.campus WHERE t1.campus  =  "San Jose State University" AND T2.year  =  1996
+select csu_fees.campusfee from csu_fees join Campuses on csu_fees.Campus = Campuses.Id where  campuses.campus = "San Jose State University" and csu_fees.year = 1996
+SELECT campusfee FROM campuses AS T1 JOIN csu_fees AS T2 ON T1.id  =  t2.campus WHERE t1.campus  =  "San Francisco State University" AND T2.year  =  1996
+select csu_fees.campusfee from csu_fees join Campuses on csu_fees.Campus = Campuses.Id where  campuses.campus = "San Francisco State University" and csu_fees.year = 1996
+SELECT campusfee FROM campuses AS T1 JOIN csu_fees AS T2 ON T1.id  =  t2.campus WHERE t1.campus  =  "San Francisco State University" AND T2.year  =  1996
+select csu_fees.campusfee from csu_fees join Campuses on csu_fees.Campus = Campuses.Id where  campuses.campus = "San Francisco State University" and csu_fees.year = 1996
+SELECT count(*) FROM csu_fees WHERE campusfee  >  (SELECT avg(campusfee) FROM csu_fees)
+select count(*) from csu_fees where  csu_fees.campusfee > (select avg(csu_fees.campusfee) from csu_fees  )
+SELECT count(*) FROM csu_fees WHERE campusfee  >  (SELECT avg(campusfee) FROM csu_fees)
+select count(*) from csu_fees where  csu_fees.campusfee > (select avg(csu_fees.campusfee) from csu_fees  )
+SELECT count(*) FROM csu_fees WHERE campusfee  >  (SELECT avg(campusfee) FROM csu_fees)
+select count(*) from csu_fees where  csu_fees.campusfee > (select avg(csu_fees.campusfee) from csu_fees  )
+SELECT count(*) FROM csu_fees WHERE campusfee  >  (SELECT avg(campusfee) FROM csu_fees)
+select count(*) from csu_fees where  csu_fees.campusfee > (select avg(csu_fees.campusfee) from csu_fees  )
+SELECT campus FROM campuses WHERE county  =  "Los Angeles" AND YEAR  >  1950
+select campuses.campus from Campuses where  campuses.county = "Los Angeles" and campuses.year > 1950
+SELECT campus FROM campuses WHERE county  =  "Los Angeles" AND YEAR  >  1950
+select campuses.campus from Campuses where  campuses.county = "Los Angeles" and campuses.year > 1950
+SELECT YEAR FROM degrees GROUP BY YEAR ORDER BY sum(degrees) DESC LIMIT 1
+select degrees.year from degrees  group by degrees.year  order by sum(degrees.degrees) desc limit 1
+SELECT YEAR FROM degrees GROUP BY YEAR ORDER BY sum(degrees) DESC LIMIT 1
+select degrees.year from degrees  group by degrees.year  order by sum(degrees.degrees) desc limit 1
+SELECT campus FROM degrees GROUP BY campus ORDER BY sum(degrees) DESC LIMIT 1
+select degrees.campus from degrees  group by degrees.campus  order by sum(degrees.degrees) desc limit 1
+SELECT campus FROM degrees GROUP BY campus ORDER BY sum(degrees) DESC LIMIT 1
+select degrees.campus from degrees  group by degrees.campus  order by sum(degrees.degrees) desc limit 1
+SELECT T1.campus FROM campuses AS T1 JOIN faculty AS T2 ON T1.id  =  T2.campus WHERE T2.year  =  2003 ORDER BY T2.faculty DESC LIMIT 1
+select campuses.campus from faculty join Campuses on faculty.Campus = Campuses.Id where  faculty.year = 2003   order by faculty.faculty desc limit 1
+SELECT T1.campus FROM campuses AS T1 JOIN faculty AS T2 ON T1.id  =  T2.campus WHERE T2.year  =  2003 ORDER BY T2.faculty DESC LIMIT 1
+select campuses.campus from faculty join Campuses on faculty.Campus = Campuses.Id where  faculty.year = 2003   order by faculty.faculty desc limit 1
+SELECT avg(campusfee) FROM csu_fees WHERE YEAR  =  1996
+select avg(csu_fees.campusfee) from csu_fees where  csu_fees.year = 1996
+SELECT avg(campusfee) FROM csu_fees WHERE YEAR  =  1996
+select avg(csu_fees.campusfee) from csu_fees where  csu_fees.year = 1996
+SELECT avg(campusfee) FROM csu_fees WHERE YEAR  =  2005
+select avg(csu_fees.campusfee) from csu_fees where  csu_fees.year = 2005
+SELECT avg(campusfee) FROM csu_fees WHERE YEAR  =  2005
+select avg(csu_fees.campusfee) from csu_fees where  csu_fees.year = 2005
+SELECT T1.campus ,  sum(T2.degrees) FROM campuses AS T1 JOIN degrees AS T2 ON T1.id  =  T2.campus WHERE T2.year  >=  1998 AND T2.year  <=  2002 GROUP BY T1.campus
+select degrees.degrees , sum(degrees.degrees) from degrees where  degrees.year >= 1998 and degrees.year < 2002  group by degrees.campus
+SELECT T1.campus ,  sum(T2.degrees) FROM campuses AS T1 JOIN degrees AS T2 ON T1.id  =  T2.campus WHERE T2.year  >=  1998 AND T2.year  <=  2002 GROUP BY T1.campus
+select degrees.degrees , sum(degrees.degrees) from degrees where  degrees.year >= 1998 and degrees.year < 2002  group by degrees.campus
+SELECT T1.campus ,  sum(T2.degrees) FROM campuses AS T1 JOIN degrees AS T2 ON T1.id  =  T2.campus WHERE T1.county  =  "Orange" AND T2.year  >=  2000 GROUP BY T1.campus
+select campuses.campus , sum(degrees.degrees) from degrees join Campuses on degrees.Campus = Campuses.Id where  campuses.county = "Orange" and degrees.year >= 2000  group by campuses.campus
+SELECT T1.campus ,  sum(T2.degrees) FROM campuses AS T1 JOIN degrees AS T2 ON T1.id  =  T2.campus WHERE T1.county  =  "Orange" AND T2.year  >=  2000 GROUP BY T1.campus
+select campuses.campus , sum(degrees.degrees) from degrees join Campuses on degrees.Campus = Campuses.Id where  campuses.county = "Orange" and degrees.year >= 2000  group by campuses.campus
+SELECT T1.campus FROM campuses AS T1 JOIN faculty AS T2 ON T1.id  =  T2.campus WHERE T2.year  =  2002 AND faculty  >  (SELECT max(faculty) FROM campuses AS T1 JOIN faculty AS T2 ON T1.id  =  T2.campus WHERE T2.year  =  2002 AND T1.county  =  "Orange")
+select campuses.campus from faculty join Campuses on faculty.Campus = Campuses.Id where  faculty.year = 2002 and faculty.faculty > (select max(faculty.faculty) from faculty join Campuses on faculty.Campus = Campuses.Id where  faculty.year = 2002 and campuses.county = "Orange"  )
+SELECT T1.campus FROM campuses AS T1 JOIN faculty AS T2 ON T1.id  =  T2.campus WHERE T2.year  =  2002 AND faculty  >  (SELECT max(faculty) FROM campuses AS T1 JOIN faculty AS T2 ON T1.id  =  T2.campus WHERE T2.year  =  2002 AND T1.county  =  "Orange")
+select campuses.campus from faculty join Campuses on faculty.Campus = Campuses.Id where  faculty.year = 2002 and faculty.faculty > (select max(faculty.faculty) from faculty join Campuses on faculty.Campus = Campuses.Id where  faculty.year = 2002 and campuses.county = "Orange"  )
+SELECT T1.campus FROM campuses AS t1 JOIN enrollments AS t2 ON t1.id  =  t2.campus WHERE t2.year  =  1956 AND totalenrollment_ay  >  400 AND FTE_AY  >  200
+select campuses.campus from enrollments join Campuses on enrollments.Campus = Campuses.Id where  enrollments.year = 1956 and enrollments.totalenrollment_ay > 400 and enrollments.fte_ay > 200
+SELECT T1.campus FROM campuses AS t1 JOIN enrollments AS t2 ON t1.id  =  t2.campus WHERE t2.year  =  1956 AND totalenrollment_ay  >  400 AND FTE_AY  >  200
+select campuses.campus from enrollments join Campuses on enrollments.Campus = Campuses.Id where  enrollments.year = 1956 and enrollments.totalenrollment_ay > 400 and enrollments.fte_ay > 200
+SELECT count(*) FROM campuses WHERE county  =  "Los Angeles"
+select count(*) from Campuses where  campuses.county = "Los Angeles"
+SELECT count(*) FROM campuses WHERE county  =  "Los Angeles"
+select count(*) from Campuses where  campuses.county = "Los Angeles"
+SELECT campus FROM campuses WHERE county  =  "Los Angeles"
+select campuses.campus from Campuses where  campuses.county = "Los Angeles"
+SELECT campus FROM campuses WHERE county  =  "Los Angeles"
+select campuses.campus from Campuses where  campuses.county = "Los Angeles"
+SELECT degrees FROM campuses AS T1 JOIN degrees AS T2 ON t1.id  =  t2.campus WHERE t1.campus  =  "San Jose State University" AND t2.year  =  2000
+select degrees.degrees from degrees join Campuses on degrees.Campus = Campuses.Id where  campuses.campus = "San Jose State University" and degrees.year = 2000
+SELECT degrees FROM campuses AS T1 JOIN degrees AS T2 ON t1.id  =  t2.campus WHERE t1.campus  =  "San Jose State University" AND t2.year  =  2000
+select degrees.degrees from degrees join Campuses on degrees.Campus = Campuses.Id where  campuses.campus = "San Jose State University" and degrees.year = 2000
+SELECT degrees FROM campuses AS T1 JOIN degrees AS T2 ON t1.id  =  t2.campus WHERE t1.campus  =  "San Francisco State University" AND t2.year  =  2001
+select degrees.degrees from degrees join Campuses on degrees.Campus = Campuses.Id where  campuses.campus = "San Francisco State University" and degrees.year = 2001
+SELECT degrees FROM campuses AS T1 JOIN degrees AS T2 ON t1.id  =  t2.campus WHERE t1.campus  =  "San Francisco State University" AND t2.year  =  2001
+select degrees.degrees from degrees join Campuses on degrees.Campus = Campuses.Id where  campuses.campus = "San Francisco State University" and degrees.year = 2001
+SELECT sum(faculty) FROM faculty WHERE YEAR  =  2002
+select sum(faculty.faculty) from faculty where  faculty.year = 2002
+SELECT sum(faculty) FROM faculty WHERE YEAR  =  2002
+select sum(faculty.faculty) from faculty where  faculty.year = 2002
+SELECT faculty FROM faculty AS T1 JOIN campuses AS T2 ON T1.campus  =  T2.id WHERE T1.year  =  2002 AND T2.campus  =  "Long Beach State University"
+select faculty.faculty from faculty join Campuses on faculty.Campus = Campuses.Id where  faculty.year = 2002 and campuses.campus = "Long Beach State University"
+SELECT faculty FROM faculty AS T1 JOIN campuses AS T2 ON T1.campus  =  T2.id WHERE T1.year  =  2002 AND T2.campus  =  "Long Beach State University"
+select faculty.faculty from faculty join Campuses on faculty.Campus = Campuses.Id where  faculty.year = 2002 and campuses.campus = "Long Beach State University"
+SELECT faculty FROM faculty AS T1 JOIN campuses AS T2 ON T1.campus  =  T2.id WHERE T1.year  =  2004 AND T2.campus  =  "San Francisco State University"
+select faculty.faculty from faculty join Campuses on faculty.Campus = Campuses.Id where  faculty.year = 2004 and campuses.campus = "San Francisco State University"
+SELECT faculty FROM faculty AS T1 JOIN campuses AS T2 ON T1.campus  =  T2.id WHERE T1.year  =  2004 AND T2.campus  =  "San Francisco State University"
+select faculty.faculty from faculty join Campuses on faculty.Campus = Campuses.Id where  faculty.year = 2004 and campuses.campus = "San Francisco State University"
+SELECT T1.campus FROM campuses AS t1 JOIN faculty AS t2 ON t1.id  =  t2.campus WHERE t2.faculty  >=  600 AND t2.faculty  <=  1000 AND T1.year  =  2004
+select campuses.campus from faculty join Campuses on faculty.Campus = Campuses.Id where  faculty.faculty >= 600 and faculty.faculty < 1000 and campuses.year = 2004
+SELECT T1.campus FROM campuses AS t1 JOIN faculty AS t2 ON t1.id  =  t2.campus WHERE t2.faculty  >=  600 AND t2.faculty  <=  1000 AND T1.year  =  2004
+select campuses.campus from faculty join Campuses on faculty.Campus = Campuses.Id where  faculty.faculty >= 600 and faculty.faculty < 1000 and campuses.year = 2004
+SELECT T2.faculty FROM campuses AS T1 JOIN faculty AS T2 ON T1.id  =  t2.campus JOIN degrees AS T3 ON T1.id  =  t3.campus AND t2.year  =  t3.year WHERE t2.year  =  2002 ORDER BY t3.degrees DESC LIMIT 1
+select faculty.faculty from degrees join Campuses on degrees.Campus = Campuses.Id join faculty on Campuses.Id = faculty.Campus where  faculty.year = 2002   order by degrees.degrees desc limit 1
+SELECT T2.faculty FROM campuses AS T1 JOIN faculty AS T2 ON T1.id  =  t2.campus JOIN degrees AS T3 ON T1.id  =  t3.campus AND t2.year  =  t3.year WHERE t2.year  =  2002 ORDER BY t3.degrees DESC LIMIT 1
+select faculty.faculty from degrees join Campuses on degrees.Campus = Campuses.Id join faculty on Campuses.Id = faculty.Campus where  faculty.year = 2002   order by degrees.degrees desc limit 1
+SELECT T2.faculty FROM campuses AS T1 JOIN faculty AS T2 ON T1.id  =  t2.campus JOIN degrees AS T3 ON T1.id  =  t3.campus AND t2.year  =  t3.year WHERE t2.year  =  2001 ORDER BY t3.degrees LIMIT 1
+select faculty.faculty from degrees join Campuses on degrees.Campus = Campuses.Id join faculty on Campuses.Id = faculty.Campus where  faculty.year = 2001   order by degrees.degrees asc limit 1
+SELECT T2.faculty FROM campuses AS T1 JOIN faculty AS T2 ON T1.id  =  t2.campus JOIN degrees AS T3 ON T1.id  =  t3.campus AND t2.year  =  t3.year WHERE t2.year  =  2001 ORDER BY t3.degrees LIMIT 1
+select faculty.faculty from degrees join Campuses on degrees.Campus = Campuses.Id join faculty on Campuses.Id = faculty.Campus where  faculty.year = 2001   order by degrees.degrees asc limit 1
+SELECT sum(t1.undergraduate) FROM discipline_enrollments AS t1 JOIN campuses AS t2 ON t1.campus  =  t2.id WHERE t1.year  =  2004 AND t2.campus  =  "San Jose State University"
+select sum(discipline_enrollments.undergraduate) from discipline_enrollments join Campuses on discipline_enrollments.Campus = Campuses.Id where  discipline_enrollments.year = 2004 and campuses.campus = "San Jose State University"
+SELECT sum(t1.undergraduate) FROM discipline_enrollments AS t1 JOIN campuses AS t2 ON t1.campus  =  t2.id WHERE t1.year  =  2004 AND t2.campus  =  "San Jose State University"
+select sum(discipline_enrollments.undergraduate) from discipline_enrollments join Campuses on discipline_enrollments.Campus = Campuses.Id where  discipline_enrollments.year = 2004 and campuses.campus = "San Jose State University"
+SELECT sum(t1.graduate) FROM discipline_enrollments AS t1 JOIN campuses AS t2 ON t1.campus  =  t2.id WHERE t1.year  =  2004 AND t2.campus  =  "San Francisco State University"
+select sum(discipline_enrollments.graduate) from discipline_enrollments join Campuses on discipline_enrollments.Campus = Campuses.Id where  discipline_enrollments.year = 2004 and campuses.campus = "San Francisco State University"
+SELECT sum(t1.graduate) FROM discipline_enrollments AS t1 JOIN campuses AS t2 ON t1.campus  =  t2.id WHERE t1.year  =  2004 AND t2.campus  =  "San Francisco State University"
+select sum(discipline_enrollments.graduate) from discipline_enrollments join Campuses on discipline_enrollments.Campus = Campuses.Id where  discipline_enrollments.year = 2004 and campuses.campus = "San Francisco State University"
+SELECT t1.campusfee FROM csu_fees AS t1 JOIN campuses AS t2 ON t1.campus  =  t2.id WHERE t2.campus  =  "San Francisco State University" AND t1.year  =  2000
+select csu_fees.campusfee from csu_fees join Campuses on csu_fees.Campus = Campuses.Id where  campuses.campus = "San Francisco State University" and csu_fees.year = 2000
+SELECT t1.campusfee FROM csu_fees AS t1 JOIN campuses AS t2 ON t1.campus  =  t2.id WHERE t2.campus  =  "San Francisco State University" AND t1.year  =  2000
+select csu_fees.campusfee from csu_fees join Campuses on csu_fees.Campus = Campuses.Id where  campuses.campus = "San Francisco State University" and csu_fees.year = 2000
+SELECT t1.campusfee FROM csu_fees AS t1 JOIN campuses AS t2 ON t1.campus  =  t2.id WHERE t2.campus  =  "San Jose State University" AND t1.year  =  2000
+select csu_fees.campusfee from csu_fees join Campuses on csu_fees.Campus = Campuses.Id where  campuses.campus = "San Jose State University" and csu_fees.year = 2000
+SELECT t1.campusfee FROM csu_fees AS t1 JOIN campuses AS t2 ON t1.campus  =  t2.id WHERE t2.campus  =  "San Jose State University" AND t1.year  =  2000
+select csu_fees.campusfee from csu_fees join Campuses on csu_fees.Campus = Campuses.Id where  campuses.campus = "San Jose State University" and csu_fees.year = 2000
+SELECT count(*) FROM campuses
+select count(*) from Campuses
+SELECT count(*) FROM campuses
+select count(*) from Campuses

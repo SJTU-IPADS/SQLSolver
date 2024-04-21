@@ -1,0 +1,160 @@
+SELECT count(*) FROM Apartment_Bookings
+select count(*) from Apartment_Bookings
+SELECT count(*) FROM Apartment_Bookings
+select count(*) from Apartment_Bookings
+SELECT booking_start_date ,  booking_end_date FROM Apartment_Bookings
+select apartment_bookings.booking_start_date , apartment_bookings.booking_end_date from Apartment_Bookings
+SELECT booking_start_date ,  booking_end_date FROM Apartment_Bookings
+select apartment_bookings.booking_start_date , apartment_bookings.booking_end_date from Apartment_Bookings
+SELECT DISTINCT building_description FROM Apartment_Buildings
+select distinct apartment_buildings.building_description from Apartment_Buildings
+SELECT DISTINCT building_description FROM Apartment_Buildings
+select distinct apartment_buildings.building_description from Apartment_Buildings
+SELECT building_short_name FROM Apartment_Buildings WHERE building_manager	 =  "Emma"
+select apartment_buildings.building_short_name from Apartment_Buildings where  apartment_buildings.building_manager = "Emma"
+SELECT building_short_name FROM Apartment_Buildings WHERE building_manager	 =  "Emma"
+select apartment_buildings.building_short_name from Apartment_Buildings where  apartment_buildings.building_manager = "Emma"
+SELECT building_address ,  building_phone FROM Apartment_Buildings WHERE building_manager	 =  "Brenden"
+select apartment_buildings.building_address , apartment_buildings.building_phone from Apartment_Buildings where  apartment_buildings.building_manager = "Brenden"
+SELECT building_address ,  building_phone FROM Apartment_Buildings WHERE building_manager	 =  "Brenden"
+select apartment_buildings.building_address , apartment_buildings.building_phone from Apartment_Buildings where  apartment_buildings.building_manager = "Brenden"
+SELECT building_full_name FROM Apartment_Buildings WHERE building_full_name LIKE "%court%"
+select apartment_buildings.building_full_name from Apartment_Buildings where  apartment_buildings.building_full_name like "%court%"
+SELECT building_full_name FROM Apartment_Buildings WHERE building_full_name LIKE "%court%"
+select apartment_buildings.building_full_name from Apartment_Buildings where  apartment_buildings.building_full_name like "%court%"
+SELECT min(bathroom_count) ,  max(bathroom_count) FROM Apartments
+select min(apartments.bathroom_count) , max(apartments.bathroom_count) from Apartments
+SELECT min(bathroom_count) ,  max(bathroom_count) FROM Apartments
+select min(apartments.bathroom_count) , max(apartments.bathroom_count) from Apartments
+SELECT avg(bedroom_count) FROM Apartments
+select avg(apartments.bedroom_count) from Apartments
+SELECT avg(bedroom_count) FROM Apartments
+select avg(apartments.bedroom_count) from Apartments
+SELECT apt_number ,  room_count FROM Apartments
+select apartments.apt_number , apartments.room_count from Apartments
+SELECT apt_number ,  room_count FROM Apartments
+select apartments.apt_number , apartments.room_count from Apartments
+SELECT avg(room_count) FROM Apartments WHERE apt_type_code  =  "Studio"
+select avg(apartments.room_count) from Apartments where  apartments.apt_type_code = "Studio"
+SELECT avg(room_count) FROM Apartments WHERE apt_type_code  =  "Studio"
+select avg(apartments.room_count) from Apartments where  apartments.apt_type_code = "Studio"
+SELECT apt_number FROM Apartments WHERE apt_type_code  =  "Flat"
+select apartments.apt_number from Apartments where  apartments.apt_type_code = "Flat"
+SELECT apt_number FROM Apartments WHERE apt_type_code  =  "Flat"
+select apartments.apt_number from Apartments where  apartments.apt_type_code = "Flat"
+SELECT guest_first_name ,  guest_last_name FROM Guests
+select guests.guest_first_name , guests.guest_last_name from Guests
+SELECT guest_first_name ,  guest_last_name FROM Guests
+select guests.guest_first_name , guests.guest_last_name from Guests
+SELECT date_of_birth FROM Guests WHERE gender_code  =  "Male"
+select guests.date_of_birth from Guests where  guests.gender_code = "Male"
+SELECT date_of_birth FROM Guests WHERE gender_code  =  "Male"
+select guests.date_of_birth from Guests where  guests.gender_code = "Male"
+SELECT T2.apt_number ,  T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id
+select apartments.apt_number , apartment_bookings.booking_start_date , apartment_bookings.booking_end_date from Apartment_Bookings join Apartments on Apartment_Bookings.apt_id = Apartments.apt_id
+SELECT T2.apt_number ,  T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id
+select apartments.apt_number , apartment_bookings.booking_start_date , apartment_bookings.booking_end_date from Apartment_Bookings join Apartments on Apartment_Bookings.apt_id = Apartments.apt_id
+SELECT T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.apt_type_code  =  "Duplex"
+select apartment_bookings.booking_start_date , apartment_bookings.booking_end_date from Apartment_Bookings join Apartments on Apartment_Bookings.apt_id = Apartments.apt_id where  apartments.apt_type_code = "Duplex"
+SELECT T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.apt_type_code  =  "Duplex"
+select apartment_bookings.booking_start_date , apartment_bookings.booking_end_date from Apartment_Bookings join Apartments on Apartment_Bookings.apt_id = Apartments.apt_id where  apartments.apt_type_code = "Duplex"
+SELECT T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.bedroom_count  >  2
+select apartment_bookings.booking_start_date , apartment_bookings.booking_end_date from Apartment_Bookings join Apartments on Apartment_Bookings.apt_id = Apartments.apt_id where  apartments.bedroom_count > 2
+SELECT T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.bedroom_count  >  2
+select apartment_bookings.booking_start_date , apartment_bookings.booking_end_date from Apartment_Bookings join Apartments on Apartment_Bookings.apt_id = Apartments.apt_id where  apartments.bedroom_count > 2
+SELECT T1.booking_status_code FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.apt_number  =  "Suite 634"
+select apartment_bookings.booking_status_code from Apartment_Bookings join Apartments on Apartment_Bookings.apt_id = Apartments.apt_id where  apartments.apt_number = "Suite 634"
+SELECT T1.booking_status_code FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.apt_number  =  "Suite 634"
+select apartment_bookings.booking_status_code from Apartment_Bookings join Apartments on Apartment_Bookings.apt_id = Apartments.apt_id where  apartments.apt_number = "Suite 634"
+SELECT DISTINCT T2.apt_number FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.booking_status_code  =  "Confirmed"
+select distinct apartments.apt_number from Apartment_Bookings join Apartments on Apartment_Bookings.apt_id = Apartments.apt_id where  apartment_bookings.booking_status_code = "Confirmed"
+SELECT DISTINCT T2.apt_number FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.booking_status_code  =  "Confirmed"
+select distinct apartments.apt_number from Apartment_Bookings join Apartments on Apartment_Bookings.apt_id = Apartments.apt_id where  apartment_bookings.booking_status_code = "Confirmed"
+SELECT avg(room_count) FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.booking_status_code  =  "Provisional"
+select avg(apartments.room_count) from Apartment_Bookings join Apartments on Apartment_Bookings.apt_id = Apartments.apt_id where  apartment_bookings.booking_status_code = "Provisional"
+SELECT avg(room_count) FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.booking_status_code  =  "Provisional"
+select avg(apartments.room_count) from Apartment_Bookings join Apartments on Apartment_Bookings.apt_id = Apartments.apt_id where  apartment_bookings.booking_status_code = "Provisional"
+SELECT T2.guest_first_name ,  T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Guests AS T2 ON T1.guest_id  =  T2.guest_id
+select guests.guest_first_name , apartment_bookings.booking_start_date , apartment_bookings.booking_end_date from Apartment_Bookings join Guests on Apartment_Bookings.guest_id = Guests.guest_id
+SELECT T2.guest_first_name ,  T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Guests AS T2 ON T1.guest_id  =  T2.guest_id
+select guests.guest_first_name , apartment_bookings.booking_start_date , apartment_bookings.booking_end_date from Apartment_Bookings join Guests on Apartment_Bookings.guest_id = Guests.guest_id
+SELECT T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Guests AS T2 ON T1.guest_id  =  T2.guest_id WHERE T2.gender_code  =  "Female"
+select apartment_bookings.booking_start_date , apartment_bookings.booking_end_date from Apartment_Bookings join Guests on Apartment_Bookings.guest_id = Guests.guest_id where  guests.gender_code = "Female"
+SELECT T1.booking_start_date ,  T1.booking_start_date FROM Apartment_Bookings AS T1 JOIN Guests AS T2 ON T1.guest_id  =  T2.guest_id WHERE T2.gender_code  =  "Female"
+select apartment_bookings.booking_start_date , apartment_bookings.booking_end_date from Apartment_Bookings join Guests on Apartment_Bookings.guest_id = Guests.guest_id where  guests.gender_code = "Female"
+SELECT T2.guest_first_name ,  T2.guest_last_name FROM Apartment_Bookings AS T1 JOIN Guests AS T2 ON T1.guest_id  =  T2.guest_id WHERE T1.booking_status_code  =  "Confirmed"
+select guests.guest_first_name , guests.guest_last_name from Apartment_Bookings join Guests on Apartment_Bookings.guest_id = Guests.guest_id where  apartment_bookings.booking_status_code = "Confirmed"
+SELECT T2.guest_first_name ,  T2.guest_last_name FROM Apartment_Bookings AS T1 JOIN Guests AS T2 ON T1.guest_id  =  T2.guest_id WHERE T1.booking_status_code  =  "Confirmed"
+select guests.guest_first_name , guests.guest_last_name from Apartment_Bookings join Guests on Apartment_Bookings.guest_id = Guests.guest_id where  apartment_bookings.booking_status_code = "Confirmed"
+SELECT T1.facility_code FROM Apartment_Facilities AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.bedroom_count  >  4
+select apartment_facilities.facility_code from Apartment_Facilities join Apartments on Apartment_Facilities.apt_id = Apartments.apt_id where  apartments.bedroom_count > 4
+SELECT T1.facility_code FROM Apartment_Facilities AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.bedroom_count  >  4
+select apartment_facilities.facility_code from Apartment_Facilities join Apartments on Apartment_Facilities.apt_id = Apartments.apt_id where  apartments.bedroom_count > 4
+SELECT sum(T2.room_count) FROM Apartment_Facilities AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.facility_code  =  "Gym"
+select sum(apartments.room_count) from Apartment_Facilities join Apartments on Apartment_Facilities.apt_id = Apartments.apt_id where  apartment_facilities.facility_code = "Gym"
+SELECT sum(T2.room_count) FROM Apartment_Facilities AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.facility_code  =  "Gym"
+select sum(apartments.room_count) from Apartment_Facilities join Apartments on Apartment_Facilities.apt_id = Apartments.apt_id where  apartment_facilities.facility_code = "Gym"
+SELECT sum(T2.room_count) FROM Apartment_Buildings AS T1 JOIN Apartments AS T2 ON T1.building_id  =  T2.building_id WHERE T1.building_short_name  =  "Columbus Square"
+select sum(apartments.room_count) from Apartments join Apartment_Buildings on Apartments.building_id = Apartment_Buildings.building_id where  apartment_buildings.building_short_name = "Columbus Square"
+SELECT sum(T2.room_count) FROM Apartment_Buildings AS T1 JOIN Apartments AS T2 ON T1.building_id  =  T2.building_id WHERE T1.building_short_name  =  "Columbus Square"
+select sum(apartments.room_count) from Apartments join Apartment_Buildings on Apartments.building_id = Apartment_Buildings.building_id where  apartment_buildings.building_short_name = "Columbus Square"
+SELECT T1.building_address FROM Apartment_Buildings AS T1 JOIN Apartments AS T2 ON T1.building_id  =  T2.building_id WHERE T2.bathroom_count  >  2
+select apartment_buildings.building_address from Apartments join Apartment_Buildings on Apartments.building_id = Apartment_Buildings.building_id where  apartments.bathroom_count > 2
+SELECT T1.building_address FROM Apartment_Buildings AS T1 JOIN Apartments AS T2 ON T1.building_id  =  T2.building_id WHERE T2.bathroom_count  >  2
+select apartment_buildings.building_address from Apartments join Apartment_Buildings on Apartments.building_id = Apartment_Buildings.building_id where  apartments.bathroom_count > 2
+SELECT T2.apt_type_code ,  T2.apt_number FROM Apartment_Buildings AS T1 JOIN Apartments AS T2 ON T1.building_id  =  T2.building_id WHERE T1.building_manager  =  "Kyle"
+select apartments.apt_type_code , apartments.apt_number from Apartments join Apartment_Buildings on Apartments.building_id = Apartment_Buildings.building_id where  apartment_buildings.building_manager = "Kyle"
+SELECT T2.apt_type_code ,  T2.apt_number FROM Apartment_Buildings AS T1 JOIN Apartments AS T2 ON T1.building_id  =  T2.building_id WHERE T1.building_manager  =  "Kyle"
+select apartments.apt_type_code , apartments.apt_number from Apartments join Apartment_Buildings on Apartments.building_id = Apartment_Buildings.building_id where  apartment_buildings.building_manager = "Kyle"
+SELECT 	booking_status_code ,  COUNT(*) FROM Apartment_Bookings GROUP BY booking_status_code
+select apartment_bookings.booking_status_code , count(*) from Apartment_Bookings  group by apartment_bookings.booking_status_code
+SELECT 	booking_status_code ,  COUNT(*) FROM Apartment_Bookings GROUP BY booking_status_code
+select apartment_bookings.booking_status_code , count(*) from Apartment_Bookings  group by apartment_bookings.booking_status_code
+SELECT apt_number FROM Apartments ORDER BY room_count ASC
+select apartments.apt_number from Apartments   order by apartments.room_count asc
+SELECT apt_number FROM Apartments ORDER BY room_count ASC
+select apartments.apt_number from Apartments   order by apartments.room_count asc
+SELECT apt_number FROM Apartments ORDER BY bedroom_count DESC LIMIT 1
+select apartments.apt_number from Apartments   order by apartments.bedroom_count desc limit 1
+SELECT apt_number FROM Apartments ORDER BY bedroom_count DESC LIMIT 1
+select apartments.apt_number from Apartments   order by apartments.bedroom_count desc limit 1
+SELECT apt_type_code ,  COUNT(*) FROM Apartments GROUP BY apt_type_code ORDER BY COUNT(*) ASC
+select apartments.apt_type_code , count(*) from Apartments  group by apartments.apt_type_code  order by count(*) asc
+SELECT apt_type_code ,  COUNT(*) FROM Apartments GROUP BY apt_type_code ORDER BY COUNT(*) ASC
+select apartments.apt_type_code , count(*) from Apartments  group by apartments.apt_type_code  order by count(*) asc
+SELECT apt_type_code FROM Apartments GROUP BY apt_type_code ORDER BY avg(room_count) DESC LIMIT 3
+select apartments.apt_type_code from Apartments  group by apartments.apt_type_code  order by avg(apartments.room_count) desc limit 3
+SELECT apt_type_code FROM Apartments GROUP BY apt_type_code ORDER BY avg(room_count) DESC LIMIT 3
+select apartments.apt_type_code from Apartments  group by apartments.apt_type_code  order by avg(apartments.room_count) desc limit 3
+SELECT apt_type_code ,  bathroom_count ,  bedroom_count FROM Apartments GROUP BY apt_type_code ORDER BY sum(room_count) DESC LIMIT 1
+select apartments.apt_type_code , apartments.bathroom_count , apartments.bedroom_count from Apartments  group by apartments.apt_type_code  order by sum(apartments.room_count) desc limit 1
+SELECT apt_type_code ,  bathroom_count ,  bedroom_count FROM Apartments GROUP BY apt_type_code ORDER BY sum(room_count) DESC LIMIT 1
+select apartments.apt_type_code , apartments.bathroom_count , apartments.bedroom_count from Apartments  group by apartments.apt_type_code  order by sum(apartments.room_count) desc limit 1
+SELECT apt_type_code FROM Apartments GROUP BY apt_type_code ORDER BY count(*) DESC LIMIT 1
+select apartments.apt_type_code from Apartments  group by apartments.apt_type_code  order by count(*) desc limit 1
+SELECT apt_type_code FROM Apartments GROUP BY apt_type_code ORDER BY count(*) DESC LIMIT 1
+select apartments.apt_type_code from Apartments  group by apartments.apt_type_code  order by count(*) desc limit 1
+SELECT apt_type_code FROM Apartments WHERE bathroom_count  >  1 GROUP BY apt_type_code ORDER BY count(*) DESC LIMIT 1
+select apartments.apt_type_code from Apartments where  apartments.bathroom_count > 1  group by apartments.apt_type_code  order by count(*) desc limit 1
+SELECT apt_type_code FROM Apartments WHERE bathroom_count  >  1 GROUP BY apt_type_code ORDER BY count(*) DESC LIMIT 1
+select apartments.apt_type_code from Apartments where  apartments.bathroom_count > 1  group by apartments.apt_type_code  order by count(*) desc limit 1
+SELECT apt_type_code ,  max(room_count) ,  min(room_count) FROM Apartments GROUP BY apt_type_code
+select apartments.apt_type_code , max(apartments.room_count) , min(apartments.room_count) from Apartments  group by apartments.apt_type_code
+SELECT apt_type_code ,  max(room_count) ,  min(room_count) FROM Apartments GROUP BY apt_type_code
+select apartments.apt_type_code , max(apartments.room_count) , min(apartments.room_count) from Apartments  group by apartments.apt_type_code
+SELECT gender_code ,  COUNT(*) FROM Guests GROUP BY gender_code ORDER BY COUNT(*) DESC
+select guests.gender_code , count(*) from Guests  group by guests.gender_code  order by count(*) desc
+SELECT gender_code ,  COUNT(*) FROM Guests GROUP BY gender_code ORDER BY COUNT(*) DESC
+select guests.gender_code , count(*) from Guests  group by guests.gender_code  order by count(*) desc
+SELECT count(*) FROM Apartments WHERE apt_id NOT IN (SELECT apt_id FROM Apartment_Facilities)
+select count(*) from Apartments where  apartments.apt_id not in (select Apartment_Facilities.apt_id from Apartment_Facilities  )
+SELECT count(*) FROM Apartments WHERE apt_id NOT IN (SELECT apt_id FROM Apartment_Facilities)
+select count(*) from Apartments where  apartments.apt_id not in (select Apartment_Facilities.apt_id from Apartment_Facilities  )
+SELECT T2.apt_number FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.booking_status_code  =  "Confirmed" INTERSECT SELECT T2.apt_number FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.booking_status_code  =  "Provisional"
+select apartments.apt_number from Apartment_Bookings join Apartments on Apartment_Bookings.apt_id = Apartments.apt_id where  apartment_bookings.booking_status_code = "Confirmed"   intersect select apartments.apt_number from Apartment_Bookings join Apartments on Apartment_Bookings.apt_id = Apartments.apt_id where  apartment_bookings.booking_status_code = "Provisional"
+SELECT T2.apt_number FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.booking_status_code  =  "Confirmed" INTERSECT SELECT T2.apt_number FROM Apartment_Bookings AS T1 JOIN Apartments AS T2 ON T1.apt_id  =  T2.apt_id WHERE T1.booking_status_code  =  "Provisional"
+select apartments.apt_number from Apartment_Bookings join Apartments on Apartment_Bookings.apt_id = Apartments.apt_id where  apartment_bookings.booking_status_code = "Confirmed"   intersect select apartments.apt_number from Apartment_Bookings join Apartments on Apartment_Bookings.apt_id = Apartments.apt_id where  apartment_bookings.booking_status_code = "Provisional"
+SELECT T1.apt_number FROM Apartments AS T1 JOIN View_Unit_Status AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.available_yn  =  0 INTERSECT SELECT T1.apt_number FROM Apartments AS T1 JOIN View_Unit_Status AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.available_yn  =  1
+select apartments.apt_number from View_Unit_Status join Apartments on View_Unit_Status.apt_id = Apartments.apt_id where  view_unit_status.available_yn = 0   intersect select apartments.apt_number from View_Unit_Status join Apartments on View_Unit_Status.apt_id = Apartments.apt_id where  view_unit_status.available_yn = 1
+SELECT T1.apt_number FROM Apartments AS T1 JOIN View_Unit_Status AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.available_yn  =  0 INTERSECT SELECT T1.apt_number FROM Apartments AS T1 JOIN View_Unit_Status AS T2 ON T1.apt_id  =  T2.apt_id WHERE T2.available_yn  =  1
+select apartments.apt_number from View_Unit_Status join Apartments on View_Unit_Status.apt_id = Apartments.apt_id where  view_unit_status.available_yn = 0   intersect select apartments.apt_number from View_Unit_Status join Apartments on View_Unit_Status.apt_id = Apartments.apt_id where  view_unit_status.available_yn = 1

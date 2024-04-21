@@ -1,0 +1,32 @@
+SELECT sum(num_of_component) FROM furniture
+select sum(furniture.num_of_component) from furniture
+SELECT name ,  furniture_id FROM furniture ORDER BY market_rate DESC LIMIT 1
+select furniture.name , furniture.furniture_id from furniture   order by furniture.market_rate desc limit 1
+SELECT sum(market_rate) FROM furniture ORDER BY market_rate DESC LIMIT 2
+select sum(furniture.market_rate) from furniture   order by furniture.market_rate desc limit 2
+SELECT Num_of_Component ,  name FROM furniture WHERE Num_of_Component  >  10
+select furniture.num_of_component , furniture.name from furniture where  furniture.num_of_component > 10
+SELECT name ,  Num_of_Component FROM furniture ORDER BY market_rate LIMIT 1
+select furniture.name , furniture.num_of_component from furniture   order by furniture.market_rate asc limit 1
+SELECT t1.name FROM furniture AS t1 JOIN furniture_manufacte AS t2 ON t1.Furniture_ID  =  t2.Furniture_ID WHERE t2.Price_in_Dollar  <  (SELECT max(Price_in_Dollar) FROM furniture_manufacte)
+select furniture.name from furniture_manufacte join furniture on furniture_manufacte.Furniture_ID = furniture.Furniture_ID where  furniture_manufacte.price_in_dollar < (select max(furniture_manufacte.Price_in_Dollar) from furniture_manufacte  )
+SELECT open_year ,  name FROM manufacturer ORDER BY num_of_shops DESC LIMIT 1
+select manufacturer.open_year , manufacturer.name from manufacturer   order by manufacturer.num_of_shops desc limit 1
+SELECT avg(Num_of_Factories) FROM manufacturer WHERE num_of_shops  >  20
+select avg(manufacturer.num_of_factories) from manufacturer where  manufacturer.num_of_shops > 20
+SELECT name ,  manufacturer_id FROM manufacturer ORDER BY open_year
+select manufacturer.name , manufacturer.manufacturer_id from manufacturer   order by manufacturer.open_year asc
+SELECT name ,  open_year FROM manufacturer WHERE num_of_shops  >  10 OR Num_of_Factories  <  10
+select manufacturer.name , manufacturer.open_year from manufacturer where  manufacturer.num_of_shops > 10 or manufacturer.num_of_factories < 10
+SELECT max(num_of_shops) ,  avg(Num_of_Factories) FROM manufacturer WHERE open_year  <  1990
+select max(manufacturer.num_of_factories) , avg(manufacturer.num_of_shops) from manufacturer where  manufacturer.open_year < 1990
+SELECT t1.manufacturer_id ,  t1.num_of_shops FROM manufacturer AS t1 JOIN furniture_manufacte AS t2 ON t1.manufacturer_id  =  t2.manufacturer_id ORDER BY t2.Price_in_Dollar DESC LIMIT 1
+select furniture_manufacte.manufacturer_id , manufacturer.num_of_shops from furniture_manufacte join manufacturer on furniture_manufacte.Manufacturer_ID = manufacturer.Manufacturer_ID   order by furniture_manufacte.price_in_dollar desc limit 1
+SELECT count(*) ,  t1.name FROM manufacturer AS t1 JOIN furniture_manufacte AS t2 ON t1.manufacturer_id  =  t2.manufacturer_id GROUP BY t1.manufacturer_id
+select count(*) , manufacturer.name from furniture_manufacte join manufacturer on furniture_manufacte.Manufacturer_ID = manufacturer.Manufacturer_ID  group by manufacturer.name
+SELECT t1.name ,  t2.price_in_dollar FROM furniture AS t1 JOIN furniture_manufacte AS t2 ON t1.Furniture_ID  =  t2.Furniture_ID
+select furniture.name , furniture_manufacte.price_in_dollar from furniture_manufacte join furniture on furniture_manufacte.Furniture_ID = furniture.Furniture_ID
+SELECT Market_Rate ,  name FROM furniture WHERE Furniture_ID NOT IN (SELECT Furniture_ID FROM furniture_manufacte)
+select furniture.market_rate , furniture.name from furniture where  furniture.furniture_id not in (select furniture_manufacte.Furniture_ID from furniture_manufacte  )
+SELECT t3.name FROM furniture AS t1 JOIN furniture_manufacte AS t2 ON t1.Furniture_ID  =  t2.Furniture_ID JOIN manufacturer AS t3 ON t2.manufacturer_id  =  t3.manufacturer_id WHERE t1.num_of_component  <  6 INTERSECT SELECT t3.name FROM furniture AS t1 JOIN furniture_manufacte AS t2 ON t1.Furniture_ID  =  t2.Furniture_ID JOIN manufacturer AS t3 ON t2.manufacturer_id  =  t3.manufacturer_id WHERE t1.num_of_component  >  10
+select manufacturer.name from furniture_manufacte join furniture on furniture_manufacte.Furniture_ID = furniture.Furniture_ID join manufacturer on furniture_manufacte.Manufacturer_ID = manufacturer.Manufacturer_ID where  furniture.num_of_component < 6   intersect select manufacturer.name from furniture_manufacte join furniture on furniture_manufacte.Furniture_ID = furniture.Furniture_ID join manufacturer on furniture_manufacte.Manufacturer_ID = manufacturer.Manufacturer_ID where  furniture.num_of_component > 10

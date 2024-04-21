@@ -1,0 +1,36 @@
+SELECT count(*) FROM editor
+select count(*) from editor
+SELECT Name FROM editor ORDER BY Age ASC
+select editor.name from editor   order by editor.age asc
+SELECT Name ,  Age FROM editor
+select editor.name , editor.age from editor
+SELECT Name FROM editor WHERE Age  >  25
+select editor.name from editor where  editor.age > 25
+SELECT Name FROM editor WHERE Age  =  24 OR Age  =  25
+select editor.name from editor where  editor.age = 24 or editor.age = 25
+SELECT Name FROM editor ORDER BY Age ASC LIMIT 1
+select editor.name from editor   order by editor.age asc limit 1
+SELECT Age ,  COUNT(*) FROM editor GROUP BY Age
+select editor.age , count(*) from editor  group by editor.age
+SELECT Age FROM editor GROUP BY Age ORDER BY COUNT(*) DESC LIMIT 1
+select editor.age from editor  group by editor.age  order by count(*) desc limit 1
+SELECT DISTINCT Theme FROM journal
+select distinct journal.theme from journal
+SELECT T2.Name ,  T3.Theme FROM journal_committee AS T1 JOIN editor AS T2 ON T1.Editor_ID  =  T2.Editor_ID JOIN journal AS T3 ON T1.Journal_ID  =  T3.Journal_ID
+select editor.name , journal.theme from journal_committee join journal on journal_committee.Journal_ID = journal.Journal_ID join editor on journal_committee.Editor_ID = editor.Editor_ID
+SELECT T2.Name ,  T3.Theme FROM journal_committee AS T1 JOIN editor AS T2 ON T1.Editor_ID  =  T2.Editor_ID JOIN journal AS T3 ON T1.Journal_ID  =  T3.Journal_ID
+select editor.name , journal.theme from journal_committee join journal on journal_committee.Journal_ID = journal.Journal_ID join editor on journal_committee.Editor_ID = editor.Editor_ID
+SELECT T2.Name ,  T2.age ,  T3.Theme FROM journal_committee AS T1 JOIN editor AS T2 ON T1.Editor_ID  =  T2.Editor_ID JOIN journal AS T3 ON T1.Journal_ID  =  T3.Journal_ID ORDER BY T3.Theme ASC
+select editor.name , editor.age , journal.theme from journal_committee join journal on journal_committee.Journal_ID = journal.Journal_ID join editor on journal_committee.Editor_ID = editor.Editor_ID   order by journal.theme asc
+SELECT T2.Name FROM journal_committee AS T1 JOIN editor AS T2 ON T1.Editor_ID  =  T2.Editor_ID JOIN journal AS T3 ON T1.Journal_ID  =  T3.Journal_ID WHERE T3.Sales  >  3000
+select editor.name from journal_committee join journal on journal_committee.Journal_ID = journal.Journal_ID join editor on journal_committee.Editor_ID = editor.Editor_ID where  journal.sales > 3000
+SELECT T1.editor_id ,  T1.Name ,  COUNT(*) FROM editor AS T1 JOIN journal_committee AS T2 ON T1.Editor_ID  =  T2.Editor_ID GROUP BY T1.editor_id
+select editor.editor_id , editor.name , count(*) from journal_committee join editor on journal_committee.Editor_ID = editor.Editor_ID  group by editor.editor_id
+SELECT T1.Name FROM editor AS T1 JOIN journal_committee AS T2 ON T1.Editor_ID  =  T2.Editor_ID GROUP BY T1.Name HAVING COUNT(*)  >=  2
+select editor.name from journal_committee join editor on journal_committee.Editor_ID = editor.Editor_ID  group by editor.name having  count(*) >= 2
+SELECT Name FROM editor WHERE editor_id NOT IN (SELECT editor_id FROM journal_committee)
+select editor.name from editor where  editor.editor_id not in (select journal_committee.Editor_ID from journal_committee  )
+SELECT date ,  theme ,  sales FROM journal EXCEPT SELECT T1.date ,  T1.theme ,  T1.sales FROM journal AS T1 JOIN journal_committee AS T2 ON T1.journal_ID  =  T2.journal_ID
+select journal.date , journal.theme , journal.sales from journal   except select journal.date , journal.theme , journal.sales from journal_committee join journal on journal_committee.Journal_ID = journal.Journal_ID
+SELECT avg(T1.sales) FROM journal AS T1 JOIN journal_committee AS T2 ON T1.journal_ID  =  T2.journal_ID WHERE T2.work_type  =  'Photo'
+select avg(journal.sales) from journal_committee join journal on journal_committee.Journal_ID = journal.Journal_ID where  journal_committee.work_type = "Photo"

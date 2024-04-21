@@ -1,0 +1,96 @@
+SELECT count(*) FROM film
+select count(*) from film
+SELECT count(*) FROM film
+select count(*) from film
+SELECT DISTINCT Director FROM film
+select distinct film.director from film
+SELECT DISTINCT Director FROM film
+select distinct film.director from film
+SELECT avg(Gross_in_dollar) FROM film
+select avg(film.gross_in_dollar) from film
+SELECT avg(Gross_in_dollar) FROM film
+select avg(film.gross_in_dollar) from film
+SELECT Low_Estimate ,  High_Estimate FROM film_market_estimation
+select film_market_estimation.low_estimate , film_market_estimation.high_estimate from film_market_estimation
+SELECT Low_Estimate ,  High_Estimate FROM film_market_estimation
+select film_market_estimation.low_estimate , film_market_estimation.high_estimate from film_market_estimation
+SELECT TYPE FROM film_market_estimation WHERE YEAR  =  1995
+select film_market_estimation.type from film_market_estimation where  film_market_estimation.year = 1995
+SELECT TYPE FROM film_market_estimation WHERE YEAR  =  1995
+select film_market_estimation.type from film_market_estimation where  film_market_estimation.year = 1995
+SELECT max(Number_cities) ,  min(Number_cities) FROM market
+select max(market.number_cities) , min(market.number_cities) from market
+SELECT max(Number_cities) ,  min(Number_cities) FROM market
+select max(market.number_cities) , min(market.number_cities) from market
+SELECT count(*) FROM market WHERE Number_cities  <  300
+select count(*) from market where  market.number_cities < 300
+SELECT count(*) FROM market WHERE Number_cities  <  300
+select count(*) from market where  market.number_cities < 300
+SELECT Country FROM market ORDER BY Country ASC
+select market.country from market   order by market.country asc
+SELECT Country FROM market ORDER BY Country ASC
+select market.country from market   order by market.country asc
+SELECT Country FROM market ORDER BY Number_cities DESC
+select market.country from market   order by market.number_cities desc
+SELECT Country FROM market ORDER BY Number_cities DESC
+select market.country from market   order by market.number_cities desc
+SELECT T1.Title ,  T2.Type FROM film AS T1 JOIN film_market_estimation AS T2 ON T1.Film_ID  =  T2.Film_ID
+select film.title , film_market_estimation.type from film_market_estimation join film on film_market_estimation.Film_ID = film.Film_ID
+SELECT T1.Title ,  T2.Type FROM film AS T1 JOIN film_market_estimation AS T2 ON T1.Film_ID  =  T2.Film_ID
+select film.title , film_market_estimation.type from film_market_estimation join film on film_market_estimation.Film_ID = film.Film_ID
+SELECT DISTINCT T1.Director FROM film AS T1 JOIN film_market_estimation AS T2 ON T1.Film_ID  =  T2.Film_ID WHERE T2.Year  =  1995
+select distinct film.director from film_market_estimation join film on film_market_estimation.Film_ID = film.Film_ID where  film_market_estimation.year = 1995
+SELECT DISTINCT T1.Director FROM film AS T1 JOIN film_market_estimation AS T2 ON T1.Film_ID  =  T2.Film_ID WHERE T2.Year  =  1995
+select distinct film.director from film_market_estimation join film on film_market_estimation.Film_ID = film.Film_ID where  film_market_estimation.year = 1995
+SELECT avg(T2.Number_cities) FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.Market_ID  =  T2.Market_ID WHERE T1.Low_Estimate  >  10000
+select avg(market.number_cities) from film_market_estimation join market on film_market_estimation.Market_ID = market.Market_ID where  film_market_estimation.low_estimate > 10000
+SELECT avg(T2.Number_cities) FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.Market_ID  =  T2.Market_ID WHERE T1.Low_Estimate  >  10000
+select avg(market.number_cities) from film_market_estimation join market on film_market_estimation.Market_ID = market.Market_ID where  film_market_estimation.low_estimate > 10000
+SELECT T2.Country ,  T1.Year FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.Market_ID  =  T2.Market_ID
+select market.country , film_market_estimation.year from film_market_estimation join market on film_market_estimation.Market_ID = market.Market_ID
+SELECT T2.Country ,  T1.Year FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.Market_ID  =  T2.Market_ID
+select market.country , film_market_estimation.year from film_market_estimation join market on film_market_estimation.Market_ID = market.Market_ID
+SELECT T1.Year FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.Market_ID  =  T2.Market_ID WHERE T2.Country  =  "Japan" ORDER BY T1.Year DESC
+select film_market_estimation.year from film_market_estimation join market on film_market_estimation.Market_ID = market.Market_ID where  market.country = "Japan"   order by film_market_estimation.year desc
+SELECT T1.Year FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.Market_ID  =  T2.Market_ID WHERE T2.Country  =  "Japan" ORDER BY T1.Year DESC
+select film_market_estimation.year from film_market_estimation join market on film_market_estimation.Market_ID = market.Market_ID where  market.country = "Japan"   order by film_market_estimation.year desc
+SELECT Studio ,  COUNT(*) FROM film GROUP BY Studio
+select film.studio , count(*) from film  group by film.studio
+SELECT Studio ,  COUNT(*) FROM film GROUP BY Studio
+select film.studio , count(*) from film  group by film.studio
+SELECT Studio FROM film GROUP BY Studio ORDER BY COUNT(*) DESC LIMIT 1
+select film.studio from film  group by film.studio  order by count(*) desc limit 1
+SELECT Studio FROM film GROUP BY Studio ORDER BY COUNT(*) DESC LIMIT 1
+select film.studio from film  group by film.studio  order by count(*) desc limit 1
+SELECT Studio FROM film GROUP BY Studio HAVING COUNT(*)  >=  2
+select film.studio from film  group by film.studio having  count(*) >= 2
+SELECT Studio FROM film GROUP BY Studio HAVING COUNT(*)  >=  2
+select film.studio from film  group by film.studio having  count(*) >= 2
+SELECT Title FROM film WHERE Film_ID NOT IN (SELECT Film_ID FROM film_market_estimation)
+select film.title from film where  film.film_id not in (select film_market_estimation.Film_ID from film_market_estimation  )
+SELECT Title FROM film WHERE Film_ID NOT IN (SELECT Film_ID FROM film_market_estimation)
+select film.title from film where  film.film_id not in (select film_market_estimation.Film_ID from film_market_estimation  )
+SELECT Studio FROM film WHERE Director  =  "Nicholas Meyer" INTERSECT SELECT Studio FROM film WHERE Director  =  "Walter Hill"
+select film.studio from film where  film.director = "Nicholas Meyer"   intersect select film.studio from film where  film.director = "Walter Hill"
+SELECT Studio FROM film WHERE Director  =  "Nicholas Meyer" INTERSECT SELECT Studio FROM film WHERE Director  =  "Walter Hill"
+select film.studio from film where  film.director = "Nicholas Meyer"   intersect select film.studio from film where  film.director = "Walter Hill"
+SELECT title ,  Studio FROM film WHERE Studio LIKE "%Universal%"
+select film.title , film.studio from film where  film.studio like "%Universal%"
+SELECT title ,  Studio FROM film WHERE Studio LIKE "%Universal%"
+select film.title , film.studio from film where  film.studio like "%Universal%"
+SELECT Studio FROM film EXCEPT SELECT Studio FROM film WHERE Director  =  "Walter Hill"
+select film.studio from film   except select film.studio from film where  film.director = "Walter Hill"
+SELECT Studio FROM film EXCEPT SELECT Studio FROM film WHERE Director  =  "Walter Hill"
+select film.studio from film   except select film.studio from film where  film.director = "Walter Hill"
+SELECT Studio FROM film GROUP BY Studio HAVING avg(Gross_in_dollar)  >=  4500000
+select film.studio from film  group by film.studio having  avg(film.gross_in_dollar) >= 4500000
+SELECT Studio FROM film GROUP BY Studio HAVING avg(Gross_in_dollar)  >=  4500000
+select film.studio from film  group by film.studio having  avg(film.gross_in_dollar) >= 4500000
+SELECT t1.title FROM film AS T1 JOIN film_market_estimation AS T2  ON T1.Film_ID  =  T2.Film_ID ORDER BY high_estimate DESC LIMIT 1
+select film.title from film_market_estimation join film on film_market_estimation.Film_ID = film.Film_ID   order by film_market_estimation.high_estimate desc limit 1
+SELECT t1.title FROM film AS T1 JOIN film_market_estimation AS T2  ON T1.Film_ID  =  T2.Film_ID ORDER BY high_estimate DESC LIMIT 1
+select film.title from film_market_estimation join film on film_market_estimation.Film_ID = film.Film_ID   order by film_market_estimation.high_estimate desc limit 1
+SELECT title ,  director FROM film WHERE film_id NOT IN (SELECT film_id FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.market_id  =  T2.Market_ID WHERE country  =  'China')
+select film.title , film.director from film where  film.film_id not in (select film_market_estimation.Film_ID from film_market_estimation join market on film_market_estimation.Market_ID = market.Market_ID where  market.country = "China"  )
+SELECT title ,  director FROM film WHERE film_id NOT IN (SELECT film_id FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.market_id  =  T2.Market_ID WHERE country  =  'China')
+select film.title , film.director from film where  film.film_id not in (select film_market_estimation.Film_ID from film_market_estimation join market on film_market_estimation.Market_ID = market.Market_ID where  market.country = "China"  )

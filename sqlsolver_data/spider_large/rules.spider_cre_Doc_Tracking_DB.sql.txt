@@ -1,0 +1,180 @@
+SELECT count(*) FROM Ref_calendar
+select count(*) from Ref_Calendar
+SELECT count(*) FROM Ref_calendar
+select count(*) from Ref_Calendar
+SELECT calendar_date ,  day_Number FROM Ref_calendar
+select ref_calendar.calendar_date , ref_calendar.day_number from Ref_Calendar
+SELECT calendar_date ,  day_Number FROM Ref_calendar
+select ref_calendar.calendar_date , ref_calendar.day_number from Ref_Calendar
+SELECT count(*) FROM Ref_document_types
+select count(*) from Ref_Document_Types
+SELECT count(*) FROM Ref_document_types
+select count(*) from Ref_Document_Types
+SELECT document_type_code ,  document_type_name FROM Ref_document_types
+select ref_document_types.document_type_code , ref_document_types.document_type_name from Ref_Document_Types
+SELECT document_type_code ,  document_type_name FROM Ref_document_types
+select ref_document_types.document_type_code , ref_document_types.document_type_name from Ref_Document_Types
+SELECT document_type_name ,  document_type_description FROM Ref_document_types WHERE document_type_code  =  "RV"
+select ref_document_types.document_type_name , ref_document_types.document_type_description from All_Documents join Ref_Document_Types on All_Documents.Document_Type_Code = Ref_Document_Types.Document_Type_Code where  all_documents.document_type_code = "RV"
+SELECT document_type_name ,  document_type_description FROM Ref_document_types WHERE document_type_code  =  "RV"
+select ref_document_types.document_type_name , ref_document_types.document_type_description from All_Documents join Ref_Document_Types on All_Documents.Document_Type_Code = Ref_Document_Types.Document_Type_Code where  all_documents.document_type_code = "RV"
+SELECT document_type_code FROM Ref_document_types WHERE document_type_name  =  "Paper"
+select ref_document_types.document_type_code from Ref_Document_Types where  ref_document_types.document_type_name = "Paper"
+SELECT document_type_code FROM Ref_document_types WHERE document_type_name  =  "Paper"
+select ref_document_types.document_type_code from Ref_Document_Types where  ref_document_types.document_type_name = "Paper"
+SELECT count(*) FROM All_documents WHERE document_type_code  =  "CV" OR document_type_code  =  "BK"
+select count(*) from All_Documents where  all_documents.document_type_code = "CV" or all_documents.document_type_code = "BK"
+SELECT count(*) FROM All_documents WHERE document_type_code  =  "CV" OR document_type_code  =  "BK"
+select count(*) from All_Documents where  all_documents.document_type_code = "CV" or all_documents.document_type_code = "BK"
+SELECT date_stored FROM All_documents WHERE Document_name  =  "Marry CV"
+select all_documents.date_stored from All_Documents where  all_documents.document_name = "Marry CV"
+SELECT date_stored FROM All_documents WHERE Document_name  =  "Marry CV"
+select all_documents.date_stored from All_Documents where  all_documents.document_name = "Marry CV"
+SELECT T2.day_Number ,  T1.Date_Stored FROM All_documents AS T1 JOIN Ref_calendar AS T2 ON T1.date_stored  =  T2.calendar_date
+select ref_calendar.day_number , all_documents.date_stored from All_Documents join Ref_Calendar on All_Documents.Date_Stored = Ref_Calendar.Calendar_Date
+SELECT T2.day_Number ,  T1.Date_Stored FROM All_documents AS T1 JOIN Ref_calendar AS T2 ON T1.date_stored  =  T2.calendar_date
+select ref_calendar.day_number , all_documents.date_stored from All_Documents join Ref_Calendar on All_Documents.Date_Stored = Ref_Calendar.Calendar_Date
+SELECT T2.document_type_name FROM All_documents AS T1 JOIN Ref_document_types AS T2 ON T1.document_type_code  =  T2.document_type_code WHERE T1.document_name  =  "How to read a book"
+select ref_document_types.document_type_name from All_Documents join Ref_Document_Types on All_Documents.Document_Type_Code = Ref_Document_Types.Document_Type_Code where  all_documents.document_name = "How to read a book"
+SELECT T2.document_type_name FROM All_documents AS T1 JOIN Ref_document_types AS T2 ON T1.document_type_code  =  T2.document_type_code WHERE T1.document_name  =  "How to read a book"
+select ref_document_types.document_type_name from All_Documents join Ref_Document_Types on All_Documents.Document_Type_Code = Ref_Document_Types.Document_Type_Code where  all_documents.document_name = "How to read a book"
+SELECT count(*) FROM Ref_locations
+select count(*) from Ref_Locations
+SELECT count(*) FROM Ref_locations
+select count(*) from Ref_Locations
+SELECT location_code ,  location_name FROM Ref_locations
+select ref_locations.location_code , ref_locations.location_name from Ref_Locations
+SELECT location_code ,  location_name FROM Ref_locations
+select ref_locations.location_code , ref_locations.location_name from Ref_Locations
+SELECT location_name ,  location_description FROM Ref_locations WHERE location_code  =  "x"
+select ref_locations.location_name , ref_locations.location_description from Document_Locations join Ref_Locations on Document_Locations.Location_Code = Ref_Locations.Location_Code where  document_locations.location_code = "x"
+SELECT location_name ,  location_description FROM Ref_locations WHERE location_code  =  "x"
+select ref_locations.location_name , ref_locations.location_description from Document_Locations join Ref_Locations on Document_Locations.Location_Code = Ref_Locations.Location_Code where  document_locations.location_code = "x"
+SELECT location_code FROM Ref_locations WHERE location_name  =  "Canada"
+select ref_locations.location_code from Ref_Locations where  ref_locations.location_name = "Canada"
+SELECT location_code FROM Ref_locations WHERE location_name  =  "Canada"
+select ref_locations.location_code from Ref_Locations where  ref_locations.location_name = "Canada"
+SELECT count(*) FROM ROLES
+select count(*) from Roles
+SELECT count(*) FROM ROLES
+select count(*) from Roles
+SELECT role_code ,  role_name ,  role_description FROM ROLES
+select employees.role_code , roles.role_name , roles.role_description from Employees join Roles on Employees.Role_Code = Roles.Role_Code
+SELECT role_code ,  role_name ,  role_description FROM ROLES
+select roles.role_code , roles.role_name , roles.role_description from Roles
+SELECT role_name ,  role_description FROM ROLES WHERE role_code  =  "MG"
+select roles.role_name , roles.role_description from Roles where  roles.role_code = "MG"
+SELECT role_name ,  role_description FROM ROLES WHERE role_code  =  "MG"
+select roles.role_name , roles.role_description from Roles where  roles.role_code = "MG"
+SELECT role_description FROM ROLES WHERE role_name  =  "Proof Reader"
+select roles.role_description from Roles where  roles.role_name = "Proof Reader"
+SELECT role_description FROM ROLES WHERE role_name  =  "Proof Reader"
+select roles.role_description from Roles where  roles.role_name = "Proof Reader"
+SELECT count(*) FROM Employees
+select count(*) from Employees
+SELECT count(*) FROM Employees
+select count(*) from Employees
+SELECT employee_name ,  role_code ,  date_of_birth FROM Employees WHERE employee_Name  =  'Armani'
+select employees.employee_name , employees.role_code , employees.date_of_birth from Employees where  employees.employee_name = "Armani"
+SELECT employee_name ,  role_code ,  date_of_birth FROM Employees WHERE employee_Name  =  'Armani'
+select employees.employee_name , employees.role_code , employees.date_of_birth from Employees where  employees.employee_name = "Armani"
+SELECT employee_ID FROM Employees WHERE employee_name  =  "Ebba"
+select employees.employee_id from Employees where  employees.employee_name = "Ebba"
+SELECT employee_ID FROM Employees WHERE employee_name  =  "Ebba"
+select employees.employee_id from Employees where  employees.employee_name = "Ebba"
+SELECT employee_name FROM Employees WHERE role_code  =  "HR"
+select employees.employee_name from Employees where  employees.role_code = "HR"
+SELECT employee_name FROM Employees WHERE role_code  =  "HR"
+select employees.employee_name from Employees where  employees.role_code = "HR"
+SELECT role_code ,  count(*) FROM Employees GROUP BY role_code
+select employees.role_code , count(*) from Employees  group by employees.role_code
+SELECT role_code ,  count(*) FROM Employees GROUP BY role_code
+select employees.role_code , count(*) from Employees  group by employees.role_code
+SELECT role_code FROM Employees GROUP BY role_code ORDER BY count(*) DESC LIMIT 1
+select employees.role_code from Employees  group by employees.role_code  order by count(*) desc limit 1
+SELECT role_code FROM Employees GROUP BY role_code ORDER BY count(*) DESC LIMIT 1
+select employees.role_code from Employees  group by employees.role_code  order by count(*) desc limit 1
+SELECT role_code FROM Employees GROUP BY role_code HAVING count(*)  >=  3
+select employees.role_code from Employees  group by employees.role_code having  count(*) >= 3
+SELECT role_code FROM Employees GROUP BY role_code HAVING count(*)  >=  3
+select employees.role_code from Employees  group by employees.role_code having  count(*) >= 3
+SELECT role_code FROM Employees GROUP BY role_code ORDER BY count(*) ASC LIMIT 1
+select employees.role_code from Employees  group by employees.role_code  order by count(*) asc limit 1
+SELECT role_code FROM Employees GROUP BY role_code ORDER BY count(*) ASC LIMIT 1
+select employees.role_code from Employees  group by employees.role_code  order by count(*) asc limit 1
+SELECT T2.role_name ,  T2.role_description FROM Employees AS T1 JOIN ROLES AS T2 ON T1.role_code  =  T2.role_code WHERE T1.employee_name  =  "Ebba"
+select roles.role_name , roles.role_description from Employees join Roles on Employees.Role_Code = Roles.Role_Code where  employees.employee_name = "Ebba"
+SELECT T2.role_name ,  T2.role_description FROM Employees AS T1 JOIN ROLES AS T2 ON T1.role_code  =  T2.role_code WHERE T1.employee_name  =  "Ebba"
+select roles.role_name , roles.role_description from Employees join Roles on Employees.Role_Code = Roles.Role_Code where  employees.employee_name = "Ebba"
+SELECT T1.employee_name FROM Employees AS T1 JOIN ROLES AS T2 ON T1.role_code  =  T2.role_code WHERE T2.role_name  =  "Editor"
+select employees.employee_name from Employees join Roles on Employees.Role_Code = Roles.Role_Code where  roles.role_name = "Editor"
+SELECT T1.employee_name FROM Employees AS T1 JOIN ROLES AS T2 ON T1.role_code  =  T2.role_code WHERE T2.role_name  =  "Editor"
+select employees.employee_name from Employees join Roles on Employees.Role_Code = Roles.Role_Code where  roles.role_name = "Editor"
+SELECT T1.employee_id FROM Employees AS T1 JOIN ROLES AS T2 ON T1.role_code  =  T2.role_code WHERE T2.role_name  =  "Human Resource" OR T2.role_name  =  "Manager"
+select employees.employee_id from Employees join Roles on Employees.Role_Code = Roles.Role_Code where  roles.role_name = "Human Resource" or roles.role_name = "Manager"
+SELECT T1.employee_id FROM Employees AS T1 JOIN ROLES AS T2 ON T1.role_code  =  T2.role_code WHERE T2.role_name  =  "Human Resource" OR T2.role_name  =  "Manager"
+select employees.employee_id from Employees join Roles on Employees.Role_Code = Roles.Role_Code where  roles.role_name = "Human Resource" or roles.role_name = "Manager"
+SELECT DISTINCT location_code FROM Document_locations
+select distinct document_locations.location_code from Document_Locations
+SELECT DISTINCT location_code FROM Document_locations
+select distinct document_locations.location_code from Document_Locations
+SELECT T3.location_name FROM All_documents AS T1 JOIN Document_locations AS T2 ON T1.document_id  =  T2.document_id JOIN Ref_locations AS T3 ON T2.location_code  =  T3.location_code WHERE T1.document_name  =  "Robin CV"
+select ref_locations.location_name from Document_Locations join All_Documents on Document_Locations.Document_ID = All_Documents.Document_ID join Ref_Locations on Document_Locations.Location_Code = Ref_Locations.Location_Code where  all_documents.document_name = "Robin CV"
+SELECT T3.location_name FROM All_documents AS T1 JOIN Document_locations AS T2 ON T1.document_id  =  T2.document_id JOIN Ref_locations AS T3 ON T2.location_code  =  T3.location_code WHERE T1.document_name  =  "Robin CV"
+select ref_locations.location_name from Document_Locations join All_Documents on Document_Locations.Document_ID = All_Documents.Document_ID join Ref_Locations on Document_Locations.Location_Code = Ref_Locations.Location_Code where  all_documents.document_name = "Robin CV"
+SELECT location_code ,  date_in_location_from ,  date_in_locaton_to FROM Document_locations
+select document_locations.location_code , document_locations.date_in_locaton_to , document_locations.date_in_location_from from Document_Locations
+SELECT location_code ,  date_in_location_from ,  date_in_locaton_to FROM Document_locations
+select document_locations.location_code , document_locations.date_in_locaton_to , document_locations.date_in_location_from from Document_Locations
+SELECT T1.date_in_location_from ,  T1.date_in_locaton_to FROM Document_locations AS T1 JOIN All_documents AS T2 ON T1.document_id  =  T2.document_id WHERE T2.document_name  =  "Robin CV"
+select document_locations.date_in_location_from , document_locations.date_in_locaton_to from Document_Locations join All_Documents on Document_Locations.Document_ID = All_Documents.Document_ID where  all_documents.document_name = "Robin CV"
+SELECT T1.date_in_location_from ,  T1.date_in_locaton_to FROM Document_locations AS T1 JOIN All_documents AS T2 ON T1.document_id  =  T2.document_id WHERE T2.document_name  =  "Robin CV"
+select document_locations.date_in_location_from , document_locations.date_in_locaton_to from Document_Locations join All_Documents on Document_Locations.Document_ID = All_Documents.Document_ID where  all_documents.document_name = "Robin CV"
+SELECT location_code ,  count(*) FROM Document_locations GROUP BY location_code
+select document_locations.location_code , count(*) from Document_Locations  group by document_locations.location_code
+SELECT location_code ,  count(*) FROM Document_locations GROUP BY location_code
+select document_locations.location_code , count(*) from Document_Locations  group by document_locations.location_code
+SELECT location_code FROM Document_locations GROUP BY location_code ORDER BY count(*) DESC LIMIT 1
+select document_locations.location_code from Document_Locations  group by document_locations.location_code  order by count(*) desc limit 1
+SELECT location_code FROM Document_locations GROUP BY location_code ORDER BY count(*) DESC LIMIT 1
+select document_locations.location_code from Document_Locations  group by document_locations.location_code  order by count(*) desc limit 1
+SELECT location_code FROM Document_locations GROUP BY location_code HAVING count(*)  >=  3
+select document_locations.location_code from Document_Locations  group by document_locations.location_code having  count(*) >= 3
+SELECT location_code FROM Document_locations GROUP BY location_code HAVING count(*)  >=  3
+select document_locations.location_code from Document_Locations  group by document_locations.location_code having  count(*) >= 3
+SELECT T2.location_name ,  T1.location_code FROM Document_locations AS T1 JOIN Ref_locations AS T2 ON T1.location_code  =  T2.location_code GROUP BY T1.location_code ORDER BY count(*) ASC LIMIT 1
+select ref_locations.location_name , document_locations.location_code from Document_Locations join Ref_Locations on Document_Locations.Location_Code = Ref_Locations.Location_Code  group by document_locations.location_code  order by count(*) asc limit 1
+SELECT T2.location_name ,  T1.location_code FROM Document_locations AS T1 JOIN Ref_locations AS T2 ON T1.location_code  =  T2.location_code GROUP BY T1.location_code ORDER BY count(*) ASC LIMIT 1
+select ref_locations.location_name , document_locations.location_code from Document_Locations join Ref_Locations on Document_Locations.Location_Code = Ref_Locations.Location_Code  group by document_locations.location_code  order by count(*) asc limit 1
+SELECT T2.employee_name ,  T3.employee_name FROM Documents_to_be_destroyed AS T1 JOIN Employees AS T2 ON T1.Destruction_Authorised_by_Employee_ID = T2.employee_id JOIN Employees AS T3 ON T1.Destroyed_by_Employee_ID = T3.employee_id;
+select employees.employee_name , employees.employee_name from Employees
+SELECT T2.employee_name ,  T3.employee_name FROM Documents_to_be_destroyed AS T1 JOIN Employees AS T2 ON T1.Destruction_Authorised_by_Employee_ID = T2.employee_id JOIN Employees AS T3 ON T1.Destroyed_by_Employee_ID = T3.employee_id;
+select employees.employee_name , employees.employee_name from Employees
+SELECT Destruction_Authorised_by_Employee_ID ,  count(*) FROM Documents_to_be_destroyed GROUP BY Destruction_Authorised_by_Employee_ID
+select documents_to_be_destroyed.destruction_authorised_by_employee_id , count(*) from Documents_to_be_Destroyed  group by documents_to_be_destroyed.destruction_authorised_by_employee_id
+SELECT Destruction_Authorised_by_Employee_ID ,  count(*) FROM Documents_to_be_destroyed GROUP BY Destruction_Authorised_by_Employee_ID
+select documents_to_be_destroyed.destruction_authorised_by_employee_id , count(*) from Documents_to_be_Destroyed  group by documents_to_be_destroyed.destruction_authorised_by_employee_id
+SELECT Destroyed_by_Employee_ID ,  count(*) FROM Documents_to_be_destroyed GROUP BY Destroyed_by_Employee_ID
+select documents_to_be_destroyed.destroyed_by_employee_id , count(*) from Documents_to_be_Destroyed  group by documents_to_be_destroyed.destroyed_by_employee_id
+SELECT Destroyed_by_Employee_ID ,  count(*) FROM Documents_to_be_destroyed GROUP BY Destroyed_by_Employee_ID
+select documents_to_be_destroyed.destroyed_by_employee_id , count(*) from Documents_to_be_Destroyed  group by documents_to_be_destroyed.destroyed_by_employee_id
+SELECT employee_id FROM Employees EXCEPT SELECT Destruction_Authorised_by_Employee_ID FROM Documents_to_be_destroyed
+select employees.employee_id from Employees   except select documents_to_be_destroyed.destruction_authorised_by_employee_id from Documents_to_be_Destroyed
+SELECT employee_id FROM Employees EXCEPT SELECT Destruction_Authorised_by_Employee_ID FROM Documents_to_be_destroyed
+select employees.employee_id from Employees   except select documents_to_be_destroyed.destruction_authorised_by_employee_id from Documents_to_be_Destroyed
+SELECT DISTINCT Destruction_Authorised_by_Employee_ID FROM Documents_to_be_destroyed
+select distinct documents_to_be_destroyed.destruction_authorised_by_employee_id from Documents_to_be_Destroyed
+SELECT DISTINCT Destruction_Authorised_by_Employee_ID FROM Documents_to_be_destroyed
+select distinct documents_to_be_destroyed.destruction_authorised_by_employee_id from Documents_to_be_Destroyed
+SELECT DISTINCT Destroyed_by_Employee_ID FROM Documents_to_be_destroyed
+select distinct documents_to_be_destroyed.destroyed_by_employee_id from Documents_to_be_Destroyed
+SELECT DISTINCT Destroyed_by_Employee_ID FROM Documents_to_be_destroyed
+select distinct documents_to_be_destroyed.destroyed_by_employee_id from Documents_to_be_Destroyed
+SELECT employee_id FROM Employees EXCEPT SELECT Destroyed_by_Employee_ID FROM Documents_to_be_destroyed
+select employees.employee_id from Employees   except select documents_to_be_destroyed.destruction_authorised_by_employee_id from Documents_to_be_Destroyed
+SELECT employee_id FROM Employees EXCEPT SELECT Destroyed_by_Employee_ID FROM Documents_to_be_destroyed
+select employees.employee_id from Employees   except select documents_to_be_destroyed.destruction_authorised_by_employee_id from Documents_to_be_Destroyed
+SELECT Destroyed_by_Employee_ID FROM Documents_to_be_destroyed UNION SELECT Destruction_Authorised_by_Employee_ID FROM Documents_to_be_destroyed
+select documents_to_be_destroyed.destroyed_by_employee_id from Documents_to_be_Destroyed   union select documents_to_be_destroyed.destroyed_by_employee_id from Documents_to_be_Destroyed
+SELECT Destroyed_by_Employee_ID FROM Documents_to_be_destroyed UNION SELECT Destruction_Authorised_by_Employee_ID FROM Documents_to_be_destroyed
+select documents_to_be_destroyed.destroyed_by_employee_id from Documents_to_be_Destroyed   union select documents_to_be_destroyed.destroyed_by_employee_id from Documents_to_be_Destroyed

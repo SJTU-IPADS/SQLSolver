@@ -1,0 +1,34 @@
+SELECT count(*) FROM architect WHERE gender  =  'female'
+select count(*) from architect where  architect.gender = "female"
+SELECT name ,  nationality ,  id FROM architect WHERE gender  =  'male' ORDER BY name
+select architect.name , architect.nationality , architect.id from architect where  architect.gender = "male"   order by architect.name asc
+SELECT max(T1.length_meters) ,  T2.name FROM bridge AS T1 JOIN architect AS T2 ON T1.architect_id  =  T2.id
+select max(bridge.length_meters) , architect.name from bridge join architect on bridge.architect_id = architect.id
+SELECT avg(length_feet) FROM bridge
+select avg(bridge.length_feet) from bridge
+SELECT name ,  built_year FROM mill WHERE TYPE  =  'Grondzeiler'
+select mill.name , mill.built_year from mill where  mill.type = "Grondzeiler"
+SELECT DISTINCT T1.name ,  T1.nationality FROM architect AS T1 JOIN mill AS t2 ON T1.id  =  T2.architect_id
+select distinct architect.name , architect.nationality from mill join architect on mill.architect_id = architect.id
+SELECT name FROM mill WHERE LOCATION != 'Donceel'
+select mill.name from mill where  mill.location != "Donceel"
+SELECT DISTINCT T1.type FROM mill AS T1 JOIN architect AS t2 ON T1.architect_id  =  T2.id WHERE T2.nationality  =  'American' OR T2.nationality  =  'Canadian'
+select distinct mill.type from mill join architect on mill.architect_id = architect.id where  architect.nationality = "American" or architect.nationality = "Canadian"
+SELECT T1.id ,  T1.name FROM architect AS T1 JOIN bridge AS T2 ON T1.id  =  T2.architect_id GROUP BY T1.id HAVING count(*)  >=  3
+select architect.id , architect.name from bridge join architect on bridge.architect_id = architect.id  group by bridge.architect_id having  count(*) >= 3
+SELECT T1.id ,  T1.name ,  T1.nationality FROM architect AS T1 JOIN mill AS T2 ON T1.id  =  T2.architect_id GROUP BY T1.id ORDER BY count(*) DESC LIMIT 1
+select architect.id , architect.name , architect.nationality from mill join architect on mill.architect_id = architect.id  group by architect.id  order by count(*) desc limit 1
+SELECT T1.id ,  T1.name ,  T1.gender FROM architect AS T1 JOIN bridge AS T2 ON T1.id  =  T2.architect_id GROUP BY T1.id HAVING count(*)  =  2 UNION SELECT T1.id ,  T1.name ,  T1.gender FROM architect AS T1 JOIN mill AS T2 ON T1.id  =  T2.architect_id GROUP BY T1.id HAVING count(*)  =  1
+select bridge.architect_id , architect.name , architect.gender from bridge join architect on bridge.architect_id = architect.id  group by bridge.architect_id having  count(*) = 1  union select bridge.architect_id , architect.name , architect.gender from bridge join architect on bridge.architect_id = architect.id join mill on architect.id = mill.architect_id  group by bridge.architect_id having  count(*) = 2
+SELECT LOCATION FROM bridge WHERE name  =  'Kolob Arch' OR name  =  'Rainbow Bridge'
+select bridge.location from bridge where  bridge.name = "Kolob Arch" or bridge.name = "Rainbow Bridge"
+SELECT name FROM mill WHERE name LIKE '%Moulin%'
+select mill.name from mill where  mill.name like "%Moulin%"
+SELECT DISTINCT T1.name FROM mill AS T1 JOIN architect AS t2 ON T1.architect_id  =  T2.id JOIN bridge AS T3 ON T3.architect_id  =  T2.id WHERE T3.length_meters  >  80
+select distinct mill.name from bridge join architect on bridge.architect_id = architect.id join mill on architect.id = mill.architect_id where  bridge.length_meters > 80
+SELECT TYPE ,  count(*) FROM mill GROUP BY TYPE ORDER BY count(*) DESC LIMIT 1
+select mill.type , count(*) from mill  group by mill.type  order by count(*) desc limit 1
+SELECT count(*) FROM architect WHERE id NOT IN ( SELECT architect_id FROM mill WHERE built_year  <  1850 );
+select count( distinct architect.id) from architect where  architect.id not in (select mill.architect_id from mill where  mill.built_year < 1850  )
+SELECT t1.name FROM bridge AS t1 JOIN architect AS t2 ON t1.architect_id  =  t2.id WHERE t2.nationality  =  'American' ORDER BY t1.length_feet
+select bridge.name from bridge join architect on bridge.architect_id = architect.id where  architect.nationality = "American"   order by bridge.length_feet asc

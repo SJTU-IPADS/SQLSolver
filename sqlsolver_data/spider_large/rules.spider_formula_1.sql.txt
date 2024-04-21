@@ -1,0 +1,160 @@
+SELECT name FROM races ORDER BY date DESC LIMIT 1
+select races.name from races   order by races.date desc limit 1
+SELECT name FROM races ORDER BY date DESC LIMIT 1
+select races.name from races   order by races.date desc limit 1
+SELECT name ,  date FROM races ORDER BY date DESC LIMIT 1
+select races.name , races.date from races   order by races.date desc limit 1
+SELECT name ,  date FROM races ORDER BY date DESC LIMIT 1
+select races.name , races.date from races   order by races.date desc limit 1
+SELECT name FROM races WHERE YEAR = 2017
+select races.name from races where  races.year = 2017
+SELECT name FROM races WHERE YEAR = 2017
+select races.name from races where  races.year = 2017
+SELECT DISTINCT name FROM races WHERE YEAR BETWEEN 2014 AND 2017
+select distinct races.name from races where  races.year between 2014 and 2017
+SELECT DISTINCT name FROM races WHERE YEAR BETWEEN 2014 AND 2017
+select distinct races.name from races where  races.year between 2014 and 2017
+SELECT DISTINCT T1.forename ,  T1.surname FROM drivers AS T1 JOIN laptimes AS T2 ON T1.driverid = T2.driverid WHERE T2.milliseconds < 93000
+select distinct drivers.forename , drivers.surname from lapTimes join drivers on lapTimes.driverId = drivers.driverId where  laptimes.milliseconds < 93000
+SELECT DISTINCT T1.forename ,  T1.surname FROM drivers AS T1 JOIN laptimes AS T2 ON T1.driverid = T2.driverid WHERE T2.milliseconds < 93000
+select distinct drivers.forename , drivers.surname from lapTimes join drivers on lapTimes.driverId = drivers.driverId where  laptimes.milliseconds < 93000
+SELECT DISTINCT T1.driverid ,  T1.nationality FROM drivers AS T1 JOIN laptimes AS T2 ON T1.driverid = T2.driverid WHERE T2.milliseconds >  100000
+select distinct drivers.driverid , drivers.nationality from lapTimes join drivers on lapTimes.driverId = drivers.driverId where  laptimes.milliseconds > 100000
+SELECT DISTINCT T1.driverid ,  T1.nationality FROM drivers AS T1 JOIN laptimes AS T2 ON T1.driverid = T2.driverid WHERE T2.milliseconds >  100000
+select distinct drivers.driverid , drivers.nationality from lapTimes join drivers on lapTimes.driverId = drivers.driverId where  laptimes.milliseconds > 100000
+SELECT T1.forename ,  T1.surname FROM drivers AS T1 JOIN laptimes AS T2 ON T1.driverid = T2.driverid ORDER BY T2.milliseconds LIMIT 1
+select drivers.forename , drivers.surname from lapTimes join drivers on lapTimes.driverId = drivers.driverId   order by laptimes.milliseconds asc limit 1
+SELECT T1.forename ,  T1.surname FROM drivers AS T1 JOIN laptimes AS T2 ON T1.driverid = T2.driverid ORDER BY T2.milliseconds LIMIT 1
+select drivers.forename , drivers.surname from lapTimes join drivers on lapTimes.driverId = drivers.driverId   order by laptimes.milliseconds asc limit 1
+SELECT T1.driverid ,  T1.surname FROM drivers AS T1 JOIN laptimes AS T2 ON T1.driverid = T2.driverid ORDER BY T2.milliseconds DESC LIMIT 1
+select drivers.driverid , drivers.forename from lapTimes join drivers on lapTimes.driverId = drivers.driverId   order by laptimes.milliseconds desc limit 1
+SELECT T1.driverid ,  T1.surname FROM drivers AS T1 JOIN laptimes AS T2 ON T1.driverid = T2.driverid ORDER BY T2.milliseconds DESC LIMIT 1
+select drivers.driverid , drivers.surname from lapTimes join drivers on lapTimes.driverId = drivers.driverId   order by laptimes.milliseconds desc limit 1
+SELECT T1.driverid ,  T1.forename ,  T1.surname FROM drivers AS T1 JOIN laptimes AS T2 ON T1.driverid = T2.driverid WHERE POSITION  =  '1' GROUP BY T1.driverid HAVING count(*)  >=  2
+select drivers.driverid , drivers.forename , drivers.surname from lapTimes join drivers on lapTimes.driverId = drivers.driverId where  laptimes.position = "1"  group by drivers.driverid having  count(*) >= 2
+SELECT T1.driverid ,  T1.forename ,  T1.surname FROM drivers AS T1 JOIN laptimes AS T2 ON T1.driverid = T2.driverid WHERE POSITION  =  '1' GROUP BY T1.driverid HAVING count(*)  >=  2
+select drivers.driverid , drivers.forename , drivers.surname from lapTimes join drivers on lapTimes.driverId = drivers.driverId where  laptimes.position = "1"  group by drivers.driverid having  count(*) >= 2
+SELECT count(*) FROM results AS T1 JOIN races AS T2 ON T1.raceid = T2.raceid WHERE T2.name = "Australian Grand Prix" AND YEAR = 2009
+select count(*) from results join races on results.raceId = races.raceId where  races.name = "Australian Grand Prix" and races.year = 2009
+SELECT count(*) FROM results AS T1 JOIN races AS T2 ON T1.raceid = T2.raceid WHERE T2.name = "Australian Grand Prix" AND YEAR = 2009
+select count(*) from results join races on results.raceId = races.raceId where  races.name = "Australian Grand Prix" and races.year = 2009
+SELECT count(DISTINCT driverId) FROM results WHERE raceId NOT IN( SELECT raceId FROM races WHERE YEAR != 2009 )
+select count( distinct results.driverid) from results where  results.raceid not in (select races.raceId from races where  races.year = 2009  )
+SELECT count(DISTINCT driverId) FROM results WHERE raceId NOT IN( SELECT raceId FROM races WHERE YEAR != 2009 )
+select count( distinct results.driverid) from results where  results.raceid not in (select races.raceId from races where  races.year != 2009  )
+SELECT T2.name ,  T2.year FROM results AS T1 JOIN races AS T2 ON T1.raceid = T2.raceid JOIN drivers AS T3 ON T1.driverid = T3.driverid WHERE T3.forename = "Lewis"
+select races.name , races.year from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId where  drivers.forename = "Lewis"
+SELECT T2.name ,  T2.year FROM results AS T1 JOIN races AS T2 ON T1.raceid = T2.raceid JOIN drivers AS T3 ON T1.driverid = T3.driverid WHERE T3.forename = "Lewis"
+select races.name , races.year from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId where  drivers.surname = "Lewis"
+SELECT forename ,  surname FROM drivers WHERE nationality = "German"
+select drivers.forename , drivers.surname from drivers where  drivers.nationality = "German"
+SELECT forename ,  surname FROM drivers WHERE nationality = "German"
+select drivers.forename , drivers.surname from drivers where  drivers.nationality = "German"
+SELECT T2.driverid ,  T3.forename FROM races AS T1 JOIN results AS T2 ON T1.raceid = T2.raceid JOIN drivers AS T3 ON T2.driverid  =  T3.driverid WHERE T1.name = "Australian Grand Prix" INTERSECT SELECT T2.driverid ,  T3.forename FROM races AS T1 JOIN results AS T2 ON T1.raceid = T2.raceid JOIN drivers AS T3 ON T2.driverid  =  T3.driverid WHERE T1.name = "Chinese Grand Prix"
+select drivers.driverid , drivers.forename from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId where  races.name = "Australian Grand Prix"   intersect select drivers.driverid , drivers.forename from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId where  races.name = "Chinese Grand Prix"
+SELECT T2.driverid ,  T3.forename FROM races AS T1 JOIN results AS T2 ON T1.raceid = T2.raceid JOIN drivers AS T3 ON T2.driverid  =  T3.driverid WHERE T1.name = "Australian Grand Prix" INTERSECT SELECT T2.driverid ,  T3.forename FROM races AS T1 JOIN results AS T2 ON T1.raceid = T2.raceid JOIN drivers AS T3 ON T2.driverid  =  T3.driverid WHERE T1.name = "Chinese Grand Prix"
+select drivers.driverid , drivers.forename from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId where  races.name = "Australian Grand Prix"   intersect select drivers.driverid , drivers.forename from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId where  races.name = "Chinese Grand Prix"
+SELECT T3.forename ,  T3.surname FROM races AS T1 JOIN results AS T2 ON T1.raceid = T2.raceid JOIN drivers AS T3 ON T2.driverid = T3.driverid WHERE T1.name = "Australian Grand Prix" EXCEPT SELECT T3.forename ,  T3.surname FROM races AS T1 JOIN results AS T2 ON T1.raceid = T2.raceid JOIN drivers AS T3 ON T2.driverid = T3.driverid WHERE T1.name = "Chinese Grand Prix"
+select drivers.forename , drivers.surname from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId where  races.name = "Australian Grand Prix"   except select drivers.forename , drivers.surname from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId where  races.name = "Chinese Grand Prix"
+SELECT T3.forename ,  T3.surname FROM races AS T1 JOIN results AS T2 ON T1.raceid = T2.raceid JOIN drivers AS T3 ON T2.driverid = T3.driverid WHERE T1.name = "Australian Grand Prix" EXCEPT SELECT T3.forename ,  T3.surname FROM races AS T1 JOIN results AS T2 ON T1.raceid = T2.raceid JOIN drivers AS T3 ON T2.driverid = T3.driverid WHERE T1.name = "Chinese Grand Prix"
+select drivers.forename , drivers.surname from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId where  races.name = "Australian Grand Prix"   except select drivers.forename , drivers.surname from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId where  races.name = "Chinese Grand Prix"
+SELECT DISTINCT T1.forename FROM drivers AS T1 JOIN driverstandings AS T2 ON T1.driverid = T2.driverid WHERE T2.position = 1 AND T2.wins = 1
+select distinct drivers.forename from driverStandings join drivers on driverStandings.driverId = drivers.driverId where  driverstandings.position = 1 and driverstandings.wins = 1
+SELECT DISTINCT T1.forename FROM drivers AS T1 JOIN driverstandings AS T2 ON T1.driverid = T2.driverid WHERE T2.position = 1 AND T2.wins = 1
+select distinct drivers.forename from driverStandings join drivers on driverStandings.driverId = drivers.driverId where  driverstandings.position = 1 and driverstandings.wins = 1
+SELECT DISTINCT T1.forename FROM drivers AS T1 JOIN driverstandings AS T2 ON T1.driverid = T2.driverid WHERE T2.position = 1 AND T2.wins = 1 AND T2.points > 20
+select distinct drivers.forename from driverStandings join drivers on driverStandings.driverId = drivers.driverId where  driverstandings.position = 1 and driverstandings.wins = 1 and driverstandings.points > 20
+SELECT DISTINCT T1.forename FROM drivers AS T1 JOIN driverstandings AS T2 ON T1.driverid = T2.driverid WHERE T2.position = 1 AND T2.wins = 1 AND T2.points > 20
+select distinct drivers.forename from driverStandings join drivers on driverStandings.driverId = drivers.driverId where  driverstandings.position = 1 and driverstandings.wins = 1 and driverstandings.points > 20
+SELECT count(*) ,  nationality FROM constructors GROUP BY nationality
+select count(*) , constructors.nationality from constructors  group by constructors.nationality
+SELECT count(*) ,  nationality FROM constructors GROUP BY nationality
+select count(*) , constructors.nationality from constructors  group by constructors.nationality
+SELECT count(*) ,  constructorid FROM constructorStandings GROUP BY constructorid
+select count(*) , constructorstandings.constructorid from constructorStandings join races on constructorStandings.raceId = races.raceId  group by constructorstandings.constructorid
+SELECT count(*) ,  constructorid FROM constructorStandings GROUP BY constructorid
+select count(*) , constructorstandings.constructorid from constructorStandings join races on constructorStandings.raceId = races.raceId  group by constructorstandings.constructorid
+SELECT T1.name FROM races AS T1 JOIN circuits AS T2 ON T1.circuitid = T2.circuitid WHERE T2.country = "Spain" AND T1.year > 2017
+select races.name from races join circuits on races.circuitId = circuits.circuitId where  circuits.country = "Spain" and races.year > 2017
+SELECT T1.name FROM races AS T1 JOIN circuits AS T2 ON T1.circuitid = T2.circuitid WHERE T2.country = "Spain" AND T1.year > 2017
+select races.name from races join circuits on races.circuitId = circuits.circuitId where  circuits.country = "Spain" and races.year > 2017
+SELECT DISTINCT T1.name FROM races AS T1 JOIN circuits AS T2 ON T1.circuitid = T2.circuitid WHERE T2.country = "Spain" AND T1.year > 2000
+select distinct races.name from races join circuits on races.circuitId = circuits.circuitId where  circuits.country = "Spain" and races.year > 2000
+SELECT DISTINCT T1.name FROM races AS T1 JOIN circuits AS T2 ON T1.circuitid = T2.circuitid WHERE T2.country = "Spain" AND T1.year > 2000
+select races.name from races join circuits on races.circuitId = circuits.circuitId where  circuits.country = "Spain" and races.year > 2000
+SELECT DISTINCT driverid ,  STOP FROM pitstops WHERE duration  <  (SELECT max(duration) FROM pitstops WHERE raceid  =  841)
+select distinct pitstops.driverid , pitstops.stop from pitStops where  pitstops.duration < (select max(pitstops.duration) from pitStops where  pitstops.raceid = 841  )
+SELECT DISTINCT driverid ,  STOP FROM pitstops WHERE duration  <  (SELECT max(duration) FROM pitstops WHERE raceid  =  841)
+select distinct pitstops.driverid , pitstops.stop from pitStops where  pitstops.duration < (select max(pitstops.duration) from pitStops where  pitstops.raceid = 841  )
+SELECT DISTINCT driverid ,  STOP FROM pitstops WHERE duration  >  (SELECT min(duration) FROM pitstops WHERE raceid  =  841)
+select distinct pitstops.driverid , pitstops.stop from pitStops where  pitstops.duration > (select min(pitstops.duration) from pitStops where  pitstops.raceid = 841  )
+SELECT DISTINCT driverid ,  STOP FROM pitstops WHERE duration  >  (SELECT min(duration) FROM pitstops WHERE raceid  =  841)
+select distinct pitstops.driverid , pitstops.stop from pitStops where  pitstops.duration > (select min(pitstops.duration) from pitStops where  pitstops.raceid = 841  )
+SELECT DISTINCT forename FROM drivers ORDER BY forename ASC
+select distinct drivers.forename from drivers   order by drivers.forename asc
+SELECT DISTINCT forename FROM drivers ORDER BY forename ASC
+select distinct drivers.forename from drivers   order by drivers.forename asc
+SELECT DISTINCT name FROM races ORDER BY name DESC
+select distinct races.name from races   order by races.name desc
+SELECT DISTINCT name FROM races ORDER BY name DESC
+select distinct races.name from races   order by races.name desc
+SELECT name FROM races WHERE YEAR BETWEEN 2009 AND 2011
+select races.name from races where  races.year between 2009 and 2011
+SELECT name FROM races WHERE YEAR BETWEEN 2009 AND 2011
+select races.name from races where  races.year between 2009 and 2011
+SELECT name FROM races WHERE TIME > "12:00:00" OR TIME < "09:00:00"
+select races.name from races where  races.time > "12:00:00" or races.time < "09:00:00"
+SELECT name FROM races WHERE TIME > "12:00:00" OR TIME < "09:00:00"
+select races.name from races where  races.time > "12:00:00" or races.time < "09:00:00"
+SELECT T1.forename ,  T1.surname ,  T1.driverid FROM drivers AS T1 JOIN pitstops AS T2 ON T1.driverid  =  T2.driverid GROUP BY T1.driverid HAVING count(*)  >  8 UNION SELECT T1.forename ,  T1.surname ,  T1.driverid FROM drivers AS T1 JOIN results AS T2 ON T1.driverid  =  T2.driverid GROUP BY T1.driverid HAVING count(*)  >  5
+select drivers.forename , drivers.surname , drivers.driverid from pitStops join drivers on pitStops.driverId = drivers.driverId  group by drivers.driverid having  count(*) > 8  union select drivers.forename , drivers.surname , drivers.driverid from results join drivers on results.driverId = drivers.driverId  group by drivers.driverid having  count(*) > 5
+SELECT T1.forename ,  T1.surname ,  T1.driverid FROM drivers AS T1 JOIN pitstops AS T2 ON T1.driverid  =  T2.driverid GROUP BY T1.driverid HAVING count(*)  >  8 UNION SELECT T1.forename ,  T1.surname ,  T1.driverid FROM drivers AS T1 JOIN results AS T2 ON T1.driverid  =  T2.driverid GROUP BY T1.driverid HAVING count(*)  >  5
+select drivers.forename , drivers.surname , drivers.driverid from pitStops join drivers on pitStops.driverId = drivers.driverId  group by drivers.driverid having  count(*) > 8  union select drivers.forename , drivers.surname , drivers.driverid from results join drivers on results.driverId = drivers.driverId  group by drivers.driverid having  count(*) > 5
+SELECT T1.surname ,  T1.driverid FROM drivers AS T1 JOIN pitstops AS T2 ON T1.driverid  =  T2.driverid GROUP BY T1.driverid HAVING count(*)  =  11 INTERSECT SELECT T1.surname ,  T1.driverid FROM drivers AS T1 JOIN results AS T2 ON T1.driverid  =  T2.driverid GROUP BY T1.driverid HAVING count(*)  >  5
+select drivers.surname , drivers.driverid from pitStops join drivers on pitStops.driverId = drivers.driverId  group by drivers.driverid having  count(*) = 11  intersect select drivers.surname , drivers.driverid from results join drivers on results.driverId = drivers.driverId  group by drivers.driverid having  count(*) > 5
+SELECT T1.surname ,  T1.driverid FROM drivers AS T1 JOIN pitstops AS T2 ON T1.driverid  =  T2.driverid GROUP BY T1.driverid HAVING count(*)  =  11 INTERSECT SELECT T1.surname ,  T1.driverid FROM drivers AS T1 JOIN results AS T2 ON T1.driverid  =  T2.driverid GROUP BY T1.driverid HAVING count(*)  >  5
+select drivers.surname , drivers.driverid from pitStops join drivers on pitStops.driverId = drivers.driverId  group by drivers.driverid having  count(*) = 11  intersect select drivers.surname , drivers.driverid from results join drivers on results.driverId = drivers.driverId  group by drivers.driverid having  count(*) > 5
+SELECT T1.driverid ,  T1.surname FROM drivers AS T1 JOIN results AS T2 ON T1.driverid  =  T2.driverid JOIN races AS T3 ON T2.raceid = T3.raceid WHERE T3.year > 2010 GROUP BY T1.driverid ORDER BY count(*) DESC LIMIT 1
+select drivers.driverid , drivers.surname from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId where  races.year > 2010  group by drivers.driverid  order by count(*) desc limit 1
+SELECT T1.driverid ,  T1.surname FROM drivers AS T1 JOIN results AS T2 ON T1.driverid  =  T2.driverid JOIN races AS T3 ON T2.raceid = T3.raceid WHERE T3.year > 2010 GROUP BY T1.driverid ORDER BY count(*) DESC LIMIT 1
+select drivers.driverid , drivers.surname from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId where  races.year > 2010  group by drivers.driverid  order by count(*) desc limit 1
+SELECT name FROM circuits WHERE country = "UK" OR country = "Malaysia"
+select circuits.name from circuits where  circuits.country = "UK" or circuits.country = "Malaysia"
+SELECT name FROM circuits WHERE country = "UK" OR country = "Malaysia"
+select circuits.name from circuits where  circuits.country = "UK" or circuits.country = "Malaysia"
+SELECT circuitid ,  LOCATION FROM circuits WHERE country = "France" OR country = "Belgium"
+select circuits.circuitid , circuits.location from circuits where  circuits.country = "France" or circuits.country = "Belgium"
+SELECT circuitid ,  LOCATION FROM circuits WHERE country = "France" OR country = "Belgium"
+select circuits.circuitid , circuits.location from circuits where  circuits.country = "France" or circuits.country = "Belgium"
+SELECT T1.name FROM constructors AS T1 JOIN constructorstandings AS T2 ON T1.constructorid = T2.constructorid WHERE T1.nationality = "Japanese" AND T2.points > 5
+select constructors.name from constructorStandings join constructors on constructorStandings.constructorId = constructors.constructorId where  constructors.nationality = "Japanese" and constructorstandings.points > 5
+SELECT T1.name FROM constructors AS T1 JOIN constructorstandings AS T2 ON T1.constructorid = T2.constructorid WHERE T1.nationality = "Japanese" AND T2.points > 5
+select constructors.name from constructorStandings join constructors on constructorStandings.constructorId = constructors.constructorId where  constructors.nationality = "Japanese" and constructorstandings.points > 5
+SELECT avg(T2.fastestlapspeed) FROM races AS T1 JOIN results AS T2 ON T1.raceid = T2.raceid WHERE T1.year = 2008 AND T1.name = "Monaco Grand Prix"
+select avg(results.fastestlapspeed) from results join races on results.raceId = races.raceId where  races.year = 2008 and races.name = "Monaco Grand Prix"
+SELECT avg(T2.fastestlapspeed) FROM races AS T1 JOIN results AS T2 ON T1.raceid = T2.raceid WHERE T1.year = 2008 AND T1.name = "Monaco Grand Prix"
+select avg(results.fastestlapspeed) from results join races on results.raceId = races.raceId where  races.year = 2008 and races.name = "Monaco Grand Prix"
+SELECT max(T2.fastestlapspeed) FROM races AS T1 JOIN results AS T2 ON T1.raceid = T2.raceid WHERE T1.year = 2008 AND T1.name = "Monaco Grand Prix"
+select max(results.fastestlapspeed) from results join races on results.raceId = races.raceId where  races.year = 2008 and races.name = "Monaco Grand Prix"
+SELECT max(T2.fastestlapspeed) FROM races AS T1 JOIN results AS T2 ON T1.raceid = T2.raceid WHERE T1.year = 2008 AND T1.name = "Monaco Grand Prix"
+select max(results.fastestlapspeed) from results join races on results.raceId = races.raceId where  races.year = 2008 and races.name = "Monaco Grand Prix"
+SELECT max(T2.fastestlapspeed) ,  T1.name ,  T1.year FROM races AS T1 JOIN results AS T2 ON T1.raceid = T2.raceid WHERE T1.year > 2014 GROUP BY T1.name ORDER BY T1.year
+select max(results.fastestlapspeed) , races.name , races.year from results join races on results.raceId = races.raceId where  races.year > 2014  group by races.name  order by races.year asc
+SELECT max(T2.fastestlapspeed) ,  T1.name ,  T1.year FROM races AS T1 JOIN results AS T2 ON T1.raceid = T2.raceid WHERE T1.year > 2014 GROUP BY T1.name ORDER BY T1.year
+select max(results.fastestlapspeed) , races.name , races.year from results join races on results.raceId = races.raceId where  races.year > 2014  group by races.name  order by races.year asc
+SELECT avg(T2.fastestlapspeed) ,  T1.name ,  T1.year FROM races AS T1 JOIN results AS T2 ON T1.raceid = T2.raceid WHERE T1.year > 2014 GROUP BY T1.name ORDER BY T1.year
+select max(results.fastestlapspeed) , races.name , races.year from results join races on results.raceId = races.raceId where  races.year > 2014  group by races.name  order by races.year asc
+SELECT avg(T2.fastestlapspeed) ,  T1.name ,  T1.year FROM races AS T1 JOIN results AS T2 ON T1.raceid = T2.raceid WHERE T1.year > 2014 GROUP BY T1.name ORDER BY T1.year
+select max(results.fastestlapspeed) , races.name , races.year from results join races on results.raceId = races.raceId where  races.year > 2014  group by races.name  order by races.year asc
+SELECT T1.driverid ,  T1.forename ,  count(*) FROM drivers AS T1 JOIN results AS T2 ON T1.driverid = T2.driverid JOIN races AS T3 ON T2.raceid = T3.raceid GROUP BY T1.driverid HAVING count(*)  >=  2
+select drivers.driverid , drivers.forename , count(*) from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId  group by drivers.driverid having  count(*) >= 2
+SELECT T1.driverid ,  T1.forename ,  count(*) FROM drivers AS T1 JOIN results AS T2 ON T1.driverid = T2.driverid JOIN races AS T3 ON T2.raceid = T3.raceid GROUP BY T1.driverid HAVING count(*)  >=  2
+select drivers.driverid , drivers.forename , count(*) from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId  group by drivers.driverid having  count(*) >= 2
+SELECT T1.driverid ,  count(*) FROM drivers AS T1 JOIN results AS T2 ON T1.driverid = T2.driverid JOIN races AS T3 ON T2.raceid = T3.raceid GROUP BY T1.driverid HAVING count(*)  <=  30
+select drivers.driverid , count(*) from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId  group by drivers.driverid having  count(*) < 30
+SELECT T1.driverid ,  count(*) FROM drivers AS T1 JOIN results AS T2 ON T1.driverid = T2.driverid JOIN races AS T3 ON T2.raceid = T3.raceid GROUP BY T1.driverid HAVING count(*)  <=  30
+select drivers.driverid , count(*) from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId  group by drivers.driverid having  count(*) < 30
+SELECT T1.driverid ,  T1.surname FROM drivers AS T1 JOIN results AS T2 ON T1.driverid = T2.driverid JOIN races AS T3 ON T2.raceid = T3.raceid GROUP BY T1.driverid ORDER BY count(*) DESC LIMIT 1
+select drivers.driverid , drivers.surname from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId  group by drivers.driverid  order by count(*) desc limit 1
+SELECT T1.driverid ,  T1.surname FROM drivers AS T1 JOIN results AS T2 ON T1.driverid = T2.driverid JOIN races AS T3 ON T2.raceid = T3.raceid GROUP BY T1.driverid ORDER BY count(*) DESC LIMIT 1
+select drivers.driverid , drivers.surname from results join drivers on results.driverId = drivers.driverId join races on results.raceId = races.raceId  group by drivers.driverid  order by count(*) desc limit 1

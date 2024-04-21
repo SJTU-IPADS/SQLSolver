@@ -1,0 +1,38 @@
+SELECT W_STREET_1, W_STREET_2, W_CITY, W_STATE, W_ZIP, W_NAME  FROM warehouse  WHERE W_ID = 1
+SELECT  w_street_1  AS  W_STREET_1 ,  w_street_2  AS  W_STREET_2 ,  w_city  AS  W_CITY ,  w_state  AS  W_STATE ,  w_zip  AS  W_ZIP ,  w_name  AS  W_NAME  FROM  warehouse  WHERE  w_id  = 1
+SELECT D_STREET_1, D_STREET_2, D_CITY, D_STATE, D_ZIP, D_NAME  FROM district  WHERE D_W_ID = 1  AND D_ID = 2
+SELECT  d_street_1  AS  D_STREET_1 ,  d_street_2  AS  D_STREET_2 ,  d_city  AS  D_CITY ,  d_state  AS  D_STATE ,  d_zip  AS  D_ZIP ,  d_name  AS  D_NAME  FROM  district  WHERE  d_w_id  = 1 AND  d_id  = 2
+SELECT C_FIRST, C_MIDDLE, C_ID, C_STREET_1, C_STREET_2, C_CITY,  C_STATE, C_ZIP, C_PHONE, C_CREDIT, C_CREDIT_LIM, C_DISCOUNT,  C_BALANCE, C_YTD_PAYMENT, C_PAYMENT_CNT, C_SINCE  FROM customer  WHERE C_W_ID = 1  AND C_D_ID = 2  AND C_LAST = 'ABLEANTIEING'  ORDER BY C_FIRST
+SELECT  c_first  AS  C_FIRST ,  c_middle  AS  C_MIDDLE ,  c_id  AS  C_ID ,  c_street_1  AS  C_STREET_1 ,  c_street_2  AS  C_STREET_2 ,  c_city  AS  C_CITY ,  c_state  AS  C_STATE ,  c_zip  AS  C_ZIP ,  c_phone  AS  C_PHONE ,  c_credit  AS  C_CREDIT ,  c_credit_lim  AS  C_CREDIT_LIM ,  c_discount  AS  C_DISCOUNT ,  c_balance  AS  C_BALANCE ,  c_ytd_payment  AS  C_YTD_PAYMENT ,  c_payment_cnt  AS  C_PAYMENT_CNT ,  c_since  AS  C_SINCE  FROM  customer  WHERE  c_w_id  = 1 AND  c_d_id  = 2 AND  c_last  = 'ABLEANTIEING' ORDER BY  c_first 
+SELECT C_DATA  FROM customer  WHERE C_W_ID = 1  AND C_D_ID = 2  AND C_ID = 270
+SELECT  c_data  AS  C_DATA  FROM  customer  WHERE  c_w_id  = 1 AND  c_d_id  = 2 AND  c_id  = 270
+SELECT C_DISCOUNT, C_LAST, C_CREDIT  FROM customer  WHERE C_W_ID = 1  AND C_D_ID = 9  AND C_ID = 162
+SELECT  c_discount  AS  C_DISCOUNT ,  c_last  AS  C_LAST ,  c_credit  AS  C_CREDIT  FROM  customer  WHERE  c_w_id  = 1 AND  c_d_id  = 9 AND  c_id  = 162
+SELECT W_TAX  FROM warehouse  WHERE W_ID = 1
+SELECT  w_tax  AS  W_TAX  FROM  warehouse  WHERE  w_id  = 1
+SELECT D_NEXT_O_ID, D_TAX  FROM district  WHERE D_W_ID = 1 AND D_ID = 9
+SELECT  d_next_o_id  AS  D_NEXT_O_ID ,  d_tax  AS  D_TAX  FROM  district  WHERE  d_w_id  = 1 AND  d_id  = 9
+SELECT I_PRICE, I_NAME , I_DATA  FROM item  WHERE I_ID = 95719
+SELECT  i_price  AS  I_PRICE ,  i_name  AS  I_NAME ,  i_data  AS  I_DATA  FROM  item  WHERE  i_id  = 95719
+SELECT S_QUANTITY, S_DATA, S_DIST_01, S_DIST_02, S_DIST_03, S_DIST_04, S_DIST_05,  S_DIST_06, S_DIST_07, S_DIST_08, S_DIST_09, S_DIST_10  FROM stock  WHERE S_I_ID = 95719  AND S_W_ID = 1
+SELECT  s_quantity  AS  S_QUANTITY ,  s_data  AS  S_DATA ,  s_dist_01  AS  S_DIST_01 ,  s_dist_02  AS  S_DIST_02 ,  s_dist_03  AS  S_DIST_03 ,  s_dist_04  AS  S_DIST_04 ,  s_dist_05  AS  S_DIST_05 ,  s_dist_06  AS  S_DIST_06 ,  s_dist_07  AS  S_DIST_07 ,  s_dist_08  AS  S_DIST_08 ,  s_dist_09  AS  S_DIST_09 ,  s_dist_10  AS  S_DIST_10  FROM  stock  WHERE  s_i_id  = 95719 AND  s_w_id  = 1
+SELECT C_FIRST, C_MIDDLE, C_LAST, C_STREET_1, C_STREET_2,  C_CITY, C_STATE, C_ZIP, C_PHONE, C_CREDIT, C_CREDIT_LIM,  C_DISCOUNT, C_BALANCE, C_YTD_PAYMENT, C_PAYMENT_CNT, C_SINCE  FROM customer  WHERE C_W_ID = 1  AND C_D_ID = 4  AND C_ID = 897
+SELECT  c_first  AS  C_FIRST ,  c_middle  AS  C_MIDDLE ,  c_last  AS  C_LAST ,  c_street_1  AS  C_STREET_1 ,  c_street_2  AS  C_STREET_2 ,  c_city  AS  C_CITY ,  c_state  AS  C_STATE ,  c_zip  AS  C_ZIP ,  c_phone  AS  C_PHONE ,  c_credit  AS  C_CREDIT ,  c_credit_lim  AS  C_CREDIT_LIM ,  c_discount  AS  C_DISCOUNT ,  c_balance  AS  C_BALANCE ,  c_ytd_payment  AS  C_YTD_PAYMENT ,  c_payment_cnt  AS  C_PAYMENT_CNT ,  c_since  AS  C_SINCE  FROM  customer  WHERE  c_w_id  = 1 AND  c_d_id  = 4 AND  c_id  = 897
+SELECT C_FIRST, C_MIDDLE, C_LAST, C_STREET_1, C_STREET_2,  C_CITY, C_STATE, C_ZIP, C_PHONE, C_CREDIT, C_CREDIT_LIM,  C_DISCOUNT, C_BALANCE, C_YTD_PAYMENT, C_PAYMENT_CNT, C_SINCE  FROM customer  WHERE C_W_ID = 1  AND C_D_ID = 10  AND C_ID = 2131
+SELECT  c_first  AS  C_FIRST ,  c_middle  AS  C_MIDDLE ,  c_last  AS  C_LAST ,  c_street_1  AS  C_STREET_1 ,  c_street_2  AS  C_STREET_2 ,  c_city  AS  C_CITY ,  c_state  AS  C_STATE ,  c_zip  AS  C_ZIP ,  c_phone  AS  C_PHONE ,  c_credit  AS  C_CREDIT ,  c_credit_lim  AS  C_CREDIT_LIM ,  c_discount  AS  C_DISCOUNT ,  c_balance  AS  C_BALANCE ,  c_ytd_payment  AS  C_YTD_PAYMENT ,  c_payment_cnt  AS  C_PAYMENT_CNT ,  c_since  AS  C_SINCE  FROM  customer  WHERE  c_w_id  = 1 AND  c_d_id  = 10 AND  c_id  = 2131
+SELECT O_ID, O_CARRIER_ID, O_ENTRY_D  FROM oorder  WHERE O_W_ID = 1  AND O_D_ID = 10  AND O_C_ID = 2131  ORDER BY O_ID DESC LIMIT 1
+SELECT  o_id  AS  O_ID ,  o_carrier_id  AS  O_CARRIER_ID ,  o_entry_d  AS  O_ENTRY_D  FROM  oorder  WHERE  o_w_id  = 1 AND  o_d_id  = 10 AND  o_c_id  = 2131 ORDER BY  o_id  DESC FETCH NEXT 1 ROWS ONLY
+SELECT OL_I_ID, OL_SUPPLY_W_ID, OL_QUANTITY, OL_AMOUNT, OL_DELIVERY_D  FROM order_line  WHERE OL_O_ID = 2174  AND OL_D_ID = 10  AND OL_W_ID = 1
+SELECT  ol_i_id  AS  OL_I_ID ,  ol_supply_w_id  AS  OL_SUPPLY_W_ID ,  ol_quantity  AS  OL_QUANTITY ,  ol_amount  AS  OL_AMOUNT ,  ol_delivery_d  AS  OL_DELIVERY_D  FROM  order_line  WHERE  ol_o_id  = 2174 AND  ol_d_id  = 10 AND  ol_w_id  = 1
+SELECT D_NEXT_O_ID  FROM district  WHERE D_W_ID = 1  AND D_ID = 9
+SELECT  d_next_o_id  AS  D_NEXT_O_ID  FROM  district  WHERE  d_w_id  = 1 AND  d_id  = 9
+SELECT COUNT(DISTINCT (S_I_ID)) AS STOCK_COUNT  FROM order_line, stock  WHERE OL_W_ID = 1  AND OL_D_ID = 9  AND OL_O_ID < 3003  AND OL_O_ID >= 2983  AND S_W_ID = 1  AND S_I_ID = OL_I_ID  AND S_QUANTITY < 18
+SELECT COUNT(DISTINCT  t2 . s_i_id ) AS  STOCK_COUNT  FROM (SELECT  ol_w_id ,  ol_d_id ,  ol_o_id ,  ol_i_id  FROM  order_line  WHERE  ol_w_id  = 1 AND  ol_d_id  = 9 AND ( ol_o_id  >= 2983 AND  ol_o_id  < 3003)) AS  t0  INNER JOIN (SELECT  s_w_id ,  s_i_id ,  s_quantity  FROM  stock  WHERE  s_w_id  = 1 AND  s_quantity  < 18) AS  t2  ON  t0 . ol_i_id  =  t2 . s_i_id 
+SELECT NO_O_ID FROM new_order  WHERE NO_D_ID = 1  AND NO_W_ID = 1  ORDER BY NO_O_ID ASC  LIMIT 1
+SELECT  no_o_id  AS  NO_O_ID  FROM  new_order  WHERE  no_d_id  = 1 AND  no_w_id  = 1 ORDER BY  no_o_id  FETCH NEXT 1 ROWS ONLY
+SELECT O_C_ID FROM oorder  WHERE O_ID = 2101  AND O_D_ID = 1  AND O_W_ID = 1
+SELECT  o_c_id  AS  O_C_ID  FROM  oorder  WHERE  o_id  = 2101 AND  o_d_id  = 1 AND  o_w_id  = 1
+SELECT SUM(OL_AMOUNT) AS OL_TOTAL  FROM order_line  WHERE OL_O_ID = 2101  AND OL_D_ID = 1  AND OL_W_ID = 1
+SELECT * FROM  order_line  WHERE  ol_o_id  = 2101 AND  ol_d_id  = 1 AND  ol_w_id  = 1
+SELECT C_FIRST, C_MIDDLE, C_ID, C_STREET_1, C_STREET_2, C_CITY,  C_STATE, C_ZIP, C_PHONE, C_CREDIT, C_CREDIT_LIM, C_DISCOUNT,  C_BALANCE, C_YTD_PAYMENT, C_PAYMENT_CNT, C_SINCE  FROM customer  WHERE C_W_ID = 1  AND C_D_ID = 6  AND C_LAST = 'ATIONANTIABLE'  ORDER BY C_FIRST
+SELECT  c_first  AS  C_FIRST ,  c_middle  AS  C_MIDDLE ,  c_id  AS  C_ID ,  c_street_1  AS  C_STREET_1 ,  c_street_2  AS  C_STREET_2 ,  c_city  AS  C_CITY ,  c_state  AS  C_STATE ,  c_zip  AS  C_ZIP ,  c_phone  AS  C_PHONE ,  c_credit  AS  C_CREDIT ,  c_credit_lim  AS  C_CREDIT_LIM ,  c_discount  AS  C_DISCOUNT ,  c_balance  AS  C_BALANCE ,  c_ytd_payment  AS  C_YTD_PAYMENT ,  c_payment_cnt  AS  C_PAYMENT_CNT ,  c_since  AS  C_SINCE  FROM  customer  WHERE  c_w_id  = 1 AND  c_d_id  = 6 AND  c_last  = 'ATIONANTIABLE' ORDER BY  c_first 

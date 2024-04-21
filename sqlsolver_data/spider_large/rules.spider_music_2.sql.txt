@@ -1,0 +1,200 @@
+SELECT count(*) FROM Band
+select count(*) from Band
+SELECT count(*) FROM Band
+select count(*) from Band
+SELECT DISTINCT label FROM Albums
+select distinct albums.label from Albums
+SELECT DISTINCT label FROM Albums
+select distinct albums.label from Albums
+SELECT * FROM Albums WHERE YEAR  =  2012
+select * from Albums where  albums.year = 2012
+SELECT * FROM Albums WHERE YEAR  =  2012
+select * from Albums where  albums.year = 2012
+SELECT DISTINCT T1.stageposition FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id WHERE Firstname  =  "Solveig"
+select distinct performance.stageposition from Performance join Band on Performance.Bandmate = Band.Id where  band.firstname = "Solveig"
+SELECT DISTINCT T1.stageposition FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id WHERE Firstname  =  "Solveig"
+select distinct performance.stageposition from Performance join Band on Performance.Bandmate = Band.Id where  band.firstname = "Solveig"
+SELECT count(*) FROM Songs
+select count(*) from Songs
+SELECT count(*) FROM Songs
+select count(*) from Songs
+SELECT T3.Title FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId WHERE T2.Lastname  =  "Heilo"
+select songs.title from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId where  band.lastname = "Heilo"
+SELECT T3.Title FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId WHERE T2.Lastname  =  "Heilo"
+select songs.title from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId where  band.lastname = "Heilo"
+SELECT count(*) FROM performance AS T1 JOIN band AS T2 ON T1.bandmate  =  T2.id JOIN songs AS T3 ON T3.songid  =  T1.songid WHERE T3.Title  =  "Flash"
+select count(*) from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId where  songs.title = "Flash"
+SELECT count(*) FROM performance AS T1 JOIN band AS T2 ON T1.bandmate  =  T2.id JOIN songs AS T3 ON T3.songid  =  T1.songid WHERE T3.Title  =  "Flash"
+select count(*) from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId where  songs.title = "Flash"
+SELECT T3.Title FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId WHERE T2.firstname  =  "Marianne"
+select songs.title from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId where  band.firstname = "Marianne"
+SELECT T3.Title FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId WHERE T2.firstname  =  "Marianne"
+select songs.title from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId where  band.firstname = "Marianne"
+SELECT T2.firstname ,  T2.lastname FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId WHERE T3.Title  =  "Badlands"
+select band.firstname , band.lastname from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId where  songs.title = "Badlands"
+SELECT T2.firstname ,  T2.lastname FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId WHERE T3.Title  =  "Badlands"
+select band.firstname , band.lastname from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId where  songs.title = "Badlands"
+SELECT T2.firstname ,  T2.lastname FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId WHERE T3.Title  =  "Badlands" AND T1.StagePosition  =  "back"
+select band.firstname , band.lastname from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId where  songs.title = "Badlands" and performance.stageposition = "back"
+SELECT T2.firstname ,  T2.lastname FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId WHERE T3.Title  =  "Badlands" AND T1.StagePosition  =  "back"
+select band.firstname , band.lastname from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId where  songs.title = "Badlands" and performance.stageposition = "back"
+SELECT count(DISTINCT label) FROM albums
+select count( distinct albums.label) from Albums
+SELECT count(DISTINCT label) FROM albums
+select count( distinct albums.label) from Albums
+SELECT label FROM albums GROUP BY label ORDER BY count(*) DESC LIMIT 1
+select albums.label from Albums  group by albums.label  order by count(*) desc limit 1
+SELECT label FROM albums GROUP BY label ORDER BY count(*) DESC LIMIT 1
+select albums.label from Albums  group by albums.label  order by count(*) desc limit 1
+SELECT T2.lastname FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId GROUP BY lastname ORDER BY count(*) DESC LIMIT 1
+select band.lastname from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId  group by band.lastname  order by count(*) desc limit 1
+SELECT T2.lastname FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId GROUP BY lastname ORDER BY count(*) DESC LIMIT 1
+select band.lastname from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId  group by band.lastname  order by count(*) desc limit 1
+SELECT T2.lastname FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id WHERE stageposition  =  "back" GROUP BY lastname ORDER BY count(*) DESC LIMIT 1
+select band.lastname from Performance join Band on Performance.Bandmate = Band.Id where  performance.stageposition = "back"  group by band.lastname  order by count(*) desc limit 1
+SELECT T2.lastname FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id WHERE stageposition  =  "back" GROUP BY lastname ORDER BY count(*) DESC LIMIT 1
+select band.lastname from Performance join Band on Performance.Bandmate = Band.Id where  performance.stageposition = "back"  group by band.lastname  order by count(*) desc limit 1
+SELECT title FROM songs WHERE title LIKE '% the %'
+select songs.title from Songs where  songs.title like "% the %"
+SELECT title FROM songs WHERE title LIKE '% the %'
+select songs.title from Songs where  songs.title like "% the %"
+SELECT DISTINCT instrument FROM Instruments
+select distinct instruments.instrument from Instruments
+SELECT DISTINCT instrument FROM Instruments
+select distinct instruments.instrument from Instruments
+SELECT T4.instrument FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId JOIN Instruments AS T4 ON T4.songid  =  T3.songid AND T4.bandmateid  =  T2.id WHERE T2.lastname  =  "Heilo" AND T3.title  =  "Le Pop"
+select instruments.instrument from Instruments join Songs on Instruments.SongId = Songs.SongId join Performance on Songs.SongId = Performance.SongId join Band on Performance.Bandmate = Band.Id where  band.lastname = "Heilo" and songs.title = "Le Pop"
+SELECT T4.instrument FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId JOIN Instruments AS T4 ON T4.songid  =  T3.songid AND T4.bandmateid  =  T2.id WHERE T2.lastname  =  "Heilo" AND T3.title  =  "Le Pop"
+select instruments.instrument from Instruments join Songs on Instruments.SongId = Songs.SongId join Performance on Songs.SongId = Performance.SongId join Band on Performance.Bandmate = Band.Id where  band.lastname = "Heilo" and songs.title = "Le Pop"
+SELECT instrument FROM instruments GROUP BY instrument ORDER BY count(*) DESC LIMIT 1
+select instruments.instrument from Instruments  group by instruments.instrument  order by count(*) desc limit 1
+SELECT instrument FROM instruments GROUP BY instrument ORDER BY count(*) DESC LIMIT 1
+select instruments.instrument from Instruments  group by instruments.instrument  order by count(*) desc limit 1
+SELECT count(*) FROM instruments WHERE instrument  =  "drums"
+select count(*) from Instruments join Songs on Instruments.SongId = Songs.SongId where  instruments.instrument = "drums"
+SELECT count(*) FROM instruments WHERE instrument  =  "drums"
+select count(*) from Instruments join Songs on Instruments.SongId = Songs.SongId where  instruments.instrument = "drums"
+SELECT instrument FROM instruments AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE title  =  "Le Pop"
+select instruments.instrument from Instruments join Songs on Instruments.SongId = Songs.SongId where  songs.title = "Le Pop"
+SELECT instrument FROM instruments AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE title  =  "Le Pop"
+select instruments.instrument from Instruments join Songs on Instruments.SongId = Songs.SongId where  songs.title = "Le Pop"
+SELECT count(DISTINCT instrument) FROM instruments AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE title  =  "Le Pop"
+select count( distinct instruments.instrument) from Instruments join Songs on Instruments.SongId = Songs.SongId where  songs.title = "Le Pop"
+SELECT count(DISTINCT instrument) FROM instruments AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE title  =  "Le Pop"
+select count( distinct instruments.instrument) from Instruments join Songs on Instruments.SongId = Songs.SongId where  songs.title = "Le Pop"
+SELECT count(DISTINCT instrument) FROM instruments AS T1 JOIN Band AS T2 ON T1.bandmateid  =  T2.id WHERE T2.lastname  =  "Heilo"
+select count( distinct instruments.instrument) from Instruments join Band on Instruments.BandmateId = Band.Id where  band.lastname = "Heilo"
+SELECT count(DISTINCT instrument) FROM instruments AS T1 JOIN Band AS T2 ON T1.bandmateid  =  T2.id WHERE T2.lastname  =  "Heilo"
+select count( distinct instruments.instrument) from Instruments join Band on Instruments.BandmateId = Band.Id where  band.lastname = "Heilo"
+SELECT instrument FROM instruments AS T1 JOIN Band AS T2 ON T1.bandmateid  =  T2.id WHERE T2.lastname  =  "Heilo"
+select instruments.instrument from Instruments join Band on Instruments.BandmateId = Band.Id where  band.lastname = "Heilo"
+SELECT instrument FROM instruments AS T1 JOIN Band AS T2 ON T1.bandmateid  =  T2.id WHERE T2.lastname  =  "Heilo"
+select instruments.instrument from Instruments join Band on Instruments.BandmateId = Band.Id where  band.lastname = "Heilo"
+SELECT title FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid GROUP BY T1.songid ORDER BY count(*) DESC LIMIT 1
+select songs.title from Vocals join Songs on Vocals.SongId = Songs.SongId  group by vocals.songid  order by count(*) desc limit 1
+SELECT title FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid GROUP BY T1.songid ORDER BY count(*) DESC LIMIT 1
+select songs.title from Vocals join Songs on Vocals.SongId = Songs.SongId  group by vocals.songid  order by count(*) desc limit 1
+SELECT TYPE FROM vocals GROUP BY TYPE ORDER BY count(*) DESC LIMIT 1
+select vocals.type from Vocals  group by vocals.type  order by count(*) desc limit 1
+SELECT TYPE FROM vocals GROUP BY TYPE ORDER BY count(*) DESC LIMIT 1
+select vocals.type from Vocals  group by vocals.type  order by count(*) desc limit 1
+SELECT TYPE FROM vocals AS T1 JOIN band AS T2 ON T1.bandmate  =  T2.id WHERE lastname  =  "Heilo" GROUP BY TYPE ORDER BY count(*) DESC LIMIT 1
+select vocals.type from Vocals join Band on Vocals.Bandmate = Band.Id where  band.lastname = "Heilo"  group by vocals.type  order by count(*) desc limit 1
+SELECT TYPE FROM vocals AS T1 JOIN band AS T2 ON T1.bandmate  =  T2.id WHERE lastname  =  "Heilo" GROUP BY TYPE ORDER BY count(*) DESC LIMIT 1
+select vocals.type from Vocals join Band on Vocals.Bandmate = Band.Id where  band.lastname = "Heilo"  group by vocals.type  order by count(*) desc limit 1
+SELECT TYPE FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE title  =  "Le Pop"
+select vocals.type from Vocals join Songs on Vocals.SongId = Songs.SongId where  songs.title = "Le Pop"
+SELECT TYPE FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE title  =  "Le Pop"
+select vocals.type from Vocals join Songs on Vocals.SongId = Songs.SongId where  songs.title = "Le Pop"
+SELECT count(*) FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE title  =  "Demon Kitty Rag"
+select count(*) from Vocals join Songs on Vocals.SongId = Songs.SongId where  songs.title = "Demon Kitty Rag"
+SELECT count(*) FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE title  =  "Demon Kitty Rag"
+select vocals.type from Vocals join Songs on Vocals.SongId = Songs.SongId where  songs.title = "Demon Kitty Rag"
+SELECT count(DISTINCT title) FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE TYPE  =  "lead"
+select count( distinct songs.title) from Vocals join Songs on Vocals.SongId = Songs.SongId where  vocals.type = "lead"
+SELECT count(DISTINCT title) FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE TYPE  =  "lead"
+select count( distinct songs.title) from Vocals join Songs on Vocals.SongId = Songs.SongId where  vocals.type = "lead"
+SELECT TYPE FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid JOIN band AS T3 ON T1.bandmate  =  T3.id WHERE T3.firstname  =  "Solveig" AND T2.title  =  "A Bar In Amsterdam"
+select vocals.type from Vocals join Band on Vocals.Bandmate = Band.Id join Songs on Vocals.SongId = Songs.SongId where  band.firstname = "Solveig" and songs.title = "A Bar In Amsterdam"
+SELECT TYPE FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid JOIN band AS T3 ON T1.bandmate  =  T3.id WHERE T3.firstname  =  "Solveig" AND T2.title  =  "A Bar In Amsterdam"
+select vocals.type from Vocals join Band on Vocals.Bandmate = Band.Id join Songs on Vocals.SongId = Songs.SongId where  band.firstname = "Solveig" and songs.title = "A Bar In Amsterdam"
+SELECT DISTINCT title FROM vocals AS t1 JOIN songs AS t2 ON t1.songid  =  t2.songid EXCEPT SELECT t2.title FROM vocals AS t1 JOIN songs AS t2 ON t1.songid  =  t2.songid WHERE TYPE  =  "lead"
+select distinct songs.title from Vocals join Songs on Vocals.SongId = Songs.SongId where  vocals.type != "lead"
+SELECT DISTINCT title FROM vocals AS t1 JOIN songs AS t2 ON t1.songid  =  t2.songid EXCEPT SELECT t2.title FROM vocals AS t1 JOIN songs AS t2 ON t1.songid  =  t2.songid WHERE TYPE  =  "lead"
+select distinct songs.title from Vocals join Songs on Vocals.SongId = Songs.SongId where  vocals.type != "lead"
+SELECT DISTINCT TYPE FROM vocals
+select distinct vocals.type from Vocals
+SELECT DISTINCT TYPE FROM vocals
+select distinct vocals.type from Vocals
+SELECT * FROM Albums WHERE YEAR  =  2010
+select * from Albums where  albums.year = 2010
+SELECT * FROM Albums WHERE YEAR  =  2010
+select * from Albums where  albums.year = 2010
+SELECT T2.firstname ,  T2.lastname FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId WHERE T3.Title  =  "Le Pop"
+select band.firstname , band.lastname from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId where  songs.title = "Le Pop"
+SELECT T2.firstname ,  T2.lastname FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId WHERE T3.Title  =  "Le Pop"
+select band.firstname , band.lastname from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId where  songs.title = "Le Pop"
+SELECT T2.lastname FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId GROUP BY lastname ORDER BY count(*) DESC LIMIT 1
+select band.lastname from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId  group by band.lastname  order by count(*) desc limit 1
+SELECT T2.lastname FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId GROUP BY lastname ORDER BY count(*) DESC LIMIT 1
+select band.lastname from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId  group by band.lastname  order by count(*) desc limit 1
+SELECT T4.instrument FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId JOIN Instruments AS T4 ON T4.songid  =  T3.songid AND T4.bandmateid  =  T2.id WHERE T2.lastname  =  "Heilo" AND T3.title  =  "Badlands"
+select instruments.instrument from Instruments join Songs on Instruments.SongId = Songs.SongId join Performance on Songs.SongId = Performance.SongId join Band on Performance.Bandmate = Band.Id where  band.lastname = "Heilo" and songs.title = "Badlands"
+SELECT T4.instrument FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId JOIN Instruments AS T4 ON T4.songid  =  T3.songid AND T4.bandmateid  =  T2.id WHERE T2.lastname  =  "Heilo" AND T3.title  =  "Badlands"
+select instruments.instrument from Instruments join Songs on Instruments.SongId = Songs.SongId join Performance on Songs.SongId = Performance.SongId join Band on Performance.Bandmate = Band.Id where  band.lastname = "Heilo" and songs.title = "Badlands"
+SELECT count(DISTINCT instrument) FROM instruments AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE title  =  "Badlands"
+select count( distinct instruments.instrument) from Instruments join Songs on Instruments.SongId = Songs.SongId where  songs.title = "Badlands"
+SELECT count(DISTINCT instrument) FROM instruments AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE title  =  "Badlands"
+select count( distinct instruments.instrument) from Instruments join Songs on Instruments.SongId = Songs.SongId where  songs.title = "Badlands"
+SELECT TYPE FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE title  =  "Badlands"
+select vocals.type from Vocals join Songs on Vocals.SongId = Songs.SongId where  songs.title = "Badlands"
+SELECT TYPE FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE title  =  "Badlands"
+select vocals.type from Vocals join Songs on Vocals.SongId = Songs.SongId where  songs.title = "Badlands"
+SELECT count(*) FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE title  =  "Le Pop"
+select count(*) from Vocals join Songs on Vocals.SongId = Songs.SongId where  songs.title = "Le Pop"
+SELECT count(*) FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE title  =  "Le Pop"
+select count(*) from Vocals join Songs on Vocals.SongId = Songs.SongId where  songs.title = "Le Pop"
+SELECT count(DISTINCT title) FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE TYPE  =  "shared"
+select count( distinct songs.title) from Vocals join Songs on Vocals.SongId = Songs.SongId where  vocals.type = "shared"
+SELECT count(DISTINCT title) FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid WHERE TYPE  =  "shared"
+select count( distinct songs.title) from Vocals join Songs on Vocals.SongId = Songs.SongId where  vocals.type = "shared"
+SELECT DISTINCT title FROM vocals AS t1 JOIN songs AS t2 ON t1.songid  =  t2.songid EXCEPT SELECT t2.title FROM vocals AS t1 JOIN songs AS t2 ON t1.songid  =  t2.songid WHERE TYPE  =  "back"
+select distinct songs.title from Vocals join Songs on Vocals.SongId = Songs.SongId where  vocals.type != "back"
+SELECT DISTINCT title FROM vocals AS t1 JOIN songs AS t2 ON t1.songid  =  t2.songid EXCEPT SELECT t2.title FROM vocals AS t1 JOIN songs AS t2 ON t1.songid  =  t2.songid WHERE TYPE  =  "back"
+select distinct songs.title from Vocals join Songs on Vocals.SongId = Songs.SongId where  vocals.type != "back"
+SELECT TYPE FROM vocals AS T1 JOIN band AS T2 ON T1.bandmate  =  T2.id WHERE firstname  =  "Solveig" GROUP BY TYPE ORDER BY count(*) DESC LIMIT 1
+select vocals.type from Vocals join Band on Vocals.Bandmate = Band.Id where  band.firstname = "Solveig"  group by vocals.type  order by count(*) desc limit 1
+SELECT TYPE FROM vocals AS T1 JOIN band AS T2 ON T1.bandmate  =  T2.id WHERE firstname  =  "Solveig" GROUP BY TYPE ORDER BY count(*) DESC LIMIT 1
+select vocals.type from Vocals join Band on Vocals.Bandmate = Band.Id where  band.firstname = "Solveig"  group by vocals.type  order by count(*) desc limit 1
+SELECT TYPE FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid JOIN band AS T3 ON T1.bandmate  =  T3.id WHERE T3.lastname  =  "Heilo" AND T2.title  =  "Der Kapitan"
+select vocals.type from Vocals join Band on Vocals.Bandmate = Band.Id join Songs on Vocals.SongId = Songs.SongId where  band.lastname = "Heilo" and songs.title = "Der Kapitan"
+SELECT TYPE FROM vocals AS T1 JOIN songs AS T2 ON T1.songid  =  T2.songid JOIN band AS T3 ON T1.bandmate  =  T3.id WHERE T3.lastname  =  "Heilo" AND T2.title  =  "Der Kapitan"
+select vocals.type from Vocals join Band on Vocals.Bandmate = Band.Id join Songs on Vocals.SongId = Songs.SongId where  band.lastname = "Heilo" and songs.title = "Der Kapitan"
+SELECT t2.firstname FROM Performance AS t1 JOIN Band AS t2 ON t1.bandmate  =  t2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId GROUP BY firstname ORDER BY count(*) DESC LIMIT 1
+select band.firstname from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId  group by band.firstname  order by count(*) desc limit 1
+SELECT t2.firstname FROM Performance AS t1 JOIN Band AS t2 ON t1.bandmate  =  t2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId GROUP BY firstname ORDER BY count(*) DESC LIMIT 1
+select band.firstname from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId  group by band.firstname  order by count(*) desc limit 1
+SELECT TYPE FROM vocals AS T1 JOIN band AS T2 ON T1.bandmate  =  T2.id WHERE firstname  =  "Marianne" GROUP BY TYPE ORDER BY count(*) DESC LIMIT 1
+select vocals.type from Vocals join Band on Vocals.Bandmate = Band.Id where  band.firstname = "Marianne"  group by vocals.type  order by count(*) desc limit 1
+SELECT TYPE FROM vocals AS T1 JOIN band AS T2 ON T1.bandmate  =  T2.id WHERE firstname  =  "Marianne" GROUP BY TYPE ORDER BY count(*) DESC LIMIT 1
+select vocals.type from Vocals join Band on Vocals.Bandmate = Band.Id where  band.firstname = "Marianne"  group by vocals.type  order by count(*) desc limit 1
+SELECT T2.firstname ,  T2.lastname FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId WHERE T3.Title  =  "Der Kapitan" AND T1.StagePosition  =  "back"
+select band.firstname , band.lastname from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId where  songs.title = "Der Kapitan" and performance.stageposition = "back"
+SELECT T2.firstname ,  T2.lastname FROM Performance AS T1 JOIN Band AS T2 ON T1.bandmate  =  T2.id JOIN Songs AS T3 ON T3.SongId  =  T1.SongId WHERE T3.Title  =  "Der Kapitan" AND T1.StagePosition  =  "back"
+select band.firstname , band.lastname from Performance join Band on Performance.Bandmate = Band.Id join Songs on Performance.SongId = Songs.SongId where  songs.title = "Der Kapitan" and performance.stageposition = "back"
+SELECT DISTINCT title FROM vocals AS t1 JOIN songs AS t2 ON t1.songid  =  t2.songid EXCEPT SELECT t2.title FROM vocals AS t1 JOIN songs AS t2 ON t1.songid  =  t2.songid WHERE TYPE  =  "back"
+select distinct songs.title from Vocals join Songs on Vocals.SongId = Songs.SongId where  vocals.type != "back"
+SELECT DISTINCT title FROM vocals AS t1 JOIN songs AS t2 ON t1.songid  =  t2.songid EXCEPT SELECT t2.title FROM vocals AS t1 JOIN songs AS t2 ON t1.songid  =  t2.songid WHERE TYPE  =  "back"
+select distinct songs.title from Vocals join Songs on Vocals.SongId = Songs.SongId where  vocals.type != "back"
+SELECT T3.title FROM albums AS T1 JOIN tracklists AS T2 ON T1.aid  =  T2.albumid JOIN songs AS T3 ON T2.songid  =  T3.songid WHERE T1.title  =  "A Kiss Before You Go: Live in Hamburg"
+select songs.title from Tracklists join Albums on Tracklists.AlbumId = Albums.AId join Songs on Tracklists.SongId = Songs.SongId where  albums.title = "A Kiss Before You Go: Live in Hamburg"
+SELECT T3.title FROM albums AS T1 JOIN tracklists AS T2 ON T1.aid  =  T2.albumid JOIN songs AS T3 ON T2.songid  =  T3.songid WHERE T1.title  =  "A Kiss Before You Go: Live in Hamburg"
+select songs.title from Tracklists join Albums on Tracklists.AlbumId = Albums.AId join Songs on Tracklists.SongId = Songs.SongId where  albums.title = "A Kiss Before You Go: Live in Hamburg"
+SELECT T3.title FROM albums AS T1 JOIN tracklists AS T2 ON T1.aid  =  T2.albumid JOIN songs AS T3 ON T2.songid  =  T3.songid WHERE t1.label  =  "Universal Music Group"
+select songs.title from Tracklists join Albums on Tracklists.AlbumId = Albums.AId join Songs on Tracklists.SongId = Songs.SongId where  albums.label = "Universal Music Group"
+SELECT T3.title FROM albums AS T1 JOIN tracklists AS T2 ON T1.aid  =  T2.albumid JOIN songs AS T3 ON T2.songid  =  T3.songid WHERE t1.label  =  "Universal Music Group"
+select songs.title from Tracklists join Albums on Tracklists.AlbumId = Albums.AId join Songs on Tracklists.SongId = Songs.SongId where  albums.label = "Universal Music Group"
+SELECT count(DISTINCT T3.title) FROM albums AS T1 JOIN tracklists AS T2 ON T1.aid  =  T2.albumid JOIN songs AS T3 ON T2.songid  =  T3.songid WHERE t1.type  =  "Studio"
+select count( distinct songs.title) from Tracklists join Albums on Tracklists.AlbumId = Albums.AId join Songs on Tracklists.SongId = Songs.SongId where  albums.type = "Studio"
+SELECT count(DISTINCT T3.title) FROM albums AS T1 JOIN tracklists AS T2 ON T1.aid  =  T2.albumid JOIN songs AS T3 ON T2.songid  =  T3.songid WHERE t1.type  =  "Studio"
+select count( distinct songs.title) from Tracklists join Albums on Tracklists.AlbumId = Albums.AId join Songs on Tracklists.SongId = Songs.SongId where  albums.type = "Studio"

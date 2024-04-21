@@ -1,0 +1,18 @@
+1. migrate from GDrive
+2. remove lobsters-88 which access a VIEW
+3. remove Chinese character in sql
+4. correct invalid statements
+5. add schema patch
+6. modify malformed stmtImpl
+7. add alt statements
+8. remove invalid and duplicated
+9. add output congruentClass
+10. add struct congruentClass
+11. update numbers
+12. add column sqlsolver_stmt.stmt_trace
+13. update schema patches
+14. update schema patches
+15. update statements, add DISTINCT
+16. update statements, add DISTINCT
+17. update schema patches, add NOT NULL
+18. update statements, add DISTINCT

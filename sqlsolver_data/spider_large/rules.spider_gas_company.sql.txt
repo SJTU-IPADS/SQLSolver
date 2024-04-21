@@ -1,0 +1,92 @@
+SELECT count(*) FROM company
+select count(*) from company
+SELECT count(*) FROM company
+select count(*) from company
+SELECT company ,  rank FROM company ORDER BY Sales_billion DESC
+select company.company , company.rank from company   order by company.sales_billion desc
+SELECT company ,  rank FROM company ORDER BY Sales_billion DESC
+select company.company , company.rank from company   order by company.sales_billion desc
+SELECT company ,  main_industry FROM company WHERE headquarters != 'USA'
+select company.company , company.main_industry from company where  company.headquarters != "USA"
+SELECT company ,  main_industry FROM company WHERE headquarters != 'USA'
+select company.company , company.main_industry from company where  company.headquarters != "USA"
+SELECT company ,  headquarters FROM company ORDER BY market_value DESC
+select company.company , company.headquarters from company   order by company.market_value desc
+SELECT company ,  headquarters FROM company ORDER BY market_value DESC
+select company.company , company.headquarters from company   order by company.market_value desc
+SELECT min(market_value) ,  max(market_value) ,  avg(market_value) FROM company
+select min(company.market_value) , max(company.market_value) , avg(company.market_value) from company
+SELECT min(market_value) ,  max(market_value) ,  avg(market_value) FROM company
+select min(company.market_value) , max(company.market_value) , avg(company.market_value) from company
+SELECT DISTINCT main_industry FROM company
+select distinct company.main_industry from company
+SELECT DISTINCT main_industry FROM company
+select distinct company.main_industry from company
+SELECT headquarters ,  count(*) FROM company GROUP BY headquarters
+select company.headquarters , count(*) from company  group by company.headquarters
+SELECT headquarters ,  count(*) FROM company GROUP BY headquarters
+select company.headquarters , count(*) from company  group by company.headquarters
+SELECT main_industry ,  sum(market_value) FROM company GROUP BY main_industry
+select company.main_industry , sum(company.market_value) from company  group by company.main_industry
+SELECT main_industry ,  sum(market_value) FROM company GROUP BY main_industry
+select company.main_industry , sum(company.market_value) from company  group by company.main_industry
+SELECT main_industry ,  count(*) FROM company GROUP BY main_industry ORDER BY sum(market_value) DESC LIMIT 1
+select company.main_industry , count(*) from company  group by company.main_industry  order by sum(company.market_value) desc limit 1
+SELECT main_industry ,  count(*) FROM company GROUP BY main_industry ORDER BY sum(market_value) DESC LIMIT 1
+select company.main_industry , count(*) from company  group by company.main_industry  order by sum(company.market_value) desc limit 1
+SELECT headquarters FROM company WHERE main_industry  =  'Banking' GROUP BY headquarters HAVING count(*)  >=  2
+select company.headquarters from company where  company.main_industry = "Banking"  group by company.headquarters having  count(*) >= 2
+SELECT headquarters FROM company WHERE main_industry  =  'Banking' GROUP BY headquarters HAVING count(*)  >=  2
+select company.headquarters from company where  company.main_industry = "Banking"  group by company.headquarters having  count(*) >= 2
+SELECT station_id ,  LOCATION ,  manager_name FROM gas_station ORDER BY open_year
+select gas_station.station_id , gas_station.location , gas_station.manager_name from gas_station   order by gas_station.open_year asc
+SELECT station_id ,  LOCATION ,  manager_name FROM gas_station ORDER BY open_year
+select gas_station.station_id , gas_station.location , gas_station.manager_name from gas_station   order by gas_station.open_year asc
+SELECT count(*) FROM gas_station WHERE open_year BETWEEN 2000 AND 2005
+select count(*) from gas_station where  gas_station.open_year between 2000 and 2005
+SELECT count(*) FROM gas_station WHERE open_year BETWEEN 2000 AND 2005
+select count(*) from gas_station where  gas_station.open_year between 2000 and 2005
+SELECT LOCATION ,  count(*) FROM gas_station GROUP BY LOCATION ORDER BY count(*)
+select gas_station.location , count(*) from gas_station  group by gas_station.location  order by count(*) asc
+SELECT LOCATION ,  count(*) FROM gas_station GROUP BY LOCATION ORDER BY count(*)
+select gas_station.location , count(*) from gas_station  group by gas_station.location  order by count(*) asc
+SELECT headquarters FROM company WHERE main_industry  =  'Banking' INTERSECT SELECT headquarters FROM company WHERE main_industry  =  'Oil and gas'
+select company.headquarters from company where  company.main_industry = "Banking"   intersect select company.headquarters from company where  company.main_industry = "Oil and gas"
+SELECT headquarters FROM company WHERE main_industry  =  'Banking' INTERSECT SELECT headquarters FROM company WHERE main_industry  =  'Oil and gas'
+select company.headquarters from company where  company.main_industry = "Banking"   intersect select company.headquarters from company where  company.main_industry = "Oil and gas"
+SELECT headquarters FROM company EXCEPT SELECT headquarters FROM company WHERE main_industry  =  'Banking'
+select company.headquarters from company   except select company.headquarters from company where  company.main_industry = "Banking"
+SELECT headquarters FROM company EXCEPT SELECT headquarters FROM company WHERE main_industry  =  'Banking'
+select company.headquarters from company   except select company.headquarters from company where  company.main_industry = "Banking"
+SELECT T2.company ,  count(*) FROM station_company AS T1 JOIN company AS T2 ON T1.company_id  =  T2.company_id GROUP BY T1.company_id
+select company.company , count(*) from station_company join company on station_company.Company_ID = company.Company_ID  group by station_company.company_id
+SELECT T2.company ,  count(*) FROM station_company AS T1 JOIN company AS T2 ON T1.company_id  =  T2.company_id GROUP BY T1.company_id
+select company.company , count(*) from station_company join company on station_company.Company_ID = company.Company_ID  group by station_company.company_id
+SELECT company ,  main_industry FROM company WHERE company_id NOT IN (SELECT company_id FROM station_company)
+select company.company , company.main_industry from company where  company.company_id not in (select station_company.Company_ID from station_company  )
+SELECT company ,  main_industry FROM company WHERE company_id NOT IN (SELECT company_id FROM station_company)
+select company.main_industry , company.company from company where  company.company_id not in (select station_company.Company_ID from station_company  )
+SELECT T3.manager_name FROM station_company AS T1 JOIN company AS T2 ON T1.company_id  =  T2.company_id JOIN gas_station AS T3 ON T1.station_id  =  T3.station_id WHERE T2.company  =  'ExxonMobil'
+select gas_station.manager_name from station_company join company on station_company.Company_ID = company.Company_ID join gas_station on station_company.Station_ID = gas_station.Station_ID where  company.company = "ExxonMobil"
+SELECT T3.manager_name FROM station_company AS T1 JOIN company AS T2 ON T1.company_id  =  T2.company_id JOIN gas_station AS T3 ON T1.station_id  =  T3.station_id WHERE T2.company  =  'ExxonMobil'
+select gas_station.manager_name from station_company join company on station_company.Company_ID = company.Company_ID join gas_station on station_company.Station_ID = gas_station.Station_ID where  company.company = "ExxonMobil"
+SELECT T3.location FROM station_company AS T1 JOIN company AS T2 ON T1.company_id  =  T2.company_id JOIN gas_station AS T3 ON T1.station_id  =  T3.station_id WHERE T2.market_value  >  100
+select gas_station.location from station_company join company on station_company.Company_ID = company.Company_ID join gas_station on station_company.Station_ID = gas_station.Station_ID where  company.market_value > 100
+SELECT T3.location FROM station_company AS T1 JOIN company AS T2 ON T1.company_id  =  T2.company_id JOIN gas_station AS T3 ON T1.station_id  =  T3.station_id WHERE T2.market_value  >  100
+select gas_station.location from station_company join company on station_company.Company_ID = company.Company_ID join gas_station on station_company.Station_ID = gas_station.Station_ID where  company.market_value > 100
+SELECT manager_name FROM gas_station WHERE open_year  >  2000 GROUP BY manager_name ORDER BY count(*) DESC LIMIT 1
+select gas_station.manager_name from gas_station where  gas_station.open_year > 2000  group by gas_station.manager_name  order by count(*) desc limit 1
+SELECT manager_name FROM gas_station WHERE open_year  >  2000 GROUP BY manager_name ORDER BY count(*) DESC LIMIT 1
+select gas_station.manager_name from gas_station where  gas_station.open_year > 2000  group by gas_station.manager_name  order by count(*) desc limit 1
+SELECT LOCATION FROM gas_station ORDER BY open_year
+select gas_station.location from gas_station   order by gas_station.open_year asc
+SELECT LOCATION FROM gas_station ORDER BY open_year
+select gas_station.location from gas_station   order by gas_station.open_year asc
+SELECT rank ,  company ,  market_value FROM company WHERE main_industry  =  'Banking' ORDER BY sales_billion ,  profits_billion
+select company.rank , company.rank , company.market_value from company where  company.main_industry = "Banking"   order by company.sales_billion,company.profits_billion asc
+SELECT rank ,  company ,  market_value FROM company WHERE main_industry  =  'Banking' ORDER BY sales_billion ,  profits_billion
+select company.rank , company.company , company.market_value from company where  company.main_industry = "Banking"   order by company.sales_billion,company.market_value asc
+SELECT T3.location ,  T3.Representative_Name FROM station_company AS T1 JOIN company AS T2 ON T1.company_id  =  T2.company_id JOIN gas_station AS T3 ON T1.station_id  =  T3.station_id ORDER BY T2.Assets_billion DESC LIMIT 3
+select gas_station.location , gas_station.representative_name from station_company join company on station_company.Company_ID = company.Company_ID join gas_station on station_company.Station_ID = gas_station.Station_ID   order by company.assets_billion desc limit 3
+SELECT T3.location ,  T3.Representative_Name FROM station_company AS T1 JOIN company AS T2 ON T1.company_id  =  T2.company_id JOIN gas_station AS T3 ON T1.station_id  =  T3.station_id ORDER BY T2.Assets_billion DESC LIMIT 3
+select gas_station.location , gas_station.representative_name from station_company join company on station_company.Company_ID = company.Company_ID join gas_station on station_company.Station_ID = gas_station.Station_ID   order by company.assets_billion desc limit 3

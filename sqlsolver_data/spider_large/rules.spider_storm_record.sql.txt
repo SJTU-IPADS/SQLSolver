@@ -1,0 +1,88 @@
+SELECT count(*) FROM region
+select count(*) from region
+SELECT count(*) FROM region
+select count(*) from region
+SELECT region_code ,  region_name FROM region ORDER BY region_code
+select region.region_code , region.region_name from region   order by region.region_code asc
+SELECT region_code ,  region_name FROM region ORDER BY region_code
+select region.region_code , region.region_name from region   order by region.region_code asc
+SELECT region_name FROM region ORDER BY region_name
+select region.region_name from region   order by region.region_name asc
+SELECT region_name FROM region ORDER BY region_name
+select region.region_name from region   order by region.region_name asc
+SELECT region_name FROM region WHERE region_name != 'Denmark'
+select region.region_name from region where  region.region_name != "Denmark"
+SELECT region_name FROM region WHERE region_name != 'Denmark'
+select region.region_name from region where  region.region_name != "Denmark"
+SELECT count(*) FROM storm WHERE Number_Deaths  >  0
+select count(*) from storm where  storm.number_deaths > 0
+SELECT count(*) FROM storm WHERE Number_Deaths  >  0
+select count(*) from storm where  storm.number_deaths > 0
+SELECT name ,  dates_active ,  number_deaths FROM storm WHERE number_deaths  >=  1
+select storm.name , storm.dates_active , storm.number_deaths from storm where  storm.number_deaths >= 1
+SELECT name ,  dates_active ,  number_deaths FROM storm WHERE number_deaths  >=  1
+select storm.name , storm.dates_active , storm.number_deaths from storm where  storm.number_deaths >= 1
+SELECT avg(damage_millions_USD) ,  max(damage_millions_USD) FROM storm WHERE max_speed  >  1000
+select avg(storm.damage_millions_usd) , max(storm.damage_millions_usd) from storm where  storm.max_speed > 1000
+SELECT avg(damage_millions_USD) ,  max(damage_millions_USD) FROM storm WHERE max_speed  >  1000
+select avg(storm.damage_millions_usd) , max(storm.damage_millions_usd) from storm where  storm.max_speed > 1000
+SELECT sum(number_deaths) ,  sum(damage_millions_USD) FROM storm WHERE max_speed  >  (SELECT avg(max_speed) FROM storm)
+select sum(storm.number_deaths) , sum(storm.damage_millions_usd) from storm where  storm.max_speed > (select avg(storm.max_speed) from storm  )
+SELECT sum(number_deaths) ,  sum(damage_millions_USD) FROM storm WHERE max_speed  >  (SELECT avg(max_speed) FROM storm)
+select sum(storm.number_deaths) , sum(storm.damage_millions_usd) from storm where  storm.max_speed > (select avg(storm.max_speed) from storm  )
+SELECT name ,  damage_millions_USD FROM storm ORDER BY max_speed DESC
+select storm.name , storm.damage_millions_usd from storm   order by storm.max_speed desc
+SELECT name ,  damage_millions_USD FROM storm ORDER BY max_speed DESC
+select storm.name , storm.damage_millions_usd from storm   order by storm.max_speed desc
+SELECT count(DISTINCT region_id) FROM affected_region
+select count( distinct affected_region.region_id) from affected_region
+SELECT count(DISTINCT region_id) FROM affected_region
+select count( distinct affected_region.region_id) from affected_region
+SELECT region_name FROM region WHERE region_id NOT IN (SELECT region_id FROM affected_region)
+select region.region_name from region where  region.region_id not in (select affected_region.Region_id from affected_region  )
+SELECT region_name FROM region WHERE region_id NOT IN (SELECT region_id FROM affected_region)
+select region.region_name from region where  region.region_id not in (select affected_region.Region_id from affected_region  )
+SELECT T1.region_name ,  count(*) FROM region AS T1 JOIN affected_region AS T2 ON T1.region_id = T2.region_id GROUP BY T1.region_id
+select region.region_name , count(*) from affected_region join region on affected_region.Region_id = region.Region_id  group by region.region_id
+SELECT T1.region_name ,  count(*) FROM region AS T1 JOIN affected_region AS T2 ON T1.region_id = T2.region_id GROUP BY T1.region_id
+select region.region_name , count(*) from affected_region join region on affected_region.Region_id = region.Region_id  group by region.region_id
+SELECT T1.name ,  count(*) FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id
+select storm.name , count(*) from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID  group by storm.storm_id
+SELECT T1.name ,  count(*) FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id
+select storm.name , count(*) from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID  group by storm.name
+SELECT T1.name ,  T1.max_speed FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id ORDER BY count(*) DESC LIMIT 1
+select storm.name , storm.max_speed from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID  group by storm.storm_id  order by count(*) desc limit 1
+SELECT T1.name ,  T1.max_speed FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id ORDER BY count(*) DESC LIMIT 1
+select storm.name , storm.max_speed from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID  group by storm.storm_id  order by count(*) desc limit 1
+SELECT name FROM storm WHERE storm_id NOT IN (SELECT storm_id FROM affected_region)
+select storm.name from storm where  storm.storm_id not in (select affected_region.Storm_ID from affected_region  )
+SELECT name FROM storm WHERE storm_id NOT IN (SELECT storm_id FROM affected_region)
+select storm.name from storm where  storm.storm_id not in (select affected_region.Storm_ID from affected_region  )
+SELECT T1.name FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id HAVING count(*)  >=  2 INTERSECT SELECT T1.name FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id HAVING sum(T2.number_city_affected)  >=  10
+select storm.name from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID  group by storm.name having  count(*) >= 2  intersect select storm.name from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID  group by storm.name having  sum(affected_region.number_city_affected) >= 10
+SELECT T1.name FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id HAVING count(*)  >=  2 INTERSECT SELECT T1.name FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id HAVING sum(T2.number_city_affected)  >=  10
+select storm.name from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID  group by storm.name having  count(*) >= 2  intersect select storm.name from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID  group by storm.name having  sum(affected_region.number_city_affected) >= 10
+SELECT name FROM storm EXCEPT SELECT T1.name FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id HAVING count(*)  >=  2
+select storm.name from storm   except select storm.name from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID  group by affected_region.storm_id having  count(*) >= 2
+SELECT name FROM storm EXCEPT SELECT T1.name FROM storm AS T1 JOIN affected_region AS T2 ON T1.storm_id  =  T2.storm_id GROUP BY T1.storm_id HAVING count(*)  >=  2
+select storm.name from storm   except select storm.name from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID  group by affected_region.storm_id having  count(*) >= 2
+SELECT T2.region_name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id WHERE T3.number_deaths  >=  10
+select region.region_name from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID join region on affected_region.Region_id = region.Region_id where  storm.number_deaths >= 10
+SELECT T2.region_name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id WHERE T3.number_deaths  >=  10
+select region.region_name from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID join region on affected_region.Region_id = region.Region_id where  storm.number_deaths >= 10
+SELECT T3.name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id WHERE T2.region_name  =  'Denmark'
+select storm.name from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID join region on affected_region.Region_id = region.Region_id where  region.region_name = "Denmark"
+SELECT T3.name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id WHERE T2.region_name  =  'Denmark'
+select storm.name from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID join region on affected_region.Region_id = region.Region_id where  region.region_name = "Denmark"
+SELECT T1.region_name FROM region AS T1 JOIN affected_region AS T2 ON T1.region_id = T2.region_id GROUP BY T1.region_id HAVING count(*)  >=  2
+select region.region_name from affected_region join region on affected_region.Region_id = region.Region_id  group by region.region_id having  count(*) >= 2
+SELECT T1.region_name FROM region AS T1 JOIN affected_region AS T2 ON T1.region_id = T2.region_id GROUP BY T1.region_id HAVING count(*)  >=  2
+select region.region_name from affected_region join region on affected_region.Region_id = region.Region_id  group by region.region_id having  count(*) >= 2
+SELECT T2.region_name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id ORDER BY T3.Number_Deaths DESC LIMIT 1
+select region.region_name from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID join region on affected_region.Region_id = region.Region_id   order by storm.number_deaths desc limit 1
+SELECT T2.region_name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id ORDER BY T3.Number_Deaths DESC LIMIT 1
+select region.region_name from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID join region on affected_region.Region_id = region.Region_id   order by storm.number_deaths desc limit 1
+SELECT T3.Name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id WHERE T2.Region_name  =  'Afghanistan' INTERSECT SELECT T3.Name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id WHERE T2.Region_name  =  'Albania'
+select storm.name from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID join region on affected_region.Region_id = region.Region_id where  region.region_name = "Afghanistan"   intersect select storm.name from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID join region on affected_region.Region_id = region.Region_id where  region.region_name = "Albania"
+SELECT T3.Name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id WHERE T2.Region_name  =  'Afghanistan' INTERSECT SELECT T3.Name FROM affected_region AS T1 JOIN region AS T2 ON T1.region_id  =  T2.region_id JOIN storm AS T3 ON T1.storm_id  =  T3.storm_id WHERE T2.Region_name  =  'Albania'
+select storm.name from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID join region on affected_region.Region_id = region.Region_id where  region.region_name = "Afghanistan"   intersect select storm.name from affected_region join storm on affected_region.Storm_ID = storm.Storm_ID join region on affected_region.Region_id = region.Region_id where  region.region_name = "Albania"

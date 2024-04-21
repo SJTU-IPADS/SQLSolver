@@ -1,0 +1,32 @@
+SELECT count(*) FROM company WHERE Headquarters  =  'USA'
+select count(*) from company where  company.headquarters = "USA"
+SELECT Name FROM company ORDER BY Sales_in_Billion ASC
+select company.name from company   order by company.sales_in_billion asc
+SELECT Headquarters ,  Industry FROM company
+select company.headquarters , company.industry from company
+SELECT Name FROM company WHERE Industry  =  "Banking" OR Industry  =  "Retailing"
+select company.name from company where  company.industry = "Banking" or company.industry = "Retailing"
+SELECT max(Market_Value_in_Billion) ,  min(Market_Value_in_Billion) FROM company
+select max(company.market_value_in_billion) , min(company.market_value_in_billion) from company
+SELECT Headquarters FROM company ORDER BY Sales_in_Billion DESC LIMIT 1
+select company.headquarters from company   order by company.sales_in_billion desc limit 1
+SELECT Headquarters ,  COUNT(*) FROM company GROUP BY Headquarters
+select company.headquarters , count(*) from company  group by company.headquarters
+SELECT Headquarters FROM company GROUP BY Headquarters ORDER BY COUNT(*) DESC LIMIT 1
+select company.headquarters from company  group by company.headquarters  order by count(*) desc limit 1
+SELECT Headquarters FROM company GROUP BY Headquarters HAVING COUNT(*)  >=  2
+select company.headquarters from company  group by company.headquarters having  count(*) >= 2
+SELECT Headquarters FROM company WHERE Industry  =  "Banking" INTERSECT SELECT Headquarters FROM company WHERE Industry  =  "Oil and gas"
+select company.headquarters from company where  company.industry = "Banking"   intersect select company.headquarters from company where  company.industry = "Oil and gas"
+SELECT T3.Name ,  T2.Name FROM employment AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID JOIN company AS T3 ON T1.Company_ID  =  T3.Company_ID
+select company.name , people.name from employment join people on employment.People_ID = people.People_ID join company on employment.Company_ID = company.Company_ID
+SELECT T3.Name ,  T2.Name FROM employment AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID JOIN company AS T3 ON T1.Company_ID  =  T3.Company_ID ORDER BY T1.Year_working
+select company.name , people.name from employment join people on employment.People_ID = people.People_ID join company on employment.Company_ID = company.Company_ID   order by employment.year_working desc
+SELECT T2.Name FROM employment AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID JOIN company AS T3 ON T1.Company_ID  =  T3.Company_ID WHERE T3.Sales_in_Billion  >  200
+select people.name from employment join people on employment.People_ID = people.People_ID join company on employment.Company_ID = company.Company_ID where  company.sales_in_billion > 200
+SELECT T3.Name ,  COUNT(*) FROM employment AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID JOIN company AS T3 ON T1.Company_ID  =  T3.Company_ID GROUP BY T3.Name
+select company.name , count(*) from employment join people on employment.People_ID = people.People_ID join company on employment.Company_ID = company.Company_ID  group by company.name
+SELECT Name FROM people WHERE People_ID NOT IN (SELECT People_ID FROM employment)
+select people.name from people where  people.people_id not in (select employment.People_ID from employment  )
+SELECT name FROM company WHERE Sales_in_Billion  >  200 ORDER BY Sales_in_Billion ,  Profits_in_Billion DESC
+select company.name from company where  company.sales_in_billion > 200   order by company.sales_in_billion,company.profits_in_billion desc

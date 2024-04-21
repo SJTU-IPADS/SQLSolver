@@ -1,0 +1,84 @@
+SELECT customer_phone FROM available_policies
+select available_policies.customer_phone from Available_Policies
+SELECT customer_phone FROM available_policies
+select available_policies.customer_phone from Available_Policies
+SELECT customer_phone FROM available_policies WHERE policy_type_code  =  "Life Insurance"
+select available_policies.customer_phone from Available_Policies where  available_policies.policy_type_code = "Life Insurance"
+SELECT customer_phone FROM available_policies WHERE policy_type_code  =  "Life Insurance"
+select available_policies.customer_phone from Available_Policies where  available_policies.policy_type_code = "Life Insurance"
+SELECT policy_type_code FROM available_policies GROUP BY policy_type_code ORDER BY count(*) DESC LIMIT 1
+select available_policies.policy_type_code from Available_Policies  group by available_policies.policy_type_code  order by count(*) desc limit 1
+SELECT policy_type_code FROM available_policies GROUP BY policy_type_code ORDER BY count(*) DESC LIMIT 1
+select available_policies.policy_type_code from Available_Policies  group by available_policies.policy_type_code  order by count(*) desc limit 1
+SELECT customer_phone FROM available_policies WHERE policy_type_code  =  (SELECT policy_type_code FROM available_policies GROUP BY policy_type_code ORDER BY count(*) DESC LIMIT 1)
+select available_policies.customer_phone from Available_Policies where  available_policies.policy_type_code = (select available_policies.policy_type_code from Available_Policies  group by available_policies.policy_type_code  order by count(*) desc limit 1 )
+SELECT customer_phone FROM available_policies WHERE policy_type_code  =  (SELECT policy_type_code FROM available_policies GROUP BY policy_type_code ORDER BY count(*) DESC LIMIT 1)
+select available_policies.customer_phone from Available_Policies where  available_policies.policy_type_code = (select available_policies.policy_type_code from Available_Policies  group by available_policies.policy_type_code  order by count(*) desc limit 1 )
+SELECT policy_type_code FROM available_policies GROUP BY policy_type_code HAVING count(*)  >  4
+select available_policies.policy_type_code from Available_Policies  group by available_policies.policy_type_code having  count(*) > 4
+SELECT policy_type_code FROM available_policies GROUP BY policy_type_code HAVING count(*)  >  4
+select available_policies.policy_type_code from Available_Policies  group by available_policies.policy_type_code having  count(*) > 4
+SELECT sum(settlement_amount) ,  avg(settlement_amount) FROM settlements
+select sum(settlements.settlement_amount) , avg(settlements.settlement_amount) from Settlements
+SELECT sum(settlement_amount) ,  avg(settlement_amount) FROM settlements
+select sum(settlements.settlement_amount) , avg(settlements.settlement_amount) from Settlements
+SELECT t2.service_name FROM first_notification_of_loss AS t1 JOIN services AS t2 ON t1.service_id  =  t2.service_id GROUP BY t1.service_id HAVING count(*)  >  2
+select services.service_name from First_Notification_of_Loss join Services on First_Notification_of_Loss.Service_ID = Services.Service_ID  group by first_notification_of_loss.service_id having  count(*) > 2
+SELECT t2.service_name FROM first_notification_of_loss AS t1 JOIN services AS t2 ON t1.service_id  =  t2.service_id GROUP BY t1.service_id HAVING count(*)  >  2
+select services.service_name from First_Notification_of_Loss join Services on First_Notification_of_Loss.Service_ID = Services.Service_ID  group by first_notification_of_loss.service_id having  count(*) > 2
+SELECT t1.Effective_Date FROM claims AS t1 JOIN settlements AS t2 ON t1.claim_id  =  t2.claim_id GROUP BY t1.claim_id ORDER BY sum(t2.settlement_amount) DESC LIMIT 1
+select claims.effective_date from Settlements join Claims on Settlements.Claim_ID = Claims.Claim_ID  group by claims.claim_id  order by sum(settlements.settlement_amount) desc limit 1
+SELECT t1.Effective_Date FROM claims AS t1 JOIN settlements AS t2 ON t1.claim_id  =  t2.claim_id GROUP BY t1.claim_id ORDER BY sum(t2.settlement_amount) DESC LIMIT 1
+select claims.effective_date from Settlements join Claims on Settlements.Claim_ID = Claims.Claim_ID  group by claims.effective_date  order by sum(settlements.settlement_amount) desc limit 1
+SELECT count(*) FROM customers AS t1 JOIN customers_policies AS t2 ON t1.customer_id  =  t2.customer_id WHERE t1.customer_name  =  "Dayana Robel"
+select count(*) from Customers_Policies join Customers on Customers_Policies.Customer_ID = Customers.Customer_ID where  customers.customer_name = "Dayana Robel"
+SELECT count(*) FROM customers AS t1 JOIN customers_policies AS t2 ON t1.customer_id  =  t2.customer_id WHERE t1.customer_name  =  "Dayana Robel"
+select count(*) from Customers_Policies join Customers on Customers_Policies.Customer_ID = Customers.Customer_ID where  customers.customer_name = "Dayana Robel"
+SELECT t1.customer_name FROM customers AS t1 JOIN customers_policies AS t2 ON t1.customer_id  =  t2.customer_id GROUP BY t1.customer_name ORDER BY count(*) DESC LIMIT 1
+select customers.customer_name from Customers_Policies join Customers on Customers_Policies.Customer_ID = Customers.Customer_ID  group by customers.customer_name  order by count(*) desc limit 1
+SELECT t1.customer_name FROM customers AS t1 JOIN customers_policies AS t2 ON t1.customer_id  =  t2.customer_id GROUP BY t1.customer_name ORDER BY count(*) DESC LIMIT 1
+select customers.customer_name from Customers_Policies join Customers on Customers_Policies.Customer_ID = Customers.Customer_ID  group by customers.customer_name  order by count(*) desc limit 1
+SELECT DISTINCT t3.policy_type_code FROM customers AS t1 JOIN customers_policies AS t2 ON t1.customer_id  =  t2.customer_id JOIN available_policies AS t3 ON t2.policy_id  =  t3.policy_id WHERE t1.customer_name  =  "Dayana Robel"
+select distinct available_policies.policy_type_code from Customers_Policies join Available_Policies on Customers_Policies.Policy_ID = Available_Policies.Policy_ID join Customers on Customers_Policies.Customer_ID = Customers.Customer_ID where  customers.customer_name = "Dayana Robel"
+SELECT DISTINCT t3.policy_type_code FROM customers AS t1 JOIN customers_policies AS t2 ON t1.customer_id  =  t2.customer_id JOIN available_policies AS t3 ON t2.policy_id  =  t3.policy_id WHERE t1.customer_name  =  "Dayana Robel"
+select distinct available_policies.policy_type_code from Customers_Policies join Available_Policies on Customers_Policies.Policy_ID = Available_Policies.Policy_ID join Customers on Customers_Policies.Customer_ID = Customers.Customer_ID where  customers.customer_name = "Dayana Robel"
+SELECT DISTINCT t3.policy_type_code FROM customers AS t1 JOIN customers_policies AS t2 ON t1.customer_id  =  t2.customer_id JOIN available_policies AS t3 ON t2.policy_id  =  t3.policy_id WHERE t1.customer_name  =  (SELECT t1.customer_name FROM customers AS t1 JOIN customers_policies AS t2 ON t1.customer_id  =  t2.customer_id GROUP BY t1.customer_name ORDER BY count(*) DESC LIMIT 1)
+select distinct available_policies.policy_type_code from Customers_Policies join Available_Policies on Customers_Policies.Policy_ID = Available_Policies.Policy_ID join Customers on Customers_Policies.Customer_ID = Customers.Customer_ID where  customers.customer_name = (select Customers.Customer_name from Customers join Customers_Policies on Customers.Customer_ID = Customers_Policies.Customer_ID  group by Customers.Customer_name  order by count(*) desc limit 1 )
+SELECT DISTINCT t3.policy_type_code FROM customers AS t1 JOIN customers_policies AS t2 ON t1.customer_id  =  t2.customer_id JOIN available_policies AS t3 ON t2.policy_id  =  t3.policy_id WHERE t1.customer_name  =  (SELECT t1.customer_name FROM customers AS t1 JOIN customers_policies AS t2 ON t1.customer_id  =  t2.customer_id GROUP BY t1.customer_name ORDER BY count(*) DESC LIMIT 1)
+select distinct available_policies.policy_type_code from Customers_Policies join Available_Policies on Customers_Policies.Policy_ID = Available_Policies.Policy_ID join Customers on Customers_Policies.Customer_ID = Customers.Customer_ID where  customers.customer_name = (select Customers.Customer_name from Customers join Customers_Policies on Customers.Customer_ID = Customers_Policies.Customer_ID  group by Customers.Customer_name  order by count(*) desc limit 1 )
+SELECT service_name FROM services ORDER BY service_name
+select services.service_name from Services   order by services.service_name asc
+SELECT service_name FROM services ORDER BY service_name
+select services.service_name from Services   order by services.service_name asc
+SELECT count(*) FROM services
+select count(*) from Services
+SELECT count(*) FROM services
+select count(*) from Services
+SELECT customer_name FROM customers EXCEPT SELECT t1.customer_name FROM customers AS t1 JOIN first_notification_of_loss AS t2 ON t1.customer_id  =  t2.customer_id
+select customers.customer_name from Customers   except select customers.customer_name from First_Notification_of_Loss join Customers on First_Notification_of_Loss.Customer_ID = Customers.Customer_ID
+SELECT customer_name FROM customers EXCEPT SELECT t1.customer_name FROM customers AS t1 JOIN first_notification_of_loss AS t2 ON t1.customer_id  =  t2.customer_id
+select customers.customer_name from Customers   except select customers.customer_name from First_Notification_of_Loss join Customers on First_Notification_of_Loss.Customer_ID = Customers.Customer_ID
+SELECT t1.customer_name FROM customers AS t1 JOIN first_notification_of_loss AS t2 ON t1.customer_id  =  t2.customer_id JOIN services AS t3 ON t2.service_id  =  t3.service_id WHERE t3.service_name  =  "Close a policy" OR t3.service_name  =  "Upgrade a policy"
+select customers.customer_name from First_Notification_of_Loss join Services on First_Notification_of_Loss.Service_ID = Services.Service_ID join Customers on First_Notification_of_Loss.Customer_ID = Customers.Customer_ID where  services.service_name = "Close a policy" or services.service_name = "Upgrade a policy"
+SELECT t1.customer_name FROM customers AS t1 JOIN first_notification_of_loss AS t2 ON t1.customer_id  =  t2.customer_id JOIN services AS t3 ON t2.service_id  =  t3.service_id WHERE t3.service_name  =  "Close a policy" OR t3.service_name  =  "Upgrade a policy"
+select customers.customer_name from First_Notification_of_Loss join Services on First_Notification_of_Loss.Service_ID = Services.Service_ID join Customers on First_Notification_of_Loss.Customer_ID = Customers.Customer_ID where  services.service_name = "Close a policy" or services.service_name = "Upgrade a policy"
+SELECT t1.customer_name FROM customers AS t1 JOIN first_notification_of_loss AS t2 ON t1.customer_id  =  t2.customer_id JOIN services AS t3 ON t2.service_id  =  t3.service_id WHERE t3.service_name  =  "Close a policy" INTERSECT SELECT t1.customer_name FROM customers AS t1 JOIN first_notification_of_loss AS t2 ON t1.customer_id  =  t2.customer_id JOIN services AS t3 ON t2.service_id  =  t3.service_id WHERE t3.service_name  =  "New policy application"
+select customers.customer_name from First_Notification_of_Loss join Services on First_Notification_of_Loss.Service_ID = Services.Service_ID join Customers on First_Notification_of_Loss.Customer_ID = Customers.Customer_ID where  services.service_name = "Close a policy"   intersect select customers.customer_name from First_Notification_of_Loss join Services on First_Notification_of_Loss.Service_ID = Services.Service_ID join Customers on First_Notification_of_Loss.Customer_ID = Customers.Customer_ID where  services.service_name = "New policy application"
+SELECT t1.customer_name FROM customers AS t1 JOIN first_notification_of_loss AS t2 ON t1.customer_id  =  t2.customer_id JOIN services AS t3 ON t2.service_id  =  t3.service_id WHERE t3.service_name  =  "Close a policy" INTERSECT SELECT t1.customer_name FROM customers AS t1 JOIN first_notification_of_loss AS t2 ON t1.customer_id  =  t2.customer_id JOIN services AS t3 ON t2.service_id  =  t3.service_id WHERE t3.service_name  =  "New policy application"
+select customers.customer_name from First_Notification_of_Loss join Services on First_Notification_of_Loss.Service_ID = Services.Service_ID join Customers on First_Notification_of_Loss.Customer_ID = Customers.Customer_ID where  services.service_name = "Close a policy"   intersect select customers.customer_name from First_Notification_of_Loss join Services on First_Notification_of_Loss.Service_ID = Services.Service_ID join Customers on First_Notification_of_Loss.Customer_ID = Customers.Customer_ID where  services.service_name = "Upgrade a policy"
+SELECT customer_id FROM customers WHERE customer_name LIKE "%Diana%"
+select customers.customer_id from Customers where  customers.customer_name like "%Diana%"
+SELECT customer_id FROM customers WHERE customer_name LIKE "%Diana%"
+select customers.customer_id from Customers where  customers.customer_name like "%Diana%"
+SELECT max(settlement_amount) ,  min(settlement_amount) FROM settlements
+select max(settlements.settlement_amount) , min(settlements.settlement_amount) from Settlements
+SELECT max(settlement_amount) ,  min(settlement_amount) FROM settlements
+select max(settlements.settlement_amount) , min(settlements.settlement_amount) from Settlements
+SELECT customer_id ,  customer_name FROM customers ORDER BY customer_id ASC
+select customers.customer_id , customers.customer_name from Customers   order by customers.customer_id asc
+SELECT customer_id ,  customer_name FROM customers ORDER BY customer_id ASC
+select customers.customer_id , customers.customer_name from Customers   order by customers.customer_id asc
+SELECT t2.date_opened ,  t2.date_closed FROM customers AS t1 JOIN customers_policies AS t2 ON t1.customer_id  =  t2.customer_id WHERE t1.customer_name LIKE "%Diana%"
+select customers_policies.date_opened , customers_policies.date_closed from Customers_Policies join Customers on Customers_Policies.Customer_ID = Customers.Customer_ID where  customers.customer_name like "%Diana%"
+SELECT t2.date_opened ,  t2.date_closed FROM customers AS t1 JOIN customers_policies AS t2 ON t1.customer_id  =  t2.customer_id WHERE t1.customer_name LIKE "%Diana%"
+select customers_policies.date_opened , customers_policies.date_closed from Customers_Policies join Customers on Customers_Policies.Customer_ID = Customers.Customer_ID where  customers.customer_name like "%Diana%"

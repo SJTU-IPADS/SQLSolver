@@ -1,0 +1,96 @@
+SELECT problem_log_id FROM problem_log ORDER BY log_entry_date DESC LIMIT 1
+select problem_log.problem_log_id from Problem_Log   order by problem_log.log_entry_date desc limit 1
+SELECT problem_log_id FROM problem_log ORDER BY log_entry_date DESC LIMIT 1
+select problem_log.problem_log_id from Problem_Log   order by problem_log.log_entry_date desc limit 1
+SELECT problem_log_id ,  problem_id FROM problem_log ORDER BY log_entry_date LIMIT 1
+select problem_log.problem_log_id , problem_log.problem_id from Problem_Log   order by problem_log.log_entry_date asc limit 1
+SELECT problem_log_id ,  problem_id FROM problem_log ORDER BY log_entry_date LIMIT 1
+select problem_log.problem_log_id , problem_log.problem_id from Problem_Log   order by problem_log.log_entry_date asc limit 1
+SELECT problem_log_id ,  log_entry_date FROM problem_log WHERE problem_id = 10
+select problem_log.problem_log_id , problem_log.log_entry_date from Problem_Log where  problem_log.problem_id = 10
+SELECT problem_log_id ,  log_entry_date FROM problem_log WHERE problem_id = 10
+select problem_log.problem_log_id , problem_log.log_entry_date from Problem_Log where  problem_log.problem_id = 10
+SELECT problem_log_id ,  log_entry_description FROM problem_log
+select problem_log.problem_log_id , problem_log.log_entry_description from Problem_Log
+SELECT problem_log_id ,  log_entry_description FROM problem_log
+select problem_log.problem_log_id , problem_log.log_entry_description from Problem_Log
+SELECT DISTINCT staff_first_name ,  staff_last_name FROM staff AS T1 JOIN problem_log AS T2 ON T1.staff_id = T2.assigned_to_staff_id WHERE T2.problem_id = 1
+select distinct staff.staff_first_name , staff.staff_last_name from Problem_Log join Staff on Problem_Log.assigned_to_staff_id = Staff.staff_id where  problem_log.problem_id = 1
+SELECT DISTINCT staff_first_name ,  staff_last_name FROM staff AS T1 JOIN problem_log AS T2 ON T1.staff_id = T2.assigned_to_staff_id WHERE T2.problem_id = 1
+select distinct staff.staff_first_name , staff.staff_last_name from Problem_Log join Staff on Problem_Log.assigned_to_staff_id = Staff.staff_id where  problem_log.problem_id = 1
+SELECT DISTINCT T2.problem_id ,  T2.problem_log_id FROM staff AS T1 JOIN problem_log AS T2 ON T1.staff_id = T2.assigned_to_staff_id WHERE T1.staff_first_name = "Rylan" AND T1.staff_last_name = "Homenick"
+select distinct problem_log.problem_id , problem_log.problem_log_id from Problem_Log join Staff on Problem_Log.assigned_to_staff_id = Staff.staff_id where  staff.staff_first_name = "Rylan" and staff.staff_last_name = "Homenick"
+SELECT DISTINCT T2.problem_id ,  T2.problem_log_id FROM staff AS T1 JOIN problem_log AS T2 ON T1.staff_id = T2.assigned_to_staff_id WHERE T1.staff_first_name = "Rylan" AND T1.staff_last_name = "Homenick"
+select distinct problem_log.problem_id , problem_log.problem_log_id from Problem_Log join Staff on Problem_Log.assigned_to_staff_id = Staff.staff_id where  staff.staff_first_name = "Rylan" and staff.staff_last_name = "Homenick"
+SELECT count(*) FROM product AS T1 JOIN problems AS T2 ON T1.product_id = T2.product_id WHERE T1.product_name = "voluptatem"
+select count(*) from Problems join Product on Problems.product_id = Product.product_id where  product.product_name = "voluptatem"
+SELECT count(*) FROM product AS T1 JOIN problems AS T2 ON T1.product_id = T2.product_id WHERE T1.product_name = "voluptatem"
+select count(*) from Problems join Product on Problems.product_id = Product.product_id where  product.product_name = "voluptatem"
+SELECT count(*) ,  T1.product_name FROM product AS T1 JOIN problems AS T2 ON T1.product_id = T2.product_id GROUP BY T1.product_name ORDER BY count(*) DESC LIMIT 1
+select count(*) , product.product_name from Problems join Product on Problems.product_id = Product.product_id  group by product.product_name  order by count(*) desc limit 1
+SELECT count(*) ,  T1.product_name FROM product AS T1 JOIN problems AS T2 ON T1.product_id = T2.product_id GROUP BY T1.product_name ORDER BY count(*) DESC LIMIT 1
+select count(*) , product.product_name from Problems join Product on Problems.product_id = Product.product_id  group by product.product_name  order by count(*) desc limit 1
+SELECT T1.problem_description FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE T2.staff_first_name = "Christop"
+select problems.problem_description from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  staff.staff_first_name = "Christop"
+SELECT T1.problem_description FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE T2.staff_first_name = "Christop"
+select problems.problem_description from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  staff.staff_first_name = "Christop"
+SELECT T1.problem_id FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE T2.staff_last_name = "Bosco"
+select problems.problem_id from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  staff.staff_last_name = "Bosco"
+SELECT T1.problem_id FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE T2.staff_last_name = "Bosco"
+select problems.problem_id from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  staff.staff_last_name = "Bosco"
+SELECT problem_id FROM problems WHERE date_problem_reported > "1978-06-26"
+select problems.problem_id from Problems where  problems.date_problem_reported > "1978-06-26"
+SELECT problem_id FROM problems WHERE date_problem_reported > "1978-06-26"
+select problems.problem_id from Problems where  problems.date_problem_reported > "1978-06-26"
+SELECT problem_id FROM problems WHERE date_problem_reported < "1978-06-26"
+select problems.problem_id from Problems where  problems.date_problem_reported < "1978-06-26"
+SELECT problem_id FROM problems WHERE date_problem_reported < "1978-06-26"
+select problems.problem_id from Problems where  problems.date_problem_reported < "1978-06-26"
+SELECT count(*) ,  T2.product_id FROM problems AS T1 JOIN product AS T2 ON T1.product_id = T2.product_id GROUP BY T2.product_id
+select count(*) , product.product_id from Problems join Product on Problems.product_id = Product.product_id  group by product.product_id
+SELECT count(*) ,  T2.product_id FROM problems AS T1 JOIN product AS T2 ON T1.product_id = T2.product_id GROUP BY T2.product_id
+select count(*) , product.product_id from Problems join Product on Problems.product_id = Product.product_id  group by product.product_id
+SELECT count(*) ,  T2.product_id FROM problems AS T1 JOIN product AS T2 ON T1.product_id = T2.product_id WHERE T1.date_problem_reported > "1986-11-13" GROUP BY T2.product_id
+select count(*) , product.product_id from Problems join Product on Problems.product_id = Product.product_id where  problems.date_problem_reported > "1986-11-13"  group by product.product_id
+SELECT count(*) ,  T2.product_id FROM problems AS T1 JOIN product AS T2 ON T1.product_id = T2.product_id WHERE T1.date_problem_reported > "1986-11-13" GROUP BY T2.product_id
+select count(*) , product.product_id from Problems join Product on Problems.product_id = Product.product_id where  problems.date_problem_reported > "1986-11-13"  group by product.product_id
+SELECT DISTINCT product_name FROM product ORDER BY product_name
+select distinct product.product_name from Product   order by product.product_name asc
+SELECT DISTINCT product_name FROM product ORDER BY product_name
+select distinct product.product_name from Product   order by product.product_name asc
+SELECT DISTINCT product_name FROM product ORDER BY product_id
+select distinct product.product_name from Product   order by product.product_id asc
+SELECT DISTINCT product_name FROM product ORDER BY product_id
+select distinct product.product_name from Product   order by product.product_id asc
+SELECT product_id FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE T2.staff_first_name = "Dameon" AND T2.staff_last_name = "Frami" UNION SELECT product_id FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE T2.staff_first_name = "Jolie" AND T2.staff_last_name = "Weber"
+select problems.product_id from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  staff.staff_first_name = "Dameon" and staff.staff_last_name = "Frami"   union select problems.product_id from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  staff.staff_first_name = "Jolie" and staff.staff_last_name = "Weber"
+SELECT product_id FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE T2.staff_first_name = "Dameon" AND T2.staff_last_name = "Frami" UNION SELECT product_id FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE T2.staff_first_name = "Jolie" AND T2.staff_last_name = "Weber"
+select problems.problem_id from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  staff.staff_first_name = "Dameon" and staff.staff_last_name = "Frami"   union select problems.problem_id from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  staff.staff_first_name = "Jolie" and staff.staff_last_name = "Weber"
+SELECT product_id FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE T2.staff_first_name = "Christop" AND T2.staff_last_name = "Berge" INTERSECT SELECT product_id FROM problems AS T1 JOIN staff AS T2 ON T1.closure_authorised_by_staff_id = T2.staff_id WHERE T2.staff_first_name = "Ashley" AND T2.staff_last_name = "Medhurst"
+select problems.product_id from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  staff.staff_first_name = "Christop" and staff.staff_last_name = "Berge"   intersect select problems.product_id from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  staff.staff_first_name = "Ashley" and staff.staff_last_name = "Medhurst"
+SELECT product_id FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE T2.staff_first_name = "Christop" AND T2.staff_last_name = "Berge" INTERSECT SELECT product_id FROM problems AS T1 JOIN staff AS T2 ON T1.closure_authorised_by_staff_id = T2.staff_id WHERE T2.staff_first_name = "Ashley" AND T2.staff_last_name = "Medhurst"
+select problems.product_id from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  staff.staff_first_name = "Christop" and staff.staff_last_name = "Berge"   intersect select problems.product_id from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  staff.staff_first_name = "Ashley" and staff.staff_last_name = "Medhurst"
+SELECT T1.problem_id FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE date_problem_reported  <  ( SELECT min(date_problem_reported) FROM problems AS T3 JOIN staff AS T4 ON T3.reported_by_staff_id = T4.staff_id WHERE T4.staff_first_name = "Lysanne" AND T4.staff_last_name = "Turcotte" )
+select problems.problem_id from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  problems.date_problem_reported < (select min(problems.date_problem_reported) from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  staff.staff_first_name = "Lysanne" and staff.staff_last_name = "Turcotte"  )
+SELECT T1.problem_id FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE date_problem_reported  <  ( SELECT min(date_problem_reported) FROM problems AS T3 JOIN staff AS T4 ON T3.reported_by_staff_id = T4.staff_id WHERE T4.staff_first_name = "Lysanne" AND T4.staff_last_name = "Turcotte" )
+select problems.problem_id from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  problems.date_problem_reported < (select min(problems.date_problem_reported) from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  staff.staff_first_name = "Lysanne" and staff.staff_last_name = "Turcotte"  )
+SELECT T1.problem_id FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE date_problem_reported  >  ( SELECT max(date_problem_reported) FROM problems AS T3 JOIN staff AS T4 ON T3.reported_by_staff_id = T4.staff_id WHERE T4.staff_first_name = "Rylan" AND T4.staff_last_name = "Homenick" )
+select problems.problem_id from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  problems.date_problem_reported > (select max(problems.date_problem_reported) from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  staff.staff_first_name = "Rylan" and staff.staff_last_name = "Homenick"  )
+SELECT T1.problem_id FROM problems AS T1 JOIN staff AS T2 ON T1.reported_by_staff_id = T2.staff_id WHERE date_problem_reported  >  ( SELECT max(date_problem_reported) FROM problems AS T3 JOIN staff AS T4 ON T3.reported_by_staff_id = T4.staff_id WHERE T4.staff_first_name = "Rylan" AND T4.staff_last_name = "Homenick" )
+select problems.problem_id from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  problems.date_problem_reported > (select max(problems.date_problem_reported) from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id where  staff.staff_first_name = "Rylan" and staff.staff_last_name = "Homenick"  )
+SELECT T2.product_name FROM problems AS T1 JOIN product AS T2 ON T1.product_id = T2.product_id GROUP BY T2.product_name ORDER BY count(*) DESC LIMIT 3
+select product.product_name from Problems join Product on Problems.product_id = Product.product_id  group by product.product_name  order by count(*) desc limit 3
+SELECT T2.product_name FROM problems AS T1 JOIN product AS T2 ON T1.product_id = T2.product_id GROUP BY T2.product_name ORDER BY count(*) DESC LIMIT 3
+select product.product_name from Problems join Product on Problems.product_id = Product.product_id  group by product.product_name  order by count(*) desc limit 3
+SELECT T1.problem_id FROM problems AS T1 JOIN product AS T2 ON T1.product_id = T2.product_id WHERE T2.product_name = "voluptatem" AND T1.date_problem_reported > "1995"
+select problems.problem_id from Problems join Product on Problems.product_id = Product.product_id where  product.product_name = "voluptatem" and problems.date_problem_reported > "1995"
+SELECT T1.problem_id FROM problems AS T1 JOIN product AS T2 ON T1.product_id = T2.product_id WHERE T2.product_name = "voluptatem" AND T1.date_problem_reported > "1995"
+select problems.problem_id from Problems join Product on Problems.product_id = Product.product_id where  product.product_name = "voluptatem" and problems.date_problem_reported > "1995"
+SELECT T3.staff_first_name ,  T3.staff_last_name FROM problems AS T1 JOIN product AS T2 JOIN staff AS T3 ON T1.product_id = T2.product_id AND T1.reported_by_staff_id = T3.staff_id WHERE T2.product_name = "rem" EXCEPT SELECT T3.staff_first_name ,  T3.staff_last_name FROM problems AS T1 JOIN product AS T2 JOIN staff AS T3 ON T1.product_id = T2.product_id AND T1.reported_by_staff_id = T3.staff_id WHERE T2.product_name = "aut"
+select staff.staff_first_name , staff.staff_last_name from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id join Product on Problems.product_id = Product.product_id where  product.product_name = "rem"   except select staff.staff_first_name , staff.staff_last_name from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id join Product on Problems.product_id = Product.product_id where  product.product_name = "aut"
+SELECT T3.staff_first_name ,  T3.staff_last_name FROM problems AS T1 JOIN product AS T2 JOIN staff AS T3 ON T1.product_id = T2.product_id AND T1.reported_by_staff_id = T3.staff_id WHERE T2.product_name = "rem" EXCEPT SELECT T3.staff_first_name ,  T3.staff_last_name FROM problems AS T1 JOIN product AS T2 JOIN staff AS T3 ON T1.product_id = T2.product_id AND T1.reported_by_staff_id = T3.staff_id WHERE T2.product_name = "aut"
+select staff.staff_first_name , staff.staff_last_name from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id join Product on Problems.product_id = Product.product_id where  product.product_name = "rem"   except select staff.staff_first_name , staff.staff_last_name from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id join Product on Problems.product_id = Product.product_id where  product.product_name = "aut"
+SELECT T2.product_name FROM problems AS T1 JOIN product AS T2 JOIN staff AS T3 ON T1.product_id = T2.product_id AND T1.reported_by_staff_id = T3.staff_id WHERE T3.staff_first_name = "Lacey" AND T3.staff_last_name = "Bosco" INTERSECT SELECT T2.product_name FROM problems AS T1 JOIN product AS T2 JOIN staff AS T3 ON T1.product_id = T2.product_id AND T1.reported_by_staff_id = T3.staff_id WHERE T3.staff_first_name = "Kenton" AND T3.staff_last_name = "Champlin"
+select product.product_name from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id join Product on Problems.product_id = Product.product_id where  staff.staff_first_name = "Lacey" and staff.staff_last_name = "Bosco"   intersect select product.product_name from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id join Product on Problems.product_id = Product.product_id where  staff.staff_first_name = "Kenton" and staff.staff_last_name = "Champlin"
+SELECT T2.product_name FROM problems AS T1 JOIN product AS T2 JOIN staff AS T3 ON T1.product_id = T2.product_id AND T1.reported_by_staff_id = T3.staff_id WHERE T3.staff_first_name = "Lacey" AND T3.staff_last_name = "Bosco" INTERSECT SELECT T2.product_name FROM problems AS T1 JOIN product AS T2 JOIN staff AS T3 ON T1.product_id = T2.product_id AND T1.reported_by_staff_id = T3.staff_id WHERE T3.staff_first_name = "Kenton" AND T3.staff_last_name = "Champlin"
+select product.product_name from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id join Product on Problems.product_id = Product.product_id where  staff.staff_first_name = "Lacey" and staff.staff_last_name = "Bosco"   intersect select product.product_name from Problems join Staff on Problems.reported_by_staff_id = Staff.staff_id join Product on Problems.product_id = Product.product_id where  staff.staff_first_name = "Kenton" and staff.staff_last_name = "Champlin"

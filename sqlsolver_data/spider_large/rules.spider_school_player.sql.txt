@@ -1,0 +1,80 @@
+SELECT count(*) FROM school
+select count(*) from school
+SELECT count(*) FROM school
+select count(*) from school
+SELECT LOCATION FROM school ORDER BY Enrollment ASC
+select school.location from school   order by school.enrollment asc
+SELECT LOCATION FROM school ORDER BY Enrollment ASC
+select school.location from school   order by school.enrollment asc
+SELECT LOCATION FROM school ORDER BY Founded DESC
+select school.location from school   order by school.founded desc
+SELECT LOCATION FROM school ORDER BY Founded DESC
+select school.location from school   order by school.founded desc
+SELECT Enrollment FROM school WHERE Denomination != "Catholic"
+select school.enrollment from school where  school.denomination != "Catholic"
+SELECT Enrollment FROM school WHERE Denomination != "Catholic"
+select school.enrollment from school where  school.denomination != "Catholic"
+SELECT avg(Enrollment) FROM school
+select avg(school.enrollment) from school
+SELECT avg(Enrollment) FROM school
+select avg(school.enrollment) from school
+SELECT Team FROM player ORDER BY Team ASC
+select player.team from player   order by player.team asc
+SELECT Team FROM player ORDER BY Team ASC
+select player.team from player   order by player.team asc
+SELECT count(DISTINCT POSITION) FROM player
+select count( distinct player.position) from player
+SELECT count(DISTINCT POSITION) FROM player
+select count( distinct player.position) from player
+SELECT Team FROM player ORDER BY Age DESC LIMIT 1
+select player.team from player   order by player.age desc limit 1
+SELECT Team FROM player ORDER BY Age DESC LIMIT 1
+select player.team from player   order by player.age desc limit 1
+SELECT Team FROM player ORDER BY Age DESC LIMIT 5
+select player.team from player   order by player.age desc limit 5
+SELECT Team FROM player ORDER BY Age DESC LIMIT 5
+select player.team from player   order by player.age desc limit 5
+SELECT T1.Team ,  T2.Location FROM player AS T1 JOIN school AS T2 ON T1.School_ID  =  T2.School_ID
+select player.team , school.location from player join school on player.School_ID = school.School_ID
+SELECT T1.Team ,  T2.Location FROM player AS T1 JOIN school AS T2 ON T1.School_ID  =  T2.School_ID
+select player.team , school.location from player join school on player.School_ID = school.School_ID
+SELECT T2.Location FROM player AS T1 JOIN school AS T2 ON T1.School_ID  =  T2.School_ID GROUP BY T1.School_ID HAVING COUNT(*)  >  1
+select school.location from player join school on player.School_ID = school.School_ID  group by player.school_id having  count(*) > 1
+SELECT T2.Location FROM player AS T1 JOIN school AS T2 ON T1.School_ID  =  T2.School_ID GROUP BY T1.School_ID HAVING COUNT(*)  >  1
+select school.location from player join school on player.School_ID = school.School_ID  group by player.school_id having  count(*) > 1
+SELECT T2.Denomination FROM player AS T1 JOIN school AS T2 ON T1.School_ID  =  T2.School_ID GROUP BY T1.School_ID ORDER BY COUNT(*) DESC LIMIT 1
+select school.denomination from player join school on player.School_ID = school.School_ID  group by player.school_id  order by count(*) desc limit 1
+SELECT T2.Denomination FROM player AS T1 JOIN school AS T2 ON T1.School_ID  =  T2.School_ID GROUP BY T1.School_ID ORDER BY COUNT(*) DESC LIMIT 1
+select school.denomination from player join school on player.School_ID = school.School_ID  group by player.school_id  order by count(*) desc limit 1
+SELECT T1.Location ,  T2.Nickname FROM school AS T1 JOIN school_details AS T2 ON T1.School_ID  =  T2.School_ID
+select school.location , school_details.nickname from school_details join school on school_details.School_ID = school.School_ID
+SELECT T1.Location ,  T2.Nickname FROM school AS T1 JOIN school_details AS T2 ON T1.School_ID  =  T2.School_ID
+select school.location , school_details.nickname from school_details join school on school_details.School_ID = school.School_ID
+SELECT Denomination ,  COUNT(*) FROM school GROUP BY Denomination
+select school.denomination , count(*) from school  group by school.denomination
+SELECT Denomination ,  COUNT(*) FROM school GROUP BY Denomination
+select school.denomination , count(*) from school  group by school.denomination
+SELECT Denomination ,  COUNT(*) FROM school GROUP BY Denomination ORDER BY COUNT(*) DESC
+select school.denomination , count(*) from school  group by school.denomination  order by count(*) desc
+SELECT Denomination ,  COUNT(*) FROM school GROUP BY Denomination ORDER BY COUNT(*) DESC
+select school.denomination , count(*) from school  group by school.denomination  order by count(*) desc
+SELECT School_Colors FROM school ORDER BY Enrollment DESC LIMIT 1
+select school.school_colors from school   order by school.enrollment desc limit 1
+SELECT School_Colors FROM school ORDER BY Enrollment DESC LIMIT 1
+select school.school_colors from school   order by school.enrollment desc limit 1
+SELECT LOCATION FROM school WHERE School_ID NOT IN (SELECT School_ID FROM Player)
+select school.location from school where  school.school_id not in (select player.School_ID from player  )
+SELECT LOCATION FROM school WHERE School_ID NOT IN (SELECT School_ID FROM Player)
+select school.location from school where  school.school_id not in (select player.School_ID from player  )
+SELECT Denomination FROM school WHERE Founded  <  1890 INTERSECT SELECT Denomination FROM school WHERE Founded  >  1900
+select school.denomination from school where  school.founded < 1890   intersect select school.denomination from school where  school.founded > 1900
+SELECT Denomination FROM school WHERE Founded  <  1890 INTERSECT SELECT Denomination FROM school WHERE Founded  >  1900
+select school.denomination from school where  school.founded < 1890   intersect select school.denomination from school where  school.founded > 1900
+SELECT Nickname FROM school_details WHERE Division != "Division 1"
+select school_details.nickname from school_details where  school_details.division != "Division 1"
+SELECT Nickname FROM school_details WHERE Division != "Division 1"
+select school_details.nickname from school_details where  school_details.division != "Division 1"
+SELECT Denomination FROM school GROUP BY Denomination HAVING COUNT(*)  >  1
+select school.denomination from school  group by school.denomination having  count(*) > 1
+SELECT Denomination FROM school GROUP BY Denomination HAVING COUNT(*)  >  1
+select school.denomination from school  group by school.denomination having  count(*) > 1

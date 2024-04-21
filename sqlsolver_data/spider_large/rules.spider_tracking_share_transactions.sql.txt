@@ -1,0 +1,82 @@
+SELECT count(*) FROM INVESTORS
+select count(*) from Investors
+SELECT Investor_details FROM INVESTORS
+select investors.investor_details from Investors
+SELECT DISTINCT lot_details FROM LOTS
+select distinct lots.lot_details from Lots
+SELECT max(amount_of_transaction) FROM TRANSACTIONS
+select max(transactions.amount_of_transaction) from Transactions
+SELECT date_of_transaction ,  share_count FROM TRANSACTIONS
+select transactions.date_of_transaction , transactions.share_count from Transactions
+SELECT sum(share_count) FROM TRANSACTIONS
+select sum(transactions.share_count) from Transactions
+SELECT transaction_id FROM TRANSACTIONS WHERE transaction_type_code  =  'PUR'
+select transactions.transaction_id from Transactions where  transactions.transaction_type_code = "PUR"
+SELECT date_of_transaction FROM TRANSACTIONS WHERE transaction_type_code  =  "SALE"
+select transactions.date_of_transaction from Transactions where  transactions.transaction_type_code = "SALE"
+SELECT avg(amount_of_transaction) FROM TRANSACTIONS WHERE transaction_type_code  =  "SALE"
+select avg(transactions.amount_of_transaction) from Transactions where  transactions.transaction_type_code = "SALE"
+SELECT transaction_type_description FROM Ref_Transaction_Types WHERE transaction_type_code	  =  "PUR"
+select ref_transaction_types.transaction_type_description from Transactions join Ref_Transaction_Types on Transactions.transaction_type_code = Ref_Transaction_Types.transaction_type_code where  transactions.transaction_type_code = "PUR"
+SELECT min(amount_of_transaction) FROM TRANSACTIONS WHERE transaction_type_code  =  "PUR" AND share_count  >  50
+select min(transactions.amount_of_transaction) from Transactions where  transactions.transaction_type_code = "PUR" and transactions.share_count > 50
+SELECT max(share_count) FROM TRANSACTIONS WHERE amount_of_transaction  <  10000
+select max(transactions.share_count) from Transactions where  transactions.amount_of_transaction < 10000
+SELECT date_of_transaction FROM TRANSACTIONS WHERE share_count  >  100 OR amount_of_transaction  >  1000
+select transactions.date_of_transaction from Transactions where  transactions.share_count > 100 or transactions.amount_of_transaction > 1000
+SELECT T1.transaction_type_description ,  T2.date_of_transaction FROM Ref_Transaction_Types AS T1 JOIN TRANSACTIONS AS T2 ON T1.transaction_type_code  =  T2.transaction_type_code WHERE T2.share_count  <  10
+select ref_transaction_types.transaction_type_description , transactions.date_of_transaction from Transactions join Ref_Transaction_Types on Transactions.transaction_type_code = Ref_Transaction_Types.transaction_type_code where  transactions.share_count < 10
+SELECT T1.Investor_details FROM  INVESTORS AS T1 JOIN TRANSACTIONS AS T2 ON T1.investor_id  =  T2.investor_id WHERE T2.share_count  >  100
+select investors.investor_details from Transactions join Investors on Transactions.investor_id = Investors.investor_id where  transactions.share_count > 100
+SELECT COUNT(DISTINCT transaction_type_code) FROM TRANSACTIONS
+select count( distinct transactions.transaction_type_code) from Transactions
+SELECT lot_details ,  investor_id FROM LOTS
+select lots.lot_details , lots.investor_id from Lots
+SELECT T2.lot_details FROM INVESTORS AS T1 JOIN LOTS AS T2 ON  T1.investor_id  =  T2.investor_id WHERE T1.Investor_details  =  "l"
+select lots.lot_details from Lots join Investors on Lots.investor_id = Investors.investor_id where  investors.investor_details = "l"
+SELECT T1.purchase_details FROM PURCHASES AS T1 JOIN TRANSACTIONS AS T2 ON T1.purchase_transaction_id  =  T2.transaction_id WHERE T2.amount_of_transaction  >  10000
+select purchases.purchase_details from Purchases join Transactions on Purchases.purchase_transaction_id = Transactions.transaction_id where  transactions.amount_of_transaction > 10000
+SELECT T1.sales_details ,  T2.date_of_transaction FROM SALES AS T1 JOIN TRANSACTIONS AS T2 ON T1.sales_transaction_id  =  T2.transaction_id WHERE T2.amount_of_transaction  <  3000
+select sales.sales_details , transactions.date_of_transaction from Sales join Transactions on Sales.sales_transaction_id = Transactions.transaction_id where  transactions.amount_of_transaction < 3000
+SELECT T1.lot_details FROM LOTS AS T1 JOIN TRANSACTIONS_LOTS AS T2 ON T1.lot_id  =  T2.transaction_id JOIN TRANSACTIONS AS T3 ON T2.transaction_id  =  T3.transaction_id WHERE T3.share_count  <  50
+select lots.lot_details from Transactions_Lots join Transactions on Transactions_Lots.transaction_id = Transactions.transaction_id join Lots on Transactions_Lots.lot_id = Lots.lot_id where  transactions.share_count < 50
+SELECT T1.lot_details FROM LOTS AS T1 JOIN TRANSACTIONS_LOTS AS T2 ON  T1.lot_id  =  T2.transaction_id JOIN TRANSACTIONS AS T3 ON T2.transaction_id  =  T3.transaction_id WHERE T3.share_count  >  100 AND T3.transaction_type_code  =  "PUR"
+select lots.lot_details from Transactions_Lots join Transactions on Transactions_Lots.transaction_id = Transactions.transaction_id join Lots on Transactions_Lots.lot_id = Lots.lot_id where  transactions.share_count > 100 and transactions.transaction_type_code = "PUR"
+SELECT transaction_type_code ,  avg(amount_of_transaction) FROM TRANSACTIONS GROUP BY transaction_type_code
+select transactions.transaction_type_code , avg(transactions.amount_of_transaction) from Transactions  group by transactions.transaction_type_code
+SELECT transaction_type_code ,  max(share_count) ,  min(share_count) FROM TRANSACTIONS GROUP BY transaction_type_code
+select transactions.transaction_type_code , max(transactions.share_count) , min(transactions.share_count) from Transactions  group by transactions.transaction_type_code
+SELECT investor_id ,  avg(share_count) FROM TRANSACTIONS GROUP BY investor_id
+select transactions.investor_id , avg(transactions.share_count) from Transactions  group by transactions.investor_id
+SELECT investor_id ,  avg(share_count) FROM TRANSACTIONS GROUP BY investor_id ORDER BY avg(share_count)
+select transactions.investor_id , avg(transactions.share_count) from Transactions  group by transactions.investor_id  order by avg(transactions.share_count) asc
+SELECT investor_id ,  avg(amount_of_transaction) FROM TRANSACTIONS GROUP BY investor_id
+select transactions.investor_id , avg(transactions.amount_of_transaction) from Transactions  group by transactions.investor_id
+SELECT T2.lot_id ,  avg(amount_of_transaction) FROM TRANSACTIONS AS T1 JOIN Transactions_Lots AS T2 ON T1.transaction_id  =  T2.transaction_id GROUP BY T2.lot_id
+select transactions_lots.lot_id , avg(transactions.amount_of_transaction) from Transactions_Lots join Transactions on Transactions_Lots.transaction_id = Transactions.transaction_id  group by transactions_lots.lot_id
+SELECT T2.lot_id ,  avg(amount_of_transaction) FROM TRANSACTIONS AS T1 JOIN Transactions_Lots AS T2 ON T1.transaction_id  =  T2.transaction_id GROUP BY T2.lot_id ORDER BY avg(amount_of_transaction)
+select transactions_lots.lot_id , avg(transactions.amount_of_transaction) from Transactions_Lots join Transactions on Transactions_Lots.transaction_id = Transactions.transaction_id  group by transactions_lots.lot_id  order by avg(transactions.amount_of_transaction) asc
+SELECT investor_id ,  COUNT(*) FROM TRANSACTIONS WHERE transaction_type_code  =  "SALE" GROUP BY investor_id
+select transactions.investor_id , count(*) from Transactions where  transactions.transaction_type_code = "SALE"  group by transactions.investor_id
+SELECT investor_id ,  COUNT(*) FROM TRANSACTIONS GROUP BY investor_id
+select transactions.investor_id , count(*) from Transactions  group by transactions.investor_id
+SELECT transaction_type_code FROM TRANSACTIONS GROUP BY transaction_type_code ORDER BY COUNT(*) ASC LIMIT 1
+select transactions.transaction_type_code from Transactions  group by transactions.transaction_type_code  order by count(*) asc limit 1
+SELECT transaction_type_code FROM TRANSACTIONS GROUP BY transaction_type_code ORDER BY COUNT(*) DESC LIMIT 1
+select transactions.transaction_type_code from Transactions  group by transactions.transaction_type_code  order by count(*) desc limit 1
+SELECT T1.transaction_type_description FROM Ref_Transaction_Types AS T1 JOIN TRANSACTIONS AS T2 ON T1.transaction_type_code  =  T2.transaction_type_code GROUP BY T1.transaction_type_code ORDER BY COUNT(*) DESC LIMIT 1
+select transactions.transaction_type_code from Transactions  group by transactions.transaction_type_code  order by count(*) desc limit 1
+SELECT T2.investor_id ,  T1.Investor_details FROM INVESTORS AS T1 JOIN TRANSACTIONS AS T2 ON T1.investor_id  =  T2.investor_id GROUP BY T2.investor_id ORDER BY COUNT(*) DESC LIMIT 1
+select investors.investor_id , investors.investor_details from Transactions_Lots join Transactions on Transactions_Lots.transaction_id = Transactions.transaction_id join Investors on Transactions.investor_id = Investors.investor_id  group by transactions.investor_id  order by count(*) desc limit 1
+SELECT T2.investor_id ,  T1.Investor_details FROM INVESTORS AS T1 JOIN TRANSACTIONS AS T2 ON T1.investor_id  =  T2.investor_id GROUP BY T2.investor_id ORDER BY COUNT(*) DESC LIMIT 3
+select investors.investor_id , investors.investor_details from Transactions_Lots join Transactions on Transactions_Lots.transaction_id = Transactions.transaction_id join Investors on Transactions.investor_id = Investors.investor_id  group by transactions.investor_id  order by count(*) desc limit 1
+SELECT T2.investor_id FROM INVESTORS AS T1 JOIN TRANSACTIONS AS T2 ON T1.investor_id  =  T2.investor_id GROUP BY T2.investor_id HAVING COUNT(*)  >=  2
+select transactions.investor_id from Transactions_Lots join Transactions on Transactions_Lots.transaction_id = Transactions.transaction_id  group by transactions.investor_id having  count(*) >= 2
+SELECT T2.investor_id ,  T1.Investor_details FROM INVESTORS AS T1 JOIN TRANSACTIONS AS T2 ON T1.investor_id  =  T2.investor_id WHERE T2.transaction_type_code  =  "SALE" GROUP BY T2.investor_id HAVING COUNT(*)  >=  2
+select investors.investor_id , investors.investor_details from Transactions join Investors on Transactions.investor_id = Investors.investor_id where  transactions.transaction_type_code = "SALE"  group by transactions.investor_id having  count(*) >= 2
+SELECT date_of_transaction FROM TRANSACTIONS WHERE share_count  >=  100 OR amount_of_transaction  >=  100
+select transactions.date_of_transaction from Transactions where  transactions.share_count >= 100 or transactions.amount_of_transaction >= 100
+SELECT sales_details FROM sales UNION SELECT purchase_details FROM purchases
+select sales.sales_details from Sales   union select purchases.purchase_details from Purchases
+SELECT lot_details FROM Lots EXCEPT SELECT T1.lot_details FROM Lots AS T1 JOIN transactions_lots AS T2 ON T1.lot_id  =  T2.lot_id
+select lots.lot_details from Lots   except select lots.lot_details from Transactions_Lots join Lots on Transactions_Lots.lot_id = Lots.lot_id

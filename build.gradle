@@ -1,0 +1,134 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
+plugins {
+    id 'org.javamodularity.moduleplugin' version '1.7.0' apply false
+    id 'java-library'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+allprojects {
+    group = 'sqlsolver'
+    version = 'v1.0.0'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+
+    repositories {
+        flatDir { dirs("$rootDir/lib") }
+        mavenCentral()
+    }
+
+    tasks.withType(JavaCompile) {
+        doFirst {
+            options.compilerArgs += [
+                    '--module-path', classpath.asPath,
+                    '-encoding', 'UTF-8'
+            ]
+        }
+    }
+
+    tasks.withType(JavaExec) {
+        modularity.inferModulePath = false
+        doFirst {
+            environment 'LD_LIBRARY_PATH', "$rootDir/lib/"
+            jvmArgs += ["-Djava.library.path=$rootDir/lib",
+                        '--module-path', classpath.asPath,
+                        '-Dfile.encoding=UTF-8'
+            ]
+            workingDir(rootDir)
+        }
+    }
+
+    tasks.withType(Test) {
+        systemProperty('java.library.path', "$rootDir/lib/")
+        environment('LD_LIBRARY_PATH', "$rootDir/lib/")
+        useJUnitPlatform()
+        jvmArgs += ['-Dfile.encoding=UTF-8']
+        workingDir(rootDir)
+    }
+
+    dependencies {
+        implementation('org.jetbrains:annotations:16.0.2')
+        implementation('commons-codec:commons-codec:1.15')
+        implementation('org.apache.commons:commons-math3:3.6.1')
+        implementation('org.codehaus.janino:commons-compiler:3.1.9')
+        implementation('org.codehaus.janino:janino:3.1.9')
+        implementation('com.jayway.jsonpath:json-path:2.4.0')
+        testImplementation('org.junit.jupiter:junit-jupiter-api:5.6.2')
+        testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.6.2')
+        testRuntimeOnly('org.junit.platform:junit-platform-launcher:1.6.2')
+        testRuntimeOnly('org.junit.vintage:junit-vintage-engine:5.6.2')
+    }
+
+    ext.download = { String url, java.nio.file.Path path, String mod = null ->
+        def wd = path.getParent().toAbsolutePath().toString()
+        def fileName = path.getFileName().toString()
+
+        if (!path.toFile().exists()) {
+
+            println("downloading $fileName to $wd")
+            if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+                exec {
+                    workingDir(wd)
+                    commandLine 'powershell', 'Invoke-WebRequest', "'$url'",
+                            '-OutFile', "$fileName"
+                }
+
+            } else {
+                exec {
+                    workingDir(wd)
+                    commandLine 'wget', '-e', 'use_proxy=yes',
+                            '--no-check-certificate',
+                            "$url",
+                            '-O', "$fileName"
+                }
+
+                if (mod != null)
+                    exec {
+                        workingDir(wd)
+                        commandLine 'chmod', "$mod", "$fileName"
+                    }
+            }
+
+        } else {
+            println("use cached $fileName found in $wd")
+        }
+    }
+}
+
+task cleanAll {
+    doFirst {
+        subprojects.each {
+            dependsOn("${it.name}:cleanAll")
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes (
+            'Main-Class': 'sqlsolver.api.Entry',
+            'Class-Path': 'lib/'
+        )
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    archiveVersion = 'v1.0.0'
+    from subprojects.collect { it.sourceSets.main.output }
+}
+
+task fatJar(type: ShadowJar) {
+    manifest.from jar.manifest
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    archivesBaseName = rootProject.name
+
+    from subprojects.collect { it.sourceSets.main.output }
+    from subprojects.collect { it.configurations.compileClasspath }
+    zip64 true
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
+}

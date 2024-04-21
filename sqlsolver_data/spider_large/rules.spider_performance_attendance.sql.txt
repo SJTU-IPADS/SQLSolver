@@ -1,0 +1,30 @@
+SELECT count(*) FROM performance
+select count(*) from performance
+SELECT HOST FROM performance ORDER BY Attendance ASC
+select performance.host from performance   order by performance.attendance asc
+SELECT Date ,  LOCATION FROM performance
+select performance.date , performance.location from performance
+SELECT Attendance FROM performance WHERE LOCATION  =  "TD Garden" OR LOCATION  =  "Bell Centre"
+select performance.attendance from performance where  performance.location = "TD Garden" or performance.location = "Bell Centre"
+SELECT avg(Attendance) FROM performance
+select avg(performance.attendance) from performance
+SELECT Date FROM performance ORDER BY Attendance DESC LIMIT 1
+select performance.date from performance   order by performance.attendance desc limit 1
+SELECT LOCATION ,  COUNT(*) FROM performance GROUP BY LOCATION
+select performance.location , count(*) from performance  group by performance.location
+SELECT LOCATION FROM performance GROUP BY LOCATION ORDER BY COUNT(*) DESC LIMIT 1
+select performance.location from performance  group by performance.location  order by count(*) desc limit 1
+SELECT LOCATION FROM performance GROUP BY LOCATION HAVING COUNT(*)  >=  2
+select performance.location from performance  group by performance.location having  count(*) >= 2
+SELECT LOCATION FROM performance WHERE Attendance  >  2000 INTERSECT SELECT LOCATION FROM performance WHERE Attendance  <  1000
+select performance.location from performance where  performance.attendance > 2000   intersect select performance.location from performance where  performance.attendance < 1000
+SELECT T2.Name ,  T3.Location FROM member_attendance AS T1 JOIN member AS T2 ON T1.Member_ID  =  T2.Member_ID JOIN performance AS T3 ON T1.Performance_ID  =  T3.Performance_ID
+select member.name , performance.location from member_attendance join performance on member_attendance.Performance_ID = performance.Performance_ID join member on member_attendance.Member_ID = member.Member_ID
+SELECT T2.Name ,  T3.Location FROM member_attendance AS T1 JOIN member AS T2 ON T1.Member_ID  =  T2.Member_ID JOIN performance AS T3 ON T1.Performance_ID  =  T3.Performance_ID ORDER BY T2.Name ASC
+select member.name , performance.location from member_attendance join performance on member_attendance.Performance_ID = performance.Performance_ID join member on member_attendance.Member_ID = member.Member_ID   order by member.name asc
+SELECT T3.Date FROM member_attendance AS T1 JOIN member AS T2 ON T1.Member_ID  =  T2.Member_ID JOIN performance AS T3 ON T1.Performance_ID  =  T3.Performance_ID WHERE T2.Role  =  "Violin"
+select performance.date from member_attendance join performance on member_attendance.Performance_ID = performance.Performance_ID join member on member_attendance.Member_ID = member.Member_ID where  member.role = "Violin"
+SELECT T2.Name ,  T3.Date FROM member_attendance AS T1 JOIN member AS T2 ON T1.Member_ID  =  T2.Member_ID JOIN performance AS T3 ON T1.Performance_ID  =  T3.Performance_ID ORDER BY T3.Attendance DESC
+select member.name , performance.date from member_attendance join performance on member_attendance.Performance_ID = performance.Performance_ID join member on member_attendance.Member_ID = member.Member_ID   order by performance.attendance desc
+SELECT Name FROM member WHERE Member_ID NOT IN (SELECT Member_ID FROM member_attendance)
+select member.name from member where  member.member_id not in (select member_attendance.Member_ID from member_attendance  )

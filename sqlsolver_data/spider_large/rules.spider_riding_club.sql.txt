@@ -1,0 +1,34 @@
+SELECT count(*) FROM player
+select count(*) from player
+SELECT Player_name FROM player ORDER BY Votes ASC
+select player.player_name from player   order by player.votes asc
+SELECT Gender ,  Occupation FROM player
+select player.gender , player.occupation from player
+SELECT Player_name ,  residence FROM player WHERE Occupation != "Researcher"
+select player.player_name , player.residence from player where  player.occupation != "Researcher"
+SELECT Sponsor_name FROM player WHERE Residence  =  "Brandon" OR Residence  =  "Birtle"
+select player.sponsor_name from player where  player.residence = "Brandon" or player.residence = "Birtle"
+SELECT Player_name FROM player ORDER BY Votes DESC LIMIT 1
+select player.player_name from player   order by player.votes desc limit 1
+SELECT Occupation ,  COUNT(*) FROM player GROUP BY Occupation
+select player.occupation , count(*) from player  group by player.occupation
+SELECT Occupation FROM player GROUP BY Occupation ORDER BY COUNT(*) DESC LIMIT 1
+select player.occupation from player  group by player.occupation  order by count(*) desc limit 1
+SELECT Residence FROM player GROUP BY Residence HAVING COUNT(*)  >=  2
+select player.residence from player  group by player.residence having  count(*) >= 2
+SELECT T3.Player_name ,  T2.coach_name FROM player_coach AS T1 JOIN coach AS T2 ON T1.Coach_ID  =  T2.Coach_ID JOIN player AS T3 ON T1.Player_ID  =  T3.Player_ID
+select player.player_name , coach.coach_name from player_coach join coach on player_coach.Coach_ID = coach.Coach_ID join player on player_coach.Player_ID = player.Player_ID
+SELECT T3.Player_name FROM player_coach AS T1 JOIN coach AS T2 ON T1.Coach_ID  =  T2.Coach_ID JOIN player AS T3 ON T1.Player_ID  =  T3.Player_ID WHERE T2.Rank  =  1
+select player.player_name from player_coach join coach on player_coach.Coach_ID = coach.Coach_ID join player on player_coach.Player_ID = player.Player_ID where  coach.rank = 1
+SELECT T3.Player_name ,  T3.gender FROM player_coach AS T1 JOIN coach AS T2 ON T1.Coach_ID  =  T2.Coach_ID JOIN player AS T3 ON T1.Player_ID  =  T3.Player_ID WHERE T1.Starting_year  >  2011
+select player.player_name , player.gender from player_coach join coach on player_coach.Coach_ID = coach.Coach_ID join player on player_coach.Player_ID = player.Player_ID where  player_coach.starting_year > 2011
+SELECT T3.Player_name ,  T2.coach_name FROM player_coach AS T1 JOIN coach AS T2 ON T1.Coach_ID  =  T2.Coach_ID JOIN player AS T3 ON T1.Player_ID  =  T3.Player_ID ORDER BY T3.Votes DESC
+select player.player_name , coach.coach_name from player_coach join coach on player_coach.Coach_ID = coach.Coach_ID join player on player_coach.Player_ID = player.Player_ID   order by player.votes desc
+SELECT Player_name FROM player WHERE Player_ID NOT IN (SELECT Player_ID FROM player_coach)
+select player.player_name from player where  player.player_id not in (select player_coach.Player_ID from player_coach  )
+SELECT Residence FROM player WHERE gender  =  "M" INTERSECT SELECT Residence FROM player WHERE gender  =  "F"
+select player.residence from player where  player.gender = "M"   intersect select player.residence from player where  player.gender = "F"
+SELECT T1.club_id ,  T1.club_name, count(*) FROM club AS T1 JOIN coach AS T2 ON T1.club_id  =  T2.club_id GROUP BY T1.club_id
+select club.club_id , club.club_name , count(*) from coach join club on coach.Club_ID = club.Club_ID  group by coach.club_id
+SELECT T1.club_id ,  T1.gold FROM match_result AS T1 JOIN coach AS T2 ON T1.club_id  =  T2.club_id GROUP BY T1.club_id ORDER BY count(*) DESC LIMIT 1
+select match_result.club_id , match_result.gold from coach join club on coach.Club_ID = club.Club_ID join match_result on club.Club_ID = match_result.Club_ID  group by match_result.club_id  order by count(*) desc limit 1

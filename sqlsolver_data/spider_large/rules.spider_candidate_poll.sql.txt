@@ -1,0 +1,80 @@
+SELECT count(*) FROM candidate
+select count(*) from candidate
+SELECT count(*) FROM candidate
+select count(*) from candidate
+SELECT poll_source FROM candidate GROUP BY poll_source ORDER BY count(*) DESC LIMIT 1
+select candidate.poll_source from candidate  group by candidate.poll_source  order by count(*) desc limit 1
+SELECT poll_source FROM candidate GROUP BY poll_source ORDER BY count(*) DESC LIMIT 1
+select candidate.poll_source from candidate  group by candidate.poll_source  order by count(*) desc limit 1
+SELECT support_rate FROM candidate ORDER BY support_rate DESC LIMIT 3
+select candidate.support_rate from candidate   order by candidate.support_rate desc limit 3
+SELECT support_rate FROM candidate ORDER BY support_rate DESC LIMIT 3
+select candidate.support_rate from candidate   order by candidate.support_rate desc limit 3
+SELECT Candidate_ID FROM candidate ORDER BY oppose_rate LIMIT 1
+select candidate.candidate_id from candidate   order by candidate.oppose_rate asc limit 1
+SELECT Candidate_ID FROM candidate ORDER BY oppose_rate LIMIT 1
+select candidate.candidate_id from candidate   order by candidate.oppose_rate asc limit 1
+SELECT Support_rate ,  Consider_rate ,  Oppose_rate FROM candidate ORDER BY unsure_rate
+select candidate.support_rate , candidate.consider_rate , candidate.oppose_rate from candidate   order by candidate.unsure_rate asc
+SELECT Support_rate ,  Consider_rate ,  Oppose_rate FROM candidate ORDER BY unsure_rate
+select candidate.support_rate , candidate.consider_rate , candidate.oppose_rate from candidate   order by candidate.unsure_rate asc
+SELECT poll_source FROM candidate ORDER BY oppose_rate DESC LIMIT 1
+select candidate.poll_source from candidate   order by candidate.oppose_rate desc limit 1
+SELECT poll_source FROM candidate ORDER BY oppose_rate DESC LIMIT 1
+select candidate.poll_source from candidate   order by candidate.oppose_rate desc limit 1
+SELECT name FROM people ORDER BY date_of_birth
+select people.name from people   order by people.date_of_birth asc
+SELECT name FROM people ORDER BY date_of_birth
+select people.name from people   order by people.date_of_birth asc
+SELECT avg(height) ,  avg(weight) FROM people WHERE sex  =  'M'
+select avg(people.height) , avg(people.weight) from people where  people.sex = "M"
+SELECT avg(height) ,  avg(weight) FROM people WHERE sex  =  'M'
+select avg(people.height) , avg(people.weight) from people where  people.sex = "M"
+SELECT name FROM people WHERE height  >  200 OR height  <  190
+select people.name from people where  people.height > 200 or people.height < 190
+SELECT name FROM people WHERE height  >  200 OR height  <  190
+select people.name from people where  people.height > 200 or people.height < 190
+SELECT avg(weight) ,  min(weight) ,  sex FROM people GROUP BY sex
+select avg(people.weight) , min(people.weight) , people.sex from people  group by people.sex
+SELECT avg(weight) ,  min(weight) ,  sex FROM people GROUP BY sex
+select avg(people.weight) , min(people.weight) , people.sex from people  group by people.sex
+SELECT t1.name ,  t1.sex FROM people AS t1 JOIN candidate AS t2 ON t1.people_id  =  t2.people_id ORDER BY t2.support_rate DESC LIMIT 1
+select people.name , people.sex from candidate join people on candidate.People_ID = people.People_ID   order by candidate.support_rate desc limit 1
+SELECT t1.name ,  t1.sex FROM people AS t1 JOIN candidate AS t2 ON t1.people_id  =  t2.people_id ORDER BY t2.support_rate DESC LIMIT 1
+select people.name , people.sex from candidate join people on candidate.People_ID = people.People_ID   order by candidate.support_rate desc limit 1
+SELECT t1.name ,  t1.sex ,  min(oppose_rate) FROM people AS t1 JOIN candidate AS t2 ON t1.people_id  =  t2.people_id GROUP BY t1.sex
+select people.name , people.sex , min(candidate.oppose_rate) from candidate join people on candidate.People_ID = people.People_ID  group by people.sex
+SELECT t1.name ,  t1.sex ,  min(oppose_rate) FROM people AS t1 JOIN candidate AS t2 ON t1.people_id  =  t2.people_id GROUP BY t1.sex
+select people.name , people.sex , min(candidate.oppose_rate) from candidate join people on candidate.People_ID = people.People_ID  group by people.sex
+SELECT t1.sex FROM people AS t1 JOIN candidate AS t2 ON t1.people_id  =  t2.people_id GROUP BY t1.sex ORDER BY avg(t2.unsure_rate) DESC LIMIT 1
+select people.sex from candidate join people on candidate.People_ID = people.People_ID  group by people.sex  order by avg(candidate.unsure_rate) desc limit 1
+SELECT t1.sex FROM people AS t1 JOIN candidate AS t2 ON t1.people_id  =  t2.people_id GROUP BY t1.sex ORDER BY avg(t2.unsure_rate) DESC LIMIT 1
+select people.sex from candidate join people on candidate.People_ID = people.People_ID  group by people.sex  order by avg(candidate.unsure_rate) desc limit 1
+SELECT name FROM people WHERE people_id NOT IN (SELECT people_id FROM candidate)
+select people.name from people where  people.people_id not in (select candidate.People_ID from candidate  )
+SELECT name FROM people WHERE people_id NOT IN (SELECT people_id FROM candidate)
+select people.name from people where  people.people_id not in (select candidate.People_ID from candidate  )
+SELECT t1.name FROM people AS t1 JOIN candidate AS t2 ON t1.people_id  =  t2.people_id WHERE t2.support_rate  <  t2.oppose_rate
+select people.name from candidate join people on candidate.People_ID = people.People_ID where  candidate.support_rate < candidate.oppose_rate
+SELECT t1.name FROM people AS t1 JOIN candidate AS t2 ON t1.people_id  =  t2.people_id WHERE t2.support_rate  <  t2.oppose_rate
+select people.name from candidate join people on candidate.People_ID = people.People_ID where  candidate.support_rate < candidate.oppose_rate
+SELECT count(*) ,  sex FROM people WHERE weight  >  85 GROUP BY sex
+select count(*) , people.sex from people where  people.weight > 85  group by people.sex
+SELECT count(*) ,  sex FROM people WHERE weight  >  85 GROUP BY sex
+select count(*) , people.sex from people where  people.weight > 85  group by people.sex
+SELECT max(support_rate) ,  min(consider_rate) ,  min(oppose_rate) FROM candidate
+select max(candidate.support_rate) , min(candidate.consider_rate) , min(candidate.oppose_rate) from candidate
+SELECT max(support_rate) ,  min(consider_rate) ,  min(oppose_rate) FROM candidate
+select max(candidate.support_rate) , min(candidate.consider_rate) , min(candidate.oppose_rate) from candidate
+SELECT t1.name FROM people AS t1 JOIN candidate AS t2 ON t1.people_id  =  t2.people_id WHERE t1.sex  =  'F' ORDER BY t1.name
+select people.name from candidate join people on candidate.People_ID = people.People_ID where  people.sex = "F"   order by people.name asc
+SELECT t1.name FROM people AS t1 JOIN candidate AS t2 ON t1.people_id  =  t2.people_id WHERE t1.sex  =  'F' ORDER BY t1.name
+select people.name from candidate join people on candidate.People_ID = people.People_ID where  people.sex = "F"   order by people.name asc
+SELECT name FROM people WHERE height  <  (SELECT avg(height) FROM people)
+select people.name from people where  people.height < (select avg(people.height) from people  )
+SELECT name FROM people WHERE height  <  (SELECT avg(height) FROM people)
+select people.name from people where  people.height < (select avg(people.height) from people  )
+SELECT * FROM people
+select * from people
+SELECT * FROM people
+select * from people

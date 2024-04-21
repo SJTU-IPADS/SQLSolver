@@ -1,0 +1,28 @@
+SELECT T1.cmi_details FROM Customer_Master_Index AS T1 JOIN CMI_Cross_References AS T2 ON T1.master_customer_id  =  T2.master_customer_id WHERE T2.source_system_code  =  'Tax'
+select customer_master_index.cmi_details from CMI_Cross_References join Customer_Master_Index on CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id where  cmi_cross_references.source_system_code = "Tax"
+SELECT T1.cmi_cross_ref_id ,  T1.source_system_code FROM CMI_Cross_References AS T1 JOIN Council_Tax AS T2 ON T1.cmi_cross_ref_id  =  T2.cmi_cross_ref_id GROUP BY T1.cmi_cross_ref_id HAVING count(*)  >=  1
+select cmi_cross_references.cmi_cross_ref_id , cmi_cross_references.source_system_code from Council_Tax join CMI_Cross_References on Council_Tax.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id  group by cmi_cross_references.cmi_cross_ref_id having  count(*) >= 1
+SELECT T2.cmi_cross_ref_id ,  T2.master_customer_id ,  count(*) FROM Business_Rates AS T1 JOIN CMI_Cross_References AS T2 ON T1.cmi_cross_ref_id  =  T2.cmi_cross_ref_id GROUP BY T2.cmi_cross_ref_id
+select cmi_cross_references.cmi_cross_ref_id , cmi_cross_references.master_customer_id , count(*) from Business_Rates join CMI_Cross_References on Business_Rates.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id  group by cmi_cross_references.cmi_cross_ref_id
+SELECT T1.source_system_code ,  T2.council_tax_id FROM CMI_Cross_References AS T1 JOIN Benefits_Overpayments AS T2 ON T1.cmi_cross_ref_id  =  T2.cmi_cross_ref_id ORDER BY T2.council_tax_id
+select cmi_cross_references.source_system_code , benefits_overpayments.council_tax_id from Benefits_Overpayments join CMI_Cross_References on Benefits_Overpayments.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id   order by benefits_overpayments.council_tax_id asc
+SELECT T1.source_system_code ,  T1.master_customer_id ,  T2.council_tax_id FROM CMI_Cross_References AS T1 JOIN Parking_Fines AS T2 ON T1.cmi_cross_ref_id  =  T2.cmi_cross_ref_id
+select cmi_cross_references.source_system_code , cmi_cross_references.master_customer_id , parking_fines.council_tax_id from Parking_Fines join CMI_Cross_References on Parking_Fines.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id
+SELECT T1.council_tax_id FROM Rent_Arrears AS T1 JOIN CMI_Cross_References AS T2 ON T1.cmi_cross_ref_id  =  T2.cmi_cross_ref_id JOIN Customer_Master_Index AS T3 ON T3.master_customer_id  =  T2.master_customer_id WHERE T3.cmi_details != 'Schmidt ,  Kertzmann and Lubowitz'
+select rent_arrears.council_tax_id from Rent_Arrears join CMI_Cross_References on Rent_Arrears.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id join Customer_Master_Index on CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id where  customer_master_index.cmi_details != "Schmidt , Kertzmann and Lubowitz"
+SELECT T1.electoral_register_id FROM Electoral_Register AS T1 JOIN CMI_Cross_References AS T2 ON T1.cmi_cross_ref_id  =  T2.cmi_cross_ref_id WHERE T2.source_system_code  =  'Electoral' OR T2.source_system_code  =  'Tax'
+select electoral_register.electoral_register_id from Electoral_Register join CMI_Cross_References on Electoral_Register.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id where  cmi_cross_references.source_system_code = "Electoral" or cmi_cross_references.source_system_code = "Tax"
+SELECT count(DISTINCT source_system_code) FROM CMI_cross_references
+select count( distinct cmi_cross_references.source_system_code) from CMI_Cross_References
+SELECT * FROM customer_master_index ORDER BY cmi_details DESC
+select * from Customer_Master_Index   order by customer_master_index.cmi_details desc
+SELECT council_tax_id ,  cmi_cross_ref_id FROM parking_fines
+select parking_fines.council_tax_id , cmi_cross_references.cmi_cross_ref_id from Parking_Fines join CMI_Cross_References on Parking_Fines.cmi_cross_ref_id = CMI_Cross_References.cmi_cross_ref_id
+SELECT count(*) FROM rent_arrears
+select count(*) from Rent_Arrears
+SELECT DISTINCT T2.source_system_code FROM customer_master_index AS T1 JOIN cmi_cross_references AS T2 ON T1.master_customer_id  =  T2.master_customer_id WHERE T1.cmi_details  =  'Gottlieb ,  Becker and Wyman'
+select distinct cmi_cross_references.source_system_code from CMI_Cross_References join Customer_Master_Index on CMI_Cross_References.master_customer_id = Customer_Master_Index.master_customer_id where  customer_master_index.cmi_details = "Gottlieb , Becker and Wyman"
+SELECT cmi_cross_ref_id FROM cmi_cross_references EXCEPT SELECT cmi_cross_ref_id FROM parking_fines
+select cmi_cross_references.cmi_cross_ref_id from CMI_Cross_References   except select council_tax.cmi_cross_ref_id from Council_Tax
+SELECT DISTINCT source_system_code FROM cmi_cross_references WHERE source_system_code LIKE '%en%'
+select distinct cmi_cross_references.source_system_code from CMI_Cross_References where  cmi_cross_references.source_system_code like "%en%"

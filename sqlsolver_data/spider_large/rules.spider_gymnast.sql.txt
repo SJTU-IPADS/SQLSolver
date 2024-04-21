@@ -1,0 +1,80 @@
+SELECT count(*) FROM gymnast
+select count(*) from gymnast
+SELECT count(*) FROM gymnast
+select count(*) from gymnast
+SELECT Total_Points FROM gymnast ORDER BY Total_Points DESC
+select gymnast.total_points from gymnast   order by gymnast.total_points desc
+SELECT Total_Points FROM gymnast ORDER BY Total_Points DESC
+select gymnast.total_points from gymnast   order by gymnast.total_points desc
+SELECT Total_Points FROM gymnast ORDER BY Floor_Exercise_Points DESC
+select gymnast.total_points from gymnast   order by gymnast.floor_exercise_points desc
+SELECT Total_Points FROM gymnast ORDER BY Floor_Exercise_Points DESC
+select gymnast.total_points from gymnast   order by gymnast.floor_exercise_points desc
+SELECT avg(Horizontal_Bar_Points) FROM gymnast
+select avg(gymnast.horizontal_bar_points) from gymnast
+SELECT avg(Horizontal_Bar_Points) FROM gymnast
+select avg(gymnast.horizontal_bar_points) from gymnast
+SELECT Name FROM People ORDER BY Name ASC
+select people.name from people   order by people.name asc
+SELECT Name FROM People ORDER BY Name ASC
+select people.name from people   order by people.name asc
+SELECT T2.Name FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID
+select people.name from gymnast join people on gymnast.Gymnast_ID = people.People_ID
+SELECT T2.Name FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID
+select people.name from gymnast join people on gymnast.Gymnast_ID = people.People_ID
+SELECT T2.Name FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID WHERE T2.Hometown != "Santo Domingo"
+select people.name from gymnast join people on gymnast.Gymnast_ID = people.People_ID where  people.hometown != "Santo Domingo"
+SELECT T2.Name FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID WHERE T2.Hometown != "Santo Domingo"
+select people.name from gymnast join people on gymnast.Gymnast_ID = people.People_ID where  people.hometown != "Santo Domingo"
+SELECT Age FROM people ORDER BY Height DESC LIMIT 1
+select people.age from people   order by people.height desc limit 1
+SELECT Age FROM people ORDER BY Height DESC LIMIT 1
+select people.age from people   order by people.height desc limit 1
+SELECT Name FROM People ORDER BY Age DESC LIMIT 5
+select people.name from people   order by people.age desc limit 5
+SELECT Name FROM People ORDER BY Age DESC LIMIT 5
+select people.name from people   order by people.age desc limit 5
+SELECT T1.Total_Points FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID ORDER BY T2.Age ASC LIMIT 1
+select gymnast.total_points from gymnast join people on gymnast.Gymnast_ID = people.People_ID   order by people.age asc limit 1
+SELECT T1.Total_Points FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID ORDER BY T2.Age ASC LIMIT 1
+select gymnast.total_points from gymnast join people on gymnast.Gymnast_ID = people.People_ID   order by people.age asc limit 1
+SELECT avg(T2.Age) FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID
+select avg(people.age) from gymnast join people on gymnast.Gymnast_ID = people.People_ID
+SELECT avg(T2.Age) FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID
+select avg(people.age) from gymnast join people on gymnast.Gymnast_ID = people.People_ID
+SELECT DISTINCT T2.Hometown FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID WHERE T1.Total_Points  >  57.5
+select distinct people.hometown from gymnast join people on gymnast.Gymnast_ID = people.People_ID where  gymnast.total_points > (select gymnast.total_points from gymnast  )
+SELECT DISTINCT T2.Hometown FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID WHERE T1.Total_Points  >  57.5
+select distinct people.hometown from gymnast join people on gymnast.Gymnast_ID = people.People_ID where  gymnast.total_points > (select gymnast.total_points from gymnast  )
+SELECT T2.Hometown ,  COUNT(*) FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID GROUP BY T2.Hometown
+select people.hometown , count(*) from gymnast join people on gymnast.Gymnast_ID = people.People_ID  group by people.hometown
+SELECT T2.Hometown ,  COUNT(*) FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID GROUP BY T2.Hometown
+select people.hometown , count(*) from gymnast join people on gymnast.Gymnast_ID = people.People_ID  group by people.hometown
+SELECT T2.Hometown FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID GROUP BY T2.Hometown ORDER BY COUNT(*) DESC LIMIT 1
+select people.hometown from gymnast join people on gymnast.Gymnast_ID = people.People_ID  group by people.hometown  order by count(*) desc limit 1
+SELECT T2.Hometown FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID GROUP BY T2.Hometown ORDER BY COUNT(*) DESC LIMIT 1
+select people.hometown from gymnast join people on gymnast.Gymnast_ID = people.People_ID  group by people.hometown  order by count(*) desc limit 1
+SELECT T2.Hometown FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID GROUP BY T2.Hometown HAVING COUNT(*)  >=  2
+select people.hometown from gymnast join people on gymnast.Gymnast_ID = people.People_ID  group by people.hometown having  count(*) >= 2
+SELECT T2.Hometown FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID GROUP BY T2.Hometown HAVING COUNT(*)  >=  2
+select people.hometown from gymnast join people on gymnast.Gymnast_ID = people.People_ID  group by people.hometown having  count(*) >= 2
+SELECT T2.Name FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID ORDER BY T2.Height ASC
+select people.name from gymnast join people on gymnast.Gymnast_ID = people.People_ID   order by people.height asc
+SELECT T2.Name FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID ORDER BY T2.Height ASC
+select people.name from gymnast join people on gymnast.Gymnast_ID = people.People_ID   order by people.height asc
+SELECT DISTINCT Hometown FROM people EXCEPT SELECT DISTINCT T2.Hometown FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID
+select distinct people.hometown from people   except select distinct people.hometown from gymnast join people on gymnast.Gymnast_ID = people.People_ID
+SELECT DISTINCT Hometown FROM people EXCEPT SELECT DISTINCT T2.Hometown FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID
+select distinct people.hometown from people   except select distinct people.hometown from gymnast join people on gymnast.Gymnast_ID = people.People_ID
+SELECT Hometown FROM people WHERE Age  >  23 INTERSECT SELECT Hometown FROM people WHERE Age  <  20
+select people.hometown from people where  people.age > 23   intersect select people.hometown from people where  people.age < 20
+SELECT Hometown FROM people WHERE Age  >  23 INTERSECT SELECT Hometown FROM people WHERE Age  <  20
+select people.hometown from people where  people.age > 23   intersect select people.hometown from people where  people.age < 20
+SELECT count(DISTINCT Hometown) FROM people
+select count( distinct people.hometown) from people
+SELECT count(DISTINCT Hometown) FROM people
+select count( distinct people.hometown) from people
+SELECT T2.Age FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID ORDER BY T1.Total_Points DESC
+select people.age from gymnast join people on gymnast.Gymnast_ID = people.People_ID   order by gymnast.total_points desc
+SELECT T2.Age FROM gymnast AS T1 JOIN people AS T2 ON T1.Gymnast_ID  =  T2.People_ID ORDER BY T1.Total_Points DESC
+select people.age from gymnast join people on gymnast.Gymnast_ID = people.People_ID   order by gymnast.total_points desc

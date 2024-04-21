@@ -1,0 +1,36 @@
+SELECT T1.good_or_bad_customer FROM customers AS T1 JOIN discount_coupons AS T2 ON T1.coupon_id  =  T2.coupon_id WHERE T2.coupon_amount  =  500
+select customers.good_or_bad_customer from Customers join Discount_Coupons on Customers.coupon_id = Discount_Coupons.coupon_id where  discount_coupons.coupon_amount = 500
+SELECT T1.customer_id ,  T1.first_name ,  count(*) FROM Customers AS T1 JOIN bookings AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id
+select customers.customer_id , customers.first_name , count(*) from Bookings join Customers on Bookings.customer_id = Customers.customer_id  group by bookings.customer_id
+SELECT customer_id ,  sum(amount_paid) FROM Payments GROUP BY customer_id ORDER BY sum(amount_paid) DESC LIMIT 1
+select payments.customer_id , sum(payments.amount_paid) from Payments  group by payments.customer_id  order by sum(payments.amount_paid) desc limit 1
+SELECT T1.booking_id ,  T1.amount_of_refund FROM Bookings AS T1 JOIN Payments AS T2 ON T1.booking_id  =  T2.booking_id GROUP BY T1.booking_id ORDER BY count(*) DESC LIMIT 1
+select bookings.booking_id , bookings.amount_of_refund from Payments join Bookings on Payments.booking_id = Bookings.booking_id  group by payments.booking_id  order by count(*) desc limit 1
+SELECT product_id FROM products_booked GROUP BY product_id HAVING count(*)  =  3
+select products_booked.product_id from Products_Booked  group by products_booked.product_id having  count(*) = 3
+SELECT T2.product_description FROM products_booked AS T1 JOIN products_for_hire AS T2 ON T1.product_id  =  T2.product_id WHERE T1.booked_amount  =  102.76
+select products_for_hire.product_description from Products_Booked join Products_for_Hire on Products_Booked.product_id = Products_for_Hire.product_id where  products_booked.booked_amount = (select products_booked.booked_amount from Products_Booked  )
+SELECT T3.booking_start_date ,   T3.booking_end_date FROM Products_for_hire AS T1 JOIN products_booked AS T2 ON T1.product_id  =  T2.product_id JOIN bookings AS T3 ON T2.booking_id  =  T3.booking_id WHERE T1.product_name  =  'Book collection A'
+select bookings.booking_start_date , bookings.booking_end_date from Products_Booked join Products_for_Hire on Products_Booked.product_id = Products_for_Hire.product_id join Bookings on Products_Booked.booking_id = Bookings.booking_id where  products_for_hire.product_name = "Book collection A"
+SELECT T2.product_name FROM view_product_availability AS T1 JOIN products_for_hire AS T2 ON T1.product_id  =  T2.product_id WHERE T1.available_yn  =  1
+select products_for_hire.product_name from View_Product_Availability join Products_for_Hire on View_Product_Availability.product_id = Products_for_Hire.product_id where  view_product_availability.available_yn = 1
+SELECT count(DISTINCT product_type_code) FROM products_for_hire
+select count( distinct products_for_hire.product_type_code) from Products_for_Hire
+SELECT first_name ,  last_name ,  gender_mf FROM customers WHERE good_or_bad_customer  =  'good' ORDER BY last_name
+select customers.first_name , customers.last_name , customers.gender_mf from Customers where  customers.good_or_bad_customer = "good"   order by customers.last_name asc
+SELECT avg(amount_due) FROM payments
+select avg(payments.amount_due) from Payments
+SELECT max(booked_count) ,  min(booked_count) ,  avg(booked_count) FROM products_booked
+select max(products_booked.booked_count) , min(products_booked.booked_count) , avg(products_booked.booked_count) from Products_Booked
+SELECT DISTINCT payment_type_code FROM payments
+select distinct payments.payment_type_code from Payments
+SELECT daily_hire_cost FROM Products_for_hire WHERE product_name LIKE '%Book%'
+select products_for_hire.daily_hire_cost from Products_for_Hire where  products_for_hire.product_name like "%Book%"
+SELECT count(*) FROM Products_for_hire WHERE product_id NOT IN ( SELECT product_id FROM products_booked WHERE booked_amount  >  200 )
+select count(*) from Products_for_Hire where  products_for_hire.product_id not in (select Products_Booked.product_id from Products_Booked where  products_booked.booked_amount > 200  )
+SELECT T1.coupon_amount FROM Discount_Coupons AS T1 JOIN customers AS T2 ON T1.coupon_id  =  T2.coupon_id WHERE T2.good_or_bad_customer  =  'good' INTERSECT SELECT T1.coupon_amount FROM Discount_Coupons AS T1 JOIN customers AS T2 ON T1.coupon_id  =  T2.coupon_id WHERE T2.good_or_bad_customer  =  'bad'
+select discount_coupons.coupon_amount from Customers join Discount_Coupons on Customers.coupon_id = Discount_Coupons.coupon_id where  customers.good_or_bad_customer = "good"   intersect select discount_coupons.coupon_amount from Customers join Discount_Coupons on Customers.coupon_id = Discount_Coupons.coupon_id where  customers.good_or_bad_customer = "bad"
+SELECT payment_date FROM payments WHERE amount_paid  >  300 OR payment_type_code  =  'Check'
+select payments.payment_date from Payments where  payments.amount_paid > 300 or payments.payment_type_code = "Check"
+SELECT product_name ,  product_description FROM products_for_hire WHERE product_type_code  =  'Cutlery' AND daily_hire_cost  <  20
+select products_for_hire.product_name , products_for_hire.product_description from Products_for_Hire where  products_for_hire.product_type_code = "Cutlery" and products_for_hire.daily_hire_cost < 20

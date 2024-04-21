@@ -1,0 +1,80 @@
+SELECT count(*) FROM ASSESSMENT_NOTES
+select count(*) from Assessment_Notes
+SELECT date_of_notes FROM Assessment_Notes
+select assessment_notes.date_of_notes from Assessment_Notes
+SELECT count(*) FROM ADDRESSES WHERE zip_postcode  =  "197"
+select count(*) from Addresses where  addresses.zip_postcode = "197"
+SELECT count(DISTINCT incident_type_code) FROM Behavior_Incident
+select count( distinct behavior_incident.incident_type_code) from Behavior_Incident
+SELECT DISTINCT detention_type_code FROM Detention
+select distinct detention.detention_type_code from Detention
+SELECT date_incident_start ,  date_incident_end FROM Behavior_Incident WHERE incident_type_code  =  "NOISE"
+select behavior_incident.date_incident_start , behavior_incident.date_incident_end from Behavior_Incident where  behavior_incident.incident_type_code = "NOISE"
+SELECT detention_summary FROM Detention
+select detention.detention_summary from Detention
+SELECT cell_mobile_number ,  email_address FROM STUDENTS
+select students.cell_mobile_number , students.email_address from Students
+SELECT email_address FROM Students WHERE first_name  =  "Emma" AND last_name  =  "Rohan"
+select students.email_address from Students where  students.first_name = "Emma" and students.last_name = "Rohan"
+SELECT count(DISTINCT student_id) FROM Students_in_Detention
+select count( distinct students_in_detention.student_id) from Students_in_Detention
+SELECT gender FROM TEACHERS WHERE last_name  =  "Medhurst"
+select teachers.gender from Teachers where  teachers.last_name = "Medhurst"
+SELECT incident_type_description FROM Ref_Incident_Type WHERE incident_type_code  =  "VIOLENCE"
+select ref_incident_type.incident_type_description from Behavior_Incident join Ref_Incident_Type on Behavior_Incident.incident_type_code = Ref_Incident_Type.incident_type_code where  behavior_incident.incident_type_code = "VIOLENCE"
+SELECT max(monthly_rental) ,  min(monthly_rental) FROM Student_Addresses
+select max(student_addresses.monthly_rental) , min(student_addresses.monthly_rental) from Student_Addresses
+SELECT first_name FROM Teachers WHERE email_address LIKE '%man%'
+select teachers.first_name from Teachers where  teachers.email_address like "%man%"
+SELECT * FROM Assessment_Notes ORDER BY date_of_notes ASC
+select * from Assessment_Notes   order by assessment_notes.date_of_notes asc
+SELECT city FROM Addresses ORDER BY city
+select addresses.city from Addresses   order by addresses.city asc
+SELECT first_name ,  last_name FROM Teachers ORDER BY last_name
+select teachers.first_name , teachers.last_name from Teachers   order by teachers.last_name asc
+SELECT * FROM Student_Addresses ORDER BY monthly_rental DESC
+select * from Student_Addresses join Addresses on Student_Addresses.address_id = Addresses.address_id   order by student_addresses.monthly_rental desc
+SELECT T1.student_id ,  T2.first_name FROM Assessment_Notes AS T1 JOIN Students AS T2 ON T1.student_id  =  T2.student_id GROUP BY T1.student_id ORDER BY count(*) DESC LIMIT 1
+select students.student_id , students.first_name from Assessment_Notes join Students on Assessment_Notes.student_id = Students.student_id  group by assessment_notes.student_id  order by count(*) desc limit 1
+SELECT T1.teacher_id ,  T2.first_name FROM Assessment_Notes AS T1 JOIN Teachers AS T2 ON T1.teacher_id  =  T2.teacher_id GROUP BY T1.teacher_id ORDER BY count(*) DESC LIMIT 3
+select teachers.teacher_id , teachers.first_name from Assessment_Notes join Teachers on Assessment_Notes.teacher_id = Teachers.teacher_id  group by assessment_notes.teacher_id  order by count(*) desc limit 3
+SELECT T1.student_id ,  T2.last_name FROM Behavior_Incident AS T1 JOIN Students AS T2 ON T1.student_id  =  T2.student_id GROUP BY T1.student_id ORDER BY count(*) DESC LIMIT 1
+select students.student_id , students.last_name from Behavior_Incident join Students on Behavior_Incident.student_id = Students.student_id  group by behavior_incident.student_id  order by count(*) desc limit 1
+SELECT T1.teacher_id ,  T2.last_name FROM Detention AS T1 JOIN Teachers AS T2 ON T1.teacher_id  =  T2.teacher_id WHERE T1.detention_type_code  =  "AFTER" GROUP BY T1.teacher_id ORDER BY count(*) DESC LIMIT 1
+select teachers.teacher_id , teachers.last_name from Detention join Teachers on Detention.teacher_id = Teachers.teacher_id where  detention.detention_type_code = "AFTER"  group by detention.teacher_id  order by count(*) desc limit 1
+SELECT T1.student_id ,  T2.first_name FROM Student_Addresses AS T1 JOIN Students AS T2 ON T1.student_id  =  T2.student_id GROUP BY T1.student_id ORDER BY AVG(monthly_rental) DESC LIMIT 1
+select students.student_id , students.first_name from Student_Addresses join Students on Student_Addresses.student_id = Students.student_id  group by student_addresses.student_id  order by avg(student_addresses.monthly_rental) desc limit 1
+SELECT T2.address_id ,  T1.city FROM Addresses AS T1 JOIN Student_Addresses AS T2 ON T1.address_id  =  T2.address_id GROUP BY T2.address_id ORDER BY AVG(monthly_rental) DESC LIMIT 1
+select students.address_id , addresses.city from Student_Addresses join Students on Student_Addresses.student_id = Students.student_id join Addresses on Students.address_id = Addresses.address_id  group by student_addresses.address_id  order by avg(student_addresses.monthly_rental) desc limit 1
+SELECT T1.incident_type_code ,  T2.incident_type_description FROM Behavior_Incident AS T1 JOIN Ref_Incident_Type AS T2 ON T1.incident_type_code  =  T2.incident_type_code GROUP BY T1.incident_type_code ORDER BY count(*) DESC LIMIT 1
+select behavior_incident.incident_type_code , ref_incident_type.incident_type_description from Behavior_Incident join Ref_Incident_Type on Behavior_Incident.incident_type_code = Ref_Incident_Type.incident_type_code  group by behavior_incident.incident_type_code  order by count(*) desc limit 1
+SELECT T1.detention_type_code ,  T2.detention_type_description FROM Detention AS T1 JOIN Ref_Detention_Type AS T2 ON T1.detention_type_code  =  T2.detention_type_code GROUP BY T1.detention_type_code ORDER BY count(*) ASC LIMIT 1
+select detention.detention_type_code , ref_detention_type.detention_type_description from Detention join Ref_Detention_Type on Detention.detention_type_code = Ref_Detention_Type.detention_type_code  group by detention.detention_type_code  order by count(*) asc limit 1
+SELECT T1.date_of_notes FROM Assessment_Notes AS T1 JOIN Students AS T2 ON T1.student_id  =  T2.student_id WHERE T2.first_name  =  "Fanny"
+select assessment_notes.date_of_notes from Assessment_Notes join Students on Assessment_Notes.student_id = Students.student_id where  students.first_name = "Fanny"
+SELECT T1.text_of_notes FROM Assessment_Notes AS T1 JOIN Teachers AS T2 ON T1.teacher_id  =  T2.teacher_id WHERE T2.last_name  =  "Schuster"
+select assessment_notes.text_of_notes from Assessment_Notes join Teachers on Assessment_Notes.teacher_id = Teachers.teacher_id where  teachers.last_name = "Schuster"
+SELECT T1.date_incident_start ,  date_incident_end FROM Behavior_Incident AS T1 JOIN Students AS T2 ON T1.student_id  =  T2.student_id WHERE T2.last_name  =  "Fahey"
+select behavior_incident.date_incident_start , behavior_incident.date_incident_end from Behavior_Incident join Students on Behavior_Incident.student_id = Students.student_id where  students.last_name = "Fahey"
+SELECT T1.datetime_detention_start ,  datetime_detention_end FROM Detention AS T1 JOIN Teachers AS T2 ON T1.teacher_id  =  T2.teacher_id WHERE T2.last_name  =  "Schultz"
+select detention.datetime_detention_start , detention.datetime_detention_end from Detention join Teachers on Detention.teacher_id = Teachers.teacher_id where  teachers.last_name = "Schultz"
+SELECT T2.address_id ,  T1.zip_postcode FROM Addresses AS T1 JOIN Student_Addresses AS T2 ON T1.address_id  =  T2.address_id ORDER BY monthly_rental DESC LIMIT 1
+select student_addresses.address_id , addresses.zip_postcode from Student_Addresses join Addresses on Student_Addresses.address_id = Addresses.address_id   order by student_addresses.monthly_rental desc limit 1
+SELECT T2.cell_mobile_number FROM Student_Addresses AS T1 JOIN Students AS T2 ON T1.student_id  =  T2.student_id ORDER BY T1.monthly_rental ASC LIMIT 1
+select students.cell_mobile_number from Student_Addresses join Students on Student_Addresses.student_id = Students.student_id   order by student_addresses.monthly_rental asc limit 1
+SELECT T2.monthly_rental FROM Addresses AS T1 JOIN Student_Addresses AS T2 ON T1.address_id  =  T2.address_id WHERE T1.state_province_county  =  "Texas"
+select student_addresses.monthly_rental from Student_Addresses join Addresses on Student_Addresses.address_id = Addresses.address_id where  addresses.state_province_county = "Texas"
+SELECT T2.first_name ,  T2.last_name FROM Addresses AS T1 JOIN Students AS T2 ON T1.address_id  =  T2.address_id WHERE T1.state_province_county  =  "Wisconsin"
+select students.first_name , students.last_name from Students join Addresses on Students.address_id = Addresses.address_id where  addresses.state_province_county = "Wisconsin"
+SELECT T1.line_1 ,  avg(T2.monthly_rental) FROM Addresses AS T1 JOIN Student_Addresses AS T2 ON T1.address_id  =  T2.address_id GROUP BY T2.address_id
+select addresses.line_1 , avg(student_addresses.monthly_rental) from Student_Addresses join Addresses on Student_Addresses.address_id = Addresses.address_id  group by addresses.line_1
+SELECT T1.zip_postcode FROM Addresses AS T1 JOIN Teachers AS T2 ON T1.address_id  =  T2.address_id WHERE T2.first_name  =  "Lyla"
+select addresses.zip_postcode from Teachers join Addresses on Teachers.address_id = Addresses.address_id where  teachers.first_name = "Lyla"
+SELECT T2.email_address FROM Addresses AS T1 JOIN Teachers AS T2 ON T1.address_id  =  T2.address_id WHERE T1.zip_postcode  =  "918"
+select teachers.email_address from Teachers join Addresses on Teachers.address_id = Addresses.address_id where  addresses.zip_postcode = "918"
+SELECT count(*) FROM STUDENTS WHERE student_id NOT IN ( SELECT student_id FROM Behavior_Incident )
+select count(*) from Students where  students.student_id not in (select Behavior_Incident.student_id from Behavior_Incident  )
+SELECT last_name FROM Teachers EXCEPT SELECT T1.last_name FROM Teachers AS T1 JOIN Detention AS T2 ON T1.teacher_id  =  T2.teacher_id
+select teachers.last_name from Teachers   except select teachers.last_name from Detention join Teachers on Detention.teacher_id = Teachers.teacher_id
+SELECT T1.line_1 FROM Addresses AS T1 JOIN Students AS T2 ON T1.address_id  =  T2.address_id INTERSECT SELECT T1.line_1 FROM Addresses AS T1 JOIN Teachers AS T2 ON T1.address_id  =  T2.address_id
+select addresses.line_1 from Students join Addresses on Students.address_id = Addresses.address_id join Teachers on Addresses.address_id = Teachers.address_id

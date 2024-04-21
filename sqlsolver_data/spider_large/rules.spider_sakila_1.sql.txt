@@ -1,0 +1,164 @@
+SELECT count(DISTINCT last_name) FROM actor
+select count( distinct actor.last_name) from actor
+SELECT count(DISTINCT last_name) FROM actor
+select count( distinct actor.last_name) from actor
+SELECT first_name FROM actor GROUP BY first_name ORDER BY count(*) DESC LIMIT 1
+select actor.first_name from actor  group by actor.first_name  order by count(*) desc limit 1
+SELECT first_name FROM actor GROUP BY first_name ORDER BY count(*) DESC LIMIT 1
+select actor.first_name from actor  group by actor.first_name  order by count(*) desc limit 1
+SELECT first_name ,  last_name FROM actor GROUP BY first_name ,  last_name ORDER BY count(*) DESC LIMIT 1
+select actor.first_name , actor.last_name from actor  group by actor.first_name, actor.last_name  order by count(*) desc limit 1
+SELECT first_name ,  last_name FROM actor GROUP BY first_name ,  last_name ORDER BY count(*) DESC LIMIT 1
+select actor.first_name , actor.last_name from actor  group by actor.first_name, actor.last_name  order by count(*) desc limit 1
+SELECT district FROM address GROUP BY district HAVING count(*)  >=  2
+select address.district from address  group by address.district having  count(*) >= 2
+SELECT district FROM address GROUP BY district HAVING count(*)  >=  2
+select address.district from address  group by address.district having  count(*) >= 2
+SELECT phone ,  postal_code FROM address WHERE address  =  '1031 Daugavpils Parkway'
+select address.phone , address.postal_code from address where  address.address = "1031 Daugavpils Parkway"
+SELECT phone ,  postal_code FROM address WHERE address  =  '1031 Daugavpils Parkway'
+select address.phone , address.postal_code from address where  address.address = "1031 Daugavpils Parkway"
+SELECT T2.city ,  count(*) ,  T1.city_id FROM address AS T1 JOIN city AS T2 ON T1.city_id  =  T2.city_id GROUP BY T1.city_id ORDER BY count(*) DESC LIMIT 1
+select city.city , count(*) , address.city_id from address join city on address.city_id = city.city_id  group by address.city_id  order by count(*) desc limit 1
+SELECT T2.city ,  count(*) ,  T1.city_id FROM address AS T1 JOIN city AS T2 ON T1.city_id  =  T2.city_id GROUP BY T1.city_id ORDER BY count(*) DESC LIMIT 1
+select city.city , count(*) , address.city_id from address join city on address.city_id = city.city_id  group by address.city_id  order by count(*) desc limit 1
+SELECT count(*) FROM address WHERE district  =  'California'
+select count(*) from address where  address.district = "California"
+SELECT count(*) FROM address WHERE district  =  'California'
+select count(*) from address where  address.district = "California"
+SELECT title ,  film_id FROM film WHERE rental_rate  =  0.99 INTERSECT SELECT T1.title ,  T1.film_id FROM film AS T1 JOIN inventory AS T2 ON T1.film_id  =  T2.film_id GROUP BY T1.film_id HAVING count(*)  <  3
+select film.title , inventory.film_id from inventory join film on inventory.film_id = film.film_id where  film.rental_rate = film.title  group by inventory.film_id having  count(*) < 3
+SELECT title ,  film_id FROM film WHERE rental_rate  =  0.99 INTERSECT SELECT T1.title ,  T1.film_id FROM film AS T1 JOIN inventory AS T2 ON T1.film_id  =  T2.film_id GROUP BY T1.film_id HAVING count(*)  <  3
+select film.title , film.film_id from inventory join film on inventory.film_id = film.film_id where  film.rental_rate = film.title  group by inventory.film_id having  count(*) < 3
+SELECT count(*) FROM city AS T1 JOIN country AS T2 ON T1.country_id  =  T2.country_id WHERE T2.country  =  'Australia'
+select count(*) from city join country on city.country_id = country.country_id where  country.country = "Australia"
+SELECT count(*) FROM city AS T1 JOIN country AS T2 ON T1.country_id  =  T2.country_id WHERE T2.country  =  'Australia'
+select count(*) from city join country on city.country_id = country.country_id where  country.country = "Australia"
+SELECT T2.country FROM city AS T1 JOIN country AS T2 ON T1.country_id  =  T2.country_id GROUP BY T2.country_id HAVING count(*)  >=  3
+select country.country from city join country on city.country_id = country.country_id  group by country.country_id having  count(*) >= 3
+SELECT T2.country FROM city AS T1 JOIN country AS T2 ON T1.country_id  =  T2.country_id GROUP BY T2.country_id HAVING count(*)  >=  3
+select country.country from city join country on city.country_id = country.country_id  group by country.country_id having  count(*) >= 3
+SELECT payment_date FROM payment WHERE amount  >  10 UNION SELECT T1.payment_date FROM payment AS T1 JOIN staff AS T2 ON T1.staff_id  =  T2.staff_id WHERE T2.first_name  =  'Elsa'
+select payment.payment_date from payment where  payment.amount > 10   union select payment.payment_date from payment join staff on payment.staff_id = staff.staff_id where  staff.first_name = "Elsa"
+SELECT payment_date FROM payment WHERE amount  >  10 UNION SELECT T1.payment_date FROM payment AS T1 JOIN staff AS T2 ON T1.staff_id  =  T2.staff_id WHERE T2.first_name  =  'Elsa'
+select payment.payment_date from payment where  payment.amount > 10   union select payment.payment_date from payment join staff on payment.staff_id = staff.staff_id where  staff.first_name = "Elsa"
+SELECT count(*) FROM customer WHERE active = '1'
+select count(*) from customer where  customer.active = "1"
+SELECT count(*) FROM customer WHERE active = '1'
+select count(*) from customer where  customer.active = "1"
+SELECT title ,  rental_rate FROM film ORDER BY rental_rate DESC LIMIT 1
+select film.title , film.rental_rate from film   order by film.rental_rate desc limit 1
+SELECT title ,  rental_rate FROM film ORDER BY rental_rate DESC LIMIT 1
+select film.title , film.rental_rate from film   order by film.rental_rate desc limit 1
+SELECT T2.title ,  T2.film_id ,  T2.description FROM film_actor AS T1 JOIN film AS T2 ON T1.film_id  =  T2.film_id GROUP BY T2.film_id ORDER BY count(*) DESC LIMIT 1
+select film.title , film.film_id , film.description from film_actor join film on film_actor.film_id = film.film_id  group by film.film_id  order by count(*) desc limit 1
+SELECT T2.title ,  T2.film_id ,  T2.description FROM film_actor AS T1 JOIN film AS T2 ON T1.film_id  =  T2.film_id GROUP BY T2.film_id ORDER BY count(*) DESC LIMIT 1
+select film.title , film.film_id , film.description from film_actor join film on film_actor.film_id = film.film_id  group by film.film_id  order by count(*) desc limit 1
+SELECT T2.first_name ,  T2.last_name ,  T2.actor_id FROM film_actor AS T1 JOIN actor AS T2 ON T1.actor_id  =  T2.actor_id GROUP BY T2.actor_id ORDER BY count(*) DESC LIMIT 1
+select actor.first_name , actor.last_name , film_actor.actor_id from film_actor join actor on film_actor.actor_id = actor.actor_id  group by film_actor.actor_id  order by count(*) desc limit 1
+SELECT T2.first_name ,  T2.last_name ,  T2.actor_id FROM film_actor AS T1 JOIN actor AS T2 ON T1.actor_id  =  T2.actor_id GROUP BY T2.actor_id ORDER BY count(*) DESC LIMIT 1
+select actor.first_name , actor.last_name , actor.actor_id from film_actor join actor on film_actor.actor_id = actor.actor_id  group by film_actor.actor_id  order by count(*) desc limit 1
+SELECT T2.first_name ,  T2.last_name FROM film_actor AS T1 JOIN actor AS T2 ON T1.actor_id  =  T2.actor_id GROUP BY T2.actor_id HAVING count(*)  >  30
+select actor.first_name , actor.last_name from film_actor join actor on film_actor.actor_id = actor.actor_id  group by film_actor.actor_id having  count(*) > 30
+SELECT T2.first_name ,  T2.last_name FROM film_actor AS T1 JOIN actor AS T2 ON T1.actor_id  =  T2.actor_id GROUP BY T2.actor_id HAVING count(*)  >  30
+select actor.first_name , actor.last_name from film_actor join actor on film_actor.actor_id = actor.actor_id  group by film_actor.actor_id having  count(*) > 30
+SELECT store_id FROM inventory GROUP BY store_id ORDER BY count(*) DESC LIMIT 1
+select inventory.store_id from inventory  group by inventory.store_id  order by count(*) desc limit 1
+SELECT store_id FROM inventory GROUP BY store_id ORDER BY count(*) DESC LIMIT 1
+select inventory.store_id from inventory  group by inventory.store_id  order by count(*) desc limit 1
+SELECT sum(amount) FROM payment
+select sum(payment.amount) from payment
+SELECT sum(amount) FROM payment
+select sum(payment.amount) from payment
+SELECT T1.first_name ,  T1.last_name ,  T1.customer_id FROM customer AS T1 JOIN payment AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY sum(amount) ASC LIMIT 1
+select customer.first_name , customer.last_name , customer.customer_id from payment join customer on payment.customer_id = customer.customer_id  group by payment.customer_id  order by sum(payment.amount) asc limit 1
+SELECT T1.first_name ,  T1.last_name ,  T1.customer_id FROM customer AS T1 JOIN payment AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY sum(amount) ASC LIMIT 1
+select customer.first_name , customer.last_name , customer.customer_id from payment join customer on payment.customer_id = customer.customer_id  group by payment.customer_id  order by sum(payment.amount) asc limit 1
+SELECT T1.name FROM category AS T1 JOIN film_category AS T2 ON T1.category_id  =  T2.category_id JOIN film AS T3 ON T2.film_id  =  T3.film_id WHERE T3.title  =  'HUNGER ROOF'
+select category.name from film_category join category on film_category.category_id = category.category_id join film on film_category.film_id = film.film_id where  film.title = "HUNGER ROOF"
+SELECT T1.name FROM category AS T1 JOIN film_category AS T2 ON T1.category_id  =  T2.category_id JOIN film AS T3 ON T2.film_id  =  T3.film_id WHERE T3.title  =  'HUNGER ROOF'
+select category.name from film_category join category on film_category.category_id = category.category_id join film on film_category.film_id = film.film_id where  film.title = "HUNGER ROOF"
+SELECT T2.name ,  T1.category_id ,  count(*) FROM film_category AS T1 JOIN category AS T2 ON T1.category_id  =  T2.category_id GROUP BY T1.category_id
+select category.name , film_category.category_id , count(*) from film_category join category on film_category.category_id = category.category_id  group by film_category.category_id
+SELECT T2.name ,  T1.category_id ,  count(*) FROM film_category AS T1 JOIN category AS T2 ON T1.category_id  =  T2.category_id GROUP BY T1.category_id
+select category.name , film_category.category_id , count(*) from film_category join category on film_category.category_id = category.category_id  group by film_category.category_id
+SELECT T1.title ,  T1.film_id FROM film AS T1 JOIN inventory AS T2 ON T1.film_id  =  T2.film_id GROUP BY T1.film_id ORDER BY count(*) DESC LIMIT 1
+select film.title , inventory.film_id from inventory join film on inventory.film_id = film.film_id  group by inventory.film_id  order by count(*) desc limit 1
+SELECT T1.title ,  T1.film_id FROM film AS T1 JOIN inventory AS T2 ON T1.film_id  =  T2.film_id GROUP BY T1.film_id ORDER BY count(*) DESC LIMIT 1
+select film.title , film.film_id from inventory join film on inventory.film_id = film.film_id  group by inventory.film_id  order by count(*) desc limit 1
+SELECT T1.title ,  T2.inventory_id FROM film AS T1 JOIN inventory AS T2 ON T1.film_id  =  T2.film_id JOIN rental AS T3 ON T2.inventory_id  =  T3.inventory_id GROUP BY T2.inventory_id ORDER BY count(*) DESC LIMIT 1
+select film.title , inventory.inventory_id from rental join inventory on rental.inventory_id = inventory.inventory_id join film on inventory.film_id = film.film_id  group by inventory.inventory_id  order by count(*) desc limit 1
+SELECT T1.title ,  T2.inventory_id FROM film AS T1 JOIN inventory AS T2 ON T1.film_id  =  T2.film_id JOIN rental AS T3 ON T2.inventory_id  =  T3.inventory_id GROUP BY T2.inventory_id ORDER BY count(*) DESC LIMIT 1
+select film.title , inventory.inventory_id from rental join inventory on rental.inventory_id = inventory.inventory_id join film on inventory.film_id = film.film_id  group by inventory.inventory_id  order by count(*) desc limit 1
+SELECT count(DISTINCT language_id) FROM film
+select count( distinct film.language_id) from film
+SELECT count(DISTINCT language_id) FROM film
+select count( distinct film.language_id) from film
+SELECT title FROM film WHERE rating  =  'R'
+select film.title from film where  film.rating = "R"
+SELECT title FROM film WHERE rating  =  'R'
+select film.title from film where  film.rating = "R"
+SELECT T2.address FROM store AS T1 JOIN address AS T2 ON T1.address_id  =  T2.address_id WHERE store_id  =  1
+select address.address from store join address on store.address_id = address.address_id where  store.store_id = 1
+SELECT T2.address FROM store AS T1 JOIN address AS T2 ON T1.address_id  =  T2.address_id WHERE store_id  =  1
+select address.address from store join address on store.address_id = address.address_id where  store.store_id = 1
+SELECT T1.first_name ,  T1.last_name ,  T1.staff_id FROM staff AS T1 JOIN payment AS T2 ON T1.staff_id  =  T2.staff_id GROUP BY T1.staff_id ORDER BY count(*) ASC LIMIT 1
+select staff.first_name , staff.last_name , staff.staff_id from payment join staff on payment.staff_id = staff.staff_id  group by payment.staff_id  order by count(*) asc limit 1
+SELECT T1.first_name ,  T1.last_name ,  T1.staff_id FROM staff AS T1 JOIN payment AS T2 ON T1.staff_id  =  T2.staff_id GROUP BY T1.staff_id ORDER BY count(*) ASC LIMIT 1
+select staff.first_name , staff.last_name , staff.staff_id from payment join staff on payment.staff_id = staff.staff_id  group by payment.staff_id  order by count(*) asc limit 1
+SELECT T2.name FROM film AS T1 JOIN LANGUAGE AS T2 ON T1.language_id  =  T2.language_id WHERE T1.title  =  'AIRPORT POLLOCK'
+select language.name from film join language on film.original_language_id = language.language_id where  film.title = "AIRPORT POLLOCK"
+SELECT T2.name FROM film AS T1 JOIN LANGUAGE AS T2 ON T1.language_id  =  T2.language_id WHERE T1.title  =  'AIRPORT POLLOCK'
+select language.name from film join language on film.original_language_id = language.language_id where  film.title = "AIRPORT POLLOCK"
+SELECT count(*) FROM store
+select count(*) from store
+SELECT count(*) FROM store
+select count(*) from store
+SELECT count(DISTINCT rating) FROM film
+select count( distinct film.rating) from film
+SELECT count(DISTINCT rating) FROM film
+select count( distinct film.rating) from film
+SELECT title FROM film WHERE special_features LIKE '%Deleted Scenes%'
+select film.title from film where  film.special_features like "%Deleted Scenes%"
+SELECT title FROM film WHERE special_features LIKE '%Deleted Scenes%'
+select film.title from film where  film.special_features like "%Deleted Scenes%"
+SELECT count(*) FROM inventory WHERE store_id  =  1
+select count(*) from inventory where  inventory.store_id = 1
+SELECT count(*) FROM inventory WHERE store_id  =  1
+select count(*) from inventory where  inventory.store_id = 1
+SELECT payment_date FROM payment ORDER BY payment_date ASC LIMIT 1
+select payment.payment_date from payment   order by payment.payment_date asc limit 1
+SELECT payment_date FROM payment ORDER BY payment_date ASC LIMIT 1
+select payment.payment_date from payment   order by payment.payment_date asc limit 1
+SELECT T2.address ,  T1.email FROM customer AS T1 JOIN address AS T2 ON T2.address_id  =  T1.address_id WHERE T1.first_name  =  'LINDA'
+select address.address , customer.email from customer join address on customer.address_id = address.address_id where  customer.first_name = "LINDA"
+SELECT T2.address ,  T1.email FROM customer AS T1 JOIN address AS T2 ON T2.address_id  =  T1.address_id WHERE T1.first_name  =  'LINDA'
+select address.address , customer.email from customer join address on customer.address_id = address.address_id where  customer.first_name = "LINDA"
+SELECT title FROM film WHERE LENGTH  >  100 OR rating  =  'PG' EXCEPT SELECT title FROM film WHERE replacement_cost  >  200
+select film.title from film where  film.length > 100 or film.rating = "PG"   except select film.title from film where  film.replacement_cost > 200
+SELECT title FROM film WHERE LENGTH  >  100 OR rating  =  'PG' EXCEPT SELECT title FROM film WHERE replacement_cost  >  200
+select film.title from film where  film.length > 100 or film.rating = "PG"   except select film.title from film where  film.replacement_cost > 200
+SELECT T1.first_name ,  T1.last_name FROM customer AS T1 JOIN rental AS T2 ON T1.customer_id  =  T2.customer_id ORDER BY T2.rental_date ASC LIMIT 1
+select customer.first_name , customer.last_name from rental join customer on rental.customer_id = customer.customer_id   order by rental.rental_date asc limit 1
+SELECT T1.first_name ,  T1.last_name FROM customer AS T1 JOIN rental AS T2 ON T1.customer_id  =  T2.customer_id ORDER BY T2.rental_date ASC LIMIT 1
+select customer.first_name , customer.last_name from rental join customer on rental.customer_id = customer.customer_id   order by rental.rental_date asc limit 1
+SELECT DISTINCT T1.first_name ,  T1.last_name FROM staff AS T1 JOIN rental AS T2 ON T1.staff_id  =  T2.staff_id JOIN customer AS T3 ON T2.customer_id  =  T3.customer_id WHERE T3.first_name  =  'APRIL' AND T3.last_name  =  'BURNS'
+select distinct staff.first_name , staff.last_name from rental join customer on rental.customer_id = customer.customer_id join staff on rental.staff_id = staff.staff_id where  customer.first_name = "APRIL" and customer.last_name = "BURNS"
+SELECT DISTINCT T1.first_name ,  T1.last_name FROM staff AS T1 JOIN rental AS T2 ON T1.staff_id  =  T2.staff_id JOIN customer AS T3 ON T2.customer_id  =  T3.customer_id WHERE T3.first_name  =  'APRIL' AND T3.last_name  =  'BURNS'
+select distinct staff.first_name , staff.last_name from rental join customer on rental.customer_id = customer.customer_id join staff on rental.staff_id = staff.staff_id where  customer.first_name = "APRIL" and customer.last_name = "BURNS"
+SELECT store_id FROM customer GROUP BY store_id ORDER BY count(*) DESC LIMIT 1
+select customer.store_id from customer  group by customer.store_id  order by count(*) desc limit 1
+SELECT store_id FROM customer GROUP BY store_id ORDER BY count(*) DESC LIMIT 1
+select customer.store_id from customer  group by customer.store_id  order by count(*) desc limit 1
+SELECT amount FROM payment ORDER BY amount DESC LIMIT 1
+select payment.amount from payment   order by payment.amount desc limit 1
+SELECT amount FROM payment ORDER BY amount DESC LIMIT 1
+select payment.amount from payment   order by payment.amount desc limit 1
+SELECT T2.address FROM staff AS T1 JOIN address AS T2 ON T1.address_id  =  T2.address_id WHERE T1.first_name  =  'Elsa'
+select address.address from staff join address on staff.address_id = address.address_id where  staff.first_name = "Elsa"
+SELECT T2.address FROM staff AS T1 JOIN address AS T2 ON T1.address_id  =  T2.address_id WHERE T1.first_name  =  'Elsa'
+select address.address from staff join address on staff.address_id = address.address_id where  staff.first_name = "Elsa"
+SELECT first_name FROM customer WHERE customer_id NOT IN( SELECT customer_id FROM rental WHERE rental_date  >  '2005-08-23 02:06:01' )
+select customer.first_name from customer where  customer.customer_id not in (select rental.customer_id from rental where  rental.rental_date > "2005-08-23 02:06:01"  )
+SELECT first_name FROM customer WHERE customer_id NOT IN( SELECT customer_id FROM rental WHERE rental_date  >  '2005-08-23 02:06:01' )
+select customer.first_name from customer where  customer.customer_id not in (select rental.customer_id from rental where  rental.rental_date > "2005-08-23 02:06:01"  )

@@ -1,0 +1,42 @@
+SELECT count(*) FROM railway
+select count(*) from railway
+SELECT Builder FROM railway ORDER BY Builder ASC
+select railway.builder from railway   order by railway.builder asc
+SELECT Wheels ,  LOCATION FROM railway
+select railway.wheels , railway.location from railway
+SELECT max(LEVEL) FROM manager WHERE Country != "Australia	"
+select max(manager.level) from manager where  manager.country != "Australia "
+SELECT avg(Age) FROM manager
+select avg(manager.age) from manager
+SELECT Name FROM manager ORDER BY LEVEL ASC
+select manager.name from manager   order by manager.level asc
+SELECT Name ,  Arrival FROM train
+select train.name , train.arrival from train
+SELECT Name FROM manager ORDER BY Age DESC LIMIT 1
+select manager.name from manager   order by manager.age desc limit 1
+SELECT T2.Name ,  T1.Location FROM railway AS T1 JOIN train AS T2 ON T1.Railway_ID  =  T2.Railway_ID
+select train.name , railway.location from train join railway on train.Railway_ID = railway.Railway_ID
+SELECT T1.Builder FROM railway AS T1 JOIN train AS T2 ON T1.Railway_ID  =  T2.Railway_ID WHERE T2.Name  =  "Andaman Exp"
+select railway.builder from train join railway on train.Railway_ID = railway.Railway_ID where  train.name = "Andaman Exp"
+SELECT T2.Railway_ID ,  T1.Location FROM railway AS T1 JOIN train AS T2 ON T1.Railway_ID  =  T2.Railway_ID GROUP BY T2.Railway_ID HAVING COUNT(*)  >  1
+select railway.railway_id , railway.location from train join railway on train.Railway_ID = railway.Railway_ID  group by train.railway_id having  count(*) > 1
+SELECT T2.Railway_ID ,  T1.Builder FROM railway AS T1 JOIN train AS T2 ON T1.Railway_ID  =  T2.Railway_ID GROUP BY T2.Railway_ID ORDER BY COUNT(*) DESC LIMIT 1
+select railway.railway_id , railway.builder from train join railway on train.Railway_ID = railway.Railway_ID  group by train.railway_id  order by count(*) desc limit 1
+SELECT Builder ,  COUNT(*) FROM railway GROUP BY Builder
+select railway.builder , count(*) from railway  group by railway.builder
+SELECT Builder FROM railway GROUP BY Builder ORDER BY COUNT(*) DESC LIMIT 1
+select railway.builder from railway  group by railway.builder  order by count(*) desc limit 1
+SELECT LOCATION ,  COUNT(*) FROM railway GROUP BY LOCATION
+select railway.location , count(*) from railway  group by railway.location
+SELECT LOCATION FROM railway GROUP BY LOCATION HAVING COUNT(*)  >  1
+select railway.location from railway  group by railway.location having  count(*) > 1
+SELECT ObjectNumber FROM railway WHERE Railway_ID NOT IN (SELECT Railway_ID FROM train)
+select railway.objectnumber from railway where  railway.railway_id not in (select train.Railway_ID from train  )
+SELECT Country FROM manager WHERE Age  >  50 INTERSECT SELECT Country FROM manager WHERE Age  <  46
+select manager.country from manager where  manager.age > 50   intersect select manager.country from manager where  manager.age < 46
+SELECT DISTINCT Country FROM manager
+select distinct manager.country from manager
+SELECT Working_year_starts FROM manager ORDER BY LEVEL DESC
+select manager.working_year_starts from manager   order by manager.level desc
+SELECT Country FROM manager WHERE Age  >  50 OR Age  <  46
+select manager.country from manager where  manager.age > 50 or manager.age < 46

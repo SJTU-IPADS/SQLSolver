@@ -1,0 +1,84 @@
+SELECT distinct(catalog_entry_name) FROM catalog_contents
+select distinct catalog_contents.catalog_entry_name from Catalog_Contents
+SELECT distinct(catalog_entry_name) FROM catalog_contents
+select distinct catalog_contents.catalog_entry_name from Catalog_Contents
+SELECT attribute_data_type FROM Attribute_Definitions GROUP BY attribute_data_type HAVING count(*)  >  3
+select attribute_definitions.attribute_data_type from Attribute_Definitions  group by attribute_definitions.attribute_data_type having  count(*) > 3
+SELECT attribute_data_type FROM Attribute_Definitions GROUP BY attribute_data_type HAVING count(*)  >  3
+select attribute_definitions.attribute_data_type from Attribute_Definitions  group by attribute_definitions.attribute_data_type having  count(*) > 3
+SELECT attribute_data_type FROM Attribute_Definitions WHERE attribute_name  =  "Green"
+select attribute_definitions.attribute_data_type from Attribute_Definitions where  attribute_definitions.attribute_name = "Green"
+SELECT attribute_data_type FROM Attribute_Definitions WHERE attribute_name  =  "Green"
+select attribute_definitions.attribute_data_type from Attribute_Definitions where  attribute_definitions.attribute_name = "Green"
+SELECT catalog_level_name ,  catalog_level_number FROM Catalog_Structure WHERE catalog_level_number BETWEEN 5 AND 10
+select catalog_structure.catalog_level_name , catalog_structure.catalog_level_number from Catalog_Structure where  catalog_structure.catalog_level_number between 5 and 10
+SELECT catalog_level_name ,  catalog_level_number FROM Catalog_Structure WHERE catalog_level_number BETWEEN 5 AND 10
+select catalog_structure.catalog_level_name , catalog_structure.catalog_level_number from Catalog_Structure where  catalog_structure.catalog_level_number between 5 and 10
+SELECT distinct(catalog_publisher) FROM catalogs WHERE catalog_publisher LIKE "%Murray%"
+select distinct catalogs.catalog_publisher from Catalogs where  catalogs.catalog_publisher like "%Murray%"
+SELECT distinct(catalog_publisher) FROM catalogs WHERE catalog_publisher LIKE "%Murray%"
+select distinct catalogs.catalog_publisher from Catalogs where  catalogs.catalog_publisher like "%Murray%"
+SELECT catalog_publisher FROM catalogs GROUP BY catalog_publisher ORDER BY count(*) DESC LIMIT 1
+select catalogs.catalog_publisher from Catalogs  group by catalogs.catalog_publisher  order by count(*) desc limit 1
+SELECT catalog_publisher FROM catalogs GROUP BY catalog_publisher ORDER BY count(*) DESC LIMIT 1
+select catalogs.catalog_publisher from Catalogs  group by catalogs.catalog_publisher  order by count(*) desc limit 1
+SELECT t1.catalog_name ,  t1.date_of_publication FROM catalogs AS t1 JOIN catalog_structure AS t2 ON t1.catalog_id  =  t2.catalog_id WHERE catalog_level_number  >  5
+select catalogs.catalog_name , catalogs.date_of_publication from Catalog_Structure join Catalogs on Catalog_Structure.catalog_id = Catalogs.catalog_id where  catalog_structure.catalog_level_number > 5
+SELECT t1.catalog_name ,  t1.date_of_publication FROM catalogs AS t1 JOIN catalog_structure AS t2 ON t1.catalog_id  =  t2.catalog_id WHERE catalog_level_number  >  5
+select catalogs.catalog_name , catalogs.date_of_publication from Catalog_Structure join Catalogs on Catalog_Structure.catalog_id = Catalogs.catalog_id where  catalog_structure.catalog_level_number > 5
+SELECT t1.catalog_entry_name FROM Catalog_Contents AS t1 JOIN Catalog_Contents_Additional_Attributes AS t2 ON t1.catalog_entry_id  =  t2.catalog_entry_id WHERE t2.attribute_value  =  (SELECT attribute_value FROM Catalog_Contents_Additional_Attributes GROUP BY attribute_value ORDER BY count(*) DESC LIMIT 1)
+select catalog_contents.catalog_entry_name from Catalog_Contents_Additional_Attributes join Catalog_Contents on Catalog_Contents_Additional_Attributes.catalog_entry_id = Catalog_Contents.catalog_entry_id where  catalog_contents_additional_attributes.attribute_value = (select Catalog_Contents_Additional_Attributes.attribute_value from Catalog_Contents_Additional_Attributes  group by Catalog_Contents_Additional_Attributes.attribute_value  order by count(*) desc limit 1 )
+SELECT t1.catalog_entry_name FROM Catalog_Contents AS t1 JOIN Catalog_Contents_Additional_Attributes AS t2 ON t1.catalog_entry_id  =  t2.catalog_entry_id WHERE t2.attribute_value  =  (SELECT attribute_value FROM Catalog_Contents_Additional_Attributes GROUP BY attribute_value ORDER BY count(*) DESC LIMIT 1)
+select catalog_contents.catalog_entry_name from Catalog_Contents_Additional_Attributes join Catalog_Contents on Catalog_Contents_Additional_Attributes.catalog_entry_id = Catalog_Contents.catalog_entry_id where  catalog_contents_additional_attributes.attribute_value = (select Catalog_Contents_Additional_Attributes.attribute_value from Catalog_Contents_Additional_Attributes  group by Catalog_Contents_Additional_Attributes.attribute_value  order by count(*) desc limit 1 )
+SELECT catalog_entry_name FROM catalog_contents ORDER BY price_in_dollars DESC LIMIT 1
+select catalog_contents.catalog_entry_name from Catalog_Contents   order by catalog_contents.price_in_dollars desc limit 1
+SELECT catalog_entry_name FROM catalog_contents ORDER BY price_in_dollars DESC LIMIT 1
+select catalog_contents.catalog_entry_name from Catalog_Contents   order by catalog_contents.price_in_dollars desc limit 1
+SELECT t2.catalog_level_name FROM catalog_contents AS t1 JOIN catalog_structure AS t2 ON t1.catalog_level_number  =  t2.catalog_level_number ORDER BY t1.price_in_dollars LIMIT 1
+select catalog_structure.catalog_level_name from Catalog_Contents join Catalog_Structure on Catalog_Contents.catalog_level_number = Catalog_Structure.catalog_level_number   order by catalog_contents.price_in_dollars asc limit 1
+SELECT t2.catalog_level_name FROM catalog_contents AS t1 JOIN catalog_structure AS t2 ON t1.catalog_level_number  =  t2.catalog_level_number ORDER BY t1.price_in_dollars LIMIT 1
+select catalog_structure.catalog_level_name from Catalog_Contents join Catalog_Structure on Catalog_Contents.catalog_level_number = Catalog_Structure.catalog_level_number   order by catalog_contents.price_in_dollars asc limit 1
+SELECT avg(price_in_euros) ,  min(price_in_euros) FROM catalog_contents
+select avg(catalog_contents.price_in_euros) , min(catalog_contents.price_in_euros) from Catalog_Contents
+SELECT avg(price_in_euros) ,  min(price_in_euros) FROM catalog_contents
+select avg(catalog_contents.price_in_euros) , min(catalog_contents.price_in_euros) from Catalog_Contents
+SELECT catalog_entry_name FROM catalog_contents ORDER BY height DESC LIMIT 1
+select catalog_contents.catalog_entry_name from Catalog_Contents   order by catalog_contents.height desc limit 1
+SELECT catalog_entry_name FROM catalog_contents ORDER BY height DESC LIMIT 1
+select catalog_contents.catalog_entry_name from Catalog_Contents   order by catalog_contents.height desc limit 1
+SELECT catalog_entry_name FROM catalog_contents ORDER BY capacity ASC LIMIT 1
+select catalog_contents.catalog_entry_name from Catalog_Contents   order by catalog_contents.capacity asc limit 1
+SELECT catalog_entry_name FROM catalog_contents ORDER BY capacity ASC LIMIT 1
+select catalog_contents.catalog_entry_name from Catalog_Contents   order by catalog_contents.capacity asc limit 1
+SELECT catalog_entry_name FROM catalog_contents WHERE product_stock_number LIKE "2%"
+select catalog_contents.catalog_entry_name from Catalog_Contents where  catalog_contents.product_stock_number like "2%"
+SELECT catalog_entry_name FROM catalog_contents WHERE product_stock_number LIKE "2%"
+select catalog_contents.catalog_entry_name from Catalog_Contents where  catalog_contents.product_stock_number like "2%"
+SELECT t1.catalog_entry_name FROM Catalog_Contents AS t1 JOIN Catalog_Contents_Additional_Attributes AS t2 ON t1.catalog_entry_id  =  t2.catalog_entry_id WHERE t2.catalog_level_number  =  "8"
+select catalog_contents.catalog_entry_name from Catalog_Contents where  catalog_contents.catalog_level_number = "8"
+SELECT t1.catalog_entry_name FROM Catalog_Contents AS t1 JOIN Catalog_Contents_Additional_Attributes AS t2 ON t1.catalog_entry_id  =  t2.catalog_entry_id WHERE t2.catalog_level_number  =  "8"
+select catalog_contents.catalog_entry_name from Catalog_Contents where  catalog_contents.catalog_level_number = "8"
+SELECT catalog_entry_name FROM catalog_contents WHERE LENGTH  <  3 OR width  >  5
+select catalog_contents.catalog_entry_name from Catalog_Contents where  catalog_contents.length < 3 or catalog_contents.height > 5
+SELECT catalog_entry_name FROM catalog_contents WHERE LENGTH  <  3 OR width  >  5
+select catalog_contents.catalog_entry_name from Catalog_Contents where  catalog_contents.length < 3 or catalog_contents.height > 5
+SELECT t1.attribute_name ,  t1.attribute_id FROM Attribute_Definitions AS t1 JOIN Catalog_Contents_Additional_Attributes AS t2 ON t1.attribute_id  =  t2.attribute_id WHERE t2.attribute_value  =  0
+select attribute_definitions.attribute_name , attribute_definitions.attribute_id from Attribute_Definitions join Catalog_Contents_Additional_Attributes on Attribute_Definitions.attribute_id = Catalog_Contents_Additional_Attributes.attribute_id where  catalog_contents_additional_attributes.attribute_value = 0
+SELECT t1.attribute_name ,  t1.attribute_id FROM Attribute_Definitions AS t1 JOIN Catalog_Contents_Additional_Attributes AS t2 ON t1.attribute_id  =  t2.attribute_id WHERE t2.attribute_value  =  0
+select attribute_definitions.attribute_name , attribute_definitions.attribute_id from Attribute_Definitions join Catalog_Contents_Additional_Attributes on Attribute_Definitions.attribute_id = Catalog_Contents_Additional_Attributes.attribute_id where  catalog_contents_additional_attributes.attribute_value = 0
+SELECT catalog_entry_name ,  capacity FROM Catalog_Contents WHERE price_in_dollars  >  700
+select catalog_contents.catalog_entry_name , catalog_contents.capacity from Catalog_Contents where  catalog_contents.price_in_dollars > 700
+SELECT catalog_entry_name ,  capacity FROM Catalog_Contents WHERE price_in_dollars  >  700
+select catalog_contents.catalog_entry_name , catalog_contents.capacity from Catalog_Contents where  catalog_contents.price_in_dollars > 700
+SELECT date_of_latest_revision FROM Catalogs GROUP BY date_of_latest_revision HAVING count(*)  >  1
+select catalogs.date_of_latest_revision from Catalogs  group by catalogs.date_of_latest_revision having  count(*) > 1
+SELECT date_of_latest_revision FROM Catalogs GROUP BY date_of_latest_revision HAVING count(*)  >  1
+select catalogs.date_of_latest_revision from Catalogs  group by catalogs.date_of_latest_revision having  count(*) > 1
+SELECT count(*) FROM catalog_contents
+select count(*) from Catalog_Contents
+SELECT count(*) FROM catalog_contents
+select count(*) from Catalog_Contents
+SELECT catalog_entry_name FROM catalog_contents WHERE next_entry_id  >  8
+select catalog_contents.catalog_entry_name from Catalog_Contents where  catalog_contents.next_entry_id > 8
+SELECT catalog_entry_name FROM catalog_contents WHERE next_entry_id  >  8
+select catalog_contents.catalog_entry_name from Catalog_Contents where  catalog_contents.next_entry_id > 8

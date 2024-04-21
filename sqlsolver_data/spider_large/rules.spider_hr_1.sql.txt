@@ -1,0 +1,248 @@
+SELECT T1.first_name ,  T2.department_name FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id
+select employees.first_name , departments.department_name from employees join departments on employees.DEPARTMENT_ID = departments.DEPARTMENT_ID
+SELECT T1.first_name ,  T2.department_name FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id
+select employees.first_name , departments.department_name from employees join departments on employees.DEPARTMENT_ID = departments.DEPARTMENT_ID
+SELECT first_name ,  last_name ,  salary FROM employees WHERE salary  <  6000
+select employees.first_name , employees.last_name , employees.salary from employees where  employees.salary < 6000
+SELECT first_name ,  last_name ,  salary FROM employees WHERE salary  <  6000
+select employees.first_name , employees.last_name , employees.salary from employees where  employees.salary < 6000
+SELECT first_name ,  department_id FROM employees WHERE last_name  =  'McEwen'
+select employees.first_name , employees.department_id from employees where  employees.last_name = "McEwen"
+SELECT first_name ,  department_id FROM employees WHERE last_name  =  'McEwen'
+select employees.first_name , employees.department_id from employees where  employees.last_name = "McEwen"
+SELECT * FROM employees WHERE department_id  =  "null"
+select * from employees where  employees.department_id = "null"
+SELECT * FROM employees WHERE department_id  =  "null"
+select * from employees where  employees.department_id = "null"
+SELECT * FROM  departments WHERE department_name  =  'Marketing'
+select * from departments where  departments.department_name = "Marketing"
+SELECT * FROM  departments WHERE department_name  =  'Marketing'
+select * from departments where  departments.department_name = "Marketing"
+SELECT hire_date FROM employees WHERE first_name NOT LIKE '%M%'
+select employees.hire_date from employees where  employees.first_name not like "%M%"
+SELECT hire_date FROM employees WHERE first_name NOT LIKE '%M%'
+select employees.hire_date from employees where  employees.first_name not like "%M%"
+SELECT first_name ,  last_name ,  hire_date ,  salary ,  department_id FROM employees WHERE first_name NOT LIKE '%M%'
+select employees.first_name , employees.last_name , employees.hire_date , employees.salary , employees.department_id from employees where  employees.first_name not like "%M%"
+SELECT first_name ,  last_name ,  hire_date ,  salary ,  department_id FROM employees WHERE first_name NOT LIKE '%M%'
+select employees.first_name , employees.last_name , employees.hire_date , employees.salary , employees.department_id from employees where  employees.first_name not like "%M%"
+SELECT first_name ,  last_name ,  hire_date ,  salary ,  department_id FROM employees WHERE first_name NOT LIKE '%M%' ORDER BY department_id
+select employees.first_name , employees.last_name , employees.hire_date , employees.salary , employees.department_id from employees where  employees.first_name not like "%M%"   order by employees.department_id asc
+SELECT first_name ,  last_name ,  hire_date ,  salary ,  department_id FROM employees WHERE first_name NOT LIKE '%M%' ORDER BY department_id
+select employees.first_name , employees.last_name , employees.hire_date , employees.salary , employees.department_id from employees where  employees.first_name not like "%M%"   order by employees.department_id asc
+SELECT phone_number FROM employees WHERE salary BETWEEN 8000 AND 12000
+select employees.phone_number from employees where  employees.salary between 8000 and 12000
+SELECT phone_number FROM employees WHERE salary BETWEEN 8000 AND 12000
+select employees.phone_number from employees where  employees.salary between 8000 and 12000
+SELECT * FROM employees WHERE salary BETWEEN 8000 AND 12000 AND commission_pct != "null" OR  department_id != 40
+select * from employees where  employees.salary between 8000 and 12000 and employees.commission_pct != "null"   union select * from employees where  employees.department_id != 40
+SELECT * FROM employees WHERE salary BETWEEN 8000 AND 12000 AND commission_pct != "null" OR  department_id != 40
+select * from employees where  employees.salary between 8000 and 12000 and employees.commission_pct != "null"   union select * from employees where  employees.department_id != 40
+SELECT first_name ,  last_name ,  salary FROM  employees WHERE commission_pct  =  "null"
+select employees.first_name , employees.last_name , employees.salary from employees where  employees.commission_pct = "null"
+SELECT first_name ,  last_name ,  salary FROM  employees WHERE commission_pct  =  "null"
+select employees.first_name , employees.last_name , employees.salary from employees where  employees.commission_pct = "null"
+SELECT first_name ,  last_name ,  salary FROM employees WHERE first_name LIKE '%m'
+select employees.first_name , employees.last_name , employees.salary from employees where  employees.first_name like "%m"
+SELECT first_name ,  last_name ,  salary FROM employees WHERE first_name LIKE '%m'
+select employees.first_name , employees.last_name , employees.salary from employees where  employees.first_name like "%m"
+SELECT job_id ,  hire_date FROM employees WHERE hire_date BETWEEN '2007-11-05' AND '2009-07-05'
+select employees.job_id , employees.hire_date from employees where  employees.hire_date between "2007-11-05" and "2009-07-05"
+SELECT job_id ,  hire_date FROM employees WHERE hire_date BETWEEN '2007-11-05' AND '2009-07-05'
+select employees.job_id , employees.hire_date from employees where  employees.hire_date between "2007-11-05" and "2009-07-05"
+SELECT first_name ,  last_name FROM employees WHERE department_id  =  70 OR department_id  =  90
+select employees.first_name , employees.last_name from employees where  employees.department_id = 70 or employees.department_id = 90
+SELECT first_name ,  last_name FROM employees WHERE department_id  =  70 OR department_id  =  90
+select employees.first_name , employees.last_name from employees where  employees.department_id = 70 or employees.department_id = 90
+SELECT salary ,  manager_id FROM employees WHERE manager_id != "null"
+select employees.salary , employees.manager_id from employees where  employees.manager_id != "null"
+SELECT salary ,  manager_id FROM employees WHERE manager_id != "null"
+select employees.salary , employees.manager_id from employees where  employees.manager_id != "null"
+SELECT * FROM employees WHERE hire_date  <  '2002-06-21'
+select * from employees where  employees.hire_date < "2002-06-21"
+SELECT * FROM employees WHERE hire_date  <  '2002-06-21'
+select * from employees where  employees.hire_date < "2002-06-21"
+SELECT * FROM employees WHERE first_name LIKE '%D%' OR first_name LIKE '%S%' ORDER BY salary DESC
+select * from employees where  employees.first_name like "%D%" or employees.first_name like "%S%"   order by employees.salary desc
+SELECT * FROM employees WHERE first_name LIKE '%D%' OR first_name LIKE '%S%' ORDER BY salary DESC
+select * from employees where  employees.first_name like "%D%" or employees.first_name like "%S%"   order by employees.salary desc
+SELECT * FROM employees WHERE hire_date  >  '1987-09-07'
+select * from employees where  employees.hire_date > "1987-09-07"
+SELECT * FROM employees WHERE hire_date  >  '1987-09-07'
+select * from employees where  employees.hire_date > "1987-09-07"
+SELECT job_title FROM jobs WHERE min_salary  >  9000
+select jobs.job_title from jobs where  jobs.min_salary > 9000
+SELECT job_title FROM jobs WHERE min_salary  >  9000
+select jobs.job_title from employees join jobs on employees.JOB_ID = jobs.JOB_ID where  employees.salary > 9000
+SELECT job_title ,  max_salary - min_salary FROM jobs WHERE max_salary BETWEEN 12000 AND 18000
+select jobs.job_title , jobs.max_salary - jobs.min_salary from jobs where  jobs.max_salary between 12000 and 18000
+SELECT job_title ,  max_salary - min_salary FROM jobs WHERE max_salary BETWEEN 12000 AND 18000
+select jobs.job_title , jobs.max_salary - jobs.min_salary from jobs where  jobs.max_salary between 12000 and 18000
+SELECT email FROM employees WHERE commission_pct  =  "null" AND salary BETWEEN 7000 AND 12000 AND department_id = 50
+select employees.email from employees where  employees.commission_pct = "null" and employees.salary between 7000 and 12000 and employees.department_id = 50
+SELECT email FROM employees WHERE commission_pct  =  "null" AND salary BETWEEN 7000 AND 12000 AND department_id = 50
+select employees.email from employees where  employees.commission_pct = "null" and employees.salary between 7000 and 12000 and employees.department_id = 50
+SELECT employee_id ,  MAX(end_date) FROM job_history GROUP BY employee_id
+select job_history.employee_id , max(job_history.end_date) from job_history  group by job_history.employee_id
+SELECT employee_id ,  MAX(end_date) FROM job_history GROUP BY employee_id
+select job_history.employee_id , max(job_history.end_date) from job_history  group by job_history.employee_id
+SELECT department_id FROM employees GROUP BY department_id HAVING COUNT(commission_pct) > 10
+select employees.department_id from employees  group by employees.department_id having  count(employees.commission_pct) > 10
+SELECT department_id FROM employees GROUP BY department_id HAVING COUNT(commission_pct) > 10
+select employees.department_id from employees  group by employees.department_id having  count(employees.commission_pct) > 10
+SELECT DISTINCT department_id FROM employees GROUP BY department_id ,  manager_id HAVING COUNT(employee_id)  >= 4
+select distinct employees.department_id from employees  group by employees.department_id, employees.manager_id having  count(employees.employee_id) >= 4
+SELECT DISTINCT department_id FROM employees GROUP BY department_id ,  manager_id HAVING COUNT(employee_id)  >= 4
+select distinct employees.department_id from employees  group by employees.department_id, employees.manager_id having  count(employees.employee_id) >= 4
+SELECT department_id ,  AVG(salary) FROM employees WHERE commission_pct != "null" GROUP BY department_id
+select employees.department_id , avg(employees.salary) from employees where  employees.commission_pct != "null"  group by employees.department_id
+SELECT department_id ,  AVG(salary) FROM employees WHERE commission_pct != "null" GROUP BY department_id
+select employees.department_id , avg(employees.salary) from employees where  employees.commission_pct != "null"  group by employees.department_id
+SELECT country_id ,  COUNT(*) FROM locations GROUP BY country_id
+select locations.country_id , count(*) from locations  group by locations.country_id
+SELECT country_id ,  COUNT(*) FROM locations GROUP BY country_id
+select locations.country_id , count(*) from locations  group by locations.country_id
+SELECT job_id FROM job_history WHERE end_date - start_date  > 300 GROUP BY job_id HAVING COUNT(*) >= 2
+select job_history.job_id from job_history  group by job_history.job_id having  job_history.end_date - job_history.start_date > 300 and count(*) >= 2
+SELECT job_id FROM job_history WHERE end_date - start_date  > 300 GROUP BY job_id HAVING COUNT(*) >= 2
+select job_history.job_id from job_history  group by job_history.job_id having  job_history.end_date - job_history.start_date > 300 and count(*) >= 2
+SELECT employee_id FROM job_history GROUP BY employee_id HAVING COUNT(*)  >= 2
+select job_history.employee_id from job_history  group by job_history.employee_id having  count(*) >= 2
+SELECT employee_id FROM job_history GROUP BY employee_id HAVING COUNT(*)  >= 2
+select job_history.employee_id from job_history  group by job_history.employee_id having  count(*) >= 2
+SELECT T1.employee_id ,  T4.country_name FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id JOIN locations AS T3 ON T2.location_id  =  T3.location_id JOIN countries AS T4 ON T3.country_id  =  T4.country_id
+select employees.employee_id , countries.country_name from countries join employees on countries.COUNTRY_ID = employees.EMPLOYEE_ID
+SELECT T1.employee_id ,  T4.country_name FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id JOIN locations AS T3 ON T2.location_id  =  T3.location_id JOIN countries AS T4 ON T3.country_id  =  T4.country_id
+select employees.employee_id , countries.country_name from countries join employees on countries.COUNTRY_ID = employees.EMPLOYEE_ID
+SELECT T2.department_name ,  COUNT(*) FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id GROUP BY T2.department_name
+select departments.department_name , count(*) from employees join departments on employees.DEPARTMENT_ID = departments.DEPARTMENT_ID  group by employees.department_id
+SELECT T2.department_name ,  COUNT(*) FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id GROUP BY T2.department_name
+select departments.department_name , count(*) from employees join departments on employees.DEPARTMENT_ID = departments.DEPARTMENT_ID  group by employees.department_id
+SELECT * FROM  job_history AS T1 JOIN employees AS T2 ON T1.employee_id  =  T2.employee_id WHERE T2.salary  >=  12000
+select * from job_history join employees on job_history.EMPLOYEE_ID = employees.EMPLOYEE_ID where  employees.salary >= 12000
+SELECT * FROM  job_history AS T1 JOIN employees AS T2 ON T1.employee_id  =  T2.employee_id WHERE T2.salary  >=  12000
+select * from job_history join employees on job_history.EMPLOYEE_ID = employees.EMPLOYEE_ID where  employees.salary >= 12000
+SELECT job_title ,  AVG(salary) FROM employees AS T1 JOIN jobs AS T2 ON T1.job_id  =  T2.job_id GROUP BY T2.job_title
+select jobs.job_title , avg(employees.salary) from employees join jobs on employees.JOB_ID = jobs.JOB_ID  group by jobs.job_title
+SELECT job_title ,  AVG(salary) FROM employees AS T1 JOIN jobs AS T2 ON T1.job_id  =  T2.job_id GROUP BY T2.job_title
+select jobs.job_title , avg(employees.salary) from employees join jobs on employees.JOB_ID = jobs.JOB_ID  group by jobs.job_title
+SELECT first_name ,  last_name FROM employees WHERE salary  >  (SELECT salary FROM employees WHERE employee_id = 163 )
+select employees.first_name , employees.last_name from employees where  employees.salary > (select employees.salary from employees where  employees.employee_id = 163  )
+SELECT first_name ,  last_name FROM employees WHERE salary  >  (SELECT salary FROM employees WHERE employee_id = 163 )
+select employees.first_name , employees.last_name from employees where  employees.salary > (select employees.salary from employees where  employees.employee_id = 163  )
+SELECT MIN(salary) ,  department_id FROM employees GROUP BY department_id
+select min(employees.salary) , employees.department_id from employees  group by employees.department_id
+SELECT MIN(salary) ,  department_id FROM employees GROUP BY department_id
+select min(employees.salary) , employees.department_id from employees  group by employees.department_id
+SELECT first_name ,  last_name ,  department_id FROM employees WHERE salary IN (SELECT MIN(salary) FROM employees GROUP BY department_id)
+select employees.first_name , employees.last_name , employees.department_id from employees where  employees.salary in (select min(employees.salary) from employees  )
+SELECT first_name ,  last_name ,  department_id FROM employees WHERE salary IN (SELECT MIN(salary) FROM employees GROUP BY department_id)
+select employees.first_name , employees.last_name , employees.department_id from employees where  employees.salary in (select min(employees.salary) from employees  )
+SELECT employee_id FROM employees WHERE salary  >  (SELECT AVG(salary) FROM employees)
+select employees.employee_id from employees where  employees.salary > (select avg(employees.salary) from employees  )
+SELECT employee_id FROM employees WHERE salary  >  (SELECT AVG(salary) FROM employees)
+select employees.employee_id from employees where  employees.salary > (select avg(employees.salary) from employees  )
+SELECT employee_id ,  salary FROM employees WHERE manager_id  =  (SELECT employee_id FROM employees WHERE first_name  =  'Payam' )
+select employees.employee_id , employees.salary from employees where  employees.employee_id = (select employees.employee_id from employees where  employees.first_name = "Payam"  )
+SELECT employee_id ,  salary FROM employees WHERE manager_id  =  (SELECT employee_id FROM employees WHERE first_name  =  'Payam' )
+select employees.employee_id , employees.salary from employees where  employees.employee_id = (select employees.employee_id from employees where  employees.first_name = "Payam"  )
+SELECT DISTINCT T2.department_name FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id
+select distinct departments.department_name from employees join departments on employees.DEPARTMENT_ID = departments.DEPARTMENT_ID
+SELECT DISTINCT T2.department_name FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id
+select distinct departments.department_name from employees join departments on employees.DEPARTMENT_ID = departments.DEPARTMENT_ID
+SELECT DISTINCT * FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id WHERE T1.employee_id  =  T2.manager_id
+select distinct * from employees join departments on employees.EMPLOYEE_ID = departments.MANAGER_ID
+SELECT DISTINCT * FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id WHERE T1.employee_id  =  T2.manager_id
+select distinct * from employees join departments on employees.EMPLOYEE_ID = departments.MANAGER_ID
+SELECT * FROM  departments WHERE department_name  =  'Marketing'
+select * from departments where  departments.department_name = "Marketing"
+SELECT * FROM  departments WHERE department_name  =  'Marketing'
+select * from departments where  departments.department_name = "Marketing"
+SELECT employee_id FROM job_history GROUP BY employee_id HAVING COUNT(*)  >= 2
+select job_history.employee_id from job_history  group by job_history.employee_id having  count(*) >= 2
+SELECT employee_id FROM job_history GROUP BY employee_id HAVING COUNT(*)  >= 2
+select job_history.employee_id from job_history  group by job_history.employee_id having  count(*) >= 2
+SELECT DISTINCT department_id FROM employees GROUP BY department_id ,  manager_id HAVING COUNT(employee_id)  >= 4
+select distinct employees.department_id from employees  group by employees.department_id, employees.manager_id having  count(employees.employee_id) >= 4
+SELECT DISTINCT department_id FROM employees GROUP BY department_id ,  manager_id HAVING COUNT(employee_id)  >= 4
+select distinct employees.department_id from employees  group by employees.department_id, employees.manager_id having  count(employees.employee_id) >= 4
+SELECT job_id FROM employees GROUP BY job_id HAVING AVG(salary) > 8000
+select employees.job_id from employees  group by employees.job_id having  avg(employees.salary) > 8000
+SELECT job_id FROM employees GROUP BY job_id HAVING AVG(salary) > 8000
+select employees.job_id from employees  group by employees.job_id having  avg(employees.salary) > 8000
+SELECT T1.employee_id ,  T2.job_title FROM employees AS T1 JOIN jobs AS T2 ON T1.job_id  =  T2.job_id WHERE T1.department_id = 80
+select employees.employee_id , jobs.job_title from employees join jobs on employees.JOB_ID = jobs.JOB_ID where  employees.department_id = 80
+SELECT T1.employee_id ,  T2.job_title FROM employees AS T1 JOIN jobs AS T2 ON T1.job_id  =  T2.job_id WHERE T1.department_id = 80
+select employees.employee_id , jobs.job_title from employees join jobs on employees.JOB_ID = jobs.JOB_ID where  employees.department_id = 80
+SELECT T1.first_name ,  T1.job_id FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id WHERE T2.department_name  =  'Finance'
+select employees.first_name , employees.job_id from employees join departments on employees.DEPARTMENT_ID = departments.DEPARTMENT_ID where  departments.department_name = "Finance"
+SELECT T1.first_name ,  T1.job_id FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id WHERE T2.department_name  =  'Finance'
+select employees.first_name , employees.job_id from employees join departments on employees.DEPARTMENT_ID = departments.DEPARTMENT_ID where  departments.department_name = "Finance"
+SELECT * FROM employees WHERE salary BETWEEN (SELECT MIN(salary) FROM employees) AND 2500
+select * from employees where  employees.salary < 2500 and employees.salary >= (select min(employees.salary) from employees  )
+SELECT * FROM employees WHERE salary BETWEEN (SELECT MIN(salary) FROM employees) AND 2500
+select * from employees where  employees.salary < 2500 and employees.salary >= (select min(employees.salary) from employees  )
+SELECT * FROM employees WHERE department_id NOT IN (SELECT department_id FROM departments WHERE manager_id BETWEEN 100 AND 200)
+select employees.employee_id from employees where  employees.department_id not in (select departments.DEPARTMENT_ID from departments where  departments.manager_id between 100 and 200  )
+SELECT * FROM employees WHERE department_id NOT IN (SELECT department_id FROM departments WHERE manager_id BETWEEN 100 AND 200)
+select employees.employee_id from employees where  employees.department_id not in (select departments.DEPARTMENT_ID from departments where  departments.manager_id between 100 and 200  )
+SELECT first_name ,  last_name ,  hire_date FROM employees WHERE department_id  =  (SELECT department_id FROM employees WHERE first_name  =  "Clara")
+select employees.first_name , employees.last_name , employees.hire_date from employees where  employees.department_id = (select employees.department_id from employees where  employees.first_name = "Clara"  )
+SELECT first_name ,  last_name ,  hire_date FROM employees WHERE department_id  =  (SELECT department_id FROM employees WHERE first_name  =  "Clara")
+select employees.first_name , employees.last_name , employees.hire_date from employees where  employees.department_id = (select employees.department_id from employees where  employees.first_name = "Clara"  )
+SELECT first_name ,  last_name ,  hire_date FROM employees WHERE department_id  =  ( SELECT department_id FROM employees WHERE first_name  =  "Clara") AND first_name != "Clara"
+select employees.first_name , employees.last_name , employees.hire_date from employees where  employees.first_name != "Clara" and employees.department_id = (select employees.department_id from employees where  employees.first_name = "Clara"  )
+SELECT first_name ,  last_name ,  hire_date FROM employees WHERE department_id  =  ( SELECT department_id FROM employees WHERE first_name  =  "Clara") AND first_name != "Clara"
+select employees.first_name , employees.last_name , employees.hire_date from employees where  employees.first_name != "Clara" and employees.department_id = (select employees.department_id from employees where  employees.first_name = "Clara"  )
+SELECT employee_id ,  first_name ,  last_name FROM employees WHERE department_id IN ( SELECT department_id FROM employees WHERE first_name LIKE '%T%' )
+select employees.employee_id , employees.first_name , employees.last_name from employees where  employees.department_id in (select departments.DEPARTMENT_ID from departments join employees on departments.DEPARTMENT_ID = employees.DEPARTMENT_ID where  employees.first_name like "%T%"  )
+SELECT employee_id ,  first_name ,  last_name FROM employees WHERE department_id IN ( SELECT department_id FROM employees WHERE first_name LIKE '%T%' )
+select employees.employee_id , employees.first_name , employees.last_name from employees where  employees.department_id in (select departments.DEPARTMENT_ID from departments join employees on departments.DEPARTMENT_ID = employees.DEPARTMENT_ID where  employees.first_name like "%T%"  )
+SELECT employee_id ,  first_name ,  last_name ,  salary FROM employees WHERE salary  >  ( SELECT AVG (salary) FROM employees ) AND department_id IN ( SELECT department_id FROM employees WHERE first_name LIKE '%J%')
+select employees.employee_id , employees.first_name , employees.last_name , employees.salary from employees where  employees.salary > (select avg(employees.salary) from employees  ) and employees.department_id in (select departments.DEPARTMENT_ID from departments  )
+SELECT employee_id ,  first_name ,  last_name ,  salary FROM employees WHERE salary  >  ( SELECT AVG (salary) FROM employees ) AND department_id IN ( SELECT department_id FROM employees WHERE first_name LIKE '%J%')
+select employees.employee_id , employees.first_name , employees.last_name , employees.salary from employees where  employees.salary > (select avg(employees.salary) from employees  ) and employees.department_id in (select employees.department_id from employees  ) and employees.department_id in (select departments.DEPARTMENT_ID from departments  )
+SELECT employee_id ,  job_id FROM employees WHERE salary  <  ( SELECT min(salary) FROM employees WHERE job_id  =  'MK_MAN' )
+select employees.employee_id , employees.job_id from employees where  employees.salary < (select min(employees.salary) from employees where  employees.job_id = "MK_MAN"  )
+SELECT employee_id ,  job_id FROM employees WHERE salary  <  ( SELECT min(salary) FROM employees WHERE job_id  =  'MK_MAN' )
+select employees.employee_id , employees.job_id from employees where  employees.salary < (select min(employees.salary) from employees where  employees.job_id = "MK_MAN"  )
+SELECT employee_id ,  first_name ,  last_name ,  job_id FROM employees WHERE salary  >  ( SELECT max(salary) FROM employees WHERE job_id  =  'PU_MAN' )
+select employees.employee_id , employees.first_name , employees.last_name , jobs.job_title from employees join jobs on employees.JOB_ID = jobs.JOB_ID where  employees.salary > (select max(employees.salary) from employees where  employees.job_id = "PU_MAN"  )
+SELECT employee_id ,  first_name ,  last_name ,  job_id FROM employees WHERE salary  >  ( SELECT max(salary) FROM employees WHERE job_id  =  'PU_MAN' )
+select employees.employee_id , employees.first_name , employees.last_name , employees.job_id from employees where  employees.salary > (select max(employees.salary) from employees where  employees.job_id = "PU_MAN"  )
+SELECT department_id ,  SUM(salary) FROM employees GROUP BY department_id HAVING count(*)  >=  2
+select employees.department_id , sum(employees.salary) from employees  group by employees.department_id having  count(*) >= 2
+SELECT department_id ,  SUM(salary) FROM employees GROUP BY department_id HAVING count(*)  >=  2
+select employees.department_id , sum(employees.salary) from employees  group by employees.department_id having  count(*) >= 2
+SELECT * FROM employees WHERE employee_id NOT IN (SELECT employee_id FROM job_history)
+select * from employees where  employees.employee_id not in (select job_history.EMPLOYEE_ID from job_history  )
+SELECT * FROM employees WHERE employee_id NOT IN (SELECT employee_id FROM job_history)
+select * from employees where  employees.employee_id not in (select job_history.EMPLOYEE_ID from job_history  )
+SELECT first_name ,   last_name ,   salary ,  department_id ,  MAX(salary) FROM employees GROUP BY department_id
+select employees.first_name , employees.last_name , employees.salary , employees.department_id , max(employees.salary) from employees  group by employees.department_id
+SELECT first_name ,   last_name ,   salary ,  department_id ,  MAX(salary) FROM employees GROUP BY department_id
+select employees.first_name , employees.last_name , employees.salary , employees.department_id , max(employees.salary) from employees  group by employees.department_id
+SELECT T1.first_name ,  T1.last_name ,  T2.department_name ,  T3.city ,  T3.state_province FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id JOIN locations AS T3 ON T2.location_id  =  T3.location_id
+select employees.first_name , employees.last_name , employees.department_id , locations.city , locations.state_province from employees join locations on employees.EMPLOYEE_ID = locations.LOCATION_ID
+SELECT T1.first_name ,  T1.last_name ,  T2.department_name ,  T3.city ,  T3.state_province FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id JOIN locations AS T3 ON T2.location_id  =  T3.location_id
+select employees.first_name , employees.last_name , departments.department_name , locations.city , locations.state_province from employees join departments on employees.DEPARTMENT_ID = departments.DEPARTMENT_ID join locations on departments.LOCATION_ID = locations.LOCATION_ID
+SELECT T1.first_name ,  T1.last_name ,  T3.city FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id JOIN locations AS T3 ON T2.location_id  =  T3.location_id WHERE T1.first_name LIKE '%z%'
+select employees.first_name , employees.last_name , locations.city from employees join locations on employees.EMPLOYEE_ID = locations.LOCATION_ID where  employees.first_name like "%z%"
+SELECT T1.first_name ,  T1.last_name ,  T3.city FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id JOIN locations AS T3 ON T2.location_id  =  T3.location_id WHERE T1.first_name LIKE '%z%'
+select employees.first_name , employees.last_name , locations.city from employees join locations on employees.EMPLOYEE_ID = locations.LOCATION_ID where  employees.first_name like "%z%"
+SELECT T1.department_name ,  T2.city ,  T2.state_province FROM departments AS T1 JOIN locations AS T2 ON T2.location_id  =  T1.location_id
+select departments.department_name , locations.city , locations.state_province from locations join departments on locations.LOCATION_ID = departments.LOCATION_ID
+SELECT T1.department_name ,  T2.city ,  T2.state_province FROM departments AS T1 JOIN locations AS T2 ON T2.location_id  =  T1.location_id
+select departments.department_name , locations.city , locations.state_province from locations join departments on locations.LOCATION_ID = departments.LOCATION_ID
+SELECT T1.first_name ,  T1.last_name , T1.employee_id ,  T4.country_name FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id JOIN locations AS T3 ON T2.location_id  =  T3.location_id JOIN countries AS T4 ON T3.country_id  =  T4.country_id
+select employees.first_name , employees.last_name , employees.employee_id , countries.country_name from countries join employees on countries.COUNTRY_ID = employees.EMPLOYEE_ID
+SELECT T1.first_name ,  T1.last_name , T1.employee_id ,  T4.country_name FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id JOIN locations AS T3 ON T2.location_id  =  T3.location_id JOIN countries AS T4 ON T3.country_id  =  T4.country_id
+select employees.first_name , employees.last_name , employees.employee_id , countries.country_name from countries join employees on countries.COUNTRY_ID = employees.EMPLOYEE_ID
+SELECT department_name ,  COUNT(*) FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id GROUP BY department_name
+select departments.department_name , count(*) from employees join departments on employees.DEPARTMENT_ID = departments.DEPARTMENT_ID  group by employees.department_id
+SELECT department_name ,  COUNT(*) FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id GROUP BY department_name
+select departments.department_name , count(*) from employees join departments on employees.DEPARTMENT_ID = departments.DEPARTMENT_ID  group by employees.department_id
+SELECT first_name ,  last_name ,  salary FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id JOIN  locations AS T3 ON T2.location_id  =  T3.location_id WHERE  T3.city  =  'London'
+select employees.first_name , employees.last_name , employees.salary from employees join departments on employees.DEPARTMENT_ID = departments.DEPARTMENT_ID join locations on departments.LOCATION_ID = locations.LOCATION_ID where  locations.city = "London"
+SELECT first_name ,  last_name ,  salary FROM employees AS T1 JOIN departments AS T2 ON T1.department_id  =  T2.department_id JOIN  locations AS T3 ON T2.location_id  =  T3.location_id WHERE  T3.city  =  'London'
+select employees.first_name , employees.last_name , employees.salary from employees join departments on employees.DEPARTMENT_ID = departments.DEPARTMENT_ID join locations on departments.LOCATION_ID = locations.LOCATION_ID where  locations.city = "London"

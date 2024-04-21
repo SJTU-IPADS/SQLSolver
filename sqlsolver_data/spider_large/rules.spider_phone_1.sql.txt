@@ -1,0 +1,58 @@
+SELECT Model_name FROM chip_model WHERE Launch_year BETWEEN 2002 AND 2004;
+select chip_model.model_name from chip_model where  chip_model.launch_year between 2002 and 2004
+SELECT Model_name ,  RAM_MiB FROM chip_model ORDER BY RAM_MiB ASC LIMIT 1;
+select chip_model.model_name , chip_model.ram_mib from chip_model   order by chip_model.ram_mib asc limit 1
+SELECT chip_model ,  screen_mode FROM phone WHERE Hardware_Model_name = "LG-P760";
+select phone.chip_model , phone.screen_mode from phone where  phone.hardware_model_name = "LG-P760"
+SELECT count(*) FROM phone WHERE Company_name = "Nokia Corporation";
+select count(*) from phone where  phone.company_name = "Nokia Corporation"
+SELECT max(T1.RAM_MiB) ,  min(T1.RAM_MiB) FROM chip_model AS T1 JOIN phone AS T2 ON T1.Model_name  =  T2.chip_model WHERE T2.Company_name = "Nokia Corporation";
+select max(chip_model.ram_mib) , min(chip_model.ram_mib) from phone join chip_model on phone.chip_model = chip_model.Model_name where  phone.company_name = "Nokia Corporation"
+SELECT avg(T1.ROM_MiB) FROM chip_model AS T1 JOIN phone AS T2 ON T1.Model_name  =  T2.chip_model WHERE T2.Company_name = "Nokia Corporation";
+select avg(chip_model.rom_mib) from phone join chip_model on phone.chip_model = chip_model.Model_name where  phone.company_name = "Nokia Corporation"
+SELECT T2.Hardware_Model_name ,  T2.Company_name FROM chip_model AS T1 JOIN phone AS T2 ON T1.Model_name  =  T2.chip_model WHERE T1.Launch_year = 2002 OR T1.RAM_MiB  >  32;
+select phone.hardware_model_name , phone.company_name from phone join chip_model on phone.chip_model = chip_model.Model_name where  chip_model.launch_year = 2002 or chip_model.ram_mib > 32
+SELECT Hardware_Model_name ,  Company_name FROM phone WHERE Accreditation_type LIKE 'Full';
+select phone.hardware_model_name , phone.company_name from phone where  phone.accreditation_type like "Full"
+SELECT T1.Char_cells ,  T1.Pixels ,  T1.Hardware_colours FROM screen_mode AS T1 JOIN phone AS T2 ON T1.Graphics_mode = T2.screen_mode WHERE T2.Hardware_Model_name = "LG-P760";
+select screen_mode.char_cells , screen_mode.pixels , screen_mode.hardware_colours from phone join screen_mode on phone.screen_mode = screen_mode.Graphics_mode where  phone.hardware_model_name = "LG-P760"
+SELECT T2.Hardware_Model_name ,  T2.Company_name FROM screen_mode AS T1 JOIN phone AS T2 ON T1.Graphics_mode = T2.screen_mode WHERE T1.Type  =  "Graphics";
+select phone.hardware_model_name , phone.company_name from phone join screen_mode on phone.screen_mode = screen_mode.Graphics_mode where  screen_mode.type = "Graphics"
+SELECT Company_name ,  count(*) FROM phone GROUP BY Company_name ORDER BY count(*) ASC LIMIT 1;
+select phone.company_name , count(*) from phone  group by phone.company_name  order by count(*) asc limit 1
+SELECT Company_name FROM phone GROUP BY Company_name HAVING count(*)  >  1;
+select phone.company_name from phone  group by phone.company_name having  count(*) > 1
+SELECT max(used_kb) , min(used_kb) , avg(used_kb) FROM screen_mode;
+select max(screen_mode.used_kb) , min(screen_mode.used_kb) , avg(screen_mode.used_kb) from screen_mode
+SELECT T2.Hardware_Model_name FROM chip_model AS T1 JOIN phone AS T2 ON T1.Model_name  =  T2.chip_model WHERE T1.Launch_year = 2002 ORDER BY T1.RAM_MiB DESC LIMIT 1;
+select phone.hardware_model_name from phone join chip_model on phone.chip_model = chip_model.Model_name where  chip_model.launch_year = 2002   order by chip_model.ram_mib desc limit 1
+SELECT T1.WiFi , T3.Type FROM chip_model AS T1 JOIN phone AS T2 ON T1.Model_name  =  T2.chip_model JOIN screen_mode AS T3 ON T2.screen_mode = T3.Graphics_mode WHERE T2.Hardware_Model_name = "LG-P760";
+select chip_model.wifi , screen_mode.type from phone join chip_model on phone.chip_model = chip_model.Model_name join screen_mode on phone.screen_mode = screen_mode.Graphics_mode where  phone.hardware_model_name = "LG-P760"
+SELECT T2.Hardware_Model_name FROM chip_model AS T1 JOIN phone AS T2 ON T1.Model_name  =  T2.chip_model JOIN screen_mode AS T3 ON T2.screen_mode = T3.Graphics_mode WHERE T3.Type = "Text" OR T1.RAM_MiB  >  32;
+select phone.hardware_model_name from phone join chip_model on phone.chip_model = chip_model.Model_name join screen_mode on phone.screen_mode = screen_mode.Graphics_mode where  screen_mode.type = "Text" or chip_model.ram_mib > 32
+SELECT DISTINCT T2.Hardware_Model_name FROM screen_mode AS T1 JOIN phone AS T2 ON T1.Graphics_mode = T2.screen_mode WHERE T1.Type  =  "Graphics" OR t2.Company_name  =  "Nokia Corporation"
+select distinct phone.hardware_model_name from phone join screen_mode on phone.screen_mode = screen_mode.Graphics_mode where  screen_mode.type = "Graphics" or phone.company_name = "Nokia Corporation"
+SELECT DISTINCT T2.Hardware_Model_name FROM screen_mode AS T1 JOIN phone AS T2 ON T1.Graphics_mode = T2.screen_mode WHERE t2.Company_name  =  "Nokia Corporation" AND T1.Type != "Text";
+select distinct phone.hardware_model_name from phone join screen_mode on phone.screen_mode = screen_mode.Graphics_mode where  phone.company_name = "Nokia Corporation" and screen_mode.type != "Text"
+SELECT DISTINCT T2.Hardware_Model_name , T2.Company_name FROM screen_mode AS T1 JOIN phone AS T2 ON T1.Graphics_mode = T2.screen_mode WHERE T1.used_kb BETWEEN 10 AND 15;
+select distinct phone.hardware_model_name , phone.company_name from phone join screen_mode on phone.screen_mode = screen_mode.Graphics_mode where  screen_mode.used_kb between 10 and 15
+SELECT Accreditation_type ,  count(*) FROM phone GROUP BY Accreditation_type
+select phone.accreditation_type , count(*) from phone  group by phone.accreditation_type
+SELECT Accreditation_type ,  count(*) FROM phone GROUP BY Accreditation_type
+select phone.accreditation_type , count(*) from phone  group by phone.accreditation_type
+SELECT Accreditation_level FROM phone GROUP BY Accreditation_level HAVING count(*)  >  3
+select phone.accreditation_level from phone  group by phone.accreditation_level having  count(*) > 3
+SELECT * FROM chip_model
+select * from chip_model
+SELECT count(*) FROM chip_model WHERE wifi  =  'No'
+select count(*) from chip_model where  chip_model.wifi = "No"
+SELECT count(*) FROM chip_model WHERE wifi  =  'No'
+select count(*) from chip_model where  chip_model.wifi = "No"
+SELECT model_name FROM chip_model ORDER BY launch_year
+select chip_model.model_name from chip_model   order by chip_model.launch_year asc
+SELECT avg(RAM_MiB) FROM chip_model WHERE model_name NOT IN (SELECT chip_model FROM phone)
+select avg(chip_model.ram_mib) from chip_model where  chip_model.model_name not in (select phone.chip_model from phone  )
+SELECT model_name FROM chip_model EXCEPT SELECT chip_model FROM phone WHERE Accreditation_type  =  'Full'
+select chip_model.model_name from chip_model   except select phone.chip_model from phone where  phone.accreditation_type = "Full"
+SELECT t1.pixels FROM screen_mode AS t1 JOIN phone AS t2 ON t1.Graphics_mode  =  t2.screen_mode WHERE t2.Accreditation_type  =  'Provisional' INTERSECT SELECT t1.pixels FROM screen_mode AS t1 JOIN phone AS t2 ON t1.Graphics_mode  =  t2.screen_mode WHERE t2.Accreditation_type  =  'Full'
+select screen_mode.pixels from phone join screen_mode on phone.screen_mode = screen_mode.Graphics_mode where  phone.accreditation_type = "Provisional"   intersect select screen_mode.pixels from phone join screen_mode on phone.screen_mode = screen_mode.Graphics_mode where  phone.accreditation_type = "Full"

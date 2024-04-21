@@ -1,0 +1,168 @@
+SELECT count(*) FROM Accounts
+select count(*) from Accounts
+SELECT count(*) FROM Accounts
+select count(*) from Accounts
+SELECT account_id ,  account_details FROM Accounts
+select accounts.account_id , accounts.account_details from Accounts
+SELECT account_id ,  account_details FROM Accounts
+select accounts.account_id , accounts.account_details from Accounts
+SELECT count(*) FROM Statements
+select count(*) from Statements
+SELECT count(*) FROM Statements
+select count(*) from Statements
+SELECT STATEMENT_ID ,  statement_details FROM Statements
+select statements.statement_id , statements.statement_details from Statements
+SELECT STATEMENT_ID ,  statement_details FROM Statements
+select statements.statement_id , statements.statement_details from Statements
+SELECT T1.statement_id ,  T2.statement_details ,  T1.account_details FROM Accounts AS T1 JOIN Statements AS T2 ON T1.statement_id  =  T2.statement_id
+select statements.statement_id , statements.statement_details , accounts.account_details from Accounts join Statements on Accounts.Statement_ID = Statements.Statement_ID
+SELECT T1.statement_id ,  T2.statement_details ,  T1.account_details FROM Accounts AS T1 JOIN Statements AS T2 ON T1.statement_id  =  T2.statement_id
+select accounts.statement_id , statements.statement_details , accounts.account_details from Accounts join Statements on Accounts.Statement_ID = Statements.Statement_ID
+SELECT STATEMENT_ID ,  count(*) FROM Accounts GROUP BY STATEMENT_ID
+select accounts.statement_id , count(*) from Accounts  group by accounts.statement_id
+SELECT STATEMENT_ID ,  count(*) FROM Accounts GROUP BY STATEMENT_ID
+select accounts.statement_id , count(*) from Accounts  group by accounts.statement_id
+SELECT T1.statement_id ,  T2.statement_details FROM Accounts AS T1 JOIN Statements AS T2 ON T1.statement_id  =  T2.statement_id GROUP BY T1.statement_id ORDER BY count(*) DESC LIMIT 1
+select statements.statement_id , statements.statement_details from Accounts join Statements on Accounts.Statement_ID = Statements.Statement_ID  group by accounts.statement_id  order by count(*) desc limit 1
+SELECT T1.statement_id ,  T2.statement_details FROM Accounts AS T1 JOIN Statements AS T2 ON T1.statement_id  =  T2.statement_id GROUP BY T1.statement_id ORDER BY count(*) DESC LIMIT 1
+select statements.statement_id , statements.statement_details from Accounts join Statements on Accounts.Statement_ID = Statements.Statement_ID  group by accounts.statement_id  order by count(*) desc limit 1
+SELECT count(*) FROM Documents
+select count(*) from Documents
+SELECT count(*) FROM Documents
+select count(*) from Documents
+SELECT document_type_code ,  document_name ,  document_description FROM Documents WHERE document_name  =  'Noel CV' OR document_name  =  'King Book'
+select documents.document_type_code , documents.document_name , documents.document_description from Documents where  documents.document_name = "Noel CV" or documents.document_name = "King Book"
+SELECT document_type_code ,  document_name ,  document_description FROM Documents WHERE document_name  =  'Noel CV' OR document_name  =  'King Book'
+select documents.document_type_code , documents.document_name , documents.document_description from Documents where  documents.document_name = "Noel CV" or documents.document_name = "King Book"
+SELECT document_id ,  document_name FROM Documents
+select documents.document_id , documents.document_name from Documents
+SELECT document_id ,  document_name FROM Documents
+select documents.document_id , documents.document_name from Documents
+SELECT document_name ,  document_id FROM Documents WHERE document_type_code  =  "BK"
+select documents.document_name , documents.document_id from Documents where  documents.document_type_code = "BK"
+SELECT document_name ,  document_id FROM Documents WHERE document_type_code  =  "BK"
+select documents.document_name , documents.document_id from Documents where  documents.document_type_code = "BK"
+SELECT count(*) ,  project_id FROM Documents WHERE document_type_code  =  "BK" GROUP BY project_id
+select count(*) , documents.project_id from Documents where  documents.document_type_code = "BK"  group by documents.project_id
+SELECT count(*) ,  project_id FROM Documents WHERE document_type_code  =  "BK" GROUP BY project_id
+select count(*) , documents.project_id from Documents where  documents.document_type_code = "BK"  group by documents.project_id
+SELECT document_name ,  document_date FROM Documents AS T1 JOIN projects AS T2 ON T1.project_id  =  T2.project_id WHERE T2.project_details  =  'Graph Database project'
+select documents.document_name , documents.document_date from Documents join Projects on Documents.Project_ID = Projects.Project_ID where  projects.project_details = "Graph Database project"
+SELECT document_name ,  document_date FROM Documents AS T1 JOIN projects AS T2 ON T1.project_id  =  T2.project_id WHERE T2.project_details  =  'Graph Database project'
+select documents.document_name , documents.document_date from Documents join Projects on Documents.Project_ID = Projects.Project_ID where  projects.project_details = "Graph Database project"
+SELECT project_id ,  count(*) FROM Documents GROUP BY project_id
+select documents.project_id , count(*) from Documents  group by documents.project_id
+SELECT project_id ,  count(*) FROM Documents GROUP BY project_id
+select documents.project_id , count(*) from Documents  group by documents.project_id
+SELECT project_id FROM Documents GROUP BY project_id ORDER BY count(*) ASC LIMIT 1
+select documents.project_id from Documents  group by documents.project_id  order by count(*) asc limit 1
+SELECT project_id FROM Documents GROUP BY project_id ORDER BY count(*) ASC LIMIT 1
+select documents.project_id from Documents  group by documents.project_id  order by count(*) asc limit 1
+SELECT project_id FROM Documents GROUP BY project_id HAVING count(*)  >=  2
+select documents.project_id from Documents  group by documents.project_id having  count(*) >= 2
+SELECT project_id FROM Documents GROUP BY project_id HAVING count(*)  >=  2
+select documents.project_id from Documents  group by documents.project_id having  count(*) >= 2
+SELECT document_type_code ,  count(*) FROM Documents GROUP BY document_type_code
+select documents.document_type_code , count(*) from Documents  group by documents.document_type_code
+SELECT document_type_code ,  count(*) FROM Documents GROUP BY document_type_code
+select documents.document_type_code , count(*) from Documents  group by documents.document_type_code
+SELECT document_type_code FROM Documents GROUP BY document_type_code ORDER BY count(*) DESC LIMIT 1
+select documents.document_type_code from Documents  group by documents.document_type_code  order by count(*) desc limit 1
+SELECT document_type_code FROM Documents GROUP BY document_type_code ORDER BY count(*) DESC LIMIT 1
+select documents.document_type_code from Documents  group by documents.document_type_code  order by count(*) desc limit 1
+SELECT document_type_code FROM Documents GROUP BY document_type_code HAVING count(*)  <  3
+select documents.document_type_code from Documents  group by documents.document_type_code having  count(*) < 3
+SELECT document_type_code FROM Documents GROUP BY document_type_code HAVING count(*)  <  3
+select documents.document_type_code from Documents  group by documents.document_type_code having  count(*) < 3
+SELECT T1.statement_details ,  T2.document_name FROM Statements AS T1 JOIN Documents AS T2 ON T1.statement_id  =  T2.document_id WHERE T1.statement_details  =  'Private Project'
+select statements.statement_details , documents.document_name from Statements join Documents on Statements.Statement_ID = Documents.Document_ID where  statements.statement_details = "Private Project"
+SELECT T1.statement_details ,  T2.document_name FROM Statements AS T1 JOIN Documents AS T2 ON T1.statement_id  =  T2.document_id WHERE T1.statement_details  =  'Private Project'
+select statements.statement_details , documents.document_name from Statements join Documents on Statements.Statement_ID = Documents.Document_ID where  statements.statement_details = "Private Project"
+SELECT document_type_code ,  document_type_name ,  document_type_description FROM Ref_document_types
+select ref_document_types.document_type_code , ref_document_types.document_type_name , ref_document_types.document_type_description from Ref_Document_Types
+SELECT document_type_code ,  document_type_name ,  document_type_description FROM Ref_document_types
+select documents.document_type_code , documents.document_name , ref_document_types.document_type_description from Documents join Ref_Document_Types on Documents.Document_Type_Code = Ref_Document_Types.Document_Type_Code
+SELECT document_type_description FROM Ref_document_types WHERE document_type_name  =  "Film"
+select ref_document_types.document_type_description from Ref_Document_Types where  ref_document_types.document_type_name = "Film"
+SELECT document_type_description FROM Ref_document_types WHERE document_type_name  =  "Film"
+select ref_document_types.document_type_description from Ref_Document_Types where  ref_document_types.document_type_name = "Film"
+SELECT T1.document_type_name ,  T1.document_type_description ,  T2.Document_date FROM Ref_document_types AS T1 JOIN Documents AS T2 ON T1.document_type_code  =  T2.document_type_code
+select ref_document_types.document_type_name , ref_document_types.document_type_description , documents.document_date from Documents join Ref_Document_Types on Documents.Document_Type_Code = Ref_Document_Types.Document_Type_Code
+SELECT T1.document_type_name ,  T1.document_type_description ,  T2.Document_date FROM Ref_document_types AS T1 JOIN Documents AS T2 ON T1.document_type_code  =  T2.document_type_code
+select ref_document_types.document_type_name , ref_document_types.document_type_description , documents.document_date from Documents join Ref_Document_Types on Documents.Document_Type_Code = Ref_Document_Types.Document_Type_Code
+SELECT count(*) FROM Projects
+select count(*) from Projects
+SELECT count(*) FROM Projects
+select count(*) from Projects
+SELECT project_id ,  project_details FROM Projects
+select projects.project_id , projects.project_details from Projects
+SELECT project_id ,  project_details FROM Projects
+select projects.project_id , projects.project_details from Projects
+SELECT T1.project_id ,  T1.project_details FROM Projects AS T1 JOIN Documents AS T2 ON T1.project_id  =  T2.project_id GROUP BY T1.project_id HAVING count(*)  >  2
+select projects.project_id , projects.project_details from Documents join Projects on Documents.Project_ID = Projects.Project_ID  group by projects.project_id having  count(*) >= 2
+SELECT T1.project_id ,  T1.project_details FROM Projects AS T1 JOIN Documents AS T2 ON T1.project_id  =  T2.project_id GROUP BY T1.project_id HAVING count(*)  >  2
+select projects.project_id , projects.project_details from Documents join Projects on Documents.Project_ID = Projects.Project_ID  group by projects.project_id having  count(*) > 2
+SELECT T1.project_details FROM Projects AS T1 JOIN Documents AS T2 ON T1.project_id  =  T2.project_id WHERE T2.document_name  =  "King Book"
+select projects.project_details from Documents join Projects on Documents.Project_ID = Projects.Project_ID where  documents.document_name = "King Book"
+SELECT T1.project_details FROM Projects AS T1 JOIN Documents AS T2 ON T1.project_id  =  T2.project_id WHERE T2.document_name  =  "King Book"
+select projects.project_details from Documents join Projects on Documents.Project_ID = Projects.Project_ID where  documents.document_name = "King Book"
+SELECT count(*) FROM Ref_budget_codes
+select count(*) from Ref_Budget_Codes
+SELECT count(*) FROM Ref_budget_codes
+select count(*) from Ref_Budget_Codes
+SELECT budget_type_code ,  budget_type_description FROM Ref_budget_codes
+select ref_budget_codes.budget_type_code , ref_budget_codes.budget_type_description from Ref_Budget_Codes
+SELECT budget_type_code ,  budget_type_description FROM Ref_budget_codes
+select ref_budget_codes.budget_type_code , ref_budget_codes.budget_type_description from Ref_Budget_Codes
+SELECT budget_type_description FROM Ref_budget_codes WHERE budget_type_code  =  "ORG"
+select ref_budget_codes.budget_type_description from Ref_Budget_Codes where  ref_budget_codes.budget_type_code = "ORG"
+SELECT budget_type_description FROM Ref_budget_codes WHERE budget_type_code  =  "ORG"
+select ref_budget_codes.budget_type_description from Ref_Budget_Codes where  ref_budget_codes.budget_type_code = "ORG"
+SELECT count(*) FROM Documents_with_expenses
+select count(*) from Documents_with_Expenses
+SELECT count(*) FROM Documents_with_expenses
+select count(*) from Documents_with_Expenses
+SELECT document_id FROM Documents_with_expenses WHERE budget_type_code  =  'SF'
+select documents_with_expenses.document_id from Documents_with_Expenses where  documents_with_expenses.budget_type_code = "SF"
+SELECT document_id FROM Documents_with_expenses WHERE budget_type_code  =  'SF'
+select documents_with_expenses.document_id from Documents_with_Expenses where  documents_with_expenses.budget_type_code = "SF"
+SELECT T2.budget_type_code ,  T2.budget_type_description ,  T1.document_id FROM Documents_with_expenses AS T1 JOIN Ref_budget_codes AS T2 ON T1.budget_type_code  =  T2.budget_type_code
+select ref_budget_codes.budget_type_code , ref_budget_codes.budget_type_description , documents_with_expenses.document_id from Documents_with_Expenses join Ref_Budget_Codes on Documents_with_Expenses.Budget_Type_Code = Ref_Budget_Codes.Budget_Type_Code
+SELECT T2.budget_type_code ,  T2.budget_type_description ,  T1.document_id FROM Documents_with_expenses AS T1 JOIN Ref_budget_codes AS T2 ON T1.budget_type_code  =  T2.budget_type_code
+select documents_with_expenses.budget_type_code , ref_budget_codes.budget_type_description , documents_with_expenses.document_id from Documents_with_Expenses join Ref_Budget_Codes on Documents_with_Expenses.Budget_Type_Code = Ref_Budget_Codes.Budget_Type_Code
+SELECT T1.document_id FROM Documents_with_expenses AS T1 JOIN Ref_Budget_Codes AS T2 ON T1.Budget_Type_code  =  T2.Budget_Type_code WHERE T2.budget_type_Description  =  "Government"
+select documents_with_expenses.document_id from Documents_with_Expenses join Ref_Budget_Codes on Documents_with_Expenses.Budget_Type_Code = Ref_Budget_Codes.Budget_Type_Code where  ref_budget_codes.budget_type_description = "Government"
+SELECT T1.document_id FROM Documents_with_expenses AS T1 JOIN Ref_Budget_Codes AS T2 ON T1.Budget_Type_code  =  T2.Budget_Type_code WHERE T2.budget_type_Description  =  "Government"
+select documents_with_expenses.document_id from Documents_with_Expenses join Ref_Budget_Codes on Documents_with_Expenses.Budget_Type_Code = Ref_Budget_Codes.Budget_Type_Code where  ref_budget_codes.budget_type_description = "Government"
+SELECT budget_type_code ,  count(*) FROM Documents_with_expenses GROUP BY budget_type_code
+select documents_with_expenses.budget_type_code , count(*) from Documents_with_Expenses  group by documents_with_expenses.budget_type_code
+SELECT budget_type_code ,  count(*) FROM Documents_with_expenses GROUP BY budget_type_code
+select documents_with_expenses.budget_type_code , count(*) from Documents_with_Expenses  group by documents_with_expenses.budget_type_code
+SELECT budget_type_code FROM Documents_with_expenses GROUP BY budget_type_code ORDER BY count(*) DESC LIMIT 1
+select documents_with_expenses.budget_type_code from Documents_with_Expenses  group by documents_with_expenses.budget_type_code  order by count(*) desc limit 1
+SELECT budget_type_code FROM Documents_with_expenses GROUP BY budget_type_code ORDER BY count(*) DESC LIMIT 1
+select documents_with_expenses.budget_type_code from Documents_with_Expenses  group by documents_with_expenses.budget_type_code  order by count(*) desc limit 1
+SELECT document_id FROM Documents EXCEPT SELECT document_id FROM Documents_with_expenses
+select documents.document_id from Documents   except select documents_with_expenses.document_id from Documents_with_Expenses
+SELECT document_id FROM Documents EXCEPT SELECT document_id FROM Documents_with_expenses
+select documents.document_id from Documents   except select documents_with_expenses.document_id from Documents_with_Expenses
+SELECT document_id FROM Documents WHERE document_type_code  =  "CV" EXCEPT SELECT document_id FROM Documents_with_expenses
+select documents.document_id from Documents where  documents.document_type_code = "CV" and documents.document_id not in (select Documents_with_Expenses.Document_ID from Documents_with_Expenses  )
+SELECT document_id FROM Documents WHERE document_type_code  =  "CV" EXCEPT SELECT document_id FROM Documents_with_expenses
+select documents.document_id from Documents where  documents.document_type_code = "CV" and documents.document_id not in (select Documents_with_Expenses.Document_ID from Documents_with_Expenses  )
+SELECT T1.document_id FROM Documents AS T1 JOIN Documents_with_expenses AS T2 ON T1.document_id  =  T2.document_id WHERE T1.document_name LIKE '%s%'
+select documents.document_id from Documents_with_Expenses join Documents on Documents_with_Expenses.Document_ID = Documents.Document_ID where  documents.document_name like "%s%"
+SELECT T1.document_id FROM Documents AS T1 JOIN Documents_with_expenses AS T2 ON T1.document_id  =  T2.document_id WHERE T1.document_name LIKE '%s%'
+select documents.document_id from Documents_with_Expenses join Documents on Documents_with_Expenses.Document_ID = Documents.Document_ID where  documents.document_name like "%s%"
+SELECT count(*) FROM Documents WHERE document_id NOT IN ( SELECT document_id FROM Documents_with_expenses )
+select count(*) from Documents where  documents.document_id not in (select Documents_with_Expenses.Document_ID from Documents_with_Expenses  )
+SELECT count(*) FROM Documents WHERE document_id NOT IN ( SELECT document_id FROM Documents_with_expenses )
+select count(*) from Documents where  documents.document_id not in (select Documents_with_Expenses.Document_ID from Documents_with_Expenses  )
+SELECT T1.document_date FROM Documents AS T1 JOIN Documents_with_Expenses AS T2 ON T1.document_id  =  T2.document_id WHERE T2.budget_type_code  =  'GV' INTERSECT SELECT T1.document_date FROM Documents AS T1 JOIN Documents_with_Expenses AS T2 ON T1.document_id  =  T2.document_id WHERE T2.budget_type_code  =  'SF'
+select documents.document_date from Documents_with_Expenses join Documents on Documents_with_Expenses.Document_ID = Documents.Document_ID where  documents_with_expenses.budget_type_code = "GV"   intersect select documents.document_date from Documents_with_Expenses join Documents on Documents_with_Expenses.Document_ID = Documents.Document_ID where  documents_with_expenses.budget_type_code = "SF"
+SELECT T1.document_date FROM Documents AS T1 JOIN Documents_with_Expenses AS T2 ON T1.document_id  =  T2.document_id WHERE T2.budget_type_code  =  'GV' INTERSECT SELECT T1.document_date FROM Documents AS T1 JOIN Documents_with_Expenses AS T2 ON T1.document_id  =  T2.document_id WHERE T2.budget_type_code  =  'SF'
+select documents.document_date from Documents_with_Expenses join Documents on Documents_with_Expenses.Document_ID = Documents.Document_ID where  documents_with_expenses.budget_type_code = "GV"   intersect select documents.document_date from Documents_with_Expenses join Documents on Documents_with_Expenses.Document_ID = Documents.Document_ID where  documents_with_expenses.budget_type_code = "SF"
+SELECT max(Account_details) FROM Accounts UNION SELECT Account_details FROM Accounts WHERE Account_details LIKE "%5%"
+select max(accounts.account_details) from Accounts   union select max(accounts.account_details) from Accounts where  accounts.account_details like "%5%"
+SELECT max(Account_details) FROM Accounts UNION SELECT Account_details FROM Accounts WHERE Account_details LIKE "%5%"
+select max(accounts.account_details) from Accounts   union select max(accounts.account_details) from Accounts where  accounts.account_details like "%5%"

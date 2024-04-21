@@ -1,0 +1,84 @@
+SELECT document_name ,  access_count FROM documents ORDER BY document_name
+select documents.document_name , documents.access_count from Documents   order by documents.document_name asc
+SELECT document_name ,  access_count FROM documents ORDER BY document_name
+select documents.document_name , documents.access_count from Documents   order by documents.document_name asc
+SELECT document_name ,  access_count FROM documents ORDER BY access_count DESC LIMIT 1
+select documents.document_name , documents.access_count from Documents   order by documents.access_count desc limit 1
+SELECT document_name ,  access_count FROM documents ORDER BY access_count DESC LIMIT 1
+select documents.document_name , documents.access_count from Documents   order by documents.access_count desc limit 1
+SELECT document_type_code FROM documents GROUP BY document_type_code HAVING count(*)  >  4
+select documents.document_type_code from Documents  group by documents.document_type_code having  count(*) > 4
+SELECT document_type_code FROM documents GROUP BY document_type_code HAVING count(*)  >  4
+select documents.document_type_code from Documents  group by documents.document_type_code having  count(*) > 4
+SELECT sum(access_count) FROM documents GROUP BY document_type_code ORDER BY count(*) DESC LIMIT 1
+select sum(documents.access_count) from Documents  group by documents.document_type_code  order by count(*) desc limit 1
+SELECT sum(access_count) FROM documents GROUP BY document_type_code ORDER BY count(*) DESC LIMIT 1
+select sum(documents.access_count) from Documents  group by documents.document_type_code  order by count(*) desc limit 1
+SELECT avg(access_count) FROM documents
+select avg(documents.access_count) from Documents
+SELECT avg(access_count) FROM documents
+select avg(documents.access_count) from Documents
+SELECT t2.document_structure_description FROM documents AS t1 JOIN document_structures AS t2 ON t1.document_structure_code  =  t2.document_structure_code GROUP BY t1.document_structure_code ORDER BY count(*) DESC LIMIT 1
+select document_structures.document_structure_description from Documents join Document_Structures on Documents.document_structure_code = Document_Structures.document_structure_code  group by documents.document_structure_code  order by count(*) desc limit 1
+SELECT t2.document_structure_description FROM documents AS t1 JOIN document_structures AS t2 ON t1.document_structure_code  =  t2.document_structure_code GROUP BY t1.document_structure_code ORDER BY count(*) DESC LIMIT 1
+select document_structures.document_structure_description from Documents join Document_Structures on Documents.document_structure_code = Document_Structures.document_structure_code  group by documents.document_structure_code  order by count(*) desc limit 1
+SELECT document_type_code FROM documents WHERE document_name  =  "David CV"
+select documents.document_type_code from Documents where  documents.document_name = "David CV"
+SELECT document_type_code FROM documents WHERE document_name  =  "David CV"
+select documents.document_type_code from Documents where  documents.document_name = "David CV"
+SELECT document_type_code FROM documents GROUP BY document_type_code HAVING sum(access_count)  >  10000
+select documents.document_type_code from Documents  group by documents.document_type_code having  sum(documents.access_count) > 10000
+SELECT document_type_code FROM documents GROUP BY document_type_code HAVING sum(access_count)  >  10000
+select documents.document_type_code from Documents  group by documents.document_type_code having  sum(documents.access_count) > 10000
+SELECT t2.section_title FROM documents AS t1 JOIN document_sections AS t2 ON t1.document_code  =  t2.document_code WHERE t1.document_name  =  "David CV"
+select document_sections.section_title from Document_Sections join Documents on Document_Sections.document_code = Documents.document_code where  documents.document_name = "David CV"
+SELECT t2.section_title FROM documents AS t1 JOIN document_sections AS t2 ON t1.document_code  =  t2.document_code WHERE t1.document_name  =  "David CV"
+select document_sections.section_title from Document_Sections join Documents on Document_Sections.document_code = Documents.document_code where  documents.document_name = "David CV"
+SELECT document_name FROM documents WHERE document_code NOT IN (SELECT document_code FROM document_sections)
+select documents.document_name from Documents where  documents.document_code not in (select Document_Sections.document_code from Document_Sections  )
+SELECT document_name FROM documents WHERE document_code NOT IN (SELECT document_code FROM document_sections)
+select documents.document_name from Documents where  documents.document_code not in (select Document_Sections.document_code from Document_Sections  )
+SELECT user_name ,  password FROM users GROUP BY role_code ORDER BY count(*) DESC LIMIT 1
+select users.user_name , users.password from Users  group by users.role_code  order by count(*) desc limit 1
+SELECT user_name ,  password FROM users GROUP BY role_code ORDER BY count(*) DESC LIMIT 1
+select users.user_name , users.password from Users  group by users.role_code  order by count(*) desc limit 1
+SELECT avg(t1.access_count) FROM documents AS t1 JOIN document_functional_areas AS t2 ON t1.document_code  =  t2.document_code JOIN functional_areas AS t3 ON t2.functional_area_code  =  t3.functional_area_code WHERE t3.functional_area_description  =  "Acknowledgement"
+select avg(documents.access_count) from Document_Functional_Areas join Functional_Areas on Document_Functional_Areas.functional_area_code = Functional_Areas.functional_area_code join Documents on Document_Functional_Areas.document_code = Documents.document_code where  functional_areas.functional_area_description = "Acknowledgement"
+SELECT avg(t1.access_count) FROM documents AS t1 JOIN document_functional_areas AS t2 ON t1.document_code  =  t2.document_code JOIN functional_areas AS t3 ON t2.functional_area_code  =  t3.functional_area_code WHERE t3.functional_area_description  =  "Acknowledgement"
+select avg(documents.access_count) from Document_Functional_Areas join Functional_Areas on Document_Functional_Areas.functional_area_code = Functional_Areas.functional_area_code join Documents on Document_Functional_Areas.document_code = Documents.document_code where  functional_areas.functional_area_description = "Acknowledgement"
+SELECT document_name FROM documents EXCEPT SELECT t1.document_name FROM documents AS t1 JOIN document_sections AS t2 ON t1.document_code  =  t2.document_code JOIN document_sections_images AS t3 ON t2.section_id  =  t3.section_id
+select documents.document_name from Documents   except select documents.document_name from Document_Sections_Images join Document_Sections on Document_Sections_Images.section_id = Document_Sections.section_id join Documents on Document_Sections.document_code = Documents.document_code
+SELECT document_name FROM documents EXCEPT SELECT t1.document_name FROM documents AS t1 JOIN document_sections AS t2 ON t1.document_code  =  t2.document_code JOIN document_sections_images AS t3 ON t2.section_id  =  t3.section_id
+select documents.document_name from Documents   except select documents.document_name from Document_Sections_Images join Document_Sections on Document_Sections_Images.section_id = Document_Sections.section_id join Documents on Document_Sections.document_code = Documents.document_code
+SELECT t1.document_name FROM documents AS t1 JOIN document_sections AS t2 ON t1.document_code  =  t2.document_code GROUP BY t1.document_code ORDER BY count(*) DESC LIMIT 1
+select documents.document_name from Document_Sections join Documents on Document_Sections.document_code = Documents.document_code  group by documents.document_code  order by count(*) desc limit 1
+SELECT t1.document_name FROM documents AS t1 JOIN document_sections AS t2 ON t1.document_code  =  t2.document_code GROUP BY t1.document_code ORDER BY count(*) DESC LIMIT 1
+select documents.document_name from Document_Sections join Documents on Document_Sections.document_code = Documents.document_code  group by documents.document_code  order by count(*) desc limit 1
+SELECT document_name FROM documents WHERE document_name LIKE "%CV%"
+select documents.document_name from Documents where  documents.document_name like "%CV%"
+SELECT document_name FROM documents WHERE document_name LIKE "%CV%"
+select documents.document_name from Documents where  documents.document_name like "%CV%"
+SELECT count(*) FROM users WHERE user_login  =  1
+select count(*) from Users where  users.user_login = 1
+SELECT count(*) FROM users WHERE user_login  =  1
+select count(*) from Users where  users.user_login = 1
+SELECT role_description FROM ROLES WHERE role_code  =  (SELECT role_code FROM users WHERE user_login  =  1 GROUP BY role_code ORDER BY count(*) DESC LIMIT 1)
+select roles.role_description from Roles where  roles.role_code in (select Users.role_code from Users join Roles on Users.role_code = Roles.role_code where  users.user_login = 1  group by Users.role_code  order by count(*) desc limit 1 )
+SELECT role_description FROM ROLES WHERE role_code  =  (SELECT role_code FROM users WHERE user_login  =  1 GROUP BY role_code ORDER BY count(*) DESC LIMIT 1)
+select roles.role_description from Roles where  roles.role_code in (select Users.role_code from Users join Roles on Users.role_code = Roles.role_code where  users.user_login = 1  group by Users.role_code  order by count(*) desc limit 1 )
+SELECT avg(access_count) FROM documents GROUP BY document_structure_code ORDER BY count(*) ASC LIMIT 1
+select avg(documents.access_count) from Documents  group by documents.document_structure_code  order by count(*) asc limit 1
+SELECT avg(access_count) FROM documents GROUP BY document_structure_code ORDER BY count(*) ASC LIMIT 1
+select avg(documents.access_count) from Documents  group by documents.document_structure_code  order by count(*) asc limit 1
+SELECT image_name ,  image_url FROM images ORDER BY image_name
+select images.image_name , images.image_url from Images   order by images.image_name asc
+SELECT image_name ,  image_url FROM images ORDER BY image_name
+select images.image_name , images.image_url from Images   order by images.image_name asc
+SELECT count(*) ,  role_code FROM users GROUP BY role_code
+select count(*) , users.role_code from Users  group by users.role_code
+SELECT count(*) ,  role_code FROM users GROUP BY role_code
+select count(*) , users.role_code from Users  group by users.role_code
+SELECT document_type_code FROM documents GROUP BY document_type_code HAVING count(*)  >  2
+select documents.document_type_code from Documents  group by documents.document_type_code having  count(*) > 2
+SELECT document_type_code FROM documents GROUP BY document_type_code HAVING count(*)  >  2
+select documents.document_type_code from Documents  group by documents.document_type_code having  count(*) > 2

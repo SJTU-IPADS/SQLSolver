@@ -1,0 +1,186 @@
+SELECT vehicle_id FROM Vehicles;
+select vehicles.vehicle_id from Vehicles
+SELECT vehicle_id FROM Vehicles;
+select vehicles.vehicle_id from Vehicles
+SELECT count(*) FROM Vehicles;
+select count(*) from Vehicles
+SELECT count(*) FROM Vehicles;
+select count(*) from Vehicles
+SELECT vehicle_details FROM Vehicles WHERE vehicle_id = 1;
+select vehicles.vehicle_details from Vehicles where  vehicles.vehicle_id = 1
+SELECT vehicle_details FROM Vehicles WHERE vehicle_id = 1;
+select vehicles.vehicle_details from Vehicles where  vehicles.vehicle_id = 1
+SELECT first_name ,  middle_name ,  last_name FROM Staff;
+select staff.first_name , staff.middle_name , staff.last_name from Staff
+SELECT first_name ,  middle_name ,  last_name FROM Staff;
+select staff.first_name , staff.middle_name , staff.last_name from Staff
+SELECT date_of_birth FROM Staff WHERE first_name = "Janessa" AND last_name = "Sawayn";
+select staff.date_of_birth from Staff where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT date_of_birth FROM Staff WHERE first_name = "Janessa" AND last_name = "Sawayn";
+select staff.date_of_birth from Staff where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT date_joined_staff FROM Staff WHERE first_name = "Janessa" AND last_name = "Sawayn";
+select staff.date_joined_staff from Staff where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT date_joined_staff FROM Staff WHERE first_name = "Janessa" AND last_name = "Sawayn";
+select staff.date_joined_staff from Staff where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT date_left_staff FROM Staff WHERE first_name = "Janessa" AND last_name = "Sawayn";
+select staff.date_left_staff from Staff where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT date_left_staff FROM Staff WHERE first_name = "Janessa" AND last_name = "Sawayn";
+select staff.date_left_staff from Staff where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT count(*) FROM Staff WHERE first_name = "Ludie";
+select count(*) from Staff where  staff.first_name = "Ludie"
+SELECT count(*) FROM Staff WHERE first_name = "Ludie";
+select count(*) from Staff where  staff.first_name = "Ludie"
+SELECT nickname FROM Staff WHERE first_name = "Janessa" AND last_name = "Sawayn";
+select staff.nickname from Staff where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT nickname FROM Staff WHERE first_name = "Janessa" AND last_name = "Sawayn";
+select staff.nickname from Staff where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT count(*) FROM Staff;
+select count(*) from Staff
+SELECT count(*) FROM Staff;
+select count(*) from Staff
+SELECT T1.city FROM Addresses AS T1 JOIN Staff AS T2 ON T1.address_id = T2.staff_address_id WHERE T2.first_name = "Janessa" AND T2.last_name = "Sawayn";
+select addresses.city from Staff join Addresses on Staff.staff_address_id = Addresses.address_id where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT T1.city FROM Addresses AS T1 JOIN Staff AS T2 ON T1.address_id = T2.staff_address_id WHERE T2.first_name = "Janessa" AND T2.last_name = "Sawayn";
+select addresses.city from Staff join Addresses on Staff.staff_address_id = Addresses.address_id where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT T1.country ,  T1.state_province_county FROM Addresses AS T1 JOIN Staff AS T2 ON T1.address_id = T2.staff_address_id WHERE T2.first_name = "Janessa" AND T2.last_name = "Sawayn";
+select addresses.country , addresses.state_province_county from Staff join Addresses on Staff.staff_address_id = Addresses.address_id where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT T1.country ,  T1.state_province_county FROM Addresses AS T1 JOIN Staff AS T2 ON T1.address_id = T2.staff_address_id WHERE T2.first_name = "Janessa" AND T2.last_name = "Sawayn";
+select addresses.country , addresses.state_province_county from Staff join Addresses on Staff.staff_address_id = Addresses.address_id where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT sum(T1.lesson_time) FROM Lessons AS T1 JOIN Customers AS T2 ON T1.customer_id  = T2.customer_id WHERE T2.first_name = "Rylan" AND T2.last_name = "Goodwin";
+select sum(lessons.lesson_time) from Lessons join Customers on Lessons.customer_id = Customers.customer_id where  customers.first_name = "Rylan" and customers.last_name = "Goodwin"
+SELECT sum(T1.lesson_time) FROM Lessons AS T1 JOIN Customers AS T2 ON T1.customer_id  = T2.customer_id WHERE T2.first_name = "Rylan" AND T2.last_name = "Goodwin";
+select sum(lessons.lesson_time) from Lessons join Customers on Lessons.customer_id = Customers.customer_id where  customers.first_name = "Rylan" and customers.last_name = "Goodwin"
+SELECT T1.zip_postcode FROM Addresses AS T1 JOIN Staff AS T2 ON T1.address_id = T2.staff_address_id WHERE T2.first_name = "Janessa" AND T2.last_name = "Sawayn";
+select addresses.zip_postcode from Staff join Addresses on Staff.staff_address_id = Addresses.address_id where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT T1.zip_postcode FROM Addresses AS T1 JOIN Staff AS T2 ON T1.address_id = T2.staff_address_id WHERE T2.first_name = "Janessa" AND T2.last_name = "Sawayn";
+select addresses.zip_postcode from Staff join Addresses on Staff.staff_address_id = Addresses.address_id where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT count(*) FROM Addresses WHERE state_province_county = "Georgia";
+select count(*) from Addresses where  addresses.state_province_county = "Georgia"
+SELECT count(*) FROM Addresses WHERE state_province_county = "Georgia";
+select count(*) from Addresses where  addresses.state_province_county = "Georgia"
+SELECT T2.first_name ,  T2.last_name FROM Addresses AS T1 JOIN Staff AS T2 ON T1.address_id = T2.staff_address_id WHERE T1.city = "Damianfort";
+select staff.first_name , staff.last_name from Staff join Addresses on Staff.staff_address_id = Addresses.address_id where  addresses.city = "Damianfort"
+SELECT T2.first_name ,  T2.last_name FROM Addresses AS T1 JOIN Staff AS T2 ON T1.address_id = T2.staff_address_id WHERE T1.city = "Damianfort";
+select staff.first_name , staff.last_name from Staff join Addresses on Staff.staff_address_id = Addresses.address_id where  addresses.city = "Damianfort"
+SELECT T1.city ,  count(*) FROM Addresses AS T1 JOIN Staff AS T2 ON T1.address_id = T2.staff_address_id GROUP BY T1.city ORDER BY count(*) DESC LIMIT 1;
+select addresses.city , count(*) from Staff join Addresses on Staff.staff_address_id = Addresses.address_id  group by addresses.city  order by count(*) desc limit 1
+SELECT T1.city ,  count(*) FROM Addresses AS T1 JOIN Staff AS T2 ON T1.address_id = T2.staff_address_id GROUP BY T1.city ORDER BY count(*) DESC LIMIT 1;
+select addresses.city , count(*) from Staff join Addresses on Staff.staff_address_id = Addresses.address_id  group by addresses.city  order by count(*) desc limit 1
+SELECT T1.state_province_county FROM Addresses AS T1 JOIN Staff AS T2 ON T1.address_id = T2.staff_address_id GROUP BY T1.state_province_county HAVING count(*) BETWEEN 2 AND 4;
+select addresses.state_province_county from Staff join Addresses on Staff.staff_address_id = Addresses.address_id  group by addresses.state_province_county having  count(*) between 2 and 4
+SELECT T1.state_province_county FROM Addresses AS T1 JOIN Staff AS T2 ON T1.address_id = T2.staff_address_id GROUP BY T1.state_province_county HAVING count(*) BETWEEN 2 AND 4;
+select addresses.state_province_county from Staff join Addresses on Staff.staff_address_id = Addresses.address_id  group by addresses.state_province_county having  count(*) between 2 and 4
+SELECT first_name ,  last_name FROM Customers;
+select customers.first_name , customers.last_name from Customers
+SELECT first_name ,  last_name FROM Customers;
+select customers.first_name , customers.last_name from Customers
+SELECT email_address ,  date_of_birth FROM Customers WHERE first_name = "Carole"
+select customers.email_address , customers.date_of_birth from Customers where  customers.first_name = "Carole"
+SELECT email_address ,  date_of_birth FROM Customers WHERE first_name = "Carole"
+select customers.email_address , customers.date_of_birth from Customers where  customers.first_name = "Carole"
+SELECT phone_number ,  email_address FROM Customers WHERE amount_outstanding  >  2000;
+select customers.phone_number , customers.email_address from Customers where  customers.amount_outstanding > 2000
+SELECT phone_number ,  email_address FROM Customers WHERE amount_outstanding  >  2000;
+select customers.phone_number , customers.email_address from Customers where  customers.amount_outstanding > 2000
+SELECT customer_status_code ,  cell_mobile_phone_number ,  email_address FROM Customers WHERE first_name = "Marina" OR last_name  =  "Kohler"
+select customers.customer_status_code , customers.cell_mobile_phone_number , customers.email_address from Customers where  customers.first_name = "Marina" or customers.last_name = "Kohler"
+SELECT customer_status_code ,  cell_mobile_phone_number ,  email_address FROM Customers WHERE first_name = "Marina" OR last_name  =  "Kohler"
+select customers.customer_status_code , customers.cell_mobile_phone_number , customers.email_address from Customers where  customers.first_name = "Marina" or customers.last_name = "Kohler"
+SELECT date_of_birth FROM Customers WHERE customer_status_code  =  'Good Customer'
+select customers.date_of_birth from Customers where  customers.customer_status_code = "Good Customer"
+SELECT date_of_birth FROM Customers WHERE customer_status_code  =  'Good Customer'
+select customers.date_of_birth from Customers where  customers.customer_status_code = "Good Customer"
+SELECT date_became_customer FROM Customers WHERE first_name = "Carole" AND last_name = "Bernhard";
+select customers.date_became_customer from Customers where  customers.first_name = "Carole" and customers.last_name = "Bernhard"
+SELECT date_became_customer FROM Customers WHERE first_name = "Carole" AND last_name = "Bernhard";
+select customers.date_became_customer from Customers where  customers.first_name = "Carole" and customers.last_name = "Bernhard"
+SELECT count(*) FROM Customers;
+select count(*) from Customers
+SELECT count(*) FROM Customers;
+select count(*) from Customers
+SELECT customer_status_code , count(*) FROM Customers GROUP BY customer_status_code;
+select customers.customer_status_code , count(*) from Customers  group by customers.customer_status_code
+SELECT customer_status_code , count(*) FROM Customers GROUP BY customer_status_code;
+select customers.customer_status_code , count(*) from Customers  group by customers.customer_status_code
+SELECT customer_status_code FROM Customers GROUP BY customer_status_code ORDER BY count(*) ASC LIMIT 1;
+select customers.customer_status_code from Customers  group by customers.customer_status_code  order by count(*) asc limit 1
+SELECT customer_status_code FROM Customers GROUP BY customer_status_code ORDER BY count(*) ASC LIMIT 1;
+select customers.customer_status_code from Customers  group by customers.customer_status_code  order by count(*) asc limit 1
+SELECT count(*) FROM Lessons AS T1 JOIN Customers AS T2 ON T1.customer_id  = T2.customer_id WHERE T2.first_name = "Rylan" AND T2.last_name = "Goodwin" AND T1.lesson_status_code = "Completed";
+select count(*) from Lessons join Customers on Lessons.customer_id = Customers.customer_id where  customers.first_name = "Rylan" and customers.last_name = "Goodwin" and lessons.lesson_status_code = "Completed"
+SELECT count(*) FROM Lessons AS T1 JOIN Customers AS T2 ON T1.customer_id  = T2.customer_id WHERE T2.first_name = "Rylan" AND T2.last_name = "Goodwin" AND T1.lesson_status_code = "Completed";
+select count(*) from Lessons join Customers on Lessons.customer_id = Customers.customer_id where  customers.customer_id = "Rylan" and customers.last_name = "Goodwin" and lessons.lesson_status_code = "Completed"
+SELECT max(amount_outstanding) ,  min(amount_outstanding) ,  avg(amount_outstanding) FROM Customers;
+select max(customers.amount_outstanding) , min(customers.amount_outstanding) , avg(customers.amount_outstanding) from Customers
+SELECT max(amount_outstanding) ,  min(amount_outstanding) ,  avg(amount_outstanding) FROM Customers;
+select max(customers.amount_outstanding) , min(customers.amount_outstanding) , avg(customers.amount_outstanding) from Customers
+SELECT first_name ,  last_name FROM Customers WHERE amount_outstanding BETWEEN 1000 AND 3000;
+select customers.first_name , customers.last_name from Customers where  customers.amount_outstanding between 1000 and 3000
+SELECT first_name ,  last_name FROM Customers WHERE amount_outstanding BETWEEN 1000 AND 3000;
+select customers.first_name , customers.last_name from Customers where  customers.amount_outstanding between 1000 and 3000
+SELECT T1.first_name ,  T1.last_name FROM Customers AS T1 JOIN Addresses AS T2 ON T1.customer_address_id = T2.address_id WHERE T2.city = "Lockmanfurt";
+select customers.first_name , customers.last_name from Customers join Addresses on Customers.customer_address_id = Addresses.address_id where  addresses.city = "Lockmanfurt"
+SELECT T1.first_name ,  T1.last_name FROM Customers AS T1 JOIN Addresses AS T2 ON T1.customer_address_id = T2.address_id WHERE T2.city = "Lockmanfurt";
+select customers.first_name , customers.last_name from Customers join Addresses on Customers.customer_address_id = Addresses.address_id where  addresses.city = "Lockmanfurt"
+SELECT T2.country FROM Customers AS T1 JOIN Addresses AS T2 ON T1.customer_address_id = T2.address_id WHERE T1.first_name = "Carole" AND T1.last_name = "Bernhard"
+select addresses.country from Customers join Addresses on Customers.customer_address_id = Addresses.address_id where  customers.first_name = "Carole" and customers.last_name = "Bernhard"
+SELECT T2.country FROM Customers AS T1 JOIN Addresses AS T2 ON T1.customer_address_id = T2.address_id WHERE T1.first_name = "Carole" AND T1.last_name = "Bernhard"
+select addresses.country from Customers join Addresses on Customers.customer_address_id = Addresses.address_id where  customers.first_name = "Carole" and customers.last_name = "Bernhard"
+SELECT T2.zip_postcode FROM Customers AS T1 JOIN Addresses AS T2 ON T1.customer_address_id = T2.address_id WHERE T1.first_name = "Carole" AND T1.last_name = "Bernhard"
+select addresses.zip_postcode from Customers join Addresses on Customers.customer_address_id = Addresses.address_id where  customers.first_name = "Carole" and customers.last_name = "Bernhard"
+SELECT T2.zip_postcode FROM Customers AS T1 JOIN Addresses AS T2 ON T1.customer_address_id = T2.address_id WHERE T1.first_name = "Carole" AND T1.last_name = "Bernhard"
+select addresses.zip_postcode from Customers join Addresses on Customers.customer_address_id = Addresses.address_id where  customers.first_name = "Carole" and customers.last_name = "Bernhard"
+SELECT T2.city FROM Customers AS T1 JOIN Addresses AS T2 ON T1.customer_address_id = T2.address_id GROUP BY T2.city ORDER BY count(*) DESC LIMIT 1;
+select addresses.city from Customers join Addresses on Customers.customer_address_id = Addresses.address_id  group by addresses.city  order by count(*) desc limit 1
+SELECT T2.city FROM Customers AS T1 JOIN Addresses AS T2 ON T1.customer_address_id = T2.address_id GROUP BY T2.city ORDER BY count(*) DESC LIMIT 1;
+select addresses.city from Customers join Addresses on Customers.customer_address_id = Addresses.address_id  group by addresses.city  order by count(*) desc limit 1
+SELECT sum(T1.amount_payment) FROM Customer_Payments AS T1 JOIN Customers AS T2 ON T1.customer_id = T2.customer_id WHERE T2.first_name = "Carole" AND T2.last_name = "Bernhard"
+select sum(customer_payments.amount_payment) from Customer_Payments join Customers on Customer_Payments.customer_id = Customers.customer_id where  customers.first_name = "Carole" and customers.last_name = "Bernhard"
+SELECT sum(T1.amount_payment) FROM Customer_Payments AS T1 JOIN Customers AS T2 ON T1.customer_id = T2.customer_id WHERE T2.first_name = "Carole" AND T2.last_name = "Bernhard"
+select sum(customer_payments.amount_payment) from Customer_Payments join Customers on Customer_Payments.customer_id = Customers.customer_id where  customers.first_name = "Carole" and customers.last_name = "Bernhard"
+SELECT count(*) FROM Customers WHERE customer_id NOT IN ( SELECT customer_id FROM Customer_Payments );
+select count(*) from Customers where  customers.customer_id not in (select Customer_Payments.customer_id from Customer_Payments  )
+SELECT count(*) FROM Customers WHERE customer_id NOT IN ( SELECT customer_id FROM Customer_Payments );
+select count(*) from Customers where  customers.customer_id not in (select Customer_Payments.customer_id from Customer_Payments  )
+SELECT T2.first_name ,  T2.last_name FROM Customer_Payments AS T1 JOIN Customers AS T2 ON T1.customer_id = T2.customer_id GROUP BY T1.customer_id HAVING count(*)  >  2;
+select customers.first_name , customers.last_name from Customer_Payments join Customers on Customer_Payments.customer_id = Customers.customer_id  group by customer_payments.customer_id having  count(*) > 2
+SELECT T2.first_name ,  T2.last_name FROM Customer_Payments AS T1 JOIN Customers AS T2 ON T1.customer_id = T2.customer_id GROUP BY T1.customer_id HAVING count(*)  >  2;
+select customers.first_name , customers.last_name from Customer_Payments join Customers on Customer_Payments.customer_id = Customers.customer_id  group by customer_payments.customer_id having  count(*) > 2
+SELECT payment_method_code ,  count(*) FROM Customer_Payments GROUP BY payment_method_code;
+select customer_payments.payment_method_code , count(*) from Customer_Payments  group by customer_payments.payment_method_code
+SELECT payment_method_code ,  count(*) FROM Customer_Payments GROUP BY payment_method_code;
+select customer_payments.payment_method_code , count(*) from Customer_Payments  group by customer_payments.payment_method_code
+SELECT count(*) FROM Lessons WHERE lesson_status_code = "Cancelled";
+select count(*) from Lessons where  lessons.lesson_status_code = "Cancelled"
+SELECT count(*) FROM Lessons WHERE lesson_status_code = "Cancelled";
+select count(*) from Lessons where  lessons.lesson_status_code = "Cancelled"
+SELECT T1.lesson_id FROM Lessons AS T1 JOIN Staff AS T2 ON T1.staff_id = T2.staff_id WHERE T2.first_name = "Janessa" AND T2.last_name = "Sawayn" AND nickname LIKE "%s%";
+select lessons.lesson_id from Lessons join Staff on Lessons.staff_id = Staff.staff_id where  staff.first_name = "Janessa" and staff.last_name = "Sawayn" and staff.nickname like "%s%"
+SELECT T1.lesson_id FROM Lessons AS T1 JOIN Staff AS T2 ON T1.staff_id = T2.staff_id WHERE T2.first_name = "Janessa" AND T2.last_name = "Sawayn" AND nickname LIKE "%s%";
+select lessons.lesson_id from Lessons join Staff on Lessons.staff_id = Staff.staff_id where  staff.first_name = "Janessa" and staff.last_name = "Sawayn" and staff.nickname like "%s%"
+SELECT count(*) FROM Lessons AS T1 JOIN Staff AS T2 ON T1.staff_id = T2.staff_id WHERE T2.first_name LIKE "%a%"
+select count(*) from Lessons join Staff on Lessons.staff_id = Staff.staff_id where  staff.first_name like "%a%"
+SELECT count(*) FROM Lessons AS T1 JOIN Staff AS T2 ON T1.staff_id = T2.staff_id WHERE T2.first_name LIKE "%a%"
+select count(*) from Lessons join Staff on Lessons.staff_id = Staff.staff_id where  staff.first_name like "%a%"
+SELECT sum(lesson_time) FROM Lessons AS T1 JOIN Staff AS T2 ON T1.staff_id = T2.staff_id WHERE T2.first_name = "Janessa" AND T2.last_name = "Sawayn";
+select sum(lessons.lesson_time) from Lessons join Staff on Lessons.staff_id = Staff.staff_id where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT sum(lesson_time) FROM Lessons AS T1 JOIN Staff AS T2 ON T1.staff_id = T2.staff_id WHERE T2.first_name = "Janessa" AND T2.last_name = "Sawayn";
+select sum(lessons.lesson_time) from Lessons join Staff on Lessons.staff_id = Staff.staff_id where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT avg(price) FROM Lessons AS T1 JOIN Staff AS T2 ON T1.staff_id = T2.staff_id WHERE T2.first_name = "Janessa" AND T2.last_name = "Sawayn";
+select avg(lessons.price) from Lessons join Staff on Lessons.staff_id = Staff.staff_id where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT avg(price) FROM Lessons AS T1 JOIN Staff AS T2 ON T1.staff_id = T2.staff_id WHERE T2.first_name = "Janessa" AND T2.last_name = "Sawayn";
+select avg(lessons.price) from Lessons join Staff on Lessons.staff_id = Staff.staff_id where  staff.first_name = "Janessa" and staff.last_name = "Sawayn"
+SELECT count(*) FROM Lessons AS T1 JOIN Customers AS T2 ON T1.customer_id  = T2.customer_id WHERE T2.first_name = "Ray"
+select count(*) from Lessons join Customers on Lessons.customer_id = Customers.customer_id where  customers.first_name = "Ray"
+SELECT count(*) FROM Lessons AS T1 JOIN Customers AS T2 ON T1.customer_id  = T2.customer_id WHERE T2.first_name = "Ray"
+select count(*) from Lessons join Customers on Lessons.customer_id = Customers.customer_id where  customers.first_name = "Ray"
+SELECT last_name FROM Customers INTERSECT SELECT last_name FROM Staff
+select customers.last_name from Customers   intersect select staff.last_name from Staff
+SELECT last_name FROM Customers INTERSECT SELECT last_name FROM Staff
+select customers.last_name from Customers   intersect select staff.last_name from Staff
+SELECT first_name FROM Staff EXCEPT SELECT T2.first_name FROM Lessons AS T1 JOIN Staff AS T2 ON T1.staff_id  =  T2.staff_id
+select staff.first_name from Staff   except select staff.first_name from Lessons join Staff on Lessons.staff_id = Staff.staff_id
+SELECT first_name FROM Staff EXCEPT SELECT T2.first_name FROM Lessons AS T1 JOIN Staff AS T2 ON T1.staff_id  =  T2.staff_id
+select staff.first_name from Staff   except select staff.first_name from Lessons join Staff on Lessons.staff_id = Staff.staff_id
+SELECT T1.vehicle_id ,  T1.vehicle_details FROM Vehicles AS T1 JOIN Lessons AS T2 ON T1.vehicle_id  =  T2.vehicle_id GROUP BY T1.vehicle_id ORDER BY count(*) DESC LIMIT 1
+select vehicles.vehicle_id , vehicles.vehicle_details from Lessons join Vehicles on Lessons.vehicle_id = Vehicles.vehicle_id  group by vehicles.vehicle_id  order by count(*) desc limit 1

@@ -1,0 +1,44 @@
+SELECT count(*) FROM artwork
+select count(*) from artwork
+SELECT Name FROM artwork ORDER BY Name ASC
+select artwork.name from artwork   order by artwork.name asc
+SELECT Name FROM artwork WHERE TYPE != "Program Talent Show"
+select artwork.name from artwork where  artwork.type != "Program Talent Show"
+SELECT Festival_Name ,  LOCATION FROM festival_detail
+select festival_detail.festival_name , festival_detail.location from festival_detail
+SELECT Chair_Name FROM festival_detail ORDER BY YEAR ASC
+select festival_detail.chair_name from festival_detail   order by festival_detail.year asc
+SELECT LOCATION FROM festival_detail ORDER BY Num_of_Audience DESC LIMIT 1
+select festival_detail.location from festival_detail   order by festival_detail.num_of_audience desc limit 1
+SELECT Festival_Name FROM festival_detail WHERE YEAR  =  2007
+select festival_detail.festival_name from festival_detail where  festival_detail.year = 2007
+SELECT avg(Num_of_Audience) FROM festival_detail
+select avg(festival_detail.num_of_audience) from festival_detail
+SELECT Festival_Name FROM festival_detail ORDER BY YEAR DESC LIMIT 3
+select festival_detail.festival_name from festival_detail   order by festival_detail.year desc limit 3
+SELECT T2.Name ,  T3.Festival_Name FROM nomination AS T1 JOIN artwork AS T2 ON T1.Artwork_ID  =  T2.Artwork_ID JOIN festival_detail AS T3 ON T1.Festival_ID  =  T3.Festival_ID
+select artwork.name , festival_detail.festival_name from nomination join festival_detail on nomination.Festival_ID = festival_detail.Festival_ID join artwork on nomination.Artwork_ID = artwork.Artwork_ID
+SELECT DISTINCT T2.Type FROM nomination AS T1 JOIN artwork AS T2 ON T1.Artwork_ID  =  T2.Artwork_ID JOIN festival_detail AS T3 ON T1.Festival_ID  =  T3.Festival_ID WHERE T3.Year  =  2007
+select distinct artwork.type from nomination join festival_detail on nomination.Festival_ID = festival_detail.Festival_ID join artwork on nomination.Artwork_ID = artwork.Artwork_ID where  festival_detail.year = 2007
+SELECT T2.Name FROM nomination AS T1 JOIN artwork AS T2 ON T1.Artwork_ID  =  T2.Artwork_ID JOIN festival_detail AS T3 ON T1.Festival_ID  =  T3.Festival_ID ORDER BY T3.Year
+select artwork.name from nomination join festival_detail on nomination.Festival_ID = festival_detail.Festival_ID join artwork on nomination.Artwork_ID = artwork.Artwork_ID   order by festival_detail.year asc
+SELECT T3.Festival_Name FROM nomination AS T1 JOIN artwork AS T2 ON T1.Artwork_ID  =  T2.Artwork_ID JOIN festival_detail AS T3 ON T1.Festival_ID  =  T3.Festival_ID WHERE T2.Type  =  "Program Talent Show"
+select festival_detail.festival_name from nomination join festival_detail on nomination.Festival_ID = festival_detail.Festival_ID join artwork on nomination.Artwork_ID = artwork.Artwork_ID where  artwork.type = "Program Talent Show"
+SELECT T1.Festival_ID ,  T3.Festival_Name FROM nomination AS T1 JOIN artwork AS T2 ON T1.Artwork_ID  =  T2.Artwork_ID JOIN festival_detail AS T3 ON T1.Festival_ID  =  T3.Festival_ID GROUP BY T1.Festival_ID HAVING COUNT(*)  >=  2
+select festival_detail.festival_id , festival_detail.festival_name from nomination join festival_detail on nomination.Festival_ID = festival_detail.Festival_ID join artwork on nomination.Artwork_ID = artwork.Artwork_ID  group by nomination.festival_id having  count(*) >= 2
+SELECT T1.Festival_ID ,  T3.Festival_Name ,  COUNT(*) FROM nomination AS T1 JOIN artwork AS T2 ON T1.Artwork_ID  =  T2.Artwork_ID JOIN festival_detail AS T3 ON T1.Festival_ID  =  T3.Festival_ID GROUP BY T1.Festival_ID
+select nomination.festival_id , festival_detail.festival_name , count(*) from nomination join festival_detail on nomination.Festival_ID = festival_detail.Festival_ID join artwork on nomination.Artwork_ID = artwork.Artwork_ID  group by nomination.festival_id
+SELECT TYPE ,  COUNT(*) FROM artwork GROUP BY TYPE
+select artwork.type , count(*) from artwork  group by artwork.type
+SELECT TYPE FROM artwork GROUP BY TYPE ORDER BY COUNT(*) DESC LIMIT 1
+select artwork.type from artwork  group by artwork.type  order by count(*) desc limit 1
+SELECT YEAR FROM festival_detail GROUP BY YEAR HAVING COUNT(*)  >  1
+select festival_detail.year from festival_detail  group by festival_detail.year having  count(*) > 1
+SELECT Name FROM Artwork WHERE Artwork_ID NOT IN (SELECT Artwork_ID FROM nomination)
+select artwork.name from artwork where  artwork.artwork_id not in (select nomination.Artwork_ID from nomination  )
+SELECT Num_of_Audience FROM festival_detail WHERE YEAR  =  2008 OR YEAR  =  2010
+select festival_detail.num_of_audience from festival_detail where  festival_detail.year = 2008 or festival_detail.year = 2010
+SELECT sum(Num_of_Audience) FROM festival_detail
+select sum(festival_detail.num_of_audience) from festival_detail
+SELECT YEAR FROM festival_detail WHERE LOCATION  =  'United States' INTERSECT SELECT YEAR FROM festival_detail WHERE LOCATION != 'United States'
+select festival_detail.year from festival_detail where  festival_detail.location = "United States"   except select festival_detail.year from festival_detail where  festival_detail.location = "United States"

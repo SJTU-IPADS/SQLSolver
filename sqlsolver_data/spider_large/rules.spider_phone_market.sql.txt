@@ -1,0 +1,30 @@
+SELECT count(*) FROM phone
+select count(*) from phone
+SELECT Name FROM phone ORDER BY Price ASC
+select phone.name from phone   order by phone.price asc
+SELECT Memory_in_G ,  Carrier FROM phone
+select phone.memory_in_g , phone.carrier from phone
+SELECT DISTINCT Carrier FROM phone WHERE Memory_in_G  >  32
+select distinct phone.carrier from phone where  phone.memory_in_g > 32
+SELECT Name FROM phone WHERE Carrier  =  "Sprint" OR Carrier  =  "TMobile"
+select phone.name from phone where  phone.carrier = "Sprint" or phone.carrier = "TMobile"
+SELECT Carrier FROM phone ORDER BY Price DESC LIMIT 1
+select phone.carrier from phone   order by phone.price desc limit 1
+SELECT Carrier ,  COUNT(*) FROM phone GROUP BY Carrier
+select phone.carrier , count(*) from phone  group by phone.carrier
+SELECT Carrier FROM phone GROUP BY Carrier ORDER BY COUNT(*) DESC LIMIT 1
+select phone.carrier from phone  group by phone.carrier  order by count(*) desc limit 1
+SELECT Carrier FROM phone WHERE Memory_in_G  <  32 INTERSECT SELECT Carrier FROM phone WHERE Memory_in_G  >  64
+select phone.carrier from phone where  phone.memory_in_g < 32   intersect select phone.carrier from phone where  phone.memory_in_g > 64
+SELECT T3.Name ,  T2.District FROM phone_market AS T1 JOIN market AS T2 ON T1.Market_ID  =  T2.Market_ID JOIN phone AS T3 ON T1.Phone_ID  =  T3.Phone_ID
+select phone.name , market.district from phone_market join phone on phone_market.Phone_ID = phone.Phone_ID join market on phone_market.Market_ID = market.Market_ID
+SELECT T3.Name ,  T2.District FROM phone_market AS T1 JOIN market AS T2 ON T1.Market_ID  =  T2.Market_ID JOIN phone AS T3 ON T1.Phone_ID  =  T3.Phone_ID ORDER BY T2.Ranking
+select phone.name , market.district from phone_market join phone on phone_market.Phone_ID = phone.Phone_ID join market on phone_market.Market_ID = market.Market_ID   order by market.ranking asc
+SELECT T3.Name FROM phone_market AS T1 JOIN market AS T2 ON T1.Market_ID  =  T2.Market_ID JOIN phone AS T3 ON T1.Phone_ID  =  T3.Phone_ID WHERE T2.Num_of_shops  >  50
+select phone.name from phone_market join phone on phone_market.Phone_ID = phone.Phone_ID join market on phone_market.Market_ID = market.Market_ID where  market.num_of_shops > 50
+SELECT T2.Name ,  sum(T1.Num_of_stock) FROM phone_market AS T1 JOIN phone AS T2 ON T1.Phone_ID  =  T2.Phone_ID GROUP BY T2.Name
+select phone.name , sum(phone_market.num_of_stock) from phone_market join phone on phone_market.Phone_ID = phone.Phone_ID  group by phone.name
+SELECT T2.Name FROM phone_market AS T1 JOIN phone AS T2 ON T1.Phone_ID  =  T2.Phone_ID GROUP BY T2.Name HAVING sum(T1.Num_of_stock)  >=  2000 ORDER BY sum(T1.Num_of_stock) DESC
+select phone.name from phone_market join phone on phone_market.Phone_ID = phone.Phone_ID  group by phone.name having  sum(phone_market.num_of_stock) >= 2000  order by sum(phone_market.num_of_stock) desc
+SELECT Name FROM phone WHERE Phone_id NOT IN (SELECT Phone_ID FROM phone_market)
+select phone.name from phone where  phone.phone_id not in (select phone_market.Phone_ID from phone_market  )

@@ -1,0 +1,80 @@
+SELECT count(*) FROM wrestler
+select count(*) from wrestler
+SELECT count(*) FROM wrestler
+select count(*) from wrestler
+SELECT Name FROM wrestler ORDER BY Days_held DESC
+select wrestler.name from wrestler   order by wrestler.days_held desc
+SELECT Name FROM wrestler ORDER BY Days_held DESC
+select wrestler.name from wrestler   order by wrestler.days_held desc
+SELECT Name FROM wrestler ORDER BY Days_held ASC LIMIT 1
+select wrestler.name from wrestler   order by wrestler.days_held asc limit 1
+SELECT Name FROM wrestler ORDER BY Days_held ASC LIMIT 1
+select wrestler.name from wrestler   order by wrestler.days_held asc limit 1
+SELECT DISTINCT Reign FROM wrestler WHERE LOCATION != "Tokyo , Japan"
+select distinct wrestler.reign from wrestler where  wrestler.location != "Tokyo , Japan"
+SELECT DISTINCT Reign FROM wrestler WHERE LOCATION != "Tokyo , Japan"
+select distinct wrestler.reign from wrestler where  wrestler.location != "Tokyo , Japan"
+SELECT Name ,  LOCATION FROM wrestler
+select wrestler.name , wrestler.location from wrestler
+SELECT Name ,  LOCATION FROM wrestler
+select wrestler.name , wrestler.location from wrestler
+SELECT Elimination_Move FROM Elimination WHERE Team  =  "Team Orton"
+select elimination.elimination_move from Elimination where  elimination.team = "Team Orton"
+SELECT Elimination_Move FROM Elimination WHERE Team  =  "Team Orton"
+select elimination.elimination_move from Elimination where  elimination.team = "Team Orton"
+SELECT T2.Name ,  T1.Elimination_Move FROM elimination AS T1 JOIN wrestler AS T2 ON T1.Wrestler_ID  =  T2.Wrestler_ID
+select wrestler.name , elimination.elimination_move from Elimination join wrestler on Elimination.Wrestler_ID = wrestler.Wrestler_ID
+SELECT T2.Name ,  T1.Elimination_Move FROM elimination AS T1 JOIN wrestler AS T2 ON T1.Wrestler_ID  =  T2.Wrestler_ID
+select wrestler.name , elimination.elimination_move from Elimination join wrestler on Elimination.Wrestler_ID = wrestler.Wrestler_ID
+SELECT T2.Name ,  T1.Team FROM elimination AS T1 JOIN wrestler AS T2 ON T1.Wrestler_ID  =  T2.Wrestler_ID ORDER BY T2.Days_held DESC
+select wrestler.name , elimination.team from Elimination join wrestler on Elimination.Wrestler_ID = wrestler.Wrestler_ID   order by wrestler.days_held desc
+SELECT T2.Name ,  T1.Team FROM elimination AS T1 JOIN wrestler AS T2 ON T1.Wrestler_ID  =  T2.Wrestler_ID ORDER BY T2.Days_held DESC
+select wrestler.name , elimination.team from Elimination join wrestler on Elimination.Wrestler_ID = wrestler.Wrestler_ID   order by wrestler.days_held desc
+SELECT T1.Time FROM elimination AS T1 JOIN wrestler AS T2 ON T1.Wrestler_ID  =  T2.Wrestler_ID ORDER BY T2.Days_held DESC LIMIT 1
+select elimination.time from Elimination join wrestler on Elimination.Wrestler_ID = wrestler.Wrestler_ID   order by wrestler.days_held desc limit 1
+SELECT T1.Time FROM elimination AS T1 JOIN wrestler AS T2 ON T1.Wrestler_ID  =  T2.Wrestler_ID ORDER BY T2.Days_held DESC LIMIT 1
+select elimination.time from Elimination join wrestler on Elimination.Wrestler_ID = wrestler.Wrestler_ID   order by wrestler.days_held desc limit 1
+SELECT T1.Time FROM elimination AS T1 JOIN wrestler AS T2 ON T1.Wrestler_ID  =  T2.Wrestler_ID WHERE T2.Days_held  >  50
+select elimination.time from Elimination join wrestler on Elimination.Wrestler_ID = wrestler.Wrestler_ID where  wrestler.days_held > 50
+SELECT T1.Time FROM elimination AS T1 JOIN wrestler AS T2 ON T1.Wrestler_ID  =  T2.Wrestler_ID WHERE T2.Days_held  >  50
+select elimination.time from Elimination join wrestler on Elimination.Wrestler_ID = wrestler.Wrestler_ID where  wrestler.days_held > 50
+SELECT Team ,  COUNT(*) FROM elimination GROUP BY Team
+select elimination.team , count(*) from Elimination  group by elimination.team
+SELECT Team ,  COUNT(*) FROM elimination GROUP BY Team
+select elimination.team , count(*) from Elimination  group by elimination.team
+SELECT Team FROM elimination GROUP BY Team HAVING COUNT(*)  >  3
+select elimination.team from Elimination  group by elimination.team having  count(*) > 3
+SELECT Team FROM elimination GROUP BY Team HAVING COUNT(*)  >  3
+select elimination.team from Elimination  group by elimination.team having  count(*) > 3
+SELECT Reign ,  Days_held FROM wrestler
+select wrestler.reign , wrestler.days_held from wrestler
+SELECT Reign ,  Days_held FROM wrestler
+select wrestler.reign , wrestler.days_held from wrestler
+SELECT Name FROM wrestler WHERE Days_held  <  100
+select wrestler.name from wrestler where  wrestler.days_held < 100
+SELECT Name FROM wrestler WHERE Days_held  <  100
+select wrestler.name from wrestler where  wrestler.days_held < 100
+SELECT Reign FROM wrestler GROUP BY Reign ORDER BY COUNT(*) DESC LIMIT 1
+select wrestler.reign from wrestler  group by wrestler.reign  order by count(*) desc limit 1
+SELECT Reign FROM wrestler GROUP BY Reign ORDER BY COUNT(*) DESC LIMIT 1
+select wrestler.reign from wrestler  group by wrestler.reign  order by count(*) desc limit 1
+SELECT LOCATION FROM wrestler GROUP BY LOCATION HAVING COUNT(*)  >  2
+select wrestler.location from wrestler  group by wrestler.location having  count(*) > 2
+SELECT LOCATION FROM wrestler GROUP BY LOCATION HAVING COUNT(*)  >  2
+select wrestler.location from wrestler  group by wrestler.location having  count(*) > 2
+SELECT Name FROM wrestler WHERE Wrestler_ID NOT IN (SELECT Wrestler_ID FROM elimination)
+select wrestler.name from wrestler where  wrestler.wrestler_id not in (select Elimination.Wrestler_ID from Elimination  )
+SELECT Name FROM wrestler WHERE Wrestler_ID NOT IN (SELECT Wrestler_ID FROM elimination)
+select wrestler.name from wrestler where  wrestler.wrestler_id not in (select Elimination.Wrestler_ID from Elimination  )
+SELECT Team FROM Elimination WHERE Eliminated_By  =  "Orton" INTERSECT SELECT Team FROM Elimination WHERE Eliminated_By  =  "Benjamin"
+select elimination.team from Elimination where  elimination.eliminated_by = "Orton"   intersect select elimination.team from Elimination where  elimination.eliminated_by = "Benjamin"
+SELECT Team FROM Elimination WHERE Eliminated_By  =  "Orton" INTERSECT SELECT Team FROM Elimination WHERE Eliminated_By  =  "Benjamin"
+select elimination.team from Elimination where  elimination.eliminated_by = "Orton"   intersect select elimination.team from Elimination where  elimination.eliminated_by = "Benjamin"
+SELECT COUNT (DISTINCT team) FROM elimination
+select count( distinct elimination.team) from Elimination
+SELECT COUNT (DISTINCT team) FROM elimination
+select count( distinct elimination.team) from Elimination
+SELECT TIME FROM elimination WHERE Eliminated_By  =  "Punk" OR Eliminated_By  =  "Orton"
+select elimination.time from Elimination where  elimination.eliminated_by = "Punk" or elimination.eliminated_by = "Orton"
+SELECT TIME FROM elimination WHERE Eliminated_By  =  "Punk" OR Eliminated_By  =  "Orton"
+select elimination.time from Elimination where  elimination.eliminated_by = "Punk" or elimination.eliminated_by = "Orton"

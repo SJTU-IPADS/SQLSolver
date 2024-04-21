@@ -1,0 +1,106 @@
+SELECT T1.course_name FROM courses AS T1 JOIN student_course_registrations AS T2 ON T1.course_id = T2.course_Id GROUP BY T1.course_id ORDER BY count(*) DESC LIMIT 1
+select courses.course_name from Student_Course_Registrations join Courses on Student_Course_Registrations.course_id = Courses.course_id  group by student_course_registrations.course_id  order by count(*) desc limit 1
+SELECT T1.course_name FROM courses AS T1 JOIN student_course_registrations AS T2 ON T1.course_id = T2.course_Id GROUP BY T1.course_id ORDER BY count(*) DESC LIMIT 1
+select courses.course_name from Student_Course_Registrations join Courses on Student_Course_Registrations.course_id = Courses.course_id  group by student_course_registrations.course_id  order by count(*) desc limit 1
+SELECT student_id FROM student_course_registrations GROUP BY student_id ORDER BY count(*) LIMIT 1
+select student_course_registrations.student_id from Student_Course_Registrations  group by student_course_registrations.student_id  order by count(*) asc limit 1
+SELECT student_id FROM student_course_registrations GROUP BY student_id ORDER BY count(*) LIMIT 1
+select student_course_registrations.student_id from Student_Course_Registrations  group by student_course_registrations.student_id  order by count(*) asc limit 1
+SELECT T2.first_name ,  T2.last_name FROM candidates AS T1 JOIN people AS T2 ON T1.candidate_id = T2.person_id
+select people.first_name , people.last_name from Candidates join People on Candidates.candidate_id = People.person_id
+SELECT T2.first_name ,  T2.last_name FROM candidates AS T1 JOIN people AS T2 ON T1.candidate_id = T2.person_id
+select people.first_name , people.last_name from Candidates join People on Candidates.candidate_id = People.person_id
+SELECT student_id FROM students WHERE student_id NOT IN (SELECT student_id FROM student_course_attendance)
+select students.student_id from Students where  students.student_id not in (select Student_Course_Attendance.student_id from Student_Course_Attendance  )
+SELECT student_id FROM students WHERE student_id NOT IN (SELECT student_id FROM student_course_attendance)
+select student_course_attendance.student_id from Student_Course_Attendance where  student_course_attendance.student_id not in (select Student_Course_Attendance.student_id from Student_Course_Attendance  )
+SELECT student_id FROM student_course_attendance
+select student_course_attendance.student_id from Student_Course_Attendance
+SELECT student_id FROM student_course_attendance
+select student_course_attendance.student_id from Student_Course_Attendance
+SELECT T1.student_id ,  T2.course_name FROM student_course_registrations AS T1 JOIN courses AS T2 ON T1.course_id = T2.course_id
+select students.student_id , courses.course_name from Student_Course_Registrations join Courses on Student_Course_Registrations.course_id = Courses.course_id join Students on Student_Course_Registrations.student_id = Students.student_id
+SELECT T2.student_details FROM student_course_registrations AS T1 JOIN students AS T2 ON T1.student_id = T2.student_id ORDER BY T1.registration_date DESC LIMIT 1
+select students.student_details from Student_Course_Registrations join Students on Student_Course_Registrations.student_id = Students.student_id   order by student_course_registrations.registration_date desc limit 1
+SELECT T2.student_details FROM student_course_registrations AS T1 JOIN students AS T2 ON T1.student_id = T2.student_id ORDER BY T1.registration_date DESC LIMIT 1
+select students.student_details from Student_Course_Registrations join Students on Student_Course_Registrations.student_id = Students.student_id   order by student_course_registrations.registration_date desc limit 1
+SELECT count(*) FROM courses AS T1 JOIN student_course_attendance AS T2 ON T1.course_id = T2.course_id WHERE T1.course_name = "English"
+select count(*) from Student_Course_Attendance join Courses on Student_Course_Attendance.course_id = Courses.course_id where  courses.course_name = "English"
+SELECT count(*) FROM courses AS T1 JOIN student_course_attendance AS T2 ON T1.course_id = T2.course_id WHERE T1.course_name = "English"
+select count(*) from Student_Course_Attendance join Courses on Student_Course_Attendance.course_id = Courses.course_id where  courses.course_name = "English"
+SELECT count(*) FROM courses AS T1 JOIN student_course_attendance AS T2 ON T1.course_id = T2.course_id WHERE T2.student_id = 171
+select count(*) from Student_Course_Attendance join Courses on Student_Course_Attendance.course_id = Courses.course_id where  student_course_attendance.student_id = 171
+SELECT count(*) FROM courses AS T1 JOIN student_course_attendance AS T2 ON T1.course_id = T2.course_id WHERE T2.student_id = 171
+select count(*) from Student_Course_Attendance join Courses on Student_Course_Attendance.course_id = Courses.course_id where  student_course_attendance.student_id = 171
+SELECT T2.candidate_id FROM people AS T1 JOIN candidates AS T2 ON T1.person_id = T2.candidate_id WHERE T1.email_address = "stanley.monahan@example.org"
+select candidates.candidate_id from Candidates join People on Candidates.candidate_id = People.person_id where  people.email_address = "stanley.monahan@example.org"
+SELECT T2.candidate_id FROM people AS T1 JOIN candidates AS T2 ON T1.person_id = T2.candidate_id WHERE T1.email_address = "stanley.monahan@example.org"
+select candidates.candidate_id from Candidates join People on Candidates.candidate_id = People.person_id where  people.email_address = "stanley.monahan@example.org"
+SELECT candidate_id FROM candidate_assessments ORDER BY assessment_date DESC LIMIT 1
+select candidate_assessments.candidate_id from Candidate_Assessments   order by candidate_assessments.assessment_date desc limit 1
+SELECT candidate_id FROM candidate_assessments ORDER BY assessment_date DESC LIMIT 1
+select candidate_assessments.candidate_id from Candidate_Assessments   order by candidate_assessments.assessment_date desc limit 1
+SELECT T1.student_details FROM students AS T1 JOIN student_course_registrations AS T2 ON T1.student_id = T2.student_id GROUP BY T1.student_id ORDER BY count(*) DESC LIMIT 1
+select students.student_details from Student_Course_Registrations join Students on Student_Course_Registrations.student_id = Students.student_id  group by students.student_details  order by count(*) desc limit 1
+SELECT T1.student_details FROM students AS T1 JOIN student_course_registrations AS T2 ON T1.student_id = T2.student_id GROUP BY T1.student_id ORDER BY count(*) DESC LIMIT 1
+select students.student_details from Student_Course_Registrations join Students on Student_Course_Registrations.student_id = Students.student_id  group by student_course_registrations.student_id  order by count(*) desc limit 1
+SELECT T1.student_id ,  count(*) FROM students AS T1 JOIN student_course_registrations AS T2 ON T1.student_id = T2.student_id GROUP BY T1.student_id
+select student_course_registrations.student_id , count(*) from Student_Course_Registrations  group by student_course_registrations.student_id
+SELECT T1.student_id ,  count(*) FROM students AS T1 JOIN student_course_registrations AS T2 ON T1.student_id = T2.student_id GROUP BY T1.student_id
+select students.student_id , count(*) from Student_Course_Registrations join Students on Student_Course_Registrations.student_id = Students.student_id  group by students.student_id
+SELECT T3.course_name ,  count(*) FROM students AS T1 JOIN student_course_registrations AS T2 ON T1.student_id = T2.student_id JOIN courses AS T3 ON T2.course_id = T3.course_id GROUP BY T2.course_id
+select courses.course_name , count(*) from Student_Course_Registrations join Courses on Student_Course_Registrations.course_id = Courses.course_id  group by student_course_registrations.course_id
+SELECT T3.course_name ,  count(*) FROM students AS T1 JOIN student_course_registrations AS T2 ON T1.student_id = T2.student_id JOIN courses AS T3 ON T2.course_id = T3.course_id GROUP BY T2.course_id
+select courses.course_name , count(*) from Student_Course_Registrations join Courses on Student_Course_Registrations.course_id = Courses.course_id join Students on Student_Course_Registrations.student_id = Students.student_id  group by student_course_registrations.course_id
+SELECT candidate_id FROM candidate_assessments WHERE asessment_outcome_code = "Pass"
+select candidates.candidate_id from Candidate_Assessments join Candidates on Candidate_Assessments.candidate_id = Candidates.candidate_id where  candidate_assessments.asessment_outcome_code = "Pass"
+SELECT candidate_id FROM candidate_assessments WHERE asessment_outcome_code = "Pass"
+select candidates.candidate_id from Candidate_Assessments join Candidates on Candidate_Assessments.candidate_id = Candidates.candidate_id where  candidate_assessments.asessment_outcome_code = "Pass"
+SELECT T3.cell_mobile_number FROM candidates AS T1 JOIN candidate_assessments AS T2 ON T1.candidate_id = T2.candidate_id JOIN people AS T3 ON T1.candidate_id = T3.person_id WHERE T2.asessment_outcome_code = "Fail"
+select people.cell_mobile_number from Candidate_Assessments join People on Candidate_Assessments.candidate_id = People.person_id where  candidate_assessments.asessment_outcome_code = "Fail"
+SELECT T3.cell_mobile_number FROM candidates AS T1 JOIN candidate_assessments AS T2 ON T1.candidate_id = T2.candidate_id JOIN people AS T3 ON T1.candidate_id = T3.person_id WHERE T2.asessment_outcome_code = "Fail"
+select people.cell_mobile_number from Candidate_Assessments join People on Candidate_Assessments.candidate_id = People.person_id where  candidate_assessments.asessment_outcome_code = "Fail"
+SELECT student_id FROM student_course_attendance WHERE course_id  =  301
+select student_course_attendance.student_id from Student_Course_Attendance where  student_course_attendance.course_id = 301
+SELECT student_id FROM student_course_attendance WHERE course_id  =  301
+select student_course_attendance.student_id from Student_Course_Attendance where  student_course_attendance.course_id = 301
+SELECT student_id FROM student_course_attendance WHERE course_id = 301 ORDER BY date_of_attendance DESC LIMIT 1
+select student_course_attendance.student_id from Student_Course_Attendance where  student_course_attendance.course_id = 301   order by student_course_attendance.date_of_attendance desc limit 1
+SELECT student_id FROM student_course_attendance WHERE course_id = 301 ORDER BY date_of_attendance DESC LIMIT 1
+select student_course_attendance.student_id from Student_Course_Attendance join Student_Course_Registrations on Student_Course_Attendance.student_id = Student_Course_Registrations.student_id where  student_course_attendance.course_id = 301   order by student_course_registrations.registration_date desc limit 1
+SELECT DISTINCT T1.city FROM addresses AS T1 JOIN people_addresses AS T2 ON T1.address_id = T2.address_id
+select distinct addresses.city from People_Addresses join Addresses on People_Addresses.address_id = Addresses.address_id
+SELECT DISTINCT T1.city FROM addresses AS T1 JOIN people_addresses AS T2 ON T1.address_id = T2.address_id
+select distinct addresses.city from People_Addresses join Addresses on People_Addresses.address_id = Addresses.address_id
+SELECT DISTINCT T1.city FROM addresses AS T1 JOIN people_addresses AS T2 ON T1.address_id = T2.address_id JOIN students AS T3 ON T2.person_id = T3.student_id
+select distinct addresses.city from Students join People on Students.student_id = People.person_id join People_Addresses on People.person_id = People_Addresses.person_id join Addresses on People_Addresses.address_id = Addresses.address_id
+SELECT DISTINCT T1.city FROM addresses AS T1 JOIN people_addresses AS T2 ON T1.address_id = T2.address_id JOIN students AS T3 ON T2.person_id = T3.student_id
+select distinct addresses.city from Students join People on Students.student_id = People.person_id join People_Addresses on People.person_id = People_Addresses.person_id join Addresses on People_Addresses.address_id = Addresses.address_id
+SELECT course_name FROM courses ORDER BY course_name
+select courses.course_name from Courses   order by courses.course_name asc
+SELECT course_name FROM courses ORDER BY course_name
+select courses.course_name from Courses   order by courses.course_name asc
+SELECT first_name FROM people ORDER BY first_name
+select people.first_name from People   order by people.first_name asc
+SELECT first_name FROM people ORDER BY first_name
+select people.first_name from People   order by people.first_name asc
+SELECT student_id FROM student_course_registrations UNION SELECT student_id FROM student_course_attendance
+select student_course_registrations.student_id from Student_Course_Registrations   union select student_course_attendance.student_id from Student_Course_Attendance
+SELECT student_id FROM student_course_registrations UNION SELECT student_id FROM student_course_attendance
+select student_course_registrations.student_id from Student_Course_Registrations   union select student_course_attendance.student_id from Student_Course_Attendance
+SELECT course_id FROM student_course_registrations WHERE student_id = 121 UNION SELECT course_id FROM student_course_attendance WHERE student_id = 121
+select student_course_registrations.course_id from Student_Course_Registrations where  student_course_registrations.student_id = 121   union select student_course_attendance.course_id from Student_Course_Attendance where  student_course_attendance.student_id = 121
+SELECT course_id FROM student_course_registrations WHERE student_id = 121 UNION SELECT course_id FROM student_course_attendance WHERE student_id = 121
+select student_course_registrations.course_id from Student_Course_Registrations where  student_course_registrations.student_id = 121   union select student_course_attendance.course_id from Student_Course_Attendance where  student_course_attendance.student_id = 121
+SELECT * FROM student_course_registrations WHERE student_id NOT IN (SELECT student_id FROM student_course_attendance)
+select * from Students where  students.student_id not in (select Student_Course_Attendance.student_id from Student_Course_Attendance  )
+SELECT * FROM student_course_registrations WHERE student_id NOT IN (SELECT student_id FROM student_course_attendance)
+select students.student_details from Students where  students.student_id not in (select Student_Course_Attendance.student_id from Student_Course_Attendance  )
+SELECT T2.student_id FROM courses AS T1 JOIN student_course_registrations AS T2 ON T1.course_id = T2.course_id WHERE T1.course_name = "statistics" ORDER BY T2.registration_date
+select students.student_id from Student_Course_Registrations join Courses on Student_Course_Registrations.course_id = Courses.course_id join Students on Student_Course_Registrations.student_id = Students.student_id where  courses.course_name = "statistics"   order by student_course_registrations.registration_date asc
+SELECT T2.student_id FROM courses AS T1 JOIN student_course_registrations AS T2 ON T1.course_id = T2.course_id WHERE T1.course_name = "statistics" ORDER BY T2.registration_date
+select students.student_id from Student_Course_Registrations join Courses on Student_Course_Registrations.course_id = Courses.course_id join Students on Student_Course_Registrations.student_id = Students.student_id where  courses.course_name = "statistics"   order by student_course_registrations.registration_date asc
+SELECT T2.student_id FROM courses AS T1 JOIN student_course_attendance AS T2 ON T1.course_id = T2.course_id WHERE T1.course_name = "statistics" ORDER BY T2.date_of_attendance
+select students.student_id from Student_Course_Attendance join Students on Student_Course_Attendance.student_id = Students.student_id join Courses on Student_Course_Attendance.course_id = Courses.course_id where  courses.course_name = "statistics"   order by student_course_attendance.date_of_attendance asc
+SELECT T2.student_id FROM courses AS T1 JOIN student_course_attendance AS T2 ON T1.course_id = T2.course_id WHERE T1.course_name = "statistics" ORDER BY T2.date_of_attendance
+select student_course_attendance.student_id from Student_Course_Attendance join Courses on Student_Course_Attendance.course_id = Courses.course_id where  courses.course_name = "statistics"   order by student_course_attendance.date_of_attendance asc

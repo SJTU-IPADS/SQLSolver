@@ -1,0 +1,44 @@
+SELECT ResName FROM Restaurant;
+select restaurant.resname from Restaurant
+SELECT Address FROM Restaurant WHERE ResName = "Subway";
+select restaurant.address from Restaurant where  restaurant.resname = "Subway"
+SELECT Rating FROM Restaurant WHERE ResName = "Subway";
+select restaurant.rating from Restaurant where  restaurant.resname = "Subway"
+SELECT ResTypeName FROM Restaurant_Type;
+select restaurant_type.restypename from Restaurant_Type
+SELECT ResTypeDescription FROM Restaurant_Type WHERE ResTypeName = "Sandwich";
+select restaurant_type.restypedescription from Restaurant_Type where  restaurant_type.restypename = "Sandwich"
+SELECT ResName , Rating FROM Restaurant ORDER BY Rating DESC LIMIT 1;
+select restaurant.resname , restaurant.rating from Restaurant   order by restaurant.rating desc limit 1
+SELECT Age FROM Student WHERE Fname = "Linda" AND Lname = "Smith";
+select student.age from Student where  student.fname = "Linda" and student.lname = "Smith"
+SELECT Sex FROM Student WHERE Fname = "Linda" AND Lname = "Smith";
+select student.sex from Student where  student.fname = "Linda" and student.lname = "Smith"
+SELECT Fname , Lname FROM Student WHERE Major  =  600;
+select student.fname , student.lname from Student where  student.major = 600
+SELECT city_code FROM Student WHERE Fname = "Linda" AND Lname = "Smith";
+select student.city_code from Student where  student.fname = "Linda" and student.lname = "Smith"
+SELECT count(*) FROM Student WHERE Advisor =  1121;
+select count(*) from Student where  student.advisor = 1121
+SELECT Advisor ,  count(*) FROM Student GROUP BY Advisor ORDER BY count(Advisor) DESC LIMIT 1;
+select student.advisor , count(*) from Student  group by student.advisor  order by count(student.advisor) desc limit 1
+SELECT Major ,  count(*) FROM Student GROUP BY Major ORDER BY count(Major) ASC LIMIT 1;
+select student.major , count(*) from Student  group by student.major  order by count(student.major) asc limit 1
+SELECT Major ,  count(*) FROM Student GROUP BY Major HAVING count(Major) BETWEEN 2 AND 30;
+select student.major , count(*) from Student  group by student.major having  count(student.major) between 2 and 30
+SELECT Fname , Lname FROM Student WHERE Age  >  18 AND Major = 600;
+select student.fname , student.lname from Student where  student.age > 18 and student.major = 600
+SELECT Fname , Lname FROM Student WHERE Age  >  18 AND Major != 600 AND Sex = 'F';
+select student.fname , student.lname from Student where  student.age > 18 and student.major != 600 and student.sex = "F"
+SELECT count(*) FROM Restaurant JOIN Type_Of_Restaurant ON Restaurant.ResID =  Type_Of_Restaurant.ResID JOIN Restaurant_Type ON Type_Of_Restaurant.ResTypeID = Restaurant_Type.ResTypeID GROUP BY Type_Of_Restaurant.ResTypeID HAVING Restaurant_Type.ResTypeName = 'Sandwich'
+select count(*) from Type_Of_Restaurant join Restaurant_Type on Type_Of_Restaurant.ResTypeID = Restaurant_Type.ResTypeID join Restaurant on Type_Of_Restaurant.ResID = Restaurant.ResID where  restaurant_type.restypename = "Sandwich"  group by type_of_restaurant.restypeid
+SELECT sum(Spent) FROM Student JOIN Visits_Restaurant ON Student.StuID = Visits_Restaurant.StuID WHERE Student.Fname = "Linda" AND Student.Lname = "Smith";
+select sum(visits_restaurant.spent) from Visits_Restaurant join Student on Visits_Restaurant.StuID = Student.StuID where  student.fname = "Linda" and student.lname = "Smith"
+SELECT count(*) FROM Student JOIN Visits_Restaurant ON Student.StuID = Visits_Restaurant.StuID JOIN Restaurant ON Visits_Restaurant.ResID = Restaurant.ResID WHERE Student.Fname = "Linda" AND Student.Lname = "Smith" AND Restaurant.ResName = "Subway";
+select count(*) from Visits_Restaurant join Restaurant on Visits_Restaurant.ResID = Restaurant.ResID join Student on Visits_Restaurant.StuID = Student.StuID where  student.fname = "Linda" and student.lname = "Smith" and restaurant.resname = "Subway"
+SELECT TIME FROM Student JOIN Visits_Restaurant ON Student.StuID = Visits_Restaurant.StuID JOIN Restaurant ON Visits_Restaurant.ResID = Restaurant.ResID WHERE Student.Fname = "Linda" AND Student.Lname = "Smith" AND Restaurant.ResName = "Subway";
+select visits_restaurant.time from Visits_Restaurant join Restaurant on Visits_Restaurant.ResID = Restaurant.ResID join Student on Visits_Restaurant.StuID = Student.StuID where  student.fname = "Linda" and student.lname = "Smith" and restaurant.resname = "Subway"
+SELECT Restaurant.ResName ,  sum(Visits_Restaurant.Spent) FROM Visits_Restaurant JOIN Restaurant ON Visits_Restaurant.ResID = Restaurant.ResID GROUP BY Restaurant.ResID ORDER BY sum(Visits_Restaurant.Spent) ASC LIMIT 1;
+select restaurant.resname , sum(visits_restaurant.spent) from Visits_Restaurant join Restaurant on Visits_Restaurant.ResID = Restaurant.ResID  group by restaurant.resid  order by sum(visits_restaurant.spent) asc limit 1
+SELECT Student.Fname , Student.Lname FROM Student JOIN Visits_Restaurant ON Student.StuID = Visits_Restaurant.StuID GROUP BY Student.StuID ORDER BY count(*) DESC LIMIT 1;
+select student.fname , student.lname from Visits_Restaurant join Student on Visits_Restaurant.StuID = Student.StuID  group by visits_restaurant.stuid  order by count(*) desc limit 1

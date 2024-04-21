@@ -1,0 +1,96 @@
+SELECT count(DISTINCT rank) FROM captain
+select count( distinct captain.rank) from captain
+SELECT count(DISTINCT rank) FROM captain
+select count( distinct captain.rank) from captain
+SELECT count(*) ,  rank FROM captain GROUP BY rank
+select count(*) , captain.rank from captain  group by captain.rank
+SELECT count(*) ,  rank FROM captain GROUP BY rank
+select count(*) , captain.rank from captain  group by captain.rank
+SELECT count(*) ,  rank FROM captain WHERE age  <  50 GROUP BY rank
+select count(*) , captain.rank from captain where  captain.age < 50  group by captain.rank
+SELECT count(*) ,  rank FROM captain WHERE age  <  50 GROUP BY rank
+select count(*) , captain.rank from captain where  captain.age < 50  group by captain.rank
+SELECT name FROM captain ORDER BY age DESC
+select captain.name from captain   order by captain.age desc
+SELECT name FROM captain ORDER BY age DESC
+select captain.name from captain   order by captain.age desc
+SELECT name ,  CLASS ,  rank FROM captain
+select captain.name , captain.class , captain.rank from captain
+SELECT name ,  CLASS ,  rank FROM captain
+select captain.name , captain.class , captain.rank from captain
+SELECT rank FROM captain GROUP BY rank ORDER BY count(*) DESC LIMIT 1
+select captain.rank from captain  group by captain.rank  order by count(*) desc limit 1
+SELECT rank FROM captain GROUP BY rank ORDER BY count(*) DESC LIMIT 1
+select captain.rank from captain  group by captain.rank  order by count(*) desc limit 1
+SELECT CLASS FROM captain GROUP BY CLASS HAVING count(*)  >  2
+select captain.class from captain  group by captain.class having  count(*) > 2
+SELECT CLASS FROM captain GROUP BY CLASS HAVING count(*)  >  2
+select captain.class from captain  group by captain.class having  count(*) > 2
+SELECT name FROM captain WHERE rank  =  'Midshipman' OR rank  =  'Lieutenant'
+select captain.name from captain where  captain.rank = "Midshipman" or captain.rank = "Lieutenant"
+SELECT name FROM captain WHERE rank  =  'Midshipman' OR rank  =  'Lieutenant'
+select captain.name from captain where  captain.rank = "Midshipman" or captain.rank = "Lieutenant"
+SELECT avg(age) ,  min(age) ,  CLASS FROM captain GROUP BY CLASS
+select avg(captain.age) , min(captain.age) , captain.class from captain  group by captain.class
+SELECT avg(age) ,  min(age) ,  CLASS FROM captain GROUP BY CLASS
+select avg(captain.age) , min(captain.age) , captain.class from captain  group by captain.class
+SELECT rank FROM captain WHERE CLASS  =  'Cutter' INTERSECT SELECT rank FROM captain WHERE CLASS  =  'Armed schooner'
+select captain.rank from captain where  captain.class = "Cutter"   intersect select captain.rank from captain where  captain.class = "Armed schooner"
+SELECT rank FROM captain WHERE CLASS  =  'Cutter' INTERSECT SELECT rank FROM captain WHERE CLASS  =  'Armed schooner'
+select captain.rank from captain where  captain.class = "Cutter"   intersect select captain.rank from captain where  captain.class = "Armed schooner"
+SELECT rank FROM captain EXCEPT SELECT rank FROM captain WHERE CLASS  =  'Third-rate ship of the line'
+select captain.rank from captain   except select captain.rank from captain where  captain.class = "Third-rate ship of the line"
+SELECT rank FROM captain EXCEPT SELECT rank FROM captain WHERE CLASS  =  'Third-rate ship of the line'
+select captain.rank from captain   except select captain.rank from captain where  captain.class = "Third-rate ship of the line"
+SELECT name FROM captain ORDER BY age LIMIT 1
+select captain.name from captain   order by captain.age asc limit 1
+SELECT name FROM captain ORDER BY age LIMIT 1
+select captain.name from captain   order by captain.age asc limit 1
+SELECT count(*) FROM ship
+select count(*) from Ship
+SELECT count(*) FROM ship
+select count(*) from Ship
+SELECT name ,  TYPE ,  flag FROM ship ORDER BY built_year DESC LIMIT 1
+select ship.name , ship.class , ship.flag from Ship   order by ship.built_year desc limit 1
+SELECT name ,  TYPE ,  flag FROM ship ORDER BY built_year DESC LIMIT 1
+select ship.name , ship.class , ship.flag from Ship   order by ship.built_year desc limit 1
+SELECT count(*) ,  flag FROM ship GROUP BY flag
+select count(*) , ship.flag from Ship  group by ship.flag
+SELECT count(*) ,  flag FROM ship GROUP BY flag
+select count(*) , ship.flag from Ship  group by ship.flag
+SELECT flag FROM ship GROUP BY flag ORDER BY count(*) DESC LIMIT 1
+select ship.flag from Ship  group by ship.flag  order by count(*) desc limit 1
+SELECT flag FROM ship GROUP BY flag ORDER BY count(*) DESC LIMIT 1
+select ship.flag from Ship  group by ship.flag  order by count(*) desc limit 1
+SELECT name FROM ship ORDER BY built_year ,  CLASS
+select ship.name from Ship   order by ship.built_year,ship.class asc
+SELECT name FROM ship ORDER BY built_year ,  CLASS
+select ship.name from Ship   order by ship.built_year,ship.class asc
+SELECT TYPE FROM ship WHERE flag  =  'Panama' INTERSECT SELECT TYPE FROM ship WHERE flag  =  'Malta'
+select ship.type from Ship where  ship.flag = "Panama"   intersect select ship.type from Ship where  ship.flag = "Malta"
+SELECT TYPE FROM ship WHERE flag  =  'Panama' INTERSECT SELECT TYPE FROM ship WHERE flag  =  'Malta'
+select ship.type from Ship where  ship.flag = "Panama"   intersect select ship.type from Ship where  ship.flag = "Malta"
+SELECT built_year FROM ship GROUP BY built_year ORDER BY count(*) DESC LIMIT 1
+select ship.built_year from Ship  group by ship.built_year  order by count(*) desc limit 1
+SELECT built_year FROM ship GROUP BY built_year ORDER BY count(*) DESC LIMIT 1
+select ship.built_year from Ship  group by ship.built_year  order by count(*) desc limit 1
+SELECT t1.name FROM ship AS t1 JOIN captain AS t2 ON t1.ship_id  =  t2.ship_id GROUP BY t2.ship_id HAVING count(*)  >  1
+select ship.name from captain join Ship on captain.Ship_ID = Ship.Ship_ID  group by captain.ship_id having  count(*) > 1
+SELECT t1.name FROM ship AS t1 JOIN captain AS t2 ON t1.ship_id  =  t2.ship_id GROUP BY t2.ship_id HAVING count(*)  >  1
+select ship.name from captain join Ship on captain.Ship_ID = Ship.Ship_ID  group by captain.ship_id having  count(*) > 1
+SELECT name ,  CLASS FROM ship WHERE ship_id NOT IN (SELECT ship_id FROM captain)
+select ship.name , ship.class from Ship where  ship.ship_id not in (select captain.Ship_ID from captain  )
+SELECT name ,  CLASS FROM ship WHERE ship_id NOT IN (SELECT ship_id FROM captain)
+select ship.name , ship.class from Ship where  ship.ship_id not in (select captain.Ship_ID from captain  )
+SELECT t1.name FROM ship AS t1 JOIN captain AS t2 ON t1.ship_id  =  t2.ship_id ORDER BY t2.age LIMIT 1
+select ship.name from captain join Ship on captain.Ship_ID = Ship.Ship_ID   order by captain.age asc limit 1
+SELECT t1.name FROM ship AS t1 JOIN captain AS t2 ON t1.ship_id  =  t2.ship_id ORDER BY t2.age LIMIT 1
+select ship.name from captain join Ship on captain.Ship_ID = Ship.Ship_ID   order by captain.age asc limit 1
+SELECT name ,  flag FROM ship WHERE ship_id NOT IN (SELECT ship_id FROM captain WHERE rank  =  'Midshipman')
+select ship.name , ship.flag from Ship where  ship.ship_id not in (select captain.Ship_ID from captain where  captain.rank = "Midshipman"  )
+SELECT name ,  flag FROM ship WHERE ship_id NOT IN (SELECT ship_id FROM captain WHERE rank  =  'Midshipman')
+select ship.name , ship.flag from Ship where  ship.ship_id not in (select captain.Ship_ID from captain where  captain.rank = "Midshipman"  )
+SELECT t1.name FROM ship AS t1 JOIN captain AS t2 ON t1.ship_id  =  t2.ship_id WHERE t2.rank  =  'Midshipman' INTERSECT SELECT t1.name FROM ship AS t1 JOIN captain AS t2 ON t1.ship_id  =  t2.ship_id WHERE t2.rank  =  'Lieutenant'
+select ship.name from captain join Ship on captain.Ship_ID = Ship.Ship_ID where  captain.rank = "Midshipman"   intersect select ship.name from captain join Ship on captain.Ship_ID = Ship.Ship_ID where  captain.rank = "Lieutenant"
+SELECT t1.name FROM ship AS t1 JOIN captain AS t2 ON t1.ship_id  =  t2.ship_id WHERE t2.rank  =  'Midshipman' INTERSECT SELECT t1.name FROM ship AS t1 JOIN captain AS t2 ON t1.ship_id  =  t2.ship_id WHERE t2.rank  =  'Lieutenant'
+select ship.name from captain join Ship on captain.Ship_ID = Ship.Ship_ID where  captain.rank = "Midshipman"   intersect select ship.name from captain join Ship on captain.Ship_ID = Ship.Ship_ID where  captain.rank = "Lieutenant"

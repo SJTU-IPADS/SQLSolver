@@ -1,0 +1,80 @@
+SELECT count(*) FROM artist
+select count(*) from artist
+SELECT count(*) FROM artist
+select count(*) from artist
+SELECT name ,  age ,  country FROM artist ORDER BY Year_Join
+select artist.name , artist.age , artist.country from artist   order by artist.year_join asc
+SELECT name ,  age ,  country FROM artist ORDER BY Year_Join
+select artist.name , artist.age , artist.country from artist   order by artist.year_join asc
+SELECT DISTINCT country FROM artist
+select distinct artist.country from artist
+SELECT DISTINCT country FROM artist
+select distinct artist.country from artist
+SELECT name ,  year_join FROM artist WHERE country != 'United States'
+select artist.name , artist.year_join from artist where  artist.country != "United States"
+SELECT name ,  year_join FROM artist WHERE country != 'United States'
+select artist.name , artist.year_join from artist where  artist.country != "United States"
+SELECT count(*) FROM artist WHERE age  >  46 AND year_join  >  1990
+select count(*) from artist where  artist.age > 46 and artist.year_join > 1990
+SELECT count(*) FROM artist WHERE age  >  46 AND year_join  >  1990
+select count(*) from artist where  artist.age > 46 and artist.year_join > 1990
+SELECT avg(age) ,  min(age) FROM artist WHERE country  =  'United States'
+select avg(artist.age) , min(artist.age) from artist where  artist.country = "United States"
+SELECT avg(age) ,  min(age) FROM artist WHERE country  =  'United States'
+select avg(artist.age) , min(artist.age) from artist where  artist.country = "United States"
+SELECT name FROM artist ORDER BY year_join DESC LIMIT 1
+select artist.name from artist   order by artist.year_join desc limit 1
+SELECT name FROM artist ORDER BY year_join DESC LIMIT 1
+select artist.name from artist   order by artist.year_join desc limit 1
+SELECT count(*) FROM exhibition WHERE YEAR  >=  2005
+select count(*) from exhibition where  exhibition.year >= 2005
+SELECT count(*) FROM exhibition WHERE YEAR  >=  2005
+select count(*) from exhibition where  exhibition.year >= 2005
+SELECT theme ,  YEAR FROM exhibition WHERE ticket_price  <  15
+select exhibition.theme , exhibition.year from exhibition where  exhibition.ticket_price < 15
+SELECT theme ,  YEAR FROM exhibition WHERE ticket_price  <  15
+select exhibition.theme , exhibition.year from exhibition where  exhibition.ticket_price < 15
+SELECT T2.name ,  count(*) FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id GROUP BY T1.artist_id
+select artist.name , count(*) from exhibition join artist on exhibition.Artist_ID = artist.Artist_ID  group by exhibition.artist_id
+SELECT T2.name ,  count(*) FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id GROUP BY T1.artist_id
+select artist.name , count(*) from exhibition join artist on exhibition.Artist_ID = artist.Artist_ID  group by exhibition.artist_id
+SELECT T2.name , T2.country FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id GROUP BY T1.artist_id ORDER BY count(*) DESC LIMIT 1
+select artist.name , artist.country from exhibition join artist on exhibition.Artist_ID = artist.Artist_ID  group by exhibition.artist_id  order by count(*) desc limit 1
+SELECT T2.name , T2.country FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id GROUP BY T1.artist_id ORDER BY count(*) DESC LIMIT 1
+select artist.name , artist.country from exhibition join artist on exhibition.Artist_ID = artist.Artist_ID  group by exhibition.artist_id  order by count(*) desc limit 1
+SELECT name FROM artist WHERE artist_id NOT IN (SELECT artist_id FROM exhibition)
+select artist.name from artist where  artist.artist_id not in (select exhibition.Artist_ID from exhibition  )
+SELECT name FROM artist WHERE artist_id NOT IN (SELECT artist_id FROM exhibition)
+select artist.name from artist where  artist.artist_id not in (select exhibition.Artist_ID from exhibition  )
+SELECT T1.theme ,  T2.name FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id WHERE T1.ticket_price  >  (SELECT avg(ticket_price) FROM exhibition)
+select exhibition.theme , artist.name from exhibition join artist on exhibition.Artist_ID = artist.Artist_ID where  exhibition.ticket_price > (select avg(exhibition.ticket_price) from exhibition  )
+SELECT T1.theme ,  T2.name FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id WHERE T1.ticket_price  >  (SELECT avg(ticket_price) FROM exhibition)
+select exhibition.theme , artist.name from exhibition join artist on exhibition.Artist_ID = artist.Artist_ID where  exhibition.ticket_price > (select avg(exhibition.ticket_price) from exhibition  )
+SELECT avg(ticket_price) ,  min(ticket_price) ,  max(ticket_price) FROM exhibition WHERE YEAR  <  2009
+select avg(exhibition.ticket_price) , min(exhibition.ticket_price) , max(exhibition.ticket_price) from exhibition where  exhibition.year < 2009
+SELECT avg(ticket_price) ,  min(ticket_price) ,  max(ticket_price) FROM exhibition WHERE YEAR  <  2009
+select avg(exhibition.ticket_price) , min(exhibition.ticket_price) , max(exhibition.ticket_price) from exhibition where  exhibition.year < 2009
+SELECT theme ,  YEAR FROM exhibition ORDER BY ticket_price DESC
+select exhibition.theme , exhibition.year from exhibition   order by exhibition.ticket_price desc
+SELECT theme ,  YEAR FROM exhibition ORDER BY ticket_price DESC
+select exhibition.theme , exhibition.year from exhibition   order by exhibition.ticket_price desc
+SELECT T2.theme ,  T1.date ,  T1.attendance FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id WHERE T2.year  =  2004
+select exhibition.theme , exhibition_record.date , exhibition_record.attendance from exhibition_record join exhibition on exhibition_record.Exhibition_ID = exhibition.Exhibition_ID where  exhibition.year = 2004
+SELECT T2.theme ,  T1.date ,  T1.attendance FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id WHERE T2.year  =  2004
+select exhibition.theme , exhibition_record.date , exhibition_record.attendance from exhibition_record join exhibition on exhibition_record.Exhibition_ID = exhibition.Exhibition_ID where  exhibition.year = 2004
+SELECT name FROM artist EXCEPT SELECT T2.name FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id WHERE T1.year  =  2004
+select artist.name from artist   except select artist.name from exhibition join artist on exhibition.Artist_ID = artist.Artist_ID where  exhibition.year = 2004
+SELECT name FROM artist EXCEPT SELECT T2.name FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id WHERE T1.year  =  2004
+select artist.name from artist   except select artist.name from exhibition join artist on exhibition.Artist_ID = artist.Artist_ID where  exhibition.year = 2004
+SELECT T2.theme FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id WHERE T1.attendance  <  100 INTERSECT SELECT T2.theme FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id WHERE T1.attendance  >  500
+select exhibition.theme from exhibition_record join exhibition on exhibition_record.Exhibition_ID = exhibition.Exhibition_ID where  exhibition_record.attendance < 100   intersect select exhibition.theme from exhibition_record join exhibition on exhibition_record.Exhibition_ID = exhibition.Exhibition_ID where  exhibition_record.attendance > 500
+SELECT T2.theme FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id WHERE T1.attendance  <  100 INTERSECT SELECT T2.theme FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id WHERE T1.attendance  >  500
+select exhibition.theme from exhibition_record join exhibition on exhibition_record.Exhibition_ID = exhibition.Exhibition_ID where  exhibition_record.attendance < 100   intersect select exhibition.theme from exhibition_record join exhibition on exhibition_record.Exhibition_ID = exhibition.Exhibition_ID where  exhibition_record.attendance > 500
+SELECT count(*) FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id WHERE T1.attendance  >  100 OR T2.ticket_price  <  10
+select count(*) from exhibition_record join exhibition on exhibition_record.Exhibition_ID = exhibition.Exhibition_ID where  exhibition_record.attendance > 100 or exhibition.ticket_price < 10
+SELECT count(*) FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id WHERE T1.attendance  >  100 OR T2.ticket_price  <  10
+select count(*) from exhibition_record join exhibition on exhibition_record.Exhibition_ID = exhibition.Exhibition_ID where  exhibition_record.attendance > 100 or exhibition.ticket_price < 10
+SELECT T3.name FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id JOIN artist AS T3 ON T3.artist_id  =  T2.artist_id GROUP BY T3.artist_id HAVING avg(T1.attendance)  >  200
+select artist.name from exhibition_record join exhibition on exhibition_record.Exhibition_ID = exhibition.Exhibition_ID join artist on exhibition.Artist_ID = artist.Artist_ID  group by exhibition.artist_id having  avg(exhibition_record.attendance) > 200
+SELECT T3.name FROM exhibition_record AS T1 JOIN exhibition AS T2 ON T1.exhibition_id  =  T2.exhibition_id JOIN artist AS T3 ON T3.artist_id  =  T2.artist_id GROUP BY T3.artist_id HAVING avg(T1.attendance)  >  200
+select artist.name from exhibition_record join exhibition on exhibition_record.Exhibition_ID = exhibition.Exhibition_ID join artist on exhibition.Artist_ID = artist.Artist_ID  group by exhibition.artist_id having  avg(exhibition_record.attendance) > 200

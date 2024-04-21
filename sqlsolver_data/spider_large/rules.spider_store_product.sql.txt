@@ -1,0 +1,88 @@
+SELECT DISTINCT District_name FROM district ORDER BY city_area DESC
+select distinct district.district_name from district   order by district.city_area desc
+SELECT DISTINCT District_name FROM district ORDER BY city_area DESC
+select distinct district.district_name from district   order by district.city_area desc
+SELECT max_page_size FROM product GROUP BY max_page_size HAVING count(*)  >  3
+select product.max_page_size from product  group by product.max_page_size having  count(*) > 3
+SELECT max_page_size FROM product GROUP BY max_page_size HAVING count(*)  >  3
+select product.max_page_size from product  group by product.max_page_size having  count(*) > 3
+SELECT District_name ,  City_Population FROM district WHERE City_Population BETWEEN 200000 AND 2000000
+select district.district_name , district.city_population from district where  district.city_population between 200000 and 2000000
+SELECT District_name ,  City_Population FROM district WHERE City_Population BETWEEN 200000 AND 2000000
+select district.district_name , district.city_population from district where  district.city_population between 200000 and 2000000
+SELECT district_name FROM district WHERE city_area  >  10 OR City_Population  >  100000
+select district.district_name from district where  district.city_area > 10 or district.city_population > 100000
+SELECT district_name FROM district WHERE city_area  >  10 OR City_Population  >  100000
+select district.district_name from district where  district.city_area > 10 or district.city_population > 100000
+SELECT district_name FROM district ORDER BY city_population DESC LIMIT 1
+select district.district_name from district   order by district.city_population desc limit 1
+SELECT district_name FROM district ORDER BY city_population DESC LIMIT 1
+select district.district_name from district   order by district.city_population desc limit 1
+SELECT district_name FROM district ORDER BY city_area ASC LIMIT 1
+select district.district_name from district   order by district.city_area asc limit 1
+SELECT district_name FROM district ORDER BY city_area ASC LIMIT 1
+select district.district_name from district   order by district.city_area asc limit 1
+SELECT sum(city_population) FROM district ORDER BY city_area DESC LIMIT 3
+select sum(district.city_population) from district   order by district.city_area desc limit 3
+SELECT sum(city_population) FROM district ORDER BY city_area DESC LIMIT 3
+select sum(district.city_population) from district   order by district.city_area desc limit 3
+SELECT TYPE ,  count(*) FROM store GROUP BY TYPE
+select store.type , count(*) from store  group by store.type
+SELECT TYPE ,  count(*) FROM store GROUP BY TYPE
+select store.type , count(*) from store  group by store.type
+SELECT t1.store_name FROM store AS t1 JOIN store_district AS t2 ON t1.store_id  =  t2.store_id JOIN district AS t3 ON t2.district_id  =  t3.district_id WHERE t3.district_name  =  "Khanewal District"
+select store.store_name from store_district join district on store_district.District_ID = district.District_ID join store on store_district.Store_ID = store.Store_ID where  district.district_name = "Khanewal District"
+SELECT t1.store_name FROM store AS t1 JOIN store_district AS t2 ON t1.store_id  =  t2.store_id JOIN district AS t3 ON t2.district_id  =  t3.district_id WHERE t3.district_name  =  "Khanewal District"
+select store.store_name from store_district join district on store_district.District_ID = district.District_ID join store on store_district.Store_ID = store.Store_ID where  district.district_name = "Khanewal District"
+SELECT t1.store_name FROM store AS t1 JOIN store_district AS t2 ON t1.store_id  =  t2.store_id WHERE district_id  =  (SELECT district_id FROM district ORDER BY city_population DESC LIMIT 1)
+select store.store_name from store_district join store on store_district.Store_ID = store.Store_ID where  store_district.district_id in (select district.district_id from district   order by district.city_population desc limit 1 )
+SELECT t1.store_name FROM store AS t1 JOIN store_district AS t2 ON t1.store_id  =  t2.store_id WHERE district_id  =  (SELECT district_id FROM district ORDER BY city_population DESC LIMIT 1)
+select store.store_name from store_district join store on store_district.Store_ID = store.Store_ID where  store_district.district_id in (select district.district_id from district   order by district.city_population desc limit 1 )
+SELECT t3.headquartered_city FROM store AS t1 JOIN store_district AS t2 ON t1.store_id  =  t2.store_id JOIN district AS t3 ON t2.district_id  =  t3.district_id WHERE t1.store_name  =  "Blackville"
+select district.headquartered_city from store_district join district on store_district.District_ID = district.District_ID join store on store_district.Store_ID = store.Store_ID where  store.store_name = "Blackville"
+SELECT t3.headquartered_city FROM store AS t1 JOIN store_district AS t2 ON t1.store_id  =  t2.store_id JOIN district AS t3 ON t2.district_id  =  t3.district_id WHERE t1.store_name  =  "Blackville"
+select district.headquartered_city from store_district join district on store_district.District_ID = district.District_ID join store on store_district.Store_ID = store.Store_ID where  store.store_name = "Blackville"
+SELECT t3.headquartered_city ,  count(*) FROM store AS t1 JOIN store_district AS t2 ON t1.store_id  =  t2.store_id JOIN district AS t3 ON t2.district_id  =  t3.district_id GROUP BY t3.headquartered_city
+select district.headquartered_city , count(*) from store_district join district on store_district.District_ID = district.District_ID join store on store_district.Store_ID = store.Store_ID  group by district.headquartered_city
+SELECT t3.headquartered_city ,  count(*) FROM store AS t1 JOIN store_district AS t2 ON t1.store_id  =  t2.store_id JOIN district AS t3 ON t2.district_id  =  t3.district_id GROUP BY t3.headquartered_city
+select district.headquartered_city , count(*) from store_district join district on store_district.District_ID = district.District_ID join store on store_district.Store_ID = store.Store_ID  group by district.headquartered_city
+SELECT t3.headquartered_city FROM store AS t1 JOIN store_district AS t2 ON t1.store_id  =  t2.store_id JOIN district AS t3 ON t2.district_id  =  t3.district_id GROUP BY t3.headquartered_city ORDER BY count(*) DESC LIMIT 1
+select district.headquartered_city from store_district join district on store_district.District_ID = district.District_ID join store on store_district.Store_ID = store.Store_ID  group by district.headquartered_city  order by count(*) desc limit 1
+SELECT t3.headquartered_city FROM store AS t1 JOIN store_district AS t2 ON t1.store_id  =  t2.store_id JOIN district AS t3 ON t2.district_id  =  t3.district_id GROUP BY t3.headquartered_city ORDER BY count(*) DESC LIMIT 1
+select district.headquartered_city from store_district join district on store_district.District_ID = district.District_ID join store on store_district.Store_ID = store.Store_ID  group by district.headquartered_city  order by count(*) desc limit 1
+SELECT avg(pages_per_minute_color) FROM product
+select avg(product.pages_per_minute_color) from product
+SELECT avg(pages_per_minute_color) FROM product
+select avg(product.pages_per_minute_color) from product
+SELECT t1.product FROM product AS t1 JOIN store_product AS t2 ON t1.product_id  =  t2.product_id JOIN store AS t3 ON t2.store_id  =  t3.store_id WHERE t3.store_name  =  "Miramichi"
+select product.product from store_product join store on store_product.Store_ID = store.Store_ID join product on store_product.Product_ID = product.product_id where  store.store_name = "Miramichi"
+SELECT t1.product FROM product AS t1 JOIN store_product AS t2 ON t1.product_id  =  t2.product_id JOIN store AS t3 ON t2.store_id  =  t3.store_id WHERE t3.store_name  =  "Miramichi"
+select product.product from store_product join store on store_product.Store_ID = store.Store_ID join product on store_product.Product_ID = product.product_id where  store.store_name = "Miramichi"
+SELECT product FROM product WHERE max_page_size  =  "A4" AND pages_per_minute_color  <  5
+select product.product from product where  product.max_page_size = "A4" and product.pages_per_minute_color < 5
+SELECT product FROM product WHERE max_page_size  =  "A4" AND pages_per_minute_color  <  5
+select product.product from product where  product.max_page_size = "A4" and product.pages_per_minute_color < 5
+SELECT product FROM product WHERE max_page_size  =  "A4" OR pages_per_minute_color  <  5
+select product.product from product where  product.max_page_size = "A4" or product.pages_per_minute_color < 5
+SELECT product FROM product WHERE max_page_size  =  "A4" OR pages_per_minute_color  <  5
+select product.product from product where  product.max_page_size = "A4" or product.pages_per_minute_color < 5
+SELECT product FROM product WHERE product LIKE "%Scanner%"
+select product.product from product where  product.product like "%Scanner%"
+SELECT product FROM product WHERE product LIKE "%Scanner%"
+select product.product from product where  product.product like "%Scanner%"
+SELECT max_page_size FROM product GROUP BY max_page_size ORDER BY count(*) DESC LIMIT 1
+select product.max_page_size from product  group by product.max_page_size  order by count(*) desc limit 1
+SELECT max_page_size FROM product GROUP BY max_page_size ORDER BY count(*) DESC LIMIT 1
+select product.max_page_size from product  group by product.max_page_size  order by count(*) desc limit 1
+SELECT product FROM product WHERE product != (SELECT max_page_size FROM product GROUP BY max_page_size ORDER BY count(*) DESC LIMIT 1)
+select product.product from product where  product.product != product.max_page_size  group by product.product  order by count(*) desc limit 1
+SELECT product FROM product WHERE product != (SELECT max_page_size FROM product GROUP BY max_page_size ORDER BY count(*) DESC LIMIT 1)
+select product.product from product where  product.product != product.max_page_size  group by product.product  order by count(*) desc limit 1
+SELECT sum(city_population) FROM district WHERE city_area  >  (SELECT avg(city_area) FROM district)
+select sum(district.city_population) from district where  district.city_area > (select avg(district.city_area) from district  )
+SELECT sum(city_population) FROM district WHERE city_area  >  (SELECT avg(city_area) FROM district)
+select sum(district.city_population) from district where  district.city_area > (select avg(district.city_area) from district  )
+SELECT t3.District_name FROM store AS t1 JOIN store_district AS t2 ON t1.store_id  =  t2.store_id JOIN district AS t3 ON t2.district_id  =  t3.district_id WHERE t1.Type  =  "City Mall" INTERSECT SELECT t3.District_name FROM store AS t1 JOIN store_district AS t2 ON t1.store_id  =  t2.store_id JOIN district AS t3 ON t2.district_id  =  t3.district_id WHERE t1.Type  =  "Village Store"
+select district.district_name from store_district join district on store_district.District_ID = district.District_ID join store on store_district.Store_ID = store.Store_ID where  store.type = "City Mall"   intersect select district.district_name from store_district join district on store_district.District_ID = district.District_ID join store on store_district.Store_ID = store.Store_ID where  store.type = "Village Store"
+SELECT t3.District_name FROM store AS t1 JOIN store_district AS t2 ON t1.store_id  =  t2.store_id JOIN district AS t3 ON t2.district_id  =  t3.district_id WHERE t1.Type  =  "City Mall" INTERSECT SELECT t3.District_name FROM store AS t1 JOIN store_district AS t2 ON t1.store_id  =  t2.store_id JOIN district AS t3 ON t2.district_id  =  t3.district_id WHERE t1.Type  =  "Village Store"
+select district.district_name from store_district join district on store_district.District_ID = district.District_ID join store on store_district.Store_ID = store.Store_ID where  store.type = "City Mall"   intersect select district.district_name from store_district join district on store_district.District_ID = district.District_ID join store on store_district.Store_ID = store.Store_ID where  store.type = "Village Store"

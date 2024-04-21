@@ -1,0 +1,30 @@
+SELECT count(*) FROM addresses WHERE country  =  'USA'
+select count(*) from Addresses where  addresses.country = "USA"
+SELECT DISTINCT city FROM addresses
+select distinct addresses.city from Addresses
+SELECT state_province_county ,  count(*) FROM addresses GROUP BY state_province_county
+select addresses.state_province_county , count(*) from Addresses  group by addresses.state_province_county
+SELECT customer_name ,  customer_phone FROM customers WHERE customer_id NOT IN (SELECT customer_id FROM customer_address_history)
+select customers.customer_name , customers.customer_phone from Customers where  customers.customer_id not in (select Customer_Address_History.customer_id from Customer_Address_History  )
+SELECT T1.customer_name FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) DESC LIMIT 1
+select customers.customer_name from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id  group by customer_orders.customer_id  order by count(*) desc limit 1
+SELECT product_type_code FROM products GROUP BY product_type_code HAVING count(*)  >=  2
+select products.product_type_code from Products  group by products.product_type_code having  count(*) >= 2
+SELECT T1.customer_name FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.order_status_code  =  'Completed' INTERSECT SELECT T1.customer_name FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.order_status_code  =  'Part'
+select customers.customer_name from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id where  customer_orders.order_status_code = "Completed"   intersect select customers.customer_name from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id where  customer_orders.order_status_code = "Part"
+SELECT customer_name ,  customer_phone ,  payment_method_code FROM customers ORDER BY customer_number DESC
+select customers.customer_name , customers.customer_phone , customers.payment_method_code from Customers   order by customers.customer_number desc
+SELECT T1.product_name ,  sum(T2.order_quantity) FROM products AS T1 JOIN order_items AS T2 ON T1.product_id  =  T2.product_id GROUP BY T1.product_id
+select products.product_name , sum(order_items.order_quantity) from Order_Items join Products on Order_Items.product_id = Products.product_id  group by products.product_name
+SELECT min(product_price) ,  max(product_price) ,  avg(product_price) FROM products
+select min(products.product_price) , max(products.product_price) , avg(products.product_price) from Products
+SELECT count(*) FROM products WHERE product_price  >  (SELECT avg(product_price) FROM products)
+select count(*) from Products where  products.product_price > (select avg(products.product_price) from Products  )
+SELECT T2.customer_name ,  T3.city ,  T1.date_from ,  T1.date_to FROM customer_address_history AS T1 JOIN customers AS T2 ON T1.customer_id  =  T2.customer_id JOIN addresses AS T3 ON T1.address_id  =  T3.address_id
+select customers.customer_name , addresses.city , customer_address_history.date_from , customer_address_history.date_to from Customer_Address_History join Addresses on Customer_Address_History.address_id = Addresses.address_id join Customers on Customer_Address_History.customer_id = Customers.customer_id
+SELECT T1.customer_name FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id WHERE T1.payment_method_code  =  'Credit Card' GROUP BY T1.customer_id HAVING count(*)  >  2
+select customers.customer_name from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id where  customers.payment_method_code = "Credit Card"  group by customers.customer_name having  count(*) > 2
+SELECT  T1.customer_name ,  T1.customer_phone FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id JOIN order_items AS T3 ON T3.order_id  =  T2.order_id GROUP BY T1.customer_id ORDER BY sum(T3.order_quantity) DESC LIMIT 1
+select customers.customer_name , customers.customer_phone from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id join Customers on Customer_Orders.customer_id = Customers.customer_id  group by customer_orders.customer_id  order by sum(order_items.order_quantity) desc limit 1
+SELECT product_type_code ,  product_name FROM products WHERE product_price  >  1000 OR product_price  <  500
+select products.product_type_code , products.product_name from Products where  products.product_price > 1000 or products.product_price < 500

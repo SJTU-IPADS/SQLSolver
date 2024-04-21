@@ -1,0 +1,164 @@
+SELECT name FROM airports WHERE city  =  'Goroka'
+select airports.name from airports where  airports.city = "Goroka"
+SELECT name FROM airports WHERE city  =  'Goroka'
+select airports.name from airports where  airports.city = "Goroka"
+SELECT name ,  city ,  country ,  elevation FROM airports WHERE city  =  'New York'
+select airports.name , airports.city , airports.country , airports.elevation from airports where  airports.city = "New York"
+SELECT name ,  city ,  country ,  elevation FROM airports WHERE city  =  'New York'
+select airports.name , airports.city , airports.country , airports.elevation from airports where  airports.city = "New York"
+SELECT count(*) FROM airlines
+select count(*) from airlines
+SELECT count(*) FROM airlines
+select count(*) from airlines
+SELECT count(*) FROM airlines WHERE country  =  'Russia'
+select count(*) from airlines where  airlines.country = "Russia"
+SELECT count(*) FROM airlines WHERE country  =  'Russia'
+select count(*) from airlines where  airlines.country = "Russia"
+SELECT max(elevation) FROM airports WHERE country  =  'Iceland'
+select max(airports.elevation) from airports where  airports.country = "Iceland"
+SELECT max(elevation) FROM airports WHERE country  =  'Iceland'
+select max(airports.elevation) from airports where  airports.country = "Iceland"
+SELECT name FROM airports WHERE country  =  'Cuba' OR country  =  'Argentina'
+select airports.name from airports where  airports.country = "Cuba" or airports.country = "Argentina"
+SELECT name FROM airports WHERE country  =  'Cuba' OR country  =  'Argentina'
+select airports.name from airports where  airports.country = "Cuba" or airports.country = "Argentina"
+SELECT country FROM airlines WHERE name LIKE 'Orbit%'
+select airlines.country from airlines where  airlines.name like "Orbit%"
+SELECT country FROM airlines WHERE name LIKE 'Orbit%'
+select airlines.country from airlines where  airlines.name like "Orbit%"
+SELECT name FROM airports WHERE elevation BETWEEN -50 AND 50
+select airports.name from airports where  airports.elevation between -50 and 50
+SELECT name FROM airports WHERE elevation BETWEEN -50 AND 50
+select airports.name from airports where  airports.elevation between -50 and 50
+SELECT country FROM airports ORDER BY elevation DESC LIMIT 1
+select airports.country from airports   order by airports.elevation desc limit 1
+SELECT country FROM airports ORDER BY elevation DESC LIMIT 1
+select airports.country from airports   order by airports.elevation desc limit 1
+SELECT count(*) FROM airports WHERE name LIKE '%International%'
+select count(*) from airports where  airports.name like "%International%"
+SELECT count(*) FROM airports WHERE name LIKE '%International%'
+select count(*) from airports where  airports.name like "%International%"
+SELECT count(DISTINCT city) FROM airports WHERE country  =  'Greenland'
+select count( distinct airports.city) from airports where  airports.country = "Greenland"
+SELECT count(DISTINCT city) FROM airports WHERE country  =  'Greenland'
+select count( distinct airports.city) from airports where  airports.country = "Greenland"
+SELECT count(*) FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid WHERE T1.name  =  'American Airlines'
+select count(*) from routes join airlines on routes.alid = airlines.alid where  airlines.name = "American Airlines"
+SELECT count(*) FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid WHERE T1.name  =  'American Airlines'
+select count(*) from routes join airlines on routes.alid = airlines.alid where  airlines.name = "American Airlines"
+SELECT count(*) FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.dst_apid WHERE country  =  'Canada'
+select count(*) from routes join airports on routes.src_apid = airports.apid where  airports.country = "Canada"
+SELECT count(*) FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.dst_apid WHERE country  =  'Canada'
+select count(*) from routes join airports on routes.src_apid = airports.apid where  airports.country = "Canada"
+SELECT name ,  city ,  country FROM airports ORDER BY elevation LIMIT 1
+select airports.name , airports.city , airports.country from airports   order by airports.elevation asc limit 1
+SELECT name ,  city ,  country FROM airports ORDER BY elevation LIMIT 1
+select airports.name , airports.city , airports.country from airports   order by airports.elevation asc limit 1
+SELECT name ,  city ,  country FROM airports ORDER BY elevation DESC LIMIT 1
+select airports.name , airports.city , airports.country from airports   order by airports.elevation desc limit 1
+SELECT name ,  city ,  country FROM airports ORDER BY elevation DESC LIMIT 1
+select airports.name , airports.city , airports.country from airports   order by airports.elevation desc limit 1
+SELECT T1.name ,  T1.city ,  T2.dst_apid FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.dst_apid GROUP BY T2.dst_apid ORDER BY count(*) DESC LIMIT 1
+select airports.name , airports.city , routes.dst_apid from routes join airports on routes.src_apid = airports.apid  group by routes.dst_apid  order by count(*) desc limit 1
+SELECT T1.name ,  T1.city ,  T2.dst_apid FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.dst_apid GROUP BY T2.dst_apid ORDER BY count(*) DESC LIMIT 1
+select airports.name , airports.city , routes.dst_apid from routes join airports on routes.src_apid = airports.apid  group by routes.dst_apid  order by count(*) desc limit 1
+SELECT T1.name ,  T2.alid FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid GROUP BY T2.alid ORDER BY count(*) DESC LIMIT 10
+select airlines.name , airlines.alid from routes join airlines on routes.alid = airlines.alid  group by routes.alid  order by count(*) desc limit 10
+SELECT T1.name ,  T2.alid FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid GROUP BY T2.alid ORDER BY count(*) DESC LIMIT 10
+select airlines.name , airlines.alid from routes join airlines on routes.alid = airlines.alid  group by routes.alid  order by count(*) desc limit 10
+SELECT T1.name ,  T1.city ,  T2.src_apid FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.src_apid GROUP BY T2.src_apid ORDER BY count(*) DESC LIMIT 1
+select airports.name , airports.city , routes.src_apid from routes join airports on routes.src_apid = airports.apid  group by routes.src_apid  order by count(*) desc limit 1
+SELECT T1.name ,  T1.city ,  T2.src_apid FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.src_apid GROUP BY T2.src_apid ORDER BY count(*) DESC LIMIT 1
+select airports.name , airports.city , routes.src_apid from routes join airports on routes.src_apid = airports.apid  group by routes.src_apid  order by count(*) desc limit 1
+SELECT count(DISTINCT dst_apid) FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid WHERE T1.name  =  'American Airlines'
+select count( distinct routes.dst_apid) from routes join airlines on routes.alid = airlines.alid where  airlines.name = "American Airlines"
+SELECT count(DISTINCT dst_apid) FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid WHERE T1.name  =  'American Airlines'
+select count( distinct routes.dst_apid) from routes join airlines on routes.alid = airlines.alid where  airlines.name = "American Airlines"
+SELECT country FROM airlines GROUP BY country ORDER BY count(*) DESC LIMIT 1
+select airlines.country from airlines  group by airlines.country  order by count(*) desc limit 1
+SELECT country FROM airlines GROUP BY country ORDER BY count(*) DESC LIMIT 1
+select airlines.country from airlines  group by airlines.country  order by count(*) desc limit 1
+SELECT country FROM airlines WHERE active  =  'Y' GROUP BY country ORDER BY count(*) DESC LIMIT 1
+select airlines.country from airlines where  airlines.active = "Y"  group by airlines.country  order by count(*) desc limit 1
+SELECT country FROM airlines WHERE active  =  'Y' GROUP BY country ORDER BY count(*) DESC LIMIT 1
+select airlines.country from airlines where  airlines.active = "Y"  group by airlines.country  order by count(*) desc limit 1
+SELECT country ,  count(*) FROM airlines GROUP BY country ORDER BY count(*) DESC
+select airlines.country , count(*) from airlines  group by airlines.country  order by count(*) desc
+SELECT country ,  count(*) FROM airlines GROUP BY country ORDER BY count(*) DESC
+select airlines.country , count(*) from airlines  group by airlines.country  order by count(*) desc
+SELECT count(*) ,  country FROM airports GROUP BY country ORDER BY count(*) DESC
+select count(*) , airports.country from airports  group by airports.country  order by count(*) desc
+SELECT count(*) ,  country FROM airports GROUP BY country ORDER BY count(*) DESC
+select count(*) , airports.country from airports  group by airports.country  order by count(*) desc
+SELECT count(*) ,  city FROM airports WHERE country  =  'United States' GROUP BY city ORDER BY count(*) DESC
+select count(*) , airports.city from airports where  airports.country = "United States"  group by airports.city  order by count(*) desc
+SELECT count(*) ,  city FROM airports WHERE country  =  'United States' GROUP BY city ORDER BY count(*) DESC
+select count(*) , airports.city from airports where  airports.country = "United States"  group by airports.city  order by count(*) desc
+SELECT city FROM airports WHERE country  =  'United States' GROUP BY city HAVING count(*)  >  3
+select airports.city from airports where  airports.country = "United States"  group by airports.city having  count(*) > 3
+SELECT city FROM airports WHERE country  =  'United States' GROUP BY city HAVING count(*)  >  3
+select airports.city from airports where  airports.country = "United States"  group by airports.city having  count(*) > 3
+SELECT count(*) FROM (SELECT city FROM airports GROUP BY city HAVING count(*)  >  3)
+select count(*) from airports  group by airports.apid having  count(*) > 3
+SELECT count(*) FROM (SELECT city FROM airports GROUP BY city HAVING count(*)  >  3)
+select count(*) from airports  group by airports.apid having  count(*) > 3
+SELECT city ,  count(*) FROM airports GROUP BY city HAVING count(*)  >  1
+select airports.city , count(*) from airports  group by airports.city having  count(*) > 1
+SELECT city ,  count(*) FROM airports GROUP BY city HAVING count(*)  >  1
+select airports.city , count(*) from airports  group by airports.city having  count(*) > 1
+SELECT city FROM airports GROUP BY city HAVING count(*)  >  2 ORDER BY count(*)
+select airports.city from airports  group by airports.city having  count(*) > 2  order by count(*) asc
+SELECT city FROM airports GROUP BY city HAVING count(*)  >  2 ORDER BY count(*)
+select airports.city from airports  group by airports.city having  count(*) > 2  order by count(*) asc
+SELECT count(*) ,  T1.name FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.src_apid GROUP BY T1.name
+select count(*) , airports.name from routes join airports on routes.src_apid = airports.apid  group by airports.name
+SELECT count(*) ,  T1.name FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.src_apid GROUP BY T1.name
+select count(*) , airports.name from routes join airports on routes.src_apid = airports.apid  group by airports.name
+SELECT count(*) ,  T1.name FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.src_apid GROUP BY T1.name ORDER BY count(*) DESC
+select count(*) , airports.name from routes join airports on routes.src_apid = airports.apid  group by airports.name  order by count(*) desc
+SELECT count(*) ,  T1.name FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.src_apid GROUP BY T1.name ORDER BY count(*) DESC
+select count(*) , airports.name from routes join airports on routes.src_apid = airports.apid  group by airports.name  order by count(*) desc
+SELECT avg(elevation) ,  country FROM airports GROUP BY country
+select avg(airports.elevation) , airports.country from airports  group by airports.country
+SELECT avg(elevation) ,  country FROM airports GROUP BY country
+select avg(airports.elevation) , airports.country from airports  group by airports.country
+SELECT city FROM airports GROUP BY city HAVING count(*)  =  2
+select airports.city from airports  group by airports.city having  count(*) = 2
+SELECT city FROM airports GROUP BY city HAVING count(*)  =  2
+select airports.city from airports  group by airports.city having  count(*) = 2
+SELECT T1.country ,  T1.name ,  count(*) FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid GROUP BY T1.country ,  T1.name
+select airlines.country , airlines.name , count(*) from routes join airlines on routes.alid = airlines.alid  group by airlines.country, airlines.name
+SELECT T1.country ,  T1.name ,  count(*) FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid GROUP BY T1.country ,  T1.name
+select airlines.country , airlines.name , count(*) from routes join airlines on routes.alid = airlines.alid  group by airlines.country, airlines.name
+SELECT count(*) FROM routes AS T1 JOIN airports AS T2 ON T1.dst_apid  =  T2.apid WHERE T2.country  =  'Italy'
+select count(*) from routes join airports on routes.src_apid = airports.apid where  airports.country = "Italy"
+SELECT count(*) FROM routes AS T1 JOIN airports AS T2 ON T1.dst_apid  =  T2.apid WHERE T2.country  =  'Italy'
+select count(*) from routes join airports on routes.src_apid = airports.apid where  airports.country = "Italy"
+SELECT count(*) FROM routes AS T1 JOIN airports AS T2 ON T1.dst_apid  =  T2.apid JOIN airlines AS T3 ON T1.alid  =  T3.alid WHERE T2.country  =  'Italy' AND T3.name  =  'American Airlines'
+select count(*) from routes join airlines on routes.alid = airlines.alid join airports on routes.src_apid = airports.apid where  airports.country = "Italy" and airlines.name = "American Airlines"
+SELECT count(*) FROM routes AS T1 JOIN airports AS T2 ON T1.dst_apid  =  T2.apid JOIN airlines AS T3 ON T1.alid  =  T3.alid WHERE T2.country  =  'Italy' AND T3.name  =  'American Airlines'
+select count(*) from routes join airlines on routes.alid = airlines.alid join airports on routes.src_apid = airports.apid where  airports.country = "Italy" and airlines.name = "American Airlines"
+SELECT count(*) FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.dst_apid WHERE T1.name  =  'John F Kennedy International Airport'
+select count(*) from routes join airports on routes.src_apid = airports.apid where  airports.name = "John F Kennedy International Airport"
+SELECT count(*) FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.dst_apid WHERE T1.name  =  'John F Kennedy International Airport'
+select count(*) from routes join airports on routes.src_apid = airports.apid where  airports.name = "John F Kennedy International Airport"
+SELECT count(*) FROM routes WHERE dst_apid IN (SELECT apid FROM airports WHERE country  =  'Canada') AND src_apid IN (SELECT apid FROM airports WHERE country  =  'United States')
+select count(*) from routes where  routes.dst_apid in (select airports.apid from airports where  airports.country = "Canada"   ) and routes.src_apid in (select airports.apid from airports where  airports.country = "United States"  )
+SELECT count(*) FROM routes WHERE dst_apid IN (SELECT apid FROM airports WHERE country  =  'Canada') AND src_apid IN (SELECT apid FROM airports WHERE country  =  'United States')
+select count(*) from routes where  routes.dst_apid in (select airports.apid from airports where  airports.country = "Canada"   ) and routes.src_apid in (select airports.apid from airports where  airports.country = "United States"  )
+SELECT rid FROM routes WHERE dst_apid IN (SELECT apid FROM airports WHERE country  =  'United States') AND src_apid IN (SELECT apid FROM airports WHERE country  =  'United States')
+select routes.rid from routes where  routes.dst_apid in (select airports.apid from airports where  airports.country = "United States"   ) and routes.src_apid in (select airports.apid from airports where  airports.country = "United States"  )
+SELECT rid FROM routes WHERE dst_apid IN (SELECT apid FROM airports WHERE country  =  'United States') AND src_apid IN (SELECT apid FROM airports WHERE country  =  'United States')
+select routes.rid from routes where  routes.dst_apid in (select airports.apid from airports where  airports.country = "United States"   ) and routes.src_apid in (select airports.apid from airports where  airports.country = "United States"  )
+SELECT T1.name FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid GROUP BY T1.name ORDER BY count(*) DESC LIMIT 1
+select airlines.name from routes join airlines on routes.alid = airlines.alid  group by airlines.name  order by count(*) desc limit 1
+SELECT T1.name FROM airlines AS T1 JOIN routes AS T2 ON T1.alid  =  T2.alid GROUP BY T1.name ORDER BY count(*) DESC LIMIT 1
+select airlines.name from routes join airlines on routes.alid = airlines.alid  group by airlines.name  order by count(*) desc limit 1
+SELECT T1.name FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.src_apid WHERE T1.country  =  'China' GROUP BY T1.name ORDER BY count(*) DESC LIMIT 1
+select airports.name from routes join airports on routes.src_apid = airports.apid where  airports.country = "China"  group by airports.name  order by count(*) desc limit 1
+SELECT T1.name FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.src_apid WHERE T1.country  =  'China' GROUP BY T1.name ORDER BY count(*) DESC LIMIT 1
+select airports.name from routes join airports on routes.src_apid = airports.apid where  airports.country = "China"  group by airports.name  order by count(*) desc limit 1
+SELECT T1.name FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.dst_apid WHERE T1.country  =  'China' GROUP BY T1.name ORDER BY count(*) DESC LIMIT 1
+select airports.name from routes join airports on routes.src_apid = airports.apid where  airports.country = "China"  group by airports.name  order by count(*) desc limit 1
+SELECT T1.name FROM airports AS T1 JOIN routes AS T2 ON T1.apid  =  T2.dst_apid WHERE T1.country  =  'China' GROUP BY T1.name ORDER BY count(*) DESC LIMIT 1
+select airports.name from routes join airports on routes.src_apid = airports.apid where  airports.country = "China"  group by routes.dst_apid  order by count(*) desc limit 1

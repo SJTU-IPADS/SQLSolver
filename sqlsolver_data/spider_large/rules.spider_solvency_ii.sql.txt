@@ -1,0 +1,30 @@
+SELECT count(*) FROM Products
+select count(*) from Products
+SELECT Product_Name FROM Products ORDER BY Product_Price ASC
+select products.product_name from Products   order by products.product_price asc
+SELECT Product_Name ,  Product_Type_Code FROM Products
+select products.product_name , products.product_type_code from Products
+SELECT Product_Price FROM Products WHERE Product_Name  =  "Dining" OR Product_Name  =  "Trading Policy"
+select products.product_price from Products where  products.product_name = "Dining" or products.product_name = "Trading Policy"
+SELECT avg(Product_Price) FROM Products
+select avg(products.product_price) from Products
+SELECT Product_Name FROM Products ORDER BY Product_Price DESC LIMIT 1
+select products.product_name from Products   order by products.product_price desc limit 1
+SELECT Product_Type_Code ,  COUNT(*) FROM Products GROUP BY Product_Type_Code
+select products.product_type_code , count(*) from Products  group by products.product_type_code
+SELECT Product_Type_Code FROM Products GROUP BY Product_Type_Code ORDER BY COUNT(*) DESC LIMIT 1
+select products.product_type_code from Products  group by products.product_type_code  order by count(*) desc limit 1
+SELECT Product_Type_Code FROM Products GROUP BY Product_Type_Code HAVING COUNT(*)  >=  2
+select products.product_type_code from Products  group by products.product_type_code having  count(*) >= 2
+SELECT Product_Type_Code FROM Products WHERE Product_Price  >  4500 INTERSECT SELECT Product_Type_Code FROM Products WHERE Product_Price  <  3000
+select products.product_type_code from Products where  products.product_price > 4500   intersect select products.product_type_code from Products where  products.product_price < 3000
+SELECT T1.Product_Name ,  COUNT(*) FROM Products AS T1 JOIN Products_in_Events AS T2 ON T1.Product_ID  =  T2.Product_ID GROUP BY T1.Product_Name
+select products.product_name , count(*) from Products_in_Events join Products on Products_in_Events.Product_ID = Products.Product_ID  group by products.product_name
+SELECT T1.Product_Name ,  COUNT(*) FROM Products AS T1 JOIN Products_in_Events AS T2 ON T1.Product_ID  =  T2.Product_ID GROUP BY T1.Product_Name ORDER BY COUNT(*) DESC
+select products.product_name , count(*) from Products_in_Events join Products on Products_in_Events.Product_ID = Products.Product_ID  group by products.product_name  order by count(*) desc
+SELECT T1.Product_Name FROM Products AS T1 JOIN Products_in_Events AS T2 ON T1.Product_ID  =  T2.Product_ID GROUP BY T1.Product_Name HAVING COUNT(*)  >=  2
+select products.product_name from Products_in_Events join Products on Products_in_Events.Product_ID = Products.Product_ID  group by products.product_name having  count(*) >= 2
+SELECT T1.Product_Name FROM Products AS T1 JOIN Products_in_Events AS T2 ON T1.Product_ID  =  T2.Product_ID GROUP BY T1.Product_Name HAVING COUNT(*)  >=  2 ORDER BY T1.Product_Name
+select products.product_name from Products_in_Events join Products on Products_in_Events.Product_ID = Products.Product_ID  group by products.product_name having  count(*) >= 2  order by products.product_name asc
+SELECT Product_Name FROM Products WHERE Product_ID NOT IN (SELECT Product_ID FROM Products_in_Events)
+select products.product_name from Products where  products.product_id not in (select Products_in_Events.Product_ID from Products_in_Events  )

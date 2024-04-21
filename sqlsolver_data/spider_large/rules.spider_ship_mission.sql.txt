@@ -1,0 +1,60 @@
+SELECT count(*) FROM ship
+select count(*) from ship
+SELECT count(*) FROM ship
+select count(*) from ship
+SELECT Name FROM ship ORDER BY Tonnage ASC
+select ship.name from ship   order by ship.tonnage asc
+SELECT Name FROM ship ORDER BY Tonnage ASC
+select ship.name from ship   order by ship.tonnage asc
+SELECT TYPE ,  Nationality FROM ship
+select ship.type , ship.nationality from ship
+SELECT TYPE ,  Nationality FROM ship
+select ship.type , ship.nationality from ship
+SELECT Name FROM ship WHERE Nationality != "United States"
+select ship.name from ship where  ship.nationality != "United States"
+SELECT Name FROM ship WHERE Nationality != "United States"
+select ship.name from ship where  ship.nationality != "United States"
+SELECT Name FROM ship WHERE Nationality  =  "United States" OR Nationality  =  "United Kingdom"
+select ship.name from ship where  ship.nationality = "United States" or ship.nationality = "United Kingdom"
+SELECT Name FROM ship WHERE Nationality  =  "United States" OR Nationality  =  "United Kingdom"
+select ship.name from ship where  ship.nationality = "United States" or ship.nationality = "United Kingdom"
+SELECT Name FROM ship ORDER BY Tonnage DESC LIMIT 1
+select ship.name from ship   order by ship.tonnage desc limit 1
+SELECT Name FROM ship ORDER BY Tonnage DESC LIMIT 1
+select ship.name from ship   order by ship.tonnage desc limit 1
+SELECT TYPE ,  COUNT(*) FROM ship GROUP BY TYPE
+select ship.type , count(*) from ship  group by ship.type
+SELECT TYPE ,  COUNT(*) FROM ship GROUP BY TYPE
+select ship.type , count(*) from ship  group by ship.type
+SELECT TYPE FROM ship GROUP BY TYPE ORDER BY COUNT(*) DESC LIMIT 1
+select ship.type from ship  group by ship.type  order by count(*) desc limit 1
+SELECT TYPE FROM ship GROUP BY TYPE ORDER BY COUNT(*) DESC LIMIT 1
+select ship.type from ship  group by ship.type  order by count(*) desc limit 1
+SELECT Nationality FROM ship GROUP BY Nationality HAVING COUNT(*)  >  2
+select ship.nationality from ship  group by ship.nationality having  count(*) > 2
+SELECT Nationality FROM ship GROUP BY Nationality HAVING COUNT(*)  >  2
+select ship.nationality from ship  group by ship.nationality having  count(*) > 2
+SELECT TYPE ,  avg(Tonnage) FROM ship GROUP BY TYPE
+select ship.type , avg(ship.tonnage) from ship  group by ship.type
+SELECT TYPE ,  avg(Tonnage) FROM ship GROUP BY TYPE
+select ship.type , avg(ship.tonnage) from ship  group by ship.type
+SELECT T1.Code ,  T1.Fate ,  T2.Name FROM mission AS T1 JOIN ship AS T2 ON T1.Ship_ID  =  T2.Ship_ID
+select mission.code , mission.fate , ship.name from mission join ship on mission.Ship_ID = ship.Ship_ID
+SELECT T1.Code ,  T1.Fate ,  T2.Name FROM mission AS T1 JOIN ship AS T2 ON T1.Ship_ID  =  T2.Ship_ID
+select mission.code , mission.fate , ship.name from mission join ship on mission.Ship_ID = ship.Ship_ID
+SELECT T2.Name FROM mission AS T1 JOIN ship AS T2 ON T1.Ship_ID  =  T2.Ship_ID WHERE T1.Launched_Year  >  1928
+select ship.name from mission join ship on mission.Ship_ID = ship.Ship_ID where  mission.launched_year > 1928
+SELECT T2.Name FROM mission AS T1 JOIN ship AS T2 ON T1.Ship_ID  =  T2.Ship_ID WHERE T1.Launched_Year  >  1928
+select ship.name from mission join ship on mission.Ship_ID = ship.Ship_ID where  mission.launched_year > 1928
+SELECT DISTINCT T1.Fate FROM mission AS T1 JOIN ship AS T2 ON T1.Ship_ID  =  T2.Ship_ID WHERE T2.Nationality  =  "United States"
+select distinct mission.fate from mission join ship on mission.Ship_ID = ship.Ship_ID where  ship.nationality = "United States"
+SELECT DISTINCT T1.Fate FROM mission AS T1 JOIN ship AS T2 ON T1.Ship_ID  =  T2.Ship_ID WHERE T2.Nationality  =  "United States"
+select distinct mission.fate from mission join ship on mission.Ship_ID = ship.Ship_ID where  ship.nationality = "United States"
+SELECT Name FROM ship WHERE Ship_ID NOT IN (SELECT Ship_ID FROM mission)
+select ship.name from ship where  ship.ship_id not in (select mission.Ship_ID from mission  )
+SELECT Name FROM ship WHERE Ship_ID NOT IN (SELECT Ship_ID FROM mission)
+select ship.name from ship where  ship.ship_id not in (select mission.Ship_ID from mission  )
+SELECT TYPE FROM ship WHERE Tonnage  >  6000 INTERSECT SELECT TYPE FROM ship WHERE Tonnage  <  4000
+select ship.type from ship where  ship.tonnage > 6000   intersect select ship.type from ship where  ship.tonnage < 4000
+SELECT TYPE FROM ship WHERE Tonnage  >  6000 INTERSECT SELECT TYPE FROM ship WHERE Tonnage  <  4000
+select ship.type from ship where  ship.tonnage > 6000   intersect select ship.type from ship where  ship.tonnage < 4000

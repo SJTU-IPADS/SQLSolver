@@ -1,0 +1,328 @@
+SELECT count(*) FROM professor AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code WHERE DEPT_NAME  =  "Accounting"
+select count(*) from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE where  department.dept_name = "Accounting"
+SELECT count(*) FROM professor AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code WHERE DEPT_NAME  =  "Accounting"
+select count(*) from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE where  department.dept_name = "Accounting"
+SELECT count(DISTINCT PROF_NUM) FROM CLASS WHERE CRS_CODE  =  "ACCT-211"
+select count( distinct class.prof_num) from CLASS where  class.crs_code = "ACCT-211"
+SELECT count(DISTINCT PROF_NUM) FROM CLASS WHERE CRS_CODE  =  "ACCT-211"
+select count( distinct class.prof_num) from CLASS where  class.crs_code = "ACCT-211"
+SELECT T3.EMP_FNAME ,  T3.EMP_LNAME FROM professor AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code JOIN employee AS T3 ON T1.EMP_NUM  =  T3.EMP_NUM WHERE DEPT_NAME  =  "Biology"
+select employee.emp_fname , employee.emp_lname from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE join EMPLOYEE on DEPARTMENT.EMP_NUM = EMPLOYEE.EMP_NUM where  department.dept_name = "Biology"
+SELECT T3.EMP_FNAME ,  T3.EMP_LNAME FROM professor AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code JOIN employee AS T3 ON T1.EMP_NUM  =  T3.EMP_NUM WHERE DEPT_NAME  =  "Biology"
+select employee.emp_fname , employee.emp_lname from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE join EMPLOYEE on DEPARTMENT.EMP_NUM = EMPLOYEE.EMP_NUM where  department.dept_name = "Biology"
+SELECT DISTINCT T1.EMP_FNAME ,  T1.EMP_DOB FROM employee AS T1 JOIN CLASS AS T2 ON T1.EMP_NUM  =  T2.PROF_NUM WHERE CRS_CODE  =  "ACCT-211"
+select distinct employee.emp_fname , employee.emp_dob from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM where  class.crs_code = "ACCT-211"
+SELECT DISTINCT T1.EMP_FNAME ,  T1.EMP_DOB FROM employee AS T1 JOIN CLASS AS T2 ON T1.EMP_NUM  =  T2.PROF_NUM WHERE CRS_CODE  =  "ACCT-211"
+select distinct employee.emp_fname , employee.emp_dob from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM where  class.crs_code = "ACCT-211"
+SELECT count(*) FROM employee AS T1 JOIN CLASS AS T2 ON T1.EMP_NUM  =  T2.PROF_NUM WHERE T1.EMP_LNAME  =  'Graztevski'
+select count(*) from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM where  employee.emp_lname = "Graztevski"
+SELECT count(*) FROM employee AS T1 JOIN CLASS AS T2 ON T1.EMP_NUM  =  T2.PROF_NUM WHERE T1.EMP_LNAME  =  'Graztevski'
+select count(*) from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM where  employee.emp_lname = "Graztevski"
+SELECT school_code FROM department WHERE dept_name  =  "Accounting"
+select department.school_code from DEPARTMENT where  department.dept_name = "Accounting"
+SELECT school_code FROM department WHERE dept_name  =  "Accounting"
+select department.school_code from DEPARTMENT where  department.dept_name = "Accounting"
+SELECT crs_credit ,  crs_description FROM course WHERE crs_code  =  'CIS-220'
+select course.crs_credit , course.crs_description from CLASS join COURSE on CLASS.CRS_CODE = COURSE.CRS_CODE where  class.crs_code = "CIS-220"
+SELECT crs_credit ,  crs_description FROM course WHERE crs_code  =  'CIS-220'
+select course.crs_credit , course.crs_description from COURSE where  course.crs_code = "CIS-220"
+SELECT dept_address FROM department WHERE dept_name  =  'History'
+select department.dept_address from DEPARTMENT where  department.dept_name = "History"
+SELECT dept_address FROM department WHERE dept_name  =  'History'
+select department.dept_address from DEPARTMENT where  department.dept_name = "History"
+SELECT count(DISTINCT dept_address) FROM department WHERE school_code  =  'BUS'
+select count( distinct department.dept_address) from DEPARTMENT where  department.school_code = "BUS"
+SELECT count(DISTINCT dept_address) FROM department WHERE school_code  =  'BUS'
+select count( distinct department.dept_address) from DEPARTMENT where  department.school_code = "BUS"
+SELECT count(DISTINCT dept_address) ,  school_code FROM department GROUP BY school_code
+select count( distinct department.dept_address) , department.school_code from DEPARTMENT  group by department.school_code
+SELECT count(DISTINCT dept_address) ,  school_code FROM department GROUP BY school_code
+select count( distinct department.dept_address) , department.school_code from DEPARTMENT  group by department.school_code
+SELECT crs_credit ,  crs_description FROM course WHERE crs_code  =  'QM-261'
+select course.crs_credit , course.crs_description from CLASS join COURSE on CLASS.CRS_CODE = COURSE.CRS_CODE where  class.crs_code = "QM-261"
+SELECT crs_credit ,  crs_description FROM course WHERE crs_code  =  'QM-261'
+select course.crs_credit , course.crs_description from CLASS join COURSE on CLASS.CRS_CODE = COURSE.CRS_CODE where  class.crs_code = "QM-261"
+SELECT count(DISTINCT dept_name) ,  school_code FROM department GROUP BY school_code
+select count( distinct department.dept_name) , department.school_code from DEPARTMENT  group by department.school_code
+SELECT count(DISTINCT dept_name) ,  school_code FROM department GROUP BY school_code
+select count( distinct department.dept_name) , department.school_code from DEPARTMENT  group by department.school_code
+SELECT count(DISTINCT dept_name) ,  school_code FROM department GROUP BY school_code HAVING count(DISTINCT dept_name)  <  5
+select count( distinct department.dept_name) , department.school_code from DEPARTMENT  group by department.school_code having  count( distinct department.dept_name) < 5
+SELECT count(DISTINCT dept_name) ,  school_code FROM department GROUP BY school_code HAVING count(DISTINCT dept_name)  <  5
+select count( distinct department.dept_name) , department.school_code from DEPARTMENT  group by department.school_code having  count( distinct department.dept_address) < 5
+SELECT count(*) ,  crs_code FROM CLASS GROUP BY crs_code
+select count(*) , class.crs_code from CLASS  group by class.crs_code
+SELECT count(*) ,  crs_code FROM CLASS GROUP BY crs_code
+select count(*) , class.crs_code from CLASS  group by class.crs_code
+SELECT sum(crs_credit) ,  dept_code FROM course GROUP BY dept_code
+select sum(course.crs_credit) , course.dept_code from COURSE  group by course.dept_code
+SELECT sum(crs_credit) ,  dept_code FROM course GROUP BY dept_code
+select sum(course.crs_credit) , course.dept_code from COURSE  group by course.dept_code
+SELECT count(*) ,  class_room FROM CLASS GROUP BY class_room HAVING count(*)  >=  2
+select count(*) , class.class_room from ENROLL join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE  group by class.class_room having  count(*) >= 2
+SELECT count(*) ,  class_room FROM CLASS GROUP BY class_room HAVING count(*)  >=  2
+select count(*) , class.class_room from CLASS  group by class.class_room having  count(*) >= 2
+SELECT count(*) ,  dept_code FROM CLASS AS T1 JOIN course AS T2 ON T1.crs_code  =  T2.crs_code GROUP BY dept_code
+select count(*) , course.dept_code from CLASS join COURSE on CLASS.CRS_CODE = COURSE.CRS_CODE  group by course.dept_code
+SELECT count(*) ,  dept_code FROM CLASS AS T1 JOIN course AS T2 ON T1.crs_code  =  T2.crs_code GROUP BY dept_code
+select count(*) , course.dept_code from CLASS join COURSE on CLASS.CRS_CODE = COURSE.CRS_CODE  group by course.dept_code
+SELECT count(*) ,  T3.school_code FROM CLASS AS T1 JOIN course AS T2 ON T1.crs_code  =  T2.crs_code JOIN department AS T3 ON T2.dept_code  =  T3.dept_code GROUP BY T3.school_code
+select count(*) , department.school_code from CLASS join COURSE on CLASS.CRS_CODE = COURSE.CRS_CODE join DEPARTMENT on COURSE.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by department.school_code
+SELECT count(*) ,  T3.school_code FROM CLASS AS T1 JOIN course AS T2 ON T1.crs_code  =  T2.crs_code JOIN department AS T3 ON T2.dept_code  =  T3.dept_code GROUP BY T3.school_code
+select count(*) , department.school_code from CLASS join COURSE on CLASS.CRS_CODE = COURSE.CRS_CODE join DEPARTMENT on COURSE.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by department.school_code
+SELECT count(*) ,  T1.school_code FROM department AS T1 JOIN professor AS T2 ON T1.dept_code  =  T2.dept_code GROUP BY T1.school_code
+select count(*) , department.school_code from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by department.school_code
+SELECT count(*) ,  T1.school_code FROM department AS T1 JOIN professor AS T2 ON T1.dept_code  =  T2.dept_code GROUP BY T1.school_code
+select count(*) , department.school_code from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by department.school_code
+SELECT emp_jobcode ,  count(*) FROM employee GROUP BY emp_jobcode ORDER BY count(*) DESC LIMIT 1
+select employee.emp_jobcode , count(*) from EMPLOYEE  group by employee.emp_jobcode  order by count(*) desc limit 1
+SELECT emp_jobcode ,  count(*) FROM employee GROUP BY emp_jobcode ORDER BY count(*) DESC LIMIT 1
+select employee.emp_jobcode , count(*) from EMPLOYEE  group by employee.emp_jobcode  order by count(*) desc limit 1
+SELECT T1.school_code FROM department AS T1 JOIN professor AS T2 ON T1.dept_code  =  T2.dept_code GROUP BY T1.school_code ORDER BY count(*) LIMIT 1
+select department.school_code from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by department.school_code  order by count(*) asc limit 1
+SELECT T1.school_code FROM department AS T1 JOIN professor AS T2 ON T1.dept_code  =  T2.dept_code GROUP BY T1.school_code ORDER BY count(*) LIMIT 1
+select department.school_code from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by department.school_code  order by count(*) asc limit 1
+SELECT count(*) ,  dept_code FROM professor WHERE prof_high_degree  =  'Ph.D.' GROUP BY dept_code
+select count(*) , department.dept_code from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE where  professor.prof_high_degree = "Ph.D."  group by professor.dept_code
+SELECT count(*) ,  dept_code FROM professor WHERE prof_high_degree  =  'Ph.D.' GROUP BY dept_code
+select count(*) , department.dept_name from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE where  professor.prof_high_degree = "Ph.D."  group by professor.dept_code
+SELECT count(*) ,  dept_code FROM student GROUP BY dept_code
+select count(*) , student.dept_code from STUDENT  group by student.dept_code
+SELECT count(*) ,  dept_code FROM student GROUP BY dept_code
+select count(*) , student.dept_code from STUDENT  group by student.dept_code
+SELECT sum(stu_hrs) ,  dept_code FROM student GROUP BY dept_code
+select sum(student.stu_hrs) , student.dept_code from STUDENT  group by student.dept_code
+SELECT sum(stu_hrs) ,  dept_code FROM student GROUP BY dept_code
+select sum(student.stu_hrs) , student.dept_code from STUDENT  group by student.dept_code
+SELECT max(stu_gpa) ,  avg(stu_gpa) ,  min(stu_gpa) ,  dept_code FROM student GROUP BY dept_code
+select max(student.stu_gpa) , avg(student.stu_gpa) , min(student.stu_gpa) , student.dept_code from STUDENT  group by student.dept_code
+SELECT max(stu_gpa) ,  avg(stu_gpa) ,  min(stu_gpa) ,  dept_code FROM student GROUP BY dept_code
+select max(student.stu_gpa) , avg(student.stu_gpa) , min(student.stu_gpa) , student.dept_code from STUDENT  group by student.dept_code
+SELECT T2.dept_name ,  avg(T1.stu_gpa) FROM student AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code GROUP BY T1.dept_code ORDER BY avg(T1.stu_gpa) DESC LIMIT 1
+select department.dept_name , avg(student.stu_gpa) from STUDENT join DEPARTMENT on STUDENT.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by student.dept_code  order by avg(student.stu_gpa) desc limit 1
+SELECT T2.dept_name ,  avg(T1.stu_gpa) FROM student AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code GROUP BY T1.dept_code ORDER BY avg(T1.stu_gpa) DESC LIMIT 1
+select department.dept_name , avg(student.stu_gpa) from STUDENT join DEPARTMENT on STUDENT.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by student.dept_code  order by avg(student.stu_gpa) desc limit 1
+SELECT count(DISTINCT school_code) FROM department
+select count( distinct department.school_code) from DEPARTMENT
+SELECT count(DISTINCT school_code) FROM department
+select count( distinct department.school_code) from DEPARTMENT
+SELECT count(DISTINCT class_code) FROM CLASS
+select count( distinct class.class_code) from CLASS
+SELECT count(DISTINCT class_code) FROM CLASS
+select count( distinct class.class_code) from CLASS
+SELECT count(DISTINCT crs_code) FROM CLASS
+select count( distinct class.crs_code) from CLASS
+SELECT count(DISTINCT crs_code) FROM CLASS
+select count( distinct class.crs_code) from CLASS
+SELECT count(DISTINCT dept_name) FROM department
+select count( distinct department.dept_name) from DEPARTMENT
+SELECT count(DISTINCT dept_name) FROM department
+select count( distinct department.dept_name) from DEPARTMENT
+SELECT count(*) FROM department AS T1 JOIN course AS T2 ON T1.dept_code  =  T2.dept_code WHERE dept_name  =  "Computer Info. Systems"
+select count(*) from COURSE join DEPARTMENT on COURSE.DEPT_CODE = DEPARTMENT.DEPT_CODE where  department.dept_name = "Computer Info. Systems"
+SELECT count(*) FROM department AS T1 JOIN course AS T2 ON T1.dept_code  =  T2.dept_code WHERE dept_name  =  "Computer Info. Systems"
+select count(*) from COURSE join DEPARTMENT on COURSE.DEPT_CODE = DEPARTMENT.DEPT_CODE where  department.dept_name = "Computer Info. Systems"
+SELECT count(DISTINCT class_section) FROM CLASS WHERE crs_code  =  'ACCT-211'
+select count( distinct class.class_section) from CLASS where  class.crs_code = "ACCT-211"
+SELECT count(DISTINCT class_section) FROM CLASS WHERE crs_code  =  'ACCT-211'
+select count( distinct class.class_section) from CLASS where  class.crs_code = "ACCT-211"
+SELECT sum(T1.crs_credit) ,  T1.dept_code FROM course AS T1 JOIN CLASS AS T2 ON T1.crs_code  =  T2.crs_code GROUP BY T1.dept_code
+select sum(course.crs_credit) , course.dept_code from CLASS join COURSE on CLASS.CRS_CODE = COURSE.CRS_CODE  group by course.dept_code
+SELECT sum(T1.crs_credit) ,  T1.dept_code FROM course AS T1 JOIN CLASS AS T2 ON T1.crs_code  =  T2.crs_code GROUP BY T1.dept_code
+select sum(course.crs_credit) , course.dept_code from CLASS join COURSE on CLASS.CRS_CODE = COURSE.CRS_CODE  group by course.dept_code
+SELECT T3.dept_name FROM course AS T1 JOIN CLASS AS T2 ON T1.crs_code  =  T2.crs_code JOIN department AS T3 ON T1.dept_code  =  T3.dept_code GROUP BY T1.dept_code ORDER BY sum(T1.crs_credit) DESC LIMIT 1
+select department.dept_name from CLASS join COURSE on CLASS.CRS_CODE = COURSE.CRS_CODE join DEPARTMENT on COURSE.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by course.dept_code  order by sum(course.crs_credit) desc limit 1
+SELECT T3.dept_name FROM course AS T1 JOIN CLASS AS T2 ON T1.crs_code  =  T2.crs_code JOIN department AS T3 ON T1.dept_code  =  T3.dept_code GROUP BY T1.dept_code ORDER BY sum(T1.crs_credit) DESC LIMIT 1
+select department.dept_name from COURSE join DEPARTMENT on COURSE.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by course.dept_code  order by sum(course.crs_credit) desc limit 1
+SELECT count(*) FROM CLASS AS T1 JOIN enroll AS T2 ON T1.class_code  =  T2.class_code WHERE T1.crs_code  =  'ACCT-211'
+select count(*) from ENROLL join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE where  class.crs_code = "ACCT-211"
+SELECT count(*) FROM CLASS AS T1 JOIN enroll AS T2 ON T1.class_code  =  T2.class_code WHERE T1.crs_code  =  'ACCT-211'
+select count( distinct enroll.stu_num) from ENROLL join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE where  class.crs_code = "ACCT-211"
+SELECT T3.stu_fname FROM CLASS AS T1 JOIN enroll AS T2 ON T1.class_code  =  T2.class_code JOIN student AS T3 ON T2.stu_num  =  T3.stu_num WHERE T1.crs_code  =  'ACCT-211'
+select student.stu_fname from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE where  class.crs_code = "ACCT-211"
+SELECT T3.stu_fname FROM CLASS AS T1 JOIN enroll AS T2 ON T1.class_code  =  T2.class_code JOIN student AS T3 ON T2.stu_num  =  T3.stu_num WHERE T1.crs_code  =  'ACCT-211'
+select student.stu_fname from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE where  class.crs_code = "ACCT-211"
+SELECT T3.stu_fname FROM CLASS AS T1 JOIN enroll AS T2 ON T1.class_code  =  T2.class_code JOIN student AS T3 ON T2.stu_num  =  T3.stu_num WHERE T1.crs_code  =  'ACCT-211' AND T2.enroll_grade  =  'C'
+select student.stu_fname from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE where  class.crs_code = "ACCT-211" and enroll.enroll_grade = "C"
+SELECT T3.stu_fname FROM CLASS AS T1 JOIN enroll AS T2 ON T1.class_code  =  T2.class_code JOIN student AS T3 ON T2.stu_num  =  T3.stu_num WHERE T1.crs_code  =  'ACCT-211' AND T2.enroll_grade  =  'C'
+select student.stu_fname from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE where  class.crs_code = "ACCT-211" and enroll.enroll_grade = "C"
+SELECT count(*) FROM employee
+select count(*) from EMPLOYEE
+SELECT count(*) FROM employee
+select count(*) from EMPLOYEE
+SELECT count(*) FROM professor WHERE prof_high_degree  =  'Ph.D.'
+select count(*) from PROFESSOR where  professor.prof_high_degree = "Ph.D."
+SELECT count(*) FROM professor WHERE prof_high_degree  =  'Ph.D.'
+select count(*) from PROFESSOR where  professor.prof_high_degree = "Ph.D."
+SELECT count(*) FROM CLASS AS T1 JOIN enroll AS T2 ON T1.class_code  =  T2.class_code JOIN course AS T3 ON T1.crs_code  =  T3.crs_code JOIN department AS T4 ON T3.dept_code  =  T4.dept_code WHERE T4.dept_name  =  'Accounting'
+select count(*) from STUDENT join DEPARTMENT on STUDENT.DEPT_CODE = DEPARTMENT.DEPT_CODE join ENROLL on STUDENT.STU_NUM = ENROLL.STU_NUM join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE where  department.dept_name = "Accounting"
+SELECT count(*) FROM CLASS AS T1 JOIN enroll AS T2 ON T1.class_code  =  T2.class_code JOIN course AS T3 ON T1.crs_code  =  T3.crs_code JOIN department AS T4 ON T3.dept_code  =  T4.dept_code WHERE T4.dept_name  =  'Accounting'
+select count(*) from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE join STUDENT on DEPARTMENT.DEPT_CODE = STUDENT.DEPT_CODE join ENROLL on STUDENT.STU_NUM = ENROLL.STU_NUM where  department.dept_name = "Accounting"
+SELECT T4.dept_name FROM CLASS AS T1 JOIN enroll AS T2 ON T1.class_code  =  T2.class_code JOIN course AS T3 ON T1.crs_code  =  T3.crs_code JOIN department AS T4 ON T3.dept_code  =  T4.dept_code GROUP BY T3.dept_code ORDER BY count(*) DESC LIMIT 1
+select department.dept_name from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join DEPARTMENT on STUDENT.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by department.dept_code  order by count(*) desc limit 1
+SELECT T4.dept_name FROM CLASS AS T1 JOIN enroll AS T2 ON T1.class_code  =  T2.class_code JOIN course AS T3 ON T1.crs_code  =  T3.crs_code JOIN department AS T4 ON T3.dept_code  =  T4.dept_code GROUP BY T3.dept_code ORDER BY count(*) DESC LIMIT 1
+select department.dept_name from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join DEPARTMENT on STUDENT.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by department.dept_code  order by count(*) desc limit 1
+SELECT dept_name FROM department ORDER BY dept_name
+select department.dept_name from DEPARTMENT   order by department.dept_name asc
+SELECT dept_name FROM department ORDER BY dept_name
+select department.dept_name from DEPARTMENT   order by department.dept_name asc
+SELECT class_code FROM CLASS WHERE class_room  =  'KLR209'
+select class.class_code from CLASS where  class.class_room = "KLR209"
+SELECT class_code FROM CLASS WHERE class_room  =  'KLR209'
+select class.class_code from CLASS where  class.class_room = "KLR209"
+SELECT emp_fname FROM employee WHERE emp_jobcode  =  'PROF' ORDER BY emp_dob
+select employee.emp_fname from EMPLOYEE where  employee.emp_jobcode = "PROF"   order by employee.emp_dob asc
+SELECT emp_fname FROM employee WHERE emp_jobcode  =  'PROF' ORDER BY emp_dob
+select employee.emp_fname from EMPLOYEE where  employee.emp_jobcode = "PROF"   order by employee.emp_dob asc
+SELECT T2.emp_fname ,  T1.prof_office FROM professor AS T1 JOIN employee AS T2 ON T1.emp_num  =  T2.emp_num ORDER BY T2.emp_fname
+select employee.emp_fname , professor.prof_office from PROFESSOR join EMPLOYEE on PROFESSOR.EMP_NUM = EMPLOYEE.EMP_NUM   order by employee.emp_fname asc
+SELECT T2.emp_fname ,  T1.prof_office FROM professor AS T1 JOIN employee AS T2 ON T1.emp_num  =  T2.emp_num ORDER BY T2.emp_fname
+select employee.emp_fname , professor.prof_office from PROFESSOR join EMPLOYEE on PROFESSOR.EMP_NUM = EMPLOYEE.EMP_NUM   order by employee.emp_fname asc
+SELECT emp_fname ,  emp_lname FROM employee ORDER BY emp_dob LIMIT 1
+select employee.emp_fname , employee.emp_lname from EMPLOYEE   order by employee.emp_dob desc limit 1
+SELECT emp_fname ,  emp_lname FROM employee ORDER BY emp_dob LIMIT 1
+select employee.emp_fname , employee.emp_lname from EMPLOYEE   order by employee.emp_dob asc limit 1
+SELECT stu_fname ,  stu_lname ,  stu_gpa FROM student WHERE stu_gpa  >  3 ORDER BY stu_dob DESC LIMIT 1
+select student.stu_fname , student.stu_lname , student.stu_gpa from STUDENT where  student.stu_gpa > 3   order by student.stu_dob desc limit 1
+SELECT stu_fname ,  stu_lname ,  stu_gpa FROM student WHERE stu_gpa  >  3 ORDER BY stu_dob DESC LIMIT 1
+select student.stu_fname , student.stu_lname , student.stu_gpa from STUDENT where  student.stu_gpa > 3   order by student.stu_dob desc limit 1
+SELECT DISTINCT stu_fname FROM student AS T1 JOIN enroll AS T2 ON T1.stu_num  =  T2.stu_num WHERE enroll_grade  =  'C'
+select distinct student.stu_fname from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM where  enroll.enroll_grade = "C"
+SELECT DISTINCT stu_fname FROM student AS T1 JOIN enroll AS T2 ON T1.stu_num  =  T2.stu_num WHERE enroll_grade  =  'C'
+select distinct student.stu_fname from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM where  enroll.enroll_grade = "C"
+SELECT T2.dept_name FROM professor AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code GROUP BY T1.dept_code ORDER BY count(*) LIMIT 1
+select department.dept_name from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by professor.dept_code  order by count(*) asc limit 1
+SELECT T2.dept_name FROM professor AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code GROUP BY T1.dept_code ORDER BY count(*) LIMIT 1
+select department.dept_name from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by professor.dept_code  order by count(*) asc limit 1
+SELECT T2.dept_name ,  T1.dept_code FROM professor AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code WHERE T1.prof_high_degree  =  'Ph.D.' GROUP BY T1.dept_code ORDER BY count(*) DESC LIMIT 1
+select department.dept_name , department.dept_code from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE where  professor.prof_high_degree = "Ph.D."  group by professor.dept_code  order by count(*) desc limit 1
+SELECT T2.dept_name ,  T1.dept_code FROM professor AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code WHERE T1.prof_high_degree  =  'Ph.D.' GROUP BY T1.dept_code ORDER BY count(*) DESC LIMIT 1
+select department.dept_name from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE where  professor.prof_high_degree = "Ph.D."  group by professor.dept_code  order by count(*) desc limit 1
+SELECT emp_fname FROM employee WHERE emp_jobcode  =  'PROF' EXCEPT SELECT T1.emp_fname FROM employee AS T1 JOIN CLASS AS T2 ON T1.emp_num  =  T2.prof_num
+select employee.emp_fname from PROFESSOR join EMPLOYEE on PROFESSOR.EMP_NUM = EMPLOYEE.EMP_NUM   except select employee.emp_fname from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM
+SELECT emp_fname FROM employee WHERE emp_jobcode  =  'PROF' EXCEPT SELECT T1.emp_fname FROM employee AS T1 JOIN CLASS AS T2 ON T1.emp_num  =  T2.prof_num
+select employee.emp_fname from EMPLOYEE where  employee.emp_num not in (select CLASS.PROF_NUM from CLASS  )
+SELECT T1.emp_fname FROM employee AS T1 JOIN professor AS T2 ON T1.emp_num  =  T2.emp_num JOIN department AS T3 ON T2.dept_code  =  T3.dept_code WHERE T3.dept_name  =  'History' EXCEPT SELECT T4.emp_fname FROM employee AS T4 JOIN CLASS AS T5 ON T4.emp_num  =  T5.prof_num
+select employee.emp_fname from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE join EMPLOYEE on DEPARTMENT.EMP_NUM = EMPLOYEE.EMP_NUM where  department.dept_name = "History"   except select employee.emp_fname from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM
+SELECT T1.emp_fname FROM employee AS T1 JOIN professor AS T2 ON T1.emp_num  =  T2.emp_num JOIN department AS T3 ON T2.dept_code  =  T3.dept_code WHERE T3.dept_name  =  'History' EXCEPT SELECT T4.emp_fname FROM employee AS T4 JOIN CLASS AS T5 ON T4.emp_num  =  T5.prof_num
+select employee.emp_fname from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE join EMPLOYEE on DEPARTMENT.EMP_NUM = EMPLOYEE.EMP_NUM where  department.dept_name = "History"   except select employee.emp_fname from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM
+SELECT T1.emp_lname ,  T2.prof_office FROM employee AS T1 JOIN professor AS T2 ON T1.emp_num  =  T2.emp_num JOIN department AS T3 ON T2.dept_code  =  T3.dept_code WHERE T3.dept_name  =  'History'
+select employee.emp_lname , professor.prof_office from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE join EMPLOYEE on DEPARTMENT.EMP_NUM = EMPLOYEE.EMP_NUM where  department.dept_name = "History"
+SELECT T1.emp_lname ,  T2.prof_office FROM employee AS T1 JOIN professor AS T2 ON T1.emp_num  =  T2.emp_num JOIN department AS T3 ON T2.dept_code  =  T3.dept_code WHERE T3.dept_name  =  'History'
+select employee.emp_lname , professor.prof_office from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE join EMPLOYEE on DEPARTMENT.EMP_NUM = EMPLOYEE.EMP_NUM where  department.dept_name = "History"
+SELECT T3.dept_name  ,  T2.prof_office FROM employee AS T1 JOIN professor AS T2 ON T1.emp_num  =  T2.emp_num JOIN department AS T3 ON T2.dept_code  =  T3.dept_code WHERE T1.emp_lname  =  'Heffington'
+select department.dept_name , professor.prof_office from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE join EMPLOYEE on DEPARTMENT.EMP_NUM = EMPLOYEE.EMP_NUM where  employee.emp_lname = "Heffington"
+SELECT T3.dept_name  ,  T2.prof_office FROM employee AS T1 JOIN professor AS T2 ON T1.emp_num  =  T2.emp_num JOIN department AS T3 ON T2.dept_code  =  T3.dept_code WHERE T1.emp_lname  =  'Heffington'
+select department.dept_name , professor.prof_office from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE join EMPLOYEE on DEPARTMENT.EMP_NUM = EMPLOYEE.EMP_NUM where  employee.emp_lname = "Heffington"
+SELECT T1.emp_lname ,  T1.emp_hiredate FROM employee AS T1 JOIN professor AS T2 ON T1.emp_num  =  T2.emp_num WHERE T2.prof_office  =  'DRE 102'
+select employee.emp_lname , employee.emp_hiredate from PROFESSOR join EMPLOYEE on PROFESSOR.EMP_NUM = EMPLOYEE.EMP_NUM where  professor.prof_office = "DRE 102"
+SELECT T1.emp_lname ,  T1.emp_hiredate FROM employee AS T1 JOIN professor AS T2 ON T1.emp_num  =  T2.emp_num WHERE T2.prof_office  =  'DRE 102'
+select employee.emp_lname , employee.emp_hiredate from PROFESSOR join EMPLOYEE on PROFESSOR.EMP_NUM = EMPLOYEE.EMP_NUM where  professor.prof_office = "DRE 102"
+SELECT T1.crs_code FROM CLASS AS T1 JOIN enroll AS T2 ON T1.class_code  =  T2.class_code JOIN student AS T3 ON T3.stu_num  =  T2.stu_num WHERE T3.stu_lname  =  'Smithson'
+select class.crs_code from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE where  student.stu_lname = "Smithson"
+SELECT T1.crs_code FROM CLASS AS T1 JOIN enroll AS T2 ON T1.class_code  =  T2.class_code JOIN student AS T3 ON T3.stu_num  =  T2.stu_num WHERE T3.stu_lname  =  'Smithson'
+select class.crs_code from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE where  student.stu_lname = "Smithson"
+SELECT T4.crs_description ,  T4.crs_credit FROM CLASS AS T1 JOIN enroll AS T2 ON T1.class_code  =  T2.class_code JOIN student AS T3 ON T3.stu_num  =  T2.stu_num JOIN course AS T4 ON T4.crs_code  =  T1.crs_code WHERE T3.stu_lname  =  'Smithson'
+select course.crs_description , course.crs_credit from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE join COURSE on CLASS.CRS_CODE = COURSE.CRS_CODE where  student.stu_lname = "Smithson"
+SELECT T4.crs_description ,  T4.crs_credit FROM CLASS AS T1 JOIN enroll AS T2 ON T1.class_code  =  T2.class_code JOIN student AS T3 ON T3.stu_num  =  T2.stu_num JOIN course AS T4 ON T4.crs_code  =  T1.crs_code WHERE T3.stu_lname  =  'Smithson'
+select course.crs_description , course.crs_credit from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE join COURSE on CLASS.CRS_CODE = COURSE.CRS_CODE where  student.stu_lname = "Smithson"
+SELECT count(*) FROM professor WHERE prof_high_degree  =  'Ph.D.' OR prof_high_degree  =  'MA'
+select count(*) from PROFESSOR where  professor.prof_high_degree = "Ph.D." or professor.prof_high_degree = "MA"
+SELECT count(*) FROM professor WHERE prof_high_degree  =  'Ph.D.' OR prof_high_degree  =  'MA'
+select count(*) from PROFESSOR where  professor.prof_high_degree = "Ph.D." or professor.prof_high_degree = "MA"
+SELECT count(*) FROM professor AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code WHERE T2.dept_name  =  'Accounting' OR T2.dept_name  =  'Biology'
+select count(*) from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE where  department.dept_name = "Accounting" or department.dept_name = "Biology"
+SELECT count(*) FROM professor AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code WHERE T2.dept_name  =  'Accounting' OR T2.dept_name  =  'Biology'
+select count(*) from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE where  department.dept_name = "Accounting" or department.dept_name = "Biology"
+SELECT T1.emp_fname FROM employee AS T1 JOIN CLASS AS T2 ON T1.emp_num  =  T2.prof_num WHERE crs_code  =  'CIS-220' INTERSECT SELECT T1.emp_fname FROM employee AS T1 JOIN CLASS AS T2 ON T1.emp_num  =  T2.prof_num WHERE crs_code  =  'QM-261'
+select employee.emp_fname from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM where  class.crs_code = "CIS-220"   intersect select employee.emp_fname from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM where  class.crs_code = "QM-261"
+SELECT T1.emp_fname FROM employee AS T1 JOIN CLASS AS T2 ON T1.emp_num  =  T2.prof_num WHERE crs_code  =  'CIS-220' INTERSECT SELECT T1.emp_fname FROM employee AS T1 JOIN CLASS AS T2 ON T1.emp_num  =  T2.prof_num WHERE crs_code  =  'QM-261'
+select employee.emp_fname from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM where  class.crs_code = "CIS-220"   intersect select employee.emp_fname from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM where  class.crs_code = "QM-261"
+SELECT T1.stu_fname FROM student AS T1 JOIN enroll AS T2 ON T1.stu_num  =  T2.stu_num JOIN CLASS AS T3 ON T2.class_code  =  T3.class_code JOIN course AS T4 ON T3.crs_code  =  T4.crs_code JOIN department AS T5 ON T5.dept_code  =  T4.dept_code WHERE T5.dept_name  =  'Accounting' INTERSECT SELECT T1.stu_fname FROM student AS T1 JOIN enroll AS T2 ON T1.stu_num  =  T2.stu_num JOIN CLASS AS T3 ON T2.class_code  =  T3.class_code JOIN course AS T4 ON T3.crs_code  =  T4.crs_code JOIN department AS T5 ON T5.dept_code  =  T4.dept_code WHERE T5.dept_name  =  'Computer Info. Systems'
+select student.stu_fname from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join DEPARTMENT on STUDENT.DEPT_CODE = DEPARTMENT.DEPT_CODE where  department.dept_name = "Accounting"   intersect select student.stu_fname from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join DEPARTMENT on STUDENT.DEPT_CODE = DEPARTMENT.DEPT_CODE where  department.dept_name = "Computer Info. Systems"
+SELECT T1.stu_fname FROM student AS T1 JOIN enroll AS T2 ON T1.stu_num  =  T2.stu_num JOIN CLASS AS T3 ON T2.class_code  =  T3.class_code JOIN course AS T4 ON T3.crs_code  =  T4.crs_code JOIN department AS T5 ON T5.dept_code  =  T4.dept_code WHERE T5.dept_name  =  'Accounting' INTERSECT SELECT T1.stu_fname FROM student AS T1 JOIN enroll AS T2 ON T1.stu_num  =  T2.stu_num JOIN CLASS AS T3 ON T2.class_code  =  T3.class_code JOIN course AS T4 ON T3.crs_code  =  T4.crs_code JOIN department AS T5 ON T5.dept_code  =  T4.dept_code WHERE T5.dept_name  =  'Computer Info. Systems'
+select student.stu_fname from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM where  student.stu_fname = "Accounting" and student.stu_class = "Computer Info. Systems"
+SELECT avg(T2.stu_gpa) FROM enroll AS T1 JOIN student AS T2 ON T1.stu_num  =  T2.stu_num JOIN CLASS AS T3 ON T1.class_code  =  T3.class_code WHERE T3.crs_code  =  'ACCT-211'
+select avg(student.stu_gpa) from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE where  class.crs_code = "ACCT-211"
+SELECT avg(T2.stu_gpa) FROM enroll AS T1 JOIN student AS T2 ON T1.stu_num  =  T2.stu_num JOIN CLASS AS T3 ON T1.class_code  =  T3.class_code WHERE T3.crs_code  =  'ACCT-211'
+select avg(student.stu_gpa) from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE where  class.crs_code = "ACCT-211"
+SELECT stu_gpa ,  stu_phone ,  stu_fname FROM student ORDER BY stu_gpa DESC LIMIT 5
+select student.stu_gpa , student.stu_phone , student.stu_fname from STUDENT   order by student.stu_gpa desc limit 5
+SELECT stu_gpa ,  stu_phone ,  stu_fname FROM student ORDER BY stu_gpa DESC LIMIT 5
+select student.stu_gpa , student.stu_phone , student.stu_fname from STUDENT   order by student.stu_gpa desc limit 5
+SELECT T2.dept_name FROM student AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code ORDER BY stu_gpa LIMIT 1
+select department.dept_name from STUDENT join DEPARTMENT on STUDENT.DEPT_CODE = DEPARTMENT.DEPT_CODE   order by student.stu_gpa asc limit 1
+SELECT T2.dept_name FROM student AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code ORDER BY stu_gpa LIMIT 1
+select department.dept_name from STUDENT join DEPARTMENT on STUDENT.DEPT_CODE = DEPARTMENT.DEPT_CODE   order by student.stu_gpa asc limit 1
+SELECT stu_fname ,  stu_gpa FROM student WHERE stu_gpa  <  (SELECT avg(stu_gpa) FROM student)
+select student.stu_fname , student.stu_gpa from STUDENT where  student.stu_gpa < (select avg(student.stu_gpa) from STUDENT  )
+SELECT stu_fname ,  stu_gpa FROM student WHERE stu_gpa  <  (SELECT avg(stu_gpa) FROM student)
+select student.stu_fname , student.stu_gpa from STUDENT where  student.stu_gpa < (select avg(student.stu_gpa) from STUDENT  )
+SELECT T2.dept_name ,  T2.dept_address FROM student AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code GROUP BY T1.dept_code ORDER BY count(*) DESC LIMIT 1
+select department.dept_name , department.dept_address from STUDENT join DEPARTMENT on STUDENT.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by student.dept_code  order by count(*) desc limit 1
+SELECT T2.dept_name ,  T2.dept_address FROM student AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code GROUP BY T1.dept_code ORDER BY count(*) DESC LIMIT 1
+select department.dept_name , department.dept_address from STUDENT join DEPARTMENT on STUDENT.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by student.dept_code  order by count(*) desc limit 1
+SELECT T2.dept_name ,  T2.dept_address ,  count(*) FROM student AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code GROUP BY T1.dept_code ORDER BY count(*) DESC LIMIT 3
+select department.dept_name , department.dept_address , count(*) from STUDENT join DEPARTMENT on STUDENT.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by student.dept_code  order by count(*) desc limit 3
+SELECT T2.dept_name ,  T2.dept_address ,  count(*) FROM student AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code GROUP BY T1.dept_code ORDER BY count(*) DESC LIMIT 3
+select department.dept_name , department.dept_address , count(*) from STUDENT join DEPARTMENT on STUDENT.DEPT_CODE = DEPARTMENT.DEPT_CODE  group by student.dept_code  order by count(*) desc limit 3
+SELECT T1.emp_fname ,  T2.prof_office FROM employee AS T1 JOIN professor AS T2 ON T1.emp_num  =  T2.emp_num JOIN department AS T3 ON T3.dept_code  =  T2.dept_code WHERE T3.dept_name  =  'History' AND T2.prof_high_degree  =  'Ph.D.'
+select employee.emp_fname , professor.prof_office from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE join EMPLOYEE on DEPARTMENT.EMP_NUM = EMPLOYEE.EMP_NUM where  department.dept_name = "History" and professor.prof_high_degree = "Ph.D."
+SELECT T1.emp_fname ,  T2.prof_office FROM employee AS T1 JOIN professor AS T2 ON T1.emp_num  =  T2.emp_num JOIN department AS T3 ON T3.dept_code  =  T2.dept_code WHERE T3.dept_name  =  'History' AND T2.prof_high_degree  =  'Ph.D.'
+select employee.emp_fname , professor.prof_office from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE join EMPLOYEE on DEPARTMENT.EMP_NUM = EMPLOYEE.EMP_NUM where  department.dept_name = "History" and professor.prof_high_degree = "Ph.D."
+SELECT T2.emp_fname ,  T1.crs_code FROM CLASS AS T1 JOIN employee AS T2 ON T1.prof_num  =  T2.emp_num
+select employee.emp_fname , class.crs_code from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM
+SELECT T2.emp_fname ,  T1.crs_code FROM CLASS AS T1 JOIN employee AS T2 ON T1.prof_num  =  T2.emp_num
+select employee.emp_fname , class.crs_code from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM
+SELECT T2.emp_fname ,  T3.crs_description FROM CLASS AS T1 JOIN employee AS T2 ON T1.prof_num  =  T2.emp_num JOIN course AS T3 ON T1.crs_code  =  T3.crs_code
+select employee.emp_fname , course.crs_description from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM join COURSE on CLASS.CRS_CODE = COURSE.CRS_CODE
+SELECT T2.emp_fname ,  T3.crs_description FROM CLASS AS T1 JOIN employee AS T2 ON T1.prof_num  =  T2.emp_num JOIN course AS T3 ON T1.crs_code  =  T3.crs_code
+select employee.emp_fname , course.crs_description from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM join COURSE on CLASS.CRS_CODE = COURSE.CRS_CODE
+SELECT T2.emp_fname ,  T4.prof_office ,  T3.crs_description FROM CLASS AS T1 JOIN employee AS T2 ON T1.prof_num  =  T2.emp_num JOIN course AS T3 ON T1.crs_code  =  T3.crs_code JOIN professor AS T4 ON T2.emp_num  =  T4.emp_num
+select employee.emp_fname , professor.prof_office , course.crs_description from COURSE join DEPARTMENT on COURSE.DEPT_CODE = DEPARTMENT.DEPT_CODE join PROFESSOR on DEPARTMENT.DEPT_CODE = PROFESSOR.DEPT_CODE join EMPLOYEE on PROFESSOR.EMP_NUM = EMPLOYEE.EMP_NUM
+SELECT T2.emp_fname ,  T4.prof_office ,  T3.crs_description FROM CLASS AS T1 JOIN employee AS T2 ON T1.prof_num  =  T2.emp_num JOIN course AS T3 ON T1.crs_code  =  T3.crs_code JOIN professor AS T4 ON T2.emp_num  =  T4.emp_num
+select employee.emp_fname , professor.prof_office , course.crs_description from COURSE join DEPARTMENT on COURSE.DEPT_CODE = DEPARTMENT.DEPT_CODE join PROFESSOR on DEPARTMENT.DEPT_CODE = PROFESSOR.DEPT_CODE join EMPLOYEE on PROFESSOR.EMP_NUM = EMPLOYEE.EMP_NUM
+SELECT T2.emp_fname ,  T4.prof_office ,  T3.crs_description ,  T5.dept_name FROM CLASS AS T1 JOIN employee AS T2 ON T1.prof_num  =  T2.emp_num JOIN course AS T3 ON T1.crs_code  =  T3.crs_code JOIN professor AS T4 ON T2.emp_num  =  T4.emp_num JOIN department AS T5 ON T4.dept_code  =  T5.dept_code
+select employee.emp_fname , professor.prof_office , course.crs_description , department.dept_name from COURSE join DEPARTMENT on COURSE.DEPT_CODE = DEPARTMENT.DEPT_CODE join PROFESSOR on DEPARTMENT.DEPT_CODE = PROFESSOR.DEPT_CODE join EMPLOYEE on PROFESSOR.EMP_NUM = EMPLOYEE.EMP_NUM
+SELECT T2.emp_fname ,  T4.prof_office ,  T3.crs_description ,  T5.dept_name FROM CLASS AS T1 JOIN employee AS T2 ON T1.prof_num  =  T2.emp_num JOIN course AS T3 ON T1.crs_code  =  T3.crs_code JOIN professor AS T4 ON T2.emp_num  =  T4.emp_num JOIN department AS T5 ON T4.dept_code  =  T5.dept_code
+select employee.emp_fname , professor.prof_office , course.crs_description , department.dept_name from COURSE join DEPARTMENT on COURSE.DEPT_CODE = DEPARTMENT.DEPT_CODE join PROFESSOR on DEPARTMENT.DEPT_CODE = PROFESSOR.DEPT_CODE join EMPLOYEE on PROFESSOR.EMP_NUM = EMPLOYEE.EMP_NUM
+SELECT T1.stu_fname ,  T1.stu_lname ,  T4.crs_description FROM student AS T1 JOIN enroll AS T2 ON T1.stu_num  =  T2.stu_num JOIN CLASS AS T3 ON T2.class_code  =  T3.class_code JOIN course AS T4 ON T3.crs_code  =  T4.crs_code
+select student.stu_fname , student.stu_lname , course.crs_description from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE join COURSE on CLASS.CRS_CODE = COURSE.CRS_CODE
+SELECT T1.stu_fname ,  T1.stu_lname ,  T4.crs_description FROM student AS T1 JOIN enroll AS T2 ON T1.stu_num  =  T2.stu_num JOIN CLASS AS T3 ON T2.class_code  =  T3.class_code JOIN course AS T4 ON T3.crs_code  =  T4.crs_code
+select student.stu_fname , student.stu_lname , course.crs_description from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE join COURSE on CLASS.CRS_CODE = COURSE.CRS_CODE
+SELECT T1.stu_fname ,  T1.stu_lname FROM student AS T1 JOIN enroll AS T2 ON T1.stu_num  =  T2.stu_num WHERE T2.enroll_grade  =  'C' OR T2.enroll_grade  =  'A'
+select student.stu_fname , student.stu_lname from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM where  enroll.enroll_grade = "C" or enroll.enroll_grade = "A"
+SELECT T1.stu_fname ,  T1.stu_lname FROM student AS T1 JOIN enroll AS T2 ON T1.stu_num  =  T2.stu_num WHERE T2.enroll_grade  =  'C' OR T2.enroll_grade  =  'A'
+select student.stu_fname , student.stu_lname from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM where  enroll.enroll_grade = "C" or enroll.enroll_grade = "A"
+SELECT T2.emp_fname ,  T1.class_room FROM CLASS AS T1 JOIN employee AS T2 ON T1.prof_num  =  T2.emp_num JOIN professor AS T3 ON T2.emp_num  =  T3.emp_num JOIN department AS T4 ON T4.dept_code  =  T3.dept_code WHERE T4.dept_name  =  'Accounting'
+select employee.emp_fname , class.class_room from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM join DEPARTMENT on EMPLOYEE.EMP_NUM = DEPARTMENT.EMP_NUM join PROFESSOR on DEPARTMENT.DEPT_CODE = PROFESSOR.DEPT_CODE where  department.dept_name = "Accounting"
+SELECT T2.emp_fname ,  T1.class_room FROM CLASS AS T1 JOIN employee AS T2 ON T1.prof_num  =  T2.emp_num JOIN professor AS T3 ON T2.emp_num  =  T3.emp_num JOIN department AS T4 ON T4.dept_code  =  T3.dept_code WHERE T4.dept_name  =  'Accounting'
+select employee.emp_fname , class.class_room from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM join DEPARTMENT on EMPLOYEE.EMP_NUM = DEPARTMENT.EMP_NUM join PROFESSOR on DEPARTMENT.DEPT_CODE = PROFESSOR.DEPT_CODE where  department.dept_name = "Accounting"
+SELECT DISTINCT T2.emp_fname ,  T3.prof_high_degree FROM CLASS AS T1 JOIN employee AS T2 ON T1.prof_num  =  T2.emp_num JOIN professor AS T3 ON T2.emp_num  =  T3.emp_num JOIN department AS T4 ON T4.dept_code  =  T3.dept_code WHERE T4.dept_name  =  'Computer Info. Systems'
+select distinct employee.emp_fname , professor.prof_high_degree from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM join DEPARTMENT on EMPLOYEE.EMP_NUM = DEPARTMENT.EMP_NUM join PROFESSOR on DEPARTMENT.DEPT_CODE = PROFESSOR.DEPT_CODE where  department.dept_name = "Computer Info. Systems"
+SELECT DISTINCT T2.emp_fname ,  T3.prof_high_degree FROM CLASS AS T1 JOIN employee AS T2 ON T1.prof_num  =  T2.emp_num JOIN professor AS T3 ON T2.emp_num  =  T3.emp_num JOIN department AS T4 ON T4.dept_code  =  T3.dept_code WHERE T4.dept_name  =  'Computer Info. Systems'
+select distinct employee.emp_fname , professor.prof_high_degree from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM join DEPARTMENT on EMPLOYEE.EMP_NUM = DEPARTMENT.EMP_NUM join PROFESSOR on DEPARTMENT.DEPT_CODE = PROFESSOR.DEPT_CODE where  department.dept_name = "Computer Info. Systems"
+SELECT T1.stu_lname FROM student AS T1 JOIN enroll AS T2 ON T1.stu_num  =  T2.stu_num WHERE T2.enroll_grade  =  'A' AND T2.class_code  =  10018
+select student.stu_lname from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM where  enroll.enroll_grade = "A" and enroll.class_code = 10018
+SELECT T1.stu_lname FROM student AS T1 JOIN enroll AS T2 ON T1.stu_num  =  T2.stu_num WHERE T2.enroll_grade  =  'A' AND T2.class_code  =  10018
+select student.stu_lname from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM where  enroll.enroll_grade = "A" and enroll.class_code = 10018
+SELECT T2.emp_fname ,  T1.prof_office FROM professor AS T1 JOIN employee AS T2 ON T1.emp_num  =  T2.emp_num JOIN department AS T3 ON T1.dept_code  =  T3.dept_code WHERE T3.dept_name  =  'History' AND T1.prof_high_degree != 'Ph.D.'
+select employee.emp_fname , professor.prof_office from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE join EMPLOYEE on DEPARTMENT.EMP_NUM = EMPLOYEE.EMP_NUM where  professor.prof_high_degree != "Ph.D." and department.dept_name = "History"
+SELECT T2.emp_fname ,  T1.prof_office FROM professor AS T1 JOIN employee AS T2 ON T1.emp_num  =  T2.emp_num JOIN department AS T3 ON T1.dept_code  =  T3.dept_code WHERE T3.dept_name  =  'History' AND T1.prof_high_degree != 'Ph.D.'
+select employee.emp_fname , professor.prof_office from PROFESSOR join DEPARTMENT on PROFESSOR.DEPT_CODE = DEPARTMENT.DEPT_CODE join EMPLOYEE on DEPARTMENT.EMP_NUM = EMPLOYEE.EMP_NUM where  professor.prof_high_degree != "Ph.D." and department.dept_name = "History"
+SELECT T2.emp_fname FROM CLASS AS T1 JOIN employee AS T2 ON T1.prof_num  =  T2.emp_num GROUP BY T1.prof_num HAVING count(*)  >  1
+select employee.emp_fname from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM  group by class.prof_num having  count(*) > 1
+SELECT T2.emp_fname FROM CLASS AS T1 JOIN employee AS T2 ON T1.prof_num  =  T2.emp_num GROUP BY T1.prof_num HAVING count(*)  >  1
+select employee.emp_fname from CLASS join EMPLOYEE on CLASS.PROF_NUM = EMPLOYEE.EMP_NUM  group by class.prof_num having  count(*) > 1
+SELECT T1.stu_fname FROM student AS T1 JOIN enroll AS T2 ON T1.stu_num  =  T2.stu_num GROUP BY T2.stu_num HAVING count(*)  =  1
+select student.stu_fname from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM  group by enroll.stu_num having  count(*) = 1
+SELECT T1.stu_fname FROM student AS T1 JOIN enroll AS T2 ON T1.stu_num  =  T2.stu_num GROUP BY T2.stu_num HAVING count(*)  =  1
+select student.stu_fname from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM  group by enroll.stu_num having  count(*) = 1
+SELECT T2.dept_name FROM course AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code WHERE T1.crs_description LIKE '%Statistics%'
+select department.dept_name from COURSE join DEPARTMENT on COURSE.DEPT_CODE = DEPARTMENT.DEPT_CODE where  course.crs_description like "%Statistics%"
+SELECT T2.dept_name FROM course AS T1 JOIN department AS T2 ON T1.dept_code  =  T2.dept_code WHERE T1.crs_description LIKE '%Statistics%'
+select department.dept_name from COURSE join DEPARTMENT on COURSE.DEPT_CODE = DEPARTMENT.DEPT_CODE where  course.crs_description like "%Statistics%"
+SELECT T1.stu_fname FROM student AS T1 JOIN enroll AS T2 ON T1.stu_num  =  T2.stu_num JOIN CLASS AS T3 ON T2.class_code  =  T3.class_code WHERE T3.crs_code  =  'ACCT-211' AND T1.stu_lname LIKE 'S%'
+select student.stu_fname from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE where  class.crs_code = "ACCT-211" and student.stu_lname like "S%"
+SELECT T1.stu_fname FROM student AS T1 JOIN enroll AS T2 ON T1.stu_num  =  T2.stu_num JOIN CLASS AS T3 ON T2.class_code  =  T3.class_code WHERE T3.crs_code  =  'ACCT-211' AND T1.stu_lname LIKE 'S%'
+select student.stu_fname from ENROLL join STUDENT on ENROLL.STU_NUM = STUDENT.STU_NUM join CLASS on ENROLL.CLASS_CODE = CLASS.CLASS_CODE where  class.crs_code = "ACCT-211" and student.stu_lname like "S%"

@@ -1,0 +1,38 @@
+SELECT count(*) FROM game WHERE season  >  2007
+select count(*) from game where  game.season > 2007
+SELECT Date FROM game ORDER BY home_team DESC
+select game.date from game   order by game.home_team desc
+SELECT season ,  home_team ,  away_team FROM game
+select game.season , game.home_team , game.away_team from game
+SELECT max(home_games) ,  min(home_games) ,  avg(home_games) FROM stadium
+select max(stadium.home_games) , min(stadium.home_games) , avg(stadium.home_games) from stadium
+SELECT average_attendance FROM stadium WHERE capacity_percentage  >  100
+select stadium.average_attendance from stadium where  stadium.capacity_percentage > 100
+SELECT player ,  number_of_matches ,  SOURCE FROM injury_accident WHERE injury != 'Knee problem'
+select injury_accident.player , injury_accident.number_of_matches , injury_accident.source from injury_accident where  injury_accident.injury != "Knee problem"
+SELECT T1.season FROM game AS T1 JOIN injury_accident AS T2 ON T1.id  =  T2.game_id WHERE T2.player  =  'Walter Samuel'
+select game.season from injury_accident join game on injury_accident.game_id = game.id where  injury_accident.player = "Walter Samuel"
+SELECT T1.id ,  T1.score ,  T1.date FROM game AS T1 JOIN injury_accident AS T2 ON T2.game_id  =  T1.id GROUP BY T1.id HAVING count(*)  >=  2
+select game.id , game.score , game.date from injury_accident join game on injury_accident.game_id = game.id  group by injury_accident.game_id having  count(*) >= 2
+SELECT T1.id ,  T1.name FROM stadium AS T1 JOIN game AS T2 ON T1.id  =  T2.stadium_id JOIN injury_accident AS T3 ON T2.id  =  T3.game_id GROUP BY T1.id ORDER BY count(*) DESC LIMIT 1
+select stadium.id , stadium.name from injury_accident join game on injury_accident.game_id = game.id join stadium on game.stadium_id = stadium.id  group by stadium.id  order by count(*) desc limit 1
+SELECT T1.id ,  T1.name FROM stadium AS T1 JOIN game AS T2 ON T1.id  =  T2.stadium_id JOIN injury_accident AS T3 ON T2.id  =  T3.game_id GROUP BY T1.id ORDER BY count(*) DESC LIMIT 1
+select stadium.id , stadium.name from injury_accident join game on injury_accident.game_id = game.id join stadium on game.stadium_id = stadium.id  group by stadium.id  order by count(*) desc limit 1
+SELECT T1.season ,  T2.name FROM game AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.id JOIN injury_accident AS T3 ON T1.id  =  T3.game_id WHERE T3.injury  =  'Foot injury' OR T3.injury  =  'Knee problem'
+select game.season , stadium.name from injury_accident join game on injury_accident.game_id = game.id join stadium on game.stadium_id = stadium.id where  injury_accident.injury = "Foot injury" or injury_accident.injury = "Knee problem"
+SELECT count(DISTINCT SOURCE) FROM injury_accident
+select count( distinct injury_accident.source) from injury_accident
+SELECT count(*) FROM game WHERE id NOT IN ( SELECT game_id FROM injury_accident )
+select count(*) from game where  game.id not in (select injury_accident.game_id from injury_accident  )
+SELECT count(DISTINCT T1.injury) FROM injury_accident AS T1 JOIN game AS T2 ON T1.game_id  =  T2.id WHERE T2.season  >  2010
+select count( distinct injury_accident.injury) from injury_accident join game on injury_accident.game_id = game.id where  game.season > 2010
+SELECT T2.name FROM game AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.id JOIN injury_accident AS T3 ON T1.id  =  T3.game_id WHERE T3.player  =  'Walter Samuel' INTERSECT SELECT T2.name FROM game AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.id JOIN injury_accident AS T3 ON T1.id  =  T3.game_id WHERE T3.player  =  'Thiago Motta'
+select stadium.name from injury_accident join game on injury_accident.game_id = game.id join stadium on game.stadium_id = stadium.id where  injury_accident.player = "Walter Samuel"   intersect select stadium.name from injury_accident join game on injury_accident.game_id = game.id join stadium on game.stadium_id = stadium.id where  injury_accident.player = "Thiago Motta"
+SELECT name ,  average_attendance ,  total_attendance FROM stadium EXCEPT SELECT T2.name ,  T2.average_attendance ,  T2.total_attendance FROM game AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.id JOIN injury_accident AS T3 ON T1.id  =  T3.game_id
+select stadium.name , stadium.average_attendance , stadium.total_attendance from stadium   except select stadium.name , stadium.average_attendance , stadium.total_attendance from injury_accident join game on injury_accident.game_id = game.id join stadium on game.stadium_id = stadium.id
+SELECT name FROM stadium WHERE name LIKE "%Bank%"
+select stadium.name from stadium where  stadium.name like "%Bank%"
+SELECT T1.id ,  count(*) FROM stadium AS T1 JOIN game AS T2 ON T1.id  =  T2.stadium_id GROUP BY T1.id
+select stadium.id , count(*) from game join stadium on game.stadium_id = stadium.id  group by stadium.id
+SELECT T1.date ,  T2.player FROM game AS T1 JOIN injury_accident AS T2 ON T1.id  =  T2.game_id ORDER BY T1.season DESC
+select game.date , injury_accident.player from injury_accident join game on injury_accident.game_id = game.id   order by game.season desc

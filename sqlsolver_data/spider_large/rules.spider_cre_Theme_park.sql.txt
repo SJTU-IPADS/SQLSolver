@@ -1,0 +1,168 @@
+SELECT count(*) FROM HOTELS
+select count(*) from Hotels
+SELECT count(*) FROM HOTELS
+select count(*) from Hotels
+SELECT price_range FROM HOTELS
+select hotels.price_range from Hotels
+SELECT price_range FROM HOTELS
+select hotels.price_range from Hotels
+SELECT DISTINCT Location_Name FROM LOCATIONS
+select distinct locations.location_name from Locations
+SELECT DISTINCT Location_Name FROM LOCATIONS
+select distinct locations.location_name from Locations
+SELECT Name ,  Other_Details FROM Staff
+select staff.name , staff.other_details from Staff
+SELECT Name ,  Other_Details FROM Staff
+select staff.name , staff.other_details from Staff
+SELECT Tourist_Details FROM VISITORS
+select visitors.tourist_details from Visitors
+SELECT Tourist_Details FROM VISITORS
+select visitors.tourist_details from Visitors
+SELECT price_range FROM HOTELS WHERE star_rating_code  =  "5"
+select hotels.price_range from Hotels where  hotels.star_rating_code = "5"
+SELECT price_range FROM HOTELS WHERE star_rating_code  =  "5"
+select hotels.price_range from Hotels where  hotels.star_rating_code = "5"
+SELECT avg(price_range) FROM HOTELS WHERE star_rating_code  =  "5" AND pets_allowed_yn  =  1
+select avg(hotels.price_range) from Hotels where  hotels.star_rating_code = "5" and hotels.pets_allowed_yn = 1
+SELECT avg(price_range) FROM HOTELS WHERE star_rating_code  =  "5" AND pets_allowed_yn  =  1
+select avg(hotels.price_range) from Hotels where  hotels.star_rating_code = "5" and hotels.pets_allowed_yn = 1
+SELECT Address FROM LOCATIONS WHERE Location_Name  =  "UK Gallery"
+select locations.address from Locations where  locations.location_name = "UK Gallery"
+SELECT Address FROM LOCATIONS WHERE Location_Name  =  "UK Gallery"
+select locations.address from Locations where  locations.location_name = "UK Gallery"
+SELECT Other_Details FROM LOCATIONS WHERE Location_Name  =  "UK Gallery"
+select locations.other_details from Locations where  locations.location_name = "UK Gallery"
+SELECT Other_Details FROM LOCATIONS WHERE Location_Name  =  "UK Gallery"
+select locations.other_details from Locations where  locations.location_name = "UK Gallery"
+SELECT Location_Name FROM LOCATIONS WHERE Location_Name LIKE "%film%"
+select locations.location_name from Locations where  locations.location_name like "%film%"
+SELECT Location_Name FROM LOCATIONS WHERE Location_Name LIKE "%film%"
+select locations.location_name from Locations where  locations.location_name like "%film%"
+SELECT count(DISTINCT Name) FROM PHOTOS
+select count( distinct photos.name) from Photos
+SELECT count(DISTINCT Name) FROM PHOTOS
+select count( distinct photos.name) from Photos
+SELECT DISTINCT Visit_Date FROM VISITS
+select distinct visits.visit_date from Visits
+SELECT DISTINCT Visit_Date FROM VISITS
+select distinct visits.visit_date from Visits
+SELECT Name FROM TOURIST_ATTRACTIONS WHERE How_to_Get_There  =  "bus"
+select tourist_attractions.name from Tourist_Attractions where  tourist_attractions.how_to_get_there = "bus"
+SELECT Name FROM TOURIST_ATTRACTIONS WHERE How_to_Get_There  =  "bus"
+select tourist_attractions.name from Tourist_Attractions where  tourist_attractions.how_to_get_there = "bus"
+SELECT Name ,  Opening_Hours FROM TOURIST_ATTRACTIONS WHERE How_to_Get_There  =  "bus" OR How_to_Get_There  =  "walk"
+select tourist_attractions.name , tourist_attractions.opening_hours from Tourist_Attractions where  tourist_attractions.how_to_get_there = "bus" or tourist_attractions.how_to_get_there = "walk"
+SELECT Name ,  Opening_Hours FROM TOURIST_ATTRACTIONS WHERE How_to_Get_There  =  "bus" OR How_to_Get_There  =  "walk"
+select tourist_attractions.name , tourist_attractions.opening_hours from Tourist_Attractions where  tourist_attractions.how_to_get_there = "bus" or tourist_attractions.how_to_get_there = "walk"
+SELECT T2.star_rating_description FROM HOTELS AS T1 JOIN Ref_Hotel_Star_Ratings AS T2 ON T1.star_rating_code  =  T2.star_rating_code WHERE T1.price_range  >  10000
+select ref_hotel_star_ratings.star_rating_description from Hotels join Ref_Hotel_Star_Ratings on Hotels.star_rating_code = Ref_Hotel_Star_Ratings.star_rating_code where  hotels.price_range > 10000
+SELECT T2.star_rating_description FROM HOTELS AS T1 JOIN Ref_Hotel_Star_Ratings AS T2 ON T1.star_rating_code  =  T2.star_rating_code WHERE T1.price_range  >  10000
+select ref_hotel_star_ratings.star_rating_description from Hotels join Ref_Hotel_Star_Ratings on Hotels.star_rating_code = Ref_Hotel_Star_Ratings.star_rating_code where  hotels.price_range > 10000
+SELECT T1.Museum_Details ,  T2.Opening_Hours FROM MUSEUMS AS T1 JOIN TOURIST_ATTRACTIONS AS T2 ON T1.Museum_ID  =  T2.Tourist_Attraction_ID
+select museums.museum_details , tourist_attractions.opening_hours from Museums join Tourist_Attractions on Museums.Museum_ID = Tourist_Attractions.Tourist_Attraction_ID
+SELECT T1.Museum_Details ,  T2.Opening_Hours FROM MUSEUMS AS T1 JOIN TOURIST_ATTRACTIONS AS T2 ON T1.Museum_ID  =  T2.Tourist_Attraction_ID
+select museums.museum_details , tourist_attractions.opening_hours from Museums join Tourist_Attractions on Museums.Museum_ID = Tourist_Attractions.Tourist_Attraction_ID
+SELECT T2.Name FROM PHOTOS AS T1 JOIN TOURIST_ATTRACTIONS AS T2 ON T1.Tourist_Attraction_ID  =  T2.Tourist_Attraction_ID WHERE T1.Name  =  "game1"
+select tourist_attractions.name from Photos join Tourist_Attractions on Photos.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  photos.name = "game1"
+SELECT T2.Name FROM PHOTOS AS T1 JOIN TOURIST_ATTRACTIONS AS T2 ON T1.Tourist_Attraction_ID  =  T2.Tourist_Attraction_ID WHERE T1.Name  =  "game1"
+select tourist_attractions.name from Photos join Tourist_Attractions on Photos.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  photos.name = "game1"
+SELECT T1.Name ,  T1.Description FROM PHOTOS AS T1 JOIN TOURIST_ATTRACTIONS AS T2 ON T1.Tourist_Attraction_ID  =  T2.Tourist_Attraction_ID WHERE T2.Name  =  "film festival"
+select photos.name , photos.description from Photos join Tourist_Attractions on Photos.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  tourist_attractions.name = "film festival"
+SELECT T1.Name ,  T1.Description FROM PHOTOS AS T1 JOIN TOURIST_ATTRACTIONS AS T2 ON T1.Tourist_Attraction_ID  =  T2.Tourist_Attraction_ID WHERE T2.Name  =  "film festival"
+select photos.name , photos.description from Photos join Tourist_Attractions on Photos.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  tourist_attractions.name = "film festival"
+SELECT T1.Royal_Family_Details ,  T2.How_to_Get_There FROM ROYAL_FAMILY AS T1 JOIN TOURIST_ATTRACTIONS AS T2 ON T1.Royal_Family_ID  =  T2.Tourist_Attraction_ID
+select royal_family.royal_family_details , tourist_attractions.how_to_get_there from Royal_Family join Tourist_Attractions on Royal_Family.Royal_Family_ID = Tourist_Attractions.Tourist_Attraction_ID
+SELECT T1.Royal_Family_Details ,  T2.How_to_Get_There FROM ROYAL_FAMILY AS T1 JOIN TOURIST_ATTRACTIONS AS T2 ON T1.Royal_Family_ID  =  T2.Tourist_Attraction_ID
+select royal_family.royal_family_details , tourist_attractions.how_to_get_there from Royal_Family join Tourist_Attractions on Royal_Family.Royal_Family_ID = Tourist_Attractions.Tourist_Attraction_ID
+SELECT T1.Shop_Details FROM SHOPS AS T1 JOIN TOURIST_ATTRACTIONS AS T2 ON T1.Shop_ID  =  T2.Tourist_Attraction_ID WHERE T2.How_to_Get_There  =  "walk"
+select shops.shop_details from Shops join Tourist_Attractions on Shops.Shop_ID = Tourist_Attractions.Tourist_Attraction_ID where  tourist_attractions.how_to_get_there = "walk"
+SELECT T1.Shop_Details FROM SHOPS AS T1 JOIN TOURIST_ATTRACTIONS AS T2 ON T1.Shop_ID  =  T2.Tourist_Attraction_ID WHERE T2.How_to_Get_There  =  "walk"
+select shops.shop_details from Shops join Tourist_Attractions on Shops.Shop_ID = Tourist_Attractions.Tourist_Attraction_ID where  tourist_attractions.how_to_get_there = "walk"
+SELECT T1.Name FROM STAFF AS T1 JOIN TOURIST_ATTRACTIONS AS T2 ON T1.Tourist_Attraction_ID  =  T2.Tourist_Attraction_ID WHERE T2.Name  =  "US museum"
+select staff.name from Staff join Tourist_Attractions on Staff.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  tourist_attractions.name = "US museum"
+SELECT T1.Name FROM STAFF AS T1 JOIN TOURIST_ATTRACTIONS AS T2 ON T1.Tourist_Attraction_ID  =  T2.Tourist_Attraction_ID WHERE T2.Name  =  "US museum"
+select staff.name from Staff join Tourist_Attractions on Staff.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  tourist_attractions.name = "US museum"
+SELECT T1.Market_Details FROM Street_Markets AS T1 JOIN TOURIST_ATTRACTIONS AS T2 ON T1.Market_ID  =  T2.Tourist_Attraction_ID WHERE T2.How_to_Get_There  =  "walk" OR  T2.How_to_Get_There  =  "bus"
+select street_markets.market_details from Street_Markets join Tourist_Attractions on Street_Markets.Market_ID = Tourist_Attractions.Tourist_Attraction_ID where  tourist_attractions.how_to_get_there = "walk" or tourist_attractions.how_to_get_there = "bus"
+SELECT T1.Market_Details FROM Street_Markets AS T1 JOIN TOURIST_ATTRACTIONS AS T2 ON T1.Market_ID  =  T2.Tourist_Attraction_ID WHERE T2.How_to_Get_There  =  "walk" OR  T2.How_to_Get_There  =  "bus"
+select street_markets.market_details from Street_Markets join Tourist_Attractions on Street_Markets.Market_ID = Tourist_Attractions.Tourist_Attraction_ID where  tourist_attractions.how_to_get_there = "walk" or tourist_attractions.how_to_get_there = "bus"
+SELECT T2.Visit_Date ,  T2.Visit_Details FROM VISITORS AS T1 JOIN VISITS AS T2 ON T1.Tourist_ID  =  T2.Tourist_ID WHERE T1.Tourist_Details  =  "Vincent"
+select visits.visit_date , visits.visit_details from Visits join Visitors on Visits.Tourist_ID = Visitors.Tourist_ID where  visitors.tourist_details = "Vincent"
+SELECT T2.Visit_Date ,  T2.Visit_Details FROM VISITORS AS T1 JOIN VISITS AS T2 ON T1.Tourist_ID  =  T2.Tourist_ID WHERE T1.Tourist_Details  =  "Vincent"
+select visits.visit_date , visits.visit_details from Visits join Visitors on Visits.Tourist_ID = Visitors.Tourist_ID where  visitors.tourist_details = "Vincent"
+SELECT T1.Name FROM Tourist_Attractions AS T1 JOIN VISITS AS T2 ON T1.Tourist_Attraction_ID  =  T2.Tourist_Attraction_ID JOIN VISITORS AS T3 ON T2.Tourist_ID  =  T3.Tourist_ID WHERE T3.Tourist_Details  =  "Vincent"
+select tourist_attractions.name from Visits join Visitors on Visits.Tourist_ID = Visitors.Tourist_ID join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  visitors.tourist_details = "Vincent"
+SELECT T1.Name FROM Tourist_Attractions AS T1 JOIN VISITS AS T2 ON T1.Tourist_Attraction_ID  =  T2.Tourist_Attraction_ID JOIN VISITORS AS T3 ON T2.Tourist_ID  =  T3.Tourist_ID WHERE T3.Tourist_Details  =  "Vincent"
+select tourist_attractions.name from Visits join Visitors on Visits.Tourist_ID = Visitors.Tourist_ID join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  visitors.tourist_details = "Vincent"
+SELECT T1.Name ,  T3.Visit_Date FROM Tourist_Attractions AS T1 JOIN VISITORS AS T2 JOIN VISITS AS T3 ON T1.Tourist_Attraction_ID  =  T3.Tourist_Attraction_ID AND T2.Tourist_ID  =  T3.Tourist_ID WHERE T2.Tourist_Details  =  "Vincent" OR T2.Tourist_Details  =  "Vivian"
+select tourist_attractions.name , visits.visit_date from Visits join Visitors on Visits.Tourist_ID = Visitors.Tourist_ID join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  visitors.tourist_details = "Vincent" or visitors.tourist_details = "Vivian"
+SELECT T1.Name ,  T3.Visit_Date FROM Tourist_Attractions AS T1 JOIN VISITORS AS T2 JOIN VISITS AS T3 ON T1.Tourist_Attraction_ID  =  T3.Tourist_Attraction_ID AND T2.Tourist_ID  =  T3.Tourist_ID WHERE T2.Tourist_Details  =  "Vincent" OR T2.Tourist_Details  =  "Vivian"
+select tourist_attractions.name , visits.visit_date from Visits join Visitors on Visits.Tourist_ID = Visitors.Tourist_ID join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  visitors.tourist_details = "Vincent" or visitors.tourist_details = "Vivian"
+SELECT star_rating_code ,  avg(price_range) FROM HOTELS GROUP BY star_rating_code
+select hotels.star_rating_code , avg(hotels.price_range) from Hotels  group by hotels.star_rating_code
+SELECT star_rating_code ,  avg(price_range) FROM HOTELS GROUP BY star_rating_code
+select hotels.star_rating_code , avg(hotels.price_range) from Hotels  group by hotels.star_rating_code
+SELECT pets_allowed_yn ,  avg(price_range) FROM HOTELS GROUP BY pets_allowed_yn
+select hotels.pets_allowed_yn , avg(hotels.price_range) from Hotels  group by hotels.pets_allowed_yn
+SELECT pets_allowed_yn ,  avg(price_range) FROM HOTELS GROUP BY pets_allowed_yn
+select hotels.pets_allowed_yn , avg(hotels.price_range) from Hotels  group by hotels.pets_allowed_yn
+SELECT hotel_id ,  star_rating_code FROM HOTELS ORDER BY price_range ASC
+select hotels.hotel_id , hotels.star_rating_code from Hotels   order by hotels.price_range asc
+SELECT hotel_id ,  star_rating_code FROM HOTELS ORDER BY price_range ASC
+select hotels.hotel_id , hotels.star_rating_code from Hotels   order by hotels.price_range asc
+SELECT other_hotel_details FROM HOTELS ORDER BY price_range DESC LIMIT 3
+select hotels.other_hotel_details from Hotels   order by hotels.price_range desc limit 3
+SELECT other_hotel_details FROM HOTELS ORDER BY price_range DESC LIMIT 3
+select hotels.other_hotel_details from Hotels   order by hotels.price_range desc limit 3
+SELECT other_hotel_details ,  star_rating_code FROM HOTELS ORDER BY price_range ASC LIMIT 3
+select hotels.other_hotel_details , hotels.star_rating_code from Hotels   order by hotels.price_range asc limit 3
+SELECT other_hotel_details ,  star_rating_code FROM HOTELS ORDER BY price_range ASC LIMIT 3
+select hotels.other_hotel_details , hotels.star_rating_code from Hotels   order by hotels.price_range asc limit 3
+SELECT How_to_Get_There FROM Tourist_Attractions GROUP BY How_to_Get_There ORDER BY COUNT(*) DESC LIMIT 1
+select tourist_attractions.how_to_get_there from Tourist_Attractions  group by tourist_attractions.how_to_get_there  order by count(*) desc limit 1
+SELECT How_to_Get_There FROM Tourist_Attractions GROUP BY How_to_Get_There ORDER BY COUNT(*) DESC LIMIT 1
+select tourist_attractions.how_to_get_there from Tourist_Attractions  group by tourist_attractions.how_to_get_there  order by count(*) desc limit 1
+SELECT T1.Attraction_Type_Description ,  T2.Attraction_Type_Code FROM Ref_Attraction_Types AS T1 JOIN Tourist_Attractions AS T2 ON T1.Attraction_Type_Code  =  T2.Attraction_Type_Code GROUP BY T2.Attraction_Type_Code ORDER BY COUNT(*) DESC LIMIT 1
+select ref_attraction_types.attraction_type_description , tourist_attractions.attraction_type_code from Tourist_Attractions join Ref_Attraction_Types on Tourist_Attractions.Attraction_Type_Code = Ref_Attraction_Types.Attraction_Type_Code  group by tourist_attractions.attraction_type_code  order by count(*) desc limit 1
+SELECT T1.Attraction_Type_Description ,  T2.Attraction_Type_Code FROM Ref_Attraction_Types AS T1 JOIN Tourist_Attractions AS T2 ON T1.Attraction_Type_Code  =  T2.Attraction_Type_Code GROUP BY T2.Attraction_Type_Code ORDER BY COUNT(*) DESC LIMIT 1
+select ref_attraction_types.attraction_type_description , tourist_attractions.attraction_type_code from Tourist_Attractions join Ref_Attraction_Types on Tourist_Attractions.Attraction_Type_Code = Ref_Attraction_Types.Attraction_Type_Code  group by tourist_attractions.attraction_type_code  order by count(*) desc limit 1
+SELECT How_to_Get_There ,  COUNT(*) FROM Tourist_Attractions GROUP BY How_to_Get_There
+select tourist_attractions.how_to_get_there , count(*) from Tourist_Attractions  group by tourist_attractions.how_to_get_there
+SELECT How_to_Get_There ,  COUNT(*) FROM Tourist_Attractions GROUP BY How_to_Get_There
+select tourist_attractions.how_to_get_there , count(*) from Tourist_Attractions  group by tourist_attractions.how_to_get_there
+SELECT T1.Name ,  T2.Tourist_Attraction_ID ,   COUNT(*) FROM Tourist_Attractions AS T1 JOIN VISITS AS T2 ON T1.Tourist_Attraction_ID  =  T2.Tourist_Attraction_ID GROUP BY T2.Tourist_Attraction_ID
+select tourist_attractions.name , tourist_attractions.tourist_attraction_id , count(*) from Visits join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID  group by visits.tourist_attraction_id
+SELECT T1.Name ,  T2.Tourist_Attraction_ID ,   COUNT(*) FROM Tourist_Attractions AS T1 JOIN VISITS AS T2 ON T1.Tourist_Attraction_ID  =  T2.Tourist_Attraction_ID GROUP BY T2.Tourist_Attraction_ID
+select tourist_attractions.name , tourist_attractions.tourist_attraction_id , count(*) from Visits join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID  group by visits.tourist_attraction_id
+SELECT T1.Name ,  T2.Tourist_Attraction_ID FROM Tourist_Attractions AS T1 JOIN VISITS AS T2 ON T1.Tourist_Attraction_ID  =  T2.Tourist_Attraction_ID GROUP BY T2.Tourist_Attraction_ID HAVING count(*)  >=  2
+select tourist_attractions.name , visits.tourist_attraction_id from Visits join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID  group by visits.tourist_attraction_id having  count(*) >= 2
+SELECT T1.Name ,  T2.Tourist_Attraction_ID FROM Tourist_Attractions AS T1 JOIN VISITS AS T2 ON T1.Tourist_Attraction_ID  =  T2.Tourist_Attraction_ID GROUP BY T2.Tourist_Attraction_ID HAVING count(*)  >=  2
+select tourist_attractions.name , tourist_attractions.tourist_attraction_id from Visits join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID  group by visits.tourist_attraction_id having  count(*) >= 2
+SELECT T1.Name ,  T1.Tourist_Attraction_ID FROM Tourist_Attractions AS T1 JOIN VISITS AS T2 ON T1.Tourist_Attraction_ID  =  T2.Tourist_Attraction_ID GROUP BY T2.Tourist_Attraction_ID HAVING count(*)  <=  1
+select tourist_attractions.name , tourist_attractions.tourist_attraction_id from Visits join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID  group by visits.tourist_attraction_id having  count(*) < 1
+SELECT T1.Name ,  T1.Tourist_Attraction_ID FROM Tourist_Attractions AS T1 JOIN VISITS AS T2 ON T1.Tourist_Attraction_ID  =  T2.Tourist_Attraction_ID GROUP BY T2.Tourist_Attraction_ID HAVING count(*)  <=  1
+select tourist_attractions.name , tourist_attractions.tourist_attraction_id from Visits join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID  group by visits.tourist_attraction_id having  count(*) < 1
+SELECT T2.Name FROM Locations AS T1 JOIN Tourist_Attractions AS T2 ON T1.Location_ID  =  T2.Location_ID WHERE T1.Address  =  "660 Shea Crescent" OR T2.How_to_Get_There  =  "walk"
+select tourist_attractions.name from Tourist_Attractions join Locations on Tourist_Attractions.Location_ID = Locations.Location_ID where  locations.address = "660 Shea Crescent" or tourist_attractions.how_to_get_there = "walk"
+SELECT T2.Name FROM Locations AS T1 JOIN Tourist_Attractions AS T2 ON T1.Location_ID  =  T2.Location_ID WHERE T1.Address  =  "660 Shea Crescent" OR T2.How_to_Get_There  =  "walk"
+select tourist_attractions.name from Tourist_Attractions join Locations on Tourist_Attractions.Location_ID = Locations.Location_ID where  locations.address = "660 Shea Crescent" or tourist_attractions.how_to_get_there = "walk"
+SELECT T1.Name FROM Tourist_Attractions AS T1 JOIN Tourist_Attraction_Features AS T2 ON T1.tourist_attraction_id  =  T2.tourist_attraction_id JOIN Features AS T3 ON T2.Feature_ID  =  T3.Feature_ID WHERE T3.feature_Details  =  'park' UNION SELECT T1.Name FROM Tourist_Attractions AS T1 JOIN Tourist_Attraction_Features AS T2 ON T1.tourist_attraction_id  =  T2.tourist_attraction_id JOIN Features AS T3 ON T2.Feature_ID  =  T3.Feature_ID WHERE T3.feature_Details  =  'shopping'
+select tourist_attractions.name from Tourist_Attraction_Features join Features on Tourist_Attraction_Features.Feature_ID = Features.Feature_ID join Tourist_Attractions on Tourist_Attraction_Features.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  features.feature_details = "park" or features.feature_details = "shopping"
+SELECT T1.Name FROM Tourist_Attractions AS T1 JOIN Tourist_Attraction_Features AS T2 ON T1.tourist_attraction_id  =  T2.tourist_attraction_id JOIN Features AS T3 ON T2.Feature_ID  =  T3.Feature_ID WHERE T3.feature_Details  =  'park' UNION SELECT T1.Name FROM Tourist_Attractions AS T1 JOIN Tourist_Attraction_Features AS T2 ON T1.tourist_attraction_id  =  T2.tourist_attraction_id JOIN Features AS T3 ON T2.Feature_ID  =  T3.Feature_ID WHERE T3.feature_Details  =  'shopping'
+select tourist_attractions.name from Tourist_Attraction_Features join Features on Tourist_Attraction_Features.Feature_ID = Features.Feature_ID join Tourist_Attractions on Tourist_Attraction_Features.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  features.feature_details = "park" or features.feature_details = "shopping"
+SELECT T2.Name FROM Locations AS T1 JOIN Tourist_Attractions AS T2 ON T1.Location_ID  =  T2.Location_ID WHERE T1.Address  =  "254 Ottilie Junction" OR T2.How_to_Get_There  =  "bus"
+select tourist_attractions.name from Tourist_Attractions join Locations on Tourist_Attractions.Location_ID = Locations.Location_ID where  locations.address = "254 Ottilie Junction" or tourist_attractions.how_to_get_there = "bus"
+SELECT T2.Name FROM Locations AS T1 JOIN Tourist_Attractions AS T2 ON T1.Location_ID  =  T2.Location_ID WHERE T1.Address  =  "254 Ottilie Junction" OR T2.How_to_Get_There  =  "bus"
+select tourist_attractions.name from Tourist_Attractions join Locations on Tourist_Attractions.Location_ID = Locations.Location_ID where  locations.address = "254 Ottilie Junction" or tourist_attractions.how_to_get_there = "bus"
+SELECT T1.Name FROM Tourist_Attractions AS T1 JOIN VISITORS AS T2 JOIN VISITS AS T3 ON T1.Tourist_Attraction_ID  =  T3.Tourist_Attraction_ID AND T2.Tourist_ID  =  T3.Tourist_ID WHERE T2.Tourist_Details  =  "Vincent" INTERSECT SELECT T1.Name FROM Tourist_Attractions AS T1 JOIN VISITORS AS T2 JOIN VISITS AS T3 ON T1.Tourist_Attraction_ID  =  T3.Tourist_Attraction_ID AND T2.Tourist_ID  =  T3.Tourist_ID WHERE T2.Tourist_Details  =  "Marcelle"
+select tourist_attractions.name from Visits join Visitors on Visits.Tourist_ID = Visitors.Tourist_ID join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  visitors.tourist_details = "Vincent"   intersect select tourist_attractions.name from Visits join Visitors on Visits.Tourist_ID = Visitors.Tourist_ID join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  visitors.tourist_details = "Marcelle"
+SELECT T1.Name FROM Tourist_Attractions AS T1 JOIN VISITORS AS T2 JOIN VISITS AS T3 ON T1.Tourist_Attraction_ID  =  T3.Tourist_Attraction_ID AND T2.Tourist_ID  =  T3.Tourist_ID WHERE T2.Tourist_Details  =  "Vincent" INTERSECT SELECT T1.Name FROM Tourist_Attractions AS T1 JOIN VISITORS AS T2 JOIN VISITS AS T3 ON T1.Tourist_Attraction_ID  =  T3.Tourist_Attraction_ID AND T2.Tourist_ID  =  T3.Tourist_ID WHERE T2.Tourist_Details  =  "Marcelle"
+select tourist_attractions.name from Visits join Visitors on Visits.Tourist_ID = Visitors.Tourist_ID join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  visitors.tourist_details = "Vincent"   intersect select tourist_attractions.name from Visits join Visitors on Visits.Tourist_ID = Visitors.Tourist_ID join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  visitors.tourist_details = "Marcelle"
+SELECT T1.Name FROM Tourist_Attractions AS T1 JOIN VISITORS AS T2 JOIN VISITS AS T3 ON T1.Tourist_Attraction_ID  =  T3.Tourist_Attraction_ID AND T2.Tourist_ID  =  T3.Tourist_ID WHERE T2.Tourist_Details  =  "Alison" EXCEPT SELECT T1.Name FROM Tourist_Attractions AS T1 JOIN VISITORS AS T2 JOIN VISITS AS T3 ON T1.Tourist_Attraction_ID  =  T3.Tourist_Attraction_ID AND T2.Tourist_ID  =  T3.Tourist_ID WHERE T2.Tourist_Details  =  "Rosalind"
+select tourist_attractions.name from Visits join Visitors on Visits.Tourist_ID = Visitors.Tourist_ID join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  visitors.tourist_details = "Alison"   except select tourist_attractions.name from Visits join Visitors on Visits.Tourist_ID = Visitors.Tourist_ID join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  visitors.tourist_details = "Rosalind"
+SELECT T1.Name FROM Tourist_Attractions AS T1 JOIN VISITORS AS T2 JOIN VISITS AS T3 ON T1.Tourist_Attraction_ID  =  T3.Tourist_Attraction_ID AND T2.Tourist_ID  =  T3.Tourist_ID WHERE T2.Tourist_Details  =  "Alison" EXCEPT SELECT T1.Name FROM Tourist_Attractions AS T1 JOIN VISITORS AS T2 JOIN VISITS AS T3 ON T1.Tourist_Attraction_ID  =  T3.Tourist_Attraction_ID AND T2.Tourist_ID  =  T3.Tourist_ID WHERE T2.Tourist_Details  =  "Rosalind"
+select tourist_attractions.name from Visits join Visitors on Visits.Tourist_ID = Visitors.Tourist_ID join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  visitors.tourist_details = "Alison"   except select tourist_attractions.name from Visits join Visitors on Visits.Tourist_ID = Visitors.Tourist_ID join Tourist_Attractions on Visits.Tourist_Attraction_ID = Tourist_Attractions.Tourist_Attraction_ID where  visitors.tourist_details = "Rosalind"
+SELECT count(*) FROM Visitors WHERE Tourist_ID NOT IN ( SELECT Tourist_ID FROM Visits )
+select count(*) from Visitors where  visitors.tourist_id not in (select Visits.Tourist_ID from Visits  )
+SELECT count(*) FROM Visitors WHERE Tourist_ID NOT IN ( SELECT Tourist_ID FROM Visits )
+select count(*) from Visitors where  visitors.tourist_id not in (select Visits.Tourist_ID from Visits  )

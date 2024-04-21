@@ -1,0 +1,46 @@
+SELECT count(*) FROM station
+select count(*) from station
+SELECT name ,  LOCATION ,  number_of_platforms FROM station
+select station.name , station.location , station.number_of_platforms from station
+SELECT DISTINCT LOCATION FROM station
+select distinct station.location from station
+SELECT name ,  total_passengers FROM station WHERE LOCATION != 'London'
+select station.name , station.total_passengers from station where  station.location != "London"
+SELECT name ,  main_services FROM station ORDER BY total_passengers DESC LIMIT 3
+select station.name , station.main_services from station   order by station.total_passengers desc limit 3
+SELECT avg(total_passengers) ,  max(total_passengers) FROM station WHERE LOCATION  =  'London' OR LOCATION  =  'Glasgow'
+select avg(station.total_passengers) , max(station.total_passengers) from station where  station.location = "London" or station.location = "Glasgow"
+SELECT LOCATION ,  sum(number_of_platforms) ,  sum(total_passengers) FROM station GROUP BY LOCATION
+select station.location , sum(station.number_of_platforms) , sum(station.total_passengers) from station  group by station.location
+SELECT DISTINCT LOCATION FROM station WHERE number_of_platforms  >=  15 AND total_passengers  >  25
+select distinct station.location from station where  station.number_of_platforms >= 15 and station.total_passengers > 25
+SELECT LOCATION FROM station EXCEPT SELECT LOCATION FROM station WHERE number_of_platforms  >=  15
+select station.location from station   except select station.location from station where  station.number_of_platforms >= 15
+SELECT LOCATION FROM station GROUP BY LOCATION ORDER BY count(*) DESC LIMIT 1
+select station.location from station  group by station.location  order by count(*) desc limit 1
+SELECT name ,  TIME ,  service FROM train
+select train.name , train.time , train.service from train
+SELECT count(*) FROM train
+select count(*) from train
+SELECT name ,  service FROM train ORDER BY TIME
+select train.name , train.service from train   order by train.time asc
+SELECT T2.name ,  count(*) FROM train_station AS T1 JOIN station AS T2 ON T1.station_id  =  T2.station_id GROUP BY T1.station_id
+select station.name , count(*) from train_station join station on train_station.Station_ID = station.Station_ID  group by train_station.station_id
+SELECT T2.name ,  T3.name FROM train_station AS T1 JOIN station AS T2 ON T1.station_id  =  T2.station_id JOIN train AS T3 ON T3.train_id  =  T1.train_id
+select station.name , train.name from train_station join station on train_station.Station_ID = station.Station_ID join train on train_station.Train_ID = train.Train_ID
+SELECT T3.name ,  T3.time FROM train_station AS T1 JOIN station AS T2 ON T1.station_id  =  T2.station_id JOIN train AS T3 ON T3.train_id  =  T1.train_id WHERE T2.location  =  'London' ORDER BY T3.time DESC
+select train.name , train.time from train_station join station on train_station.Station_ID = station.Station_ID join train on train_station.Train_ID = train.Train_ID where  station.location = "London"   order by train.time desc
+SELECT T2.name FROM train_station AS T1 JOIN station AS T2 ON T1.station_id  =  T2.station_id GROUP BY T1.station_id ORDER BY count(*) DESC LIMIT 1
+select station.name from train_station join station on train_station.Station_ID = station.Station_ID  group by train_station.station_id  order by count(*) desc limit 1
+SELECT T2.name FROM train_station AS T1 JOIN station AS T2 ON T1.station_id  =  T2.station_id GROUP BY T1.station_id HAVING count(*)  >=  2
+select station.name from train_station join station on train_station.Station_ID = station.Station_ID  group by train_station.station_id having  count(*) >= 2
+SELECT LOCATION FROM station GROUP BY LOCATION HAVING count(*)  =  1
+select station.location from station  group by station.location having  count(*) = 1
+SELECT name FROM station WHERE station_id NOT IN (SELECT station_id FROM train_station)
+select station.name from station where  station.station_id not in (select train_station.Station_ID from train_station  )
+SELECT T2.name FROM train_station AS T1 JOIN station AS T2 ON T1.station_id  =  T2.station_id JOIN train AS T3 ON T3.train_id  =  T1.train_id WHERE T3.Name  =  "Ananthapuri Express" INTERSECT SELECT T2.name FROM train_station AS T1 JOIN station AS T2 ON T1.station_id  =  T2.station_id JOIN train AS T3 ON T3.train_id  =  T1.train_id WHERE T3.Name  =  "Guruvayur Express"
+select station.name from train_station join station on train_station.Station_ID = station.Station_ID join train on train_station.Train_ID = train.Train_ID where  train.name = "Ananthapuri Express"   intersect select station.name from train_station join station on train_station.Station_ID = station.Station_ID join train on train_station.Train_ID = train.Train_ID where  train.name = "Guruvayur Express"
+SELECT T2.name FROM train_station AS T1 JOIN train AS T2 ON T1.train_id  =  T2.train_id WHERE T1.station_id NOT IN (SELECT T4.station_id FROM train_station AS T3 JOIN station AS T4 ON T3.station_id  =  T4.station_id WHERE t4.location  =  "London")
+select train.name from train_station join train on train_station.Train_ID = train.Train_ID where  train_station.station_id not in (select station.Station_ID from station where  station.location = "London"  )
+SELECT name ,  LOCATION FROM station ORDER BY Annual_entry_exit ,  Annual_interchanges
+select station.name , station.location from station   order by station.annual_entry_exit,station.annual_interchanges asc

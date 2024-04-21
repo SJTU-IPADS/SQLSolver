@@ -1,0 +1,80 @@
+SELECT count(*) FROM actor
+select count(*) from actor
+SELECT count(*) FROM actor
+select count(*) from actor
+SELECT Name FROM actor ORDER BY Name ASC
+select actor.name from actor   order by actor.name asc
+SELECT Name FROM actor ORDER BY Name ASC
+select actor.name from actor   order by actor.name asc
+SELECT Character ,  Duration FROM actor
+select actor.character , actor.duration from actor
+SELECT Character ,  Duration FROM actor
+select actor.character , actor.duration from actor
+SELECT Name FROM actor WHERE Age != 20
+select actor.name from actor where  actor.age != 20
+SELECT Name FROM actor WHERE Age != 20
+select actor.name from actor where  actor.age != 20
+SELECT Character FROM actor ORDER BY age DESC
+select actor.character from actor   order by actor.age desc
+SELECT Character FROM actor ORDER BY age DESC
+select actor.character from actor   order by actor.age desc
+SELECT Duration FROM actor ORDER BY Age DESC LIMIT 1
+select actor.duration from actor   order by actor.age desc limit 1
+SELECT Duration FROM actor ORDER BY Age DESC LIMIT 1
+select actor.duration from actor   order by actor.age desc limit 1
+SELECT Name FROM musical WHERE Nominee  =  "Bob Fosse"
+select musical.name from musical where  musical.nominee = "Bob Fosse"
+SELECT Name FROM musical WHERE Nominee  =  "Bob Fosse"
+select musical.name from musical where  musical.nominee = "Bob Fosse"
+SELECT DISTINCT Nominee FROM musical WHERE Award != "Tony Award"
+select distinct musical.nominee from musical where  musical.award != "Tony Award"
+SELECT DISTINCT Nominee FROM musical WHERE Award != "Tony Award"
+select distinct musical.nominee from musical where  musical.award != "Tony Award"
+SELECT T1.Name ,  T2.Name FROM actor AS T1 JOIN musical AS T2 ON T1.Musical_ID  =  T2.Musical_ID
+select actor.name , musical.name from musical join actor on musical.Musical_ID = actor.Musical_ID
+SELECT T1.Name ,  T2.Name FROM actor AS T1 JOIN musical AS T2 ON T1.Musical_ID  =  T2.Musical_ID
+select actor.name , musical.name from musical join actor on musical.Musical_ID = actor.Musical_ID
+SELECT T1.Name FROM actor AS T1 JOIN musical AS T2 ON T1.Musical_ID  =  T2.Musical_ID WHERE T2.Name  =  "The Phantom of the Opera"
+select actor.name from musical join actor on musical.Musical_ID = actor.Musical_ID where  musical.name = "The Phantom of the Opera"
+SELECT T1.Name FROM actor AS T1 JOIN musical AS T2 ON T1.Musical_ID  =  T2.Musical_ID WHERE T2.Name  =  "The Phantom of the Opera"
+select actor.name from musical join actor on musical.Musical_ID = actor.Musical_ID where  musical.name = "The Phantom of the Opera"
+SELECT T1.Name FROM actor AS T1 JOIN musical AS T2 ON T1.Musical_ID  =  T2.Musical_ID ORDER BY T2.Year DESC
+select actor.name from musical join actor on musical.Musical_ID = actor.Musical_ID   order by musical.year desc
+SELECT T1.Name FROM actor AS T1 JOIN musical AS T2 ON T1.Musical_ID  =  T2.Musical_ID ORDER BY T2.Year DESC
+select actor.name from musical join actor on musical.Musical_ID = actor.Musical_ID   order by musical.year desc
+SELECT T2.Name ,  COUNT(*) FROM actor AS T1 JOIN musical AS T2 ON T1.Musical_ID  =  T2.Musical_ID GROUP BY T1.Musical_ID
+select musical.name , count(*) from musical join actor on musical.Musical_ID = actor.Musical_ID  group by actor.musical_id
+SELECT T2.Name ,  COUNT(*) FROM actor AS T1 JOIN musical AS T2 ON T1.Musical_ID  =  T2.Musical_ID GROUP BY T1.Musical_ID
+select musical.name , count(*) from musical join actor on musical.Musical_ID = actor.Musical_ID  group by actor.musical_id
+SELECT T2.Name FROM actor AS T1 JOIN musical AS T2 ON T1.Musical_ID  =  T2.Musical_ID GROUP BY T1.Musical_ID HAVING COUNT(*)  >=  3
+select musical.name from musical join actor on musical.Musical_ID = actor.Musical_ID  group by actor.musical_id having  count(*) >= 3
+SELECT T2.Name FROM actor AS T1 JOIN musical AS T2 ON T1.Musical_ID  =  T2.Musical_ID GROUP BY T1.Musical_ID HAVING COUNT(*)  >=  3
+select musical.name from musical join actor on musical.Musical_ID = actor.Musical_ID  group by actor.musical_id having  count(*) >= 3
+SELECT Nominee ,  COUNT(*) FROM musical GROUP BY Nominee
+select musical.nominee , count(*) from musical  group by musical.nominee
+SELECT Nominee ,  COUNT(*) FROM musical GROUP BY Nominee
+select musical.nominee , count(*) from musical  group by musical.nominee
+SELECT Nominee FROM musical GROUP BY Nominee ORDER BY COUNT(*) DESC LIMIT 1
+select musical.nominee from musical  group by musical.nominee  order by count(*) desc limit 1
+SELECT Nominee FROM musical GROUP BY Nominee ORDER BY COUNT(*) DESC LIMIT 1
+select musical.nominee from musical  group by musical.nominee  order by count(*) desc limit 1
+SELECT RESULT FROM musical GROUP BY RESULT ORDER BY COUNT(*) DESC LIMIT 1
+select musical.result from musical  group by musical.result  order by count(*) desc limit 1
+SELECT RESULT FROM musical GROUP BY RESULT ORDER BY COUNT(*) DESC LIMIT 1
+select musical.result from musical  group by musical.result  order by count(*) desc limit 1
+SELECT Nominee FROM musical GROUP BY Nominee HAVING COUNT(*)  >  2
+select musical.nominee from musical  group by musical.nominee having  count(*) > 2
+SELECT Nominee FROM musical GROUP BY Nominee HAVING COUNT(*)  >  2
+select musical.nominee from musical  group by musical.nominee having  count(*) > 2
+SELECT Name FROM musical WHERE Musical_ID NOT IN (SELECT Musical_ID FROM actor)
+select musical.name from musical where  musical.musical_id not in (select actor.Musical_ID from actor  )
+SELECT Name FROM musical WHERE Musical_ID NOT IN (SELECT Musical_ID FROM actor)
+select musical.name from musical where  musical.musical_id not in (select actor.Musical_ID from actor  )
+SELECT Nominee FROM musical WHERE Award  =  "Tony Award" INTERSECT SELECT Nominee FROM musical WHERE Award  =  "Drama Desk Award"
+select musical.nominee from musical where  musical.award = "Tony Award"   intersect select musical.nominee from musical where  musical.award = "Drama Desk Award"
+SELECT Nominee FROM musical WHERE Award  =  "Tony Award" INTERSECT SELECT Nominee FROM musical WHERE Award  =  "Drama Desk Award"
+select musical.nominee from musical where  musical.award = "Tony Award"   intersect select musical.nominee from musical where  musical.award = "Drama Desk Award"
+SELECT Nominee FROM musical WHERE Award  =  "Tony Award" OR Award  =  "Cleavant Derricks"
+select musical.nominee from musical where  musical.award = "Tony Award" or musical.award = "Cleavant Derricks"
+SELECT Nominee FROM musical WHERE Award  =  "Tony Award" OR Award  =  "Cleavant Derricks"
+select musical.nominee from musical where  musical.award = "Tony Award" or musical.award = "Cleavant Derricks"

@@ -1,0 +1,80 @@
+SELECT customer_details FROM customers ORDER BY customer_details
+select customers.customer_details from Customers   order by customers.customer_details asc
+SELECT customer_details FROM customers ORDER BY customer_details
+select customers.customer_details from Customers   order by customers.customer_details asc
+SELECT policy_type_code FROM policies AS t1 JOIN customers AS t2 ON t1.customer_id  =  t2.customer_id WHERE t2.customer_details  =  "Dayana Robel"
+select policies.policy_type_code from Policies join Customers on Policies.Customer_ID = Customers.Customer_ID where  customers.customer_details = "Dayana Robel"
+SELECT policy_type_code FROM policies AS t1 JOIN customers AS t2 ON t1.customer_id  =  t2.customer_id WHERE t2.customer_details  =  "Dayana Robel"
+select policies.policy_type_code from Policies join Customers on Policies.Customer_ID = Customers.Customer_ID where  customers.customer_details = "Dayana Robel"
+SELECT policy_type_code FROM policies GROUP BY policy_type_code ORDER BY count(*) DESC LIMIT 1
+select policies.policy_type_code from Policies  group by policies.policy_type_code  order by count(*) desc limit 1
+SELECT policy_type_code FROM policies GROUP BY policy_type_code ORDER BY count(*) DESC LIMIT 1
+select policies.policy_type_code from Policies  group by policies.policy_type_code  order by count(*) desc limit 1
+SELECT policy_type_code FROM policies GROUP BY policy_type_code HAVING count(*)  >  2
+select policies.policy_type_code from Policies  group by policies.policy_type_code having  count(*) > 2
+SELECT policy_type_code FROM policies GROUP BY policy_type_code HAVING count(*)  >  2
+select policies.policy_type_code from Policies  group by policies.policy_type_code having  count(*) > 2
+SELECT sum(amount_piad) ,  avg(amount_piad) FROM claim_headers
+select sum(claim_headers.amount_piad) , avg(claim_headers.amount_piad) from Claim_Headers
+SELECT sum(amount_piad) ,  avg(amount_piad) FROM claim_headers
+select sum(claim_headers.amount_piad) , avg(claim_headers.amount_piad) from Claim_Headers
+SELECT sum(t1.amount_claimed) FROM claim_headers AS t1 JOIN claims_documents AS t2 ON t1.claim_header_id  =  t2.claim_id WHERE t2.created_date  =  (SELECT created_date FROM claims_documents ORDER BY created_date LIMIT 1)
+select sum(claim_headers.amount_claimed) from Claims_Documents join Claim_Headers on Claims_Documents.Claim_ID = Claim_Headers.Claim_Header_ID   order by claims_documents.created_date desc limit 1
+SELECT sum(t1.amount_claimed) FROM claim_headers AS t1 JOIN claims_documents AS t2 ON t1.claim_header_id  =  t2.claim_id WHERE t2.created_date  =  (SELECT created_date FROM claims_documents ORDER BY created_date LIMIT 1)
+select sum(claim_headers.amount_claimed) from Claims_Documents join Claim_Headers on Claims_Documents.Claim_ID = Claim_Headers.Claim_Header_ID   order by claims_documents.created_date desc limit 1
+SELECT t3.customer_details FROM claim_headers AS t1 JOIN policies AS t2 ON t1.policy_id  =  t2.policy_id JOIN customers AS t3 ON t2.customer_id  =  t3.customer_id WHERE t1.amount_claimed  =  (SELECT max(amount_claimed) FROM claim_headers)
+select customers.customer_details from Claim_Headers join Policies on Claim_Headers.Policy_ID = Policies.Policy_ID join Customers on Policies.Customer_ID = Customers.Customer_ID   order by claim_headers.amount_claimed desc limit 1
+SELECT t3.customer_details FROM claim_headers AS t1 JOIN policies AS t2 ON t1.policy_id  =  t2.policy_id JOIN customers AS t3 ON t2.customer_id  =  t3.customer_id WHERE t1.amount_claimed  =  (SELECT max(amount_claimed) FROM claim_headers)
+select customers.customer_details from Claim_Headers join Policies on Claim_Headers.Policy_ID = Policies.Policy_ID join Customers on Policies.Customer_ID = Customers.Customer_ID   order by claim_headers.amount_claimed desc limit 1
+SELECT t3.customer_details FROM claim_headers AS t1 JOIN policies AS t2 ON t1.policy_id  =  t2.policy_id JOIN customers AS t3 ON t2.customer_id  =  t3.customer_id WHERE t1.amount_piad  =  (SELECT min(amount_piad) FROM claim_headers)
+select customers.customer_details from Claim_Headers join Policies on Claim_Headers.Policy_ID = Policies.Policy_ID join Customers on Policies.Customer_ID = Customers.Customer_ID where  claim_headers.amount_piad = (select min(Claim_Headers.Amount_Piad) from Claim_Headers  )
+SELECT t3.customer_details FROM claim_headers AS t1 JOIN policies AS t2 ON t1.policy_id  =  t2.policy_id JOIN customers AS t3 ON t2.customer_id  =  t3.customer_id WHERE t1.amount_piad  =  (SELECT min(amount_piad) FROM claim_headers)
+select customers.customer_details from Claim_Headers join Policies on Claim_Headers.Policy_ID = Policies.Policy_ID join Customers on Policies.Customer_ID = Customers.Customer_ID   order by claim_headers.amount_claimed asc limit 1
+SELECT customer_details FROM customers EXCEPT SELECT t2.customer_details FROM policies AS t1 JOIN customers AS t2 ON t1.customer_id  =  t2.customer_id
+select customers.customer_details from Customers   except select customers.customer_details from Policies join Customers on Policies.Customer_ID = Customers.Customer_ID
+SELECT customer_details FROM customers EXCEPT SELECT t2.customer_details FROM policies AS t1 JOIN customers AS t2 ON t1.customer_id  =  t2.customer_id
+select customers.customer_details from Customers   except select customers.customer_details from Policies join Customers on Policies.Customer_ID = Customers.Customer_ID
+SELECT count(*) FROM claims_processing_stages
+select count(*) from Claims_Processing
+SELECT count(*) FROM claims_processing_stages
+select count(*) from Claims_Processing
+SELECT t2.claim_status_name FROM claims_processing AS t1 JOIN claims_processing_stages AS t2 ON t1.claim_stage_id  =  t2.claim_stage_id GROUP BY t1.claim_stage_id ORDER BY count(*) DESC LIMIT 1
+select claims_processing_stages.claim_status_name from Claims_Processing_Stages join Claims_Processing on Claims_Processing_Stages.Claim_Stage_ID = Claims_Processing.Claim_Stage_ID  group by claims_processing.claim_stage_id  order by count(*) desc limit 1
+SELECT t2.claim_status_name FROM claims_processing AS t1 JOIN claims_processing_stages AS t2 ON t1.claim_stage_id  =  t2.claim_stage_id GROUP BY t1.claim_stage_id ORDER BY count(*) DESC LIMIT 1
+select claims_processing_stages.claim_status_name from Claims_Processing_Stages join Claims_Processing on Claims_Processing_Stages.Claim_Stage_ID = Claims_Processing.Claim_Stage_ID  group by claims_processing.claim_stage_id  order by count(*) desc limit 1
+SELECT customer_details FROM customers WHERE customer_details LIKE "%Diana%"
+select customers.customer_details from Customers where  customers.customer_details like "%Diana%"
+SELECT customer_details FROM customers WHERE customer_details LIKE "%Diana%"
+select customers.customer_details from Customers where  customers.customer_details like "%Diana%"
+SELECT DISTINCT t2.customer_details FROM policies AS t1 JOIN customers AS t2 ON t1.customer_id  =  t2.customer_id WHERE t1.policy_type_code  =  "Deputy"
+select distinct customers.customer_details from Policies join Customers on Policies.Customer_ID = Customers.Customer_ID where  policies.policy_type_code = "Deputy"
+SELECT DISTINCT t2.customer_details FROM policies AS t1 JOIN customers AS t2 ON t1.customer_id  =  t2.customer_id WHERE t1.policy_type_code  =  "Deputy"
+select distinct customers.customer_details from Policies join Customers on Policies.Customer_ID = Customers.Customer_ID where  policies.policy_type_code = "Deputy"
+SELECT DISTINCT t2.customer_details FROM policies AS t1 JOIN customers AS t2 ON t1.customer_id  =  t2.customer_id WHERE t1.policy_type_code  =  "Deputy" OR t1.policy_type_code  =  "Uniform"
+select distinct customers.customer_details from Policies join Customers on Policies.Customer_ID = Customers.Customer_ID where  policies.policy_type_code = "Deputy" or policies.policy_type_code = "Uniform"
+SELECT DISTINCT t2.customer_details FROM policies AS t1 JOIN customers AS t2 ON t1.customer_id  =  t2.customer_id WHERE t1.policy_type_code  =  "Deputy" OR t1.policy_type_code  =  "Uniform"
+select distinct customers.customer_details from Policies join Customers on Policies.Customer_ID = Customers.Customer_ID where  policies.policy_type_code = "Deputy" or policies.policy_type_code = "Uniform"
+SELECT customer_details FROM customers UNION SELECT staff_details FROM staff
+select customers.customer_details from Customers   union select staff.staff_details from Staff
+SELECT customer_details FROM customers UNION SELECT staff_details FROM staff
+select customers.customer_details from Customers   union select staff.staff_details from Staff
+SELECT policy_type_code ,  count(*) FROM policies GROUP BY policy_type_code
+select policies.policy_type_code , count(*) from Policies  group by policies.policy_type_code
+SELECT policy_type_code ,  count(*) FROM policies GROUP BY policy_type_code
+select policies.policy_type_code , count(*) from Policies  group by policies.policy_type_code
+SELECT t2.customer_details FROM policies AS t1 JOIN customers AS t2 ON t1.customer_id  =  t2.customer_id GROUP BY t2.customer_details ORDER BY count(*) DESC LIMIT 1
+select customers.customer_details from Policies join Customers on Policies.Customer_ID = Customers.Customer_ID  group by customers.customer_details  order by count(*) desc limit 1
+SELECT t2.customer_details FROM policies AS t1 JOIN customers AS t2 ON t1.customer_id  =  t2.customer_id GROUP BY t2.customer_details ORDER BY count(*) DESC LIMIT 1
+select customers.customer_details from Policies join Customers on Policies.Customer_ID = Customers.Customer_ID  group by customers.customer_details  order by count(*) desc limit 1
+SELECT claim_status_description FROM claims_processing_stages WHERE claim_status_name  =  "Open"
+select claims_processing_stages.claim_status_description from Claims_Processing_Stages where  claims_processing_stages.claim_status_name = "Open"
+SELECT claim_status_description FROM claims_processing_stages WHERE claim_status_name  =  "Open"
+select claims_processing_stages.claim_status_description from Claims_Processing_Stages where  claims_processing_stages.claim_status_name = "Open"
+SELECT count(DISTINCT claim_outcome_code) FROM claims_processing
+select count( distinct claims_processing.claim_outcome_code) from Claims_Processing
+SELECT count(DISTINCT claim_outcome_code) FROM claims_processing
+select count( distinct claims_processing.claim_outcome_code) from Claims_Processing
+SELECT t2.customer_details FROM policies AS t1 JOIN customers AS t2 ON t1.customer_id  =  t2.customer_id WHERE t1.start_date  =  (SELECT max(start_date) FROM policies)
+select customers.customer_details from Policies join Customers on Policies.Customer_ID = Customers.Customer_ID where  policies.start_date = (select max(Policies.Start_Date) from Policies  )
+SELECT t2.customer_details FROM policies AS t1 JOIN customers AS t2 ON t1.customer_id  =  t2.customer_id WHERE t1.start_date  =  (SELECT max(start_date) FROM policies)
+select customers.customer_details from Policies join Customers on Policies.Customer_ID = Customers.Customer_ID   order by policies.start_date desc limit 1

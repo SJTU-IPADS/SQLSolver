@@ -1,0 +1,40 @@
+SELECT count(*) FROM building
+select count(*) from building
+SELECT name ,  street_address ,  floors FROM building ORDER BY floors
+select building.name , building.street_address , building.floors from building   order by building.floors asc
+SELECT name FROM building ORDER BY height_feet DESC LIMIT 1
+select building.name from building   order by building.height_feet desc limit 1
+SELECT avg(floors) ,  max(floors) ,  min(floors) FROM building
+select avg(building.floors) , max(building.floors) , min(building.floors) from building
+SELECT count(*) FROM building WHERE height_feet  >  (SELECT avg(height_feet) FROM building) OR floors  >  (SELECT avg(floors) FROM building)
+select count(*) from building where  building.height_feet > (select avg(building.height_feet) from building  ) or building.floors > (select avg(building.floors) from building  )
+SELECT name FROM building WHERE height_feet  >=  200 AND floors  >=  20
+select building.name from building where  building.height_feet >= 200 and building.floors >= 20
+SELECT institution ,  LOCATION FROM institution WHERE founded  >  1990 AND TYPE  =  'Private'
+select institution.institution , institution.location from Institution where  institution.founded > 1990 and institution.type = "Private"
+SELECT TYPE ,  count(*) ,  sum(enrollment) FROM institution GROUP BY TYPE
+select institution.type , count(*) , sum(institution.enrollment) from Institution  group by institution.type
+SELECT TYPE FROM institution GROUP BY TYPE ORDER BY count(*) DESC LIMIT 1
+select institution.type from Institution  group by institution.type  order by count(*) desc limit 1
+SELECT TYPE FROM institution WHERE founded  >  1990 AND enrollment  >=  1000
+select institution.type from Institution where  institution.founded > 1990 and institution.enrollment >= 1000
+SELECT name FROM building WHERE building_id NOT IN (SELECT building_id FROM institution)
+select building.name from building where  building.building_id not in (select Institution.building_id from Institution  )
+SELECT name FROM building EXCEPT SELECT T1.name FROM building AS T1 JOIN institution AS T2 ON T1.building_id  =  T2.building_id WHERE T2.founded  =  2003
+select building.name from building   except select building.name from Institution join building on Institution.building_id = building.building_id where  institution.founded = 2003
+SELECT T1.name ,  count(*) FROM building AS T1 JOIN institution AS T2 ON T1.building_id  =  T2.building_id GROUP BY T1.building_id
+select building.name , count(*) from Institution join building on Institution.building_id = building.building_id  group by institution.building_id
+SELECT T1.name ,  T1.height_feet FROM building AS T1 JOIN institution AS T2 ON T1.building_id  =  T2.building_id WHERE T2.founded  >  1880 GROUP BY T1.building_id HAVING count(*)  >=  2
+select building.name , building.height_feet from Institution join building on Institution.building_id = building.building_id where  institution.founded > 1880  group by institution.building_id having  count(*) >= 2
+SELECT DISTINCT TYPE FROM institution
+select distinct institution.type from Institution
+SELECT T1.institution ,  count(*) FROM institution AS T1 JOIN protein AS T2 ON T1.institution_id  =  T2.institution_id GROUP BY T1.institution_id
+select institution.institution , count(*) from protein join Institution on protein.Institution_id = Institution.Institution_id  group by protein.institution_id
+SELECT count(*) FROM institution AS T1 JOIN protein AS T2 ON T1.institution_id  =  T2.institution_id WHERE T1.founded  >  1880 OR T1.type  =  'Private'
+select count(*) from protein join Institution on protein.Institution_id = Institution.Institution_id where  institution.founded > 1880 or institution.type = "Private"
+SELECT T2.protein_name ,  T1.institution FROM institution AS T1 JOIN protein AS T2 ON T1.institution_id  =  T2.institution_id
+select protein.protein_name , institution.institution from protein join Institution on protein.Institution_id = Institution.Institution_id
+SELECT count(*) FROM institution AS T1 JOIN protein AS T2 ON T1.institution_id  =  T2.institution_id JOIN building AS T3 ON T3.building_id  =  T1.building_id WHERE T3.floors  >=  20
+select count(*) from protein join Institution on protein.Institution_id = Institution.Institution_id join building on Institution.building_id = building.building_id where  building.floors >= 20
+SELECT count(*) FROM institution WHERE institution_id NOT IN (SELECT institution_id FROM protein)
+select count(*) from Institution where  institution.institution_id not in (select protein.Institution_id from protein  )

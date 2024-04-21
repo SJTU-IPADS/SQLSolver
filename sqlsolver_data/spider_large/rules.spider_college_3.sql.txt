@@ -1,0 +1,148 @@
+SELECT count(*) FROM COURSE
+select count(*) from Course
+SELECT count(*) FROM COURSE
+select count(*) from Course
+SELECT count(*) FROM COURSE WHERE Credits  >  2
+select count(*) from Course where  course.credits > 2
+SELECT count(*) FROM COURSE WHERE Credits  >  2
+select count(*) from Course where  course.credits > 2
+SELECT CName FROM COURSE WHERE Credits  =  1
+select course.cname from Course where  course.credits = 1
+SELECT CName FROM COURSE WHERE Credits  =  1
+select course.cname from Course where  course.credits = 1
+SELECT CName FROM COURSE WHERE Days  =  "MTW"
+select course.cname from Course where  course.days = "MTW"
+SELECT CName FROM COURSE WHERE Days  =  "MTW"
+select course.cname from Course where  course.days = "MTW"
+SELECT count(*) FROM DEPARTMENT WHERE Division  =  "AS"
+select count(*) from Department where  department.division = "AS"
+SELECT count(*) FROM DEPARTMENT WHERE Division  =  "AS"
+select count(*) from Department where  department.division = "AS"
+SELECT DPhone FROM DEPARTMENT WHERE Room  =  268
+select department.dphone from Department where  department.room = 268
+SELECT DPhone FROM DEPARTMENT WHERE Room  =  268
+select department.dphone from Department where  department.room = 268
+SELECT COUNT(DISTINCT StuID) FROM ENROLLED_IN WHERE Grade  =  "B"
+select count( distinct enrolled_in.stuid) from Enrolled_in where  enrolled_in.grade = "B"
+SELECT COUNT(DISTINCT StuID) FROM ENROLLED_IN WHERE Grade  =  "B"
+select count( distinct enrolled_in.stuid) from Enrolled_in where  enrolled_in.grade = "B"
+SELECT max(gradepoint) ,  min(gradepoint) FROM GRADECONVERSION
+select max(gradeconversion.gradepoint) , min(gradeconversion.gradepoint) from Gradeconversion
+SELECT max(gradepoint) ,  min(gradepoint) FROM GRADECONVERSION
+select max(gradeconversion.gradepoint) , min(gradeconversion.gradepoint) from Gradeconversion
+SELECT DISTINCT Fname FROM STUDENT WHERE Fname LIKE '%a%'
+select distinct student.fname from Student where  student.fname like "%a%"
+SELECT DISTINCT Fname FROM STUDENT WHERE Fname LIKE '%a%'
+select distinct student.fname from Student where  student.fname like "%a%"
+SELECT Fname ,  Lname FROM FACULTY WHERE sex  =  "M" AND Building  =  "NEB"
+select faculty.fname , faculty.lname from Faculty where  faculty.sex = "M" and faculty.building = "NEB"
+SELECT Fname ,  Lname FROM FACULTY WHERE sex  =  "M" AND Building  =  "NEB"
+select faculty.fname , faculty.lname from Faculty where  faculty.sex = "M" and faculty.building = "NEB"
+SELECT Room FROM FACULTY WHERE Rank  =  "Professor" AND Building  =  "NEB"
+select faculty.room from Faculty where  faculty.rank = "Professor" and faculty.building = "NEB"
+SELECT Room FROM FACULTY WHERE Rank  =  "Professor" AND Building  =  "NEB"
+select faculty.room from Faculty where  faculty.rank = "Professor" and faculty.building = "NEB"
+SELECT DName FROM DEPARTMENT WHERE Building  =  "Mergenthaler"
+select department.dname from Department where  department.building = "Mergenthaler"
+SELECT DName FROM DEPARTMENT WHERE Building  =  "Mergenthaler"
+select department.dname from Department where  department.building = "Mergenthaler"
+SELECT * FROM COURSE ORDER BY Credits
+select * from Course   order by course.credits asc
+SELECT * FROM COURSE ORDER BY Credits
+select * from Course   order by course.credits asc
+SELECT CName FROM COURSE ORDER BY Credits
+select course.cname from Course   order by course.credits asc
+SELECT CName FROM COURSE ORDER BY Credits
+select course.cname from Course   order by course.credits asc
+SELECT Fname FROM STUDENT ORDER BY Age DESC
+select student.fname from Student   order by student.age desc
+SELECT Fname FROM STUDENT ORDER BY Age DESC
+select student.fname from Student   order by student.age desc
+SELECT LName FROM STUDENT WHERE Sex  =  "F" ORDER BY Age DESC
+select student.lname from Student where  student.sex = "F"   order by student.age desc
+SELECT LName FROM STUDENT WHERE Sex  =  "F" ORDER BY Age DESC
+select student.lname from Student where  student.sex = "F"   order by student.age desc
+SELECT Lname FROM FACULTY WHERE Building  =  "Barton" ORDER BY Lname
+select faculty.lname from Faculty where  faculty.building = "Barton"   order by faculty.lname asc
+SELECT Lname FROM FACULTY WHERE Building  =  "Barton" ORDER BY Lname
+select faculty.lname from Faculty where  faculty.building = "Barton"   order by faculty.lname asc
+SELECT Fname FROM FACULTY WHERE Rank  =  "Professor" ORDER BY Fname
+select faculty.fname from Faculty where  faculty.rank = "Professor"   order by faculty.fname asc
+SELECT Fname FROM FACULTY WHERE Rank  =  "Professor" ORDER BY Fname
+select faculty.fname from Faculty where  faculty.rank = "Professor"   order by faculty.fname asc
+SELECT T1.DName FROM DEPARTMENT AS T1 JOIN MINOR_IN AS T2 ON T1.DNO  =  T2.DNO GROUP BY T2.DNO ORDER BY count(*) DESC LIMIT 1
+select department.dname from Minor_in join Department on Minor_in.DNO = Department.DNO  group by minor_in.dno  order by count(*) desc limit 1
+SELECT T1.DName FROM DEPARTMENT AS T1 JOIN MINOR_IN AS T2 ON T1.DNO  =  T2.DNO GROUP BY T2.DNO ORDER BY count(*) DESC LIMIT 1
+select department.dname from Minor_in join Department on Minor_in.DNO = Department.DNO  group by minor_in.dno  order by count(*) desc limit 1
+SELECT DName FROM DEPARTMENT EXCEPT SELECT T1.DName FROM DEPARTMENT AS T1 JOIN MINOR_IN AS T2 ON T1.DNO  =  T2.DNO
+select department.dname from Department   except select department.dname from Minor_in join Department on Minor_in.DNO = Department.DNO
+SELECT DName FROM DEPARTMENT EXCEPT SELECT T1.DName FROM DEPARTMENT AS T1 JOIN MINOR_IN AS T2 ON T1.DNO  =  T2.DNO
+select department.dname from Department   except select department.dname from Minor_in join Department on Minor_in.DNO = Department.DNO
+SELECT T1.DName FROM DEPARTMENT AS T1 JOIN MEMBER_OF AS T2 ON T1.DNO  =  T2.DNO GROUP BY T2.DNO ORDER BY count(*) ASC LIMIT 1
+select department.dname from Member_of join Department on Member_of.DNO = Department.DNO  group by member_of.dno  order by count(*) asc limit 1
+SELECT T1.DName FROM DEPARTMENT AS T1 JOIN MEMBER_OF AS T2 ON T1.DNO  =  T2.DNO GROUP BY T2.DNO ORDER BY count(*) ASC LIMIT 1
+select department.dname from Member_of join Department on Member_of.DNO = Department.DNO  group by member_of.dno  order by count(*) asc limit 1
+SELECT Rank FROM FACULTY GROUP BY Rank ORDER BY count(*) ASC LIMIT 1
+select faculty.rank from Faculty  group by faculty.rank  order by count(*) asc limit 1
+SELECT Rank FROM FACULTY GROUP BY Rank ORDER BY count(*) ASC LIMIT 1
+select faculty.rank from Faculty  group by faculty.rank  order by count(*) asc limit 1
+SELECT T2.Fname ,  T2.Lname FROM COURSE AS T1 JOIN FACULTY AS T2 ON T1.Instructor  =  T2.FacID GROUP BY T1.Instructor ORDER BY count(*) DESC LIMIT 3
+select faculty.fname , faculty.lname from Course join Faculty on Course.Instructor = Faculty.FacID  group by course.instructor  order by count(*) desc limit 3
+SELECT T2.Fname ,  T2.Lname FROM COURSE AS T1 JOIN FACULTY AS T2 ON T1.Instructor  =  T2.FacID GROUP BY T1.Instructor ORDER BY count(*) DESC LIMIT 3
+select faculty.fname , faculty.lname from Course join Faculty on Course.Instructor = Faculty.FacID  group by course.instructor  order by count(*) desc limit 3
+SELECT T2.Building FROM COURSE AS T1 JOIN FACULTY AS T2 ON T1.Instructor  =  T2.FacID GROUP BY T1.Instructor ORDER BY count(*) DESC LIMIT 1
+select faculty.building from Course join Faculty on Course.Instructor = Faculty.FacID  group by course.instructor  order by count(*) desc limit 1
+SELECT T2.Building FROM COURSE AS T1 JOIN FACULTY AS T2 ON T1.Instructor  =  T2.FacID GROUP BY T1.Instructor ORDER BY count(*) DESC LIMIT 1
+select faculty.building from Course join Faculty on Course.Instructor = Faculty.FacID  group by course.instructor  order by count(*) desc limit 1
+SELECT T1.CName FROM COURSE AS T1 JOIN ENROLLED_IN AS T2 ON T1.CID  =  T2.CID GROUP BY T2.CID HAVING COUNT(*)  >=  5
+select course.cname from Enrolled_in join Course on Enrolled_in.CID = Course.CID  group by enrolled_in.cid having  count(*) >= 5
+SELECT T1.CName FROM COURSE AS T1 JOIN ENROLLED_IN AS T2 ON T1.CID  =  T2.CID GROUP BY T2.CID HAVING COUNT(*)  >=  5
+select course.cname from Enrolled_in join Course on Enrolled_in.CID = Course.CID  group by enrolled_in.cid having  count(*) >= 5
+SELECT T2.Fname ,  T2.Lname FROM COURSE AS T1 JOIN FACULTY AS T2 ON T1.Instructor  =  T2.FacID WHERE T1.CName  =  "COMPUTER LITERACY"
+select faculty.fname , faculty.lname from Course join Faculty on Course.Instructor = Faculty.FacID where  course.cname = "COMPUTER LITERACY"
+SELECT T2.Fname ,  T2.Lname FROM COURSE AS T1 JOIN FACULTY AS T2 ON T1.Instructor  =  T2.FacID WHERE T1.CName  =  "COMPUTER LITERACY"
+select faculty.fname , faculty.lname from Course join Faculty on Course.Instructor = Faculty.FacID where  course.cname = "COMPUTER LITERACY"
+SELECT T2.Dname ,  T2.Room FROM COURSE AS T1 JOIN DEPARTMENT AS T2 ON T1.DNO  =  T2.DNO WHERE T1.CName  =  "INTRODUCTION TO COMPUTER SCIENCE"
+select department.dname , department.room from Course join Department on Course.DNO = Department.DNO where  course.cname = "INTRODUCTION TO COMPUTER SCIENCE"
+SELECT T2.Dname ,  T2.Room FROM COURSE AS T1 JOIN DEPARTMENT AS T2 ON T1.DNO  =  T2.DNO WHERE T1.CName  =  "INTRODUCTION TO COMPUTER SCIENCE"
+select department.dname , department.room from Course join Department on Course.DNO = Department.DNO where  course.cname = "INTRODUCTION TO COMPUTER SCIENCE"
+SELECT T3.Fname ,  T3.LName ,  T2.gradepoint FROM ENROLLED_IN AS T1 JOIN GRADECONVERSION AS T2 JOIN STUDENT AS T3 ON T1.Grade  =  T2.lettergrade AND T1.StuID  =  T3.StuID
+select student.fname , student.lname , gradeconversion.gradepoint from Enrolled_in join Gradeconversion on Enrolled_in.Grade = Gradeconversion.lettergrade join Student on Enrolled_in.StuID = Student.StuID
+SELECT T3.Fname ,  T3.LName ,  T2.gradepoint FROM ENROLLED_IN AS T1 JOIN GRADECONVERSION AS T2 JOIN STUDENT AS T3 ON T1.Grade  =  T2.lettergrade AND T1.StuID  =  T3.StuID
+select student.fname , student.lname , gradeconversion.gradepoint from Enrolled_in join Gradeconversion on Enrolled_in.Grade = Gradeconversion.lettergrade join Student on Enrolled_in.StuID = Student.StuID
+SELECT DISTINCT T3.Fname FROM ENROLLED_IN AS T1 JOIN GRADECONVERSION AS T2 JOIN STUDENT AS T3 ON T1.Grade  =  T2.lettergrade AND T1.StuID  =  T3.StuID WHERE T2.gradepoint  >=  3.8
+select distinct student.fname from Enrolled_in join Gradeconversion on Enrolled_in.Grade = Gradeconversion.lettergrade join Student on Enrolled_in.StuID = Student.StuID where  gradeconversion.gradepoint >= (select student.fname from Student  )
+SELECT DISTINCT T3.Fname FROM ENROLLED_IN AS T1 JOIN GRADECONVERSION AS T2 JOIN STUDENT AS T3 ON T1.Grade  =  T2.lettergrade AND T1.StuID  =  T3.StuID WHERE T2.gradepoint  >=  3.8
+select distinct student.fname from Enrolled_in join Gradeconversion on Enrolled_in.Grade = Gradeconversion.lettergrade join Student on Enrolled_in.StuID = Student.StuID where  gradeconversion.gradepoint >= (select student.fname from Student  )
+SELECT T1.Fname ,  T1.Lname FROM FACULTY AS T1 JOIN MEMBER_OF AS T2 ON T1.FacID  =  T2.FacID WHERE T2.DNO  =  520
+select faculty.fname , faculty.lname from Member_of join Faculty on Member_of.FacID = Faculty.FacID where  member_of.dno = 520
+SELECT T1.Fname ,  T1.Lname FROM FACULTY AS T1 JOIN MEMBER_OF AS T2 ON T1.FacID  =  T2.FacID WHERE T2.DNO  =  520
+select faculty.fname , faculty.lname from Member_of join Faculty on Member_of.FacID = Faculty.FacID where  member_of.dno = 520
+SELECT T2.Fname ,  T2.Lname FROM MINOR_IN AS T1 JOIN STUDENT AS T2 ON T1.StuID  =  T2.StuID WHERE T1.DNO  =  140
+select student.fname , student.lname from Minor_in join Student on Minor_in.StuID = Student.StuID where  minor_in.dno = 140
+SELECT T2.Fname ,  T2.Lname FROM MINOR_IN AS T1 JOIN STUDENT AS T2 ON T1.StuID  =  T2.StuID WHERE T1.DNO  =  140
+select student.fname , student.lname from Minor_in join Student on Minor_in.StuID = Student.StuID where  minor_in.dno = 140
+SELECT T2.Lname FROM DEPARTMENT AS T1 JOIN FACULTY AS T2 ON T1.DNO  =  T3.DNO JOIN MEMBER_OF AS T3 ON T2.FacID  =  T3.FacID WHERE T1.DName  =  "Computer Science"
+select faculty.lname from Member_of join Department on Member_of.DNO = Department.DNO join Faculty on Member_of.FacID = Faculty.FacID where  department.dname = "Computer Science"
+SELECT T2.Lname FROM DEPARTMENT AS T1 JOIN FACULTY AS T2 ON T1.DNO  =  T3.DNO JOIN MEMBER_OF AS T3 ON T2.FacID  =  T3.FacID WHERE T1.DName  =  "Computer Science"
+select faculty.lname from Member_of join Department on Member_of.DNO = Department.DNO join Faculty on Member_of.FacID = Faculty.FacID where  department.dname = "Computer Science"
+SELECT avg(T2.gradepoint) FROM ENROLLED_IN AS T1 JOIN GRADECONVERSION AS T2 JOIN STUDENT AS T3 ON T1.Grade  =  T2.lettergrade AND T1.StuID  =  T3.StuID WHERE T3.LName  =  "Smith"
+select avg(gradeconversion.gradepoint) from Enrolled_in join Gradeconversion on Enrolled_in.Grade = Gradeconversion.lettergrade join Student on Enrolled_in.StuID = Student.StuID where  student.lname = "Smith"
+SELECT avg(T2.gradepoint) FROM ENROLLED_IN AS T1 JOIN GRADECONVERSION AS T2 JOIN STUDENT AS T3 ON T1.Grade  =  T2.lettergrade AND T1.StuID  =  T3.StuID WHERE T3.LName  =  "Smith"
+select avg(gradeconversion.gradepoint) from Enrolled_in join Gradeconversion on Enrolled_in.Grade = Gradeconversion.lettergrade join Student on Enrolled_in.StuID = Student.StuID where  student.lname = "Smith"
+SELECT max(T2.gradepoint) ,  min(T2.gradepoint) FROM ENROLLED_IN AS T1 JOIN GRADECONVERSION AS T2 JOIN STUDENT AS T3 ON T1.Grade  =  T2.lettergrade AND T1.StuID  =  T3.StuID WHERE T3.city_code  =  "NYC"
+select max(gradeconversion.gradepoint) , min(gradeconversion.gradepoint) from Enrolled_in join Gradeconversion on Enrolled_in.Grade = Gradeconversion.lettergrade join Student on Enrolled_in.StuID = Student.StuID where  student.city_code = "NYC"
+SELECT max(T2.gradepoint) ,  min(T2.gradepoint) FROM ENROLLED_IN AS T1 JOIN GRADECONVERSION AS T2 JOIN STUDENT AS T3 ON T1.Grade  =  T2.lettergrade AND T1.StuID  =  T3.StuID WHERE T3.city_code  =  "NYC"
+select max(gradeconversion.gradepoint) , min(gradeconversion.gradepoint) from Enrolled_in join Gradeconversion on Enrolled_in.Grade = Gradeconversion.lettergrade join Student on Enrolled_in.StuID = Student.StuID where  student.city_code = "NYC"
+SELECT CName FROM COURSE WHERE Credits  =  3 UNION SELECT CName FROM COURSE WHERE Credits  =  1 AND Hours  =  4
+select course.cname from Course where  course.credits = 3   union select course.cname from Course where  course.credits = 1 and course.hours = 4
+SELECT CName FROM COURSE WHERE Credits  =  3 UNION SELECT CName FROM COURSE WHERE Credits  =  1 AND Hours  =  4
+select course.cname from Course where  course.credits = 3   union select course.cname from Course where  course.credits = 1 and course.hours = 4
+SELECT DName FROM DEPARTMENT WHERE Division  =  "AS" UNION SELECT DName FROM DEPARTMENT WHERE Division  =  "EN" AND Building  =  "NEB"
+select department.dname from Department where  department.division = "AS"   union select department.dname from Department where  department.division = "EN" and department.building = "NEB"
+SELECT DName FROM DEPARTMENT WHERE Division  =  "AS" UNION SELECT DName FROM DEPARTMENT WHERE Division  =  "EN" AND Building  =  "NEB"
+select department.dname from Department where  department.division = "AS"   union select department.dname from Department where  department.division = "EN" and department.building = "NEB"
+SELECT Fname FROM STUDENT WHERE StuID NOT IN (SELECT StuID FROM ENROLLED_IN)
+select student.fname from Student where  student.stuid not in (select Enrolled_in.StuID from Enrolled_in  )
+SELECT Fname FROM STUDENT WHERE StuID NOT IN (SELECT StuID FROM ENROLLED_IN)
+select student.fname from Student where  student.stuid not in (select Enrolled_in.StuID from Enrolled_in  )

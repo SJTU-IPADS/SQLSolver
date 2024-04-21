@@ -1,0 +1,80 @@
+SELECT count(*) FROM Companies
+select count(*) from Companies
+SELECT count(*) FROM Companies
+select count(*) from Companies
+SELECT name FROM Companies ORDER BY Market_Value_billion DESC
+select companies.name from Companies   order by companies.market_value_billion desc
+SELECT name FROM Companies ORDER BY Market_Value_billion DESC
+select companies.name from Companies   order by companies.market_value_billion desc
+SELECT name FROM Companies WHERE Headquarters != 'USA'
+select companies.name from Companies where  companies.headquarters != "USA"
+SELECT name FROM Companies WHERE Headquarters != 'USA'
+select companies.name from Companies where  companies.headquarters != "USA"
+SELECT name ,  Assets_billion FROM Companies ORDER BY name ASC
+select companies.name , companies.assets_billion from Companies   order by companies.name asc
+SELECT name ,  Assets_billion FROM Companies ORDER BY name ASC
+select companies.name , companies.assets_billion from Companies   order by companies.name asc
+SELECT avg(Profits_billion) FROM Companies
+select avg(companies.profits_billion) from Companies
+SELECT avg(Profits_billion) FROM Companies
+select avg(companies.profits_billion) from Companies
+SELECT max(Sales_billion) ,  min(Sales_billion) FROM Companies WHERE Industry != "Banking"
+select max(companies.sales_billion) , min(companies.sales_billion) from Companies where  companies.industry != "Banking"
+SELECT max(Sales_billion) ,  min(Sales_billion) FROM Companies WHERE Industry != "Banking"
+select max(companies.sales_billion) , min(companies.sales_billion) from Companies where  companies.industry != "Banking"
+SELECT count(DISTINCT Industry) FROM Companies
+select count( distinct companies.industry) from Companies
+SELECT count(DISTINCT Industry) FROM Companies
+select count( distinct companies.industry) from Companies
+SELECT name FROM buildings ORDER BY Height DESC
+select buildings.name from buildings   order by buildings.height desc
+SELECT name FROM buildings ORDER BY Height DESC
+select buildings.name from buildings   order by buildings.height desc
+SELECT Stories FROM buildings ORDER BY Height DESC LIMIT 1
+select buildings.stories from buildings   order by buildings.height desc limit 1
+SELECT Stories FROM buildings ORDER BY Height DESC LIMIT 1
+select buildings.stories from buildings   order by buildings.height desc limit 1
+SELECT T3.name ,  T2.name FROM Office_locations AS T1 JOIN buildings AS T2 ON T1.building_id  =  T2.id JOIN Companies AS T3 ON T1.company_id  =  T3.id
+select companies.name , buildings.name from Office_locations join Companies on Office_locations.company_id = Companies.id join buildings on Office_locations.building_id = buildings.id
+SELECT T3.name ,  T2.name FROM Office_locations AS T1 JOIN buildings AS T2 ON T1.building_id  =  T2.id JOIN Companies AS T3 ON T1.company_id  =  T3.id
+select companies.name , buildings.name from Office_locations join Companies on Office_locations.company_id = Companies.id join buildings on Office_locations.building_id = buildings.id
+SELECT T2.name FROM Office_locations AS T1 JOIN buildings AS T2 ON T1.building_id  =  T2.id JOIN Companies AS T3 ON T1.company_id  =  T3.id GROUP BY T1.building_id HAVING COUNT(*)  >  1
+select buildings.name from Office_locations join Companies on Office_locations.company_id = Companies.id join buildings on Office_locations.building_id = buildings.id  group by office_locations.building_id having  count(*) > 1
+SELECT T2.name FROM Office_locations AS T1 JOIN buildings AS T2 ON T1.building_id  =  T2.id JOIN Companies AS T3 ON T1.company_id  =  T3.id GROUP BY T1.building_id HAVING COUNT(*)  >  1
+select buildings.name from Office_locations join Companies on Office_locations.company_id = Companies.id join buildings on Office_locations.building_id = buildings.id  group by office_locations.building_id having  count(*) > 1
+SELECT T2.name FROM Office_locations AS T1 JOIN buildings AS T2 ON T1.building_id  =  T2.id JOIN Companies AS T3 ON T1.company_id  =  T3.id GROUP BY T1.building_id ORDER BY COUNT(*) DESC LIMIT 1
+select buildings.name from Office_locations join Companies on Office_locations.company_id = Companies.id join buildings on Office_locations.building_id = buildings.id  group by office_locations.building_id  order by count(*) desc limit 1
+SELECT T2.name FROM Office_locations AS T1 JOIN buildings AS T2 ON T1.building_id  =  T2.id JOIN Companies AS T3 ON T1.company_id  =  T3.id GROUP BY T1.building_id ORDER BY COUNT(*) DESC LIMIT 1
+select buildings.name from Office_locations join Companies on Office_locations.company_id = Companies.id join buildings on Office_locations.building_id = buildings.id  group by office_locations.building_id  order by count(*) desc limit 1
+SELECT name FROM buildings WHERE Status  =  "on-hold" ORDER BY Stories ASC
+select buildings.name from buildings where  buildings.status = "on-hold"   order by buildings.stories asc
+SELECT name FROM buildings WHERE Status  =  "on-hold" ORDER BY Stories ASC
+select buildings.name from buildings where  buildings.status = "on-hold"   order by buildings.stories asc
+SELECT Industry ,  COUNT(*) FROM Companies GROUP BY Industry
+select companies.industry , count(*) from Companies  group by companies.industry
+SELECT Industry ,  COUNT(*) FROM Companies GROUP BY Industry
+select companies.industry , count(*) from Companies  group by companies.industry
+SELECT Industry FROM Companies GROUP BY Industry ORDER BY COUNT(*) DESC
+select companies.industry from Companies  group by companies.industry  order by count(*) desc
+SELECT Industry FROM Companies GROUP BY Industry ORDER BY COUNT(*) DESC
+select companies.industry from Companies  group by companies.industry  order by count(*) desc
+SELECT Industry FROM Companies GROUP BY Industry ORDER BY COUNT(*) DESC LIMIT 1
+select companies.industry from Companies  group by companies.industry  order by count(*) desc limit 1
+SELECT Industry FROM Companies GROUP BY Industry ORDER BY COUNT(*) DESC LIMIT 1
+select companies.industry from Companies  group by companies.industry  order by count(*) desc limit 1
+SELECT name FROM buildings WHERE id NOT IN (SELECT building_id FROM Office_locations)
+select buildings.name from buildings where  buildings.id not in (select Office_locations.building_id from Office_locations  )
+SELECT name FROM buildings WHERE id NOT IN (SELECT building_id FROM Office_locations)
+select buildings.name from buildings where  buildings.id not in (select Office_locations.building_id from Office_locations  )
+SELECT Industry FROM Companies WHERE Headquarters  =  "USA" INTERSECT SELECT Industry FROM Companies WHERE Headquarters  =  "China"
+select companies.industry from Companies where  companies.headquarters = "USA"   intersect select companies.industry from Companies where  companies.headquarters = "China"
+SELECT Industry FROM Companies WHERE Headquarters  =  "USA" INTERSECT SELECT Industry FROM Companies WHERE Headquarters  =  "China"
+select companies.industry from Companies where  companies.headquarters = "USA"   intersect select companies.industry from Companies where  companies.headquarters = "China"
+SELECT count(*) FROM Companies WHERE Industry  =  "Banking" OR Industry  =  "Conglomerate"
+select count(*) from Companies where  companies.industry = "Banking" or companies.industry = "Conglomerate"
+SELECT count(*) FROM Companies WHERE Industry  =  "Banking" OR Industry  =  "Conglomerate"
+select count(*) from Companies where  companies.industry = "Banking" or companies.industry = "Conglomerate"
+SELECT Headquarters FROM Companies GROUP BY Headquarters HAVING COUNT(*)  >  2
+select companies.headquarters from Companies  group by companies.headquarters having  count(*) > 2
+SELECT Headquarters FROM Companies GROUP BY Headquarters HAVING COUNT(*)  >  2
+select companies.headquarters from Companies  group by companies.headquarters having  count(*) > 2

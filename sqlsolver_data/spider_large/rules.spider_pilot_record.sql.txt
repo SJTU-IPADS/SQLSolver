@@ -1,0 +1,30 @@
+SELECT count(*) FROM pilot
+select count(*) from pilot
+SELECT Pilot_name FROM pilot ORDER BY Rank ASC
+select pilot.pilot_name from pilot   order by pilot.rank asc
+SELECT POSITION ,  Team FROM pilot
+select pilot.position , pilot.team from pilot
+SELECT DISTINCT POSITION FROM pilot WHERE Age  >  30
+select distinct pilot.position from pilot where  pilot.age > 30
+SELECT Pilot_name FROM pilot WHERE Team  =  "Bradley" OR Team  =  "Fordham"
+select pilot.pilot_name from pilot where  pilot.team = "Bradley" or pilot.team = "Fordham"
+SELECT Join_Year FROM pilot ORDER BY Rank ASC LIMIT 1
+select pilot.join_year from pilot   order by pilot.rank desc limit 1
+SELECT Nationality ,  COUNT(*) FROM pilot GROUP BY Nationality
+select pilot.nationality , count(*) from pilot  group by pilot.nationality
+SELECT Nationality FROM pilot GROUP BY Nationality ORDER BY COUNT(*) DESC LIMIT 1
+select pilot.nationality from pilot  group by pilot.nationality  order by count(*) desc limit 1
+SELECT POSITION FROM pilot WHERE Join_Year	 <  2000 INTERSECT SELECT POSITION FROM pilot WHERE Join_Year	 >  2005
+select pilot.position from pilot where  pilot.join_year < 2000   intersect select pilot.position from pilot where  pilot.join_year > 2005
+SELECT T3.Pilot_name ,  T2.Model FROM pilot_record AS T1 JOIN aircraft AS T2 ON T1.Aircraft_ID  =  T2.Aircraft_ID JOIN pilot AS T3 ON T1.Pilot_ID  =  T3.Pilot_ID
+select pilot.pilot_name , aircraft.model from pilot_record join aircraft on pilot_record.Aircraft_ID = aircraft.Aircraft_ID join pilot on pilot_record.Pilot_ID = pilot.Pilot_ID
+SELECT T3.Pilot_name ,  T2.Fleet_Series FROM pilot_record AS T1 JOIN aircraft AS T2 ON T1.Aircraft_ID  =  T2.Aircraft_ID JOIN pilot AS T3 ON T1.Pilot_ID  =  T3.Pilot_ID ORDER BY T3.Rank
+select pilot.pilot_name , aircraft.fleet_series from pilot_record join aircraft on pilot_record.Aircraft_ID = aircraft.Aircraft_ID join pilot on pilot_record.Pilot_ID = pilot.Pilot_ID   order by pilot.rank asc
+SELECT T2.Fleet_Series FROM pilot_record AS T1 JOIN aircraft AS T2 ON T1.Aircraft_ID  =  T2.Aircraft_ID JOIN pilot AS T3 ON T1.Pilot_ID  =  T3.Pilot_ID WHERE T3.Age  <  34
+select aircraft.fleet_series from pilot_record join aircraft on pilot_record.Aircraft_ID = aircraft.Aircraft_ID join pilot on pilot_record.Pilot_ID = pilot.Pilot_ID where  pilot.age < 34
+SELECT T2.Pilot_name ,  COUNT(*) FROM pilot_record AS T1 JOIN pilot AS T2 ON T1.pilot_ID  =  T2.pilot_ID GROUP BY T2.Pilot_name
+select pilot.pilot_name , count(*) from pilot_record join pilot on pilot_record.Pilot_ID = pilot.Pilot_ID  group by pilot.pilot_name
+SELECT T2.Pilot_name ,  COUNT(*) FROM pilot_record AS T1 JOIN pilot AS T2 ON T1.pilot_ID  =  T2.pilot_ID GROUP BY T2.Pilot_name HAVING COUNT(*)  >  1
+select pilot.pilot_name , count(*) from pilot_record join pilot on pilot_record.Pilot_ID = pilot.Pilot_ID  group by pilot.pilot_name having  count(*) > 1
+SELECT Pilot_name FROM pilot WHERE Pilot_ID NOT IN (SELECT Pilot_ID FROM pilot_record)
+select pilot.pilot_name from pilot where  pilot.pilot_id not in (select pilot_record.Pilot_ID from pilot_record  )

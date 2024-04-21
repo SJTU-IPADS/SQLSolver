@@ -1,0 +1,212 @@
+SELECT sum(enr) FROM College
+select sum(college.enr) from College
+SELECT sum(enr) FROM College
+select sum(college.enr) from College
+SELECT avg(enr) FROM College
+select avg(college.enr) from College
+SELECT avg(enr) FROM College
+select avg(college.enr) from College
+SELECT count(*) FROM College
+select count(*) from College
+SELECT count(*) FROM College
+select count(*) from College
+SELECT count(*) FROM Player WHERE HS  >  1000
+select count(*) from Player where  player.hs > 1000
+SELECT count(*) FROM Player WHERE HS  >  1000
+select count(*) from Player where  player.hs > 1000
+SELECT count(*) FROM College WHERE enr  >  15000
+select count(*) from College where  college.enr > 15000
+SELECT count(*) FROM College WHERE enr  >  15000
+select count(*) from College where  college.enr > 15000
+SELECT avg(HS) FROM Player
+select avg(player.hs) from Player
+SELECT avg(HS) FROM Player
+select avg(player.hs) from Player
+SELECT pName ,  HS FROM Player WHERE HS  <  1500
+select player.pname , player.hs from Player where  player.hs < 1500
+SELECT pName ,  HS FROM Player WHERE HS  <  1500
+select player.pname , player.hs from Player where  player.hs < 1500
+SELECT count(DISTINCT cName) FROM tryout
+select count( distinct tryout.cname) from Tryout
+SELECT count(DISTINCT cName) FROM tryout
+select count( distinct tryout.cname) from Tryout
+SELECT count(DISTINCT pPos) FROM tryout
+select count( distinct tryout.ppos) from Tryout
+SELECT count(DISTINCT pPos) FROM tryout
+select count( distinct tryout.ppos) from Tryout
+SELECT count(*) FROM tryout WHERE decision  =  'yes'
+select count(*) from Tryout where  tryout.decision = "yes"
+SELECT count(*) FROM tryout WHERE decision  =  'yes'
+select count(*) from Tryout where  tryout.decision = "yes"
+SELECT count(*) FROM tryout WHERE pPos  =  'goalie'
+select count(*) from Tryout where  tryout.ppos = "goalie"
+SELECT count(*) FROM tryout WHERE pPos  =  'goalie'
+select count(*) from Tryout where  tryout.ppos = "goalie"
+SELECT avg(HS) ,  max(HS) ,  min(HS) FROM Player
+select avg(player.hs) , max(player.hs) , min(player.hs) from Player
+SELECT avg(HS) ,  max(HS) ,  min(HS) FROM Player
+select avg(player.hs) , max(player.hs) , min(player.hs) from Player
+SELECT avg(enr) FROM College WHERE state  =  'FL'
+select avg(college.enr) from College where  college.state = "FL"
+SELECT avg(enr) FROM College WHERE state  =  'FL'
+select avg(college.enr) from College where  college.state = "FL"
+SELECT pName FROM Player WHERE HS BETWEEN 500 AND 1500
+select player.pname from Player where  player.hs between 500 and 1500
+SELECT pName FROM Player WHERE HS BETWEEN 500 AND 1500
+select player.pname from Player where  player.hs between 500 and 1500
+SELECT DISTINCT pName FROM Player WHERE pName LIKE '%a%'
+select distinct player.pname from Player where  player.pname like "%a%"
+SELECT DISTINCT pName FROM Player WHERE pName LIKE '%a%'
+select distinct player.pname from Player where  player.pname like "%a%"
+SELECT cName ,  enr FROM College WHERE enr  >  10000 AND state = "LA"
+select college.cname , college.enr from College where  college.enr > 10000 and college.state = "LA"
+SELECT cName ,  enr FROM College WHERE enr  >  10000 AND state = "LA"
+select college.cname , college.enr from College where  college.enr > 10000 and college.state = "LA"
+SELECT * FROM College ORDER BY enr
+select * from College   order by college.enr asc
+SELECT * FROM College ORDER BY enr
+select * from College   order by college.enr asc
+SELECT cName FROM College WHERE enr  >  18000 ORDER BY cName
+select college.cname from College where  college.enr > 18000   order by college.cname asc
+SELECT cName FROM College WHERE enr  >  18000 ORDER BY cName
+select college.cname from College where  college.enr > 18000   order by college.cname asc
+SELECT pName FROM Player WHERE yCard  =  'yes' ORDER BY HS DESC
+select player.pname from Player where  player.ycard = "yes"   order by player.hs desc
+SELECT pName FROM Player WHERE yCard  =  'yes' ORDER BY HS DESC
+select player.pname from Player where  player.ycard = "yes"   order by player.hs desc
+SELECT DISTINCT cName FROM tryout ORDER BY cName
+select distinct tryout.cname from Tryout   order by tryout.cname asc
+SELECT DISTINCT cName FROM tryout ORDER BY cName
+select distinct tryout.cname from Tryout   order by tryout.cname asc
+SELECT pPos FROM tryout GROUP BY pPos ORDER BY count(*) DESC LIMIT 1
+select tryout.ppos from Tryout  group by tryout.ppos  order by count(*) desc limit 1
+SELECT pPos FROM tryout GROUP BY pPos ORDER BY count(*) DESC LIMIT 1
+select tryout.ppos from Tryout  group by tryout.ppos  order by count(*) desc limit 1
+SELECT count(*) ,  cName FROM tryout GROUP BY cName ORDER BY count(*) DESC
+select count(*) , tryout.cname from Tryout  group by tryout.cname  order by count(*) desc
+SELECT count(*) ,  cName FROM tryout GROUP BY cName ORDER BY count(*) DESC
+select count(*) , tryout.cname from Tryout  group by tryout.cname  order by count(*) desc
+SELECT min(T2.HS) ,   T1.pPos FROM tryout AS T1 JOIN player AS T2 ON T1.pID  =  T2.pID GROUP BY T1.pPos
+select min(player.hs) , tryout.ppos from Tryout join Player on Tryout.pID = Player.pID  group by tryout.ppos
+SELECT min(T2.HS) ,   T1.pPos FROM tryout AS T1 JOIN player AS T2 ON T1.pID  =  T2.pID GROUP BY T1.pPos
+select min(player.hs) , tryout.ppos from Tryout join Player on Tryout.pID = Player.pID  group by tryout.ppos
+SELECT cName FROM college ORDER BY enr DESC LIMIT 3
+select college.cname from College   order by college.enr desc limit 3
+SELECT cName FROM college ORDER BY enr DESC LIMIT 3
+select college.cname from College   order by college.enr desc limit 3
+SELECT cName ,  state ,  min(enr) FROM college GROUP BY state
+select college.cname , college.state , min(college.enr) from College  group by college.state
+SELECT cName ,  state ,  min(enr) FROM college GROUP BY state
+select college.cname , college.state , min(college.enr) from College  group by college.state
+SELECT DISTINCT state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName
+select distinct college.state from Tryout join College on Tryout.cName = College.cName
+SELECT DISTINCT state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName
+select distinct college.state from Tryout join College on Tryout.cName = College.cName
+SELECT DISTINCT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.decision  =  'yes'
+select distinct college.state from Tryout join College on Tryout.cName = College.cName where  tryout.decision = "yes"
+SELECT DISTINCT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.decision  =  'yes'
+select distinct college.state from Tryout join College on Tryout.cName = College.cName where  tryout.decision = "yes"
+SELECT T1.pName ,  T2.cName FROM player AS T1 JOIN tryout AS T2 ON T1.pID  =  T2.pID WHERE T2.decision  =  'yes'
+select player.pname , tryout.cname from Tryout join Player on Tryout.pID = Player.pID where  tryout.decision = "yes"
+SELECT T1.pName ,  T2.cName FROM player AS T1 JOIN tryout AS T2 ON T1.pID  =  T2.pID WHERE T2.decision  =  'yes'
+select player.pname , tryout.cname from Tryout join Player on Tryout.pID = Player.pID where  tryout.decision = "yes"
+SELECT T1.pName FROM player AS T1 JOIN tryout AS T2 ON T1.pID  =  T2.pID ORDER BY T1.pName
+select player.pname from Tryout join Player on Tryout.pID = Player.pID   order by player.pname asc
+SELECT T1.pName FROM player AS T1 JOIN tryout AS T2 ON T1.pID  =  T2.pID ORDER BY T1.pName
+select player.pname from Tryout join Player on Tryout.pID = Player.pID   order by player.pname asc
+SELECT T1.pName ,  T1.HS FROM player AS T1 JOIN tryout AS T2 ON T1.pID  =  T2.pID WHERE T2.decision  =  'yes'
+select player.pname , player.hs from Tryout join Player on Tryout.pID = Player.pID where  tryout.decision = "yes"
+SELECT T1.pName ,  T1.HS FROM player AS T1 JOIN tryout AS T2 ON T1.pID  =  T2.pID WHERE T2.decision  =  'yes'
+select player.pname , player.hs from Tryout join Player on Tryout.pID = Player.pID where  tryout.decision = "yes"
+SELECT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.pPos  =  'striker'
+select college.state from Tryout join College on Tryout.cName = College.cName where  tryout.ppos = "striker"
+SELECT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.pPos  =  'striker'
+select college.state from Tryout join College on Tryout.cName = College.cName where  tryout.ppos = "striker"
+SELECT T1.pName FROM player AS T1 JOIN tryout AS T2 ON T1.pID  =  T2.pID WHERE T2.decision  =  'yes' AND T2.pPos  =  'striker'
+select player.pname from Tryout join Player on Tryout.pID = Player.pID where  tryout.decision = "yes" and tryout.ppos = "striker"
+SELECT T1.pName FROM player AS T1 JOIN tryout AS T2 ON T1.pID  =  T2.pID WHERE T2.decision  =  'yes' AND T2.pPos  =  'striker'
+select player.pname from Tryout join Player on Tryout.pID = Player.pID where  tryout.decision = "yes" and tryout.ppos = "striker"
+SELECT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName JOIN player AS T3 ON T2.pID  =  T3.pID WHERE T3.pName  =  'Charles'
+select college.state from Tryout join College on Tryout.cName = College.cName join Player on Tryout.pID = Player.pID where  player.pname = "Charles"
+SELECT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName JOIN player AS T3 ON T2.pID  =  T3.pID WHERE T3.pName  =  'Charles'
+select college.state from Tryout join College on Tryout.cName = College.cName join Player on Tryout.pID = Player.pID where  player.pname = "Charles"
+SELECT avg(T1.HS) ,  max(T1.HS) FROM player AS T1 JOIN tryout AS T2 ON T1.pID  =  T2.pID WHERE T2.decision  =  'yes'
+select avg(player.hs) , max(player.hs) from Tryout join Player on Tryout.pID = Player.pID where  tryout.decision = "yes"
+SELECT avg(T1.HS) ,  max(T1.HS) FROM player AS T1 JOIN tryout AS T2 ON T1.pID  =  T2.pID WHERE T2.decision  =  'yes'
+select avg(player.hs) , max(player.hs) from Tryout join Player on Tryout.pID = Player.pID where  tryout.decision = "yes"
+SELECT avg(T1.HS) FROM player AS T1 JOIN tryout AS T2 ON T1.pID  =  T2.pID WHERE T2.decision  =  'no'
+select avg(player.hs) from Tryout join Player on Tryout.pID = Player.pID where  tryout.decision = "no"
+SELECT avg(T1.HS) FROM player AS T1 JOIN tryout AS T2 ON T1.pID  =  T2.pID WHERE T2.decision  =  'no'
+select avg(player.hs) from Tryout join Player on Tryout.pID = Player.pID where  tryout.decision = "no"
+SELECT max(T1.HS) ,  pPos FROM player AS T1 JOIN tryout AS T2 ON T1.pID  =  T2.pID WHERE T1.HS  >  1000 GROUP BY T2.pPos
+select max(player.hs) , tryout.ppos from Tryout join Player on Tryout.pID = Player.pID where  player.hs > 1000  group by tryout.ppos
+SELECT max(T1.HS) ,  pPos FROM player AS T1 JOIN tryout AS T2 ON T1.pID  =  T2.pID WHERE T1.HS  >  1000 GROUP BY T2.pPos
+select max(player.hs) , tryout.ppos from Tryout join Player on Tryout.pID = Player.pID where  player.hs > 1000  group by tryout.ppos
+SELECT T1.cName FROM  tryout AS T1 JOIN player AS T2 ON T1.pID  =  T2.pID WHERE T2.pName LIKE 'D%'
+select tryout.cname from Tryout join Player on Tryout.pID = Player.pID where  player.pname like "D%"
+SELECT T1.cName FROM  tryout AS T1 JOIN player AS T2 ON T1.pID  =  T2.pID WHERE T2.pName LIKE 'D%'
+select tryout.cname from Tryout join Player on Tryout.pID = Player.pID where  player.pname like "D%"
+SELECT cName FROM  tryout WHERE decision  =  'yes' AND pPos  =  'goalie'
+select tryout.cname from Tryout where  tryout.decision = "yes" and tryout.ppos = "goalie"
+SELECT cName FROM  tryout WHERE decision  =  'yes' AND pPos  =  'goalie'
+select tryout.cname from Tryout where  tryout.decision = "yes" and tryout.ppos = "goalie"
+SELECT T2.pName FROM  tryout AS T1 JOIN player AS T2 ON T1.pID  =  T2.pID WHERE T1.cName  =  (SELECT cName FROM college ORDER BY enr DESC LIMIT 1)
+select player.pname from Tryout join Player on Tryout.pID = Player.pID where  tryout.cname in (select college.cname from College   order by college.enr desc limit 1 )
+SELECT T2.pName FROM  tryout AS T1 JOIN player AS T2 ON T1.pID  =  T2.pID WHERE T1.cName  =  (SELECT cName FROM college ORDER BY enr DESC LIMIT 1)
+select player.pname from Tryout join Player on Tryout.pID = Player.pID where  tryout.cname in (select college.cname from College   order by college.enr desc limit 1 )
+SELECT DISTINCT T1.state ,  T1.enr FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.decision  =  'yes'
+select distinct college.state , college.enr from Tryout join College on Tryout.cName = College.cName where  tryout.decision = "yes"
+SELECT DISTINCT T1.state ,  T1.enr FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.decision  =  'yes'
+select distinct college.state , college.enr from Tryout join College on Tryout.cName = College.cName where  tryout.decision = "yes"
+SELECT cName FROM College WHERE enr  <  13000 AND state = "AZ" UNION SELECT cName FROM College WHERE enr  >  15000 AND state = "LA"
+select college.cname from College where  college.enr > 15000 and college.state = "LA"   union select college.cname from College where  college.enr < 13000 and college.state = "AZ"
+SELECT cName FROM College WHERE enr  <  13000 AND state = "AZ" UNION SELECT cName FROM College WHERE enr  >  15000 AND state = "LA"
+select college.cname from College where  college.enr > 15000 and college.state = "LA"   union select college.cname from College where  college.enr < 13000 and college.state = "AZ"
+SELECT cName FROM  tryout WHERE pPos  =  'goalie' INTERSECT SELECT cName FROM  tryout WHERE pPos  =  'mid'
+select tryout.cname from Tryout where  tryout.ppos = "goalie"   intersect select tryout.cname from Tryout where  tryout.ppos = "mid"
+SELECT cName FROM  tryout WHERE pPos  =  'goalie' INTERSECT SELECT cName FROM  tryout WHERE pPos  =  'mid'
+select tryout.cname from Tryout where  tryout.ppos = "goalie"   intersect select tryout.cname from Tryout where  tryout.ppos = "mid"
+SELECT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.pPos  =  'goalie' INTERSECT SELECT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.pPos  =  'mid'
+select college.state from Tryout join College on Tryout.cName = College.cName where  tryout.ppos = "goalie"   intersect select college.state from Tryout join College on Tryout.cName = College.cName where  tryout.ppos = "mid"
+SELECT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.pPos  =  'goalie' INTERSECT SELECT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.pPos  =  'mid'
+select college.state from Tryout join College on Tryout.cName = College.cName where  tryout.ppos = "goalie"   intersect select college.state from Tryout join College on Tryout.cName = College.cName where  tryout.ppos = "mid"
+SELECT COUNT(*) FROM (SELECT cName FROM  tryout WHERE pPos  =  'goalie' INTERSECT SELECT cName FROM  tryout WHERE pPos  =  'mid')
+select count(*) from Tryout where  tryout.pid in (select Tryout.pID from Tryout where  tryout.ppos = "goalie"   intersect select Tryout.pID from Tryout where  tryout.ppos = "mid"   )
+SELECT COUNT(*) FROM (SELECT cName FROM  tryout WHERE pPos  =  'goalie' INTERSECT SELECT cName FROM  tryout WHERE pPos  =  'mid')
+select count(*) from Tryout where  tryout.pid in (select Tryout.pID from Tryout where  tryout.ppos = "goalie"   intersect select Tryout.pID from Tryout where  tryout.ppos = "mid"   )
+SELECT cName FROM  tryout WHERE pPos  =  'mid' EXCEPT SELECT cName FROM  tryout WHERE pPos  =  'goalie'
+select tryout.cname from Tryout where  tryout.ppos = "mid"   except select tryout.cname from Tryout where  tryout.ppos = "goalie"
+SELECT cName FROM  tryout WHERE pPos  =  'mid' EXCEPT SELECT cName FROM  tryout WHERE pPos  =  'goalie'
+select tryout.cname from Tryout where  tryout.ppos = "mid"   except select tryout.cname from Tryout where  tryout.ppos = "goalie"
+SELECT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.pPos  =  'mid' EXCEPT SELECT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.pPos  =  'goalie'
+select college.state from Tryout join College on Tryout.cName = College.cName where  tryout.ppos = "mid"   except select college.state from Tryout join College on Tryout.cName = College.cName where  tryout.ppos = "goalie"
+SELECT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.pPos  =  'mid' EXCEPT SELECT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.pPos  =  'goalie'
+select college.state from Tryout join College on Tryout.cName = College.cName where  tryout.ppos = "mid"   except select college.state from Tryout join College on Tryout.cName = College.cName where  tryout.ppos = "goalie"
+SELECT COUNT(*) FROM (SELECT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.pPos  =  'mid' EXCEPT SELECT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.pPos  =  'goalie')
+select count(*) from College where  college.cname in (select Tryout.cName from Tryout where  tryout.ppos = "mid"   except select Tryout.cName from Tryout where  tryout.ppos = "goalie"   )
+SELECT COUNT(*) FROM (SELECT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.pPos  =  'mid' EXCEPT SELECT T1.state FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.pPos  =  'goalie')
+select count(*) from College where  college.cname in (select Tryout.cName from Tryout where  tryout.ppos = "mid"   except select Tryout.cName from Tryout where  tryout.ppos = "goalie"   )
+SELECT DISTINCT state FROM college WHERE enr  <  (SELECT max(enr) FROM college)
+select distinct college.state from College where  college.enr < (select max(college.enr) from College  )
+SELECT DISTINCT state FROM college WHERE enr  <  (SELECT max(enr) FROM college)
+select distinct college.state from College where  college.enr < (select max(college.enr) from College  )
+SELECT DISTINCT cName FROM college WHERE enr  >  (SELECT min(enr) FROM college WHERE state  =  'FL')
+select distinct college.cname from College where  college.enr > (select min(college.enr) from College where  college.state = "FL"  )
+SELECT DISTINCT cName FROM college WHERE enr  >  (SELECT min(enr) FROM college WHERE state  =  'FL')
+select distinct college.cname from College where  college.enr > (select min(college.enr) from College where  college.state = "FL"  )
+SELECT cName FROM college WHERE enr  >  (SELECT max(enr) FROM college WHERE state  =  'FL')
+select college.cname from College where  college.enr > (select max(college.enr) from College where  college.state = "FL"  )
+SELECT cName FROM college WHERE enr  >  (SELECT max(enr) FROM college WHERE state  =  'FL')
+select college.cname from College where  college.enr > (select max(college.enr) from College where  college.state = "FL"  )
+SELECT sum(enr) FROM college WHERE cName NOT IN (SELECT cName FROM tryout WHERE pPos  =  "goalie")
+select sum(college.enr) from College where  college.cname not in (select Tryout.cName from Tryout where  tryout.ppos = "goalie"  )
+SELECT sum(enr) FROM college WHERE cName NOT IN (SELECT cName FROM tryout WHERE pPos  =  "goalie")
+select sum(college.enr) from College where  college.cname not in (select Tryout.cName from Tryout where  tryout.ppos = "goalie"  )
+SELECT count(DISTINCT state) FROM college WHERE enr  >  (SELECT avg(enr) FROM college)
+select count( distinct college.state) from College where  college.enr > (select avg(college.enr) from College  )
+SELECT count(DISTINCT state) FROM college WHERE enr  >  (SELECT avg(enr) FROM college)
+select count( distinct college.state) from College where  college.enr > (select avg(college.enr) from College  )
+SELECT count(DISTINCT state) FROM college WHERE enr  <  (SELECT avg(enr) FROM college)
+select count( distinct college.state) from College where  college.enr < (select avg(college.enr) from College  )
+SELECT count(DISTINCT state) FROM college WHERE enr  <  (SELECT avg(enr) FROM college)
+select count( distinct college.state) from College where  college.enr < (select avg(college.enr) from College  )

@@ -1,0 +1,80 @@
+SELECT individual_first_name ,  individual_middle_name ,  individual_last_name FROM individuals ORDER BY individual_last_name
+select individuals.individual_first_name , individuals.individual_middle_name , individuals.individual_last_name from Individuals   order by individuals.individual_last_name asc
+SELECT individual_first_name ,  individual_middle_name ,  individual_last_name FROM individuals ORDER BY individual_last_name
+select individuals.individual_first_name , individuals.individual_middle_name , individuals.individual_last_name from Individuals   order by individuals.individual_last_name asc
+SELECT DISTINCT form_type_code FROM forms
+select distinct forms.form_type_code from Forms
+SELECT DISTINCT form_type_code FROM forms
+select distinct forms.form_type_code from Forms
+SELECT t1.form_name FROM forms AS t1 JOIN party_forms AS t2 ON t1.form_id  =  t2.form_id GROUP BY t2.form_id ORDER BY count(*) DESC LIMIT 1
+select forms.form_name from Party_Forms join Forms on Party_Forms.form_id = Forms.form_id  group by party_forms.form_id  order by count(*) desc limit 1
+SELECT t1.form_name FROM forms AS t1 JOIN party_forms AS t2 ON t1.form_id  =  t2.form_id GROUP BY t2.form_id ORDER BY count(*) DESC LIMIT 1
+select forms.form_name from Party_Forms join Forms on Party_Forms.form_id = Forms.form_id  group by party_forms.form_id  order by count(*) desc limit 1
+SELECT payment_method_code ,  party_phone FROM parties WHERE party_email  =  "enrico09@example.com"
+select parties.payment_method_code , parties.party_phone from Parties where  parties.party_email = "enrico09@example.com"
+SELECT payment_method_code ,  party_phone FROM parties WHERE party_email  =  "enrico09@example.com"
+select parties.payment_method_code , parties.party_phone from Parties where  parties.party_email = "enrico09@example.com"
+SELECT t1.party_email FROM parties AS t1 JOIN party_forms AS t2 ON t1.party_id  =  t2.party_id WHERE t2.form_id  =  (SELECT form_id FROM party_forms GROUP BY form_id ORDER BY count(*) DESC LIMIT 1)
+select parties.party_email from Party_Forms join Parties on Party_Forms.party_id = Parties.party_id where  party_forms.form_id = (select Party_Forms.form_id from Party_Forms  group by Party_Forms.form_id  order by count(*) desc limit 1 )
+SELECT t1.party_email FROM parties AS t1 JOIN party_forms AS t2 ON t1.party_id  =  t2.party_id WHERE t2.form_id  =  (SELECT form_id FROM party_forms GROUP BY form_id ORDER BY count(*) DESC LIMIT 1)
+select parties.party_email from Party_Forms join Parties on Party_Forms.party_id = Parties.party_id where  party_forms.form_id = (select Party_Forms.form_id from Party_Forms  group by Party_Forms.form_id  order by count(*) desc limit 1 )
+SELECT organization_name FROM organizations ORDER BY date_formed ASC
+select organizations.organization_name from Organizations   order by organizations.date_formed asc
+SELECT organization_name FROM organizations ORDER BY date_formed ASC
+select organizations.organization_name from Organizations   order by organizations.date_formed asc
+SELECT organization_name FROM organizations ORDER BY date_formed DESC LIMIT 1
+select organizations.organization_name from Organizations   order by organizations.date_formed desc limit 1
+SELECT organization_name FROM organizations ORDER BY date_formed DESC LIMIT 1
+select organizations.organization_name from Organizations   order by organizations.date_formed desc limit 1
+SELECT t3.individual_last_name FROM organizations AS t1 JOIN organization_contact_individuals AS t2 ON t1.organization_id  =  t2.organization_id JOIN individuals AS t3 ON t2.individual_id  =  t3.individual_id WHERE t1.organization_name  =  "Labour Party" ORDER BY t2.date_contact_to DESC LIMIT 1
+select individuals.individual_last_name from Organization_Contact_Individuals join Individuals on Organization_Contact_Individuals.individual_id = Individuals.individual_id join Organizations on Organization_Contact_Individuals.organization_id = Organizations.organization_id where  organizations.organization_name = "Labour Party"   order by organization_contact_individuals.date_contact_to desc limit 1
+SELECT t3.individual_last_name FROM organizations AS t1 JOIN organization_contact_individuals AS t2 ON t1.organization_id  =  t2.organization_id JOIN individuals AS t3 ON t2.individual_id  =  t3.individual_id WHERE t1.organization_name  =  "Labour Party" ORDER BY t2.date_contact_to DESC LIMIT 1
+select individuals.individual_last_name from Organization_Contact_Individuals join Individuals on Organization_Contact_Individuals.individual_id = Individuals.individual_id join Organizations on Organization_Contact_Individuals.organization_id = Organizations.organization_id where  organizations.organization_name = "Labour Party"   order by organization_contact_individuals.date_contact_to desc limit 1
+SELECT t3.individual_last_name FROM organizations AS t1 JOIN organization_contact_individuals AS t2 ON t1.organization_id  =  t2.organization_id JOIN individuals AS t3 ON t2.individual_id  =  t3.individual_id WHERE t1.uk_vat_number  =  (SELECT max(uk_vat_number) FROM organizations) ORDER BY t2.date_contact_to ASC LIMIT 1
+select individuals.individual_last_name from Organization_Contact_Individuals join Individuals on Organization_Contact_Individuals.individual_id = Individuals.individual_id   order by organization_contact_individuals.date_contact_to desc limit 1
+SELECT t3.individual_last_name FROM organizations AS t1 JOIN organization_contact_individuals AS t2 ON t1.organization_id  =  t2.organization_id JOIN individuals AS t3 ON t2.individual_id  =  t3.individual_id WHERE t1.uk_vat_number  =  (SELECT max(uk_vat_number) FROM organizations) ORDER BY t2.date_contact_to ASC LIMIT 1
+select individuals.individual_last_name from Organization_Contact_Individuals join Individuals on Organization_Contact_Individuals.individual_id = Individuals.individual_id join Organizations on Organization_Contact_Individuals.organization_id = Organizations.organization_id where  organizations.uk_vat_number = (select max(Organizations.uk_vat_number) from Organizations join Organization_Contact_Individuals on Organizations.organization_id = Organization_Contact_Individuals.organization_id   order by organization_contact_individuals.date_contact_to asc limit 1 )
+SELECT count(*) FROM services
+select count(*) from Services
+SELECT count(*) FROM services
+select count(*) from Services
+SELECT service_name FROM services EXCEPT SELECT t1.service_name FROM services AS t1 JOIN party_services AS t2 ON t1.service_id  =  t2.service_id
+select services.service_name from Services   except select services.service_name from Party_Services join Services on Party_Services.service_id = Services.service_id
+SELECT service_name FROM services EXCEPT SELECT t1.service_name FROM services AS t1 JOIN party_services AS t2 ON t1.service_id  =  t2.service_id
+select services.service_name from Services   except select services.service_name from Party_Services join Services on Party_Services.service_id = Services.service_id
+SELECT town_city FROM addresses UNION SELECT state_province_county FROM addresses
+select addresses.town_city from Addresses   union select addresses.town_city from Addresses
+SELECT town_city FROM addresses UNION SELECT state_province_county FROM addresses
+select addresses.town_city from Addresses   union select addresses.town_city from Addresses
+SELECT count(*) FROM addresses WHERE state_province_county  =  "Colorado"
+select count(*) from Addresses where  addresses.state_province_county = "Colorado"
+SELECT count(*) FROM addresses WHERE state_province_county  =  "Colorado"
+select count(*) from Addresses where  addresses.state_province_county = "Colorado"
+SELECT payment_method_code FROM parties GROUP BY payment_method_code HAVING count(*)  >  3
+select parties.payment_method_code from Parties  group by parties.payment_method_code having  count(*) > 3
+SELECT payment_method_code FROM parties GROUP BY payment_method_code HAVING count(*)  >  3
+select parties.payment_method_code from Parties  group by parties.payment_method_code having  count(*) > 3
+SELECT organization_name FROM organizations WHERE organization_name LIKE "%Party%"
+select organizations.organization_name from Organizations where  organizations.organization_name like "%Party%"
+SELECT organization_name FROM organizations WHERE organization_name LIKE "%Party%"
+select organizations.organization_name from Organizations where  organizations.organization_name like "%Party%"
+SELECT count(DISTINCT payment_method_code) FROM parties
+select count( distinct parties.payment_method_code) from Parties
+SELECT count(DISTINCT payment_method_code) FROM parties
+select count( distinct parties.payment_method_code) from Parties
+SELECT t1.party_email FROM parties AS t1 JOIN party_services AS t2 ON t1.party_id  =  t2.customer_id GROUP BY t1.party_email ORDER BY count(*) DESC LIMIT 1
+select parties.party_email from Party_Services join Parties on Party_Services.customer_id = Parties.party_id  group by parties.party_email  order by count(*) desc limit 1
+SELECT t1.party_email FROM parties AS t1 JOIN party_services AS t2 ON t1.party_id  =  t2.customer_id GROUP BY t1.party_email ORDER BY count(*) DESC LIMIT 1
+select parties.party_email from Party_Services join Parties on Party_Services.customer_id = Parties.party_id  group by parties.party_email  order by count(*) desc limit 1
+SELECT state_province_county FROM addresses WHERE line_1_number_building LIKE "%6862 Kaitlyn Knolls%"
+select addresses.state_province_county from Addresses where  addresses.line_1_number_building like "%6862 Kaitlyn Knolls%"
+SELECT state_province_county FROM addresses WHERE line_1_number_building LIKE "%6862 Kaitlyn Knolls%"
+select addresses.state_province_county from Addresses where  addresses.line_1_number_building like "%6862 Kaitlyn Knolls%"
+SELECT t1.organization_name FROM organizations AS t1 JOIN organization_contact_individuals AS t2 ON t1.organization_id  =  t2.organization_id GROUP BY t1.organization_name ORDER BY count(*) DESC LIMIT 1
+select organizations.organization_name from Organization_Contact_Individuals join Organizations on Organization_Contact_Individuals.organization_id = Organizations.organization_id  group by organizations.organization_name  order by count(*) desc limit 1
+SELECT t1.organization_name FROM organizations AS t1 JOIN organization_contact_individuals AS t2 ON t1.organization_id  =  t2.organization_id GROUP BY t1.organization_name ORDER BY count(*) DESC LIMIT 1
+select organizations.organization_name from Organization_Contact_Individuals join Organizations on Organization_Contact_Individuals.organization_id = Organizations.organization_id  group by organizations.organization_name  order by count(*) desc limit 1
+SELECT DISTINCT t1.individual_last_name FROM individuals AS t1 JOIN organization_contact_individuals AS t2 ON t1.individual_id  =  t2.individual_id
+select distinct individuals.individual_last_name from Organization_Contact_Individuals join Individuals on Organization_Contact_Individuals.individual_id = Individuals.individual_id
+SELECT DISTINCT t1.individual_last_name FROM individuals AS t1 JOIN organization_contact_individuals AS t2 ON t1.individual_id  =  t2.individual_id
+select distinct individuals.individual_last_name from Organization_Contact_Individuals join Individuals on Organization_Contact_Individuals.individual_id = Individuals.individual_id

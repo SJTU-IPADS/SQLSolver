@@ -1,0 +1,32 @@
+SELECT local_authority ,  services FROM station
+select station.local_authority , station.services from station
+SELECT train_number ,  name FROM train ORDER BY TIME
+select train.train_number , train.name from train   order by train.time asc
+SELECT TIME ,  train_number FROM train WHERE destination  =  'Chennai' ORDER BY TIME
+select train.time , train.train_number from train where  train.destination = "Chennai"   order by train.time asc
+SELECT count(*) FROM train WHERE name LIKE "%Express%"
+select count(*) from train where  train.name like "%Express%"
+SELECT train_number ,  TIME FROM train WHERE origin  =  'Chennai' AND destination  =  'Guruvayur'
+select train.train_number , train.time from train where  train.origin = "Chennai" and train.destination = "Guruvayur"
+SELECT origin ,  count(*) FROM train GROUP BY origin
+select train.origin , count(*) from train  group by train.origin
+SELECT t1.name FROM train AS t1 JOIN route AS t2 ON t1.id  =  t2.train_id GROUP BY t2.train_id ORDER BY count(*) DESC LIMIT 1
+select train.name from route join train on route.train_id = train.id  group by route.train_id  order by count(*) desc limit 1
+SELECT count(*) ,  t1.network_name ,  t1.services FROM station AS t1 JOIN route AS t2 ON t1.id  =  t2.station_id GROUP BY t2.station_id
+select count(*) , station.network_name , station.services from route join station on route.station_id = station.id  group by route.station_id
+SELECT avg(high_temperature) ,  day_of_week FROM weekly_weather GROUP BY day_of_week
+select avg(weekly_weather.high_temperature) , weekly_weather.day_of_week from weekly_weather  group by weekly_weather.day_of_week
+SELECT max(t1.low_temperature) ,  avg(t1.precipitation) FROM weekly_weather AS t1 JOIN station AS t2 ON t1.station_id  =  t2.id WHERE t2.network_name  =  "Amersham"
+select max(weekly_weather.low_temperature) , avg(weekly_weather.precipitation) from weekly_weather join station on weekly_weather.station_id = station.id where  station.network_name = "Amersham"
+SELECT t3.name ,  t3.time FROM station AS t1 JOIN route AS t2 ON t1.id  =  t2.station_id JOIN train AS t3 ON t2.train_id  =  t3.id WHERE t1.local_authority  =  "Chiltern"
+select train.name , train.time from route join station on route.station_id = station.id join train on route.train_id = train.id where  station.local_authority = "Chiltern"
+SELECT count(DISTINCT services) FROM station
+select count( distinct station.services) from station
+SELECT t2.id ,  t2.local_authority FROM weekly_weather AS t1 JOIN station AS t2 ON t1.station_id  =  t2.id GROUP BY t1.station_id ORDER BY avg(high_temperature) DESC LIMIT 1
+select station.id , station.local_authority from weekly_weather join station on weekly_weather.station_id = station.id  group by weekly_weather.station_id  order by avg(weekly_weather.high_temperature) desc limit 1
+SELECT t2.id ,  t2.local_authority FROM weekly_weather AS t1 JOIN station AS t2 ON t1.station_id  =  t2.id GROUP BY t1.station_id HAVING max(t1.precipitation)  >  50
+select station.id , station.local_authority from weekly_weather join station on weekly_weather.station_id = station.id  group by weekly_weather.station_id having  max(weekly_weather.precipitation) > 50
+SELECT min(low_temperature) ,  max(wind_speed_mph) FROM weekly_weather
+select min(weekly_weather.low_temperature) , max(weekly_weather.wind_speed_mph) from weekly_weather
+SELECT origin FROM train GROUP BY origin HAVING count(*)  >  1
+select train.origin from train  group by train.origin having  count(*) > 1

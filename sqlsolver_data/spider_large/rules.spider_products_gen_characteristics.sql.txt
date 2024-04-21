@@ -1,0 +1,172 @@
+SELECT count(*) FROM products
+select count(*) from Products
+SELECT count(*) FROM products
+select count(*) from Products
+SELECT count(*) FROM ref_colors
+select count(*) from Ref_Colors
+SELECT count(*) FROM ref_colors
+select count(*) from Ref_Colors
+SELECT count(*) FROM CHARACTERISTICS
+select count(*) from Characteristics
+SELECT count(*) FROM CHARACTERISTICS
+select count(*) from Characteristics
+SELECT product_name ,  typical_buying_price FROM products
+select products.product_name , products.typical_buying_price from Products
+SELECT product_name ,  typical_buying_price FROM products
+select products.product_name , products.typical_buying_price from Products
+SELECT color_description FROM ref_colors
+select ref_colors.color_description from Ref_Colors
+SELECT color_description FROM ref_colors
+select ref_colors.color_description from Ref_Colors
+SELECT DISTINCT characteristic_name FROM CHARACTERISTICS
+select distinct characteristics.characteristic_name from Characteristics
+SELECT DISTINCT characteristic_name FROM CHARACTERISTICS
+select distinct characteristics.characteristic_name from Characteristics
+SELECT product_name FROM products WHERE product_category_code  =  "Spices"
+select products.product_name from Products where  products.product_category_code = "Spices"
+SELECT product_name FROM products WHERE product_category_code  =  "Spices"
+select products.product_name from Products where  products.product_category_code = "Spices"
+SELECT T1.product_name ,  T2.color_description ,  T1.product_description FROM products AS T1 JOIN Ref_colors AS T2 ON T1.color_code  =  T2.color_code WHERE product_category_code  =  "Herbs"
+select products.product_name , ref_colors.color_description , products.product_description from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code where  products.product_category_code = "Herbs"
+SELECT T1.product_name ,  T2.color_description ,  T1.product_description FROM products AS T1 JOIN Ref_colors AS T2 ON T1.color_code  =  T2.color_code WHERE product_category_code  =  "Herbs"
+select products.product_name , ref_colors.color_description , products.product_description from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code where  products.product_category_code = "Herbs"
+SELECT count(*) FROM products WHERE product_category_code  =  "Seeds"
+select count(*) from Products where  products.product_category_code = "Seeds"
+SELECT count(*) FROM products WHERE product_category_code  =  "Seeds"
+select count(*) from Products where  products.product_category_code = "Seeds"
+SELECT count(*) FROM products WHERE product_category_code  =  "Spices" AND typical_buying_price  >  1000
+select count(*) from Products where  products.product_category_code = "Spices" and products.typical_buying_price > 1000
+SELECT count(*) FROM products WHERE product_category_code  =  "Spices" AND typical_buying_price  >  1000
+select count(*) from Products where  products.product_category_code = "Spices" and products.typical_buying_price > 1000
+SELECT product_category_code ,  typical_buying_price FROM products WHERE product_name  =  "cumin"
+select products.product_category_code , products.typical_buying_price from Products where  products.product_name = "cumin"
+SELECT product_category_code ,  typical_buying_price FROM products WHERE product_name  =  "cumin"
+select products.product_category_code , products.typical_buying_price from Products where  products.product_name = "cumin"
+SELECT product_category_code FROM products WHERE product_name  =  "flax"
+select products.product_category_code from Products where  products.product_name = "flax"
+SELECT product_category_code FROM products WHERE product_name  =  "flax"
+select products.product_category_code from Products where  products.product_name = "flax"
+SELECT T1.product_name FROM products AS T1 JOIN ref_colors AS T2 ON T1.color_code  =  T2.color_code WHERE T2.color_description  =  'yellow'
+select products.product_name from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code where  ref_colors.color_description = "yellow"
+SELECT T1.product_name FROM products AS T1 JOIN ref_colors AS T2 ON T1.color_code  =  T2.color_code WHERE T2.color_description  =  'yellow'
+select products.product_name from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code where  ref_colors.color_description = "yellow"
+SELECT T1.product_category_description FROM ref_product_categories AS T1 JOIN products AS T2 ON T1.product_category_code  =  T2.product_category_code WHERE T2.product_description LIKE '%t%'
+select ref_product_categories.product_category_description from Products join Ref_Product_Categories on Products.product_category_code = Ref_Product_Categories.product_category_code where  products.product_description like "%t%"
+SELECT T1.product_category_description FROM ref_product_categories AS T1 JOIN products AS T2 ON T1.product_category_code  =  T2.product_category_code WHERE T2.product_description LIKE '%t%'
+select ref_product_categories.product_category_description from Products join Ref_Product_Categories on Products.product_category_code = Ref_Product_Categories.product_category_code where  products.product_description like "%t%"
+SELECT t2.color_description FROM products AS t1 JOIN ref_colors AS t2 ON t1.color_code  =  t2.color_code WHERE t1.product_name  =  "catnip"
+select ref_colors.color_description from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code where  products.product_name = "catnip"
+SELECT t2.color_description FROM products AS t1 JOIN ref_colors AS t2 ON t1.color_code  =  t2.color_code WHERE t1.product_name  =  "catnip"
+select ref_colors.color_description from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code where  products.product_name = "catnip"
+SELECT t1.color_code ,  t2.color_description FROM products AS t1 JOIN ref_colors AS t2 ON t1.color_code  =  t2.color_code WHERE t1.product_name  =  "chervil"
+select products.color_code , products.product_description from Products where  products.product_name = "chervil"
+SELECT t1.color_code ,  t2.color_description FROM products AS t1 JOIN ref_colors AS t2 ON t1.color_code  =  t2.color_code WHERE t1.product_name  =  "chervil"
+select products.color_code , products.product_description from Products where  products.product_name = "chervil"
+SELECT t1.product_id ,  t2.color_description FROM products AS t1 JOIN ref_colors AS t2 ON t1.color_code  =  t2.color_code JOIN product_characteristics AS t3 ON t1.product_id  =  t3.product_id GROUP BY t1.product_id HAVING count(*)  >=  2
+select products.product_id , ref_colors.color_description from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Ref_Colors on Products.color_code = Ref_Colors.color_code  group by products.product_id having  count(*) >= 2
+SELECT t1.product_id ,  t2.color_description FROM products AS t1 JOIN ref_colors AS t2 ON t1.color_code  =  t2.color_code JOIN product_characteristics AS t3 ON t1.product_id  =  t3.product_id GROUP BY t1.product_id HAVING count(*)  >=  2
+select products.product_id , ref_colors.color_description from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Ref_Colors on Products.color_code = Ref_Colors.color_code  group by products.product_id having  count(*) >= 2
+SELECT t1.product_name FROM products AS t1 JOIN ref_colors AS t2 ON t1.color_code  =  t2.color_code WHERE t2.color_description  =  "white"
+select products.product_name from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code where  ref_colors.color_description = "white"
+SELECT t1.product_name FROM products AS t1 JOIN ref_colors AS t2 ON t1.color_code  =  t2.color_code WHERE t2.color_description  =  "white"
+select products.product_name from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code where  ref_colors.color_description = "white"
+SELECT t1.product_name ,  t1.typical_buying_price ,  t1.typical_selling_price FROM products AS t1 JOIN ref_colors AS t2 ON t1.color_code  =  t2.color_code WHERE t2.color_description  =  "yellow"
+select products.product_name , products.typical_buying_price , products.typical_selling_price from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code where  ref_colors.color_description = "yellow"
+SELECT t1.product_name ,  t1.typical_buying_price ,  t1.typical_selling_price FROM products AS t1 JOIN ref_colors AS t2 ON t1.color_code  =  t2.color_code WHERE t2.color_description  =  "yellow"
+select products.product_name , products.typical_buying_price , products.typical_selling_price from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code where  ref_colors.color_description = "yellow"
+SELECT count(*) FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id WHERE t1.product_name  =  "sesame"
+select count(*) from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id where  products.product_name = "sesame"
+SELECT count(*) FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id WHERE t1.product_name  =  "sesame"
+select count(*) from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id where  products.product_name = "sesame"
+SELECT count(DISTINCT t3.characteristic_name) FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id WHERE t1.product_name  =  "sesame"
+select count( distinct characteristics.characteristic_name) from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  products.product_name = "sesame"
+SELECT count(DISTINCT t3.characteristic_name) FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id WHERE t1.product_name  =  "sesame"
+select count( distinct characteristics.characteristic_name) from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  products.product_name = "sesame"
+SELECT t3.characteristic_name FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id WHERE t1.product_name  =  "sesame"
+select characteristics.characteristic_name from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  products.product_name = "sesame"
+SELECT t3.characteristic_name FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id WHERE t1.product_name  =  "sesame"
+select characteristics.characteristic_name from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  products.product_name = "sesame"
+SELECT t3.characteristic_name ,  t3.characteristic_data_type FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id WHERE t1.product_name  =  "cumin"
+select characteristics.characteristic_name , characteristics.characteristic_data_type from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  products.product_name = "cumin"
+SELECT t3.characteristic_name ,  t3.characteristic_data_type FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id WHERE t1.product_name  =  "cumin"
+select characteristics.characteristic_name , characteristics.characteristic_data_type from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  products.product_name = "cumin"
+SELECT t3.characteristic_name FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id WHERE t1.product_name  =  "sesame" AND t3.characteristic_type_code  =  "Grade"
+select characteristics.characteristic_name from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  products.product_name = "sesame" and characteristics.characteristic_type_code = "Grade"
+SELECT t3.characteristic_name FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id WHERE t1.product_name  =  "sesame" AND t3.characteristic_type_code  =  "Grade"
+select characteristics.characteristic_name from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  products.product_name = "sesame" and characteristics.characteristic_type_code = "Grade"
+SELECT count(*) FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id WHERE t1.product_name  =  "laurel"
+select count(*) from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id where  products.product_name = "laurel"
+SELECT count(*) FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id WHERE t1.product_name  =  "laurel"
+select count(*) from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  products.product_name = "laurel"
+SELECT count(*) FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id WHERE t1.product_name  =  "flax"
+select count(*) from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id where  products.product_name = "flax"
+SELECT count(*) FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id WHERE t1.product_name  =  "flax"
+select count(*) from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  products.product_name = "flax"
+SELECT product_name FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id JOIN ref_colors AS t4 ON t1.color_code  =  t4.color_code WHERE t4.color_description  =  "red" AND t3.characteristic_name  =  "fast"
+select products.product_name from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code join Product_Characteristics on Products.product_id = Product_Characteristics.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  ref_colors.color_description = "red" and characteristics.characteristic_name = "fast"
+SELECT product_name FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id JOIN ref_colors AS t4 ON t1.color_code  =  t4.color_code WHERE t4.color_description  =  "red" AND t3.characteristic_name  =  "fast"
+select products.product_name from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code join Product_Characteristics on Products.product_id = Product_Characteristics.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  ref_colors.color_description = "red" and characteristics.characteristic_name = "fast"
+SELECT count(*) FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id WHERE t3.characteristic_name  =  "hot"
+select count(*) from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  characteristics.characteristic_name = "hot"
+SELECT count(*) FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id WHERE t3.characteristic_name  =  "hot"
+select count(*) from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  characteristics.characteristic_name = "hot"
+SELECT DISTINCT t1.product_name FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id WHERE t3.characteristic_name  =  "warm"
+select distinct products.product_name from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  characteristics.characteristic_name = "warm"
+SELECT DISTINCT t1.product_name FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id WHERE t3.characteristic_name  =  "warm"
+select distinct products.product_name from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  characteristics.characteristic_name = "warm"
+SELECT count(*) FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id JOIN ref_colors AS t4 ON t1.color_code  =  t4.color_code WHERE t4.color_description  =  "red" AND t3.characteristic_name  =  "slow"
+select count(*) from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code join Product_Characteristics on Products.product_id = Product_Characteristics.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  ref_colors.color_description = "red" and characteristics.characteristic_name = "slow"
+SELECT count(*) FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id JOIN ref_colors AS t4 ON t1.color_code  =  t4.color_code WHERE t4.color_description  =  "red" AND t3.characteristic_name  =  "slow"
+select count(*) from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code join Product_Characteristics on Products.product_id = Product_Characteristics.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  ref_colors.color_description = "red" and characteristics.characteristic_name = "slow"
+SELECT count(*) FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id JOIN ref_colors AS t4 ON t1.color_code  =  t4.color_code WHERE t4.color_description  =  "white" OR t3.characteristic_name  =  "hot"
+select count(*) from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code join Product_Characteristics on Products.product_id = Product_Characteristics.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  ref_colors.color_description = "white" or characteristics.characteristic_name = "hot"
+SELECT count(*) FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id JOIN ref_colors AS t4 ON t1.color_code  =  t4.color_code WHERE t4.color_description  =  "white" OR t3.characteristic_name  =  "hot"
+select count(*) from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code join Product_Characteristics on Products.product_id = Product_Characteristics.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id where  ref_colors.color_description = "white" or characteristics.characteristic_name = "hot"
+SELECT unit_of_measure FROM ref_product_categories WHERE product_category_code  =  "Herbs"
+select ref_product_categories.unit_of_measure from Ref_Product_Categories where  ref_product_categories.product_category_code = "Herbs"
+SELECT unit_of_measure FROM ref_product_categories WHERE product_category_code  =  "Herbs"
+select ref_product_categories.unit_of_measure from Products join Ref_Product_Categories on Products.product_category_code = Ref_Product_Categories.product_category_code where  products.product_category_code = "Herbs"
+SELECT product_category_description FROM ref_product_categories WHERE product_category_code  =  "Spices"
+select ref_product_categories.product_category_description from Products join Ref_Product_Categories on Products.product_category_code = Ref_Product_Categories.product_category_code where  products.product_category_code = "Spices"
+SELECT product_category_description FROM ref_product_categories WHERE product_category_code  =  "Spices"
+select ref_product_categories.product_category_description from Products join Ref_Product_Categories on Products.product_category_code = Ref_Product_Categories.product_category_code where  products.product_category_code = "Spices"
+SELECT product_category_description ,  unit_of_measure FROM ref_product_categories WHERE product_category_code  =  "Herbs"
+select ref_product_categories.product_category_description , ref_product_categories.unit_of_measure from Products join Ref_Product_Categories on Products.product_category_code = Ref_Product_Categories.product_category_code where  products.product_category_code = "Herbs"
+SELECT product_category_description ,  unit_of_measure FROM ref_product_categories WHERE product_category_code  =  "Herbs"
+select products.product_description , ref_product_categories.unit_of_measure from Products join Ref_Product_Categories on Products.product_category_code = Ref_Product_Categories.product_category_code where  products.product_category_code = "Herbs"
+SELECT t2.unit_of_measure FROM products AS t1 JOIN ref_product_categories AS t2 ON t1.product_category_code  =  t2.product_category_code WHERE t1.product_name  =  "cumin"
+select ref_product_categories.unit_of_measure from Products join Ref_Product_Categories on Products.product_category_code = Ref_Product_Categories.product_category_code where  products.product_name = "cumin"
+SELECT t2.unit_of_measure FROM products AS t1 JOIN ref_product_categories AS t2 ON t1.product_category_code  =  t2.product_category_code WHERE t1.product_name  =  "cumin"
+select ref_product_categories.unit_of_measure from Products join Ref_Product_Categories on Products.product_category_code = Ref_Product_Categories.product_category_code where  products.product_name = "cumin"
+SELECT t2.unit_of_measure ,  t2.product_category_code FROM products AS t1 JOIN ref_product_categories AS t2 ON t1.product_category_code  =  t2.product_category_code WHERE t1.product_name  =  "chervil"
+select ref_product_categories.unit_of_measure , ref_product_categories.product_category_code from Products join Ref_Product_Categories on Products.product_category_code = Ref_Product_Categories.product_category_code where  products.product_name = "chervil"
+SELECT t2.unit_of_measure ,  t2.product_category_code FROM products AS t1 JOIN ref_product_categories AS t2 ON t1.product_category_code  =  t2.product_category_code WHERE t1.product_name  =  "chervil"
+select ref_product_categories.unit_of_measure , ref_product_categories.product_category_code from Products join Ref_Product_Categories on Products.product_category_code = Ref_Product_Categories.product_category_code where  products.product_name = "chervil"
+SELECT t1.product_name FROM products AS t1 JOIN ref_product_categories AS t2 ON t1.product_category_code  =  t2.product_category_code JOIN ref_colors AS t3 ON t1.color_code  =  t3.color_code WHERE t3.color_description  =  "white" AND t2.unit_of_measure != "Handful"
+select products.product_name from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code join Ref_Product_Categories on Products.product_category_code = Ref_Product_Categories.product_category_code where  ref_colors.color_description = "white" and ref_product_categories.unit_of_measure != "Handful"
+SELECT t1.product_name FROM products AS t1 JOIN ref_product_categories AS t2 ON t1.product_category_code  =  t2.product_category_code JOIN ref_colors AS t3 ON t1.color_code  =  t3.color_code WHERE t3.color_description  =  "white" AND t2.unit_of_measure != "Handful"
+select products.product_name from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code join Ref_Product_Categories on Products.product_category_code = Ref_Product_Categories.product_category_code where  ref_colors.color_description = "white" and ref_product_categories.unit_of_measure != "Handful"
+SELECT t2.color_description FROM products AS t1 JOIN ref_colors AS t2 ON t1.color_code  =  t2.color_code GROUP BY t2.color_description ORDER BY count(*) DESC LIMIT 1
+select ref_colors.color_description from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code  group by ref_colors.color_description  order by count(*) desc limit 1
+SELECT t2.color_description FROM products AS t1 JOIN ref_colors AS t2 ON t1.color_code  =  t2.color_code GROUP BY t2.color_description ORDER BY count(*) DESC LIMIT 1
+select ref_colors.color_description from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code  group by ref_colors.color_description  order by count(*) desc limit 1
+SELECT t2.color_description FROM products AS t1 JOIN ref_colors AS t2 ON t1.color_code  =  t2.color_code GROUP BY t2.color_description ORDER BY count(*) ASC LIMIT 1
+select ref_colors.color_description from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code  group by ref_colors.color_description  order by count(*) asc limit 1
+SELECT t2.color_description FROM products AS t1 JOIN ref_colors AS t2 ON t1.color_code  =  t2.color_code GROUP BY t2.color_description ORDER BY count(*) ASC LIMIT 1
+select ref_colors.color_description from Products join Ref_Colors on Products.color_code = Ref_Colors.color_code  group by ref_colors.color_description  order by count(*) asc limit 1
+SELECT t3.characteristic_name FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id GROUP BY t3.characteristic_name ORDER BY count(*) DESC LIMIT 1
+select characteristics.characteristic_name from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id  group by characteristics.characteristic_name  order by count(*) desc limit 1
+SELECT t3.characteristic_name FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id GROUP BY t3.characteristic_name ORDER BY count(*) DESC LIMIT 1
+select characteristics.characteristic_name from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id  group by characteristics.characteristic_name  order by count(*) desc limit 1
+SELECT characteristic_name ,  other_characteristic_details ,  characteristic_data_type FROM CHARACTERISTICS EXCEPT SELECT t1.characteristic_name ,  t1.other_characteristic_details ,  t1.characteristic_data_type FROM CHARACTERISTICS AS t1 JOIN product_characteristics AS t2 ON t1.characteristic_id  =  t2.characteristic_id
+select characteristics.characteristic_name , characteristics.other_characteristic_details , characteristics.characteristic_data_type from Characteristics   except select characteristics.characteristic_name , characteristics.other_characteristic_details , characteristics.characteristic_data_type from Product_Characteristics join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id
+SELECT characteristic_name ,  other_characteristic_details ,  characteristic_data_type FROM CHARACTERISTICS EXCEPT SELECT t1.characteristic_name ,  t1.other_characteristic_details ,  t1.characteristic_data_type FROM CHARACTERISTICS AS t1 JOIN product_characteristics AS t2 ON t1.characteristic_id  =  t2.characteristic_id
+select characteristics.characteristic_name , characteristics.other_characteristic_details , characteristics.characteristic_data_type from Characteristics   except select characteristics.characteristic_name , characteristics.other_characteristic_details , characteristics.characteristic_data_type from Product_Characteristics join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id
+SELECT t3.characteristic_name FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id GROUP BY t3.characteristic_name HAVING count(*)  >= 2
+select characteristics.characteristic_name from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id  group by characteristics.characteristic_name having  count(*) >= 2
+SELECT t3.characteristic_name FROM products AS t1 JOIN product_characteristics AS t2 ON t1.product_id  =  t2.product_id JOIN CHARACTERISTICS AS t3 ON t2.characteristic_id  =  t3.characteristic_id GROUP BY t3.characteristic_name HAVING count(*)  >= 2
+select characteristics.characteristic_name from Product_Characteristics join Products on Product_Characteristics.product_id = Products.product_id join Characteristics on Product_Characteristics.characteristic_id = Characteristics.characteristic_id  group by characteristics.characteristic_name having  count(*) >= 2
+SELECT count(*) FROM Ref_colors WHERE color_code NOT IN ( SELECT color_code FROM products )
+select count(*) from Ref_Colors where  ref_colors.color_code not in (select Products.color_code from Products  )
+SELECT count(*) FROM Ref_colors WHERE color_code NOT IN ( SELECT color_code FROM products )
+select count(*) from Ref_Colors where  ref_colors.color_code not in (select Products.color_code from Products  )

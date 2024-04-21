@@ -1,0 +1,192 @@
+SELECT count(*) FROM Aircraft
+select count(*) from aircraft
+SELECT count(*) FROM Aircraft
+select count(*) from aircraft
+SELECT name ,  distance FROM Aircraft
+select aircraft.name , aircraft.distance from aircraft
+SELECT name ,  distance FROM Aircraft
+select aircraft.name , aircraft.distance from aircraft
+SELECT aid FROM Aircraft WHERE distance  >  1000
+select aircraft.aid from aircraft where  aircraft.distance > 1000
+SELECT aid FROM Aircraft WHERE distance  >  1000
+select aircraft.aid from aircraft where  aircraft.distance > 1000
+SELECT count(*) FROM Aircraft WHERE distance BETWEEN 1000 AND 5000
+select count(*) from aircraft where  aircraft.distance between 1000 and 5000
+SELECT count(*) FROM Aircraft WHERE distance BETWEEN 1000 AND 5000
+select count(*) from aircraft where  aircraft.distance between 1000 and 5000
+SELECT name ,  distance FROM Aircraft WHERE aid  =  12
+select aircraft.name , aircraft.distance from aircraft where  aircraft.aid = 12
+SELECT name ,  distance FROM Aircraft WHERE aid  =  12
+select aircraft.name , aircraft.distance from aircraft where  aircraft.aid = 12
+SELECT min(distance) ,  avg(distance) ,  max(distance) FROM Aircraft
+select min(aircraft.distance) , avg(aircraft.distance) , max(aircraft.distance) from aircraft
+SELECT min(distance) ,  avg(distance) ,  max(distance) FROM Aircraft
+select min(aircraft.distance) , avg(aircraft.distance) , max(aircraft.distance) from aircraft
+SELECT aid ,  name FROM Aircraft ORDER BY distance DESC LIMIT 1
+select aircraft.aid , aircraft.name from aircraft   order by aircraft.distance desc limit 1
+SELECT aid ,  name FROM Aircraft ORDER BY distance DESC LIMIT 1
+select aircraft.aid , aircraft.name from aircraft   order by aircraft.distance desc limit 1
+SELECT name FROM Aircraft ORDER BY distance LIMIT 3
+select aircraft.name from aircraft   order by aircraft.distance asc limit 3
+SELECT name FROM Aircraft ORDER BY distance LIMIT 3
+select aircraft.name from aircraft   order by aircraft.distance asc limit 3
+SELECT name FROM Aircraft WHERE distance  >  (SELECT avg(distance) FROM Aircraft)
+select aircraft.name from aircraft where  aircraft.distance > (select avg(aircraft.distance) from aircraft  )
+SELECT name FROM Aircraft WHERE distance  >  (SELECT avg(distance) FROM Aircraft)
+select aircraft.name from aircraft where  aircraft.distance > (select avg(aircraft.distance) from aircraft  )
+SELECT count(*) FROM Employee
+select count(*) from employee
+SELECT count(*) FROM Employee
+select count(*) from employee
+SELECT name ,  salary FROM Employee ORDER BY salary
+select employee.name , employee.salary from employee   order by employee.salary asc
+SELECT name ,  salary FROM Employee ORDER BY salary
+select employee.name , employee.salary from employee   order by employee.salary asc
+SELECT eid FROM Employee WHERE salary  >  100000
+select employee.eid from employee where  employee.salary > 100000
+SELECT eid FROM Employee WHERE salary  >  100000
+select employee.eid from employee where  employee.salary > 100000
+SELECT count(*) FROM Employee WHERE salary BETWEEN 100000 AND 200000
+select count(*) from employee where  employee.salary between 100000 and 200000
+SELECT count(*) FROM Employee WHERE salary BETWEEN 100000 AND 200000
+select count(*) from employee where  employee.salary between 100000 and 200000
+SELECT name ,  salary FROM Employee WHERE eid  =  242518965
+select employee.name , employee.salary from employee where  employee.eid = 242518965
+SELECT name ,  salary FROM Employee WHERE eid  =  242518965
+select employee.name , employee.salary from employee where  employee.eid = 242518965
+SELECT avg(salary) ,  max(salary) FROM Employee
+select avg(employee.salary) , max(employee.salary) from employee
+SELECT avg(salary) ,  max(salary) FROM Employee
+select avg(employee.salary) , max(employee.salary) from employee
+SELECT eid ,  name FROM Employee ORDER BY salary DESC LIMIT 1
+select employee.eid , employee.name from employee   order by employee.salary desc limit 1
+SELECT eid ,  name FROM Employee ORDER BY salary DESC LIMIT 1
+select employee.eid , employee.name from employee   order by employee.salary desc limit 1
+SELECT name FROM Employee ORDER BY salary ASC LIMIT 3
+select employee.name from employee   order by employee.salary asc limit 3
+SELECT name FROM Employee ORDER BY salary ASC LIMIT 3
+select employee.name from employee   order by employee.salary asc limit 3
+SELECT name FROM Employee WHERE salary  >  (SELECT avg(salary) FROM Employee)
+select employee.name from employee where  employee.salary > (select avg(employee.salary) from employee  )
+SELECT name FROM Employee WHERE salary  >  (SELECT avg(salary) FROM Employee)
+select employee.name from employee where  employee.salary > (select avg(employee.salary) from employee  )
+SELECT eid ,  salary FROM Employee WHERE name  =  'Mark Young'
+select employee.eid , employee.salary from employee where  employee.name = "Mark Young"
+SELECT eid ,  salary FROM Employee WHERE name  =  'Mark Young'
+select employee.eid , employee.salary from employee where  employee.name = "Mark Young"
+SELECT count(*) FROM Flight
+select count(*) from flight
+SELECT count(*) FROM Flight
+select count(*) from flight
+SELECT flno ,  origin ,  destination FROM Flight ORDER BY origin
+select flight.flno , flight.origin , flight.destination from flight   order by flight.origin asc
+SELECT flno ,  origin ,  destination FROM Flight ORDER BY origin
+select flight.flno , flight.origin , flight.destination from flight   order by flight.origin asc
+SELECT flno FROM Flight WHERE origin  =  "Los Angeles"
+select flight.flno from flight where  flight.origin = "Los Angeles"
+SELECT flno FROM Flight WHERE origin  =  "Los Angeles"
+select flight.flno from flight where  flight.origin = "Los Angeles"
+SELECT origin FROM Flight WHERE destination  =  "Honolulu"
+select flight.origin from flight where  flight.destination = "Honolulu"
+SELECT origin FROM Flight WHERE destination  =  "Honolulu"
+select flight.origin from flight where  flight.destination = "Honolulu"
+SELECT departure_date ,  arrival_date FROM Flight WHERE origin  =  "Los Angeles" AND destination  =  "Honolulu"
+select flight.departure_date , flight.arrival_date from flight where  flight.origin = "Los Angeles" and flight.destination = "Honolulu"
+SELECT departure_date ,  arrival_date FROM Flight WHERE origin  =  "Los Angeles" AND destination  =  "Honolulu"
+select flight.departure_date , flight.arrival_date from flight where  flight.origin = "Los Angeles" and flight.destination = "Honolulu"
+SELECT flno FROM Flight WHERE distance  >  2000
+select flight.flno from flight where  flight.distance > 2000
+SELECT flno FROM Flight WHERE distance  >  2000
+select flight.flno from flight where  flight.distance > 2000
+SELECT avg(price) FROM Flight WHERE origin  =  "Los Angeles" AND destination  =  "Honolulu"
+select avg(flight.price) from flight where  flight.origin = "Los Angeles" and flight.destination = "Honolulu"
+SELECT avg(price) FROM Flight WHERE origin  =  "Los Angeles" AND destination  =  "Honolulu"
+select avg(flight.price) from flight where  flight.origin = "Los Angeles" and flight.destination = "Honolulu"
+SELECT origin ,  destination FROM Flight WHERE price  >  300
+select flight.origin , flight.destination from flight where  flight.price > 300
+SELECT origin ,  destination FROM Flight WHERE price  >  300
+select flight.origin , flight.destination from flight where  flight.price > 300
+SELECT flno ,  distance FROM Flight ORDER BY price DESC LIMIT 1
+select flight.flno , flight.distance from flight   order by flight.price desc limit 1
+SELECT flno ,  distance FROM Flight ORDER BY price DESC LIMIT 1
+select flight.flno , flight.distance from flight   order by flight.price desc limit 1
+SELECT flno FROM Flight ORDER BY distance ASC LIMIT 3
+select flight.flno from flight   order by flight.distance asc limit 3
+SELECT flno FROM Flight ORDER BY distance ASC LIMIT 3
+select flight.flno from flight   order by flight.distance asc limit 3
+SELECT avg(distance) ,  avg(price) FROM Flight WHERE origin  =  "Los Angeles"
+select avg(flight.distance) , avg(flight.price) from flight where  flight.origin = "Los Angeles"
+SELECT avg(distance) ,  avg(price) FROM Flight WHERE origin  =  "Los Angeles"
+select avg(flight.distance) , avg(flight.price) from flight where  flight.origin = "Los Angeles"
+SELECT origin ,  count(*) FROM Flight GROUP BY origin
+select flight.origin , count(*) from flight  group by flight.origin
+SELECT origin ,  count(*) FROM Flight GROUP BY origin
+select flight.origin , count(*) from flight  group by flight.origin
+SELECT destination ,  count(*) FROM Flight GROUP BY destination
+select flight.destination , count(*) from flight  group by flight.destination
+SELECT destination ,  count(*) FROM Flight GROUP BY destination
+select flight.destination , count(*) from flight  group by flight.destination
+SELECT origin FROM Flight GROUP BY origin ORDER BY count(*) DESC LIMIT 1
+select flight.origin from flight  group by flight.origin  order by count(*) desc limit 1
+SELECT origin FROM Flight GROUP BY origin ORDER BY count(*) DESC LIMIT 1
+select flight.origin from flight  group by flight.origin  order by count(*) desc limit 1
+SELECT destination FROM Flight GROUP BY destination ORDER BY count(*) LIMIT 1
+select flight.destination from flight  group by flight.destination  order by count(*) asc limit 1
+SELECT destination FROM Flight GROUP BY destination ORDER BY count(*) LIMIT 1
+select flight.destination from flight  group by flight.destination  order by count(*) asc limit 1
+SELECT T2.name FROM Flight AS T1 JOIN Aircraft AS T2 ON T1.aid  =  T2.aid WHERE T1.flno  =  99
+select aircraft.name from flight join aircraft on flight.aid = aircraft.aid where  flight.flno = 99
+SELECT T2.name FROM Flight AS T1 JOIN Aircraft AS T2 ON T1.aid  =  T2.aid WHERE T1.flno  =  99
+select aircraft.name from flight join aircraft on flight.aid = aircraft.aid where  flight.flno = 99
+SELECT T1.flno FROM Flight AS T1 JOIN Aircraft AS T2 ON T1.aid  =  T2.aid WHERE T2.name  =  "Airbus A340-300"
+select flight.flno from flight join aircraft on flight.aid = aircraft.aid where  aircraft.name = "Airbus A340-300"
+SELECT T1.flno FROM Flight AS T1 JOIN Aircraft AS T2 ON T1.aid  =  T2.aid WHERE T2.name  =  "Airbus A340-300"
+select flight.flno from flight join aircraft on flight.aid = aircraft.aid where  aircraft.name = "Airbus A340-300"
+SELECT T2.name ,  count(*) FROM Flight AS T1 JOIN Aircraft AS T2 ON T1.aid  =  T2.aid GROUP BY T1.aid
+select aircraft.name , count(*) from flight join aircraft on flight.aid = aircraft.aid  group by flight.aid
+SELECT T2.name ,  count(*) FROM Flight AS T1 JOIN Aircraft AS T2 ON T1.aid  =  T2.aid GROUP BY T1.aid
+select aircraft.name , count(*) from flight join aircraft on flight.aid = aircraft.aid  group by flight.aid
+SELECT T2.name FROM Flight AS T1 JOIN Aircraft AS T2 ON T1.aid  =  T2.aid GROUP BY T1.aid HAVING count(*)  >= 2
+select aircraft.name from flight join aircraft on flight.aid = aircraft.aid  group by flight.aid having  count(*) >= 2
+SELECT T2.name FROM Flight AS T1 JOIN Aircraft AS T2 ON T1.aid  =  T2.aid GROUP BY T1.aid HAVING count(*)  >= 2
+select aircraft.name from flight join aircraft on flight.aid = aircraft.aid  group by flight.aid having  count(*) >= 2
+SELECT count(DISTINCT eid) FROM Certificate
+select count( distinct certificate.eid) from certificate
+SELECT count(DISTINCT eid) FROM Certificate
+select count( distinct certificate.eid) from certificate
+SELECT eid FROM Employee EXCEPT SELECT eid FROM Certificate
+select employee.eid from employee   except select certificate.eid from certificate
+SELECT eid FROM Employee EXCEPT SELECT eid FROM Certificate
+select employee.eid from employee   except select certificate.eid from certificate
+SELECT T3.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T1.name  =  "John Williams"
+select aircraft.name from certificate join aircraft on certificate.aid = aircraft.aid join employee on certificate.eid = employee.eid where  employee.name = "John Williams"
+SELECT T3.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T1.name  =  "John Williams"
+select aircraft.name from certificate join aircraft on certificate.aid = aircraft.aid join employee on certificate.eid = employee.eid where  employee.name = "John Williams"
+SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.name  =  "Boeing 737-800"
+select employee.name from certificate join aircraft on certificate.aid = aircraft.aid join employee on certificate.eid = employee.eid where  aircraft.name = "Boeing 737-800"
+SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.name  =  "Boeing 737-800"
+select employee.name from certificate join aircraft on certificate.aid = aircraft.aid join employee on certificate.eid = employee.eid where  aircraft.name = "Boeing 737-800"
+SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.name  =  "Boeing 737-800" INTERSECT SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.name  =  "Airbus A340-300"
+select employee.name from certificate join aircraft on certificate.aid = aircraft.aid join employee on certificate.eid = employee.eid where  aircraft.name = "Boeing 737-800"   intersect select employee.name from certificate join aircraft on certificate.aid = aircraft.aid join employee on certificate.eid = employee.eid where  aircraft.name = "Airbus A340-300"
+SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.name  =  "Boeing 737-800" INTERSECT SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.name  =  "Airbus A340-300"
+select employee.name from certificate join aircraft on certificate.aid = aircraft.aid join employee on certificate.eid = employee.eid where  aircraft.name = "Boeing 737-800"   intersect select employee.name from certificate join aircraft on certificate.aid = aircraft.aid join employee on certificate.eid = employee.eid where  aircraft.name = "Airbus A340-300"
+SELECT name FROM Employee EXCEPT SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.name  =  "Boeing 737-800"
+select employee.name from employee   except select employee.name from certificate join aircraft on certificate.aid = aircraft.aid join employee on certificate.eid = employee.eid where  aircraft.name = "Boeing 737-800"
+SELECT name FROM Employee EXCEPT SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.name  =  "Boeing 737-800"
+select employee.name from employee   except select employee.name from certificate join aircraft on certificate.aid = aircraft.aid join employee on certificate.eid = employee.eid where  aircraft.name = "Boeing 737-800"
+SELECT T2.name FROM Certificate AS T1 JOIN Aircraft AS T2 ON T2.aid  =  T1.aid GROUP BY T1.aid ORDER BY count(*) DESC LIMIT 1
+select aircraft.name from certificate join aircraft on certificate.aid = aircraft.aid  group by certificate.aid  order by count(*) desc limit 1
+SELECT T2.name FROM Certificate AS T1 JOIN Aircraft AS T2 ON T2.aid  =  T1.aid GROUP BY T1.aid ORDER BY count(*) DESC LIMIT 1
+select aircraft.name from certificate join aircraft on certificate.aid = aircraft.aid  group by certificate.aid  order by count(*) desc limit 1
+SELECT T2.name FROM Certificate AS T1 JOIN Aircraft AS T2 ON T2.aid  =  T1.aid WHERE T2.distance  >  5000 GROUP BY T1.aid ORDER BY count(*)  >=  5
+select aircraft.name from certificate join aircraft on certificate.aid = aircraft.aid where  aircraft.distance > 5000  group by certificate.aid having  count(*) >= 5
+SELECT T2.name FROM Certificate AS T1 JOIN Aircraft AS T2 ON T2.aid  =  T1.aid WHERE T2.distance  >  5000 GROUP BY T1.aid ORDER BY count(*)  >=  5
+select aircraft.name from certificate join aircraft on certificate.aid = aircraft.aid where  aircraft.distance > 5000  group by certificate.aid having  count(*) >= 5
+SELECT T1.name ,  T1.salary FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid GROUP BY T1.eid ORDER BY count(*) DESC LIMIT 1
+select employee.name , employee.salary from certificate join employee on certificate.eid = employee.eid  group by certificate.eid  order by count(*) desc limit 1
+SELECT T1.name ,  T1.salary FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid GROUP BY T1.eid ORDER BY count(*) DESC LIMIT 1
+select employee.name , employee.salary from certificate join employee on certificate.eid = employee.eid  group by certificate.eid  order by count(*) desc limit 1
+SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.distance  >  5000 GROUP BY T1.eid ORDER BY count(*) DESC LIMIT 1
+select employee.name from certificate join aircraft on certificate.aid = aircraft.aid join employee on certificate.eid = employee.eid where  aircraft.distance > 5000  group by employee.salary  order by count(*) desc limit 1
+SELECT T1.name FROM Employee AS T1 JOIN Certificate AS T2 ON T1.eid  =  T2.eid JOIN Aircraft AS T3 ON T3.aid  =  T2.aid WHERE T3.distance  >  5000 GROUP BY T1.eid ORDER BY count(*) DESC LIMIT 1
+select employee.name from certificate join aircraft on certificate.aid = aircraft.aid join employee on certificate.eid = employee.eid where  aircraft.distance > 5000  group by employee.eid  order by count(*) desc limit 1

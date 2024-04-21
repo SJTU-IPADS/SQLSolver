@@ -1,0 +1,164 @@
+SELECT count(*) FROM BOOKINGS
+select count(*) from Bookings
+SELECT count(*) FROM BOOKINGS
+select count(*) from Bookings
+SELECT Order_Date FROM BOOKINGS
+select bookings.order_date from Bookings
+SELECT Order_Date FROM BOOKINGS
+select bookings.order_date from Bookings
+SELECT Planned_Delivery_Date ,  Actual_Delivery_Date FROM BOOKINGS
+select bookings.planned_delivery_date , bookings.actual_delivery_date from Bookings
+SELECT Planned_Delivery_Date ,  Actual_Delivery_Date FROM BOOKINGS
+select bookings.planned_delivery_date , bookings.actual_delivery_date from Bookings
+SELECT count(*) FROM CUSTOMERS
+select count(*) from Customers
+SELECT count(*) FROM CUSTOMERS
+select count(*) from Customers
+SELECT Customer_Phone ,  Customer_Email_Address FROM CUSTOMERS WHERE Customer_Name  =  "Harold"
+select customers.customer_phone , customers.customer_email_address from Customers where  customers.customer_name = "Harold"
+SELECT Customer_Phone ,  Customer_Email_Address FROM CUSTOMERS WHERE Customer_Name  =  "Harold"
+select clients.customer_phone , customers.customer_email_address from Clients join Addresses on Clients.Address_ID = Addresses.Address_ID join Customers on Addresses.Address_ID = Customers.Address_ID where  customers.customer_name = "Harold"
+SELECT Store_Name FROM Drama_Workshop_Groups
+select drama_workshop_groups.store_name from Drama_Workshop_Groups
+SELECT Store_Name FROM Drama_Workshop_Groups
+select drama_workshop_groups.store_name from Drama_Workshop_Groups
+SELECT min(Order_Quantity) ,  avg(Order_Quantity) ,  max(Order_Quantity) FROM INVOICES
+select min(invoices.order_quantity) , avg(invoices.order_quantity) , max(invoices.order_quantity) from Invoices
+SELECT min(Order_Quantity) ,  avg(Order_Quantity) ,  max(Order_Quantity) FROM INVOICES
+select min(invoices.order_quantity) , avg(invoices.order_quantity) , max(invoices.order_quantity) from Invoices
+SELECT DISTINCT payment_method_code FROM INVOICES
+select distinct invoices.payment_method_code from Invoices
+SELECT DISTINCT payment_method_code FROM INVOICES
+select distinct invoices.payment_method_code from Invoices
+SELECT Marketing_Region_Descriptrion FROM Marketing_Regions WHERE Marketing_Region_Name  =  "China"
+select marketing_regions.marketing_region_descriptrion from Marketing_Regions where  marketing_regions.marketing_region_name = "China"
+SELECT Marketing_Region_Descriptrion FROM Marketing_Regions WHERE Marketing_Region_Name  =  "China"
+select marketing_regions.marketing_region_descriptrion from Marketing_Regions where  marketing_regions.marketing_region_name = "China"
+SELECT DISTINCT Product_Name FROM PRODUCTS WHERE Product_Price  >  (SELECT avg(Product_Price) FROM PRODUCTS)
+select distinct products.product_name from Products where  products.product_price > (select avg(products.product_price) from Products  )
+SELECT DISTINCT Product_Name FROM PRODUCTS WHERE Product_Price  >  (SELECT avg(Product_Price) FROM PRODUCTS)
+select distinct products.product_name from Products where  products.product_price > (select avg(products.product_price) from Products  )
+SELECT Product_Name FROM PRODUCTS ORDER BY Product_Price DESC LIMIT 1
+select products.product_name from Products   order by products.product_price desc limit 1
+SELECT Product_Name FROM PRODUCTS ORDER BY Product_Price DESC LIMIT 1
+select products.product_name from Products   order by products.product_price desc limit 1
+SELECT Product_Name FROM Products ORDER BY Product_Price ASC
+select products.product_name from Products   order by products.product_price asc
+SELECT Product_Name FROM Products ORDER BY Product_Price ASC
+select products.product_name from Products   order by products.product_price asc
+SELECT Customer_Phone FROM PERFORMERS WHERE Customer_Name  =  "Ashley"
+select performers.customer_phone from Performers where  performers.customer_name = "Ashley"
+SELECT Customer_Phone FROM PERFORMERS WHERE Customer_Name  =  "Ashley"
+select performers.customer_phone from Performers where  performers.customer_name = "Ashley"
+SELECT payment_method_code ,  count(*) FROM INVOICES GROUP BY payment_method_code
+select invoices.payment_method_code , count(*) from Invoices  group by invoices.payment_method_code
+SELECT payment_method_code ,  count(*) FROM INVOICES GROUP BY payment_method_code
+select invoices.payment_method_code , count(*) from Invoices join Customer_Orders on Invoices.Order_ID = Customer_Orders.Order_ID  group by invoices.payment_method_code
+SELECT payment_method_code FROM INVOICES GROUP BY payment_method_code ORDER BY count(*) DESC LIMIT 1
+select invoices.payment_method_code from Invoices join Customer_Orders on Invoices.Order_ID = Customer_Orders.Order_ID  group by invoices.payment_method_code  order by count(*) desc limit 1
+SELECT payment_method_code FROM INVOICES GROUP BY payment_method_code ORDER BY count(*) DESC LIMIT 1
+select invoices.payment_method_code from Invoices  group by invoices.payment_method_code  order by count(*) desc limit 1
+SELECT T1.City_Town FROM Addresses AS T1 JOIN Stores AS T2 ON T1.Address_ID  =  T2.Address_ID WHERE T2.Store_Name  =  "FJA Filming"
+select addresses.city_town from Stores join Addresses on Stores.Address_ID = Addresses.Address_ID where  stores.store_name = "FJA Filming"
+SELECT T1.City_Town FROM Addresses AS T1 JOIN Stores AS T2 ON T1.Address_ID  =  T2.Address_ID WHERE T2.Store_Name  =  "FJA Filming"
+select addresses.city_town from Stores join Addresses on Stores.Address_ID = Addresses.Address_ID where  stores.store_name = "FJA Filming"
+SELECT T1.State_County FROM Addresses AS T1 JOIN Stores AS T2 ON T1.Address_ID  =  T2.Address_ID WHERE T2.Marketing_Region_Code  =  "CA"
+select addresses.state_county from Stores join Addresses on Stores.Address_ID = Addresses.Address_ID where  stores.marketing_region_code = "CA"
+SELECT T1.State_County FROM Addresses AS T1 JOIN Stores AS T2 ON T1.Address_ID  =  T2.Address_ID WHERE T2.Marketing_Region_Code  =  "CA"
+select addresses.state_county from Stores join Addresses on Stores.Address_ID = Addresses.Address_ID where  stores.marketing_region_code = "CA"
+SELECT T1.Marketing_Region_Name FROM Marketing_Regions AS T1 JOIN Stores AS T2 ON T1.Marketing_Region_Code  =  T2.Marketing_Region_Code WHERE T2.Store_Name  =  "Rob Dinning"
+select marketing_regions.marketing_region_name from Stores join Marketing_Regions on Stores.Marketing_Region_Code = Marketing_Regions.Marketing_Region_Code where  stores.store_name = "Rob Dinning"
+SELECT T1.Marketing_Region_Name FROM Marketing_Regions AS T1 JOIN Stores AS T2 ON T1.Marketing_Region_Code  =  T2.Marketing_Region_Code WHERE T2.Store_Name  =  "Rob Dinning"
+select marketing_regions.marketing_region_name from Stores join Marketing_Regions on Stores.Marketing_Region_Code = Marketing_Regions.Marketing_Region_Code where  stores.store_name = "Rob Dinning"
+SELECT T1.Service_Type_Description FROM Ref_Service_Types AS T1 JOIN Services AS T2 ON T1.Service_Type_Code  =  T2.Service_Type_Code WHERE T2.Product_Price  >  100
+select ref_service_types.service_type_description from Services join Ref_Service_Types on Services.Service_Type_Code = Ref_Service_Types.Service_Type_Code where  services.product_price > 100
+SELECT T1.Service_Type_Description FROM Ref_Service_Types AS T1 JOIN Services AS T2 ON T1.Service_Type_Code  =  T2.Service_Type_Code WHERE T2.Product_Price  >  100
+select ref_service_types.service_type_description from Services join Ref_Service_Types on Services.Service_Type_Code = Ref_Service_Types.Service_Type_Code where  services.product_price > 100
+SELECT T1.Service_Type_Description ,  T2.Service_Type_Code ,  COUNT(*) FROM Ref_Service_Types AS T1 JOIN Services AS T2 ON T1.Service_Type_Code  =  T2.Service_Type_Code GROUP BY T2.Service_Type_Code
+select ref_service_types.service_type_description , services.service_type_code , count(*) from Services join Ref_Service_Types on Services.Service_Type_Code = Ref_Service_Types.Service_Type_Code  group by services.service_type_code
+SELECT T1.Service_Type_Description ,  T2.Service_Type_Code ,  COUNT(*) FROM Ref_Service_Types AS T1 JOIN Services AS T2 ON T1.Service_Type_Code  =  T2.Service_Type_Code GROUP BY T2.Service_Type_Code
+select ref_service_types.service_type_description , services.service_type_code , count(*) from Services join Ref_Service_Types on Services.Service_Type_Code = Ref_Service_Types.Service_Type_Code  group by services.service_type_code
+SELECT T1.Service_Type_Description , T1.Service_Type_Code FROM Ref_Service_Types AS T1 JOIN Services AS T2 ON T1.Service_Type_Code  =  T2.Service_Type_Code GROUP BY T1.Service_Type_Code ORDER BY COUNT(*) DESC LIMIT 1
+select ref_service_types.service_type_description , services.service_type_code from Services join Ref_Service_Types on Services.Service_Type_Code = Ref_Service_Types.Service_Type_Code  group by services.service_type_code  order by count(*) desc limit 1
+SELECT T1.Service_Type_Description , T1.Service_Type_Code FROM Ref_Service_Types AS T1 JOIN Services AS T2 ON T1.Service_Type_Code  =  T2.Service_Type_Code GROUP BY T1.Service_Type_Code ORDER BY COUNT(*) DESC LIMIT 1
+select ref_service_types.service_type_description , services.service_type_code from Services join Ref_Service_Types on Services.Service_Type_Code = Ref_Service_Types.Service_Type_Code  group by services.service_type_code  order by count(*) desc limit 1
+SELECT T1.Store_Phone ,  T1.Store_Email_Address FROM Drama_Workshop_Groups AS T1 JOIN Services AS T2 ON T1.Workshop_Group_ID  =  T2.Workshop_Group_ID
+select drama_workshop_groups.store_phone , drama_workshop_groups.store_email_address from Services join Drama_Workshop_Groups on Services.Workshop_Group_ID = Drama_Workshop_Groups.Workshop_Group_ID
+SELECT T1.Store_Phone ,  T1.Store_Email_Address FROM Drama_Workshop_Groups AS T1 JOIN Services AS T2 ON T1.Workshop_Group_ID  =  T2.Workshop_Group_ID
+select drama_workshop_groups.store_phone , drama_workshop_groups.store_email_address from Services join Drama_Workshop_Groups on Services.Workshop_Group_ID = Drama_Workshop_Groups.Workshop_Group_ID
+SELECT T1.Store_Phone ,  T1.Store_Email_Address FROM Drama_Workshop_Groups AS T1 JOIN Services AS T2 ON T1.Workshop_Group_ID  =  T2.Workshop_Group_ID WHERE T2.Product_Name  =  "film"
+select drama_workshop_groups.store_name from Services join Drama_Workshop_Groups on Services.Workshop_Group_ID = Drama_Workshop_Groups.Workshop_Group_ID where  services.product_name = "film"
+SELECT T1.Store_Phone ,  T1.Store_Email_Address FROM Drama_Workshop_Groups AS T1 JOIN Services AS T2 ON T1.Workshop_Group_ID  =  T2.Workshop_Group_ID WHERE T2.Product_Name  =  "film"
+select drama_workshop_groups.store_name from Services join Drama_Workshop_Groups on Services.Workshop_Group_ID = Drama_Workshop_Groups.Workshop_Group_ID where  services.product_name = "film"
+SELECT Product_Name ,  avg(Product_Price) FROM PRODUCTS GROUP BY Product_Name
+select products.product_name , avg(products.product_price) from Products  group by products.product_name
+SELECT Product_Name ,  avg(Product_Price) FROM PRODUCTS GROUP BY Product_Name
+select products.product_name , avg(products.product_price) from Products  group by products.product_name
+SELECT Product_Name FROM PRODUCTS GROUP BY Product_Name HAVING avg(Product_Price)  <  1000000
+select products.product_name from Products  group by products.product_name having  avg(products.product_price) < 1000000
+SELECT Product_Name FROM PRODUCTS GROUP BY Product_Name HAVING avg(Product_Price)  <  1000000
+select products.product_name from Products  group by products.product_name having  avg(products.product_price) < 1000000
+SELECT sum(T1.Order_Quantity) FROM ORDER_ITEMS AS T1 JOIN Products AS T2 ON T1.Product_ID  =  T2.Product_ID WHERE T2.Product_Name  =  "photo"
+select sum(order_items.order_quantity) from Order_Items join Products on Order_Items.Product_ID = Products.Product_ID where  products.product_name = "photo"
+SELECT sum(T1.Order_Quantity) FROM ORDER_ITEMS AS T1 JOIN Products AS T2 ON T1.Product_ID  =  T2.Product_ID WHERE T2.Product_Name  =  "photo"
+select sum(order_items.order_quantity) from Order_Items join Products on Order_Items.Product_ID = Products.Product_ID where  products.product_name = "photo"
+SELECT T1.Other_Item_Details FROM ORDER_ITEMS AS T1 JOIN Products AS T2 ON T1.Product_ID  =  T2.Product_ID WHERE T2.Product_price  >  2000
+select order_items.other_item_details from Order_Items join Products on Order_Items.Product_ID = Products.Product_ID where  products.product_price > 2000
+SELECT T1.Other_Item_Details FROM ORDER_ITEMS AS T1 JOIN Products AS T2 ON T1.Product_ID  =  T2.Product_ID WHERE T2.Product_price  >  2000
+select order_items.other_item_details from Order_Items join Products on Order_Items.Product_ID = Products.Product_ID where  products.product_price > 2000
+SELECT T1.Actual_Delivery_Date FROM Customer_Orders AS T1 JOIN ORDER_ITEMS AS T2 ON T1.Order_ID  =  T2.Order_ID WHERE T2.Order_Quantity  =  1
+select customer_orders.actual_delivery_date from Order_Items join Customer_Orders on Order_Items.Order_ID = Customer_Orders.Order_ID where  order_items.order_quantity = 1
+SELECT T1.Actual_Delivery_Date FROM Customer_Orders AS T1 JOIN ORDER_ITEMS AS T2 ON T1.Order_ID  =  T2.Order_ID WHERE T2.Order_Quantity  =  1
+select customer_orders.actual_delivery_date from Order_Items join Customer_Orders on Order_Items.Order_ID = Customer_Orders.Order_ID where  order_items.order_quantity = 1
+SELECT T1.Order_Date FROM Customer_Orders AS T1 JOIN ORDER_ITEMS AS T2 ON T1.Order_ID  =  T2.Order_ID JOIN Products AS T3 ON T2.Product_ID  =  T3.Product_ID WHERE T3.Product_price  >  1000
+select customer_orders.order_date from Order_Items join Products on Order_Items.Product_ID = Products.Product_ID join Customer_Orders on Order_Items.Order_ID = Customer_Orders.Order_ID where  products.product_price > 1000
+SELECT T1.Order_Date FROM Customer_Orders AS T1 JOIN ORDER_ITEMS AS T2 ON T1.Order_ID  =  T2.Order_ID JOIN Products AS T3 ON T2.Product_ID  =  T3.Product_ID WHERE T3.Product_price  >  1000
+select customer_orders.order_date from Order_Items join Products on Order_Items.Product_ID = Products.Product_ID join Customer_Orders on Order_Items.Order_ID = Customer_Orders.Order_ID where  products.product_price > 1000
+SELECT count(DISTINCT Currency_Code) FROM Drama_Workshop_Groups
+select count( distinct drama_workshop_groups.currency_code) from Drama_Workshop_Groups
+SELECT count(DISTINCT Currency_Code) FROM Drama_Workshop_Groups
+select count( distinct drama_workshop_groups.currency_code) from Drama_Workshop_Groups
+SELECT T2.Store_Name FROM Addresses AS T1 JOIN Drama_Workshop_Groups AS T2 ON T1.Address_ID  =  T2.Address_ID WHERE T1.City_Town  =  "Feliciaberg"
+select drama_workshop_groups.store_name from Drama_Workshop_Groups join Addresses on Drama_Workshop_Groups.Address_ID = Addresses.Address_ID where  addresses.city_town = "Feliciaberg"
+SELECT T2.Store_Name FROM Addresses AS T1 JOIN Drama_Workshop_Groups AS T2 ON T1.Address_ID  =  T2.Address_ID WHERE T1.City_Town  =  "Feliciaberg"
+select drama_workshop_groups.store_name from Drama_Workshop_Groups join Addresses on Drama_Workshop_Groups.Address_ID = Addresses.Address_ID where  addresses.city_town = "Feliciaberg"
+SELECT T2.Store_Email_Address FROM Addresses AS T1 JOIN Drama_Workshop_Groups AS T2 ON T1.Address_ID  =  T2.Address_ID WHERE T1.State_County  =  "Alaska"
+select drama_workshop_groups.store_email_address from Drama_Workshop_Groups join Addresses on Drama_Workshop_Groups.Address_ID = Addresses.Address_ID where  addresses.state_county = "Alaska"
+SELECT T2.Store_Email_Address FROM Addresses AS T1 JOIN Drama_Workshop_Groups AS T2 ON T1.Address_ID  =  T2.Address_ID WHERE T1.State_County  =  "Alaska"
+select drama_workshop_groups.store_email_address from Drama_Workshop_Groups join Addresses on Drama_Workshop_Groups.Address_ID = Addresses.Address_ID where  addresses.state_county = "Alaska"
+SELECT T1.City_Town ,  count(*) FROM Addresses AS T1 JOIN Drama_Workshop_Groups AS T2 ON T1.Address_ID  =  T2.Address_ID GROUP BY T1.City_Town
+select addresses.city_town , count(*) from Drama_Workshop_Groups join Addresses on Drama_Workshop_Groups.Address_ID = Addresses.Address_ID  group by addresses.city_town
+SELECT T1.City_Town ,  count(*) FROM Addresses AS T1 JOIN Drama_Workshop_Groups AS T2 ON T1.Address_ID  =  T2.Address_ID GROUP BY T1.City_Town
+select addresses.city_town , count(*) from Drama_Workshop_Groups join Addresses on Drama_Workshop_Groups.Address_ID = Addresses.Address_ID  group by addresses.city_town
+SELECT Marketing_Region_Code FROM Drama_Workshop_Groups GROUP BY Marketing_Region_Code ORDER BY count(*) DESC LIMIT 1
+select drama_workshop_groups.marketing_region_code from Drama_Workshop_Groups  group by drama_workshop_groups.marketing_region_code  order by count(*) desc limit 1
+SELECT Marketing_Region_Code FROM Drama_Workshop_Groups GROUP BY Marketing_Region_Code ORDER BY count(*) DESC LIMIT 1
+select drama_workshop_groups.marketing_region_code from Drama_Workshop_Groups  group by drama_workshop_groups.marketing_region_code  order by count(*) desc limit 1
+SELECT T1.City_Town FROM Addresses AS T1 JOIN Customers AS T2 ON T1.Address_ID  =  T2.Address_ID EXCEPT SELECT T1.City_Town FROM Addresses AS T1 JOIN Performers AS T2 ON T1.Address_ID  =  T2.Address_ID
+select addresses.city_town from Customers join Addresses on Customers.Address_ID = Addresses.Address_ID   except select addresses.city_town from Performers join Addresses on Performers.Address_ID = Addresses.Address_ID
+SELECT T1.City_Town FROM Addresses AS T1 JOIN Customers AS T2 ON T1.Address_ID  =  T2.Address_ID EXCEPT SELECT T1.City_Town FROM Addresses AS T1 JOIN Performers AS T2 ON T1.Address_ID  =  T2.Address_ID
+select addresses.city_town from Customers join Addresses on Customers.Address_ID = Addresses.Address_ID   except select addresses.city_town from Performers join Addresses on Performers.Address_ID = Addresses.Address_ID
+SELECT Status_Code FROM BOOKINGS GROUP BY Status_Code ORDER BY count(*) DESC LIMIT 1
+select bookings.status_code from Bookings  group by bookings.status_code  order by count(*) desc limit 1
+SELECT Status_Code FROM BOOKINGS GROUP BY Status_Code ORDER BY count(*) DESC LIMIT 1
+select bookings.status_code from Bookings  group by bookings.status_code  order by count(*) desc limit 1
+SELECT T2.Store_Name FROM Bookings AS T1 JOIN Drama_Workshop_Groups AS T2 ON T1.Workshop_Group_ID  =  T2.Workshop_Group_ID WHERE T1.Status_Code  =  "stop"
+select drama_workshop_groups.store_name from Bookings join Drama_Workshop_Groups on Bookings.Workshop_Group_ID = Drama_Workshop_Groups.Workshop_Group_ID where  bookings.status_code = "stop"
+SELECT T2.Store_Name FROM Bookings AS T1 JOIN Drama_Workshop_Groups AS T2 ON T1.Workshop_Group_ID  =  T2.Workshop_Group_ID WHERE T1.Status_Code  =  "stop"
+select drama_workshop_groups.store_name from Bookings join Drama_Workshop_Groups on Bookings.Workshop_Group_ID = Drama_Workshop_Groups.Workshop_Group_ID where  bookings.status_code = "stop"
+SELECT Customer_Name FROM Clients EXCEPT SELECT T2.Customer_Name FROM Bookings AS T1 JOIN Clients AS T2 ON T1.Customer_ID  =  T2.Client_ID
+select clients.customer_name from Clients   except select clients.customer_name from Bookings join Clients on Bookings.Customer_ID = Clients.Client_ID
+SELECT Customer_Name FROM Clients EXCEPT SELECT T2.Customer_Name FROM Bookings AS T1 JOIN Clients AS T2 ON T1.Customer_ID  =  T2.Client_ID
+select clients.customer_name from Clients   except select clients.customer_name from Bookings join Clients on Bookings.Customer_ID = Clients.Client_ID
+SELECT avg(Order_Quantity) FROM Invoices WHERE payment_method_code  =  "MasterCard"
+select avg(invoices.order_quantity) from Invoices where  invoices.payment_method_code = "MasterCard"
+SELECT avg(Order_Quantity) FROM Invoices WHERE payment_method_code  =  "MasterCard"
+select avg(invoices.order_quantity) from Invoices where  invoices.payment_method_code = "MasterCard"
+SELECT Product_ID FROM INVOICES GROUP BY Product_ID ORDER BY COUNT(*) DESC LIMIT 1
+select invoices.product_id from Invoices  group by invoices.product_id  order by count(*) desc limit 1
+SELECT Product_ID FROM INVOICES GROUP BY Product_ID ORDER BY COUNT(*) DESC LIMIT 1
+select invoices.product_id from Invoices  group by invoices.product_id  order by count(*) desc limit 1
+SELECT T1.Service_Type_Description FROM Ref_Service_Types AS T1 JOIN Services AS T2 ON T1.Service_Type_Code  =  T2.Service_Type_Code WHERE T2.Product_Name  =  'photo' INTERSECT SELECT T1.Service_Type_Description FROM Ref_Service_Types AS T1 JOIN Services AS T2 ON T1.Service_Type_Code  =  T2.Service_Type_Code WHERE T2.Product_Name  =  'film'
+select ref_service_types.service_type_description from Services join Ref_Service_Types on Services.Service_Type_Code = Ref_Service_Types.Service_Type_Code where  services.product_name = "photo"   intersect select ref_service_types.service_type_description from Services join Ref_Service_Types on Services.Service_Type_Code = Ref_Service_Types.Service_Type_Code where  services.product_name = "film"
+SELECT T1.Service_Type_Description FROM Ref_Service_Types AS T1 JOIN Services AS T2 ON T1.Service_Type_Code  =  T2.Service_Type_Code WHERE T2.Product_Name  =  'photo' INTERSECT SELECT T1.Service_Type_Description FROM Ref_Service_Types AS T1 JOIN Services AS T2 ON T1.Service_Type_Code  =  T2.Service_Type_Code WHERE T2.Product_Name  =  'film'
+select ref_service_types.service_type_description from Order_Items join Products on Order_Items.Product_ID = Products.Product_ID join Invoice_Items on Order_Items.Order_Item_ID = Invoice_Items.Order_Item_ID join Services on Invoice_Items.Product_ID = Services.Service_ID join Ref_Service_Types on Services.Service_Type_Code = Ref_Service_Types.Service_Type_Code where  products.product_name = "photo"   intersect select ref_service_types.service_type_description from Order_Items join Products on Order_Items.Product_ID = Products.Product_ID join Invoice_Items on Order_Items.Order_Item_ID = Invoice_Items.Order_Item_ID join Services on Invoice_Items.Product_ID = Services.Service_ID join Ref_Service_Types on Services.Service_Type_Code = Ref_Service_Types.Service_Type_Code where  products.product_name = "film"

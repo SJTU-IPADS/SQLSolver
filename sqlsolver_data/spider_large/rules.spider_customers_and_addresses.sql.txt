@@ -1,0 +1,176 @@
+SELECT customer_name FROM customers
+select customers.customer_name from Customers
+SELECT customer_name FROM customers
+select customers.customer_name from Customers
+SELECT count(*) FROM customers
+select count(*) from Customers
+SELECT count(*) FROM customers
+select count(*) from Customers
+SELECT avg(order_quantity) FROM order_items
+select avg(order_items.order_quantity) from Order_Items
+SELECT avg(order_quantity) FROM order_items
+select avg(order_items.order_quantity) from Order_Items
+SELECT customer_name FROM customers WHERE payment_method  =  "Cash"
+select customers.customer_name from Customers where  customers.payment_method = "Cash"
+SELECT customer_name FROM customers WHERE payment_method  =  "Cash"
+select customers.customer_name from Customers where  customers.payment_method = "Cash"
+SELECT date_became_customer FROM customers WHERE customer_id BETWEEN 10 AND 20
+select customers.date_became_customer from Customers where  customers.customer_id between 10 and 20
+SELECT date_became_customer FROM customers WHERE customer_id BETWEEN 10 AND 20
+select customers.date_became_customer from Customers where  customers.customer_id between 10 and 20
+SELECT payment_method FROM customers GROUP BY payment_method ORDER BY count(*) DESC LIMIT 1
+select customers.payment_method from Customers  group by customers.payment_method  order by count(*) desc limit 1
+SELECT payment_method FROM customers GROUP BY payment_method ORDER BY count(*) DESC LIMIT 1
+select customers.payment_method from Customers  group by customers.payment_method  order by count(*) desc limit 1
+SELECT customer_name FROM customers WHERE payment_method  =  (SELECT payment_method FROM customers GROUP BY payment_method ORDER BY count(*) DESC LIMIT 1)
+select customers.customer_name from Customers where  customers.payment_method = (select customers.payment_method from Customers  group by customers.payment_method  order by count(*) desc limit 1 )
+SELECT customer_name FROM customers WHERE payment_method  =  (SELECT payment_method FROM customers GROUP BY payment_method ORDER BY count(*) DESC LIMIT 1)
+select customers.customer_name from Customers where  customers.payment_method = (select customers.payment_method from Customers  group by customers.payment_method  order by count(*) desc limit 1 )
+SELECT DISTINCT payment_method FROM customers
+select distinct customers.payment_method from Customers
+SELECT DISTINCT payment_method FROM customers
+select distinct customers.payment_method from Customers
+SELECT DISTINCT product_details FROM products
+select distinct products.product_details from Products
+SELECT DISTINCT product_details FROM products
+select distinct products.product_details from Products
+SELECT customer_name FROM customers WHERE customer_name LIKE "%Alex%"
+select customers.customer_name from Customers where  customers.customer_name like "%Alex%"
+SELECT customer_name FROM customers WHERE customer_name LIKE "%Alex%"
+select customers.customer_name from Customers where  customers.customer_name like "%Alex%"
+SELECT product_details FROM products WHERE product_details LIKE "%Latte%" OR product_details LIKE "%Americano%"
+select products.product_details from Products where  products.product_details like "%Latte%" or products.product_details like "%Americano%"
+SELECT product_details FROM products WHERE product_details LIKE "%Latte%" OR product_details LIKE "%Americano%"
+select products.product_details from Products where  products.product_details like "%Latte%" or products.product_details like "%Americano%"
+SELECT t3.address_content FROM customers AS t1 JOIN customer_addresses AS t2 ON t1.customer_id  =  t2.customer_id JOIN addresses AS t3 ON t2.address_id  =  t3.address_id WHERE t1.customer_name  =  "Maudie Kertzmann"
+select addresses.address_content from Customer_Addresses join Customers on Customer_Addresses.customer_id = Customers.customer_id join Addresses on Customer_Addresses.address_id = Addresses.address_id where  customers.customer_name = "Maudie Kertzmann"
+SELECT t3.address_content FROM customers AS t1 JOIN customer_addresses AS t2 ON t1.customer_id  =  t2.customer_id JOIN addresses AS t3 ON t2.address_id  =  t3.address_id WHERE t1.customer_name  =  "Maudie Kertzmann"
+select addresses.address_content from Customer_Addresses join Customers on Customer_Addresses.customer_id = Customers.customer_id join Addresses on Customer_Addresses.address_id = Addresses.address_id where  customers.customer_name = "Maudie Kertzmann"
+SELECT count(*) FROM customers AS t1 JOIN customer_addresses AS t2 ON t1.customer_id  =  t2.customer_id JOIN addresses AS t3 ON t2.address_id  =  t3.address_id WHERE t3.city  =  "Lake Geovannyton"
+select count(*) from Customer_Addresses join Customers on Customer_Addresses.customer_id = Customers.customer_id join Addresses on Customer_Addresses.address_id = Addresses.address_id where  addresses.city = "Lake Geovannyton"
+SELECT count(*) FROM customers AS t1 JOIN customer_addresses AS t2 ON t1.customer_id  =  t2.customer_id JOIN addresses AS t3 ON t2.address_id  =  t3.address_id WHERE t3.city  =  "Lake Geovannyton"
+select count(*) from Customer_Addresses join Customers on Customer_Addresses.customer_id = Customers.customer_id join Addresses on Customer_Addresses.address_id = Addresses.address_id where  addresses.city = "Lake Geovannyton"
+SELECT t1.customer_name FROM customers AS t1 JOIN customer_addresses AS t2 ON t1.customer_id  =  t2.customer_id JOIN addresses AS t3 ON t2.address_id  =  t3.address_id WHERE t3.state_province_county  =  "Colorado"
+select customers.customer_name from Customer_Addresses join Customers on Customer_Addresses.customer_id = Customers.customer_id join Addresses on Customer_Addresses.address_id = Addresses.address_id where  addresses.state_province_county = "Colorado"
+SELECT t1.customer_name FROM customers AS t1 JOIN customer_addresses AS t2 ON t1.customer_id  =  t2.customer_id JOIN addresses AS t3 ON t2.address_id  =  t3.address_id WHERE t3.state_province_county  =  "Colorado"
+select customers.customer_name from Customer_Addresses join Customers on Customer_Addresses.customer_id = Customers.customer_id join Addresses on Customer_Addresses.address_id = Addresses.address_id where  addresses.state_province_county = "Colorado"
+SELECT city FROM addresses WHERE city NOT IN ( SELECT DISTINCT t3.city FROM customers AS t1 JOIN customer_addresses AS t2 ON t1.customer_id  =  t2.customer_id JOIN addresses AS t3 ON t2.address_id  =  t3.address_id)
+select addresses.city from Addresses where  addresses.city not in (select addresses.city from Customer_Addresses join Customers on Customer_Addresses.customer_id = Customers.customer_id join Addresses on Customer_Addresses.address_id = Addresses.address_id  )
+SELECT city FROM addresses WHERE city NOT IN ( SELECT DISTINCT t3.city FROM customers AS t1 JOIN customer_addresses AS t2 ON t1.customer_id  =  t2.customer_id JOIN addresses AS t3 ON t2.address_id  =  t3.address_id)
+select addresses.city from Addresses where  addresses.city not in (select addresses.city from Customer_Addresses join Customers on Customer_Addresses.customer_id = Customers.customer_id join Addresses on Customer_Addresses.address_id = Addresses.address_id  )
+SELECT t3.city FROM customers AS t1 JOIN customer_addresses AS t2 ON t1.customer_id  =  t2.customer_id JOIN addresses AS t3 ON t2.address_id  =  t3.address_id GROUP BY t3.city ORDER BY count(*) DESC LIMIT 1
+select addresses.city from Customer_Addresses join Customers on Customer_Addresses.customer_id = Customers.customer_id join Addresses on Customer_Addresses.address_id = Addresses.address_id  group by addresses.city  order by count(*) desc limit 1
+SELECT t3.city FROM customers AS t1 JOIN customer_addresses AS t2 ON t1.customer_id  =  t2.customer_id JOIN addresses AS t3 ON t2.address_id  =  t3.address_id GROUP BY t3.city ORDER BY count(*) DESC LIMIT 1
+select addresses.city from Customer_Addresses join Customers on Customer_Addresses.customer_id = Customers.customer_id join Addresses on Customer_Addresses.address_id = Addresses.address_id  group by addresses.city  order by count(*) desc limit 1
+SELECT DISTINCT city FROM addresses
+select distinct addresses.city from Addresses
+SELECT DISTINCT city FROM addresses
+select distinct addresses.city from Addresses
+SELECT city FROM addresses WHERE zip_postcode  =  255
+select addresses.city from Addresses where  addresses.zip_postcode = 255
+SELECT city FROM addresses WHERE zip_postcode  =  255
+select addresses.city from Addresses where  addresses.zip_postcode = 255
+SELECT state_province_county ,  country FROM addresses WHERE zip_postcode LIKE "4%"
+select addresses.state_province_county , addresses.country from Addresses where  addresses.zip_postcode like "4%"
+SELECT state_province_county ,  country FROM addresses WHERE zip_postcode LIKE "4%"
+select addresses.state_province_county , addresses.country from Addresses where  addresses.zip_postcode like "4%"
+SELECT country FROM addresses GROUP BY country HAVING count(address_id)  >  4
+select addresses.country from Addresses  group by addresses.country having  count(addresses.address_id) > 4
+SELECT country FROM addresses GROUP BY country HAVING count(address_id)  >  4
+select addresses.country from Addresses  group by addresses.country having  count(addresses.address_id) > 4
+SELECT channel_code FROM customer_contact_channels GROUP BY channel_code HAVING count(customer_id)  <  5
+select customer_contact_channels.channel_code from Customer_Contact_Channels  group by customer_contact_channels.channel_code having  count(*) < 5
+SELECT channel_code FROM customer_contact_channels GROUP BY channel_code HAVING count(customer_id)  <  5
+select customer_contact_channels.channel_code from Customer_Contact_Channels  group by customer_contact_channels.channel_code having  count(*) < 5
+SELECT DISTINCT channel_code FROM customers AS t1 JOIN customer_contact_channels AS t2 ON t1.customer_id  =  t2.customer_id WHERE t1.customer_name  =  "Tillman Ernser"
+select distinct customer_contact_channels.channel_code from Customer_Contact_Channels join Customers on Customer_Contact_Channels.customer_id = Customers.customer_id where  customers.customer_name = "Tillman Ernser"
+SELECT DISTINCT channel_code FROM customers AS t1 JOIN customer_contact_channels AS t2 ON t1.customer_id  =  t2.customer_id WHERE t1.customer_name  =  "Tillman Ernser"
+select distinct customer_contact_channels.channel_code from Customer_Contact_Channels join Customers on Customer_Contact_Channels.customer_id = Customers.customer_id where  customers.customer_name = "Tillman Ernser"
+SELECT max(t2.active_to_date) FROM customers AS t1 JOIN customer_contact_channels AS t2 ON t1.customer_id  =  t2.customer_id WHERE t1.customer_name  =  "Tillman Ernser"
+select max(customer_contact_channels.active_to_date) from Customer_Contact_Channels join Customers on Customer_Contact_Channels.customer_id = Customers.customer_id where  customers.customer_name = "Tillman Ernser"
+SELECT max(t2.active_to_date) FROM customers AS t1 JOIN customer_contact_channels AS t2 ON t1.customer_id  =  t2.customer_id WHERE t1.customer_name  =  "Tillman Ernser"
+select max(customer_contact_channels.active_to_date) from Customer_Contact_Channels join Customers on Customer_Contact_Channels.customer_id = Customers.customer_id where  customers.customer_name = "Tillman Ernser"
+SELECT avg(active_to_date - active_from_date) FROM customer_contact_channels
+select avg(customer_contact_channels.active_to_date - customer_contact_channels.active_to_date) from Customer_Contact_Channels
+SELECT avg(active_to_date - active_from_date) FROM customer_contact_channels
+select avg(customer_contact_channels.active_to_date - customer_contact_channels.active_to_date) from Customer_Contact_Channels
+SELECT channel_code ,  contact_number FROM customer_contact_channels WHERE active_to_date - active_from_date  =  (SELECT active_to_date - active_from_date FROM customer_contact_channels ORDER BY (active_to_date - active_from_date) DESC LIMIT 1)
+select customer_contact_channels.channel_code , customer_contact_channels.contact_number from Customer_Contact_Channels   order by customer_contact_channels.active_to_date desc limit 1
+SELECT channel_code ,  contact_number FROM customer_contact_channels WHERE active_to_date - active_from_date  =  (SELECT active_to_date - active_from_date FROM customer_contact_channels ORDER BY (active_to_date - active_from_date) DESC LIMIT 1)
+select customer_contact_channels.channel_code , customer_contact_channels.contact_number from Customer_Contact_Channels   order by customer_contact_channels.active_to_date desc limit 1
+SELECT t1.customer_name ,  t2.active_from_date FROM customers AS t1 JOIN customer_contact_channels AS t2 ON t1.customer_id  =  t2.customer_id WHERE t2.channel_code  =  'Email'
+select customers.customer_name , customer_contact_channels.active_from_date from Customer_Contact_Channels join Customers on Customer_Contact_Channels.customer_id = Customers.customer_id where  customer_contact_channels.channel_code = "Email"
+SELECT t1.customer_name ,  t2.active_from_date FROM customers AS t1 JOIN customer_contact_channels AS t2 ON t1.customer_id  =  t2.customer_id WHERE t2.channel_code  =  'Email'
+select customers.customer_name , customer_contact_channels.active_from_date from Customer_Contact_Channels join Customers on Customer_Contact_Channels.customer_id = Customers.customer_id where  customer_contact_channels.channel_code = "Email"
+SELECT t1.customer_name FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id JOIN order_items AS t3 ON t2.order_id  =  t3.order_id WHERE t3.order_quantity  =  ( SELECT max(order_quantity) FROM order_items)
+select customers.customer_name from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id join Customers on Customer_Orders.customer_id = Customers.customer_id   order by order_items.order_quantity desc limit 1
+SELECT t1.customer_name FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id JOIN order_items AS t3 ON t2.order_id  =  t3.order_id WHERE t3.order_quantity  =  ( SELECT max(order_quantity) FROM order_items)
+select customers.customer_name from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id join Customers on Customer_Orders.customer_id = Customers.customer_id   order by order_items.order_quantity desc limit 1
+SELECT t1.customer_name FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id JOIN order_items AS t3 ON t2.order_id  =  t3.order_id GROUP BY t1.customer_name ORDER BY sum(t3.order_quantity) DESC LIMIT 1
+select customers.customer_name from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id join Customers on Customer_Orders.customer_id = Customers.customer_id  group by customers.customer_name  order by sum(order_items.order_quantity) desc limit 1
+SELECT t1.customer_name FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id JOIN order_items AS t3 ON t2.order_id  =  t3.order_id GROUP BY t1.customer_name ORDER BY sum(t3.order_quantity) DESC LIMIT 1
+select customers.customer_name from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id join Customers on Customer_Orders.customer_id = Customers.customer_id  group by customers.customer_name  order by sum(order_items.order_quantity) desc limit 1
+SELECT t1.payment_method FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id JOIN order_items AS t3 ON t2.order_id  =  t3.order_id GROUP BY t1.customer_name ORDER BY sum(t3.order_quantity) LIMIT 1
+select customers.payment_method from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id join Customers on Customer_Orders.customer_id = Customers.customer_id  group by customers.customer_name  order by sum(order_items.order_quantity) asc limit 1
+SELECT t1.payment_method FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id JOIN order_items AS t3 ON t2.order_id  =  t3.order_id GROUP BY t1.customer_name ORDER BY sum(t3.order_quantity) LIMIT 1
+select customers.payment_method from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id join Customers on Customer_Orders.customer_id = Customers.customer_id  group by customers.customer_name  order by sum(order_items.order_quantity) asc limit 1
+SELECT count(DISTINCT t3.product_id) FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id JOIN order_items AS t3 ON t2.order_id  =  t3.order_id WHERE t1.customer_name  =  "Rodrick Heaney"
+select count( distinct order_items.product_id) from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id join Customers on Customer_Orders.customer_id = Customers.customer_id where  customers.customer_name = "Rodrick Heaney"
+SELECT count(DISTINCT t3.product_id) FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id JOIN order_items AS t3 ON t2.order_id  =  t3.order_id WHERE t1.customer_name  =  "Rodrick Heaney"
+select count( distinct order_items.product_id) from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id join Customers on Customer_Orders.customer_id = Customers.customer_id where  customers.customer_name = "Rodrick Heaney"
+SELECT sum(t3.order_quantity) FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id JOIN order_items AS t3 ON t2.order_id  =  t3.order_id WHERE t1.customer_name  =  "Rodrick Heaney"
+select sum(order_items.order_quantity) from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id join Customers on Customer_Orders.customer_id = Customers.customer_id where  customers.customer_name = "Rodrick Heaney"
+SELECT sum(t3.order_quantity) FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id JOIN order_items AS t3 ON t2.order_id  =  t3.order_id WHERE t1.customer_name  =  "Rodrick Heaney"
+select sum(order_items.order_quantity) from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id join Customers on Customer_Orders.customer_id = Customers.customer_id where  customers.customer_name = "Rodrick Heaney"
+SELECT count(DISTINCT customer_id) FROM customer_orders WHERE order_status  =  "Cancelled"
+select count( distinct customer_orders.customer_id) from Customer_Orders where  customer_orders.order_status = "Cancelled"
+SELECT count(DISTINCT customer_id) FROM customer_orders WHERE order_status  =  "Cancelled"
+select count( distinct customers.customer_id) from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id where  customer_orders.order_status = "Cancelled"
+SELECT count(*) FROM customer_orders WHERE order_details  =  "Second time"
+select count(*) from Customer_Orders where  customer_orders.order_details = "Second time"
+SELECT count(*) FROM customer_orders WHERE order_details  =  "Second time"
+select count(*) from Customer_Orders where  customer_orders.order_details = "Second time"
+SELECT t1.customer_name ,  t2.order_date FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id WHERE order_status  =  "Delivered"
+select customers.customer_name , customer_orders.order_date from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id where  customer_orders.order_status = "Delivered"
+SELECT t1.customer_name ,  t2.order_date FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id WHERE order_status  =  "Delivered"
+select customers.customer_name , customer_orders.order_date from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id where  customer_orders.order_status = "Delivered"
+SELECT sum(t2.order_quantity) FROM customer_orders AS t1 JOIN order_items AS t2 ON t1.order_id  =  t2.order_id WHERE t1.order_status  =  "Cancelled"
+select sum(order_items.order_quantity) from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id where  customer_orders.order_status = "Cancelled"
+SELECT sum(t2.order_quantity) FROM customer_orders AS t1 JOIN order_items AS t2 ON t1.order_id  =  t2.order_id WHERE t1.order_status  =  "Cancelled"
+select sum(order_items.order_quantity) from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id where  customer_orders.order_status = "Cancelled"
+SELECT sum(t2.order_quantity) FROM customer_orders AS t1 JOIN order_items AS t2 ON t1.order_id  =  t2.order_id WHERE t1.order_date  <  "2018-03-17 07:13:53"
+select sum(order_items.order_quantity) from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id where  customer_orders.order_date < "2018-03-17 07:13:53"
+SELECT sum(t2.order_quantity) FROM customer_orders AS t1 JOIN order_items AS t2 ON t1.order_id  =  t2.order_id WHERE t1.order_date  <  "2018-03-17 07:13:53"
+select sum(order_items.order_quantity) from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id where  customer_orders.order_date < "2018-03-17 07:13:53"
+SELECT t1.customer_name FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id ORDER BY t2.order_date DESC LIMIT 1
+select customers.customer_name from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id   order by customer_orders.order_date desc limit 1
+SELECT t1.customer_name FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id ORDER BY t2.order_date DESC LIMIT 1
+select customers.customer_name from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id   order by customer_orders.order_date desc limit 1
+SELECT t2.product_details FROM order_items AS t1 JOIN products AS t2 ON t1.product_id  =  t2.product_id GROUP BY t1.product_id ORDER BY count(*) DESC LIMIT 1
+select order_items.product_id from Order_Items  group by order_items.product_id  order by count(*) desc limit 1
+SELECT t2.product_details FROM order_items AS t1 JOIN products AS t2 ON t1.product_id  =  t2.product_id GROUP BY t1.product_id ORDER BY count(*) DESC LIMIT 1
+select products.product_details from Order_Items join Products on Order_Items.product_id = Products.product_id  group by order_items.product_id  order by count(*) desc limit 1
+SELECT t2.product_details ,  t2.product_id FROM order_items AS t1 JOIN products AS t2 ON t1.product_id  =  t2.product_id GROUP BY t1.product_id ORDER BY sum(t1.order_quantity) LIMIT 1
+select products.product_details , products.product_id from Order_Items join Products on Order_Items.product_id = Products.product_id  group by order_items.product_id  order by sum(order_items.order_quantity) asc limit 1
+SELECT t2.product_details ,  t2.product_id FROM order_items AS t1 JOIN products AS t2 ON t1.product_id  =  t2.product_id GROUP BY t1.product_id ORDER BY sum(t1.order_quantity) LIMIT 1
+select products.product_details , products.product_id from Order_Items join Products on Order_Items.product_id = Products.product_id  group by order_items.product_id  order by sum(order_items.order_quantity) asc limit 1
+SELECT address_content FROM addresses WHERE city  =  "East Julianaside" AND state_province_county  =  "Texas" UNION SELECT address_content FROM addresses WHERE city  =  "Gleasonmouth" AND state_province_county  =  "Arizona"
+select addresses.address_content from Addresses where  addresses.city = "East Julianaside" and addresses.state_province_county = "Texas"   union select addresses.address_content from Addresses where  addresses.city = "Gleasonmouth" and addresses.state_province_county = "Arizona"
+SELECT address_content FROM addresses WHERE city  =  "East Julianaside" AND state_province_county  =  "Texas" UNION SELECT address_content FROM addresses WHERE city  =  "Gleasonmouth" AND state_province_county  =  "Arizona"
+select addresses.address_content from Addresses where  addresses.city = "East Julianaside" and addresses.state_province_county = "Texas"   union select addresses.address_content from Addresses where  addresses.city = "Gleasonmouth" and addresses.state_province_county = "Arizona"
+SELECT customer_name FROM customers WHERE payment_method != 'Cash'
+select customers.customer_name from Customers where  customers.payment_method != "Cash"
+SELECT customer_name FROM customers WHERE payment_method != 'Cash'
+select customers.customer_name from Customers where  customers.payment_method != "Cash"
+SELECT customer_name FROM customers EXCEPT SELECT t1.customer_name FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id JOIN order_items AS t3 ON t2.order_id  =  t3.order_id JOIN products AS t4 ON t3.product_id  =  t4.product_id WHERE t4.product_details  =  'Latte'
+select customers.customer_name from Customers   except select customers.customer_name from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id join Order_Items on Customer_Orders.order_id = Order_Items.order_id join Products on Order_Items.product_id = Products.product_id where  products.product_details = "Latte"
+SELECT customer_name FROM customers EXCEPT SELECT t1.customer_name FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id JOIN order_items AS t3 ON t2.order_id  =  t3.order_id JOIN products AS t4 ON t3.product_id  =  t4.product_id WHERE t4.product_details  =  'Latte'
+select customers.customer_name from Customers   except select customers.customer_name from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id join Order_Items on Customer_Orders.order_id = Order_Items.order_id join Products on Order_Items.product_id = Products.product_id where  products.product_details = "Latte"
+SELECT customer_name FROM customers EXCEPT SELECT t1.customer_name FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id
+select customers.customer_name from Customers   except select customers.customer_name from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id
+SELECT customer_name FROM customers EXCEPT SELECT t1.customer_name FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id
+select customers.customer_name from Customers   except select customers.customer_name from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id
+SELECT t1.customer_name FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id JOIN order_items AS t3 ON t2.order_id  =  t3.order_id JOIN products AS t4 ON t3.product_id  =  t4.product_id WHERE t4.product_details  =  'Latte' INTERSECT SELECT t1.customer_name FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id JOIN order_items AS t3 ON t2.order_id  =  t3.order_id JOIN products AS t4 ON t3.product_id  =  t4.product_id WHERE t4.product_details  =  'Americano'
+select customers.customer_name from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id join Order_Items on Customer_Orders.order_id = Order_Items.order_id join Products on Order_Items.product_id = Products.product_id where  products.product_details = "Latte"   intersect select customers.customer_name from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id join Order_Items on Customer_Orders.order_id = Order_Items.order_id join Products on Order_Items.product_id = Products.product_id where  products.product_details = "Americano"
+SELECT t1.customer_name FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id JOIN order_items AS t3 ON t2.order_id  =  t3.order_id JOIN products AS t4 ON t3.product_id  =  t4.product_id WHERE t4.product_details  =  'Latte' INTERSECT SELECT t1.customer_name FROM customers AS t1 JOIN customer_orders AS t2 ON t1.customer_id  =  t2.customer_id JOIN order_items AS t3 ON t2.order_id  =  t3.order_id JOIN products AS t4 ON t3.product_id  =  t4.product_id WHERE t4.product_details  =  'Americano'
+select customers.customer_name from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id join Order_Items on Customer_Orders.order_id = Order_Items.order_id join Products on Order_Items.product_id = Products.product_id where  products.product_details = "Latte"   intersect select customers.customer_name from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id join Order_Items on Customer_Orders.order_id = Order_Items.order_id join Products on Order_Items.product_id = Products.product_id where  products.product_details = "Americano"

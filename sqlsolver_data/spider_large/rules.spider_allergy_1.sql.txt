@@ -1,0 +1,196 @@
+SELECT count(DISTINCT allergy) FROM Allergy_type
+select count( distinct allergy_type.allergy) from Allergy_Type
+SELECT count(DISTINCT allergy) FROM Allergy_type
+select count( distinct allergy_type.allergy) from Allergy_Type
+SELECT count(DISTINCT allergytype) FROM Allergy_type
+select count( distinct allergy_type.allergytype) from Allergy_Type
+SELECT count(DISTINCT allergytype) FROM Allergy_type
+select count( distinct allergy_type.allergytype) from Allergy_Type
+SELECT DISTINCT allergytype FROM Allergy_type
+select distinct allergy_type.allergytype from Allergy_Type
+SELECT DISTINCT allergytype FROM Allergy_type
+select distinct allergy_type.allergytype from Allergy_Type
+SELECT allergy ,  allergytype FROM Allergy_type
+select allergy_type.allergy , allergy_type.allergytype from Allergy_Type
+SELECT allergy ,  allergytype FROM Allergy_type
+select allergy_type.allergy , allergy_type.allergytype from Allergy_Type
+SELECT DISTINCT allergy FROM Allergy_type WHERE allergytype  =  "food"
+select distinct allergy_type.allergy from Allergy_Type where  allergy_type.allergytype = "food"
+SELECT DISTINCT allergy FROM Allergy_type WHERE allergytype  =  "food"
+select distinct allergy_type.allergy from Allergy_Type where  allergy_type.allergytype = "food"
+SELECT allergytype FROM Allergy_type WHERE allergy  =  "Cat"
+select allergy_type.allergytype from Allergy_Type where  allergy_type.allergy = "Cat"
+SELECT allergytype FROM Allergy_type WHERE allergy  =  "Cat"
+select allergy_type.allergytype from Allergy_Type where  allergy_type.allergy = "Cat"
+SELECT count(*) FROM Allergy_type WHERE allergytype  =  "animal"
+select count(*) from Allergy_Type where  allergy_type.allergytype = "animal"
+SELECT count(*) FROM Allergy_type WHERE allergytype  =  "animal"
+select count(*) from Allergy_Type where  allergy_type.allergytype = "animal"
+SELECT allergytype ,  count(*) FROM Allergy_type GROUP BY allergytype
+select allergy_type.allergytype , count(*) from Allergy_Type  group by allergy_type.allergytype
+SELECT allergytype ,  count(*) FROM Allergy_type GROUP BY allergytype
+select allergy_type.allergytype , count(*) from Allergy_Type  group by allergy_type.allergytype
+SELECT allergytype FROM Allergy_type GROUP BY allergytype ORDER BY count(*) DESC LIMIT 1
+select allergy_type.allergytype from Allergy_Type  group by allergy_type.allergytype  order by count(*) desc limit 1
+SELECT allergytype FROM Allergy_type GROUP BY allergytype ORDER BY count(*) DESC LIMIT 1
+select allergy_type.allergytype from Allergy_Type  group by allergy_type.allergytype  order by count(*) desc limit 1
+SELECT allergytype FROM Allergy_type GROUP BY allergytype ORDER BY count(*) ASC LIMIT 1
+select allergy_type.allergytype from Allergy_Type  group by allergy_type.allergytype  order by count(*) asc limit 1
+SELECT allergytype FROM Allergy_type GROUP BY allergytype ORDER BY count(*) ASC LIMIT 1
+select allergy_type.allergytype from Allergy_Type  group by allergy_type.allergytype  order by count(*) asc limit 1
+SELECT count(*) FROM Student
+select count(*) from Student
+SELECT count(*) FROM Student
+select count(*) from Student
+SELECT Fname ,  Lname FROM Student
+select student.fname , student.lname from Student
+SELECT Fname ,  Lname FROM Student
+select student.fname , student.lname from Student
+SELECT count(DISTINCT advisor) FROM Student
+select count( distinct student.advisor) from Student
+SELECT count(DISTINCT advisor) FROM Student
+select count( distinct student.advisor) from Student
+SELECT DISTINCT Major FROM Student
+select distinct student.major from Student
+SELECT DISTINCT Major FROM Student
+select distinct student.major from Student
+SELECT DISTINCT city_code FROM Student
+select distinct student.city_code from Student
+SELECT DISTINCT city_code FROM Student
+select distinct student.city_code from Student
+SELECT Fname ,  Lname ,  Age FROM Student WHERE Sex  =  'F'
+select student.fname , student.lname , student.age from Student where  student.sex = "F"
+SELECT Fname ,  Lname ,  Age FROM Student WHERE Sex  =  'F'
+select student.fname , student.lname , student.age from Student where  student.sex = "F"
+SELECT StuID FROM Student WHERE Sex  =  'M'
+select student.stuid from Student where  student.sex = "M"
+SELECT StuID FROM Student WHERE Sex  =  'M'
+select student.stuid from Student where  student.sex = "M"
+SELECT count(*) FROM Student WHERE age  =  18
+select count(*) from Student where  student.age = 18
+SELECT count(*) FROM Student WHERE age  =  18
+select count(*) from Student where  student.age = 18
+SELECT StuID FROM Student WHERE age  >  20
+select student.stuid from Student where  student.age > 20
+SELECT StuID FROM Student WHERE age  >  20
+select student.stuid from Student where  student.age > 20
+SELECT city_code FROM Student WHERE LName  =  "Kim"
+select student.city_code from Student where  student.lname = "Kim"
+SELECT city_code FROM Student WHERE LName  =  "Kim"
+select student.city_code from Student where  student.lname = "Kim"
+SELECT Advisor FROM Student WHERE StuID  =  1004
+select student.advisor from Student where  student.stuid = 1004
+SELECT Advisor FROM Student WHERE StuID  =  1004
+select student.advisor from Student where  student.stuid = 1004
+SELECT count(*) FROM Student WHERE city_code  =  "HKG" OR city_code  =  "CHI"
+select count(*) from Student where  student.city_code = "HKG" or student.city_code = "CHI"
+SELECT count(*) FROM Student WHERE city_code  =  "HKG" OR city_code  =  "CHI"
+select count(*) from Student where  student.city_code = "HKG" or student.city_code = "CHI"
+SELECT min(age) ,  avg(age) ,  max(age) FROM Student
+select min(student.age) , avg(student.age) , max(student.age) from Student
+SELECT min(age) ,  avg(age) ,  max(age) FROM Student
+select min(student.age) , avg(student.age) , max(student.age) from Student
+SELECT LName FROM Student WHERE age  =  (SELECT min(age) FROM Student)
+select student.lname from Student where  student.age = (select min(student.age) from Student  )
+SELECT LName FROM Student WHERE age  =  (SELECT min(age) FROM Student)
+select student.lname from Student where  student.age = (select min(student.age) from Student  )
+SELECT StuID FROM Student WHERE age  =  (SELECT max(age) FROM Student)
+select student.stuid from Student   order by student.age desc limit 1
+SELECT StuID FROM Student WHERE age  =  (SELECT max(age) FROM Student)
+select student.stuid from Student where  student.age = (select max(student.age) from Student  )
+SELECT major ,  count(*) FROM Student GROUP BY major
+select student.major , count(*) from Student  group by student.major
+SELECT major ,  count(*) FROM Student GROUP BY major
+select student.major , count(*) from Student  group by student.major
+SELECT major FROM Student GROUP BY major ORDER BY count(*) DESC LIMIT 1
+select student.major from Student  group by student.major  order by count(*) desc limit 1
+SELECT major FROM Student GROUP BY major ORDER BY count(*) DESC LIMIT 1
+select student.major from Student   order by student.age desc limit 1
+SELECT age ,  count(*) FROM Student GROUP BY age
+select student.age , count(*) from Student  group by student.age
+SELECT age ,  count(*) FROM Student GROUP BY age
+select student.age , count(*) from Student  group by student.age
+SELECT avg(age) ,  sex FROM Student GROUP BY sex
+select avg(student.age) , avg(student.age) from Student  group by student.sex
+SELECT avg(age) ,  sex FROM Student GROUP BY sex
+select avg(student.age) , avg(student.age) from Student  group by student.sex
+SELECT city_code ,  count(*) FROM Student GROUP BY city_code
+select student.city_code , count(*) from Student  group by student.city_code
+SELECT city_code ,  count(*) FROM Student GROUP BY city_code
+select student.city_code , count(*) from Student  group by student.city_code
+SELECT advisor ,  count(*) FROM Student GROUP BY advisor
+select student.advisor , count(*) from Student  group by student.advisor
+SELECT advisor ,  count(*) FROM Student GROUP BY advisor
+select student.advisor , count(*) from Student  group by student.advisor
+SELECT advisor FROM Student GROUP BY advisor ORDER BY count(*) DESC LIMIT 1
+select student.advisor from Student  group by student.advisor  order by count(*) desc limit 1
+SELECT advisor FROM Student GROUP BY advisor ORDER BY count(*) DESC LIMIT 1
+select student.advisor from Student  group by student.advisor  order by count(*) desc limit 1
+SELECT count(*) FROM Has_allergy WHERE Allergy  =  "Cat"
+select count(*) from Has_Allergy where  has_allergy.allergy = "Cat"
+SELECT count(*) FROM Has_allergy WHERE Allergy  =  "Cat"
+select count(*) from Has_Allergy where  has_allergy.allergy = "Cat"
+SELECT StuID FROM Has_allergy GROUP BY StuID HAVING count(*)  >=  2
+select student.stuid from Has_Allergy join Student on Has_Allergy.StuID = Student.StuID  group by has_allergy.stuid having  count(*) >= 2
+SELECT StuID FROM Has_allergy GROUP BY StuID HAVING count(*)  >=  2
+select has_allergy.stuid from Has_Allergy  group by has_allergy.stuid having  count(*) >= 2
+SELECT StuID FROM Student EXCEPT SELECT StuID FROM Has_allergy
+select student.stuid from Student   except select has_allergy.stuid from Has_Allergy
+SELECT StuID FROM Student EXCEPT SELECT StuID FROM Has_allergy
+select student.stuid from Student   except select has_allergy.stuid from Has_Allergy
+SELECT count(*) FROM has_allergy AS T1 JOIN Student AS T2 ON T1.StuID  =  T2.StuID WHERE T2.sex  =  "F" AND T1.allergy  =  "Milk" OR T1.allergy  =  "Eggs"
+select count(*) from Has_Allergy where  has_allergy.stuid in (select Student.StuID from Student join Has_Allergy on Student.StuID = Has_Allergy.StuID where  student.sex = "F" and has_allergy.allergy = "Milk"   union select Student.StuID from Has_Allergy join Student on Has_Allergy.StuID = Student.StuID where  has_allergy.allergy = "Eggs"   )
+SELECT count(*) FROM has_allergy AS T1 JOIN Student AS T2 ON T1.StuID  =  T2.StuID WHERE T2.sex  =  "F" AND T1.allergy  =  "Milk" OR T1.allergy  =  "Eggs"
+select count(*) from Has_Allergy where  has_allergy.stuid in (select Student.StuID from Student join Has_Allergy on Student.StuID = Has_Allergy.StuID where  student.sex = "F" and has_allergy.allergy = "Milk"   union select Student.StuID from Has_Allergy join Student on Has_Allergy.StuID = Student.StuID where  has_allergy.allergy = "Eggs"   )
+SELECT count(*) FROM Has_allergy AS T1 JOIN Allergy_type AS T2 ON T1.allergy  =  T2.allergy WHERE T2.allergytype  =  "food"
+select count(*) from Has_Allergy join Allergy_Type on Has_Allergy.Allergy = Allergy_Type.Allergy where  allergy_type.allergytype = "food"
+SELECT count(*) FROM Has_allergy AS T1 JOIN Allergy_type AS T2 ON T1.allergy  =  T2.allergy WHERE T2.allergytype  =  "food"
+select count(*) from Has_Allergy join Allergy_Type on Has_Allergy.Allergy = Allergy_Type.Allergy where  allergy_type.allergytype = "food"
+SELECT Allergy FROM Has_allergy GROUP BY Allergy ORDER BY count(*) DESC LIMIT 1
+select has_allergy.allergy from Has_Allergy  group by has_allergy.allergy  order by count(*) desc limit 1
+SELECT Allergy FROM Has_allergy GROUP BY Allergy ORDER BY count(*) DESC LIMIT 1
+select has_allergy.allergy from Has_Allergy  group by has_allergy.allergy  order by count(*) desc limit 1
+SELECT Allergy ,  count(*) FROM Has_allergy GROUP BY Allergy
+select has_allergy.allergy , count(*) from Has_Allergy  group by has_allergy.allergy
+SELECT Allergy ,  count(*) FROM Has_allergy GROUP BY Allergy
+select has_allergy.allergy , count(*) from Has_Allergy  group by has_allergy.allergy
+SELECT T2.allergytype ,  count(*) FROM Has_allergy AS T1 JOIN Allergy_type AS T2 ON T1.allergy  =  T2.allergy GROUP BY T2.allergytype
+select allergy_type.allergytype , count(*) from Has_Allergy join Allergy_Type on Has_Allergy.Allergy = Allergy_Type.Allergy  group by allergy_type.allergytype
+SELECT T2.allergytype ,  count(*) FROM Has_allergy AS T1 JOIN Allergy_type AS T2 ON T1.allergy  =  T2.allergy GROUP BY T2.allergytype
+select allergy_type.allergytype , count(*) from Has_Allergy join Allergy_Type on Has_Allergy.Allergy = Allergy_Type.Allergy  group by allergy_type.allergytype
+SELECT lname ,  age FROM Student WHERE StuID IN (SELECT StuID FROM Has_allergy WHERE Allergy  =  "Milk" INTERSECT SELECT StuID FROM Has_allergy WHERE Allergy  =  "Cat")
+select student.lname , student.age from Student where  student.stuid in (select Has_Allergy.StuID from Has_Allergy where  has_allergy.allergy = "Milk"   intersect select Has_Allergy.StuID from Has_Allergy where  has_allergy.allergy = "Cat"   )
+SELECT lname ,  age FROM Student WHERE StuID IN (SELECT StuID FROM Has_allergy WHERE Allergy  =  "Milk" INTERSECT SELECT StuID FROM Has_allergy WHERE Allergy  =  "Cat")
+select student.lname , student.age from Student where  student.stuid in (select Has_Allergy.StuID from Has_Allergy where  has_allergy.allergy = "Milk"   intersect select Has_Allergy.StuID from Has_Allergy where  has_allergy.allergy = "Cat"   )
+SELECT T1.Allergy ,  T1.AllergyType FROM Allergy_type AS T1 JOIN Has_allergy AS T2 ON T1.Allergy  =  T2.Allergy JOIN Student AS T3 ON T3.StuID  =  T2.StuID WHERE T3.Fname  =  "Lisa" ORDER BY T1.Allergy
+select allergy_type.allergy , allergy_type.allergytype from Has_Allergy join Allergy_Type on Has_Allergy.Allergy = Allergy_Type.Allergy join Student on Has_Allergy.StuID = Student.StuID where  student.fname = "Lisa"   order by allergy_type.allergy asc
+SELECT T1.Allergy ,  T1.AllergyType FROM Allergy_type AS T1 JOIN Has_allergy AS T2 ON T1.Allergy  =  T2.Allergy JOIN Student AS T3 ON T3.StuID  =  T2.StuID WHERE T3.Fname  =  "Lisa" ORDER BY T1.Allergy
+select allergy_type.allergy , allergy_type.allergytype from Has_Allergy join Allergy_Type on Has_Allergy.Allergy = Allergy_Type.Allergy join Student on Has_Allergy.StuID = Student.StuID where  student.fname = "Lisa"   order by allergy_type.allergy asc
+SELECT fname ,  sex FROM Student WHERE StuID IN (SELECT StuID FROM Has_allergy WHERE Allergy  =  "Milk" EXCEPT SELECT StuID FROM Has_allergy WHERE Allergy  =  "Cat")
+select student.fname , student.sex from Student where  student.stuid in (select Has_Allergy.StuID from Has_Allergy where  has_allergy.allergy = "Milk"   except select Has_Allergy.StuID from Has_Allergy where  has_allergy.allergy = "Cat"   )
+SELECT fname ,  sex FROM Student WHERE StuID IN (SELECT StuID FROM Has_allergy WHERE Allergy  =  "Milk" EXCEPT SELECT StuID FROM Has_allergy WHERE Allergy  =  "Cat")
+select student.fname , student.sex from Student where  student.stuid in (select Has_Allergy.StuID from Has_Allergy where  has_allergy.allergy = "Milk"   except select Has_Allergy.StuID from Has_Allergy where  has_allergy.allergy = "Cat"   )
+SELECT avg(age) FROM Student WHERE StuID IN ( SELECT T1.StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  "food" INTERSECT SELECT T1.StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  "animal")
+select avg(student.age) from Student where  student.stuid in (select Has_Allergy.StuID from Has_Allergy join Allergy_Type on Has_Allergy.Allergy = Allergy_Type.Allergy where  allergy_type.allergytype = "food"  and has_allergy.stuid in (select has_allergy.stuid from Has_Allergy join Allergy_Type on Has_Allergy.Allergy = Allergy_Type.Allergy where  allergy_type.allergytype = "animal"  )   )
+SELECT avg(age) FROM Student WHERE StuID IN ( SELECT T1.StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  "food" INTERSECT SELECT T1.StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  "animal")
+select avg(student.age) from Student where  student.stuid in (select Has_Allergy.StuID from Has_Allergy join Allergy_Type on Has_Allergy.Allergy = Allergy_Type.Allergy where  allergy_type.allergytype = "food"  and has_allergy.stuid in (select has_allergy.stuid from Has_Allergy join Allergy_Type on Has_Allergy.Allergy = Allergy_Type.Allergy where  allergy_type.allergytype = "animal"  )   )
+SELECT fname ,  lname FROM Student WHERE StuID NOT IN (SELECT T1.StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  "food")
+select student.fname , student.lname from Student where  student.stuid not in (select Has_Allergy.StuID from Has_Allergy join Allergy_Type on Has_Allergy.Allergy = Allergy_Type.Allergy where  allergy_type.allergytype = "food"  )
+SELECT fname ,  lname FROM Student WHERE StuID NOT IN (SELECT T1.StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  "food")
+select student.fname , student.lname from Student where  student.stuid not in (select Has_Allergy.StuID from Has_Allergy join Allergy_Type on Has_Allergy.Allergy = Allergy_Type.Allergy where  allergy_type.allergytype = "food"  )
+SELECT count(*) FROM Student WHERE sex  =  "M" AND StuID IN (SELECT StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  "food")
+select count(*) from Student where  student.sex = "M" and student.stuid in (select Has_Allergy.StuID from Has_Allergy join Allergy_Type on Has_Allergy.Allergy = Allergy_Type.Allergy where  allergy_type.allergytype = "food"  )
+SELECT count(*) FROM Student WHERE sex  =  "M" AND StuID IN (SELECT StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  "food")
+select count(*) from Student where  student.sex = "M" and student.stuid in (select Has_Allergy.StuID from Has_Allergy join Allergy_Type on Has_Allergy.Allergy = Allergy_Type.Allergy where  allergy_type.allergytype = "food"  )
+SELECT DISTINCT T1.fname ,  T1.city_code FROM Student AS T1 JOIN Has_Allergy AS T2 ON T1.stuid  =  T2.stuid WHERE T2.Allergy  =  "Milk" OR T2.Allergy  =  "Cat"
+select distinct student.fname , student.city_code from Has_Allergy join Student on Has_Allergy.StuID = Student.StuID where  has_allergy.allergy = "Milk" or has_allergy.allergy = "Cat"
+SELECT DISTINCT T1.fname ,  T1.city_code FROM Student AS T1 JOIN Has_Allergy AS T2 ON T1.stuid  =  T2.stuid WHERE T2.Allergy  =  "Milk" OR T2.Allergy  =  "Cat"
+select distinct student.fname , student.city_code from Has_Allergy join Student on Has_Allergy.StuID = Student.StuID where  has_allergy.allergy = "Milk" or has_allergy.allergy = "Cat"
+SELECT count(*) FROM Student WHERE age  >  18 AND StuID NOT IN ( SELECT StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  "food" OR T2.allergytype  =  "animal")
+select count(*) from Student where  student.age > 18 and student.stuid not in (select Has_Allergy.StuID from Has_Allergy join Allergy_Type on Has_Allergy.Allergy = Allergy_Type.Allergy where  allergy_type.allergytype = "food" or allergy_type.allergytype = "animal"  )
+SELECT count(*) FROM Student WHERE age  >  18 AND StuID NOT IN ( SELECT StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  "food" OR T2.allergytype  =  "animal")
+select count(*) from Student where  student.age > 18 and student.stuid not in (select Has_Allergy.StuID from Has_Allergy join Allergy_Type on Has_Allergy.Allergy = Allergy_Type.Allergy where  allergy_type.allergytype = "food" or allergy_type.allergytype = "animal"  )
+SELECT fname ,  major FROM Student WHERE StuID NOT IN (SELECT StuID FROM Has_allergy WHERE Allergy  =  "Soy")
+select student.fname , student.major from Student where  student.stuid not in (select Has_Allergy.StuID from Has_Allergy where  has_allergy.allergy = "Soy"  )
+SELECT fname ,  major FROM Student WHERE StuID NOT IN (SELECT StuID FROM Has_allergy WHERE Allergy  =  "Soy")
+select student.fname , student.major from Student where  student.stuid not in (select Has_Allergy.StuID from Has_Allergy where  has_allergy.allergy = "Soy"  )

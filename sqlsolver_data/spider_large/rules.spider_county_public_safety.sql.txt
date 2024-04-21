@@ -1,0 +1,80 @@
+SELECT count(*) FROM county_public_safety
+select count(*) from county_public_safety
+SELECT count(*) FROM county_public_safety
+select count(*) from county_public_safety
+SELECT Name FROM county_public_safety ORDER BY Population DESC
+select county_public_safety.name from county_public_safety   order by county_public_safety.population desc
+SELECT Name FROM county_public_safety ORDER BY Population DESC
+select county_public_safety.name from county_public_safety   order by county_public_safety.population desc
+SELECT DISTINCT Police_force FROM county_public_safety WHERE LOCATION != "East"
+select distinct county_public_safety.police_force from county_public_safety where  county_public_safety.location != "East"
+SELECT DISTINCT Police_force FROM county_public_safety WHERE LOCATION != "East"
+select distinct county_public_safety.police_force from county_public_safety where  county_public_safety.location != "East"
+SELECT min(Crime_rate) ,  max(Crime_rate) FROM county_public_safety
+select min(county_public_safety.crime_rate) , max(county_public_safety.crime_rate) from county_public_safety
+SELECT min(Crime_rate) ,  max(Crime_rate) FROM county_public_safety
+select min(county_public_safety.crime_rate) , max(county_public_safety.crime_rate) from county_public_safety
+SELECT Crime_rate FROM county_public_safety ORDER BY Police_officers ASC
+select county_public_safety.crime_rate from county_public_safety   order by county_public_safety.police_officers asc
+SELECT Crime_rate FROM county_public_safety ORDER BY Police_officers ASC
+select county_public_safety.crime_rate from county_public_safety   order by county_public_safety.police_officers asc
+SELECT Name FROM city ORDER BY Name ASC
+select city.name from city   order by city.name asc
+SELECT Name FROM city ORDER BY Name ASC
+select city.name from city   order by city.name asc
+SELECT Hispanic FROM city WHERE Black  >  10
+select city.hispanic from city where  city.black > 10
+SELECT Hispanic FROM city WHERE Black  >  10
+select city.hispanic from city where  city.black > 10
+SELECT Name FROM county_public_safety ORDER BY Population DESC LIMIT 1
+select county_public_safety.name from county_public_safety   order by county_public_safety.population desc limit 1
+SELECT Name FROM county_public_safety ORDER BY Population DESC LIMIT 1
+select county_public_safety.name from county_public_safety   order by county_public_safety.population desc limit 1
+SELECT Name FROM city ORDER BY White DESC LIMIT 5
+select city.name from city   order by city.white desc limit 5
+SELECT Name FROM city ORDER BY White DESC LIMIT 5
+select city.name from city   order by city.white desc limit 5
+SELECT T1.Name ,  T2.Name FROM city AS T1 JOIN county_public_safety AS T2 ON T1.County_ID  =  T2.County_ID
+select city.name , county_public_safety.name from city join county_public_safety on city.County_ID = county_public_safety.County_ID
+SELECT T1.Name ,  T2.Name FROM city AS T1 JOIN county_public_safety AS T2 ON T1.County_ID  =  T2.County_ID
+select city.name , county_public_safety.name from city join county_public_safety on city.County_ID = county_public_safety.County_ID
+SELECT T1.White ,  T2.Crime_rate FROM city AS T1 JOIN county_public_safety AS T2 ON T1.County_ID  =  T2.County_ID
+select city.white , county_public_safety.crime_rate from city join county_public_safety on city.County_ID = county_public_safety.County_ID
+SELECT T1.White ,  T2.Crime_rate FROM city AS T1 JOIN county_public_safety AS T2 ON T1.County_ID  =  T2.County_ID
+select city.white , county_public_safety.crime_rate from city join county_public_safety on city.County_ID = county_public_safety.County_ID
+SELECT name FROM city WHERE county_ID  =  (SELECT county_ID FROM county_public_safety ORDER BY Police_officers DESC LIMIT 1)
+select city.name from city where  city.county_id in (select county_public_safety.County_ID from county_public_safety   order by county_public_safety.police_officers desc limit 1 )
+SELECT name FROM city WHERE county_ID  =  (SELECT county_ID FROM county_public_safety ORDER BY Police_officers DESC LIMIT 1)
+select city.name from city where  city.county_id in (select county_public_safety.County_ID from county_public_safety   order by county_public_safety.police_officers desc limit 1 )
+SELECT count(*) FROM city WHERE county_ID IN (SELECT county_ID FROM county_public_safety WHERE population  >  20000)
+select count(*) from city where  city.county_id in (select county_public_safety.County_ID from county_public_safety where  county_public_safety.population > 20000  )
+SELECT count(*) FROM city WHERE county_ID IN (SELECT county_ID FROM county_public_safety WHERE population  >  20000)
+select count(*) from city where  city.county_id in (select county_public_safety.County_ID from county_public_safety where  county_public_safety.population > 20000  )
+SELECT T2.Crime_rate FROM city AS T1 JOIN county_public_safety AS T2 ON T1.County_ID  =  T2.County_ID WHERE T1.White  >  90
+select county_public_safety.crime_rate from city join county_public_safety on city.County_ID = county_public_safety.County_ID where  city.white > 90
+SELECT T2.Crime_rate FROM city AS T1 JOIN county_public_safety AS T2 ON T1.County_ID  =  T2.County_ID WHERE T1.White  >  90
+select county_public_safety.crime_rate from city join county_public_safety on city.County_ID = county_public_safety.County_ID where  city.white > 90
+SELECT Police_force ,  COUNT(*) FROM county_public_safety GROUP BY Police_force
+select county_public_safety.police_force , count(*) from county_public_safety  group by county_public_safety.police_force
+SELECT Police_force ,  COUNT(*) FROM county_public_safety GROUP BY Police_force
+select county_public_safety.police_force , count(*) from county_public_safety  group by county_public_safety.police_force
+SELECT LOCATION FROM county_public_safety GROUP BY LOCATION ORDER BY COUNT(*) DESC LIMIT 1
+select county_public_safety.location from county_public_safety  group by county_public_safety.location  order by count(*) desc limit 1
+SELECT LOCATION FROM county_public_safety GROUP BY LOCATION ORDER BY COUNT(*) DESC LIMIT 1
+select county_public_safety.location from county_public_safety  group by county_public_safety.location  order by count(*) desc limit 1
+SELECT Name FROM county_public_safety WHERE County_ID NOT IN (SELECT County_ID FROM city)
+select county_public_safety.name from county_public_safety where  county_public_safety.county_id not in (select city.County_ID from city  )
+SELECT Name FROM county_public_safety WHERE County_ID NOT IN (SELECT County_ID FROM city)
+select county_public_safety.name from county_public_safety where  county_public_safety.county_id not in (select city.County_ID from city  )
+SELECT Police_force FROM county_public_safety WHERE LOCATION  =  "East" INTERSECT SELECT Police_force FROM county_public_safety WHERE LOCATION  =  "West"
+select county_public_safety.police_force from county_public_safety where  county_public_safety.location = "East"   intersect select county_public_safety.police_force from county_public_safety where  county_public_safety.location = "West"
+SELECT Police_force FROM county_public_safety WHERE LOCATION  =  "East" INTERSECT SELECT Police_force FROM county_public_safety WHERE LOCATION  =  "West"
+select county_public_safety.police_force from county_public_safety where  county_public_safety.location = "East"   intersect select county_public_safety.police_force from county_public_safety where  county_public_safety.location = "West"
+SELECT name FROM city WHERE county_id IN (SELECT county_id FROM county_public_safety WHERE Crime_rate  <  100)
+select city.name from city where  city.county_id in (select county_public_safety.County_ID from county_public_safety where  county_public_safety.crime_rate < 100  )
+SELECT name FROM city WHERE county_id IN (SELECT county_id FROM county_public_safety WHERE Crime_rate  <  100)
+select city.name from city where  city.county_id in (select county_public_safety.County_ID from county_public_safety where  county_public_safety.crime_rate < 100  )
+SELECT Case_burden FROM county_public_safety ORDER BY Population DESC
+select county_public_safety.case_burden from county_public_safety   order by county_public_safety.population desc
+SELECT Case_burden FROM county_public_safety ORDER BY Population DESC
+select county_public_safety.case_burden from county_public_safety   order by county_public_safety.population desc

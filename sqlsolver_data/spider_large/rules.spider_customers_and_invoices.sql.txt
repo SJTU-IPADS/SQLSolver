@@ -1,0 +1,164 @@
+SELECT count(*) FROM Accounts
+select count(*) from Accounts
+SELECT count(*) FROM Accounts
+select count(*) from Accounts
+SELECT count(DISTINCT customer_id) FROM Accounts
+select count( distinct accounts.customer_id) from Accounts
+SELECT count(DISTINCT customer_id) FROM Accounts
+select count( distinct accounts.customer_id) from Accounts
+SELECT account_id ,  date_account_opened ,  account_name ,  other_account_details FROM Accounts
+select accounts.account_id , accounts.date_account_opened , accounts.account_name , accounts.other_account_details from Accounts
+SELECT account_id ,  date_account_opened ,  account_name ,  other_account_details FROM Accounts
+select accounts.account_id , accounts.date_account_opened , accounts.account_name , accounts.other_account_details from Accounts
+SELECT T1.account_id ,  T1.date_account_opened ,  T1.account_name ,  T1.other_account_details FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.customer_first_name  =  'Meaghan'
+select accounts.account_id , accounts.account_name , accounts.other_account_details from Accounts join Customers on Accounts.customer_id = Customers.customer_id where  customers.customer_first_name = "Meaghan"
+SELECT T1.account_id ,  T1.date_account_opened ,  T1.account_name ,  T1.other_account_details FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.customer_first_name  =  'Meaghan'
+select accounts.account_id , accounts.date_account_opened , accounts.account_name , accounts.other_account_details from Accounts join Customers on Accounts.customer_id = Customers.customer_id where  customers.customer_first_name = "Meaghan"
+SELECT T1.account_name ,  T1.other_account_details FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.customer_first_name  =  "Meaghan" AND T2.customer_last_name  =  "Keeling"
+select accounts.account_name , accounts.other_account_details from Accounts join Customers on Accounts.customer_id = Customers.customer_id where  customers.customer_first_name = "Meaghan" and customers.customer_last_name = "Keeling"
+SELECT T1.account_name ,  T1.other_account_details FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.customer_first_name  =  "Meaghan" AND T2.customer_last_name  =  "Keeling"
+select accounts.account_name , accounts.other_account_details from Accounts join Customers on Accounts.customer_id = Customers.customer_id where  customers.customer_first_name = "Meaghan" and customers.customer_last_name = "Keeling"
+SELECT T2.customer_first_name ,  T2.customer_last_name FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T1.account_name  =  "900"
+select customers.customer_first_name , customers.customer_last_name from Accounts join Customers on Accounts.customer_id = Customers.customer_id where  accounts.account_name = "900"
+SELECT T2.customer_first_name ,  T2.customer_last_name FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T1.account_name  =  "900"
+select customers.customer_first_name , customers.customer_last_name from Accounts join Customers on Accounts.customer_id = Customers.customer_id where  accounts.account_name = "900"
+SELECT count(*) FROM Customers WHERE customer_id NOT IN (SELECT customer_id FROM Accounts)
+select count(*) from Customers where  customers.customer_id not in (select Accounts.customer_id from Accounts  )
+SELECT count(*) FROM Customers WHERE customer_id NOT IN (SELECT customer_id FROM Accounts)
+select count(*) from Customers where  customers.customer_id not in (select Accounts.customer_id from Accounts  )
+SELECT DISTINCT T1.customer_first_name ,  T1.customer_last_name ,  T1.phone_number FROM Customers AS T1 JOIN Accounts AS T2 ON T1.customer_id  =  T2.customer_id
+select distinct customers.customer_first_name , customers.customer_last_name , customers.phone_number from Accounts join Customers on Accounts.customer_id = Customers.customer_id
+SELECT DISTINCT T1.customer_first_name ,  T1.customer_last_name ,  T1.phone_number FROM Customers AS T1 JOIN Accounts AS T2 ON T1.customer_id  =  T2.customer_id
+select distinct customers.customer_first_name , customers.customer_last_name , customers.phone_number from Accounts join Customers on Accounts.customer_id = Customers.customer_id
+SELECT customer_id FROM Customers EXCEPT SELECT customer_id FROM Accounts
+select customers.customer_id from Customers   except select accounts.customer_id from Accounts
+SELECT customer_id FROM Customers EXCEPT SELECT customer_id FROM Accounts
+select customers.customer_id from Customers   except select accounts.customer_id from Accounts
+SELECT count(*) ,  customer_id FROM Accounts GROUP BY customer_id
+select count(*) , accounts.customer_id from Accounts  group by accounts.customer_id
+SELECT count(*) ,  customer_id FROM Accounts GROUP BY customer_id
+select count(*) , accounts.customer_id from Accounts  group by accounts.customer_id
+SELECT T1.customer_id ,  T2.customer_first_name ,  T2.customer_last_name FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) DESC LIMIT 1
+select customers.customer_id , customers.customer_first_name , customers.customer_last_name from Accounts join Customers on Accounts.customer_id = Customers.customer_id  group by accounts.customer_id  order by count(*) desc limit 1
+SELECT T1.customer_id ,  T2.customer_first_name ,  T2.customer_last_name FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) DESC LIMIT 1
+select customers.customer_id , customers.customer_first_name , customers.customer_last_name from Accounts join Customers on Accounts.customer_id = Customers.customer_id  group by accounts.customer_id  order by count(*) desc limit 1
+SELECT T1.customer_id ,  T2.customer_first_name ,  T2.customer_last_name ,  count(*) FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id
+select customers.customer_id , customers.customer_first_name , customers.customer_last_name , count(*) from Accounts join Customers on Accounts.customer_id = Customers.customer_id  group by accounts.customer_id
+SELECT T1.customer_id ,  T2.customer_first_name ,  T2.customer_last_name ,  count(*) FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id
+select customers.customer_id , customers.customer_first_name , customers.customer_last_name , count(*) from Accounts join Customers on Accounts.customer_id = Customers.customer_id  group by accounts.customer_id
+SELECT T2.customer_first_name ,  T1.customer_id FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id HAVING count(*)  >=  2
+select customers.customer_first_name , customers.customer_id from Accounts join Customers on Accounts.customer_id = Customers.customer_id  group by accounts.customer_id having  count(*) >= 2
+SELECT T2.customer_first_name ,  T1.customer_id FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id HAVING count(*)  >=  2
+select customers.customer_first_name , customers.customer_id from Accounts join Customers on Accounts.customer_id = Customers.customer_id  group by accounts.customer_id having  count(*) >= 2
+SELECT count(*) FROM Customers
+select count(*) from Customers
+SELECT count(*) FROM Customers
+select count(*) from Customers
+SELECT gender ,  count(*) FROM Customers GROUP BY gender
+select customers.gender , count(*) from Customers  group by customers.gender
+SELECT gender ,  count(*) FROM Customers GROUP BY gender
+select customers.gender , count(*) from Customers  group by customers.gender
+SELECT count(*) FROM Financial_transactions
+select count(*) from Financial_Transactions
+SELECT count(*) FROM Financial_transactions
+select count(*) from Financial_Transactions
+SELECT count(*) ,  account_id FROM Financial_transactions
+select count(*) , financial_transactions.account_id from Financial_Transactions
+SELECT count(*) ,  account_id FROM Financial_transactions
+select count(*) , financial_transactions.account_id from Financial_Transactions
+SELECT count(*) FROM Financial_transactions AS T1 JOIN Accounts AS T2 ON T1.account_id  =  T2.account_id WHERE T2.account_name  =  "337"
+select count(*) from Financial_Transactions join Accounts on Financial_Transactions.account_id = Accounts.account_id where  accounts.account_name = "337"
+SELECT count(*) FROM Financial_transactions AS T1 JOIN Accounts AS T2 ON T1.account_id  =  T2.account_id WHERE T2.account_name  =  "337"
+select count(*) from Financial_Transactions join Accounts on Financial_Transactions.account_id = Accounts.account_id where  accounts.account_name = "337"
+SELECT avg(transaction_amount) ,  min(transaction_amount) ,  max(transaction_amount) ,   sum(transaction_amount) FROM Financial_transactions
+select avg(financial_transactions.transaction_amount) , min(financial_transactions.transaction_amount) , max(financial_transactions.transaction_amount) , sum(financial_transactions.transaction_amount) from Financial_Transactions
+SELECT avg(transaction_amount) ,  min(transaction_amount) ,  max(transaction_amount) ,   sum(transaction_amount) FROM Financial_transactions
+select avg(financial_transactions.transaction_amount) , min(financial_transactions.transaction_amount) , max(financial_transactions.transaction_amount) , sum(financial_transactions.transaction_amount) from Financial_Transactions
+SELECT transaction_id FROM Financial_transactions WHERE transaction_amount  >  (SELECT avg(transaction_amount) FROM Financial_transactions)
+select financial_transactions.transaction_id from Financial_Transactions where  financial_transactions.transaction_amount > (select avg(financial_transactions.transaction_amount) from Financial_Transactions  )
+SELECT transaction_id FROM Financial_transactions WHERE transaction_amount  >  (SELECT avg(transaction_amount) FROM Financial_transactions)
+select financial_transactions.transaction_id from Financial_Transactions where  financial_transactions.transaction_amount > (select avg(financial_transactions.transaction_amount) from Financial_Transactions  )
+SELECT transaction_type ,  sum(transaction_amount) FROM Financial_transactions GROUP BY transaction_type
+select financial_transactions.transaction_type , sum(financial_transactions.transaction_amount) from Financial_Transactions  group by financial_transactions.transaction_type
+SELECT transaction_type ,  sum(transaction_amount) FROM Financial_transactions GROUP BY transaction_type
+select financial_transactions.transaction_type , sum(financial_transactions.transaction_amount) from Financial_Transactions  group by financial_transactions.transaction_type
+SELECT T2.account_name ,  T1.account_id ,  count(*) FROM Financial_transactions AS T1 JOIN Accounts AS T2 ON T1.account_id  =  T2.account_id GROUP BY T1.account_id
+select accounts.account_name , financial_transactions.account_id , count(*) from Financial_Transactions join Accounts on Financial_Transactions.account_id = Accounts.account_id  group by financial_transactions.account_id
+SELECT T2.account_name ,  T1.account_id ,  count(*) FROM Financial_transactions AS T1 JOIN Accounts AS T2 ON T1.account_id  =  T2.account_id GROUP BY T1.account_id
+select accounts.account_name , financial_transactions.account_id , count(*) from Financial_Transactions join Accounts on Financial_Transactions.account_id = Accounts.account_id  group by financial_transactions.account_id
+SELECT account_id FROM Financial_transactions GROUP BY account_id ORDER BY count(*) DESC LIMIT 1
+select financial_transactions.account_id from Financial_Transactions  group by financial_transactions.account_id  order by count(*) desc limit 1
+SELECT account_id FROM Financial_transactions GROUP BY account_id ORDER BY count(*) DESC LIMIT 1
+select financial_transactions.account_id from Financial_Transactions  group by financial_transactions.account_id  order by count(*) desc limit 1
+SELECT T1.account_id ,  T2.account_name FROM Financial_transactions AS T1 JOIN Accounts AS T2 ON T1.account_id  =  T2.account_id GROUP BY T1.account_id HAVING count(*)  >=  4
+select accounts.account_id , accounts.account_name from Financial_Transactions join Accounts on Financial_Transactions.account_id = Accounts.account_id  group by financial_transactions.account_id having  count(*) >= 4
+SELECT T1.account_id ,  T2.account_name FROM Financial_transactions AS T1 JOIN Accounts AS T2 ON T1.account_id  =  T2.account_id GROUP BY T1.account_id HAVING count(*)  >=  4
+select accounts.account_id , accounts.account_name from Financial_Transactions join Accounts on Financial_Transactions.account_id = Accounts.account_id  group by financial_transactions.account_id having  count(*) >= 4
+SELECT DISTINCT product_size FROM Products
+select distinct products.product_size from Products
+SELECT DISTINCT product_size FROM Products
+select distinct products.product_size from Products
+SELECT DISTINCT product_color FROM Products
+select distinct products.product_color from Products
+SELECT DISTINCT product_color FROM Products
+select distinct products.product_color from Products
+SELECT invoice_number ,  count(*) FROM Financial_transactions GROUP BY invoice_number
+select invoices.invoice_number , count(*) from Financial_Transactions join Invoices on Financial_Transactions.invoice_number = Invoices.invoice_number  group by financial_transactions.invoice_number
+SELECT invoice_number ,  count(*) FROM Financial_transactions GROUP BY invoice_number
+select financial_transactions.invoice_number , count(*) from Financial_Transactions  group by financial_transactions.invoice_number
+SELECT T2.invoice_number ,  T2.invoice_date FROM Financial_transactions AS T1 JOIN Invoices AS T2 ON T1.invoice_number  =  T2.invoice_number GROUP BY T1.invoice_number ORDER BY count(*) DESC LIMIT 1
+select invoices.invoice_number , invoices.invoice_date from Financial_Transactions join Invoices on Financial_Transactions.invoice_number = Invoices.invoice_number  group by financial_transactions.invoice_number  order by count(*) desc limit 1
+SELECT T2.invoice_number ,  T2.invoice_date FROM Financial_transactions AS T1 JOIN Invoices AS T2 ON T1.invoice_number  =  T2.invoice_number GROUP BY T1.invoice_number ORDER BY count(*) DESC LIMIT 1
+select invoices.invoice_number , invoices.invoice_date from Financial_Transactions join Invoices on Financial_Transactions.invoice_number = Invoices.invoice_number  group by financial_transactions.invoice_number  order by count(*) desc limit 1
+SELECT count(*) FROM Invoices
+select count(*) from Invoices
+SELECT count(*) FROM Invoices
+select count(*) from Invoices
+SELECT T1.invoice_date ,  T1.order_id ,  T2.order_details FROM Invoices AS T1 JOIN Orders AS T2 ON T1.order_id  =  T2.order_id
+select invoices.invoice_date , invoices.order_id , orders.order_details from Invoices join Orders on Invoices.order_id = Orders.order_id
+SELECT T1.invoice_date ,  T1.order_id ,  T2.order_details FROM Invoices AS T1 JOIN Orders AS T2 ON T1.order_id  =  T2.order_id
+select invoices.invoice_date , invoices.order_id , orders.order_details from Invoices join Orders on Invoices.order_id = Orders.order_id
+SELECT order_id ,  count(*) FROM Invoices GROUP BY order_id
+select invoices.order_id , count(*) from Invoices  group by invoices.order_id
+SELECT order_id ,  count(*) FROM Invoices GROUP BY order_id
+select invoices.order_id , count(*) from Invoices  group by invoices.order_id
+SELECT T2.order_id ,  T2.order_details FROM Invoices AS T1 JOIN Orders AS T2 ON T1.order_id  =  T2.order_id GROUP BY T2.order_id HAVING count(*)  >  2
+select invoices.order_id , orders.order_details from Invoices join Orders on Invoices.order_id = Orders.order_id  group by invoices.order_id having  count(*) > 2
+SELECT T2.order_id ,  T2.order_details FROM Invoices AS T1 JOIN Orders AS T2 ON T1.order_id  =  T2.order_id GROUP BY T2.order_id HAVING count(*)  >  2
+select invoices.order_id , orders.order_details from Invoices join Orders on Invoices.order_id = Orders.order_id  group by invoices.order_id having  count(*) > 2
+SELECT T2.customer_last_name ,  T1.customer_id ,  T2.phone_number FROM Orders AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) DESC LIMIT 1
+select customers.customer_last_name , customers.customer_id , customers.phone_number from Orders join Customers on Orders.customer_id = Customers.customer_id  group by orders.customer_id  order by count(*) desc limit 1
+SELECT T2.customer_last_name ,  T1.customer_id ,  T2.phone_number FROM Orders AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) DESC LIMIT 1
+select customers.customer_last_name , customers.customer_id , customers.phone_number from Orders join Customers on Orders.customer_id = Customers.customer_id  group by orders.customer_id  order by count(*) desc limit 1
+SELECT product_name FROM Products EXCEPT SELECT T1.product_name FROM Products AS T1 JOIN Order_items AS T2 ON T1.product_id  =  T2.product_id
+select products.product_name from Products   except select products.product_name from Order_Items join Products on Order_Items.product_id = Products.product_id
+SELECT product_name FROM Products EXCEPT SELECT T1.product_name FROM Products AS T1 JOIN Order_items AS T2 ON T1.product_id  =  T2.product_id
+select products.product_name from Products   except select products.product_name from Order_Items join Products on Order_Items.product_id = Products.product_id
+SELECT T2.product_name ,  sum(T1.product_quantity) FROM Order_items AS T1 JOIN Products AS T2 ON T1.product_id  =  T2.product_id GROUP BY T2.product_name
+select products.product_name , sum(order_items.product_quantity) from Order_Items join Products on Order_Items.product_id = Products.product_id  group by products.product_name
+SELECT T2.product_name ,  sum(T1.product_quantity) FROM Order_items AS T1 JOIN Products AS T2 ON T1.product_id  =  T2.product_id GROUP BY T2.product_name
+select products.product_name , sum(order_items.product_quantity) from Order_Items join Products on Order_Items.product_id = Products.product_id  group by products.product_name
+SELECT order_id ,  count(*) FROM Order_items GROUP BY order_id
+select order_items.order_id , count(*) from Order_Items  group by order_items.order_id
+SELECT order_id ,  count(*) FROM Order_items GROUP BY order_id
+select order_items.order_id , count(*) from Order_Items  group by order_items.order_id
+SELECT product_id ,  count(DISTINCT order_id) FROM Order_items GROUP BY product_id
+select order_items.product_id , count( distinct order_items.order_id) from Order_Items  group by order_items.product_id
+SELECT product_id ,  count(DISTINCT order_id) FROM Order_items GROUP BY product_id
+select order_items.product_id , count( distinct order_items.order_id) from Order_Items  group by order_items.product_id
+SELECT T2.product_name ,  count(*) FROM Order_items AS T1 JOIN Products AS T2 ON T1.product_id  =  T2.product_id JOIN Orders AS T3 ON T3.order_id  =  T1.order_id GROUP BY T2.product_name
+select products.product_name , count(*) from Order_Items join Products on Order_Items.product_id = Products.product_id  group by products.product_name
+SELECT T2.product_name ,  count(*) FROM Order_items AS T1 JOIN Products AS T2 ON T1.product_id  =  T2.product_id JOIN Orders AS T3 ON T3.order_id  =  T1.order_id GROUP BY T2.product_name
+select products.product_name , count(*) from Order_Items join Orders on Order_Items.order_id = Orders.order_id join Products on Order_Items.product_id = Products.product_id  group by products.product_name
+SELECT order_id ,  count(DISTINCT product_id) FROM Order_items GROUP BY order_id
+select order_items.order_id , count( distinct order_items.product_id) from Order_Items  group by order_items.order_id
+SELECT order_id ,  count(DISTINCT product_id) FROM Order_items GROUP BY order_id
+select order_items.product_id , count( distinct order_items.product_id) from Order_Items  group by order_items.product_id
+SELECT order_id ,  sum(product_quantity) FROM Order_items GROUP BY order_id
+select order_items.order_id , sum(order_items.product_quantity) from Order_Items  group by order_items.order_id
+SELECT order_id ,  sum(product_quantity) FROM Order_items GROUP BY order_id
+select orders.order_id , sum(order_items.product_quantity) from Order_Items join Orders on Order_Items.order_id = Orders.order_id  group by orders.order_id
+SELECT count(*) FROM products WHERE product_id NOT IN ( SELECT product_id FROM Order_items )
+select count(*) from Products where  products.product_id not in (select Order_Items.product_id from Order_Items  )
+SELECT count(*) FROM products WHERE product_id NOT IN ( SELECT product_id FROM Order_items )
+select count(*) from Products where  products.product_id not in (select Order_Items.product_id from Order_Items  )

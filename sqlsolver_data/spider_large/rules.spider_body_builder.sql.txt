@@ -1,0 +1,48 @@
+SELECT count(*) FROM body_builder
+select count(*) from body_builder
+SELECT Total FROM body_builder ORDER BY Total ASC
+select body_builder.total from body_builder   order by body_builder.total asc
+SELECT Snatch ,  Clean_Jerk FROM body_builder ORDER BY Snatch ASC
+select body_builder.snatch , body_builder.clean_jerk from body_builder   order by body_builder.snatch asc
+SELECT avg(Snatch) FROM body_builder
+select avg(body_builder.snatch) from body_builder
+SELECT Clean_Jerk FROM body_builder ORDER BY Total DESC LIMIT 1
+select body_builder.clean_jerk from body_builder   order by body_builder.total desc limit 1
+SELECT Birth_Date FROM People ORDER BY Height ASC
+select people.birth_date from people   order by people.height asc
+SELECT T2.Name FROM body_builder AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID
+select people.name from body_builder join people on body_builder.People_ID = people.People_ID
+SELECT T2.Name FROM body_builder AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID WHERE T1.Total  >  300
+select people.name from body_builder join people on body_builder.People_ID = people.People_ID where  body_builder.total > 300
+SELECT T2.Name FROM body_builder AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T2.Weight DESC LIMIT 1
+select people.name from body_builder join people on body_builder.People_ID = people.People_ID   order by people.weight desc limit 1
+SELECT T2.Birth_Date ,  T2.Birth_Place FROM body_builder AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T1.Total DESC LIMIT 1
+select people.birth_date , people.birth_place from body_builder join people on body_builder.People_ID = people.People_ID   order by body_builder.total desc limit 1
+SELECT T2.Height FROM body_builder AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID WHERE T1.Total  <  315
+select people.height from body_builder join people on body_builder.People_ID = people.People_ID where  body_builder.total < 315
+SELECT avg(T1.Total) FROM body_builder AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID WHERE T2.Height  >  200
+select avg(body_builder.total) from body_builder join people on body_builder.People_ID = people.People_ID where  people.height > 200
+SELECT T2.Name FROM body_builder AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T1.Total DESC
+select people.name from body_builder join people on body_builder.People_ID = people.People_ID   order by body_builder.total desc
+SELECT Birth_Place ,  COUNT(*) FROM people GROUP BY Birth_Place
+select people.birth_place , count(*) from people  group by people.birth_place
+SELECT Birth_Place FROM people GROUP BY Birth_Place ORDER BY COUNT(*) DESC LIMIT 1
+select people.birth_place from people  group by people.birth_place  order by count(*) desc limit 1
+SELECT Birth_Place FROM people GROUP BY Birth_Place HAVING COUNT(*)  >=  2
+select people.birth_place from people  group by people.birth_place having  count(*) >= 2
+SELECT Height ,  Weight FROM people ORDER BY Height DESC
+select people.height , people.weight from people   order by people.height desc
+SELECT * FROM body_builder
+select * from body_builder
+SELECT Name ,  birth_place FROM people EXCEPT SELECT T1.Name ,  T1.birth_place FROM people AS T1 JOIN body_builder AS T2 ON T1.people_id  =  T2.people_id
+select people.name , people.birth_place from people   except select people.name , people.birth_place from body_builder join people on body_builder.People_ID = people.People_ID
+SELECT count(DISTINCT Birth_Place) FROM people
+select count( distinct people.birth_place) from people
+SELECT count(*) FROM people WHERE people_id NOT IN (SELECT People_ID FROM body_builder)
+select count(*) from people where  people.people_id not in (select body_builder.People_ID from body_builder  )
+SELECT T2.weight FROM body_builder AS T1 JOIN people AS T2 ON T1.people_id  =  T2.people_id WHERE T1.snatch  >  140 OR T2.height  >  200;
+select people.weight from body_builder join people on body_builder.People_ID = people.People_ID where  body_builder.snatch > 140 or people.height > 200
+SELECT T1.total FROM body_builder AS T1 JOIN people AS T2 ON T1.people_id  =  T2.people_id WHERE T2.Birth_Date LIKE "%January%";
+select body_builder.total from body_builder join people on body_builder.People_ID = people.People_ID where  people.birth_date like "%January%"
+SELECT min(snatch) FROM body_builder
+select min(body_builder.snatch) from body_builder

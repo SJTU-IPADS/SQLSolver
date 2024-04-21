@@ -1,0 +1,132 @@
+SELECT count(*) FROM authors
+select count(*) from Authors
+SELECT count(*) FROM authors
+select count(*) from Authors
+SELECT count(*) FROM inst
+select count(*) from Inst
+SELECT count(*) FROM inst
+select count(*) from Inst
+SELECT count(*) FROM papers
+select count(*) from Papers
+SELECT count(*) FROM papers
+select count(*) from Papers
+SELECT t3.title FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE  t1.fname  =  "Jeremy" AND t1.lname  =  "Gibbons"
+select papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  authors.fname = "Jeremy" and authors.lname = "Gibbons"
+SELECT t3.title FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE  t1.fname  =  "Jeremy" AND t1.lname  =  "Gibbons"
+select papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  authors.fname = "Jeremy" and authors.lname = "Gibbons"
+SELECT t3.title FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE  t1.fname  =  "Aaron" AND t1.lname  =  "Turon"
+select papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  authors.fname = "Aaron" and authors.lname = "Turon"
+SELECT t3.title FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE  t1.fname  =  "Aaron" AND t1.lname  =  "Turon"
+select papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  authors.fname = "Aaron" and authors.lname = "Turon"
+SELECT count(*) FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE  t1.fname  =  "Atsushi" AND t1.lname  =  "Ohori"
+select count(*) from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  authors.fname = "Atsushi" and authors.lname = "Ohori"
+SELECT count(*) FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE  t1.fname  =  "Atsushi" AND t1.lname  =  "Ohori"
+select count(*) from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  authors.fname = "Atsushi" and authors.lname = "Ohori"
+SELECT DISTINCT t3.name FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t1.fname  =  "Matthias" AND t1.lname  =  "Blume"
+select distinct inst.name from Authorship join Inst on Authorship.instID = Inst.instID join Authors on Authorship.authID = Authors.authID where  authors.fname = "Matthias" and authors.lname = "Blume"
+SELECT DISTINCT t3.name FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t1.fname  =  "Matthias" AND t1.lname  =  "Blume"
+select distinct inst.name from Authorship join Inst on Authorship.instID = Inst.instID join Authors on Authorship.authID = Authors.authID where  authors.fname = "Matthias" and authors.lname = "Blume"
+SELECT DISTINCT t3.name FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t1.fname  =  "Katsuhiro" AND t1.lname  =  "Ueno"
+select distinct inst.name from Authorship join Inst on Authorship.instID = Inst.instID join Authors on Authorship.authID = Authors.authID where  authors.fname = "Katsuhiro" and authors.lname = "Ueno"
+SELECT DISTINCT t3.name FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t1.fname  =  "Katsuhiro" AND t1.lname  =  "Ueno"
+select distinct inst.name from Authorship join Inst on Authorship.instID = Inst.instID join Authors on Authorship.authID = Authors.authID where  authors.fname = "Katsuhiro" and authors.lname = "Ueno"
+SELECT DISTINCT t1.fname ,  t1.lname FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t3.name  =  "University of Oxford"
+select distinct authors.fname , authors.lname from Authorship join Inst on Authorship.instID = Inst.instID join Authors on Authorship.authID = Authors.authID where  inst.name = "University of Oxford"
+SELECT DISTINCT t1.fname ,  t1.lname FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t3.name  =  "University of Oxford"
+select distinct authors.fname , authors.lname from Authorship join Inst on Authorship.instID = Inst.instID join Authors on Authorship.authID = Authors.authID where  inst.name = "University of Oxford"
+SELECT DISTINCT t1.fname ,  t1.lname FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t3.name  =  "Google"
+select distinct authors.fname , authors.lname from Authorship join Inst on Authorship.instID = Inst.instID join Authors on Authorship.authID = Authors.authID where  inst.name = "Google"
+SELECT DISTINCT t1.fname ,  t1.lname FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t3.name  =  "Google"
+select distinct authors.fname , authors.lname from Authorship join Inst on Authorship.instID = Inst.instID join Authors on Authorship.authID = Authors.authID where  inst.name = "Google"
+SELECT t1.lname FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE t3.title  =  "Binders Unbound"
+select authors.lname from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  papers.title = "Binders Unbound"
+SELECT t1.lname FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE t3.title  =  "Binders Unbound"
+select authors.lname from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  papers.title = "Binders Unbound"
+SELECT t1.fname ,  t1.lname FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE t3.title  =  "Nameless ,  Painless"
+select authors.fname , authors.lname from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  papers.title = "Nameless , Painless"
+SELECT t1.fname ,  t1.lname FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE t3.title  =  "Nameless ,  Painless"
+select authors.fname , authors.lname from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  papers.title = "Nameless , Painless"
+SELECT DISTINCT t1.title FROM papers AS t1 JOIN authorship AS t2 ON t1.paperid  =  t2.paperid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t3.name  =  "Indiana University"
+select distinct papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID join Inst on Authorship.instID = Inst.instID where  inst.name = "Indiana University"
+SELECT DISTINCT t1.title FROM papers AS t1 JOIN authorship AS t2 ON t1.paperid  =  t2.paperid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t3.name  =  "Indiana University"
+select distinct papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID join Inst on Authorship.instID = Inst.instID where  inst.name = "Indiana University"
+SELECT DISTINCT t1.title FROM papers AS t1 JOIN authorship AS t2 ON t1.paperid  =  t2.paperid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t3.name  =  "Google"
+select distinct papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID join Inst on Authorship.instID = Inst.instID where  inst.name = "Google"
+SELECT DISTINCT t1.title FROM papers AS t1 JOIN authorship AS t2 ON t1.paperid  =  t2.paperid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t3.name  =  "Google"
+select distinct papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID join Inst on Authorship.instID = Inst.instID where  inst.name = "Google"
+SELECT count(DISTINCT t1.title) FROM papers AS t1 JOIN authorship AS t2 ON t1.paperid  =  t2.paperid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t3.name  =  "Tokohu University"
+select count( distinct papers.title) from Authorship join Papers on Authorship.paperID = Papers.paperID join Inst on Authorship.instID = Inst.instID where  inst.name = "Tokohu University"
+SELECT count(DISTINCT t1.title) FROM papers AS t1 JOIN authorship AS t2 ON t1.paperid  =  t2.paperid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t3.name  =  "Tokohu University"
+select count( distinct papers.title) from Authorship join Papers on Authorship.paperID = Papers.paperID join Inst on Authorship.instID = Inst.instID where  inst.name = "Tokohu University"
+SELECT count(DISTINCT t1.title) FROM papers AS t1 JOIN authorship AS t2 ON t1.paperid  =  t2.paperid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t3.name  =  "University of Pennsylvania"
+select count( distinct papers.title) from Authorship join Papers on Authorship.paperID = Papers.paperID join Inst on Authorship.instID = Inst.instID where  inst.name = "University of Pennsylvania"
+SELECT count(DISTINCT t1.title) FROM papers AS t1 JOIN authorship AS t2 ON t1.paperid  =  t2.paperid JOIN inst AS t3 ON t2.instid  =  t3.instid WHERE t3.name  =  "University of Pennsylvania"
+select count( distinct papers.title) from Authorship join Papers on Authorship.paperID = Papers.paperID join Inst on Authorship.instID = Inst.instID where  inst.name = "University of Pennsylvania"
+SELECT t3.title FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE t1.fname  =  "Olin" AND t1.lname  =  "Shivers"
+select papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  authors.fname = "Olin" and authors.lname = "Shivers"
+SELECT t3.title FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE t1.fname  =  "Olin" AND t1.lname  =  "Shivers"
+select papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  authors.fname = "Olin" and authors.lname = "Shivers"
+SELECT t3.title FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE t1.fname  =  "Stephanie" AND t1.lname  =  "Weirich"
+select papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  authors.fname = "Stephanie" and authors.lname = "Weirich"
+SELECT t3.title FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE t1.fname  =  "Stephanie" AND t1.lname  =  "Weirich"
+select papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  authors.fname = "Stephanie" and authors.lname = "Weirich"
+SELECT t3.title FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid JOIN inst AS t4 ON t2.instid  =  t4.instid WHERE t4.country  =  "USA" AND t2.authorder  =  2 AND t1.lname  =  "Turon"
+select papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID join Inst on Authorship.instID = Inst.instID join Authors on Authorship.authID = Authors.authID where  inst.country = "USA" and authorship.authorder = 2 and authors.lname = "Turon"
+SELECT t3.title FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid JOIN inst AS t4 ON t2.instid  =  t4.instid WHERE t4.country  =  "USA" AND t2.authorder  =  2 AND t1.lname  =  "Turon"
+select papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID join Inst on Authorship.instID = Inst.instID join Authors on Authorship.authID = Authors.authID where  inst.country = "USA" and authorship.authorder = 2 and authors.lname = "Turon"
+SELECT t3.title FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid JOIN inst AS t4 ON t2.instid  =  t4.instid WHERE t4.country  =  "Japan" AND t2.authorder  =  1 AND t1.lname  =  "Ohori"
+select papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID join Inst on Authorship.instID = Inst.instID join Authors on Authorship.authID = Authors.authID where  inst.country = "Japan" and authorship.authorder = 1 and authors.lname = "Ohori"
+SELECT t3.title FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid JOIN inst AS t4 ON t2.instid  =  t4.instid WHERE t4.country  =  "Japan" AND t2.authorder  =  1 AND t1.lname  =  "Ohori"
+select papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID join Inst on Authorship.instID = Inst.instID join Authors on Authorship.authID = Authors.authID where  inst.country = "Japan" and authorship.authorder = 1 and authors.lname = "Ohori"
+SELECT t1.lname FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid GROUP BY t1.fname ,  t1.lname ORDER BY count(*) DESC LIMIT 1
+select authors.lname from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID  group by authors.fname, authors.lname  order by count(*) desc limit 1
+SELECT t1.lname FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid GROUP BY t1.fname ,  t1.lname ORDER BY count(*) DESC LIMIT 1
+select authors.lname from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID  group by authors.fname, authors.lname  order by count(*) desc limit 1
+SELECT t1.country FROM inst AS t1 JOIN authorship AS t2 ON t1.instid  =  t2.instid JOIN papers AS t3 ON t2.paperid  =  t3.paperid GROUP BY t1.country ORDER BY count(*) DESC LIMIT 1
+select inst.country from Authorship join Papers on Authorship.paperID = Papers.paperID join Inst on Authorship.instID = Inst.instID  group by inst.country  order by count(*) desc limit 1
+SELECT t1.country FROM inst AS t1 JOIN authorship AS t2 ON t1.instid  =  t2.instid JOIN papers AS t3 ON t2.paperid  =  t3.paperid GROUP BY t1.country ORDER BY count(*) DESC LIMIT 1
+select inst.country from Authorship join Papers on Authorship.paperID = Papers.paperID join Inst on Authorship.instID = Inst.instID  group by inst.country  order by count(*) desc limit 1
+SELECT t1.name FROM inst AS t1 JOIN authorship AS t2 ON t1.instid  =  t2.instid JOIN papers AS t3 ON t2.paperid  =  t3.paperid GROUP BY t1.name ORDER BY count(*) DESC LIMIT 1
+select inst.name from Authorship join Papers on Authorship.paperID = Papers.paperID join Inst on Authorship.instID = Inst.instID  group by inst.name  order by count(*) desc limit 1
+SELECT t1.name FROM inst AS t1 JOIN authorship AS t2 ON t1.instid  =  t2.instid JOIN papers AS t3 ON t2.paperid  =  t3.paperid GROUP BY t1.name ORDER BY count(*) DESC LIMIT 1
+select inst.name from Authorship join Papers on Authorship.paperID = Papers.paperID join Inst on Authorship.instID = Inst.instID  group by inst.name  order by count(*) desc limit 1
+SELECT title FROM papers WHERE title LIKE "%ML%"
+select papers.title from Papers where  papers.title like "%ML%"
+SELECT title FROM papers WHERE title LIKE "%ML%"
+select papers.title from Papers where  papers.title like "%ML%"
+SELECT title FROM papers WHERE title LIKE "%Database%"
+select papers.title from Papers where  papers.title like "%Database%"
+SELECT title FROM papers WHERE title LIKE "%Database%"
+select papers.title from Papers where  papers.title like "%Database%"
+SELECT t1.fname FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE t3.title LIKE "%Functional%"
+select authors.fname from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  papers.title like "%Functional%"
+SELECT t1.fname FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE t3.title LIKE "%Functional%"
+select authors.fname from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  papers.title like "%Functional%"
+SELECT t1.lname FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE t3.title LIKE "%Monadic%"
+select authors.lname from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  papers.title like "%Monadic%"
+SELECT t1.lname FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE t3.title LIKE "%Monadic%"
+select authors.lname from Authorship join Papers on Authorship.paperID = Papers.paperID join Authors on Authorship.authID = Authors.authID where  papers.title like "%Monadic%"
+SELECT t2.title FROM authorship AS t1 JOIN papers AS t2 ON t1.paperid  =  t2.paperid WHERE t1.authorder  =  (SELECT max(authorder) FROM authorship)
+select papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID where  authorship.authorder = (select max(Authorship.authOrder) from Authorship  )
+SELECT t2.title FROM authorship AS t1 JOIN papers AS t2 ON t1.paperid  =  t2.paperid WHERE t1.authorder  =  (SELECT max(authorder) FROM authorship)
+select papers.title from Authorship join Papers on Authorship.paperID = Papers.paperID where  authorship.authorder = (select max(Authorship.authOrder) from Authorship  )
+SELECT fname FROM authors WHERE lname  =  "Ueno"
+select authors.fname from Authors where  authors.lname = "Ueno"
+SELECT fname FROM authors WHERE lname  =  "Ueno"
+select authors.fname from Authors where  authors.lname = "Ueno"
+SELECT lname FROM authors WHERE fname  =  "Amal"
+select authors.lname from Authors where  authors.fname = "Amal"
+SELECT lname FROM authors WHERE fname  =  "Amal"
+select authors.lname from Authors where  authors.fname = "Amal"
+SELECT fname FROM authors ORDER BY fname
+select authors.fname from Authors   order by authors.fname asc
+SELECT fname FROM authors ORDER BY fname
+select authors.fname from Authors   order by authors.fname asc
+SELECT lname FROM authors ORDER BY lname
+select authors.lname from Authors   order by authors.lname asc
+SELECT lname FROM authors ORDER BY lname
+select authors.lname from Authors   order by authors.lname asc
+SELECT fname ,  lname FROM authors ORDER BY lname
+select authors.fname , authors.lname from Authors   order by authors.lname asc
+SELECT fname ,  lname FROM authors ORDER BY lname
+select authors.fname , authors.lname from Authors   order by authors.lname asc

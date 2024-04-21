@@ -1,0 +1,120 @@
+SELECT count(*) FROM artist
+select count(*) from artist
+SELECT count(*) FROM artist
+select count(*) from artist
+SELECT Age FROM artist
+select artist.age from artist
+SELECT Age FROM artist
+select artist.age from artist
+SELECT avg(Age) FROM artist
+select avg(artist.age) from artist
+SELECT avg(Age) FROM artist
+select avg(artist.age) from artist
+SELECT Famous_Title FROM artist WHERE Artist  =  "Triumfall"
+select artist.famous_title from artist where  artist.artist = "Triumfall"
+SELECT Famous_Title FROM artist WHERE Artist  =  "Triumfall"
+select artist.famous_title from artist where  artist.artist = "Triumfall"
+SELECT distinct(Famous_Release_date) FROM artist
+select distinct artist.famous_release_date from artist
+SELECT distinct(Famous_Release_date) FROM artist
+select distinct artist.famous_release_date from artist
+SELECT Date_of_ceremony ,  RESULT FROM music_festival
+select music_festival.date_of_ceremony , music_festival.result from music_festival
+SELECT Date_of_ceremony ,  RESULT FROM music_festival
+select music_festival.date_of_ceremony , music_festival.result from music_festival
+SELECT Category FROM music_festival WHERE RESULT  =  "Awarded"
+select music_festival.category from music_festival where  music_festival.result = "Awarded"
+SELECT Category FROM music_festival WHERE RESULT  =  "Awarded"
+select music_festival.category from music_festival where  music_festival.result = "Awarded"
+SELECT max(Weeks_on_Top) ,  min(Weeks_on_Top) FROM volume
+select max(volume.weeks_on_top) , min(volume.weeks_on_top) from volume
+SELECT max(Weeks_on_Top) ,  min(Weeks_on_Top) FROM volume
+select max(volume.weeks_on_top) , min(volume.weeks_on_top) from volume
+SELECT Song FROM volume WHERE Weeks_on_Top  >  1
+select volume.song from volume where  volume.weeks_on_top > 1
+SELECT Song FROM volume WHERE Weeks_on_Top  >  1
+select volume.song from volume where  volume.weeks_on_top > 1
+SELECT Song FROM volume ORDER BY Song
+select volume.song from volume   order by volume.song asc
+SELECT Song FROM volume ORDER BY Song
+select volume.song from volume   order by volume.song asc
+SELECT COUNT(DISTINCT Artist_ID) FROM volume
+select count( distinct volume.artist_id) from volume
+SELECT COUNT(DISTINCT Artist_ID) FROM volume
+select count( distinct volume.artist_id) from volume
+SELECT T1.Date_of_ceremony FROM music_festival AS T1 JOIN volume AS T2 ON T1.Volume  =  T2.Volume_ID WHERE T2.Weeks_on_Top  >  2
+select music_festival.date_of_ceremony from music_festival join volume on music_festival.Volume = volume.Volume_ID where  volume.weeks_on_top > 2
+SELECT T1.Date_of_ceremony FROM music_festival AS T1 JOIN volume AS T2 ON T1.Volume  =  T2.Volume_ID WHERE T2.Weeks_on_Top  >  2
+select music_festival.date_of_ceremony from music_festival join volume on music_festival.Volume = volume.Volume_ID where  volume.weeks_on_top > 2
+SELECT T2.Song FROM music_festival AS T1 JOIN volume AS T2 ON T1.Volume  =  T2.Volume_ID WHERE T1.Result  =  "Nominated"
+select volume.song from music_festival join volume on music_festival.Volume = volume.Volume_ID where  music_festival.result = "Nominated"
+SELECT T2.Song FROM music_festival AS T1 JOIN volume AS T2 ON T1.Volume  =  T2.Volume_ID WHERE T1.Result  =  "Nominated"
+select volume.song from music_festival join volume on music_festival.Volume = volume.Volume_ID where  music_festival.result = "Nominated"
+SELECT T2.Issue_Date FROM artist AS T1 JOIN volume AS T2 ON T1.Artist_ID  =  T2.Artist_ID WHERE T1.Artist  =  "Gorgoroth"
+select volume.issue_date from volume join artist on volume.Artist_ID = artist.Artist_ID where  artist.artist = "Gorgoroth"
+SELECT T2.Issue_Date FROM artist AS T1 JOIN volume AS T2 ON T1.Artist_ID  =  T2.Artist_ID WHERE T1.Artist  =  "Gorgoroth"
+select volume.issue_date from volume join artist on volume.Artist_ID = artist.Artist_ID where  artist.artist = "Gorgoroth"
+SELECT T2.Song FROM artist AS T1 JOIN volume AS T2 ON T1.Artist_ID  =  T2.Artist_ID WHERE T1.age  >=  32
+select volume.song from volume join artist on volume.Artist_ID = artist.Artist_ID where  artist.age >= 32
+SELECT T2.Song FROM artist AS T1 JOIN volume AS T2 ON T1.Artist_ID  =  T2.Artist_ID WHERE T1.age  >=  32
+select volume.song from volume join artist on volume.Artist_ID = artist.Artist_ID where  artist.age >= 32
+SELECT avg(T2.Weeks_on_Top) FROM artist AS T1 JOIN volume AS T2 ON T1.Artist_ID  =  T2.Artist_ID WHERE T1.age  <=  25
+select avg(volume.weeks_on_top) from volume join artist on volume.Artist_ID = artist.Artist_ID where  artist.age < 25
+SELECT avg(T2.Weeks_on_Top) FROM artist AS T1 JOIN volume AS T2 ON T1.Artist_ID  =  T2.Artist_ID WHERE T1.age  <=  25
+select avg(volume.weeks_on_top) from volume join artist on volume.Artist_ID = artist.Artist_ID where  artist.age < 25
+SELECT T1.Famous_Title FROM artist AS T1 JOIN volume AS T2 ON T1.Artist_ID  =  T2.Artist_ID WHERE T2.Weeks_on_Top  >  2
+select artist.famous_title from volume join artist on volume.Artist_ID = artist.Artist_ID where  volume.weeks_on_top > 2
+SELECT T1.Famous_Title FROM artist AS T1 JOIN volume AS T2 ON T1.Artist_ID  =  T2.Artist_ID WHERE T2.Weeks_on_Top  >  2
+select artist.famous_title from volume join artist on volume.Artist_ID = artist.Artist_ID where  volume.weeks_on_top > 2
+SELECT Famous_Title ,  Age FROM artist ORDER BY Age DESC
+select artist.famous_title , artist.age from artist   order by artist.age desc
+SELECT Famous_Title ,  Age FROM artist ORDER BY Age DESC
+select artist.famous_title , artist.age from artist   order by artist.age desc
+SELECT Famous_Release_date FROM artist ORDER BY Age DESC LIMIT 1
+select artist.famous_release_date from artist   order by artist.age desc limit 1
+SELECT Famous_Release_date FROM artist ORDER BY Age DESC LIMIT 1
+select artist.famous_release_date from artist   order by artist.age desc limit 1
+SELECT Category ,  COUNT(*) FROM music_festival GROUP BY Category
+select music_festival.category , count(*) from music_festival  group by music_festival.category
+SELECT Category ,  COUNT(*) FROM music_festival GROUP BY Category
+select music_festival.category , count(*) from music_festival  group by music_festival.category
+SELECT RESULT FROM music_festival GROUP BY RESULT ORDER BY COUNT(*) DESC LIMIT 1
+select music_festival.result from music_festival  group by music_festival.result  order by count(*) desc limit 1
+SELECT RESULT FROM music_festival GROUP BY RESULT ORDER BY COUNT(*) DESC LIMIT 1
+select music_festival.result from music_festival  group by music_festival.result  order by count(*) desc limit 1
+SELECT Category FROM music_festival GROUP BY Category HAVING COUNT(*)  >  1
+select music_festival.category from music_festival  group by music_festival.category having  count(*) > 1
+SELECT Category FROM music_festival GROUP BY Category HAVING COUNT(*)  >  1
+select music_festival.category from music_festival  group by music_festival.category having  count(*) > 1
+SELECT Song FROM volume ORDER BY Weeks_on_Top DESC LIMIT 1
+select volume.song from volume   order by volume.weeks_on_top desc limit 1
+SELECT Song FROM volume ORDER BY Weeks_on_Top DESC LIMIT 1
+select volume.song from volume   order by volume.weeks_on_top desc limit 1
+SELECT Famous_Title FROM artist WHERE Artist_ID NOT IN(SELECT Artist_ID FROM volume)
+select artist.famous_title from artist where  artist.artist_id not in (select volume.Artist_ID from volume  )
+SELECT Famous_Title FROM artist WHERE Artist_ID NOT IN(SELECT Artist_ID FROM volume)
+select artist.famous_title from artist where  artist.artist_id not in (select volume.Artist_ID from volume  )
+SELECT T1.Famous_Title FROM artist AS T1 JOIN volume AS T2 ON T1.Artist_ID  =  T2.Artist_ID WHERE T2.Weeks_on_Top  >  2 INTERSECT SELECT T1.Famous_Title FROM artist AS T1 JOIN volume AS T2 ON T1.Artist_ID  =  T2.Artist_ID WHERE T2.Weeks_on_Top  <  2
+select artist.famous_title from volume join artist on volume.Artist_ID = artist.Artist_ID where  volume.weeks_on_top > 2   intersect select artist.famous_title from volume join artist on volume.Artist_ID = artist.Artist_ID where  volume.weeks_on_top < 2
+SELECT T1.Famous_Title FROM artist AS T1 JOIN volume AS T2 ON T1.Artist_ID  =  T2.Artist_ID WHERE T2.Weeks_on_Top  >  2 INTERSECT SELECT T1.Famous_Title FROM artist AS T1 JOIN volume AS T2 ON T1.Artist_ID  =  T2.Artist_ID WHERE T2.Weeks_on_Top  <  2
+select artist.famous_title from volume join artist on volume.Artist_ID = artist.Artist_ID where  volume.weeks_on_top > 2   intersect select artist.famous_title from volume join artist on volume.Artist_ID = artist.Artist_ID where  volume.weeks_on_top < 2
+SELECT Date_of_ceremony FROM music_festival WHERE Category  =  "Best Song" AND RESULT  =  "Awarded"
+select music_festival.date_of_ceremony from music_festival where  music_festival.category = "Best Song" and music_festival.result = "Awarded"
+SELECT Date_of_ceremony FROM music_festival WHERE Category  =  "Best Song" AND RESULT  =  "Awarded"
+select music_festival.date_of_ceremony from music_festival where  music_festival.category = "Best Song" and music_festival.result = "Awarded"
+SELECT Issue_Date FROM volume ORDER BY Weeks_on_Top ASC LIMIT 1
+select volume.issue_date from volume   order by volume.weeks_on_top asc limit 1
+SELECT Issue_Date FROM volume ORDER BY Weeks_on_Top ASC LIMIT 1
+select volume.issue_date from volume   order by volume.weeks_on_top asc limit 1
+SELECT COUNT(DISTINCT Artist_ID) FROM volume
+select count( distinct volume.artist_id) from volume
+SELECT COUNT(DISTINCT Artist_ID) FROM volume
+select count( distinct volume.artist_id) from volume
+SELECT RESULT ,  COUNT(*) FROM music_festival GROUP BY RESULT ORDER BY COUNT(*) DESC
+select music_festival.result , count(*) from music_festival  group by music_festival.result  order by count(*) desc
+SELECT RESULT ,  COUNT(*) FROM music_festival GROUP BY RESULT ORDER BY COUNT(*) DESC
+select music_festival.result , count(*) from music_festival  group by music_festival.result  order by count(*) desc
+SELECT Issue_Date FROM artist AS T1 JOIN volume AS T2 ON T1.Artist_ID  =  T2.Artist_ID WHERE T1.age  <=  23
+select volume.issue_date from volume join artist on volume.Artist_ID = artist.Artist_ID where  artist.age < 23
+SELECT Issue_Date FROM artist AS T1 JOIN volume AS T2 ON T1.Artist_ID  =  T2.Artist_ID WHERE T1.age  <=  23
+select volume.issue_date from volume join artist on volume.Artist_ID = artist.Artist_ID where  artist.age < 23

@@ -1,0 +1,60 @@
+SELECT count(*) FROM technician
+select count(*) from technician
+SELECT count(*) FROM technician
+select count(*) from technician
+SELECT Name FROM technician ORDER BY Age ASC
+select technician.name from technician   order by technician.age asc
+SELECT Name FROM technician ORDER BY Age ASC
+select technician.name from technician   order by technician.age asc
+SELECT Team ,  Starting_Year FROM technician
+select technician.team , technician.starting_year from technician
+SELECT Team ,  Starting_Year FROM technician
+select technician.team , technician.starting_year from technician
+SELECT Name FROM technician WHERE Team != "NYY"
+select technician.name from technician where  technician.team != "NYY"
+SELECT Name FROM technician WHERE Team != "NYY"
+select technician.name from technician where  technician.team != "NYY"
+SELECT Name FROM technician WHERE Age  =  36 OR Age  =  37
+select technician.name from technician where  technician.age = 36 or technician.age = 37
+SELECT Name FROM technician WHERE Age  =  36 OR Age  =  37
+select technician.name from technician where  technician.age = 36 or technician.age = 37
+SELECT Starting_Year FROM technician ORDER BY Age DESC LIMIT 1
+select technician.starting_year from technician   order by technician.age desc limit 1
+SELECT Starting_Year FROM technician ORDER BY Age DESC LIMIT 1
+select technician.starting_year from technician   order by technician.age desc limit 1
+SELECT Team ,  COUNT(*) FROM technician GROUP BY Team
+select technician.team , count(*) from technician  group by technician.team
+SELECT Team ,  COUNT(*) FROM technician GROUP BY Team
+select technician.team , count(*) from technician  group by technician.team
+SELECT Team FROM technician GROUP BY Team ORDER BY COUNT(*) DESC LIMIT 1
+select technician.team from technician  group by technician.team  order by count(*) desc limit 1
+SELECT Team FROM technician GROUP BY Team ORDER BY COUNT(*) DESC LIMIT 1
+select technician.team from technician  group by technician.team  order by count(*) desc limit 1
+SELECT Team FROM technician GROUP BY Team HAVING COUNT(*)  >=  2
+select technician.team from technician  group by technician.team having  count(*) >= 2
+SELECT Team FROM technician GROUP BY Team HAVING COUNT(*)  >=  2
+select technician.team from technician  group by technician.team having  count(*) >= 2
+SELECT T3.Name ,  T2.Machine_series FROM repair_assignment AS T1 JOIN machine AS T2 ON T1.machine_id  =  T2.machine_id JOIN technician AS T3 ON T1.technician_ID  =  T3.technician_ID
+select technician.name , machine.machine_series from repair_assignment join machine on repair_assignment.Machine_ID = machine.Machine_ID join technician on repair_assignment.technician_id = technician.technician_id
+SELECT T3.Name ,  T2.Machine_series FROM repair_assignment AS T1 JOIN machine AS T2 ON T1.machine_id  =  T2.machine_id JOIN technician AS T3 ON T1.technician_ID  =  T3.technician_ID
+select technician.name , machine.machine_series from repair_assignment join machine on repair_assignment.Machine_ID = machine.Machine_ID join technician on repair_assignment.technician_id = technician.technician_id
+SELECT T3.Name FROM repair_assignment AS T1 JOIN machine AS T2 ON T1.machine_id  =  T2.machine_id JOIN technician AS T3 ON T1.technician_ID  =  T3.technician_ID ORDER BY T2.quality_rank
+select technician.name from repair_assignment join machine on repair_assignment.Machine_ID = machine.Machine_ID join technician on repair_assignment.technician_id = technician.technician_id   order by machine.quality_rank asc
+SELECT T3.Name FROM repair_assignment AS T1 JOIN machine AS T2 ON T1.machine_id  =  T2.machine_id JOIN technician AS T3 ON T1.technician_ID  =  T3.technician_ID ORDER BY T2.quality_rank
+select technician.name from repair_assignment join machine on repair_assignment.Machine_ID = machine.Machine_ID join technician on repair_assignment.technician_id = technician.technician_id   order by machine.quality_rank asc
+SELECT T3.Name FROM repair_assignment AS T1 JOIN machine AS T2 ON T1.machine_id  =  T2.machine_id JOIN technician AS T3 ON T1.technician_ID  =  T3.technician_ID WHERE T2.value_points  >  70
+select technician.name from repair_assignment join machine on repair_assignment.Machine_ID = machine.Machine_ID join technician on repair_assignment.technician_id = technician.technician_id where  machine.value_points > 70
+SELECT T3.Name FROM repair_assignment AS T1 JOIN machine AS T2 ON T1.machine_id  =  T2.machine_id JOIN technician AS T3 ON T1.technician_ID  =  T3.technician_ID WHERE T2.value_points  >  70
+select technician.name from repair_assignment join machine on repair_assignment.Machine_ID = machine.Machine_ID join technician on repair_assignment.technician_id = technician.technician_id where  machine.value_points > 70
+SELECT T2.Name ,  COUNT(*) FROM repair_assignment AS T1 JOIN technician AS T2 ON T1.technician_ID  =  T2.technician_ID GROUP BY T2.Name
+select technician.name , count(*) from repair_assignment join technician on repair_assignment.technician_id = technician.technician_id  group by technician.name
+SELECT T2.Name ,  COUNT(*) FROM repair_assignment AS T1 JOIN technician AS T2 ON T1.technician_ID  =  T2.technician_ID GROUP BY T2.Name
+select technician.name , count(*) from repair_assignment join technician on repair_assignment.technician_id = technician.technician_id  group by technician.name
+SELECT Name FROM technician WHERE technician_id NOT IN (SELECT technician_id FROM repair_assignment)
+select technician.name from technician where  technician.technician_id not in (select repair_assignment.technician_id from repair_assignment  )
+SELECT Name FROM technician WHERE technician_id NOT IN (SELECT technician_id FROM repair_assignment)
+select technician.name from technician where  technician.technician_id not in (select repair_assignment.technician_id from repair_assignment  )
+SELECT Starting_Year FROM technician WHERE Team  =  "CLE" INTERSECT SELECT Starting_Year FROM technician WHERE Team  =  "CWS"
+select technician.starting_year from technician where  technician.team = "CLE"   intersect select technician.starting_year from technician where  technician.team = "CWS"
+SELECT Starting_Year FROM technician WHERE Team  =  "CLE" INTERSECT SELECT Starting_Year FROM technician WHERE Team  =  "CWS"
+select technician.starting_year from technician where  technician.team = "CLE"   intersect select technician.starting_year from technician where  technician.team = "CWS"

@@ -1,0 +1,148 @@
+SELECT roomName FROM Rooms WHERE basePrice  <  160 AND beds =  2 AND decor  =  'modern';
+select rooms.roomname from Rooms where  rooms.baseprice < 160 and rooms.beds = 2 and rooms.decor = "modern"
+SELECT roomName FROM Rooms WHERE basePrice  <  160 AND beds =  2 AND decor  =  'modern';
+select rooms.roomname from Rooms where  rooms.baseprice < 160 and rooms.beds = 2 and rooms.decor = "modern"
+SELECT roomName ,  RoomId FROM Rooms WHERE basePrice  >  160 AND maxOccupancy  >  2;
+select rooms.roomname , rooms.roomid from Rooms where  rooms.baseprice > 160 and rooms.maxoccupancy > 2
+SELECT roomName ,  RoomId FROM Rooms WHERE basePrice  >  160 AND maxOccupancy  >  2;
+select rooms.roomname , rooms.roomid from Rooms where  rooms.baseprice > 160 and rooms.maxoccupancy > 2
+SELECT T2.roomName FROM Reservations AS T1 JOIN Rooms AS T2 ON T1.Room  =  T2.RoomId GROUP BY T1.Room ORDER BY count(*) DESC LIMIT 1;
+select rooms.roomname from Reservations join Rooms on Reservations.Room = Rooms.RoomId  group by reservations.room  order by count(*) desc limit 1
+SELECT T2.roomName FROM Reservations AS T1 JOIN Rooms AS T2 ON T1.Room  =  T2.RoomId GROUP BY T1.Room ORDER BY count(*) DESC LIMIT 1;
+select rooms.roomname from Reservations join Rooms on Reservations.Room = Rooms.RoomId  group by reservations.room  order by count(*) desc limit 1
+SELECT kids FROM Reservations WHERE FirstName = "ROY" AND LastName  =  "SWEAZY";
+select reservations.kids from Reservations where  reservations.room = "ROY" and reservations.lastname = "SWEAZY"
+SELECT kids FROM Reservations WHERE FirstName = "ROY" AND LastName  =  "SWEAZY";
+select reservations.kids from Reservations where  reservations.room = "ROY" and reservations.lastname = "SWEAZY"
+SELECT count(*) FROM Reservations WHERE FirstName = "ROY" AND LastName  =  "SWEAZY";
+select count(*) from Reservations where  reservations.firstname = "ROY" and reservations.lastname = "SWEAZY"
+SELECT count(*) FROM Reservations WHERE FirstName = "ROY" AND LastName  =  "SWEAZY";
+select count(*) from Reservations where  reservations.firstname = "ROY" and reservations.lastname = "SWEAZY"
+SELECT T2.roomName ,  T1.Rate ,  T1.CheckIn ,  T1.CheckOut FROM Reservations AS T1 JOIN Rooms AS T2 ON T1.Room  =  T2.RoomId GROUP BY T1.Room ORDER BY T1.Rate DESC LIMIT 1;
+select rooms.roomname , reservations.rate , reservations.checkin , reservations.checkout from Reservations join Rooms on Reservations.Room = Rooms.RoomId  group by reservations.room  order by reservations.rate desc limit 1
+SELECT T2.roomName ,  T1.Rate ,  T1.CheckIn ,  T1.CheckOut FROM Reservations AS T1 JOIN Rooms AS T2 ON T1.Room  =  T2.RoomId GROUP BY T1.Room ORDER BY T1.Rate DESC LIMIT 1;
+select rooms.roomname , reservations.rate , reservations.checkin , reservations.checkout from Reservations join Rooms on Reservations.Room = Rooms.RoomId  group by reservations.room  order by reservations.rate desc limit 1
+SELECT Adults FROM Reservations WHERE CheckIn  =  "2010-10-23" AND FirstName  =  "CONRAD" AND LastName  =  "SELBIG";
+select reservations.adults from Reservations where  reservations.checkin = "2010-10-23" and reservations.firstname = "CONRAD" and reservations.lastname = "SELBIG"
+SELECT Adults FROM Reservations WHERE CheckIn  =  "2010-10-23" AND FirstName  =  "CONRAD" AND LastName  =  "SELBIG";
+select reservations.adults from Reservations where  reservations.checkin = "2010-10-23" and reservations.firstname = "CONRAD" and reservations.lastname = "SELBIG"
+SELECT Kids FROM Reservations WHERE CheckIn  =  "2010-09-21" AND FirstName  =  "DAMIEN" AND LastName  =  "TRACHSEL";
+select reservations.kids from Reservations where  reservations.checkin = "2010-09-21" and reservations.firstname = "DAMIEN" and reservations.lastname = "TRACHSEL"
+SELECT Kids FROM Reservations WHERE CheckIn  =  "2010-09-21" AND FirstName  =  "DAMIEN" AND LastName  =  "TRACHSEL";
+select reservations.kids from Reservations where  reservations.checkin = "2010-09-21" and reservations.firstname = "DAMIEN" and reservations.lastname = "TRACHSEL"
+SELECT sum(beds) FROM Rooms WHERE bedtype  =  'King';
+select sum(rooms.beds) from Rooms where  rooms.bedtype = "King"
+SELECT sum(beds) FROM Rooms WHERE bedtype  =  'King';
+select sum(rooms.beds) from Rooms where  rooms.bedtype = "King"
+SELECT roomName ,  decor FROM Rooms WHERE bedtype  =  'King' ORDER BY basePrice;
+select rooms.roomname , rooms.decor from Rooms where  rooms.bedtype = "King"   order by rooms.baseprice asc
+SELECT roomName ,  decor FROM Rooms WHERE bedtype  =  'King' ORDER BY basePrice;
+select rooms.roomname , rooms.decor from Rooms where  rooms.bedtype = "King"   order by rooms.baseprice asc
+SELECT roomName ,  basePrice FROM Rooms ORDER BY basePrice ASC LIMIT 1;
+select rooms.roomname , rooms.baseprice from Rooms   order by rooms.baseprice asc limit 1
+SELECT roomName ,  basePrice FROM Rooms ORDER BY basePrice ASC LIMIT 1;
+select rooms.roomname , rooms.baseprice from Rooms   order by rooms.baseprice asc limit 1
+SELECT decor FROM Rooms WHERE roomName  =  "Recluse and defiance";
+select rooms.decor from Rooms where  rooms.roomname = "Recluse and defiance"
+SELECT decor FROM Rooms WHERE roomName  =  "Recluse and defiance";
+select rooms.decor from Rooms where  rooms.roomname = "Recluse and defiance"
+SELECT bedType ,  avg(basePrice) FROM Rooms GROUP BY bedType;
+select rooms.bedtype , avg(rooms.baseprice) from Rooms  group by rooms.bedtype
+SELECT bedType ,  avg(basePrice) FROM Rooms GROUP BY bedType;
+select rooms.bedtype , avg(rooms.baseprice) from Rooms  group by rooms.bedtype
+SELECT sum(maxOccupancy) FROM Rooms WHERE decor  =  'modern';
+select sum(rooms.maxoccupancy) from Rooms where  rooms.decor = "modern"
+SELECT sum(maxOccupancy) FROM Rooms WHERE decor  =  'modern';
+select sum(rooms.maxoccupancy) from Rooms where  rooms.decor = "modern"
+SELECT T2.decor FROM Reservations AS T1 JOIN Rooms AS T2 ON T1.Room  =  T2.RoomId GROUP BY T2.decor ORDER BY count(T2.decor) ASC LIMIT 1;
+select rooms.decor from Reservations join Rooms on Reservations.Room = Rooms.RoomId  group by rooms.decor  order by count(*) asc limit 1
+SELECT T2.decor FROM Reservations AS T1 JOIN Rooms AS T2 ON T1.Room  =  T2.RoomId GROUP BY T2.decor ORDER BY count(T2.decor) ASC LIMIT 1;
+select rooms.decor from Reservations join Rooms on Reservations.Room = Rooms.RoomId  group by rooms.decor  order by count(rooms.decor) asc limit 1
+SELECT count(*) FROM Reservations AS T1 JOIN Rooms AS T2 ON T1.Room  =  T2.RoomId WHERE T2.maxOccupancy  =  T1.Adults + T1.Kids;
+select count(*) from Reservations join Rooms on Reservations.Room = Rooms.RoomId where  rooms.maxoccupancy = (select reservations.adults from Reservations  )
+SELECT count(*) FROM Reservations AS T1 JOIN Rooms AS T2 ON T1.Room  =  T2.RoomId WHERE T2.maxOccupancy  =  T1.Adults + T1.Kids;
+select count(*) from Reservations join Rooms on Reservations.Room = Rooms.RoomId where  rooms.maxoccupancy = (select reservations.adults from Reservations  )
+SELECT T1.firstname ,  T1.lastname FROM Reservations AS T1 JOIN Rooms AS T2 ON T1.Room  =  T2.RoomId WHERE T1.Rate - T2.basePrice  >  0
+select reservations.firstname , reservations.lastname from Reservations join Rooms on Reservations.Room = Rooms.RoomId  group by reservations.firstname having  avg(rooms.baseprice) > (select rooms.baseprice from Rooms  )
+SELECT T1.firstname ,  T1.lastname FROM Reservations AS T1 JOIN Rooms AS T2 ON T1.Room  =  T2.RoomId WHERE T1.Rate - T2.basePrice  >  0
+select reservations.firstname , reservations.lastname from Reservations  group by reservations.firstname, reservations.lastname having  avg(reservations.rate) > (select rooms.baseprice from Rooms  )
+SELECT count(*) FROM Rooms;
+select count(*) from Rooms
+SELECT count(*) FROM Rooms;
+select count(*) from Rooms
+SELECT count(*) FROM Rooms WHERE bedType  =  "King";
+select count(*) from Rooms where  rooms.bedtype = "King"
+SELECT count(*) FROM Rooms WHERE bedType  =  "King";
+select count(*) from Rooms where  rooms.bedtype = "King"
+SELECT bedType ,  count(*) FROM Rooms GROUP BY bedType;
+select rooms.bedtype , count(*) from Rooms  group by rooms.bedtype
+SELECT bedType ,  count(*) FROM Rooms GROUP BY bedType;
+select rooms.bedtype , count(*) from Rooms  group by rooms.bedtype
+SELECT roomName FROM Rooms ORDER BY maxOccupancy DESC LIMIT 1;
+select rooms.roomname from Rooms   order by rooms.maxoccupancy desc limit 1
+SELECT roomName FROM Rooms ORDER BY maxOccupancy DESC LIMIT 1;
+select rooms.roomname from Rooms   order by rooms.maxoccupancy desc limit 1
+SELECT RoomId ,  roomName FROM Rooms ORDER BY basePrice DESC LIMIT 1;
+select rooms.roomid , rooms.roomname from Rooms   order by rooms.baseprice desc limit 1
+SELECT RoomId ,  roomName FROM Rooms ORDER BY basePrice DESC LIMIT 1;
+select rooms.roomname from Rooms   order by rooms.baseprice desc limit 1
+SELECT roomName ,  bedType FROM Rooms WHERE decor = "traditional";
+select rooms.bedtype , rooms.roomname from Rooms where  rooms.decor = "traditional"
+SELECT roomName ,  bedType FROM Rooms WHERE decor = "traditional";
+select rooms.roomname , rooms.bedtype from Rooms where  rooms.decor = "traditional"
+SELECT decor ,  count(*) FROM Rooms WHERE bedType = "King" GROUP BY decor;
+select rooms.decor , count(*) from Rooms where  rooms.bedtype = "King"  group by rooms.decor
+SELECT decor ,  count(*) FROM Rooms WHERE bedType = "King" GROUP BY decor;
+select rooms.decor , count(*) from Rooms where  rooms.bedtype = "King"  group by rooms.decor
+SELECT decor , avg(basePrice) ,  min(basePrice) FROM Rooms GROUP BY decor;
+select rooms.decor , avg(rooms.baseprice) , min(rooms.baseprice) from Rooms  group by rooms.decor
+SELECT decor , avg(basePrice) ,  min(basePrice) FROM Rooms GROUP BY decor;
+select rooms.decor , avg(rooms.baseprice) , min(rooms.baseprice) from Rooms  group by rooms.decor
+SELECT roomName FROM Rooms ORDER BY basePrice;
+select rooms.roomname from Rooms   order by rooms.baseprice asc
+SELECT roomName FROM Rooms ORDER BY basePrice;
+select rooms.roomname from Rooms   order by rooms.baseprice asc
+SELECT decor , count(*) FROM Rooms WHERE basePrice  >  120 GROUP BY decor;
+select rooms.decor , count(*) from Rooms where  rooms.baseprice > 120  group by rooms.decor
+SELECT decor , count(*) FROM Rooms WHERE basePrice  >  120 GROUP BY decor;
+select rooms.decor , count(*) from Rooms where  rooms.baseprice > 120  group by rooms.decor
+SELECT bedType ,  avg(basePrice) FROM Rooms GROUP BY bedType;
+select rooms.bedtype , avg(rooms.baseprice) from Rooms  group by rooms.bedtype
+SELECT bedType ,  avg(basePrice) FROM Rooms GROUP BY bedType;
+select rooms.bedtype , avg(rooms.baseprice) from Rooms  group by rooms.bedtype
+SELECT roomName FROM Rooms WHERE bedType  =  "King" OR bedType  =  "Queen";
+select rooms.roomname from Rooms where  rooms.bedtype = "King" or rooms.bedtype = "Queen"
+SELECT roomName FROM Rooms WHERE bedType  =  "King" OR bedType  =  "Queen";
+select rooms.roomname from Rooms where  rooms.bedtype = "King" or rooms.bedtype = "Queen"
+SELECT count(DISTINCT bedType) FROM Rooms;
+select count( distinct rooms.bedtype) from Rooms
+SELECT count(DISTINCT bedType) FROM Rooms;
+select count( distinct rooms.bedtype) from Rooms
+SELECT RoomId ,  roomName FROM Rooms ORDER BY basePrice DESC LIMIT 3;
+select rooms.roomname , rooms.roomid from Rooms   order by rooms.baseprice desc limit 3
+SELECT RoomId ,  roomName FROM Rooms ORDER BY basePrice DESC LIMIT 3;
+select rooms.roomname , rooms.roomid from Rooms   order by rooms.baseprice desc limit 3
+SELECT roomName FROM Rooms WHERE basePrice  >  ( SELECT avg(basePrice) FROM Rooms );
+select rooms.roomname from Rooms where  rooms.baseprice > (select avg(rooms.baseprice) from Rooms  )
+SELECT roomName FROM Rooms WHERE basePrice  >  ( SELECT avg(basePrice) FROM Rooms );
+select rooms.roomname from Rooms where  rooms.baseprice > (select avg(rooms.baseprice) from Rooms  )
+SELECT count(*) FROM rooms WHERE roomid NOT IN (SELECT DISTINCT room FROM reservations)
+select count(*) from Rooms where  rooms.roomid not in (select Reservations.Room from Reservations  )
+SELECT count(*) FROM rooms WHERE roomid NOT IN (SELECT DISTINCT room FROM reservations)
+select count(*) from Rooms where  rooms.roomid not in (select Reservations.Room from Reservations  )
+SELECT T2.roomName ,  count(*) ,  T1.Room FROM Reservations AS T1 JOIN Rooms AS T2 ON T1.Room  =  T2.RoomId GROUP BY T1.Room
+select rooms.roomname , count(*) , reservations.room from Reservations join Rooms on Reservations.Room = Rooms.RoomId  group by reservations.room
+SELECT T2.roomName ,  count(*) ,  T1.Room FROM Reservations AS T1 JOIN Rooms AS T2 ON T1.Room  =  T2.RoomId GROUP BY T1.Room
+select rooms.roomname , count(*) , reservations.room from Reservations join Rooms on Reservations.Room = Rooms.RoomId  group by reservations.room
+SELECT T2.roomName FROM Reservations AS T1 JOIN Rooms AS T2 ON T1.Room  =  T2.RoomId GROUP BY T1.Room HAVING count(*)  >  60
+select rooms.roomname from Reservations join Rooms on Reservations.Room = Rooms.RoomId  group by reservations.room having  count(*) > 60
+SELECT T2.roomName FROM Reservations AS T1 JOIN Rooms AS T2 ON T1.Room  =  T2.RoomId GROUP BY T1.Room HAVING count(*)  >  60
+select rooms.roomname from Reservations join Rooms on Reservations.Room = Rooms.RoomId  group by reservations.room having  count(*) > 60
+SELECT roomname FROM rooms WHERE baseprice BETWEEN 120 AND 150
+select rooms.roomname from Rooms where  rooms.baseprice between 120 and 150
+SELECT roomname FROM rooms WHERE baseprice BETWEEN 120 AND 150
+select rooms.roomname from Rooms where  rooms.baseprice between 120 and 150
+SELECT T2.roomName FROM Reservations AS T1 JOIN Rooms AS T2 ON T1.Room  =  T2.RoomId WHERE firstname LIKE '%ROY%'
+select rooms.roomname from Reservations join Rooms on Reservations.Room = Rooms.RoomId where  reservations.firstname like "%ROY%"
+SELECT T2.roomName FROM Reservations AS T1 JOIN Rooms AS T2 ON T1.Room  =  T2.RoomId WHERE firstname LIKE '%ROY%'
+select rooms.roomname from Reservations join Rooms on Reservations.Room = Rooms.RoomId where  reservations.firstname like "%ROY%"

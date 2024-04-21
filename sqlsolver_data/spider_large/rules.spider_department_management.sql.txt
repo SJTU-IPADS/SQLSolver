@@ -1,0 +1,32 @@
+SELECT count(*) FROM head WHERE age  >  56
+select count(*) from head where  head.age > 56
+SELECT name ,  born_state ,  age FROM head ORDER BY age
+select head.name , head.born_state , head.age from head   order by head.age asc
+SELECT creation ,  name ,  budget_in_billions FROM department
+select department.creation , department.name , department.budget_in_billions from department
+SELECT max(budget_in_billions) ,  min(budget_in_billions) FROM department
+select max(department.budget_in_billions) , min(department.budget_in_billions) from department
+SELECT avg(num_employees) FROM department WHERE ranking BETWEEN 10 AND 15
+select avg(department.num_employees) from department where  department.ranking between 10 and 15
+SELECT name FROM head WHERE born_state != 'California'
+select head.name from head where  head.born_state != "California"
+SELECT DISTINCT T1.creation FROM department AS T1 JOIN management AS T2 ON T1.department_id  =  T2.department_id JOIN head AS T3 ON T2.head_id  =  T3.head_id WHERE T3.born_state  =  'Alabama'
+select distinct department.creation from management join head on management.head_ID = head.head_ID join department on management.department_ID = department.Department_ID where  head.born_state = "Alabama"
+SELECT born_state FROM head GROUP BY born_state HAVING count(*)  >=  3
+select head.born_state from head  group by head.born_state having  count(*) >= 3
+SELECT creation FROM department GROUP BY creation ORDER BY count(*) DESC LIMIT 1
+select department.creation from department  group by department.creation  order by count(*) desc limit 1
+SELECT T1.name ,  T1.num_employees FROM department AS T1 JOIN management AS T2 ON T1.department_id  =  T2.department_id WHERE T2.temporary_acting  =  'Yes'
+select department.name , department.num_employees from management join department on management.department_ID = department.Department_ID where  management.temporary_acting = "Yes"
+SELECT count(DISTINCT temporary_acting) FROM management
+select count( distinct management.temporary_acting) from management
+SELECT count(*) FROM department WHERE department_id NOT IN (SELECT department_id FROM management);
+select count(*) from department where  department.department_id not in (select management.department_ID from management  )
+SELECT DISTINCT T1.age FROM management AS T2 JOIN head AS T1 ON T1.head_id  =  T2.head_id WHERE T2.temporary_acting  =  'Yes'
+select distinct head.age from management join head on management.head_ID = head.head_ID where  management.temporary_acting = "Yes"
+SELECT T3.born_state FROM department AS T1 JOIN management AS T2 ON T1.department_id  =  T2.department_id JOIN head AS T3 ON T2.head_id  =  T3.head_id WHERE T1.name  =  'Treasury' INTERSECT SELECT T3.born_state FROM department AS T1 JOIN management AS T2 ON T1.department_id  =  T2.department_id JOIN head AS T3 ON T2.head_id  =  T3.head_id WHERE T1.name  =  'Homeland Security'
+select head.born_state from management join head on management.head_ID = head.head_ID join department on management.department_ID = department.Department_ID where  department.name = "Treasury"   intersect select head.born_state from management join head on management.head_ID = head.head_ID join department on management.department_ID = department.Department_ID where  department.name = "Homeland Security"
+SELECT T1.department_id ,  T1.name ,  count(*) FROM management AS T2 JOIN department AS T1 ON T1.department_id  =  T2.department_id GROUP BY T1.department_id HAVING count(*)  >  1
+select department.department_id , department.name , count(*) from management join department on management.department_ID = department.Department_ID  group by department.department_id having  count(*) > 1
+SELECT head_id ,  name FROM head WHERE name LIKE '%Ha%'
+select head.head_id , head.name from head where  head.name like "%Ha%"

@@ -1,0 +1,34 @@
+SELECT T1.property_id ,  count(*) FROM properties AS T1 JOIN residents AS T2 ON T1.property_id  =  T2.property_id GROUP BY T1.property_id
+select properties.property_id , count(*) from Residents join Properties on Residents.property_id = Properties.property_id  group by properties.property_id
+SELECT DISTINCT T1.service_type_code FROM services AS T1 JOIN organizations AS T2 ON T1.organization_id  =  T2.organization_id WHERE T2.organization_details  =  'Denesik and Sons Party'
+select distinct services.service_type_code from Services join Organizations on Services.organization_id = Organizations.organization_id where  organizations.organization_details = "Denesik and Sons Party"
+SELECT T1.resident_id ,  T1.other_details ,  count(*) FROM Residents AS T1 JOIN Residents_Services AS T2 ON T1.resident_id  =  T2.resident_id GROUP BY T1.resident_id ORDER BY count(*) DESC
+select residents.resident_id , residents.other_details , count(*) from Residents_Services join Residents on Residents_Services.resident_id = Residents.resident_id  group by residents.resident_id  order by count(*) desc
+SELECT T1.service_id ,  T1.service_details ,  count(*) FROM Services AS T1 JOIN Residents_Services AS T2 ON T1.service_id  =  T2.service_id GROUP BY T1.service_id ORDER BY count(*) DESC LIMIT 1
+select services.service_id , services.service_details , count(*) from Residents_Services join Services on Residents_Services.service_id = Services.service_id  group by services.service_id  order by count(*) desc limit 1
+SELECT T1.thing_id ,  T1.type_of_Thing_Code ,  T2.organization_details FROM Things AS T1 JOIN Organizations AS T2 ON T1.organization_id  =  T2.organization_id
+select things.thing_id , things.type_of_thing_code , organizations.organization_details from Things join Organizations on Things.organization_id = Organizations.organization_id
+SELECT T1.customer_id ,  T1.customer_details FROM Customers AS T1 JOIN Customer_Events AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id HAVING count(*)  >=  3
+select customers.customer_id , customers.customer_details from Customer_Events join Customers on Customer_Events.customer_id = Customers.customer_id  group by customer_events.customer_id having  count(*) >= 3
+SELECT T2.date_moved_in ,  T1.customer_id ,  T1.customer_details FROM Customers AS T1 JOIN Customer_Events AS T2 ON T1.customer_id  =  T2.customer_id
+select customer_events.date_moved_in , customer_events.customer_id , customers.customer_details from Customer_Events join Customers on Customer_Events.customer_id = Customers.customer_id
+SELECT T1.Customer_Event_ID  ,  T1.property_id FROM Customer_Events AS T1 JOIN Customer_Event_Notes AS T2 ON T1.Customer_Event_ID  =  T2.Customer_Event_ID GROUP BY T1.customer_event_id HAVING count(*) BETWEEN 1 AND 3
+select customer_events.customer_event_id , customer_events.property_id from Customer_Event_Notes join Customer_Events on Customer_Event_Notes.Customer_Event_ID = Customer_Events.Customer_Event_ID  group by customer_events.customer_event_id having  count(*) between 1 and 3
+SELECT DISTINCT T2.thing_id ,  T2.Type_of_Thing_Code FROM Timed_Status_of_Things AS T1 JOIN Things AS T2 ON T1.thing_id  =  T2.thing_id WHERE T1.Status_of_Thing_Code  =  'Close' OR T1.Date_and_Date  <  '2017-06-19 02:59:21'
+select distinct things.thing_id , things.type_of_thing_code from Timed_Status_of_Things join Things on Timed_Status_of_Things.thing_id = Things.thing_id where  timed_status_of_things.status_of_thing_code = "Close" or timed_status_of_things.date_and_date < "2017-06-19 02:59:21"
+SELECT count(DISTINCT T2.Location_Code) FROM Things AS T1 JOIN Timed_Locations_of_Things AS T2 ON T1.thing_id  =  T2.thing_id WHERE T1.service_details  =  'Unsatisfied'
+select count( distinct timed_locations_of_things.location_code) from Timed_Locations_of_Things join Things on Timed_Locations_of_Things.thing_id = Things.thing_id where  things.service_details = "Unsatisfied"
+SELECT count(DISTINCT Status_of_Thing_Code) FROM Timed_Status_of_Things
+select count( distinct timed_status_of_things.status_of_thing_code) from Timed_Status_of_Things
+SELECT organization_id FROM organizations EXCEPT SELECT parent_organization_id FROM organizations
+select organizations.organization_id from Organizations   except select organizations.organization_id from Organizations
+SELECT max(date_moved_in) FROM Residents
+select max(residents.date_moved_in) from Residents
+SELECT other_details FROM Residents WHERE other_details LIKE '%Miss%'
+select residents.other_details from Residents where  residents.other_details like "%Miss%"
+SELECT customer_event_id ,  date_moved_in ,  property_id FROM customer_events
+select customer_events.customer_event_id , customer_events.date_moved_in , customer_events.property_id from Customer_Events
+SELECT count(*) FROM customers WHERE customer_id NOT IN ( SELECT customer_id FROM customer_events )
+select count(*) from Customers where  customers.customer_id not in (select Customer_Events.customer_id from Customer_Events  )
+SELECT DISTINCT date_moved_in FROM residents
+select distinct residents.date_moved_in from Residents

@@ -1,0 +1,144 @@
+SELECT count(*) FROM STUDENT
+select count(*) from Student
+SELECT count(*) FROM STUDENT
+select count(*) from Student
+SELECT count(*) FROM VOTING_RECORD
+select count(*) from Voting_record
+SELECT count(*) FROM VOTING_RECORD
+select count(*) from Voting_record
+SELECT count(DISTINCT President_Vote) FROM VOTING_RECORD
+select count( distinct voting_record.president_vote) from Voting_record
+SELECT count(DISTINCT President_Vote) FROM VOTING_RECORD
+select count( distinct voting_record.president_vote) from Voting_record
+SELECT max(Age) FROM STUDENT
+select max(student.age) from Student
+SELECT max(Age) FROM STUDENT
+select max(student.age) from Student
+SELECT LName FROM STUDENT WHERE Major  =  50
+select student.lname from Student where  student.major = 50
+SELECT LName FROM STUDENT WHERE Major  =  50
+select student.lname from Student where  student.major = 50
+SELECT Fname FROM STUDENT WHERE Age  >  22
+select student.fname from Student where  student.age > 22
+SELECT Fname FROM STUDENT WHERE Age  >  22
+select student.fname from Student where  student.age > 22
+SELECT Major FROM STUDENT WHERE Sex  =  "M"
+select student.major from Student where  student.sex = "M"
+SELECT Major FROM STUDENT WHERE Sex  =  "M"
+select student.major from Student where  student.sex = "M"
+SELECT avg(Age) FROM STUDENT WHERE Sex  =  "F"
+select avg(student.age) from Student where  student.sex = "F"
+SELECT avg(Age) FROM STUDENT WHERE Sex  =  "F"
+select avg(student.age) from Student where  student.sex = "F"
+SELECT max(Age) ,  min(Age) FROM STUDENT WHERE Major  =  600
+select max(student.age) , min(student.age) from Student where  student.major = 600
+SELECT max(Age) ,  min(Age) FROM STUDENT WHERE Major  =  600
+select max(student.age) , min(student.age) from Student where  student.major = 600
+SELECT Advisor FROM STUDENT WHERE city_code  =  "BAL"
+select student.advisor from Student where  student.city_code = "BAL"
+SELECT Advisor FROM STUDENT WHERE city_code  =  "BAL"
+select student.advisor from Student where  student.city_code = "BAL"
+SELECT DISTINCT Secretary_Vote FROM VOTING_RECORD WHERE ELECTION_CYCLE  =  "Fall"
+select distinct voting_record.secretary_vote from Voting_record where  voting_record.election_cycle = "Fall"
+SELECT DISTINCT Secretary_Vote FROM VOTING_RECORD WHERE ELECTION_CYCLE  =  "Fall"
+select distinct voting_record.secretary_vote from Voting_record where  voting_record.election_cycle = "Fall"
+SELECT DISTINCT PRESIDENT_Vote FROM VOTING_RECORD WHERE Registration_Date  =  "08/30/2015"
+select distinct voting_record.president_vote from Voting_record where  voting_record.registration_date = "08/30/2015"
+SELECT DISTINCT PRESIDENT_Vote FROM VOTING_RECORD WHERE Registration_Date  =  "08/30/2015"
+select distinct voting_record.president_vote from Voting_record where  voting_record.registration_date = "08/30/2015"
+SELECT DISTINCT Registration_Date ,  Election_Cycle FROM VOTING_RECORD
+select distinct voting_record.registration_date , voting_record.election_cycle from Voting_record
+SELECT DISTINCT Registration_Date ,  Election_Cycle FROM VOTING_RECORD
+select distinct voting_record.registration_date , voting_record.election_cycle from Voting_record
+SELECT DISTINCT President_Vote ,  VICE_President_Vote FROM VOTING_RECORD
+select distinct voting_record.president_vote , voting_record.vice_president_vote from Voting_record
+SELECT DISTINCT President_Vote ,  VICE_President_Vote FROM VOTING_RECORD
+select distinct voting_record.president_vote , voting_record.vice_president_vote from Voting_record
+SELECT DISTINCT T1.LName FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  T2.CLASS_President_VOTE
+select distinct student.lname from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID
+SELECT DISTINCT T1.LName FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  T2.CLASS_President_VOTE
+select distinct student.lname from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID
+SELECT DISTINCT T1.Fname FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  T2.CLASS_Senator_VOTE
+select distinct student.fname from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID
+SELECT DISTINCT T1.Fname FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  T2.CLASS_Senator_VOTE
+select distinct student.fname from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID
+SELECT DISTINCT T1.Age FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  T2.Secretary_Vote WHERE T2.Election_Cycle  =  "Fall"
+select distinct student.age from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  voting_record.election_cycle = "Fall"
+SELECT DISTINCT T1.Age FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  T2.Secretary_Vote WHERE T2.Election_Cycle  =  "Fall"
+select distinct student.age from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  voting_record.election_cycle = "Fall"
+SELECT DISTINCT T1.Advisor FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  T2.Treasurer_Vote WHERE T2.Election_Cycle  =  "Spring"
+select distinct student.advisor from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  voting_record.election_cycle = "Spring"
+SELECT DISTINCT T1.Advisor FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  T2.Treasurer_Vote WHERE T2.Election_Cycle  =  "Spring"
+select distinct student.advisor from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  voting_record.election_cycle = "Spring"
+SELECT DISTINCT T1.Major FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  T2.Treasurer_Vote
+select distinct student.major from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID
+SELECT DISTINCT T1.Major FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  T2.Treasurer_Vote
+select distinct student.major from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID
+SELECT DISTINCT T1.Fname ,  T1.LName FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  T2.President_VOTE WHERE T1.sex  =  "F"
+select distinct student.fname , student.lname from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.sex = "F"
+SELECT DISTINCT T1.Fname ,  T1.LName FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  T2.President_VOTE WHERE T1.sex  =  "F"
+select distinct student.fname , student.lname from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.sex = "F"
+SELECT DISTINCT T1.Fname ,  T1.LName FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  T2.VICE_President_VOTE WHERE T1.age  =  18
+select distinct student.fname , student.lname from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.age = 18
+SELECT DISTINCT T1.Fname ,  T1.LName FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  T2.VICE_President_VOTE WHERE T1.age  =  18
+select distinct student.fname , student.lname from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.age = 18
+SELECT count(*) FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  Class_Senator_Vote WHERE T1.Sex  =  "M" AND T2.Election_Cycle  =  "Fall"
+select count(*) from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.sex = "M" and voting_record.election_cycle = "Fall"
+SELECT count(*) FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  Class_Senator_Vote WHERE T1.Sex  =  "M" AND T2.Election_Cycle  =  "Fall"
+select count(*) from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.sex = "M" and voting_record.election_cycle = "Fall"
+SELECT count(*) FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  Class_Senator_Vote WHERE T1.city_code  =  "NYC" AND T2.Election_Cycle  =  "Spring"
+select count(*) from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.city_code = "NYC" and voting_record.election_cycle = "Spring"
+SELECT count(*) FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  Class_Senator_Vote WHERE T1.city_code  =  "NYC" AND T2.Election_Cycle  =  "Spring"
+select count(*) from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.city_code = "NYC" and voting_record.election_cycle = "Spring"
+SELECT avg(T1.Age) FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  SECRETARY_Vote WHERE T1.city_code  =  "NYC" AND T2.Election_Cycle  =  "Spring"
+select avg(student.age) from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.city_code = "NYC" and voting_record.election_cycle = "Spring"
+SELECT avg(T1.Age) FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  SECRETARY_Vote WHERE T1.city_code  =  "NYC" AND T2.Election_Cycle  =  "Spring"
+select avg(student.age) from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.city_code = "NYC" and voting_record.election_cycle = "Spring"
+SELECT avg(T1.Age) FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  SECRETARY_Vote WHERE T1.Sex  =  "F" AND T2.Election_Cycle  =  "Spring"
+select avg(student.age) from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.sex = "F" and voting_record.election_cycle = "Spring"
+SELECT avg(T1.Age) FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  SECRETARY_Vote WHERE T1.Sex  =  "F" AND T2.Election_Cycle  =  "Spring"
+select avg(student.age) from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.sex = "F" and voting_record.election_cycle = "Spring"
+SELECT DISTINCT T1.Fname FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  T2.VICE_PRESIDENT_Vote EXCEPT SELECT DISTINCT Fname FROM STUDENT WHERE city_code  =  "PIT"
+select distinct student.fname from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.city_code != "PIT"
+SELECT DISTINCT T1.Fname FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  T2.VICE_PRESIDENT_Vote EXCEPT SELECT DISTINCT Fname FROM STUDENT WHERE city_code  =  "PIT"
+select distinct student.fname from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.city_code != "PIT"
+SELECT DISTINCT T1.LName FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  PRESIDENT_Vote EXCEPT SELECT DISTINCT LName FROM STUDENT WHERE Advisor  =  "2192"
+select distinct student.lname from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.advisor != "2192"
+SELECT DISTINCT T1.LName FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  PRESIDENT_Vote EXCEPT SELECT DISTINCT LName FROM STUDENT WHERE Advisor  =  "2192"
+select distinct student.lname from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.advisor != "2192"
+SELECT DISTINCT T1.LName FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  PRESIDENT_Vote INTERSECT SELECT DISTINCT LName FROM STUDENT WHERE Advisor  =  "8741"
+select distinct student.lname from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.advisor = "8741"
+SELECT DISTINCT T1.LName FROM STUDENT AS T1 JOIN VOTING_RECORD AS T2 ON T1.StuID  =  PRESIDENT_Vote INTERSECT SELECT DISTINCT LName FROM STUDENT WHERE Advisor  =  "8741"
+select distinct student.lname from Voting_record join Student on Voting_record.Class_Senator_Vote = Student.StuID where  student.advisor = "8741"
+SELECT Advisor ,  count(*) FROM STUDENT GROUP BY Advisor
+select student.advisor , count(*) from Student  group by student.advisor
+SELECT Advisor ,  count(*) FROM STUDENT GROUP BY Advisor
+select student.advisor , count(*) from Student  group by student.advisor
+SELECT Advisor FROM STUDENT GROUP BY Advisor HAVING COUNT(*)  >  2
+select student.advisor from Student  group by student.advisor having  count(*) > 2
+SELECT Advisor FROM STUDENT GROUP BY Advisor HAVING COUNT(*)  >  2
+select student.advisor from Student  group by student.advisor having  count(*) > 2
+SELECT Major FROM STUDENT GROUP BY Major HAVING COUNT(*)  <  3
+select student.major from Student  group by student.major having  count(*) < 3
+SELECT Major FROM STUDENT GROUP BY Major HAVING COUNT(*)  <  3
+select student.major from Student  group by student.major having  count(*) < 3
+SELECT Election_Cycle ,  count(*) FROM VOTING_RECORD GROUP BY Election_Cycle
+select voting_record.election_cycle , count(*) from Voting_record  group by voting_record.election_cycle
+SELECT Election_Cycle ,  count(*) FROM VOTING_RECORD GROUP BY Election_Cycle
+select voting_record.election_cycle , count(*) from Voting_record  group by voting_record.election_cycle
+SELECT Major FROM STUDENT GROUP BY major ORDER BY count(*) DESC LIMIT 1
+select student.major from Student  group by student.major  order by count(*) desc limit 1
+SELECT Major FROM STUDENT GROUP BY major ORDER BY count(*) DESC LIMIT 1
+select student.major from Student  group by student.major  order by count(*) desc limit 1
+SELECT Major FROM STUDENT WHERE Sex  =  "F" GROUP BY major ORDER BY count(*) DESC LIMIT 1
+select student.major from Student where  student.sex = "F"  group by student.major  order by count(*) desc limit 1
+SELECT Major FROM STUDENT WHERE Sex  =  "F" GROUP BY major ORDER BY count(*) DESC LIMIT 1
+select student.major from Student where  student.sex = "F"  group by student.major  order by count(*) desc limit 1
+SELECT city_code FROM STUDENT GROUP BY city_code ORDER BY count(*) DESC LIMIT 1
+select student.city_code from Student  group by student.city_code  order by count(*) desc limit 1
+SELECT city_code FROM STUDENT GROUP BY city_code ORDER BY count(*) DESC LIMIT 1
+select student.city_code from Student  group by student.city_code  order by count(*) desc limit 1
+SELECT Advisor FROM STUDENT GROUP BY Advisor HAVING count(*)  >  2
+select student.advisor from Student  group by student.advisor having  count(*) > 2
+SELECT Advisor FROM STUDENT GROUP BY Advisor HAVING count(*)  >  2
+select student.advisor from Student  group by student.advisor having  count(*) > 2

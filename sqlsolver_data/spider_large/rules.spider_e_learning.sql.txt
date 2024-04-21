@@ -1,0 +1,164 @@
+SELECT count(*) FROM COURSES
+select count(*) from Courses
+SELECT count(*) FROM COURSES
+select count(*) from Courses
+SELECT course_description FROM COURSES WHERE course_name  =  "database"
+select courses.course_description from Courses where  courses.course_name = "database"
+SELECT course_description FROM COURSES WHERE course_name  =  "database"
+select courses.course_description from Courses where  courses.course_name = "database"
+SELECT address_line_1 FROM Course_Authors_and_Tutors WHERE personal_name	 =  "Cathrine"
+select course_authors_and_tutors.address_line_1 from Course_Authors_and_Tutors where  course_authors_and_tutors.personal_name = "Cathrine"
+SELECT address_line_1 FROM Course_Authors_and_Tutors WHERE personal_name	 =  "Cathrine"
+select course_authors_and_tutors.address_line_1 from Course_Authors_and_Tutors where  course_authors_and_tutors.personal_name = "Cathrine"
+SELECT address_line_1 FROM Course_Authors_and_Tutors
+select course_authors_and_tutors.address_line_1 from Course_Authors_and_Tutors
+SELECT address_line_1 FROM Course_Authors_and_Tutors
+select course_authors_and_tutors.address_line_1 from Course_Authors_and_Tutors
+SELECT login_name ,  family_name FROM Course_Authors_and_Tutors
+select students.login_name , students.family_name from Students
+SELECT login_name ,  family_name FROM Course_Authors_and_Tutors
+select course_authors_and_tutors.login_name , course_authors_and_tutors.family_name from Course_Authors_and_Tutors
+SELECT date_of_enrolment ,  date_of_completion FROM Student_Course_Enrolment
+select student_course_enrolment.date_of_enrolment , student_course_enrolment.date_of_completion from Student_Course_Enrolment
+SELECT date_of_enrolment ,  date_of_completion FROM Student_Course_Enrolment
+select student_course_enrolment.date_of_enrolment , student_course_enrolment.date_of_completion from Student_Course_Enrolment
+SELECT count(DISTINCT student_id) FROM Student_Course_Enrolment
+select count( distinct student_course_enrolment.student_id) from Student_Course_Enrolment
+SELECT count(DISTINCT student_id) FROM Student_Course_Enrolment
+select count( distinct student_course_enrolment.student_id) from Student_Course_Enrolment
+SELECT count(course_id) FROM Student_Course_Enrolment
+select count( distinct student_course_enrolment.course_id) from Student_Course_Enrolment
+SELECT count(course_id) FROM Student_Course_Enrolment
+select count( distinct student_course_enrolment.course_id) from Student_Course_Enrolment
+SELECT date_test_taken FROM Student_Tests_Taken WHERE test_result  =  "Pass"
+select student_tests_taken.date_test_taken from Student_Tests_Taken where  student_tests_taken.test_result = "Pass"
+SELECT date_test_taken FROM Student_Tests_Taken WHERE test_result  =  "Pass"
+select student_tests_taken.date_test_taken from Student_Tests_Taken where  student_tests_taken.test_result = "Pass"
+SELECT count(*) FROM Student_Tests_Taken WHERE test_result  =  "Fail"
+select count(*) from Student_Tests_Taken where  student_tests_taken.test_result = "Fail"
+SELECT count(*) FROM Student_Tests_Taken WHERE test_result  =  "Fail"
+select count(*) from Student_Tests_Taken where  student_tests_taken.test_result = "Fail"
+SELECT login_name FROM Students WHERE family_name  =  "Ward"
+select students.login_name from Students where  students.family_name = "Ward"
+SELECT login_name FROM Students WHERE family_name  =  "Ward"
+select students.login_name from Students where  students.family_name = "Ward"
+SELECT date_of_latest_logon FROM Students WHERE family_name  =  "Jaskolski" OR family_name  =  "Langosh"
+select students.date_of_latest_logon from Students where  students.family_name = "Jaskolski" or students.family_name = "Langosh"
+SELECT date_of_latest_logon FROM Students WHERE family_name  =  "Jaskolski" OR family_name  =  "Langosh"
+select students.date_of_latest_logon from Students where  students.family_name = "Jaskolski" or students.family_name = "Langosh"
+SELECT COUNT(*) FROM Students WHERE personal_name LIKE "%son%"
+select count(*) from Students where  students.personal_name like "%son%"
+SELECT COUNT(*) FROM Students WHERE personal_name LIKE "%son%"
+select count(*) from Students where  students.personal_name like "%son%"
+SELECT subject_name FROM SUBJECTS
+select subjects.subject_name from Subjects
+SELECT subject_name FROM SUBJECTS
+select subjects.subject_name from Subjects
+SELECT * FROM Course_Authors_and_Tutors ORDER BY personal_name
+select * from Course_Authors_and_Tutors   order by course_authors_and_tutors.personal_name asc
+SELECT * FROM Course_Authors_and_Tutors ORDER BY personal_name
+select * from Course_Authors_and_Tutors   order by course_authors_and_tutors.personal_name asc
+SELECT personal_name ,  family_name FROM Students ORDER BY family_name
+select students.personal_name , students.family_name from Students   order by students.family_name asc
+SELECT personal_name ,  family_name FROM Students ORDER BY family_name
+select students.personal_name , students.family_name from Students   order by students.family_name asc
+SELECT test_result ,  COUNT(*) FROM Student_Tests_Taken GROUP BY test_result ORDER BY COUNT(*) DESC
+select student_tests_taken.test_result , count(*) from Student_Tests_Taken  group by student_tests_taken.test_result  order by count(*) desc
+SELECT test_result ,  COUNT(*) FROM Student_Tests_Taken GROUP BY test_result ORDER BY COUNT(*) DESC
+select student_tests_taken.test_result , count(*) from Student_Tests_Taken  group by student_tests_taken.test_result  order by count(*) desc
+SELECT T1.login_name FROM Course_Authors_and_Tutors AS T1 JOIN Courses AS T2 ON T1.author_id  =  T2.author_id WHERE T2.course_name  =  "advanced database"
+select course_authors_and_tutors.login_name from Courses join Course_Authors_and_Tutors on Courses.author_id = Course_Authors_and_Tutors.author_id where  courses.course_name = "advanced database"
+SELECT T1.login_name FROM Course_Authors_and_Tutors AS T1 JOIN Courses AS T2 ON T1.author_id  =  T2.author_id WHERE T2.course_name  =  "advanced database"
+select course_authors_and_tutors.login_name from Courses join Course_Authors_and_Tutors on Courses.author_id = Course_Authors_and_Tutors.author_id where  courses.course_name = "advanced database"
+SELECT T1.address_line_1 FROM Course_Authors_and_Tutors AS T1 JOIN Courses AS T2 ON T1.author_id  =  T2.author_id WHERE T2.course_name  =  "operating system" OR T2.course_name  =  "data structure"
+select course_authors_and_tutors.address_line_1 from Courses join Course_Authors_and_Tutors on Courses.author_id = Course_Authors_and_Tutors.author_id where  courses.course_name = "operating system" or courses.course_name = "data structure"
+SELECT T1.address_line_1 FROM Course_Authors_and_Tutors AS T1 JOIN Courses AS T2 ON T1.author_id  =  T2.author_id WHERE T2.course_name  =  "operating system" OR T2.course_name  =  "data structure"
+select course_authors_and_tutors.address_line_1 from Courses join Course_Authors_and_Tutors on Courses.author_id = Course_Authors_and_Tutors.author_id where  courses.course_name = "operating system" or courses.course_name = "data structure"
+SELECT T1.personal_name ,  T1.family_name ,  T2.author_id FROM Course_Authors_and_Tutors AS T1 JOIN Courses AS T2 ON T1.author_id  =  T2.author_id GROUP BY T2.author_id ORDER BY COUNT(*) DESC LIMIT 1
+select students.personal_name , students.family_name , courses.author_id from Student_Course_Enrolment join Students on Student_Course_Enrolment.student_id = Students.student_id join Courses on Student_Course_Enrolment.course_id = Courses.course_id  group by courses.author_id  order by count(*) desc limit 1
+SELECT T1.personal_name ,  T1.family_name ,  T2.author_id FROM Course_Authors_and_Tutors AS T1 JOIN Courses AS T2 ON T1.author_id  =  T2.author_id GROUP BY T2.author_id ORDER BY COUNT(*) DESC LIMIT 1
+select course_authors_and_tutors.personal_name , course_authors_and_tutors.family_name , courses.author_id from Courses join Course_Authors_and_Tutors on Courses.author_id = Course_Authors_and_Tutors.author_id  group by courses.author_id  order by count(*) desc limit 1
+SELECT T1.address_line_1 ,  T2.author_id FROM Course_Authors_and_Tutors AS T1 JOIN Courses AS T2 ON T1.author_id  =  T2.author_id GROUP BY T2.author_id HAVING Count(*)  >=  2
+select course_authors_and_tutors.address_line_1 , courses.author_id from Courses join Course_Authors_and_Tutors on Courses.author_id = Course_Authors_and_Tutors.author_id  group by courses.author_id having  count(*) >= 2
+SELECT T1.address_line_1 ,  T2.author_id FROM Course_Authors_and_Tutors AS T1 JOIN Courses AS T2 ON T1.author_id  =  T2.author_id GROUP BY T2.author_id HAVING Count(*)  >=  2
+select course_authors_and_tutors.address_line_1 , courses.author_id from Courses join Course_Authors_and_Tutors on Courses.author_id = Course_Authors_and_Tutors.author_id  group by courses.author_id having  count(*) >= 2
+SELECT T2.course_name FROM Course_Authors_and_Tutors AS T1 JOIN Courses AS T2 ON T1.author_id  =  T2.author_id WHERE T1.personal_name  =  "Julio"
+select courses.course_name from Courses join Course_Authors_and_Tutors on Courses.author_id = Course_Authors_and_Tutors.author_id where  course_authors_and_tutors.personal_name = "Julio"
+SELECT T2.course_name FROM Course_Authors_and_Tutors AS T1 JOIN Courses AS T2 ON T1.author_id  =  T2.author_id WHERE T1.personal_name  =  "Julio"
+select courses.course_name from Courses join Course_Authors_and_Tutors on Courses.author_id = Course_Authors_and_Tutors.author_id where  course_authors_and_tutors.personal_name = "Julio"
+SELECT T1.course_name ,  T1.course_description FROM Courses AS T1 JOIN Subjects AS T2 ON T1.subject_id  =  T2.subject_id WHERE T2.subject_name  =  "Computer Science"
+select courses.course_name , courses.course_description from Courses join Subjects on Courses.subject_id = Subjects.subject_id where  subjects.subject_name = "Computer Science"
+SELECT T1.course_name ,  T1.course_description FROM Courses AS T1 JOIN Subjects AS T2 ON T1.subject_id  =  T2.subject_id WHERE T2.subject_name  =  "Computer Science"
+select courses.course_name , courses.course_description from Courses join Subjects on Courses.subject_id = Subjects.subject_id where  subjects.subject_name = "Computer Science"
+SELECT T1.subject_id ,  T2.subject_name ,  COUNT(*) FROM Courses AS T1 JOIN Subjects AS T2 ON T1.subject_id  =  T2.subject_id GROUP BY T1.subject_id
+select courses.subject_id , subjects.subject_name , count(*) from Courses join Subjects on Courses.subject_id = Subjects.subject_id  group by courses.subject_id
+SELECT T1.subject_id ,  T2.subject_name ,  COUNT(*) FROM Courses AS T1 JOIN Subjects AS T2 ON T1.subject_id  =  T2.subject_id GROUP BY T1.subject_id
+select courses.subject_id , subjects.subject_name , count(*) from Courses join Subjects on Courses.subject_id = Subjects.subject_id  group by courses.subject_id
+SELECT T1.subject_id ,  T2.subject_name ,  COUNT(*) FROM Courses AS T1 JOIN Subjects AS T2 ON T1.subject_id  =  T2.subject_id GROUP BY T1.subject_id ORDER BY COUNT(*) ASC
+select courses.subject_id , subjects.subject_name , count(*) from Courses join Subjects on Courses.subject_id = Subjects.subject_id  group by courses.subject_id  order by count(*) asc
+SELECT T1.subject_id ,  T2.subject_name ,  COUNT(*) FROM Courses AS T1 JOIN Subjects AS T2 ON T1.subject_id  =  T2.subject_id GROUP BY T1.subject_id ORDER BY COUNT(*) ASC
+select courses.subject_id , subjects.subject_name , count(*) from Courses join Subjects on Courses.subject_id = Subjects.subject_id  group by courses.subject_id  order by count(*) asc
+SELECT T2.date_of_enrolment FROM Courses AS T1 JOIN Student_Course_Enrolment AS T2 ON T1.course_id  =  T2.course_id WHERE T1.course_name  =  "Spanish"
+select student_course_enrolment.date_of_enrolment from Student_Course_Enrolment join Courses on Student_Course_Enrolment.course_id = Courses.course_id where  courses.course_name = "Spanish"
+SELECT T2.date_of_enrolment FROM Courses AS T1 JOIN Student_Course_Enrolment AS T2 ON T1.course_id  =  T2.course_id WHERE T1.course_name  =  "Spanish"
+select student_course_enrolment.date_of_enrolment from Student_Course_Enrolment join Courses on Student_Course_Enrolment.course_id = Courses.course_id where  courses.course_name = "Spanish"
+SELECT T1.course_name FROM Courses AS T1 JOIN Student_Course_Enrolment AS T2 ON T1.course_id  =  T2.course_id GROUP BY T1.course_name ORDER BY COUNT(*) DESC LIMIT 1
+select courses.course_name from Student_Course_Enrolment join Courses on Student_Course_Enrolment.course_id = Courses.course_id  group by student_course_enrolment.course_id  order by count(*) desc limit 1
+SELECT T1.course_name FROM Courses AS T1 JOIN Student_Course_Enrolment AS T2 ON T1.course_id  =  T2.course_id GROUP BY T1.course_name ORDER BY COUNT(*) DESC LIMIT 1
+select courses.course_name from Student_Course_Enrolment join Courses on Student_Course_Enrolment.course_id = Courses.course_id  group by student_course_enrolment.course_id  order by count(*) desc limit 1
+SELECT T1.course_name FROM Courses AS T1 JOIN Student_Course_Enrolment AS T2 ON T1.course_id  =  T2.course_id GROUP BY T1.course_name HAVING COUNT(*)  =  1
+select courses.course_name from Student_Course_Enrolment join Courses on Student_Course_Enrolment.course_id = Courses.course_id  group by courses.course_name having  count(*) = 1
+SELECT T1.course_name FROM Courses AS T1 JOIN Student_Course_Enrolment AS T2 ON T1.course_id  =  T2.course_id GROUP BY T1.course_name HAVING COUNT(*)  =  1
+select courses.course_name from Student_Course_Enrolment join Courses on Student_Course_Enrolment.course_id = Courses.course_id  group by courses.course_name having  count(*) = 1
+SELECT T1.course_description ,  T1.course_name FROM Courses AS T1 JOIN Student_Course_Enrolment AS T2 ON T1.course_id  =  T2.course_id GROUP BY T1.course_name HAVING COUNT(*)  >  2
+select courses.course_description , courses.course_name from Student_Course_Enrolment join Courses on Student_Course_Enrolment.course_id = Courses.course_id  group by courses.course_description having  count(*) > 2
+SELECT T1.course_description ,  T1.course_name FROM Courses AS T1 JOIN Student_Course_Enrolment AS T2 ON T1.course_id  =  T2.course_id GROUP BY T1.course_name HAVING COUNT(*)  >  2
+select courses.course_description , courses.course_name from Student_Course_Enrolment join Courses on Student_Course_Enrolment.course_id = Courses.course_id  group by courses.course_description having  count(*) > 2
+SELECT T1.course_name ,  COUNT(*) FROM Courses AS T1 JOIN Student_Course_Enrolment AS T2 ON T1.course_id  =  T2.course_id GROUP BY T1.course_name
+select courses.course_name , count(*) from Student_Course_Enrolment join Courses on Student_Course_Enrolment.course_id = Courses.course_id  group by courses.course_name
+SELECT T1.course_name ,  COUNT(*) FROM Courses AS T1 JOIN Student_Course_Enrolment AS T2 ON T1.course_id  =  T2.course_id GROUP BY T1.course_name
+select courses.course_name , count(*) from Student_Course_Enrolment join Courses on Student_Course_Enrolment.course_id = Courses.course_id  group by courses.course_name
+SELECT T1.date_of_enrolment FROM Student_Course_Enrolment AS T1 JOIN Student_Tests_Taken AS T2 ON T1.registration_id  =  T2.registration_id WHERE T2.test_result  =  "Pass"
+select student_course_enrolment.date_of_enrolment from Student_Tests_Taken join Student_Course_Enrolment on Student_Tests_Taken.registration_id = Student_Course_Enrolment.registration_id where  student_tests_taken.test_result = "Pass"
+SELECT T1.date_of_enrolment FROM Student_Course_Enrolment AS T1 JOIN Student_Tests_Taken AS T2 ON T1.registration_id  =  T2.registration_id WHERE T2.test_result  =  "Pass"
+select student_course_enrolment.date_of_enrolment from Student_Tests_Taken join Student_Course_Enrolment on Student_Tests_Taken.registration_id = Student_Course_Enrolment.registration_id where  student_tests_taken.test_result = "Pass"
+SELECT T1.date_of_completion FROM Student_Course_Enrolment AS T1 JOIN Student_Tests_Taken AS T2 ON T1.registration_id  =  T2.registration_id WHERE T2.test_result  =  "Fail"
+select student_course_enrolment.date_of_completion from Student_Tests_Taken join Student_Course_Enrolment on Student_Tests_Taken.registration_id = Student_Course_Enrolment.registration_id where  student_tests_taken.test_result = "Fail"
+SELECT T1.date_of_completion FROM Student_Course_Enrolment AS T1 JOIN Student_Tests_Taken AS T2 ON T1.registration_id  =  T2.registration_id WHERE T2.test_result  =  "Fail"
+select student_course_enrolment.date_of_completion from Student_Tests_Taken join Student_Course_Enrolment on Student_Tests_Taken.registration_id = Student_Course_Enrolment.registration_id where  student_tests_taken.test_result = "Fail"
+SELECT T1.date_of_enrolment ,  T1.date_of_completion FROM Student_Course_Enrolment AS T1 JOIN Students AS T2 ON T1.student_id  =  T2.student_id WHERE T2.personal_name  =  "Karson"
+select student_course_enrolment.date_of_enrolment , student_course_enrolment.date_of_completion from Student_Course_Enrolment join Students on Student_Course_Enrolment.student_id = Students.student_id where  students.personal_name = "Karson"
+SELECT T1.date_of_enrolment ,  T1.date_of_completion FROM Student_Course_Enrolment AS T1 JOIN Students AS T2 ON T1.student_id  =  T2.student_id WHERE T2.personal_name  =  "Karson"
+select student_course_enrolment.date_of_enrolment , student_course_enrolment.date_of_completion from Student_Course_Enrolment join Students on Student_Course_Enrolment.student_id = Students.student_id where  students.personal_name = "Karson"
+SELECT T1.date_of_enrolment ,  T1.date_of_completion FROM Student_Course_Enrolment AS T1 JOIN Students AS T2 ON T1.student_id  =  T2.student_id WHERE T2.family_name  =  "Zieme" AND T2.personal_name  =  "Bernie"
+select student_course_enrolment.date_of_enrolment , student_course_enrolment.date_of_completion from Student_Course_Enrolment join Students on Student_Course_Enrolment.student_id = Students.student_id where  students.family_name = "Zieme" and students.personal_name = "Bernie"
+SELECT T1.date_of_enrolment ,  T1.date_of_completion FROM Student_Course_Enrolment AS T1 JOIN Students AS T2 ON T1.student_id  =  T2.student_id WHERE T2.family_name  =  "Zieme" AND T2.personal_name  =  "Bernie"
+select student_course_enrolment.date_of_enrolment , student_course_enrolment.date_of_completion from Student_Course_Enrolment join Students on Student_Course_Enrolment.student_id = Students.student_id where  students.family_name = "Zieme" and students.personal_name = "Bernie"
+SELECT T1.student_id ,  T2.login_name FROM Student_Course_Enrolment AS T1 JOIN Students AS T2 ON T1.student_id  =  T2.student_id GROUP BY T1.student_id ORDER BY COUNT(*) DESC LIMIT 1
+select student_course_enrolment.student_id , students.login_name from Student_Course_Enrolment join Students on Student_Course_Enrolment.student_id = Students.student_id  group by student_course_enrolment.student_id  order by count(*) desc limit 1
+SELECT T1.student_id ,  T2.login_name FROM Student_Course_Enrolment AS T1 JOIN Students AS T2 ON T1.student_id  =  T2.student_id GROUP BY T1.student_id ORDER BY COUNT(*) DESC LIMIT 1
+select student_course_enrolment.student_id , students.login_name from Student_Course_Enrolment join Students on Student_Course_Enrolment.student_id = Students.student_id  group by student_course_enrolment.student_id  order by count(*) desc limit 1
+SELECT T1.student_id ,  T2.personal_name FROM Student_Course_Enrolment AS T1 JOIN Students AS T2 ON T1.student_id  =  T2.student_id GROUP BY T1.student_id HAVING COUNT(*)  >=  2
+select student_course_enrolment.student_id , students.personal_name from Student_Course_Enrolment join Students on Student_Course_Enrolment.student_id = Students.student_id  group by student_course_enrolment.student_id having  count(*) >= 2
+SELECT T1.student_id ,  T2.personal_name FROM Student_Course_Enrolment AS T1 JOIN Students AS T2 ON T1.student_id  =  T2.student_id GROUP BY T1.student_id HAVING COUNT(*)  >=  2
+select student_course_enrolment.student_id , students.personal_name from Student_Course_Enrolment join Students on Student_Course_Enrolment.student_id = Students.student_id  group by student_course_enrolment.student_id having  count(*) >= 2
+SELECT T1.student_id ,  T2.middle_name FROM Student_Course_Enrolment AS T1 JOIN Students AS T2 ON T1.student_id  =  T2.student_id GROUP BY T1.student_id HAVING COUNT(*)  <=  2
+select student_course_enrolment.student_id , students.middle_name from Student_Course_Enrolment join Students on Student_Course_Enrolment.student_id = Students.student_id  group by student_course_enrolment.student_id having  count(*) < 2
+SELECT T1.student_id ,  T2.middle_name FROM Student_Course_Enrolment AS T1 JOIN Students AS T2 ON T1.student_id  =  T2.student_id GROUP BY T1.student_id HAVING COUNT(*)  <=  2
+select student_course_enrolment.student_id , students.middle_name from Student_Course_Enrolment join Students on Student_Course_Enrolment.student_id = Students.student_id  group by student_course_enrolment.student_id having  count(*) < 2
+SELECT personal_name FROM Students EXCEPT SELECT T1.personal_name FROM Students AS T1 JOIN Student_Course_Enrolment AS T2 ON T1.student_id  =  T2.student_id
+select students.personal_name from Students   except select students.personal_name from Student_Course_Enrolment join Students on Student_Course_Enrolment.student_id = Students.student_id
+SELECT personal_name FROM Students EXCEPT SELECT T1.personal_name FROM Students AS T1 JOIN Student_Course_Enrolment AS T2 ON T1.student_id  =  T2.student_id
+select students.personal_name from Students   except select students.personal_name from Student_Course_Enrolment join Students on Student_Course_Enrolment.student_id = Students.student_id
+SELECT count(*) FROM Students WHERE student_id NOT IN (SELECT student_id FROM Student_Course_Enrolment)
+select count(*) from Students where  students.student_id not in (select Student_Course_Enrolment.student_id from Student_Course_Enrolment  )
+SELECT count(*) FROM Students WHERE student_id NOT IN (SELECT student_id FROM Student_Course_Enrolment)
+select count(*) from Students where  students.student_id not in (select Student_Course_Enrolment.student_id from Student_Course_Enrolment  )
+SELECT login_name FROM Course_Authors_and_Tutors INTERSECT SELECT login_name FROM Students
+select course_authors_and_tutors.login_name from Course_Authors_and_Tutors   intersect select students.login_name from Students
+SELECT login_name FROM Course_Authors_and_Tutors INTERSECT SELECT login_name FROM Students
+select course_authors_and_tutors.login_name from Course_Authors_and_Tutors   intersect select students.login_name from Students
+SELECT personal_name FROM Course_Authors_and_Tutors INTERSECT SELECT personal_name FROM Students
+select course_authors_and_tutors.personal_name from Course_Authors_and_Tutors   intersect select students.personal_name from Students
+SELECT personal_name FROM Course_Authors_and_Tutors INTERSECT SELECT personal_name FROM Students
+select course_authors_and_tutors.personal_name from Course_Authors_and_Tutors   intersect select students.personal_name from Students

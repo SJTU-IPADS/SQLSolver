@@ -1,0 +1,92 @@
+SELECT count(*) FROM aircraft
+select count(*) from aircraft
+SELECT count(*) FROM aircraft
+select count(*) from aircraft
+SELECT Description FROM aircraft
+select aircraft.description from aircraft
+SELECT Description FROM aircraft
+select aircraft.description from aircraft
+SELECT avg(International_Passengers) FROM airport
+select avg(airport.international_passengers) from airport
+SELECT avg(International_Passengers) FROM airport
+select avg(airport.international_passengers) from airport
+SELECT International_Passengers ,  Domestic_Passengers FROM airport WHERE Airport_Name  =  "London Heathrow"
+select airport.international_passengers , airport.domestic_passengers from airport where  airport.airport_name = "London Heathrow"
+SELECT International_Passengers ,  Domestic_Passengers FROM airport WHERE Airport_Name  =  "London Heathrow"
+select airport.international_passengers , airport.domestic_passengers from airport where  airport.airport_name = "London Heathrow"
+SELECT sum(Domestic_Passengers) FROM airport WHERE Airport_Name LIKE "%London%"
+select sum(airport.domestic_passengers) from airport where  airport.airport_name like "%London%"
+SELECT sum(Domestic_Passengers) FROM airport WHERE Airport_Name LIKE "%London%"
+select sum(airport.domestic_passengers) from airport where  airport.airport_name like "%London%"
+SELECT max(Transit_Passengers) ,  min(Transit_Passengers) FROM airport
+select max(airport.transit_passengers) , min(airport.transit_passengers) from airport
+SELECT max(Transit_Passengers) ,  min(Transit_Passengers) FROM airport
+select max(airport.transit_passengers) , min(airport.transit_passengers) from airport
+SELECT Name FROM pilot WHERE Age  >=  25
+select pilot.name from pilot where  pilot.age >= 25
+SELECT Name FROM pilot WHERE Age  >=  25
+select pilot.name from pilot where  pilot.age >= 25
+SELECT Name FROM pilot ORDER BY Name ASC
+select pilot.name from pilot   order by pilot.name asc
+SELECT Name FROM pilot ORDER BY Name ASC
+select pilot.name from pilot   order by pilot.name asc
+SELECT Name FROM pilot WHERE Age  <=  30 ORDER BY Name DESC
+select pilot.name from pilot where  pilot.age < 30   order by pilot.name desc
+SELECT Name FROM pilot WHERE Age  <=  30 ORDER BY Name DESC
+select pilot.name from pilot where  pilot.age < 30   order by pilot.name desc
+SELECT T1.Aircraft FROM aircraft AS T1 JOIN airport_aircraft AS T2 ON T1.Aircraft_ID  =  T2.Aircraft_ID JOIN airport AS T3 ON T2.Airport_ID  =  T3.Airport_ID WHERE T3.Airport_Name  =  "London Gatwick"
+select aircraft.aircraft from airport_aircraft join aircraft on airport_aircraft.Aircraft_ID = aircraft.Aircraft_ID join airport on airport_aircraft.Airport_ID = airport.Airport_ID where  airport.airport_name = "London Gatwick"
+SELECT T1.Aircraft FROM aircraft AS T1 JOIN airport_aircraft AS T2 ON T1.Aircraft_ID  =  T2.Aircraft_ID JOIN airport AS T3 ON T2.Airport_ID  =  T3.Airport_ID WHERE T3.Airport_Name  =  "London Gatwick"
+select aircraft.aircraft from airport_aircraft join aircraft on airport_aircraft.Aircraft_ID = aircraft.Aircraft_ID join airport on airport_aircraft.Airport_ID = airport.Airport_ID where  airport.airport_name = "London Gatwick"
+SELECT T1.Aircraft ,  T1.Description FROM aircraft AS T1 JOIN airport_aircraft AS T2 ON T1.Aircraft_ID  =  T2.Aircraft_ID JOIN airport AS T3 ON T2.Airport_ID  =  T3.Airport_ID WHERE T3.Total_Passengers  >  10000000
+select aircraft.aircraft , aircraft.description from airport_aircraft join aircraft on airport_aircraft.Aircraft_ID = aircraft.Aircraft_ID join airport on airport_aircraft.Airport_ID = airport.Airport_ID where  airport.total_passengers > 10000000
+SELECT T1.Aircraft ,  T1.Description FROM aircraft AS T1 JOIN airport_aircraft AS T2 ON T1.Aircraft_ID  =  T2.Aircraft_ID JOIN airport AS T3 ON T2.Airport_ID  =  T3.Airport_ID WHERE T3.Total_Passengers  >  10000000
+select aircraft.aircraft , aircraft.description from airport_aircraft join aircraft on airport_aircraft.Aircraft_ID = aircraft.Aircraft_ID join airport on airport_aircraft.Airport_ID = airport.Airport_ID where  airport.total_passengers > 10000000
+SELECT avg(T3.Total_Passengers) FROM aircraft AS T1 JOIN airport_aircraft AS T2 ON T1.Aircraft_ID  =  T2.Aircraft_ID JOIN airport AS T3 ON T2.Airport_ID  =  T3.Airport_ID WHERE T1.Aircraft  =  "Robinson R-22"
+select avg(airport.total_passengers) from airport_aircraft join aircraft on airport_aircraft.Aircraft_ID = aircraft.Aircraft_ID join airport on airport_aircraft.Airport_ID = airport.Airport_ID where  aircraft.aircraft = "Robinson R-22"
+SELECT avg(T3.Total_Passengers) FROM aircraft AS T1 JOIN airport_aircraft AS T2 ON T1.Aircraft_ID  =  T2.Aircraft_ID JOIN airport AS T3 ON T2.Airport_ID  =  T3.Airport_ID WHERE T1.Aircraft  =  "Robinson R-22"
+select avg(airport.total_passengers) from airport_aircraft join aircraft on airport_aircraft.Aircraft_ID = aircraft.Aircraft_ID join airport on airport_aircraft.Airport_ID = airport.Airport_ID where  aircraft.aircraft = "Robinson R-22"
+SELECT T2.Location ,  T1.Aircraft FROM aircraft AS T1 JOIN MATCH AS T2 ON T1.Aircraft_ID  =  T2.Winning_Aircraft
+select match.location , aircraft.aircraft from match join aircraft on match.Winning_Aircraft = aircraft.Aircraft_ID
+SELECT T2.Location ,  T1.Aircraft FROM aircraft AS T1 JOIN MATCH AS T2 ON T1.Aircraft_ID  =  T2.Winning_Aircraft
+select match.location , aircraft.aircraft from match join aircraft on match.Winning_Aircraft = aircraft.Aircraft_ID
+SELECT T1.Aircraft FROM aircraft AS T1 JOIN MATCH AS T2 ON T1.Aircraft_ID  =  T2.Winning_Aircraft GROUP BY T2.Winning_Aircraft ORDER BY COUNT(*) DESC LIMIT 1
+select aircraft.aircraft from match join aircraft on match.Winning_Aircraft = aircraft.Aircraft_ID  group by match.winning_aircraft  order by count(*) desc limit 1
+SELECT T1.Aircraft FROM aircraft AS T1 JOIN MATCH AS T2 ON T1.Aircraft_ID  =  T2.Winning_Aircraft GROUP BY T2.Winning_Aircraft ORDER BY COUNT(*) DESC LIMIT 1
+select aircraft.aircraft from match join aircraft on match.Winning_Aircraft = aircraft.Aircraft_ID  group by match.winning_aircraft  order by count(*) desc limit 1
+SELECT T1.Aircraft ,  COUNT(*) FROM aircraft AS T1 JOIN MATCH AS T2 ON T1.Aircraft_ID  =  T2.Winning_Aircraft GROUP BY T2.Winning_Aircraft
+select aircraft.aircraft , count(*) from match join aircraft on match.Winning_Aircraft = aircraft.Aircraft_ID  group by match.winning_aircraft
+SELECT T1.Aircraft ,  COUNT(*) FROM aircraft AS T1 JOIN MATCH AS T2 ON T1.Aircraft_ID  =  T2.Winning_Aircraft GROUP BY T2.Winning_Aircraft
+select aircraft.aircraft , count(*) from match join aircraft on match.Winning_Aircraft = aircraft.Aircraft_ID  group by match.winning_aircraft
+SELECT Name FROM pilot ORDER BY Age DESC
+select pilot.name from pilot   order by pilot.age desc
+SELECT Name FROM pilot ORDER BY Age DESC
+select pilot.name from pilot   order by pilot.age desc
+SELECT T1.Aircraft FROM aircraft AS T1 JOIN MATCH AS T2 ON T1.Aircraft_ID  =  T2.Winning_Aircraft GROUP BY T2.Winning_Aircraft HAVING COUNT(*)  >=  2
+select aircraft.aircraft from match join aircraft on match.Winning_Aircraft = aircraft.Aircraft_ID  group by match.winning_aircraft having  count(*) >= 2
+SELECT T1.Aircraft FROM aircraft AS T1 JOIN MATCH AS T2 ON T1.Aircraft_ID  =  T2.Winning_Aircraft GROUP BY T2.Winning_Aircraft HAVING COUNT(*)  >=  2
+select aircraft.aircraft from match join aircraft on match.Winning_Aircraft = aircraft.Aircraft_ID  group by match.winning_aircraft having  count(*) >= 2
+SELECT Aircraft FROM aircraft WHERE Aircraft_ID NOT IN (SELECT Winning_Aircraft FROM MATCH)
+select aircraft.aircraft from aircraft where  aircraft.aircraft_id not in (select match.Winning_Aircraft from match  )
+SELECT Aircraft FROM aircraft WHERE Aircraft_ID NOT IN (SELECT Winning_Aircraft FROM MATCH)
+select aircraft.aircraft from aircraft where  aircraft.aircraft_id not in (select match.Winning_Aircraft from match  )
+SELECT T1.Aircraft FROM aircraft AS T1 JOIN airport_aircraft AS T2 ON T1.Aircraft_ID  =  T2.Aircraft_ID JOIN airport AS T3 ON T2.Airport_ID  =  T3.Airport_ID WHERE T3.Airport_Name  =  "London Heathrow" INTERSECT SELECT T1.Aircraft FROM aircraft AS T1 JOIN airport_aircraft AS T2 ON T1.Aircraft_ID  =  T2.Aircraft_ID JOIN airport AS T3 ON T2.Airport_ID  =  T3.Airport_ID WHERE T3.Airport_Name  =  "London Gatwick"
+select aircraft.aircraft from airport_aircraft join aircraft on airport_aircraft.Aircraft_ID = aircraft.Aircraft_ID join airport on airport_aircraft.Airport_ID = airport.Airport_ID where  airport.airport_name = "London Heathrow"   intersect select aircraft.aircraft from airport_aircraft join aircraft on airport_aircraft.Aircraft_ID = aircraft.Aircraft_ID join airport on airport_aircraft.Airport_ID = airport.Airport_ID where  airport.airport_name = "London Gatwick"
+SELECT T1.Aircraft FROM aircraft AS T1 JOIN airport_aircraft AS T2 ON T1.Aircraft_ID  =  T2.Aircraft_ID JOIN airport AS T3 ON T2.Airport_ID  =  T3.Airport_ID WHERE T3.Airport_Name  =  "London Heathrow" INTERSECT SELECT T1.Aircraft FROM aircraft AS T1 JOIN airport_aircraft AS T2 ON T1.Aircraft_ID  =  T2.Aircraft_ID JOIN airport AS T3 ON T2.Airport_ID  =  T3.Airport_ID WHERE T3.Airport_Name  =  "London Gatwick"
+select aircraft.aircraft from airport_aircraft join aircraft on airport_aircraft.Aircraft_ID = aircraft.Aircraft_ID join airport on airport_aircraft.Airport_ID = airport.Airport_ID where  airport.airport_name = "London Heathrow"   intersect select aircraft.aircraft from airport_aircraft join aircraft on airport_aircraft.Aircraft_ID = aircraft.Aircraft_ID join airport on airport_aircraft.Airport_ID = airport.Airport_ID where  airport.airport_name = "London Gatwick"
+SELECT * FROM airport ORDER BY International_Passengers DESC LIMIT 1
+select * from airport   order by airport.international_passengers desc limit 1
+SELECT * FROM airport ORDER BY International_Passengers DESC LIMIT 1
+select * from airport   order by airport.international_passengers desc limit 1
+SELECT t1.name ,  t1.age FROM pilot AS t1 JOIN MATCH AS t2 ON t1.pilot_id  =  t2.winning_pilot WHERE t1.age  <  30 GROUP BY t2.winning_pilot ORDER BY count(*) DESC LIMIT 1
+select pilot.name , pilot.age from match join pilot on match.Winning_Pilot = pilot.Pilot_Id where  pilot.age < 30  group by match.winning_pilot  order by count(*) desc limit 1
+SELECT t1.name ,  t1.age FROM pilot AS t1 JOIN MATCH AS t2 ON t1.pilot_id  =  t2.winning_pilot WHERE t1.age  <  30 GROUP BY t2.winning_pilot ORDER BY count(*) DESC LIMIT 1
+select pilot.name , pilot.age from match join pilot on match.Winning_Pilot = pilot.Pilot_Id where  pilot.age < 30  group by match.winning_pilot  order by count(*) desc limit 1
+SELECT t1.name ,  t1.age FROM pilot AS t1 JOIN MATCH AS t2 ON t1.pilot_id  =  t2.winning_pilot ORDER BY t1.age LIMIT 1
+select pilot.name , pilot.age from match join pilot on match.Winning_Pilot = pilot.Pilot_Id   order by pilot.age asc limit 1
+SELECT t1.name ,  t1.age FROM pilot AS t1 JOIN MATCH AS t2 ON t1.pilot_id  =  t2.winning_pilot ORDER BY t1.age LIMIT 1
+select pilot.name , pilot.age from match join pilot on match.Winning_Pilot = pilot.Pilot_Id   order by pilot.age asc limit 1
+SELECT name FROM pilot WHERE pilot_id NOT IN (SELECT Winning_Pilot  FROM MATCH WHERE country  =  'Australia')
+select pilot.name from pilot where  pilot.pilot_id not in (select match.Winning_Pilot from match where  match.country = "Australia"  )
+SELECT name FROM pilot WHERE pilot_id NOT IN (SELECT Winning_Pilot  FROM MATCH WHERE country  =  'Australia')
+select pilot.name from pilot where  pilot.pilot_id not in (select match.Winning_Pilot from match where  match.country = "Australia"  )

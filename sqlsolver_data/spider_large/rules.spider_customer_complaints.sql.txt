@@ -1,0 +1,92 @@
+SELECT count(*) FROM customers
+select count(*) from Customers
+SELECT count(*) FROM customers
+select count(*) from Customers
+SELECT email_address ,  phone_number FROM customers ORDER BY email_address ,  phone_number
+select customers.email_address , customers.phone_number from Customers   order by customers.email_address,customers.phone_number asc
+SELECT email_address ,  phone_number FROM customers ORDER BY email_address ,  phone_number
+select customers.email_address , customers.phone_number from Customers   order by customers.email_address,customers.phone_number asc
+SELECT town_city FROM customers WHERE customer_type_code  =  "Good Credit Rating" GROUP BY town_city ORDER BY count(*) LIMIT 1
+select customers.town_city from Customers where  customers.customer_type_code = "Good Credit Rating"  group by customers.town_city  order by count(*) asc limit 1
+SELECT town_city FROM customers WHERE customer_type_code  =  "Good Credit Rating" GROUP BY town_city ORDER BY count(*) LIMIT 1
+select customers.town_city from Customers where  customers.customer_type_code = "Good Credit Rating"  group by customers.town_city  order by count(*) asc limit 1
+SELECT t1.product_name ,  count(*) FROM products AS t1 JOIN complaints AS t2 ON t1.product_id  =  t2.product_id GROUP BY t1.product_name
+select products.product_name , count(*) from Complaints join Products on Complaints.product_id = Products.product_id  group by products.product_name
+SELECT t1.product_name ,  count(*) FROM products AS t1 JOIN complaints AS t2 ON t1.product_id  =  t2.product_id GROUP BY t1.product_name
+select products.product_name , count(*) from Complaints join Products on Complaints.product_id = Products.product_id  group by products.product_name
+SELECT t1.email_address FROM customers AS t1 JOIN complaints AS t2 ON t1.customer_id  =  t2.customer_id GROUP BY t1.customer_id ORDER BY count(*) LIMIT 1
+select customers.email_address from Complaints join Customers on Complaints.customer_id = Customers.customer_id  group by customers.customer_id  order by count(*) asc limit 1
+SELECT t1.email_address FROM customers AS t1 JOIN complaints AS t2 ON t1.customer_id  =  t2.customer_id GROUP BY t1.customer_id ORDER BY count(*) LIMIT 1
+select customers.email_address from Complaints join Customers on Complaints.customer_id = Customers.customer_id  group by complaints.product_id  order by count(*) asc limit 1
+SELECT DISTINCT t1.product_name FROM products AS t1 JOIN complaints AS t2 ON t1.product_id  =  t2.product_id JOIN customers AS t3 GROUP BY t3.customer_id ORDER BY count(*) LIMIT 1
+select distinct products.product_name from Complaints join Customers on Complaints.customer_id = Customers.customer_id join Products on Complaints.product_id = Products.product_id  group by customers.customer_id  order by count(*) asc limit 1
+SELECT DISTINCT t1.product_name FROM products AS t1 JOIN complaints AS t2 ON t1.product_id  =  t2.product_id JOIN customers AS t3 GROUP BY t3.customer_id ORDER BY count(*) LIMIT 1
+select distinct products.product_name from Complaints join Customers on Complaints.customer_id = Customers.customer_id join Products on Complaints.product_id = Products.product_id  group by customers.customer_id  order by count(*) asc limit 1
+SELECT t1.phone_number FROM customers AS t1 JOIN complaints AS t2 ON t1.customer_id  =  t2.customer_id ORDER BY t2.date_complaint_raised DESC LIMIT 1
+select customers.phone_number from Complaints join Customers on Complaints.customer_id = Customers.customer_id   order by complaints.date_complaint_raised desc limit 1
+SELECT t1.phone_number FROM customers AS t1 JOIN complaints AS t2 ON t1.customer_id  =  t2.customer_id ORDER BY t2.date_complaint_raised DESC LIMIT 1
+select customers.phone_number from Complaints join Customers on Complaints.customer_id = Customers.customer_id   order by complaints.date_complaint_raised desc limit 1
+SELECT email_address ,  phone_number FROM customers WHERE customer_id NOT IN (SELECT customer_id FROM complaints)
+select customers.email_address , customers.phone_number from Customers where  customers.customer_id not in (select Complaints.customer_id from Complaints  )
+SELECT email_address ,  phone_number FROM customers WHERE customer_id NOT IN (SELECT customer_id FROM complaints)
+select customers.email_address , customers.phone_number from Customers where  customers.customer_id not in (select Complaints.customer_id from Complaints  )
+SELECT phone_number FROM customers UNION SELECT phone_number FROM staff
+select customers.phone_number from Customers   union select staff.phone_number from Staff
+SELECT phone_number FROM customers UNION SELECT phone_number FROM staff
+select customers.phone_number from Customers   union select staff.phone_number from Staff
+SELECT product_description FROM products WHERE product_name  =  "Chocolate"
+select products.product_description from Products where  products.product_name = "Chocolate"
+SELECT product_description FROM products WHERE product_name  =  "Chocolate"
+select products.product_description from Products where  products.product_name = "Chocolate"
+SELECT product_name ,  product_category_code FROM products ORDER BY product_price DESC LIMIT 1
+select products.product_name , products.product_category_code from Products   order by products.product_price desc limit 1
+SELECT product_name ,  product_category_code FROM products ORDER BY product_price DESC LIMIT 1
+select products.product_name , products.product_category_code from Products   order by products.product_price desc limit 1
+SELECT product_price FROM products WHERE product_id NOT IN (SELECT product_id FROM complaints)
+select products.product_price from Products where  products.product_id not in (select Complaints.product_id from Complaints  )
+SELECT product_price FROM products WHERE product_id NOT IN (SELECT product_id FROM complaints)
+select products.product_price from Products where  products.product_id not in (select Complaints.product_id from Complaints  )
+SELECT avg(product_price) ,  product_category_code FROM products GROUP BY product_category_code
+select avg(products.product_price) , products.product_category_code from Products  group by products.product_category_code
+SELECT avg(product_price) ,  product_category_code FROM products GROUP BY product_category_code
+select avg(products.product_price) , products.product_category_code from Products  group by products.product_category_code
+SELECT t1.last_name FROM staff AS t1 JOIN complaints AS t2 ON t1.staff_id  =  t2.staff_id JOIN products AS t3 ON t2.product_id  =  t3.product_id ORDER BY t3.product_price LIMIT 1
+select staff.last_name from Complaints join Products on Complaints.product_id = Products.product_id join Staff on Complaints.staff_id = Staff.staff_id   order by products.product_price asc limit 1
+SELECT t1.last_name FROM staff AS t1 JOIN complaints AS t2 ON t1.staff_id  =  t2.staff_id JOIN products AS t3 ON t2.product_id  =  t3.product_id ORDER BY t3.product_price LIMIT 1
+select staff.last_name from Complaints join Products on Complaints.product_id = Products.product_id join Staff on Complaints.staff_id = Staff.staff_id   order by products.product_price asc limit 1
+SELECT complaint_status_code FROM complaints GROUP BY complaint_status_code HAVING count(*)  >  3
+select complaints.complaint_status_code from Complaints  group by complaints.complaint_status_code having  count(*) > 3
+SELECT complaint_status_code FROM complaints GROUP BY complaint_status_code HAVING count(*)  >  3
+select complaints.complaint_status_code from Complaints  group by complaints.complaint_status_code having  count(*) > 3
+SELECT last_name FROM staff WHERE email_address LIKE "%wrau%"
+select staff.last_name from Staff where  staff.email_address like "%wrau%"
+SELECT last_name FROM staff WHERE email_address LIKE "%wrau%"
+select staff.last_name from Staff where  staff.email_address like "%wrau%"
+SELECT count(*) FROM customers GROUP BY customer_type_code ORDER BY count(*) DESC LIMIT 1
+select count(*) from Customers  group by customers.customer_type_code  order by count(*) desc limit 1
+SELECT count(*) FROM customers GROUP BY customer_type_code ORDER BY count(*) DESC LIMIT 1
+select count(*) from Customers  group by customers.customer_type_code  order by count(*) desc limit 1
+SELECT t1.last_name FROM staff AS t1 JOIN complaints AS t2 ON t1.staff_id  =  t2.staff_id ORDER BY t2.date_complaint_raised LIMIT 1
+select staff.last_name from Complaints join Staff on Complaints.staff_id = Staff.staff_id   order by complaints.date_complaint_raised asc limit 1
+SELECT t1.last_name FROM staff AS t1 JOIN complaints AS t2 ON t1.staff_id  =  t2.staff_id ORDER BY t2.date_complaint_raised LIMIT 1
+select staff.last_name from Complaints join Staff on Complaints.staff_id = Staff.staff_id   order by complaints.date_complaint_raised asc limit 1
+SELECT count(DISTINCT complaint_type_code) FROM complaints
+select count( distinct complaints.complaint_type_code) from Complaints
+SELECT count(DISTINCT complaint_type_code) FROM complaints
+select count( distinct complaints.complaint_type_code) from Complaints
+SELECT address_line_1 ,  address_line_2 FROM customers WHERE email_address  =  "vbogisich@example.org"
+select customers.address_line_1 , customers.address_line_2 from Customers where  customers.email_address = "vbogisich@example.org"
+SELECT address_line_1 ,  address_line_2 FROM customers WHERE email_address  =  "vbogisich@example.org"
+select customers.address_line_1 , customers.address_line_2 from Customers where  customers.email_address = "vbogisich@example.org"
+SELECT complaint_status_code ,  count(*) FROM complaints WHERE complaint_type_code  =  "Product Failure" GROUP BY complaint_status_code
+select complaints.complaint_status_code , count(*) from Complaints where  complaints.complaint_type_code = "Product Failure"  group by complaints.complaint_status_code
+SELECT complaint_status_code ,  count(*) FROM complaints WHERE complaint_type_code  =  "Product Failure" GROUP BY complaint_status_code
+select complaints.complaint_status_code , count(*) from Complaints where  complaints.complaint_type_code = "Product Failure"  group by complaints.complaint_status_code
+SELECT t1.first_name FROM staff AS t1 JOIN complaints AS t2 ON t1.staff_id  =  t2.staff_id GROUP BY t2.staff_id ORDER BY count(*) LIMIT 5
+select staff.first_name from Complaints join Staff on Complaints.staff_id = Staff.staff_id  group by complaints.staff_id  order by count(*) asc limit 5
+SELECT t1.first_name FROM staff AS t1 JOIN complaints AS t2 ON t1.staff_id  =  t2.staff_id GROUP BY t2.staff_id ORDER BY count(*) LIMIT 5
+select staff.first_name from Complaints join Staff on Complaints.staff_id = Staff.staff_id  group by complaints.staff_id  order by count(*) asc limit 5
+SELECT state FROM customers GROUP BY state ORDER BY count(*) LIMIT 1
+select customers.state from Customers  group by customers.state  order by count(*) asc limit 1
+SELECT state FROM customers GROUP BY state ORDER BY count(*) LIMIT 1
+select customers.state from Customers  group by customers.state  order by count(*) asc limit 1

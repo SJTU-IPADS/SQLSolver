@@ -1,0 +1,80 @@
+SELECT name FROM channel WHERE OWNER != 'CCTV'
+select channel.name from channel where  channel.owner != "CCTV"
+SELECT name FROM channel WHERE OWNER != 'CCTV'
+select channel.name from channel where  channel.owner != "CCTV"
+SELECT name FROM channel ORDER BY rating_in_percent DESC
+select channel.name from channel   order by channel.rating_in_percent desc
+SELECT name FROM channel ORDER BY rating_in_percent DESC
+select channel.name from channel   order by channel.rating_in_percent desc
+SELECT OWNER FROM channel ORDER BY rating_in_percent DESC LIMIT 1
+select channel.owner from channel   order by channel.rating_in_percent desc limit 1
+SELECT OWNER FROM channel ORDER BY rating_in_percent DESC LIMIT 1
+select channel.owner from channel   order by channel.rating_in_percent desc limit 1
+SELECT count(*) FROM program
+select count(*) from program
+SELECT count(*) FROM program
+select count(*) from program
+SELECT name FROM program ORDER BY launch
+select program.name from program   order by program.launch asc
+SELECT name FROM program ORDER BY launch
+select program.name from program   order by program.launch asc
+SELECT name ,  origin ,  OWNER FROM program
+select program.name , program.origin , program.owner from program
+SELECT name ,  origin ,  OWNER FROM program
+select program.name , program.origin , program.owner from program
+SELECT name FROM program ORDER BY launch DESC LIMIT 1
+select program.name from program   order by program.launch desc limit 1
+SELECT name FROM program ORDER BY launch DESC LIMIT 1
+select program.name from program   order by program.launch desc limit 1
+SELECT sum(Share_in_percent) FROM channel WHERE OWNER  =  'CCTV'
+select sum(channel.share_in_percent) from channel where  channel.owner = "CCTV"
+SELECT sum(Share_in_percent) FROM channel WHERE OWNER  =  'CCTV'
+select sum(channel.share_in_percent) from channel where  channel.owner = "CCTV"
+SELECT t1.name FROM channel AS t1 JOIN broadcast AS t2 ON t1.channel_id  =  t2.channel_id WHERE t2.time_of_day  =  'Morning'
+select channel.name from broadcast join channel on broadcast.Channel_ID = channel.Channel_ID where  broadcast.time_of_day = "Morning"
+SELECT t1.name FROM channel AS t1 JOIN broadcast AS t2 ON t1.channel_id  =  t2.channel_id WHERE t2.time_of_day  =  'Morning'
+select channel.name from broadcast join channel on broadcast.Channel_ID = channel.Channel_ID where  broadcast.time_of_day = "Morning"
+SELECT t1.name FROM channel AS t1 JOIN broadcast AS t2 ON t1.channel_id  =  t2.channel_id WHERE t2.time_of_day  =  'Morning' INTERSECT SELECT t1.name FROM channel AS t1 JOIN broadcast AS t2 ON t1.channel_id  =  t2.channel_id WHERE t2.time_of_day  =  'Night'
+select channel.name from broadcast join channel on broadcast.Channel_ID = channel.Channel_ID where  broadcast.time_of_day = "Morning"   intersect select channel.name from broadcast join channel on broadcast.Channel_ID = channel.Channel_ID where  broadcast.time_of_day = "Night"
+SELECT t1.name FROM channel AS t1 JOIN broadcast AS t2 ON t1.channel_id  =  t2.channel_id WHERE t2.time_of_day  =  'Morning' INTERSECT SELECT t1.name FROM channel AS t1 JOIN broadcast AS t2 ON t1.channel_id  =  t2.channel_id WHERE t2.time_of_day  =  'Night'
+select channel.name from broadcast join channel on broadcast.Channel_ID = channel.Channel_ID where  broadcast.time_of_day = "Morning"   intersect select channel.name from broadcast join channel on broadcast.Channel_ID = channel.Channel_ID where  broadcast.time_of_day = "Night"
+SELECT count(*) ,  time_of_day FROM broadcast GROUP BY time_of_day
+select count(*) , broadcast.time_of_day from broadcast  group by broadcast.time_of_day
+SELECT count(*) ,  time_of_day FROM broadcast GROUP BY time_of_day
+select count(*) , broadcast.time_of_day from broadcast  group by broadcast.time_of_day
+SELECT count(DISTINCT program_id) FROM broadcast WHERE time_of_day  =  'Night'
+select count( distinct broadcast.program_id) from broadcast where  broadcast.time_of_day = "Night"
+SELECT count(DISTINCT program_id) FROM broadcast WHERE time_of_day  =  'Night'
+select count( distinct broadcast.program_id) from broadcast where  broadcast.time_of_day = "Night"
+SELECT name FROM program EXCEPT SELECT t1.name FROM program AS t1 JOIN broadcast AS t2 ON t1.program_id  =  t2.program_id WHERE t2.Time_of_day  =  "Morning"
+select program.name from program   except select program.name from broadcast join program on broadcast.Program_ID = program.Program_ID where  broadcast.time_of_day = "Morning"
+SELECT name FROM program EXCEPT SELECT t1.name FROM program AS t1 JOIN broadcast AS t2 ON t1.program_id  =  t2.program_id WHERE t2.Time_of_day  =  "Morning"
+select program.name from program   except select program.name from broadcast join program on broadcast.Program_ID = program.Program_ID where  broadcast.time_of_day = "Morning"
+SELECT t1.owner FROM program AS t1 JOIN broadcast AS t2 ON t1.program_id  =  t2.program_id WHERE t2.Time_of_day  =  "Morning" INTERSECT SELECT t1.owner FROM program AS t1 JOIN broadcast AS t2 ON t1.program_id  =  t2.program_id WHERE t2.Time_of_day  =  "Night"
+select program.owner from broadcast join program on broadcast.Program_ID = program.Program_ID where  broadcast.time_of_day = "Morning"   intersect select program.owner from broadcast join program on broadcast.Program_ID = program.Program_ID where  broadcast.time_of_day = "Night"
+SELECT t1.owner FROM program AS t1 JOIN broadcast AS t2 ON t1.program_id  =  t2.program_id WHERE t2.Time_of_day  =  "Morning" INTERSECT SELECT t1.owner FROM program AS t1 JOIN broadcast AS t2 ON t1.program_id  =  t2.program_id WHERE t2.Time_of_day  =  "Night"
+select program.owner from broadcast join program on broadcast.Program_ID = program.Program_ID where  broadcast.time_of_day = "Morning"   intersect select program.owner from broadcast join program on broadcast.Program_ID = program.Program_ID where  broadcast.time_of_day = "Night"
+SELECT origin FROM program ORDER BY origin
+select program.origin from program   order by program.origin asc
+SELECT origin FROM program ORDER BY origin
+select program.origin from program   order by program.origin asc
+SELECT count(DISTINCT OWNER) FROM channel
+select count( distinct channel.owner) from channel
+SELECT count(DISTINCT OWNER) FROM channel
+select count( distinct channel.owner) from channel
+SELECT name FROM program WHERE origin != 'Beijing'
+select program.name from program where  program.origin != "Beijing"
+SELECT name FROM program WHERE origin != 'Beijing'
+select program.name from program where  program.origin != "Beijing"
+SELECT name FROM channel WHERE OWNER  =  'CCTV' OR OWNER  =  'HBS'
+select channel.name from channel where  channel.owner = "CCTV" or channel.owner = "HBS"
+SELECT name FROM channel WHERE OWNER  =  'CCTV' OR OWNER  =  'HBS'
+select channel.name from channel where  channel.owner = "CCTV" or channel.owner = "HBS"
+SELECT sum(Rating_in_percent) ,  OWNER FROM channel GROUP BY OWNER
+select sum(channel.rating_in_percent) , channel.owner from channel  group by channel.owner
+SELECT sum(Rating_in_percent) ,  OWNER FROM channel GROUP BY OWNER
+select sum(channel.rating_in_percent) , channel.owner from channel  group by channel.owner
+SELECT t1.name FROM program AS t1 JOIN broadcast AS t2 ON t1.program_id  =  t2.program_id GROUP BY t2.program_id ORDER BY count(*) DESC LIMIT 1
+select program.name from broadcast join program on broadcast.Program_ID = program.Program_ID  group by broadcast.program_id  order by count(*) desc limit 1
+SELECT t1.name FROM program AS t1 JOIN broadcast AS t2 ON t1.program_id  =  t2.program_id GROUP BY t2.program_id ORDER BY count(*) DESC LIMIT 1
+select program.name from broadcast join program on broadcast.Program_ID = program.Program_ID  group by broadcast.program_id  order by count(*) desc limit 1

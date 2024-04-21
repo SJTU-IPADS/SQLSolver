@@ -1,0 +1,36 @@
+SELECT count(*) FROM driver
+select count(*) from driver
+SELECT name ,  home_city ,  age FROM driver
+select driver.name , driver.home_city , driver.age from driver
+SELECT party ,  count(*) FROM driver GROUP BY party
+select driver.party , count(*) from driver  group by driver.party
+SELECT name FROM driver ORDER BY age DESC
+select driver.name from driver   order by driver.age desc
+SELECT DISTINCT home_city FROM driver
+select distinct driver.home_city from driver
+SELECT home_city FROM driver GROUP BY home_city ORDER BY count(*) DESC LIMIT 1
+select driver.home_city from driver  group by driver.home_city  order by count(*) desc limit 1
+SELECT party FROM driver WHERE home_city  =  'Hartford' AND age  >  40
+select driver.party from driver where  driver.home_city = "Hartford" and driver.age > 40
+SELECT home_city FROM driver WHERE age  >  40 GROUP BY home_city HAVING count(*)  >=  2
+select driver.home_city from driver where  driver.age > 40  group by driver.home_city having  count(*) >= 2
+SELECT home_city FROM driver EXCEPT SELECT home_city FROM driver WHERE age  >  40
+select driver.home_city from driver   except select driver.home_city from driver where  driver.age > 40
+SELECT name FROM driver WHERE driver_id NOT IN (SELECT driver_id FROM school_bus)
+select driver.name from driver where  driver.driver_id not in (select school_bus.Driver_ID from school_bus  )
+SELECT TYPE FROM school GROUP BY TYPE HAVING count(*)  =  2
+select school.type from school  group by school.type having  count(*) = 2
+SELECT T2.school ,  T3.name FROM school_bus AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id JOIN driver AS T3 ON T1.driver_id  =  T3.driver_id
+select school.school , driver.name from school_bus join driver on school_bus.Driver_ID = driver.Driver_ID join school on school_bus.School_ID = school.School_ID
+SELECT max(years_working) ,  min(years_working) ,  avg(years_working) FROM school_bus
+select max(school_bus.years_working) , min(school_bus.years_working) , avg(school_bus.years_working) from school_bus
+SELECT school ,  TYPE FROM school WHERE school_id NOT IN (SELECT school_id FROM school_bus)
+select school.school , school.type from school where  school.school_id not in (select school_bus.School_ID from school_bus  )
+SELECT T2.type ,  count(*) FROM school_bus AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id GROUP BY T2.type
+select school.type , count(*) from school_bus join school on school_bus.School_ID = school.School_ID  group by school.type
+SELECT count(*) FROM driver WHERE home_city  =  'Hartford' OR age  <  40
+select count(*) from driver where  driver.home_city = "Hartford" or driver.age < 40
+SELECT name FROM driver WHERE home_city  =  'Hartford' AND age  <  40
+select driver.name from driver where  driver.home_city = "Hartford" and driver.age < 40
+SELECT t1.name FROM driver AS t1 JOIN school_bus AS t2 ON t1.driver_id  =  t2.driver_id ORDER BY years_working DESC LIMIT 1
+select driver.name from school_bus join driver on school_bus.Driver_ID = driver.Driver_ID   order by school_bus.years_working desc limit 1

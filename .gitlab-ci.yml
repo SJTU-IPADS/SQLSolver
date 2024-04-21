@@ -1,0 +1,25 @@
+image: gradle:7.0-jdk16
+
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+cache:
+  key:
+    files:
+      - sqlsolver_data/data.version
+  paths:
+    - .gradle/caches
+    - sqlsolver_data/sqlsolver.db
+    - lib/libz3.so
+    - lib/libz3java.so
+
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+  DOCKER_DRIVER: overlay2
+
+stages:
+  - test
+
+unit-test:
+  script:
+    - gradle clean test --info

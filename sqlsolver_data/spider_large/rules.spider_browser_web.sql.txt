@@ -1,0 +1,36 @@
+SELECT count(*) FROM browser WHERE market_share  >=  5
+select count(*) from browser where  browser.market_share >= 5
+SELECT name FROM browser ORDER BY market_share DESC
+select browser.name from browser   order by browser.market_share desc
+SELECT id ,  name ,  market_share FROM browser
+select browser.id , browser.name , browser.market_share from browser
+SELECT max(market_share) ,  min(market_share) ,  avg(market_share) FROM browser
+select max(browser.market_share) , min(browser.market_share) , avg(browser.market_share) from browser
+SELECT id ,  market_share FROM browser WHERE name  =  'Safari'
+select browser.id , browser.market_share from browser where  browser.name = "Safari"
+SELECT name ,  operating_system FROM web_client_accelerator WHERE CONNECTION != 'Broadband'
+select web_client_accelerator.name , web_client_accelerator.operating_system from Web_client_accelerator where  web_client_accelerator.connection != "Broadband"
+SELECT T1.name FROM browser AS T1 JOIN accelerator_compatible_browser AS T2 ON T1.id  =  T2.browser_id JOIN web_client_accelerator AS T3 ON T2.accelerator_id  =  T3.id WHERE T3.name  =  'CProxy' AND T2.compatible_since_year  >  1998
+select browser.name from accelerator_compatible_browser join browser on accelerator_compatible_browser.browser_id = browser.id join Web_client_accelerator on accelerator_compatible_browser.accelerator_id = Web_client_accelerator.id where  web_client_accelerator.name = "CProxy" and accelerator_compatible_browser.compatible_since_year > 1998
+SELECT T1.id ,  T1.Name FROM web_client_accelerator AS T1 JOIN accelerator_compatible_browser AS T2 ON T2.accelerator_id  =  T1.id GROUP BY T1.id HAVING count(*)  >=  2
+select web_client_accelerator.id , web_client_accelerator.name from accelerator_compatible_browser join Web_client_accelerator on accelerator_compatible_browser.accelerator_id = Web_client_accelerator.id  group by web_client_accelerator.id having  count(*) >= 2
+SELECT T1.id ,  T1.name FROM browser AS T1 JOIN accelerator_compatible_browser AS T2 ON T1.id  =  T2.browser_id GROUP BY T1.id ORDER BY count(*) DESC LIMIT 1
+select browser.id , browser.name from accelerator_compatible_browser join browser on accelerator_compatible_browser.browser_id = browser.id  group by browser.id  order by count(*) desc limit 1
+SELECT T1.compatible_since_year FROM accelerator_compatible_browser AS T1 JOIN browser AS T2 ON T1.browser_id  =  T2.id JOIN web_client_accelerator AS T3 ON T1.accelerator_id  =  T3.id WHERE T3.name  =  'CACHEbox' AND T2.name  =  'Internet Explorer'
+select accelerator_compatible_browser.compatible_since_year from accelerator_compatible_browser join browser on accelerator_compatible_browser.browser_id = browser.id join Web_client_accelerator on accelerator_compatible_browser.accelerator_id = Web_client_accelerator.id where  web_client_accelerator.name = "CACHEbox" and browser.name = "Internet Explorer"
+SELECT count(DISTINCT client) FROM web_client_accelerator
+select count( distinct web_client_accelerator.client) from Web_client_accelerator
+SELECT count(*) FROM web_client_accelerator WHERE id NOT IN ( SELECT accelerator_id FROM accelerator_compatible_browser );
+select count(*) from Web_client_accelerator where  web_client_accelerator.id not in (select accelerator_compatible_browser.accelerator_id from accelerator_compatible_browser  )
+SELECT DISTINCT T1.name FROM web_client_accelerator AS T1 JOIN accelerator_compatible_browser AS T2 ON T2.accelerator_id  =  T1.id JOIN browser AS T3 ON T2.browser_id  =  T3.id WHERE T3.market_share  >  15;
+select distinct web_client_accelerator.name from accelerator_compatible_browser join browser on accelerator_compatible_browser.browser_id = browser.id join Web_client_accelerator on accelerator_compatible_browser.accelerator_id = Web_client_accelerator.id where  browser.market_share > 15
+SELECT T3.name FROM web_client_accelerator AS T1 JOIN accelerator_compatible_browser AS T2 ON T2.accelerator_id  =  T1.id JOIN browser AS T3 ON T2.browser_id  =  T3.id WHERE T1.name  =  'CACHEbox' INTERSECT SELECT T3.name FROM web_client_accelerator AS T1 JOIN accelerator_compatible_browser AS T2 ON T2.accelerator_id  =  T1.id JOIN browser AS T3 ON T2.browser_id  =  T3.id WHERE T1.name  =  'Fasterfox'
+select browser.name from accelerator_compatible_browser join browser on accelerator_compatible_browser.browser_id = browser.id join Web_client_accelerator on accelerator_compatible_browser.accelerator_id = Web_client_accelerator.id where  web_client_accelerator.name = "CACHEbox"   intersect select browser.name from accelerator_compatible_browser join browser on accelerator_compatible_browser.browser_id = browser.id join Web_client_accelerator on accelerator_compatible_browser.accelerator_id = Web_client_accelerator.id where  web_client_accelerator.name = "Fasterfox"
+SELECT name ,  operating_system FROM web_client_accelerator EXCEPT SELECT T1.name ,  T1.operating_system FROM web_client_accelerator AS T1 JOIN accelerator_compatible_browser AS T2 ON T2.accelerator_id  =  T1.id JOIN browser AS T3 ON T2.browser_id  =  T3.id WHERE T3.name  =  'Opera'
+select web_client_accelerator.name , web_client_accelerator.operating_system from Web_client_accelerator   except select web_client_accelerator.name , web_client_accelerator.operating_system from accelerator_compatible_browser join browser on accelerator_compatible_browser.browser_id = browser.id join Web_client_accelerator on accelerator_compatible_browser.accelerator_id = Web_client_accelerator.id where  browser.name = "Opera"
+SELECT name FROM web_client_accelerator WHERE name LIKE "%Opera%"
+select web_client_accelerator.name from Web_client_accelerator where  web_client_accelerator.name like "%Opera%"
+SELECT Operating_system ,  count(*) FROM web_client_accelerator GROUP BY Operating_system
+select web_client_accelerator.operating_system , count(*) from Web_client_accelerator  group by web_client_accelerator.operating_system
+SELECT T2.name ,  T3.name FROM accelerator_compatible_browser AS T1 JOIN browser AS T2 ON T1.browser_id  =  T2.id JOIN web_client_accelerator AS T3 ON T1.accelerator_id  =  T3.id ORDER BY T1.compatible_since_year DESC
+select browser.name , web_client_accelerator.name from accelerator_compatible_browser join browser on accelerator_compatible_browser.browser_id = browser.id join Web_client_accelerator on accelerator_compatible_browser.accelerator_id = Web_client_accelerator.id   order by accelerator_compatible_browser.compatible_since_year desc

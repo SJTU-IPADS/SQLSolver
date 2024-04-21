@@ -1,0 +1,80 @@
+SELECT count(*) FROM entrepreneur
+select count(*) from entrepreneur
+SELECT count(*) FROM entrepreneur
+select count(*) from entrepreneur
+SELECT Company FROM entrepreneur ORDER BY Money_Requested DESC
+select entrepreneur.company from entrepreneur   order by entrepreneur.money_requested desc
+SELECT Company FROM entrepreneur ORDER BY Money_Requested DESC
+select entrepreneur.company from entrepreneur   order by entrepreneur.money_requested desc
+SELECT Company ,  Investor FROM entrepreneur
+select entrepreneur.company , entrepreneur.investor from entrepreneur
+SELECT Company ,  Investor FROM entrepreneur
+select entrepreneur.company , entrepreneur.investor from entrepreneur
+SELECT avg(Money_Requested) FROM entrepreneur
+select avg(entrepreneur.money_requested) from entrepreneur
+SELECT avg(Money_Requested) FROM entrepreneur
+select avg(entrepreneur.money_requested) from entrepreneur
+SELECT Name FROM People ORDER BY Weight ASC
+select people.name from people   order by people.weight asc
+SELECT Name FROM People ORDER BY Weight ASC
+select people.name from people   order by people.weight asc
+SELECT T2.Name FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID
+select people.name from entrepreneur join people on entrepreneur.People_ID = people.People_ID
+SELECT T2.Name FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID
+select people.name from entrepreneur join people on entrepreneur.People_ID = people.People_ID
+SELECT T2.Name FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID WHERE T1.Investor != "Rachel Elnaugh"
+select people.name from entrepreneur join people on entrepreneur.People_ID = people.People_ID where  entrepreneur.investor != "Rachel Elnaugh"
+SELECT T2.Name FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID WHERE T1.Investor != "Rachel Elnaugh"
+select people.name from entrepreneur join people on entrepreneur.People_ID = people.People_ID where  entrepreneur.investor != "Rachel Elnaugh"
+SELECT Weight FROM people ORDER BY Height ASC LIMIT 1
+select people.weight from people   order by people.height asc limit 1
+SELECT Weight FROM people ORDER BY Height ASC LIMIT 1
+select people.weight from people   order by people.height asc limit 1
+SELECT T2.Name FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T2.Weight DESC LIMIT 1
+select people.name from entrepreneur join people on entrepreneur.People_ID = people.People_ID   order by people.weight desc limit 1
+SELECT T2.Name FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T2.Weight DESC LIMIT 1
+select people.name from entrepreneur join people on entrepreneur.People_ID = people.People_ID   order by people.weight desc limit 1
+SELECT sum(T1.Money_Requested) FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID WHERE T2.Height  >  1.85
+select sum(entrepreneur.money_requested) from entrepreneur join people on entrepreneur.People_ID = people.People_ID where  people.height > (select entrepreneur.money_requested from entrepreneur  )
+SELECT sum(T1.Money_Requested) FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID WHERE T2.Height  >  1.85
+select sum(entrepreneur.money_requested) from entrepreneur join people on entrepreneur.People_ID = people.People_ID where  people.height > (select entrepreneur.money_requested from entrepreneur  )
+SELECT T2.Date_of_Birth FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID WHERE T1.Investor  =  "Simon Woodroffe" OR T1.Investor  =  "Peter Jones"
+select people.date_of_birth from entrepreneur join people on entrepreneur.People_ID = people.People_ID where  entrepreneur.investor = "Simon Woodroffe" or entrepreneur.investor = "Peter Jones"
+SELECT T2.Date_of_Birth FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID WHERE T1.Investor  =  "Simon Woodroffe" OR T1.Investor  =  "Peter Jones"
+select people.date_of_birth from entrepreneur join people on entrepreneur.People_ID = people.People_ID where  entrepreneur.investor = "Simon Woodroffe" or entrepreneur.investor = "Peter Jones"
+SELECT T2.Weight FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T1.Money_Requested DESC
+select people.weight from entrepreneur join people on entrepreneur.People_ID = people.People_ID   order by entrepreneur.money_requested desc
+SELECT T2.Weight FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T1.Money_Requested DESC
+select people.weight from entrepreneur join people on entrepreneur.People_ID = people.People_ID   order by entrepreneur.money_requested desc
+SELECT Investor ,  COUNT(*) FROM entrepreneur GROUP BY Investor
+select entrepreneur.investor , count(*) from entrepreneur  group by entrepreneur.investor
+SELECT Investor ,  COUNT(*) FROM entrepreneur GROUP BY Investor
+select entrepreneur.investor , count(*) from entrepreneur  group by entrepreneur.investor
+SELECT Investor FROM entrepreneur GROUP BY Investor ORDER BY COUNT(*) DESC LIMIT 1
+select entrepreneur.investor from entrepreneur  group by entrepreneur.investor  order by count(*) desc limit 1
+SELECT Investor FROM entrepreneur GROUP BY Investor ORDER BY COUNT(*) DESC LIMIT 1
+select entrepreneur.investor from entrepreneur  group by entrepreneur.investor  order by count(*) desc limit 1
+SELECT Investor FROM entrepreneur GROUP BY Investor HAVING COUNT(*)  >=  2
+select entrepreneur.investor from entrepreneur  group by entrepreneur.investor having  count(*) >= 2
+SELECT Investor FROM entrepreneur GROUP BY Investor HAVING COUNT(*)  >=  2
+select entrepreneur.investor from entrepreneur  group by entrepreneur.investor having  count(*) >= 2
+SELECT T2.Name ,  T1.Company FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T1.Money_Requested
+select people.name , entrepreneur.company from entrepreneur join people on entrepreneur.People_ID = people.People_ID   order by entrepreneur.money_requested desc
+SELECT T2.Name ,  T1.Company FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T1.Money_Requested
+select people.name , entrepreneur.company from entrepreneur join people on entrepreneur.People_ID = people.People_ID   order by entrepreneur.money_requested desc
+SELECT Name FROM people WHERE People_ID NOT IN (SELECT People_ID FROM entrepreneur)
+select people.name from people where  people.people_id not in (select entrepreneur.People_ID from entrepreneur  )
+SELECT Name FROM people WHERE People_ID NOT IN (SELECT People_ID FROM entrepreneur)
+select people.name from people where  people.people_id not in (select entrepreneur.People_ID from entrepreneur  )
+SELECT Investor FROM entrepreneur WHERE Money_Requested  >  140000 INTERSECT SELECT Investor FROM entrepreneur WHERE Money_Requested  <  120000
+select entrepreneur.investor from entrepreneur where  entrepreneur.money_requested > 140000   intersect select entrepreneur.investor from entrepreneur where  entrepreneur.money_requested < 120000
+SELECT Investor FROM entrepreneur WHERE Money_Requested  >  140000 INTERSECT SELECT Investor FROM entrepreneur WHERE Money_Requested  <  120000
+select entrepreneur.investor from entrepreneur where  entrepreneur.money_requested > 140000   intersect select entrepreneur.investor from entrepreneur where  entrepreneur.money_requested < 120000
+SELECT count(DISTINCT Company) FROM entrepreneur
+select count( distinct entrepreneur.company) from entrepreneur
+SELECT count(DISTINCT Company) FROM entrepreneur
+select count( distinct entrepreneur.company) from entrepreneur
+SELECT T1.Company FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T2.Height DESC LIMIT 1
+select entrepreneur.company from entrepreneur join people on entrepreneur.People_ID = people.People_ID   order by people.height desc limit 1
+SELECT T1.Company FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T2.Height DESC LIMIT 1
+select entrepreneur.company from entrepreneur join people on entrepreneur.People_ID = people.People_ID   order by people.height desc limit 1

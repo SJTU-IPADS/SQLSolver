@@ -1,0 +1,40 @@
+SELECT count(*) FROM Church WHERE Open_Date  <  1850
+select count(*) from church where  church.open_date < 1850
+SELECT name ,  open_date ,  organized_by FROM Church
+select church.name , church.open_date , church.organized_by from church
+SELECT name FROM church ORDER BY open_date DESC
+select church.name from church   order by church.open_date desc
+SELECT open_date FROM church GROUP BY open_date HAVING count(*)  >=  2
+select church.open_date from church  group by church.open_date having  count(*) >= 2
+SELECT organized_by ,  name FROM church WHERE open_date BETWEEN 1830 AND 1840
+select church.organized_by , church.name from church where  church.open_date between 1830 and 1840
+SELECT open_date ,  count(*) FROM church GROUP BY open_date
+select church.open_date , count(*) from church  group by church.open_date
+SELECT name ,  open_date FROM church ORDER BY open_date DESC LIMIT 3
+select church.name , church.open_date from church   order by church.open_date desc limit 3
+SELECT count(*) FROM people WHERE is_male  =  'F' AND age  >  30
+select count(*) from people where  people.is_male = "F" and people.age > 30
+SELECT country FROM people WHERE age  <  25 INTERSECT SELECT country FROM people WHERE age  >  30
+select people.country from people where  people.age < 25   intersect select people.country from people where  people.age > 30
+SELECT min(age) ,  max(age) ,  avg(age) FROM people
+select min(people.age) , max(people.age) , avg(people.age) from people
+SELECT name ,  country FROM people WHERE age  <  (SELECT avg(age) FROM people)
+select people.name , people.country from people where  people.age < (select avg(people.age) from people  )
+SELECT T2.name ,  T3.name FROM wedding AS T1 JOIN people AS T2 ON T1.male_id  =  T2.people_id JOIN people AS T3 ON T1.female_id  =  T3.people_id WHERE T1.year  >  2014
+select people.name , people.name from wedding join people on wedding.Female_ID = people.People_ID where  wedding.year > 2014
+SELECT name ,  age FROM people WHERE is_male  =  'T' AND people_id NOT IN (SELECT male_id FROM wedding)
+select people.name , people.age from people where  people.is_male = "T" and people.people_id not in (select wedding.Male_ID from wedding  )
+SELECT name FROM church EXCEPT SELECT T1.name FROM church AS T1 JOIN wedding AS T2 ON T1.church_id  =  T2.church_id WHERE T2.year  =  2015
+select church.name from church   except select church.name from wedding join church on wedding.Church_ID = church.Church_ID where  wedding.year = 2015
+SELECT T1.name FROM church AS T1 JOIN wedding AS T2 ON T1.church_id  =  T2.church_id GROUP BY T1.church_id HAVING count(*)  >=  2
+select church.name from wedding join church on wedding.Church_ID = church.Church_ID  group by church.church_id having  count(*) >= 2
+SELECT T2.name FROM wedding AS T1 JOIN people AS T2 ON T1.female_id  =  T2.people_id WHERE T1.year  =  2016 AND T2.is_male  =  'F' AND T2.country  =  'Canada'
+select people.name from wedding join people on wedding.Female_ID = people.People_ID where  wedding.year = 2016 and people.is_male = "F" and people.country = "Canada"
+SELECT count(*) FROM wedding WHERE YEAR  =  2016
+select count(*) from wedding where  wedding.year = 2016
+SELECT T4.name FROM wedding AS T1 JOIN people AS T2 ON T1.male_id  =  T2.people_id JOIN people AS T3 ON T1.female_id  =  T3.people_id JOIN church AS T4 ON T4.church_id  =  T1.church_id WHERE T2.age  >  30 OR T3.age  >  30
+select church.name from wedding join people on wedding.Female_ID = people.People_ID join church on wedding.Church_ID = church.Church_ID where  people.age > 30 or people.age > 30
+SELECT country ,  count(*) FROM people GROUP BY country
+select people.country , count(*) from people  group by people.country
+SELECT COUNT (DISTINCT church_id) FROM wedding WHERE YEAR  =  2016
+select count( distinct wedding.church_id) from wedding where  wedding.year = 2016

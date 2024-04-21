@@ -1,0 +1,30 @@
+SELECT count(*) FROM member
+select count(*) from member
+SELECT Name FROM member ORDER BY Name ASC
+select member.name from member   order by member.name asc
+SELECT Name ,  Country FROM member
+select member.name , member.country from member
+SELECT Name FROM member WHERE Country  =  "United States" OR Country  =  "Canada"
+select member.name from member where  member.country = "United States" or member.country = "Canada"
+SELECT Country ,  COUNT(*) FROM member GROUP BY Country
+select member.country , count(*) from member  group by member.country
+SELECT Country FROM member GROUP BY Country ORDER BY COUNT(*) DESC LIMIT 1
+select member.country from member  group by member.country  order by count(*) desc limit 1
+SELECT Country FROM member GROUP BY Country HAVING COUNT(*)  >  2
+select member.country from member  group by member.country having  count(*) > 2
+SELECT Leader_Name ,  College_Location FROM college
+select college.leader_name , college.college_location from college
+SELECT T2.Name ,  T1.Name FROM college AS T1 JOIN member AS T2 ON T1.College_ID  =  T2.College_ID
+select member.name , college.name from member join college on member.College_ID = college.College_ID
+SELECT T2.Name ,  T1.College_Location FROM college AS T1 JOIN member AS T2 ON T1.College_ID  =  T2.College_ID ORDER BY T2.Name ASC
+select member.name , college.college_location from member join college on member.College_ID = college.College_ID   order by member.name asc
+SELECT DISTINCT T1.Leader_Name FROM college AS T1 JOIN member AS T2 ON T1.College_ID  =  T2.College_ID WHERE T2.Country  =  "Canada"
+select distinct college.leader_name from member join college on member.College_ID = college.College_ID where  member.country = "Canada"
+SELECT T1.Name ,  T2.Decoration_Theme FROM member AS T1 JOIN round AS T2 ON T1.Member_ID  =  T2.Member_ID
+select member.name , round.decoration_theme from round join member on round.Member_ID = member.Member_ID
+SELECT T1.Name FROM member AS T1 JOIN round AS T2 ON T1.Member_ID  =  T2.Member_ID WHERE T2.Rank_in_Round  >  3
+select member.name from round join member on round.Member_ID = member.Member_ID where  round.rank_in_round > 3
+SELECT T1.Name FROM member AS T1 JOIN round AS T2 ON T1.Member_ID  =  T2.Member_ID ORDER BY Rank_in_Round ASC
+select member.name from round join member on round.Member_ID = member.Member_ID   order by round.rank_in_round asc
+SELECT Name FROM member WHERE Member_ID NOT IN (SELECT Member_ID FROM round)
+select member.name from member where  member.member_id not in (select round.Member_ID from round  )

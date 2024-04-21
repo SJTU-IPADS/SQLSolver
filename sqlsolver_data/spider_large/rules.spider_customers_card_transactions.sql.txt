@@ -1,0 +1,160 @@
+SELECT count(*) FROM Accounts
+select count(*) from Accounts
+SELECT count(*) FROM Accounts
+select count(*) from Accounts
+SELECT account_id ,  customer_id ,  account_name FROM Accounts
+select accounts.account_id , accounts.customer_id , accounts.account_name from Accounts
+SELECT account_id ,  customer_id ,  account_name FROM Accounts
+select accounts.account_id , accounts.customer_id , accounts.account_name from Accounts
+SELECT other_account_details FROM Accounts WHERE account_name  =  "338"
+select accounts.other_account_details from Accounts where  accounts.account_name = "338"
+SELECT other_account_details FROM Accounts WHERE account_name  =  "338"
+select accounts.other_account_details from Accounts where  accounts.account_name = "338"
+SELECT T2.customer_first_name ,  T2.customer_last_name ,  T2.customer_phone FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T1.account_name  =  "162"
+select customers.customer_first_name , customers.customer_last_name , customers.customer_phone from Customers join Accounts on Customers.customer_id = Accounts.customer_id where  accounts.account_name = "162"
+SELECT T2.customer_first_name ,  T2.customer_last_name ,  T2.customer_phone FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T1.account_name  =  "162"
+select customers.customer_first_name , customers.customer_last_name , customers.customer_phone from Customers join Accounts on Customers.customer_id = Accounts.customer_id where  accounts.account_name = "162"
+SELECT count(*) FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.customer_first_name  =  "Art" AND T2.customer_last_name  =  "Turcotte"
+select count(*) from Customers join Accounts on Customers.customer_id = Accounts.customer_id where  customers.customer_first_name = "Art" and customers.customer_last_name = "Turcotte"
+SELECT count(*) FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.customer_first_name  =  "Art" AND T2.customer_last_name  =  "Turcotte"
+select count(*) from Customers join Accounts on Customers.customer_id = Accounts.customer_id where  customers.customer_first_name = "Art" and customers.customer_last_name = "Turcotte"
+SELECT customer_id ,  count(*) FROM Accounts GROUP BY customer_id
+select customers_cards.customer_id , count(*) from Financial_Transactions join Accounts on Financial_Transactions.account_id = Accounts.account_id join Customers_Cards on Financial_Transactions.card_id = Customers_Cards.card_id  group by accounts.customer_id
+SELECT customer_id ,  count(*) FROM Accounts GROUP BY customer_id
+select accounts.customer_id , count(*) from Accounts  group by accounts.customer_id
+SELECT customer_id ,  count(*) FROM Accounts GROUP BY customer_id ORDER BY count(*) DESC LIMIT 1
+select accounts.customer_id , count(*) from Accounts  group by accounts.customer_id  order by count(*) desc limit 1
+SELECT customer_id ,  count(*) FROM Accounts GROUP BY customer_id ORDER BY count(*) DESC LIMIT 1
+select customers_cards.customer_id , count(*) from Financial_Transactions join Accounts on Financial_Transactions.account_id = Accounts.account_id join Customers_Cards on Financial_Transactions.card_id = Customers_Cards.card_id  group by customers_cards.customer_id  order by count(*) desc limit 1
+SELECT T2.customer_first_name ,  T2.customer_last_name ,  T1.customer_id FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) ASC LIMIT 1
+select customers.customer_first_name , customers.customer_last_name , customers.customer_id from Customers join Customers_Cards on Customers.customer_id = Customers_Cards.customer_id  group by customers_cards.customer_id  order by count(*) asc limit 1
+SELECT T2.customer_first_name ,  T2.customer_last_name ,  T1.customer_id FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) ASC LIMIT 1
+select customers.customer_first_name , customers.customer_last_name , customers.customer_id from Customers join Customers_Cards on Customers.customer_id = Customers_Cards.customer_id  group by customers_cards.customer_id  order by count(*) asc limit 1
+SELECT count(*) FROM Customers WHERE customer_id NOT IN (SELECT customer_id FROM Accounts)
+select count(*) from Customers where  customers.customer_id not in (select Accounts.customer_id from Accounts  )
+SELECT count(*) FROM Customers WHERE customer_id NOT IN (SELECT customer_id FROM Accounts)
+select count(*) from Customers where  customers.customer_id not in (select Accounts.customer_id from Accounts  )
+SELECT customer_first_name ,  customer_last_name FROM Customers EXCEPT SELECT T1.customer_first_name ,  T1.customer_last_name FROM Customers AS T1 JOIN Accounts AS T2 ON T1.customer_id  =  T2.customer_id
+select customers.customer_first_name , customers.customer_last_name from Customers   except select customers.customer_first_name , customers.customer_last_name from Customers join Accounts on Customers.customer_id = Accounts.customer_id
+SELECT customer_first_name ,  customer_last_name FROM Customers EXCEPT SELECT T1.customer_first_name ,  T1.customer_last_name FROM Customers AS T1 JOIN Accounts AS T2 ON T1.customer_id  =  T2.customer_id
+select customers.customer_first_name , customers.customer_last_name from Customers   except select customers.customer_first_name , customers.customer_last_name from Customers join Accounts on Customers.customer_id = Accounts.customer_id
+SELECT DISTINCT T1.customer_first_name ,  T1.customer_last_name FROM Customers AS T1 JOIN Accounts AS T2 ON T1.customer_id  =  T2.customer_id
+select distinct customers.customer_first_name , customers.customer_last_name from Customers join Accounts on Customers.customer_id = Accounts.customer_id
+SELECT DISTINCT T1.customer_first_name ,  T1.customer_last_name FROM Customers AS T1 JOIN Accounts AS T2 ON T1.customer_id  =  T2.customer_id
+select distinct customers.customer_first_name , customers.customer_last_name from Customers join Accounts on Customers.customer_id = Accounts.customer_id
+SELECT count(DISTINCT customer_id) FROM Accounts
+select count( distinct accounts.customer_id) from Accounts
+SELECT count(DISTINCT customer_id) FROM Accounts
+select count( distinct accounts.customer_id) from Accounts
+SELECT count(*) FROM Customers
+select count(*) from Customers
+SELECT count(*) FROM Customers
+select count(*) from Customers
+SELECT customer_id ,  customer_first_name ,  customer_last_name ,  customer_phone FROM Customers
+select customers.customer_id , customers.customer_first_name , customers.customer_last_name , customers.customer_phone from Customers
+SELECT customer_id ,  customer_first_name ,  customer_last_name ,  customer_phone FROM Customers
+select customers.customer_id , customers.customer_first_name , customers.customer_last_name , customers.customer_phone from Customers
+SELECT customer_phone ,  customer_email FROM Customers WHERE customer_first_name  =  "Aniyah" AND customer_last_name  =  "Feest"
+select customers.customer_phone , customers.customer_email from Customers where  customers.customer_first_name = "Aniyah" and customers.customer_last_name = "Feest"
+SELECT customer_phone ,  customer_email FROM Customers WHERE customer_first_name  =  "Aniyah" AND customer_last_name  =  "Feest"
+select customers.customer_phone , customers.customer_email from Customers where  customers.customer_first_name = "Aniyah" and customers.customer_last_name = "Feest"
+SELECT count(*) FROM Customers_cards
+select count(*) from Customers_Cards
+SELECT count(*) FROM Customers_cards
+select count(*) from Customers_Cards
+SELECT card_id ,  customer_id ,  card_type_code ,  card_number FROM Customers_cards
+select customers_cards.card_id , customers_cards.customer_id , customers_cards.card_type_code , customers_cards.card_number from Customers_Cards
+SELECT card_id ,  customer_id ,  card_type_code ,  card_number FROM Customers_cards
+select customers_cards.card_id , customers_cards.customer_id , customers_cards.card_type_code , customers_cards.card_number from Customers_Cards
+SELECT date_valid_from ,  date_valid_to FROM Customers_cards WHERE card_number  =  "4560596484842"
+select customers_cards.date_valid_from , customers_cards.date_valid_to from Customers_Cards where  customers_cards.card_number = "4560596484842"
+SELECT date_valid_from ,  date_valid_to FROM Customers_cards WHERE card_number  =  "4560596484842"
+select customers_cards.date_valid_from , customers_cards.date_valid_to from Customers_Cards where  customers_cards.card_number = "4560596484842"
+SELECT T2.customer_first_name ,  T2.customer_last_name ,  T2.customer_phone FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T1.card_number  =  "4560596484842"
+select customers.customer_first_name , customers.customer_last_name , customers.customer_phone from Customers join Customers_Cards on Customers.customer_id = Customers_Cards.customer_id where  customers_cards.card_number = "4560596484842"
+SELECT T2.customer_first_name ,  T2.customer_last_name ,  T2.customer_phone FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T1.card_number  =  "4560596484842"
+select customers.customer_first_name , customers.customer_last_name , customers.customer_phone from Customers join Customers_Cards on Customers.customer_id = Customers_Cards.customer_id where  customers_cards.card_number = "4560596484842"
+SELECT count(*) FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.customer_first_name  =  "Art" AND T2.customer_last_name  =  "Turcotte"
+select count(*) from Customers join Customers_Cards on Customers.customer_id = Customers_Cards.customer_id where  customers.customer_first_name = "Art" and customers.customer_last_name = "Turcotte"
+SELECT count(*) FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.customer_first_name  =  "Art" AND T2.customer_last_name  =  "Turcotte"
+select count(*) from Customers join Customers_Cards on Customers.customer_id = Customers_Cards.customer_id where  customers.customer_first_name = "Art" and customers.customer_last_name = "Turcotte"
+SELECT count(*) FROM Customers_cards WHERE card_type_code  =  "Debit"
+select count(*) from Customers_Cards where  customers_cards.card_type_code = "Debit"
+SELECT count(*) FROM Customers_cards WHERE card_type_code  =  "Debit"
+select count(*) from Customers_Cards where  customers_cards.card_type_code = "Debit"
+SELECT count(*) FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.customer_first_name  =  "Blanche" AND T2.customer_last_name  =  "Huels" AND T1.card_type_code  =  "Credit"
+select count(*) from Customers join Customers_Cards on Customers.customer_id = Customers_Cards.customer_id where  customers.customer_first_name = "Blanche" and customers.customer_last_name = "Huels" and customers_cards.card_type_code = "Credit"
+SELECT count(*) FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.customer_first_name  =  "Blanche" AND T2.customer_last_name  =  "Huels" AND T1.card_type_code  =  "Credit"
+select count(*) from Customers join Customers_Cards on Customers.customer_id = Customers_Cards.customer_id where  customers.customer_first_name = "Blanche" and customers.customer_last_name = "Huels" and customers_cards.card_type_code = "Credit"
+SELECT customer_id ,  count(*) FROM Customers_cards GROUP BY customer_id
+select customers_cards.customer_id , count(*) from Customers_Cards  group by customers_cards.customer_id
+SELECT customer_id ,  count(*) FROM Customers_cards GROUP BY customer_id
+select customers_cards.customer_id , count(*) from Customers_Cards  group by customers_cards.customer_id
+SELECT customer_id ,  count(*) FROM Customers_cards GROUP BY customer_id ORDER BY count(*) DESC LIMIT 1
+select customers_cards.customer_id , count(*) from Customers_Cards  group by customers_cards.customer_id  order by count(*) desc limit 1
+SELECT customer_id ,  count(*) FROM Customers_cards GROUP BY customer_id ORDER BY count(*) DESC LIMIT 1
+select customers_cards.customer_id , count(*) from Customers_Cards  group by customers_cards.customer_id  order by count(*) desc limit 1
+SELECT T1.customer_id ,  T2.customer_first_name ,  T2.customer_last_name FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id HAVING count(*)  >=  2
+select customers_cards.customer_id , customers.customer_first_name , customers.customer_last_name from Customers join Customers_Cards on Customers.customer_id = Customers_Cards.customer_id  group by customers_cards.customer_id having  count(*) >= 2
+SELECT T1.customer_id ,  T2.customer_first_name ,  T2.customer_last_name FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id HAVING count(*)  >=  2
+select customers_cards.customer_id , customers.customer_first_name , customers.customer_last_name from Customers join Customers_Cards on Customers.customer_id = Customers_Cards.customer_id  group by customers_cards.customer_id having  count(*) >= 2
+SELECT T1.customer_id ,  T2.customer_first_name ,  T2.customer_last_name FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) ASC LIMIT 1
+select customers.customer_id , customers.customer_first_name , customers.customer_last_name from Customers join Customers_Cards on Customers.customer_id = Customers_Cards.customer_id  group by customers_cards.customer_id  order by count(*) asc limit 1
+SELECT T1.customer_id ,  T2.customer_first_name ,  T2.customer_last_name FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) ASC LIMIT 1
+select customers_cards.customer_id , customers.customer_first_name , customers.customer_last_name from Customers join Customers_Cards on Customers.customer_id = Customers_Cards.customer_id  group by customers_cards.customer_id  order by count(*) asc limit 1
+SELECT card_type_code ,  count(*) FROM Customers_cards GROUP BY card_type_code
+select customers_cards.card_type_code , count(*) from Customers_Cards  group by customers_cards.card_type_code
+SELECT card_type_code ,  count(*) FROM Customers_cards GROUP BY card_type_code
+select customers_cards.card_type_code , count(*) from Customers_Cards  group by customers_cards.card_type_code
+SELECT card_type_code FROM Customers_cards GROUP BY card_type_code ORDER BY count(*) DESC LIMIT 1
+select customers_cards.card_type_code from Customers_Cards  group by customers_cards.card_type_code  order by count(*) desc limit 1
+SELECT card_type_code FROM Customers_cards GROUP BY card_type_code ORDER BY count(*) DESC LIMIT 1
+select customers_cards.card_type_code from Customers_Cards  group by customers_cards.card_type_code  order by count(*) desc limit 1
+SELECT card_type_code FROM Customers_cards GROUP BY card_type_code HAVING count(*)  >=  5
+select customers_cards.card_type_code from Customers_Cards  group by customers_cards.card_type_code having  count(*) >= 5
+SELECT card_type_code FROM Customers_cards GROUP BY card_type_code HAVING count(*)  >=  5
+select customers_cards.card_type_code from Customers_Cards  group by customers_cards.card_type_code having  count(*) >= 5
+SELECT card_type_code ,  count(DISTINCT customer_id) FROM Customers_cards GROUP BY card_type_code
+select customers_cards.card_type_code , count( distinct customers_cards.customer_id) from Customers_Cards  group by customers_cards.card_type_code
+SELECT card_type_code ,  count(DISTINCT customer_id) FROM Customers_cards GROUP BY card_type_code
+select customers_cards.card_type_code , count( distinct customers_cards.customer_id) from Customers_Cards  group by customers_cards.card_type_code
+SELECT customer_id ,  customer_first_name FROM Customers EXCEPT SELECT T1.customer_id ,  T2.customer_first_name FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE card_type_code  =  "Credit"
+select customers.customer_id , customers.customer_first_name from Customers   except select customers.customer_id , customers.customer_first_name from Customers join Customers_Cards on Customers.customer_id = Customers_Cards.customer_id where  customers_cards.card_type_code = "Credit"
+SELECT customer_id ,  customer_first_name FROM Customers EXCEPT SELECT T1.customer_id ,  T2.customer_first_name FROM Customers_cards AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE card_type_code  =  "Credit"
+select customers.customer_id , customers.customer_first_name from Customers   except select customers.customer_id , customers.customer_first_name from Customers join Customers_Cards on Customers.customer_id = Customers_Cards.customer_id where  customers_cards.card_type_code = "Credit"
+SELECT DISTINCT card_type_code FROM Customers_Cards
+select distinct customers_cards.card_type_code from Customers_Cards
+SELECT DISTINCT card_type_code FROM Customers_Cards
+select distinct customers_cards.card_type_code from Customers_Cards
+SELECT count(DISTINCT card_type_code) FROM Customers_Cards
+select count( distinct customers_cards.card_type_code) from Customers_Cards
+SELECT count(DISTINCT card_type_code) FROM Customers_Cards
+select count( distinct customers_cards.card_type_code) from Customers_Cards
+SELECT DISTINCT transaction_type FROM Financial_Transactions
+select distinct financial_transactions.transaction_type from Financial_Transactions
+SELECT DISTINCT transaction_type FROM Financial_Transactions
+select distinct financial_transactions.transaction_type from Financial_Transactions
+SELECT count(DISTINCT transaction_type) FROM Financial_Transactions
+select count( distinct financial_transactions.transaction_type) from Financial_Transactions
+SELECT count(DISTINCT transaction_type) FROM Financial_Transactions
+select count( distinct financial_transactions.transaction_type) from Financial_Transactions
+SELECT avg(transaction_amount) ,  sum(transaction_amount) FROM Financial_transactions
+select avg(financial_transactions.transaction_amount) , sum(financial_transactions.transaction_amount) from Financial_Transactions
+SELECT avg(transaction_amount) ,  sum(transaction_amount) FROM Financial_transactions
+select avg(financial_transactions.transaction_amount) , sum(financial_transactions.transaction_amount) from Financial_Transactions
+SELECT T2.card_type_code ,  count(*) FROM Financial_transactions AS T1 JOIN Customers_cards AS T2 ON T1.card_id  =  T2.card_id GROUP BY T2.card_type_code
+select customers_cards.card_type_code , count(*) from Financial_Transactions join Customers_Cards on Financial_Transactions.card_id = Customers_Cards.card_id  group by customers_cards.card_type_code
+SELECT T2.card_type_code ,  count(*) FROM Financial_transactions AS T1 JOIN Customers_cards AS T2 ON T1.card_id  =  T2.card_id GROUP BY T2.card_type_code
+select customers_cards.card_type_code , count(*) from Financial_Transactions join Customers_Cards on Financial_Transactions.card_id = Customers_Cards.card_id  group by customers_cards.card_type_code
+SELECT transaction_type ,  count(*) FROM Financial_transactions GROUP BY transaction_type
+select financial_transactions.transaction_type , count(*) from Financial_Transactions  group by financial_transactions.transaction_type
+SELECT transaction_type ,  count(*) FROM Financial_transactions GROUP BY transaction_type
+select financial_transactions.transaction_type , count(*) from Financial_Transactions  group by financial_transactions.transaction_type
+SELECT transaction_type FROM Financial_transactions GROUP BY transaction_type ORDER BY sum(transaction_amount) DESC LIMIT 1
+select financial_transactions.transaction_type from Financial_Transactions  group by financial_transactions.transaction_type  order by sum(financial_transactions.transaction_amount) desc limit 1
+SELECT transaction_type FROM Financial_transactions GROUP BY transaction_type ORDER BY sum(transaction_amount) DESC LIMIT 1
+select financial_transactions.transaction_type from Financial_Transactions  group by financial_transactions.transaction_type  order by sum(financial_transactions.transaction_amount) desc limit 1
+SELECT account_id ,  count(*) FROM Financial_transactions GROUP BY account_id
+select financial_transactions.account_id , count(*) from Financial_Transactions  group by financial_transactions.account_id
+SELECT account_id ,  count(*) FROM Financial_transactions GROUP BY account_id
+select financial_transactions.account_id , count(*) from Financial_Transactions  group by financial_transactions.account_id

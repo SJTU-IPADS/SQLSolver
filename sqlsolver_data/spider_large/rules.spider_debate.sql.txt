@@ -1,0 +1,30 @@
+SELECT count(*) FROM debate
+select count(*) from debate
+SELECT Venue FROM debate ORDER BY Num_of_Audience ASC
+select debate.venue from debate   order by debate.num_of_audience asc
+SELECT Date ,  Venue FROM debate
+select debate.date , debate.venue from debate
+SELECT Date FROM debate WHERE Num_of_Audience  >  150
+select debate.date from debate where  debate.num_of_audience > 150
+SELECT Name FROM  people WHERE Age  =  35 OR Age  =  36
+select people.name from people where  people.age = 35 or people.age = 36
+SELECT Party FROM people ORDER BY Age ASC LIMIT 1
+select people.party from people   order by people.age asc limit 1
+SELECT Party ,  COUNT(*) FROM people GROUP BY Party
+select people.party , count(*) from people  group by people.party
+SELECT Party FROM people GROUP BY Party ORDER BY COUNT(*) DESC LIMIT 1
+select people.party from people  group by people.party  order by count(*) desc limit 1
+SELECT DISTINCT Venue FROM debate
+select distinct debate.venue from debate
+SELECT T3.Name ,  T2.Date ,  T2.Venue FROM debate_people AS T1 JOIN debate AS T2 ON T1.Debate_ID  =  T2.Debate_ID JOIN people AS T3 ON T1.Affirmative  =  T3.People_ID
+select people.name , debate.date , debate.venue from debate_people join people on debate_people.Negative = people.People_ID join debate on debate_people.Debate_ID = debate.Debate_ID
+SELECT T3.Name ,  T2.Date ,  T2.Venue FROM debate_people AS T1 JOIN debate AS T2 ON T1.Debate_ID  =  T2.Debate_ID JOIN people AS T3 ON T1.Negative  =  T3.People_ID ORDER BY T3.Name ASC
+select people.name , debate.date , debate.venue from debate_people join people on debate_people.Negative = people.People_ID join debate on debate_people.Debate_ID = debate.Debate_ID   order by people.name asc
+SELECT T3.Name FROM debate_people AS T1 JOIN debate AS T2 ON T1.Debate_ID  =  T2.Debate_ID JOIN people AS T3 ON T1.Affirmative  =  T3.People_ID WHERE T2.Num_of_Audience  >  200
+select people.name from debate_people join people on debate_people.Negative = people.People_ID join debate on debate_people.Debate_ID = debate.Debate_ID where  debate.num_of_audience > 200
+SELECT T2.Name ,  COUNT(*) FROM debate_people AS T1 JOIN people AS T2 ON T1.Affirmative  =  T2.People_ID GROUP BY T2.Name
+select people.name , count(*) from debate_people join people on debate_people.Negative = people.People_ID  group by people.name
+SELECT T2.Name FROM debate_people AS T1 JOIN people AS T2 ON T1.Negative  =  T2.People_ID GROUP BY T2.Name HAVING COUNT(*)  >=  2
+select people.name from debate_people join people on debate_people.Negative = people.People_ID  group by people.name having  count(*) >= 2
+SELECT Name FROM people WHERE People_id NOT IN (SELECT Affirmative FROM debate_people)
+select people.name from people where  people.people_id not in (select debate_people.Affirmative from debate_people  )

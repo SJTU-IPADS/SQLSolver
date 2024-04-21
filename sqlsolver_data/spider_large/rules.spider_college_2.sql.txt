@@ -1,0 +1,340 @@
+SELECT DISTINCT building FROM classroom WHERE capacity  >  50
+select distinct classroom.building from classroom where  classroom.capacity > 50
+SELECT DISTINCT building FROM classroom WHERE capacity  >  50
+select distinct classroom.building from classroom where  classroom.capacity > 50
+SELECT count(*) FROM classroom WHERE building != 'Lamberton'
+select count(*) from classroom where  classroom.building != "Lamberton"
+SELECT count(*) FROM classroom WHERE building != 'Lamberton'
+select count(*) from classroom where  classroom.building != "Lamberton"
+SELECT dept_name ,  building FROM department WHERE budget  >  (SELECT avg(budget) FROM department)
+select department.dept_name , department.building from department where  department.budget > (select avg(department.budget) from department  )
+SELECT dept_name ,  building FROM department WHERE budget  >  (SELECT avg(budget) FROM department)
+select department.dept_name , department.building from department where  department.budget > (select avg(department.budget) from department  )
+SELECT building ,  room_number FROM classroom WHERE capacity BETWEEN 50 AND 100
+select classroom.room_number , classroom.building from classroom where  classroom.capacity between 50 and 100
+SELECT building ,  room_number FROM classroom WHERE capacity BETWEEN 50 AND 100
+select classroom.building , classroom.room_number from classroom where  classroom.capacity between 50 and 100
+SELECT dept_name ,  building FROM department ORDER BY budget DESC LIMIT 1
+select department.dept_name , department.building from department   order by department.budget desc limit 1
+SELECT dept_name ,  building FROM department ORDER BY budget DESC LIMIT 1
+select department.dept_name , department.building from department   order by department.budget desc limit 1
+SELECT name FROM student WHERE dept_name  =  'History' ORDER BY tot_cred DESC LIMIT 1
+select student.name from student where  student.dept_name = "History"   order by student.tot_cred desc limit 1
+SELECT name FROM student WHERE dept_name  =  'History' ORDER BY tot_cred DESC LIMIT 1
+select student.name from student where  student.dept_name = "History"   order by student.tot_cred desc limit 1
+SELECT count(*) FROM classroom WHERE building  =  'Lamberton'
+select count(*) from classroom where  classroom.building = "Lamberton"
+SELECT count(*) FROM classroom WHERE building  =  'Lamberton'
+select count(*) from classroom where  classroom.building = "Lamberton"
+SELECT count(DISTINCT s_id) FROM advisor
+select count( distinct advisor.s_id) from advisor
+SELECT count(DISTINCT s_id) FROM advisor
+select count( distinct advisor.s_id) from advisor
+SELECT count(DISTINCT dept_name) FROM course
+select count( distinct course.dept_name) from course
+SELECT count(DISTINCT dept_name) FROM course
+select count( distinct course.dept_name) from course
+SELECT count(DISTINCT course_id) FROM course WHERE dept_name  =  'Physics'
+select count( distinct course.course_id) from course where  course.dept_name = "Physics"
+SELECT count(DISTINCT course_id) FROM course WHERE dept_name  =  'Physics'
+select count( distinct course.course_id) from course where  course.dept_name = "Physics"
+SELECT T1.title FROM course AS T1 JOIN prereq AS T2 ON T1.course_id  =  T2.course_id GROUP BY T2.course_id HAVING count(*)  =  2
+select course.title from prereq join course on prereq.prereq_id = course.course_id  group by prereq.course_id having  count(*) = 2
+SELECT T1.title FROM course AS T1 JOIN prereq AS T2 ON T1.course_id  =  T2.course_id GROUP BY T2.course_id HAVING count(*)  =  2
+select course.title from prereq join course on prereq.prereq_id = course.course_id  group by prereq.course_id having  count(*) = 2
+SELECT T1.title ,  T1.credits , T1.dept_name FROM course AS T1 JOIN prereq AS T2 ON T1.course_id  =  T2.course_id GROUP BY T2.course_id HAVING count(*)  >  1
+select course.title , course.credits , course.dept_name from prereq join course on prereq.prereq_id = course.course_id  group by prereq.course_id having  count(*) > 1
+SELECT T1.title ,  T1.credits , T1.dept_name FROM course AS T1 JOIN prereq AS T2 ON T1.course_id  =  T2.course_id GROUP BY T2.course_id HAVING count(*)  >  1
+select course.title , course.credits , course.dept_name from prereq join course on prereq.prereq_id = course.course_id  group by prereq.course_id having  count(*) > 1
+SELECT count(*) FROM course WHERE course_id NOT IN (SELECT course_id FROM prereq)
+select count(*) from course where  course.course_id not in (select prereq.course_id from prereq  )
+SELECT count(*) FROM course WHERE course_id NOT IN (SELECT course_id FROM prereq)
+select count(*) from course where  course.course_id not in (select prereq.course_id from prereq  )
+SELECT title FROM course WHERE course_id NOT IN (SELECT course_id FROM prereq)
+select course.title from course where  course.course_id not in (select prereq.course_id from prereq  )
+SELECT title FROM course WHERE course_id NOT IN (SELECT course_id FROM prereq)
+select course.title from course where  course.course_id not in (select prereq.course_id from prereq  )
+SELECT COUNT (DISTINCT id) FROM teaches
+select count( distinct teaches.id) from teaches
+SELECT COUNT (DISTINCT id) FROM teaches
+select count( distinct teaches.id) from teaches
+SELECT sum(budget) FROM department WHERE dept_name  =  'Marketing' OR dept_name  =  'Finance'
+select sum(department.budget) from department where  department.dept_name = "Marketing" or department.dept_name = "Finance"
+SELECT sum(budget) FROM department WHERE dept_name  =  'Marketing' OR dept_name  =  'Finance'
+select sum(department.budget) from department where  department.dept_name = "Marketing" or department.dept_name = "Finance"
+SELECT dept_name FROM instructor WHERE name LIKE '%Soisalon%'
+select instructor.dept_name from instructor where  instructor.name like "%Soisalon%"
+SELECT dept_name FROM instructor WHERE name LIKE '%Soisalon%'
+select instructor.dept_name from instructor where  instructor.name like "%Soisalon%"
+SELECT count(*) FROM classroom WHERE building  =  'Lamberton' AND capacity  <  50
+select count(*) from classroom where  classroom.building = "Lamberton" and classroom.capacity < 50
+SELECT count(*) FROM classroom WHERE building  =  'Lamberton' AND capacity  <  50
+select count(*) from classroom where  classroom.building = "Lamberton" and classroom.capacity < 50
+SELECT dept_name ,  budget FROM department WHERE budget  >  (SELECT avg(budget) FROM department)
+select department.dept_name , department.budget from department where  department.budget > (select avg(department.budget) from department  )
+SELECT dept_name ,  budget FROM department WHERE budget  >  (SELECT avg(budget) FROM department)
+select department.dept_name , department.budget from department where  department.budget > (select avg(department.budget) from department  )
+SELECT name FROM instructor WHERE dept_name  =  'Statistics' ORDER BY salary LIMIT 1
+select instructor.name from instructor where  instructor.dept_name = "Statistics"   order by instructor.salary asc limit 1
+SELECT name FROM instructor WHERE dept_name  =  'Statistics' ORDER BY salary LIMIT 1
+select instructor.name from instructor where  instructor.dept_name = "Statistics"   order by instructor.salary asc limit 1
+SELECT title FROM course WHERE dept_name  =  'Statistics' INTERSECT SELECT title FROM course WHERE dept_name  =  'Psychology'
+select course.title from course where  course.dept_name = "Statistics"   intersect select course.title from course where  course.dept_name = "Psychology"
+SELECT title FROM course WHERE dept_name  =  'Statistics' INTERSECT SELECT title FROM course WHERE dept_name  =  'Psychology'
+select course.title from course where  course.dept_name = "Statistics"   intersect select course.title from course where  course.dept_name = "Psychology"
+SELECT title FROM course WHERE dept_name  =  'Statistics' EXCEPT SELECT title FROM course WHERE dept_name  =  'Psychology'
+select course.title from course where  course.dept_name = "Statistics"   except select course.title from course where  course.dept_name = "Psychology"
+SELECT title FROM course WHERE dept_name  =  'Statistics' EXCEPT SELECT title FROM course WHERE dept_name  =  'Psychology'
+select course.title from course where  course.dept_name = "Statistics"   except select course.title from course where  course.dept_name = "Psychology"
+SELECT id FROM teaches WHERE semester  =  'Fall' AND YEAR  =  2009 EXCEPT SELECT id FROM teaches WHERE semester  =  'Spring' AND YEAR  =  2010
+select instructor.id from teaches join instructor on teaches.ID = instructor.ID where  teaches.semester = "Fall" and teaches.year = 2009   except select teaches.id from teaches where  teaches.semester = "Spring" and teaches.year = 2010
+SELECT id FROM teaches WHERE semester  =  'Fall' AND YEAR  =  2009 EXCEPT SELECT id FROM teaches WHERE semester  =  'Spring' AND YEAR  =  2010
+select teaches.id from teaches where  teaches.semester = "Fall" and teaches.year = 2009   except select teaches.id from teaches where  teaches.semester = "Spring" and teaches.year = 2010
+SELECT DISTINCT T1.name FROM student AS T1 JOIN takes AS T2 ON T1.id  =  T2.id WHERE YEAR  =  2009 OR YEAR  =  2010
+select distinct student.name from takes join student on takes.ID = student.ID where  takes.year = 2009 or takes.year = 2010
+SELECT DISTINCT T1.name FROM student AS T1 JOIN takes AS T2 ON T1.id  =  T2.id WHERE YEAR  =  2009 OR YEAR  =  2010
+select distinct student.name from takes join student on takes.ID = student.ID where  takes.year = 2009 or takes.year = 2010
+SELECT dept_name FROM course GROUP BY dept_name ORDER BY count(*) DESC LIMIT 3
+select course.dept_name from course  group by course.dept_name  order by count(*) desc limit 3
+SELECT dept_name FROM course GROUP BY dept_name ORDER BY count(*) DESC LIMIT 3
+select course.dept_name from course  group by course.dept_name  order by count(*) desc limit 3
+SELECT dept_name FROM course GROUP BY dept_name ORDER BY sum(credits) DESC LIMIT 1
+select course.dept_name from takes join student on takes.ID = student.ID join course on takes.course_id = course.course_id  group by course.dept_name  order by sum(student.tot_cred) desc limit 1
+SELECT dept_name FROM course GROUP BY dept_name ORDER BY sum(credits) DESC LIMIT 1
+select course.dept_name from course  group by course.dept_name  order by sum(course.credits) desc limit 1
+SELECT title FROM course ORDER BY title ,  credits
+select course.title from course   order by course.title,course.credits asc
+SELECT title FROM course ORDER BY title ,  credits
+select course.title from course   order by course.title,course.credits asc
+SELECT dept_name FROM department ORDER BY budget LIMIT 1
+select department.dept_name from department   order by department.budget asc limit 1
+SELECT dept_name FROM department ORDER BY budget LIMIT 1
+select department.dept_name from department   order by department.budget asc limit 1
+SELECT dept_name ,  building FROM department ORDER BY budget DESC
+select department.dept_name , department.building from department   order by department.budget desc
+SELECT dept_name ,  building FROM department ORDER BY budget DESC
+select department.dept_name , department.building from department   order by department.budget desc
+SELECT name FROM instructor ORDER BY salary DESC LIMIT 1
+select instructor.name from instructor   order by instructor.salary desc limit 1
+SELECT name FROM instructor ORDER BY salary DESC LIMIT 1
+select instructor.name from instructor   order by instructor.salary desc limit 1
+SELECT * FROM instructor ORDER BY salary
+select * from instructor   order by instructor.salary asc
+SELECT * FROM instructor ORDER BY salary
+select * from instructor   order by instructor.salary asc
+SELECT name ,  dept_name FROM student ORDER BY tot_cred
+select student.name , student.dept_name from student   order by student.tot_cred asc
+SELECT name ,  dept_name FROM student ORDER BY tot_cred
+select student.name , student.dept_name from student   order by student.tot_cred asc
+SELECT T1.title ,  T3.name FROM course AS T1 JOIN teaches AS T2 ON T1.course_id  =  T2.course_id JOIN instructor AS T3 ON T2.id  =  T3.id WHERE YEAR  =  2008 ORDER BY T1.title
+select course.title , instructor.name from teaches join instructor on teaches.ID = instructor.ID join course on teaches.course_id = course.course_id where  teaches.year = 2008   order by course.title asc
+SELECT T1.title ,  T3.name FROM course AS T1 JOIN teaches AS T2 ON T1.course_id  =  T2.course_id JOIN instructor AS T3 ON T2.id  =  T3.id WHERE YEAR  =  2008 ORDER BY T1.title
+select course.title , instructor.name from teaches join instructor on teaches.ID = instructor.ID join course on teaches.course_id = course.course_id where  teaches.year = 2008   order by course.title asc
+SELECT T1.name FROM instructor AS T1 JOIN advisor AS T2 ON T1.id  =  T2.i_id GROUP BY T2.i_id HAVING count(*)  >  1
+select instructor.name from advisor join instructor on advisor.i_ID = instructor.ID  group by advisor.i_id having  count(*) > 1
+SELECT T1.name FROM instructor AS T1 JOIN advisor AS T2 ON T1.id  =  T2.i_id GROUP BY T2.i_id HAVING count(*)  >  1
+select instructor.name from advisor join instructor on advisor.i_ID = instructor.ID  group by advisor.i_id having  count(*) > 1
+SELECT T1.name FROM student AS T1 JOIN advisor AS T2 ON T1.id  =  T2.s_id GROUP BY T2.s_id HAVING count(*)  >  1
+select student.name from advisor join student on advisor.s_ID = student.ID  group by advisor.s_id having  count(*) > 1
+SELECT T1.name FROM student AS T1 JOIN advisor AS T2 ON T1.id  =  T2.s_id GROUP BY T2.s_id HAVING count(*)  >  1
+select student.name from advisor join student on advisor.s_ID = student.ID  group by advisor.s_id having  count(*) > 1
+SELECT count(*) ,  building FROM classroom WHERE capacity  >  50 GROUP BY building
+select count(*) , classroom.building from classroom where  classroom.capacity > 50  group by classroom.building
+SELECT count(*) ,  building FROM classroom WHERE capacity  >  50 GROUP BY building
+select count(*) , classroom.building from classroom where  classroom.capacity > 50  group by classroom.building
+SELECT max(capacity) ,  avg(capacity) ,  building FROM classroom GROUP BY building
+select max(classroom.capacity) , avg(classroom.capacity) , classroom.building from classroom  group by classroom.building
+SELECT max(capacity) ,  avg(capacity) ,  building FROM classroom GROUP BY building
+select max(classroom.capacity) , avg(classroom.capacity) , classroom.building from classroom  group by classroom.building
+SELECT title FROM course GROUP BY title HAVING count(*)  >  1
+select course.title from course  group by course.title having  count(*) > 1
+SELECT title FROM course GROUP BY title HAVING count(*)  >  1
+select course.title from course  group by course.title having  count(*) > 1
+SELECT sum(credits) ,  dept_name FROM course GROUP BY dept_name
+select sum(course.credits) , course.dept_name from course  group by course.dept_name
+SELECT sum(credits) ,  dept_name FROM course GROUP BY dept_name
+select sum(course.credits) , course.dept_name from course  group by course.dept_name
+SELECT min(salary) ,  dept_name FROM instructor GROUP BY dept_name HAVING avg(salary)  >  (SELECT avg(salary) FROM instructor)
+select min(instructor.salary) , instructor.dept_name from instructor  group by instructor.dept_name having  avg(instructor.salary) > (select avg(instructor.salary) from instructor  )
+SELECT min(salary) ,  dept_name FROM instructor GROUP BY dept_name HAVING avg(salary)  >  (SELECT avg(salary) FROM instructor)
+select min(instructor.salary) , instructor.dept_name from instructor  group by instructor.dept_name having  avg(instructor.salary) > (select avg(instructor.salary) from instructor  )
+SELECT count(*) ,  semester ,  YEAR FROM SECTION GROUP BY semester ,  YEAR
+select count(*) , section.semester , section.year from section  group by section.semester, section.year
+SELECT count(*) ,  semester ,  YEAR FROM SECTION GROUP BY semester ,  YEAR
+select section.semester , section.year , count(*) from section  group by section.semester, section.year
+SELECT YEAR FROM SECTION GROUP BY YEAR ORDER BY count(*) DESC LIMIT 1
+select section.year from section  group by section.year  order by count(*) desc limit 1
+SELECT YEAR FROM SECTION GROUP BY YEAR ORDER BY count(*) DESC LIMIT 1
+select section.year from section  group by section.year  order by count(*) desc limit 1
+SELECT semester ,  YEAR FROM SECTION GROUP BY semester ,  YEAR ORDER BY count(*) DESC LIMIT 1
+select section.semester , section.year from section  group by section.semester, section.year  order by count(*) desc limit 1
+SELECT semester ,  YEAR FROM SECTION GROUP BY semester ,  YEAR ORDER BY count(*) DESC LIMIT 1
+select section.semester , section.year from section  group by section.semester, section.year  order by count(*) desc limit 1
+SELECT dept_name FROM student GROUP BY dept_name ORDER BY count(*) DESC LIMIT 1
+select student.dept_name from student  group by student.dept_name  order by count(*) desc limit 1
+SELECT dept_name FROM student GROUP BY dept_name ORDER BY count(*) DESC LIMIT 1
+select student.dept_name from student  group by student.dept_name  order by count(*) desc limit 1
+SELECT count(*) ,  dept_name FROM student GROUP BY dept_name
+select count(*) , student.dept_name from student  group by student.dept_name
+SELECT count(*) ,  dept_name FROM student GROUP BY dept_name
+select count(*) , student.dept_name from student  group by student.dept_name
+SELECT semester ,  YEAR FROM takes GROUP BY semester ,  YEAR ORDER BY count(*) LIMIT 1
+select takes.semester , takes.year from takes  group by takes.semester, takes.year  order by count(*) asc limit 1
+SELECT semester ,  YEAR FROM takes GROUP BY semester ,  YEAR ORDER BY count(*) LIMIT 1
+select takes.semester , takes.year from takes  group by takes.semester, takes.year  order by count(*) asc limit 1
+SELECT i_id FROM advisor AS T1 JOIN student AS T2 ON T1.s_id  =  T2.id WHERE T2.dept_name  =  'History'
+select advisor.i_id from advisor join student on advisor.s_ID = student.ID where  student.dept_name = "History"
+SELECT i_id FROM advisor AS T1 JOIN student AS T2 ON T1.s_id  =  T2.id WHERE T2.dept_name  =  'History'
+select advisor.i_id from advisor join student on advisor.s_ID = student.ID where  student.dept_name = "History"
+SELECT T2.name ,  T2.salary FROM advisor AS T1 JOIN instructor AS T2 ON T1.i_id  =  T2.id JOIN student AS T3 ON T1.s_id  =  T3.id WHERE T3.dept_name  =  'History'
+select instructor.name , instructor.salary from advisor join student on advisor.s_ID = student.ID join instructor on advisor.i_ID = instructor.ID where  student.dept_name = "History"
+SELECT T2.name ,  T2.salary FROM advisor AS T1 JOIN instructor AS T2 ON T1.i_id  =  T2.id JOIN student AS T3 ON T1.s_id  =  T3.id WHERE T3.dept_name  =  'History'
+select instructor.name , instructor.salary from advisor join student on advisor.s_ID = student.ID join instructor on advisor.i_ID = instructor.ID where  student.dept_name = "History"
+SELECT course_id FROM course EXCEPT SELECT course_id FROM prereq
+select course.course_id from course   except select prereq.course_id from prereq
+SELECT course_id FROM course EXCEPT SELECT course_id FROM prereq
+select course.course_id from course   except select prereq.course_id from prereq
+SELECT title FROM course WHERE course_id NOT IN (SELECT course_id FROM prereq)
+select course.title from course where  course.course_id not in (select prereq.course_id from prereq  )
+SELECT title FROM course WHERE course_id NOT IN (SELECT course_id FROM prereq)
+select course.title from course where  course.course_id not in (select prereq.course_id from prereq  )
+SELECT title FROM course WHERE course_id IN (SELECT T1.prereq_id FROM prereq AS T1 JOIN course AS T2 ON T1.course_id  =  T2.course_id WHERE T2.title  =  'International Finance')
+select course.title from course where  course.course_id in (select prereq.prereq_id from prereq join course on prereq.prereq_id = course.course_id where  course.title = "International Finance"  )
+SELECT title FROM course WHERE course_id IN (SELECT T1.prereq_id FROM prereq AS T1 JOIN course AS T2 ON T1.course_id  =  T2.course_id WHERE T2.title  =  'International Finance')
+select course.title from course where  course.course_id in (select prereq.prereq_id from prereq join course on prereq.prereq_id = course.course_id where  course.title = "International Finance"  )
+SELECT title FROM course WHERE course_id IN (SELECT T1.course_id FROM prereq AS T1 JOIN course AS T2 ON T1.prereq_id  =  T2.course_id WHERE T2.title  =  'Differential Geometry')
+select course.title from course where  course.course_id in (select prereq.course_id from prereq join course on prereq.prereq_id = course.course_id where  course.title = "Differential Geometry"  )
+SELECT title FROM course WHERE course_id IN (SELECT T1.course_id FROM prereq AS T1 JOIN course AS T2 ON T1.prereq_id  =  T2.course_id WHERE T2.title  =  'Differential Geometry')
+select course.title from course where  course.course_id in (select prereq.course_id from prereq join course on prereq.prereq_id = course.course_id where  course.title = "Differential Geometry"  )
+SELECT name FROM student WHERE id IN (SELECT id FROM takes WHERE semester  =  'Fall' AND YEAR  =  2003)
+select student.name from student where  student.id in (select takes.ID from takes where  takes.semester = "Fall" and takes.year = 2003  )
+SELECT name FROM student WHERE id IN (SELECT id FROM takes WHERE semester  =  'Fall' AND YEAR  =  2003)
+select student.name from student where  student.id in (select takes.ID from takes where  takes.semester = "Fall" and takes.year = 2003  )
+SELECT T1.title FROM course AS T1 JOIN SECTION AS T2 ON T1.course_id  =  T2.course_id WHERE building  =  'Chandler' AND semester  =  'Fall' AND YEAR  =  2010
+select course.title from section join course on section.course_id = course.course_id where  section.building = "Chandler" and section.semester = "Fall" and section.year = 2010
+SELECT T1.title FROM course AS T1 JOIN SECTION AS T2 ON T1.course_id  =  T2.course_id WHERE building  =  'Chandler' AND semester  =  'Fall' AND YEAR  =  2010
+select course.title from section join course on section.course_id = course.course_id where  section.building = "Chandler" and section.year = 2010
+SELECT T1.name FROM instructor AS T1 JOIN teaches AS T2 ON T1.id  =  T2.id JOIN course AS T3 ON T2.course_id  =  T3.course_id WHERE T3.title  =  'C Programming'
+select instructor.name from teaches join instructor on teaches.ID = instructor.ID where  teaches.year < "C Programming"
+SELECT T1.name FROM instructor AS T1 JOIN teaches AS T2 ON T1.id  =  T2.id JOIN course AS T3 ON T2.course_id  =  T3.course_id WHERE T3.title  =  'C Programming'
+select instructor.name from teaches join instructor on teaches.ID = instructor.ID join course on teaches.course_id = course.course_id where  course.title = "C Programming"
+SELECT T2.name ,  T2.salary FROM advisor AS T1 JOIN instructor AS T2 ON T1.i_id  =  T2.id JOIN student AS T3 ON T1.s_id  =  T3.id WHERE T3.dept_name  =  'Math'
+select instructor.name , instructor.salary from advisor join student on advisor.s_ID = student.ID join instructor on advisor.i_ID = instructor.ID where  student.dept_name = "Math"
+SELECT T2.name ,  T2.salary FROM advisor AS T1 JOIN instructor AS T2 ON T1.i_id  =  T2.id JOIN student AS T3 ON T1.s_id  =  T3.id WHERE T3.dept_name  =  'Math'
+select instructor.name , instructor.salary from advisor join student on advisor.s_ID = student.ID join instructor on advisor.i_ID = instructor.ID where  student.dept_name = "Math"
+SELECT T2.name FROM advisor AS T1 JOIN instructor AS T2 ON T1.i_id  =  T2.id JOIN student AS T3 ON T1.s_id  =  T3.id WHERE T3.dept_name  =  'Math' ORDER BY T3.tot_cred
+select instructor.name from advisor join student on advisor.s_ID = student.ID join instructor on advisor.i_ID = instructor.ID where  student.dept_name = "Math"   order by student.tot_cred asc
+SELECT T2.name FROM advisor AS T1 JOIN instructor AS T2 ON T1.i_id  =  T2.id JOIN student AS T3 ON T1.s_id  =  T3.id WHERE T3.dept_name  =  'Math' ORDER BY T3.tot_cred
+select instructor.name from advisor join student on advisor.s_ID = student.ID join instructor on advisor.i_ID = instructor.ID where  student.dept_name = "Math"   order by student.tot_cred asc
+SELECT title FROM course WHERE course_id IN (SELECT T1.prereq_id FROM prereq AS T1 JOIN course AS T2 ON T1.course_id  =  T2.course_id WHERE T2.title  =  'Mobile Computing')
+select course.title from course where  course.course_id in (select prereq.prereq_id from prereq join course on prereq.prereq_id = course.course_id where  course.title = "Mobile Computing"  )
+SELECT title FROM course WHERE course_id IN (SELECT T1.prereq_id FROM prereq AS T1 JOIN course AS T2 ON T1.course_id  =  T2.course_id WHERE T2.title  =  'Mobile Computing')
+select course.title from course where  course.course_id in (select prereq.prereq_id from prereq join course on prereq.prereq_id = course.course_id where  course.title = "Mobile Computing"  )
+SELECT T2.name FROM advisor AS T1 JOIN instructor AS T2 ON T1.i_id  =  T2.id JOIN student AS T3 ON T1.s_id  =  T3.id ORDER BY T3.tot_cred DESC LIMIT 1
+select instructor.name from advisor join student on advisor.s_ID = student.ID join instructor on advisor.i_ID = instructor.ID   order by student.tot_cred desc limit 1
+SELECT T2.name FROM advisor AS T1 JOIN instructor AS T2 ON T1.i_id  =  T2.id JOIN student AS T3 ON T1.s_id  =  T3.id ORDER BY T3.tot_cred DESC LIMIT 1
+select instructor.name from advisor join student on advisor.s_ID = student.ID join instructor on advisor.i_ID = instructor.ID   order by student.tot_cred desc limit 1
+SELECT name FROM instructor WHERE id NOT IN (SELECT id FROM teaches)
+select instructor.name from instructor where  instructor.id not in (select teaches.ID from teaches  )
+SELECT name FROM instructor WHERE id NOT IN (SELECT id FROM teaches)
+select instructor.name from instructor where  instructor.id not in (select teaches.ID from teaches  )
+SELECT id FROM instructor EXCEPT SELECT id FROM teaches
+select instructor.id from instructor   except select teaches.id from teaches
+SELECT id FROM instructor EXCEPT SELECT id FROM teaches
+select instructor.id from instructor   except select teaches.id from teaches
+SELECT name FROM instructor WHERE id NOT IN (SELECT id FROM teaches WHERE semester  =  'Spring')
+select instructor.name from instructor where  instructor.id not in (select teaches.ID from teaches where  teaches.semester = "Spring"  )
+SELECT name FROM instructor WHERE id NOT IN (SELECT id FROM teaches WHERE semester  =  'Spring')
+select instructor.name from instructor where  instructor.id not in (select teaches.ID from teaches where  teaches.semester = "Spring"  )
+SELECT dept_name FROM instructor GROUP BY dept_name ORDER BY avg(salary) DESC LIMIT 1
+select instructor.dept_name from instructor  group by instructor.dept_name  order by avg(instructor.salary) desc limit 1
+SELECT dept_name FROM instructor GROUP BY dept_name ORDER BY avg(salary) DESC LIMIT 1
+select instructor.dept_name from instructor  group by instructor.dept_name  order by avg(instructor.salary) desc limit 1
+SELECT avg(T1.salary) ,  count(*) FROM instructor AS T1 JOIN department AS T2 ON T1.dept_name  =  T2.dept_name ORDER BY T2.budget DESC LIMIT 1
+select avg(instructor.salary) , count(*) from instructor join department on instructor.dept_name = department.dept_name   order by department.budget desc limit 1
+SELECT avg(T1.salary) ,  count(*) FROM instructor AS T1 JOIN department AS T2 ON T1.dept_name  =  T2.dept_name ORDER BY T2.budget DESC LIMIT 1
+select avg(instructor.salary) , count(*) from instructor join department on instructor.dept_name = department.dept_name   order by department.budget desc limit 1
+SELECT T3.title ,  T3.credits FROM classroom AS T1 JOIN SECTION AS T2 ON T1.building  =  T2.building AND T1.room_number  =  T2.room_number JOIN course AS T3 ON T2.course_id  =  T3.course_id WHERE T1.capacity  =  (SELECT max(capacity) FROM classroom)
+select course.title , course.credits from section join classroom on section.building = classroom.building join course on section.course_id = course.course_id where  classroom.capacity = (select max(classroom.capacity) from classroom  )
+SELECT T3.title ,  T3.credits FROM classroom AS T1 JOIN SECTION AS T2 ON T1.building  =  T2.building AND T1.room_number  =  T2.room_number JOIN course AS T3 ON T2.course_id  =  T3.course_id WHERE T1.capacity  =  (SELECT max(capacity) FROM classroom)
+select course.title , course.credits from section join classroom on section.building = classroom.building join course on section.course_id = course.course_id where  classroom.capacity = (select max(classroom.capacity) from classroom  )
+SELECT name FROM student WHERE id NOT IN (SELECT T1.id FROM takes AS T1 JOIN course AS T2 ON T1.course_id  =  T2.course_id WHERE T2.dept_name  =  'Biology')
+select student.name from student where  student.id not in (select takes.ID from takes join course on takes.course_id = course.course_id where  course.dept_name = "Biology"  )
+SELECT name FROM student WHERE id NOT IN (SELECT T1.id FROM takes AS T1 JOIN course AS T2 ON T1.course_id  =  T2.course_id WHERE T2.dept_name  =  'Biology')
+select student.name from student where  student.id not in (select takes.ID from takes join course on takes.course_id = course.course_id where  course.dept_name = "Biology"  )
+SELECT count(DISTINCT T2.id) ,  count(DISTINCT T3.id) ,  T3.dept_name FROM department AS T1 JOIN student AS T2 ON T1.dept_name  =  T2.dept_name JOIN instructor AS T3 ON T1.dept_name  =  T3.dept_name GROUP BY T3.dept_name
+select count( distinct student.id) , count( distinct instructor.id) , instructor.dept_name from advisor join student on advisor.s_ID = student.ID join instructor on advisor.i_ID = instructor.ID  group by instructor.dept_name
+SELECT count(DISTINCT T2.id) ,  count(DISTINCT T3.id) ,  T3.dept_name FROM department AS T1 JOIN student AS T2 ON T1.dept_name  =  T2.dept_name JOIN instructor AS T3 ON T1.dept_name  =  T3.dept_name GROUP BY T3.dept_name
+select count( distinct student.id) , count( distinct instructor.id) , instructor.dept_name from advisor join student on advisor.s_ID = student.ID join instructor on advisor.i_ID = instructor.ID  group by instructor.dept_name
+SELECT T1.name FROM student AS T1 JOIN takes AS T2 ON T1.id  =  T2.id WHERE T2.course_id IN (SELECT T4.prereq_id FROM course AS T3 JOIN prereq AS T4 ON T3.course_id  =  T4.course_id WHERE T3.title  =  'International Finance')
+select student.name from takes join student on takes.ID = student.ID where  takes.course_id in (select prereq.prereq_id from prereq join course on prereq.prereq_id = course.course_id where  course.title = "International Finance"  )
+SELECT T1.name FROM student AS T1 JOIN takes AS T2 ON T1.id  =  T2.id WHERE T2.course_id IN (SELECT T4.prereq_id FROM course AS T3 JOIN prereq AS T4 ON T3.course_id  =  T4.course_id WHERE T3.title  =  'International Finance')
+select student.name from takes join student on takes.ID = student.ID where  takes.course_id in (select prereq.prereq_id from prereq join course on prereq.prereq_id = course.course_id where  course.title = "International Finance"  )
+SELECT name ,  salary FROM instructor WHERE salary  <  (SELECT avg(salary) FROM instructor WHERE dept_name  =  'Physics')
+select instructor.name , instructor.salary from instructor where  instructor.salary < (select avg(instructor.salary) from instructor where  instructor.dept_name = "Physics"  )
+SELECT name ,  salary FROM instructor WHERE salary  <  (SELECT avg(salary) FROM instructor WHERE dept_name  =  'Physics')
+select instructor.name , instructor.salary from instructor where  instructor.salary < (select avg(instructor.salary) from instructor where  instructor.dept_name = "Physics"  )
+SELECT T3.name FROM course AS T1 JOIN takes AS T2 ON T1.course_id  =  T2.course_id JOIN student AS T3 ON T2.id  =  T3.id WHERE T1.dept_name  =  'Statistics'
+select student.name from takes join student on takes.ID = student.ID join course on takes.course_id = course.course_id where  course.dept_name = "Statistics"
+SELECT T3.name FROM course AS T1 JOIN takes AS T2 ON T1.course_id  =  T2.course_id JOIN student AS T3 ON T2.id  =  T3.id WHERE T1.dept_name  =  'Statistics'
+select student.name from takes join student on takes.ID = student.ID join course on takes.course_id = course.course_id where  course.dept_name = "Statistics"
+SELECT T2.building ,  T2.room_number ,  T2.semester ,  T2.year FROM course AS T1 JOIN SECTION AS T2 ON T1.course_id  =  T2.course_id WHERE T1.dept_name  =  'Psychology' ORDER BY T1.title
+select section.building , section.room_number , section.semester , section.year from section join course on section.course_id = course.course_id where  course.dept_name = "Psychology"   order by course.title asc
+SELECT T2.building ,  T2.room_number ,  T2.semester ,  T2.year FROM course AS T1 JOIN SECTION AS T2 ON T1.course_id  =  T2.course_id WHERE T1.dept_name  =  'Psychology' ORDER BY T1.title
+select section.building , section.room_number , section.semester , section.year from section join course on section.course_id = course.course_id where  course.dept_name = "Psychology"   order by course.title asc
+SELECT name FROM instructor WHERE dept_name  =  'Comp. Sci.'
+select instructor.name from instructor where  instructor.dept_name = "Comp. Sci."
+SELECT name FROM instructor WHERE dept_name  =  'Comp. Sci.'
+select instructor.name from instructor where  instructor.dept_name = "Comp. Sci."
+SELECT name FROM instructor WHERE dept_name  =  'Comp. Sci.'  AND salary  >  80000
+select instructor.name from instructor where  instructor.dept_name = "Comp. Sci." and instructor.salary > 80000
+SELECT name FROM instructor WHERE dept_name  =  'Comp. Sci.'  AND salary  >  80000
+select instructor.name from instructor where  instructor.dept_name = "Comp. Sci." and instructor.salary > 80000
+SELECT name ,  course_id FROM instructor AS T1 JOIN teaches AS T2 ON T1.ID  =  T2.ID
+select instructor.name , teaches.course_id from teaches join instructor on teaches.ID = instructor.ID
+SELECT name ,  course_id FROM instructor AS T1 JOIN teaches AS T2 ON T1.ID  =  T2.ID
+select instructor.name , teaches.course_id from teaches join instructor on teaches.ID = instructor.ID
+SELECT name ,  course_id FROM instructor AS T1 JOIN teaches AS T2 ON T1.ID  =  T2.ID WHERE T1.dept_name  =  'Art'
+select instructor.name , teaches.course_id from teaches join instructor on teaches.ID = instructor.ID where  instructor.dept_name = "Art"
+SELECT name ,  course_id FROM instructor AS T1 JOIN teaches AS T2 ON T1.ID  =  T2.ID WHERE T1.dept_name  =  'Art'
+select instructor.name , teaches.course_id from teaches join instructor on teaches.ID = instructor.ID where  instructor.dept_name = "Art"
+SELECT name FROM instructor WHERE name LIKE '%dar%'
+select instructor.name from instructor where  instructor.name like "%dar%"
+SELECT name FROM instructor WHERE name LIKE '%dar%'
+select instructor.name from instructor where  instructor.name like "%dar%"
+SELECT DISTINCT name FROM  instructor ORDER BY name
+select distinct instructor.name from instructor   order by instructor.name asc
+SELECT DISTINCT name FROM  instructor ORDER BY name
+select distinct instructor.name from instructor   order by instructor.name asc
+SELECT course_id FROM SECTION WHERE semester  =  'Fall' AND YEAR  =  2009 UNION SELECT course_id FROM SECTION WHERE semester  =  'Spring' AND YEAR  =  2010
+select section.course_id from section where  section.semester = "Fall" and section.year = 2009   union select section.course_id from section where  section.semester = "Spring" and section.year = 2010
+SELECT course_id FROM SECTION WHERE semester  =  'Fall' AND YEAR  =  2009 UNION SELECT course_id FROM SECTION WHERE semester  =  'Spring' AND YEAR  =  2010
+select section.course_id from section where  section.semester = "Fall" and section.year = 2009   union select section.course_id from section where  section.semester = "Spring" and section.year = 2010
+SELECT course_id FROM SECTION WHERE semester  =  'Fall' AND YEAR  =  2009 INTERSECT SELECT course_id FROM SECTION WHERE semester  =  'Spring' AND YEAR  =  2010
+select section.course_id from section where  section.semester = "Fall" and section.year = 2009   intersect select section.course_id from section where  section.semester = "Spring" and section.year = 2010
+SELECT course_id FROM SECTION WHERE semester  =  'Fall' AND YEAR  =  2009 INTERSECT SELECT course_id FROM SECTION WHERE semester  =  'Spring' AND YEAR  =  2010
+select section.course_id from section where  section.semester = "Fall" and section.year = 2009   intersect select section.course_id from section where  section.semester = "Spring" and section.year = 2010
+SELECT course_id FROM SECTION WHERE semester  =  'Fall' AND YEAR  =  2009 EXCEPT SELECT course_id FROM SECTION WHERE semester  =  'Spring' AND YEAR  =  2010
+select section.course_id from section where  section.semester = "Fall" and section.year = 2009   except select section.course_id from section where  section.semester = "Spring" and section.year = 2010
+SELECT course_id FROM SECTION WHERE semester  =  'Fall' AND YEAR  =  2009 EXCEPT SELECT course_id FROM SECTION WHERE semester  =  'Spring' AND YEAR  =  2010
+select section.course_id from section where  section.semester = "Fall" and section.year = 2009   except select section.course_id from section where  section.semester = "Spring" and section.year = 2010
+SELECT DISTINCT salary FROM instructor WHERE salary  <  (SELECT max(salary) FROM instructor)
+select distinct instructor.salary from instructor where  instructor.salary < (select max(instructor.salary) from instructor  )
+SELECT DISTINCT salary FROM instructor WHERE salary  <  (SELECT max(salary) FROM instructor)
+select distinct instructor.salary from instructor where  instructor.salary < (select max(instructor.salary) from instructor  )
+SELECT COUNT (DISTINCT ID) FROM teaches WHERE semester  =  'Spring' AND YEAR  =  2010
+select count( distinct teaches.id) from teaches where  teaches.semester = "Spring" and teaches.year = 2010
+SELECT COUNT (DISTINCT ID) FROM teaches WHERE semester  =  'Spring' AND YEAR  =  2010
+select count( distinct teaches.id) from teaches where  teaches.semester = "Spring" and teaches.year = 2010
+SELECT dept_name ,  AVG (salary) FROM instructor GROUP BY dept_name HAVING AVG (salary)  >  42000
+select instructor.dept_name , avg(instructor.salary) from instructor  group by instructor.dept_name having  avg(instructor.salary) > 42000
+SELECT dept_name ,  AVG (salary) FROM instructor GROUP BY dept_name HAVING AVG (salary)  >  42000
+select instructor.dept_name , avg(instructor.salary) from instructor  group by instructor.dept_name having  avg(instructor.salary) > 42000
+SELECT name FROM instructor WHERE salary  >  (SELECT min(salary) FROM instructor WHERE dept_name  =  'Biology')
+select instructor.name from instructor where  instructor.salary > (select min(instructor.salary) from instructor where  instructor.dept_name = "Biology"  )
+SELECT name FROM instructor WHERE salary  >  (SELECT min(salary) FROM instructor WHERE dept_name  =  'Biology')
+select instructor.name from instructor where  instructor.salary > (select min(instructor.salary) from instructor where  instructor.dept_name = "Biology"  )
+SELECT name FROM instructor WHERE salary  >  (SELECT max(salary) FROM instructor WHERE dept_name  =  'Biology')
+select instructor.name from instructor where  instructor.salary > (select max(instructor.salary) from instructor where  instructor.dept_name = "Biology"  )
+SELECT name FROM instructor WHERE salary  >  (SELECT max(salary) FROM instructor WHERE dept_name  =  'Biology')
+select instructor.name from instructor where  instructor.salary > (select max(instructor.salary) from instructor where  instructor.dept_name = "Biology"  )

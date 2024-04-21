@@ -1,0 +1,36 @@
+SELECT count(*) FROM journalist
+select count(*) from journalist
+SELECT Name FROM journalist ORDER BY Years_working ASC
+select journalist.name from journalist   order by journalist.years_working asc
+SELECT Nationality ,  Age FROM journalist
+select journalist.nationality , journalist.age from journalist
+SELECT Name FROM journalist WHERE Nationality  =  "England" OR Nationality  =  "Wales"
+select journalist.name from journalist where  journalist.nationality = "England" or journalist.nationality = "Wales"
+SELECT avg(Years_working) FROM journalist
+select avg(journalist.years_working) from journalist
+SELECT Nationality FROM journalist ORDER BY Years_working DESC LIMIT 1
+select journalist.nationality from journalist   order by journalist.years_working desc limit 1
+SELECT Nationality ,  COUNT(*) FROM journalist GROUP BY Nationality
+select journalist.nationality , count(*) from journalist  group by journalist.nationality
+SELECT Nationality FROM journalist GROUP BY Nationality ORDER BY COUNT(*) DESC LIMIT 1
+select journalist.nationality from journalist  group by journalist.nationality  order by count(*) desc limit 1
+SELECT Nationality FROM journalist WHERE Years_working  >  10 INTERSECT SELECT Nationality FROM journalist WHERE Years_working  <  3
+select journalist.nationality from journalist where  journalist.years_working > 10   intersect select journalist.nationality from journalist where  journalist.years_working < 3
+SELECT Date ,  Name ,  venue FROM event ORDER BY Event_Attendance DESC
+select event.date , event.name , event.venue from event   order by event.event_attendance desc
+SELECT T3.Name ,  T2.Date FROM news_report AS T1 JOIN event AS T2 ON T1.Event_ID  =  T2.Event_ID JOIN journalist AS T3 ON T1.journalist_ID  =  T3.journalist_ID
+select journalist.name , event.date from news_report join event on news_report.Event_ID = event.Event_ID join journalist on news_report.journalist_ID = journalist.journalist_ID
+SELECT T3.Name ,  T2.Name FROM news_report AS T1 JOIN event AS T2 ON T1.Event_ID  =  T2.Event_ID JOIN journalist AS T3 ON T1.journalist_ID  =  T3.journalist_ID ORDER BY T2.Event_Attendance ASC
+select journalist.name , event.name from news_report join event on news_report.Event_ID = event.Event_ID join journalist on news_report.journalist_ID = journalist.journalist_ID   order by event.event_attendance asc
+SELECT T3.Name ,  COUNT(*) FROM news_report AS T1 JOIN event AS T2 ON T1.Event_ID  =  T2.Event_ID JOIN journalist AS T3 ON T1.journalist_ID  =  T3.journalist_ID GROUP BY T3.Name
+select journalist.name , count(*) from news_report join event on news_report.Event_ID = event.Event_ID join journalist on news_report.journalist_ID = journalist.journalist_ID  group by journalist.name
+SELECT T3.Name FROM news_report AS T1 JOIN event AS T2 ON T1.Event_ID  =  T2.Event_ID JOIN journalist AS T3 ON T1.journalist_ID  =  T3.journalist_ID GROUP BY T3.Name HAVING COUNT(*)  >  1
+select journalist.name from news_report join event on news_report.Event_ID = event.Event_ID join journalist on news_report.journalist_ID = journalist.journalist_ID  group by journalist.name having  count(*) > 1
+SELECT Name FROM journalist WHERE journalist_ID NOT IN (SELECT journalist_ID FROM news_report)
+select journalist.name from journalist where  journalist.journalist_id not in (select news_report.journalist_ID from news_report  )
+SELECT avg(Event_Attendance) ,  max(Event_Attendance) FROM event
+select avg(event.event_attendance) , max(event.event_attendance) from event
+SELECT avg(t1.age) ,  avg(Years_working) ,  t2.work_type FROM journalist AS t1 JOIN news_report AS t2 ON t1.journalist_id  =  t2.journalist_id GROUP BY t2.work_type
+select avg(journalist.age) , avg(journalist.years_working) , news_report.work_type from news_report join journalist on news_report.journalist_ID = journalist.journalist_ID  group by news_report.work_type
+SELECT venue ,  name FROM event ORDER BY Event_Attendance DESC LIMIT 2
+select event.venue , event.name from event   order by event.event_attendance desc limit 2

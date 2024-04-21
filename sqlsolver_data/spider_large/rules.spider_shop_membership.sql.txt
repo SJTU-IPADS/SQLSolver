@@ -1,0 +1,88 @@
+SELECT count(*) FROM branch WHERE membership_amount  >  (SELECT avg(membership_amount) FROM branch)
+select count(*) from branch where  branch.membership_amount > (select avg(branch.membership_amount) from branch  )
+SELECT count(*) FROM branch WHERE membership_amount  >  (SELECT avg(membership_amount) FROM branch)
+select count(*) from branch where  branch.membership_amount > (select avg(branch.membership_amount) from branch  )
+SELECT name ,  address_road ,  city FROM branch ORDER BY open_year
+select branch.name , branch.address_road , branch.city from branch   order by branch.open_year asc
+SELECT name ,  address_road ,  city FROM branch ORDER BY open_year
+select branch.name , branch.address_road , branch.city from branch   order by branch.open_year asc
+SELECT name FROM branch ORDER BY membership_amount DESC LIMIT 3
+select branch.name from branch   order by branch.membership_amount desc limit 3
+SELECT name FROM branch ORDER BY membership_amount DESC LIMIT 3
+select branch.name from branch   order by branch.membership_amount desc limit 3
+SELECT DISTINCT city FROM branch WHERE membership_amount  >=  100
+select distinct branch.city from branch where  branch.membership_amount >= 100
+SELECT DISTINCT city FROM branch WHERE membership_amount  >=  100
+select distinct branch.city from branch where  branch.membership_amount >= 100
+SELECT open_year FROM branch GROUP BY open_year HAVING count(*)  >=  2
+select branch.open_year from branch  group by branch.open_year having  count(*) >= 2
+SELECT open_year FROM branch GROUP BY open_year HAVING count(*)  >=  2
+select branch.open_year from branch  group by branch.open_year having  count(*) >= 2
+SELECT min(membership_amount) ,  max(membership_amount) FROM branch WHERE open_year  =  2011 OR city  =  'London'
+select min(branch.membership_amount) , max(branch.membership_amount) from branch where  branch.open_year = 2011 or branch.city = "London"
+SELECT min(membership_amount) ,  max(membership_amount) FROM branch WHERE open_year  =  2011 OR city  =  'London'
+select min(branch.membership_amount) , max(branch.membership_amount) from branch where  branch.open_year = 2011 or branch.city = "London"
+SELECT city ,  count(*) FROM branch WHERE open_year  <  2010 GROUP BY city
+select branch.city , count(*) from branch where  branch.open_year < 2010  group by branch.city
+SELECT city ,  count(*) FROM branch WHERE open_year  <  2010 GROUP BY city
+select branch.city , count(*) from branch where  branch.open_year < 2010  group by branch.city
+SELECT count(DISTINCT LEVEL) FROM member
+select count( distinct member.level) from member
+SELECT count(DISTINCT LEVEL) FROM member
+select count( distinct member.level) from member
+SELECT card_number ,  name ,  hometown FROM member ORDER BY LEVEL DESC
+select member.card_number , member.name , member.hometown from member   order by member.level desc
+SELECT card_number ,  name ,  hometown FROM member ORDER BY LEVEL DESC
+select member.card_number , member.name , member.hometown from member   order by member.level desc
+SELECT LEVEL FROM member GROUP BY LEVEL ORDER BY count(*) DESC LIMIT 1
+select member.level from member  group by member.level  order by count(*) desc limit 1
+SELECT LEVEL FROM member GROUP BY LEVEL ORDER BY count(*) DESC LIMIT 1
+select member.level from member  group by member.level  order by count(*) desc limit 1
+SELECT T3.name ,  T2.name FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id JOIN member AS T3 ON T1.member_id  =  T3.member_id ORDER BY T1.register_year
+select member.name , branch.name from membership_register_branch join branch on membership_register_branch.Branch_ID = branch.Branch_ID join member on membership_register_branch.Member_ID = member.Member_ID   order by membership_register_branch.register_year asc
+SELECT T3.name ,  T2.name FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id JOIN member AS T3 ON T1.member_id  =  T3.member_id ORDER BY T1.register_year
+select member.name , branch.name from membership_register_branch join branch on membership_register_branch.Branch_ID = branch.Branch_ID join member on membership_register_branch.Member_ID = member.Member_ID   order by membership_register_branch.register_year asc
+SELECT T2.name ,  count(*) FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id WHERE T1.register_year  >  2015 GROUP BY T2.branch_id
+select branch.name , count(*) from membership_register_branch join branch on membership_register_branch.Branch_ID = branch.Branch_ID where  membership_register_branch.register_year > 2015  group by branch.branch_id
+SELECT T2.name ,  count(*) FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id WHERE T1.register_year  >  2015 GROUP BY T2.branch_id
+select branch.name , membership_register_branch.branch_id from membership_register_branch join branch on membership_register_branch.Branch_ID = branch.Branch_ID where  membership_register_branch.register_year > 2015  group by membership_register_branch.branch_id
+SELECT name FROM member WHERE member_id NOT IN (SELECT member_id FROM membership_register_branch)
+select member.name from member where  member.member_id not in (select membership_register_branch.Member_ID from membership_register_branch  )
+SELECT name FROM member WHERE member_id NOT IN (SELECT member_id FROM membership_register_branch)
+select member.name from member where  member.member_id not in (select membership_register_branch.Member_ID from membership_register_branch  )
+SELECT name ,  city FROM branch WHERE branch_id NOT IN (SELECT branch_id FROM membership_register_branch)
+select branch.name , branch.city from branch where  branch.branch_id not in (select membership_register_branch.Branch_ID from membership_register_branch  )
+SELECT name ,  city FROM branch WHERE branch_id NOT IN (SELECT branch_id FROM membership_register_branch)
+select branch.name , branch.city from branch where  branch.branch_id not in (select membership_register_branch.Branch_ID from membership_register_branch  )
+SELECT T2.name ,  T2.open_year FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id WHERE T1.register_year  =  2016 GROUP BY T2.branch_id ORDER BY count(*) DESC LIMIT 1
+select branch.name , branch.open_year from membership_register_branch join branch on membership_register_branch.Branch_ID = branch.Branch_ID where  membership_register_branch.register_year = 2016  group by membership_register_branch.branch_id  order by count(*) desc limit 1
+SELECT T2.name ,  T2.open_year FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id WHERE T1.register_year  =  2016 GROUP BY T2.branch_id ORDER BY count(*) DESC LIMIT 1
+select branch.name , branch.open_year from membership_register_branch join branch on membership_register_branch.Branch_ID = branch.Branch_ID where  membership_register_branch.register_year = 2016  group by membership_register_branch.branch_id  order by count(*) desc limit 1
+SELECT T2.name ,  T2.hometown FROM membership_register_branch AS T1 JOIN member AS T2 ON T1.member_id  =  T2.member_id WHERE T1.register_year  =  2016
+select member.name , member.hometown from membership_register_branch join member on membership_register_branch.Member_ID = member.Member_ID where  membership_register_branch.register_year = 2016
+SELECT T2.name ,  T2.hometown FROM membership_register_branch AS T1 JOIN member AS T2 ON T1.member_id  =  T2.member_id WHERE T1.register_year  =  2016
+select member.name , member.hometown from membership_register_branch join member on membership_register_branch.Member_ID = member.Member_ID where  membership_register_branch.register_year = 2016
+SELECT city FROM branch WHERE open_year  =  2001 AND membership_amount  >  100
+select branch.city from branch where  branch.open_year = 2001 and branch.membership_amount > 100
+SELECT city FROM branch WHERE open_year  =  2001 AND membership_amount  >  100
+select branch.city from branch where  branch.open_year = 2001 and branch.membership_amount > 100
+SELECT city FROM branch EXCEPT SELECT city FROM branch WHERE membership_amount  >  100
+select branch.city from branch   except select branch.city from branch where  branch.membership_amount > 100
+SELECT city FROM branch EXCEPT SELECT city FROM branch WHERE membership_amount  >  100
+select branch.city from branch   except select branch.city from branch where  branch.membership_amount > 100
+SELECT sum(total_pounds) FROM purchase AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id WHERE T2.city  =  'London' AND T1.year  =  2018
+select sum(purchase.total_pounds) from purchase join branch on purchase.Branch_ID = branch.Branch_ID where  branch.city = "London" and purchase.year = 2018
+SELECT sum(total_pounds) FROM purchase AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id WHERE T2.city  =  'London' AND T1.year  =  2018
+select sum(purchase.total_pounds) from purchase join branch on purchase.Branch_ID = branch.Branch_ID where  branch.city = "London" and purchase.year = 2018
+SELECT count(*) FROM purchase AS T1 JOIN member AS T2 ON T1.member_id  =  T2.member_id WHERE T2.level  =  6
+select count(*) from purchase join member on purchase.Member_ID = member.Member_ID where  member.level = 6
+SELECT count(*) FROM purchase AS T1 JOIN member AS T2 ON T1.member_id  =  T2.member_id WHERE T2.level  =  6
+select count(*) from purchase join member on purchase.Member_ID = member.Member_ID where  member.level = 6
+SELECT T2.name FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id JOIN member AS T3 ON T1.member_id  =  T3.member_id WHERE T3.Hometown  =  'Louisville ,  Kentucky' INTERSECT SELECT T2.name FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id JOIN member AS T3 ON T1.member_id  =  T3.member_id WHERE T3.Hometown  =  'Hiram ,  Georgia'
+select branch.name from membership_register_branch join branch on membership_register_branch.Branch_ID = branch.Branch_ID join member on membership_register_branch.Member_ID = member.Member_ID where  member.hometown = "Louisville , Kentucky"   intersect select branch.name from membership_register_branch join branch on membership_register_branch.Branch_ID = branch.Branch_ID join member on membership_register_branch.Member_ID = member.Member_ID where  member.hometown = "Hiram , Georgia"
+SELECT T2.name FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id JOIN member AS T3 ON T1.member_id  =  T3.member_id WHERE T3.Hometown  =  'Louisville ,  Kentucky' INTERSECT SELECT T2.name FROM membership_register_branch AS T1 JOIN branch AS T2 ON T1.branch_id  =  T2.branch_id JOIN member AS T3 ON T1.member_id  =  T3.member_id WHERE T3.Hometown  =  'Hiram ,  Georgia'
+select branch.name from membership_register_branch join branch on membership_register_branch.Branch_ID = branch.Branch_ID join member on membership_register_branch.Member_ID = member.Member_ID where  member.hometown = "Louisville , Kentucky"   intersect select branch.name from membership_register_branch join branch on membership_register_branch.Branch_ID = branch.Branch_ID join member on membership_register_branch.Member_ID = member.Member_ID where  member.hometown = "Hiram , Georgia"
+SELECT card_number FROM member WHERE Hometown LIKE "%Kentucky%"
+select member.card_number from member where  member.hometown like "%Kentucky%"
+SELECT card_number FROM member WHERE Hometown LIKE "%Kentucky%"
+select member.card_number from member where  member.hometown like "%Kentucky%"

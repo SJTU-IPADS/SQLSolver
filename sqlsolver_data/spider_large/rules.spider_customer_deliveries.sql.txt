@@ -1,0 +1,32 @@
+SELECT actual_order_id FROM actual_orders WHERE order_status_code  =  'Success'
+select actual_orders.actual_order_id from Actual_Orders where  actual_orders.order_status_code = "Success"
+SELECT t1.product_name ,   t1.product_price FROM products AS t1 JOIN regular_order_products AS t2 ON t1.product_id  =  t2.product_id GROUP BY t2.product_id ORDER BY count(*) DESC LIMIT 1
+select products.product_name , products.product_price from Regular_Order_Products join Products on Regular_Order_Products.product_id = Products.product_id  group by regular_order_products.product_id  order by count(*) desc limit 1
+SELECT count(*) FROM customers
+select count(*) from Customers
+SELECT count(DISTINCT payment_method) FROM customers
+select count( distinct customers.payment_method) from Customers
+SELECT truck_details FROM trucks ORDER BY truck_licence_number
+select trucks.truck_details from Trucks   order by trucks.truck_licence_number asc
+SELECT product_name FROM products ORDER BY product_price DESC LIMIT 1
+select products.product_name from Products   order by products.product_price desc limit 1
+SELECT customer_name FROM customers EXCEPT SELECT t1.customer_name FROM customers AS t1 JOIN customer_addresses AS t2 ON t1.customer_id  =  t2.customer_id JOIN addresses AS t3 ON t2.address_id  =  t3.address_id WHERE t3.state_province_county  =  'California'
+select customers.customer_name from Customers   except select customers.customer_name from Customer_Addresses join Addresses on Customer_Addresses.address_id = Addresses.address_id join Customers on Customer_Addresses.customer_id = Customers.customer_id where  addresses.state_province_county = "California"
+SELECT customer_email ,  customer_name FROM customers WHERE payment_method  =  'Visa'
+select customers.customer_email , customers.customer_name from Customers where  customers.payment_method = "Visa"
+SELECT t1.customer_name ,  t1.customer_phone FROM customers AS t1 JOIN customer_addresses AS t2 ON t1.customer_id  =  t2.customer_id JOIN addresses AS t3 ON t2.address_id  =  t3.address_id WHERE t3.state_province_county  =  'California'
+select customers.customer_name , customers.customer_phone from Customer_Addresses join Addresses on Customer_Addresses.address_id = Addresses.address_id join Customers on Customer_Addresses.customer_id = Customers.customer_id where  addresses.state_province_county = "California"
+SELECT state_province_county FROM addresses WHERE address_id NOT IN (SELECT employee_address_id FROM Employees)
+select addresses.state_province_county from Addresses where  addresses.address_id not in (select Employees.employee_address_id from Employees  )
+SELECT customer_name ,  customer_phone ,  customer_email FROM Customers ORDER BY date_became_customer
+select customers.customer_name , customers.customer_phone , customers.customer_email from Customers   order by customers.date_became_customer asc
+SELECT customer_name FROM Customers ORDER BY date_became_customer LIMIT 5
+select customers.customer_name from Customers   order by customers.date_became_customer asc limit 5
+SELECT payment_method FROM Customers GROUP BY payment_method ORDER BY count(*) DESC LIMIT 1
+select customers.payment_method from Customers  group by customers.payment_method  order by count(*) desc limit 1
+SELECT route_name FROM Delivery_Routes ORDER BY route_name
+select delivery_routes.route_name from Delivery_Routes   order by delivery_routes.route_name asc
+SELECT t1.route_name FROM Delivery_Routes AS t1 JOIN Delivery_Route_Locations AS t2 ON t1.route_id  =  t2.route_id GROUP BY t1.route_id ORDER BY count(*) DESC LIMIT 1
+select delivery_routes.route_name from Order_Deliveries join Delivery_Route_Locations on Order_Deliveries.location_code = Delivery_Route_Locations.location_code join Delivery_Routes on Delivery_Route_Locations.route_id = Delivery_Routes.route_id  group by delivery_routes.route_name  order by count(*) desc limit 1
+SELECT t2.state_province_county ,  count(*) FROM customer_addresses AS t1 JOIN addresses AS t2 ON t1.address_id  =  t2.address_id GROUP BY t2.state_province_county
+select addresses.state_province_county , count(*) from Customer_Addresses join Addresses on Customer_Addresses.address_id = Addresses.address_id join Customers on Customer_Addresses.customer_id = Customers.customer_id  group by addresses.state_province_county

@@ -1,0 +1,8 @@
+dependencies {
+    implementation('com.google.guava:guava:29.0-jre')
+    implementation('org.apache.commons:commons-lang3:3.10')
+    implementation('org.jetbrains:annotations:16.0.2')
+    implementation('net.sf.trove4j:trove4j:3.0.3')
+    implementation('com.zaxxer:HikariCP:5.0.0')
+}
+

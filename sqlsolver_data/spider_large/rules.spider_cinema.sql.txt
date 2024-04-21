@@ -1,0 +1,60 @@
+SELECT LOCATION FROM cinema EXCEPT SELECT LOCATION FROM cinema WHERE capacity  >  800
+select cinema.location from cinema   except select cinema.location from cinema where  cinema.capacity > 800
+SELECT LOCATION FROM cinema WHERE openning_year  =  2010 INTERSECT SELECT LOCATION FROM cinema WHERE openning_year  =  2011
+select cinema.location from cinema where  cinema.openning_year = 2010   intersect select cinema.location from cinema where  cinema.openning_year = 2011
+SELECT count(*) FROM cinema
+select count(*) from cinema
+SELECT count(*) FROM cinema
+select count(*) from cinema
+SELECT name ,  openning_year ,  capacity FROM cinema
+select cinema.name , cinema.openning_year , cinema.capacity from cinema
+SELECT name ,  LOCATION FROM cinema WHERE capacity  >  (SELECT avg(capacity) FROM cinema)
+select cinema.name , cinema.location from cinema where  cinema.capacity > (select avg(cinema.capacity) from cinema  )
+SELECT DISTINCT LOCATION FROM cinema
+select distinct cinema.location from cinema
+SELECT DISTINCT LOCATION FROM cinema
+select distinct cinema.location from cinema
+SELECT name ,  openning_year FROM cinema ORDER BY openning_year DESC
+select cinema.name , cinema.openning_year from cinema   order by cinema.openning_year desc
+SELECT name ,  LOCATION FROM cinema ORDER BY capacity DESC LIMIT 1
+select cinema.name , cinema.location from cinema   order by cinema.capacity desc limit 1
+SELECT avg(capacity) ,  min(capacity) ,  max(capacity) FROM cinema WHERE openning_year  >=  2011
+select avg(cinema.capacity) , min(cinema.capacity) , max(cinema.capacity) from cinema where  cinema.openning_year >= 2011
+SELECT LOCATION ,  count(*) FROM cinema GROUP BY LOCATION
+select cinema.location , count(*) from cinema  group by cinema.location
+SELECT LOCATION FROM cinema WHERE openning_year  >=  2010 GROUP BY LOCATION ORDER BY count(*) DESC LIMIT 1
+select cinema.location from cinema where  cinema.openning_year >= 2010  group by cinema.location  order by count(*) desc limit 1
+SELECT LOCATION FROM cinema WHERE capacity  >  300 GROUP BY LOCATION HAVING count(*)  >=  2
+select cinema.location from cinema where  cinema.capacity > 300  group by cinema.location having  count(*) >= 2
+SELECT LOCATION FROM cinema WHERE capacity  >  300 GROUP BY LOCATION HAVING count(*)  >=  2
+select cinema.location from cinema where  cinema.capacity > 300  group by cinema.location having  count(*) >= 2
+SELECT title ,  directed_by FROM film
+select film.title , film.directed_by from film
+SELECT title ,  directed_by FROM film
+select film.title , film.directed_by from film
+SELECT DISTINCT directed_by FROM film
+select distinct film.directed_by from film
+SELECT DISTINCT directed_by FROM film
+select distinct film.directed_by from film
+SELECT directed_by ,  count(*) FROM film GROUP BY directed_by
+select film.directed_by , count(*) from film  group by film.directed_by
+SELECT T2.name ,  sum(T1.show_times_per_day) FROM schedule AS T1 JOIN cinema AS T2 ON T1.cinema_id  =  T2.cinema_id GROUP BY T1.cinema_id
+select cinema.name , sum(schedule.show_times_per_day) from schedule join cinema on schedule.Cinema_ID = cinema.Cinema_ID  group by schedule.cinema_id
+SELECT T2.title ,  max(T1.price) FROM schedule AS T1 JOIN film AS T2 ON T1.film_id  =  T2.film_id GROUP BY T1.film_id
+select film.title , max(schedule.price) from schedule join film on schedule.Film_ID = film.Film_ID  group by schedule.film_id
+SELECT T2.title ,  max(T1.price) FROM schedule AS T1 JOIN film AS T2 ON T1.film_id  =  T2.film_id GROUP BY T1.film_id
+select film.title , max(schedule.price) from schedule join film on schedule.Film_ID = film.Film_ID  group by schedule.film_id
+SELECT T3.name ,  T2.title ,  T1.date ,  T1.price FROM schedule AS T1 JOIN film AS T2 ON T1.film_id  =  T2.film_id JOIN cinema AS T3 ON T1.cinema_id  =  T3.cinema_id
+select cinema.name , film.title , schedule.date , schedule.price from schedule join cinema on schedule.Cinema_ID = cinema.Cinema_ID join film on schedule.Film_ID = film.Film_ID
+SELECT title ,  directed_by FROM film WHERE film_id NOT IN (SELECT film_id FROM schedule)
+select film.title , film.directed_by from film where  film.film_id not in (select schedule.Film_ID from schedule  )
+SELECT T2.directed_by FROM schedule AS T1 JOIN film AS T2 ON T1.film_id  =  T2.film_id GROUP BY T2.directed_by ORDER BY sum(T1.show_times_per_day) DESC LIMIT 1
+select film.directed_by from schedule join film on schedule.Film_ID = film.Film_ID  group by film.directed_by  order by sum(schedule.show_times_per_day) desc limit 1
+SELECT LOCATION FROM cinema WHERE capacity  >  300 GROUP BY LOCATION HAVING count(*)  >  1
+select cinema.location from cinema where  cinema.capacity > 300  group by cinema.location having  count(*) > 1
+SELECT LOCATION FROM cinema WHERE capacity  >  300 GROUP BY LOCATION HAVING count(*)  >  1
+select cinema.location from cinema where  cinema.capacity > 300  group by cinema.location having  count(*) > 1
+SELECT count(*) FROM film WHERE title LIKE "%Dummy%"
+select count(*) from film where  film.title like "%Dummy%"
+SELECT count(*) FROM film WHERE title LIKE "%Dummy%"
+select count(*) from film where  film.title like "%Dummy%"

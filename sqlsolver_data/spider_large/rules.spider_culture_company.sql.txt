@@ -1,0 +1,76 @@
+SELECT count(*) FROM book_club
+select count(*) from book_club
+SELECT count(*) FROM book_club
+select count(*) from book_club
+SELECT book_title ,  author_or_editor FROM book_club WHERE YEAR  >  1989
+select book_club.book_title , book_club.author_or_editor from book_club where  book_club.year > 1989
+SELECT book_title ,  author_or_editor FROM book_club WHERE YEAR  >  1989
+select book_club.book_title , book_club.author_or_editor from book_club where  book_club.year > 1989
+SELECT DISTINCT publisher FROM book_club
+select distinct book_club.publisher from book_club
+SELECT DISTINCT publisher FROM book_club
+select distinct book_club.publisher from book_club
+SELECT YEAR ,  book_title ,  publisher FROM book_club ORDER BY YEAR DESC
+select book_club.year , book_club.book_title , book_club.publisher from book_club   order by book_club.year desc
+SELECT YEAR ,  book_title ,  publisher FROM book_club ORDER BY YEAR DESC
+select book_club.year , book_club.book_title , book_club.publisher from book_club   order by book_club.year desc
+SELECT publisher ,  count(*) FROM book_club GROUP BY publisher
+select book_club.publisher , count(*) from book_club  group by book_club.publisher
+SELECT publisher ,  count(*) FROM book_club GROUP BY publisher
+select book_club.publisher , count(*) from book_club  group by book_club.publisher
+SELECT publisher FROM book_club GROUP BY publisher ORDER BY count(*) DESC LIMIT 1
+select book_club.publisher from book_club  group by book_club.publisher  order by count(*) desc limit 1
+SELECT publisher FROM book_club GROUP BY publisher ORDER BY count(*) DESC LIMIT 1
+select book_club.publisher from book_club  group by book_club.publisher  order by count(*) desc limit 1
+SELECT category ,  count(*) FROM book_club GROUP BY category
+select book_club.category , count(*) from book_club  group by book_club.category
+SELECT category ,  count(*) FROM book_club GROUP BY category
+select book_club.category , count(*) from book_club  group by book_club.category
+SELECT category FROM book_club WHERE YEAR  >  1989 GROUP BY category HAVING count(*)  >=  2
+select book_club.category from book_club where  book_club.year > 1989  group by book_club.category having  count(*) >= 2
+SELECT category FROM book_club WHERE YEAR  >  1989 GROUP BY category HAVING count(*)  >=  2
+select book_club.category from book_club where  book_club.year > 1989  group by book_club.category having  count(*) >= 2
+SELECT publisher FROM book_club WHERE YEAR  =  1989 INTERSECT SELECT publisher FROM book_club WHERE YEAR  =  1990
+select book_club.publisher from book_club where  book_club.year = 1989   intersect select book_club.publisher from book_club where  book_club.year = 1990
+SELECT publisher FROM book_club WHERE YEAR  =  1989 INTERSECT SELECT publisher FROM book_club WHERE YEAR  =  1990
+select book_club.publisher from book_club where  book_club.year = 1989   intersect select book_club.publisher from book_club where  book_club.year = 1990
+SELECT publisher FROM book_club EXCEPT SELECT publisher FROM book_club WHERE YEAR  =  1989
+select book_club.publisher from book_club   except select book_club.publisher from book_club where  book_club.year = 1989
+SELECT publisher FROM book_club EXCEPT SELECT publisher FROM book_club WHERE YEAR  =  1989
+select book_club.publisher from book_club   except select book_club.publisher from book_club where  book_club.year = 1989
+SELECT title ,  YEAR ,  director FROM movie ORDER BY budget_million
+select movie.title , movie.year , movie.director from movie   order by movie.budget_million asc
+SELECT title ,  YEAR ,  director FROM movie ORDER BY budget_million
+select movie.title , movie.year , movie.director from movie   order by movie.budget_million asc
+SELECT COUNT (DISTINCT director) FROM movie
+select count( distinct movie.director) from movie
+SELECT COUNT (DISTINCT director) FROM movie
+select count( distinct movie.director) from movie
+SELECT title ,  director FROM movie WHERE YEAR  <=  2000 ORDER BY gross_worldwide DESC LIMIT 1
+select movie.title , movie.director from movie where  movie.year < 2000   order by movie.gross_worldwide desc limit 1
+SELECT title ,  director FROM movie WHERE YEAR  <=  2000 ORDER BY gross_worldwide DESC LIMIT 1
+select movie.title , movie.director from movie where  movie.year < 2000   order by movie.gross_worldwide desc limit 1
+SELECT director FROM movie WHERE YEAR  =  2000 INTERSECT SELECT director FROM movie WHERE YEAR  =  1999
+select movie.director from movie where  movie.year = 2000   intersect select movie.director from movie where  movie.year = 1999
+SELECT director FROM movie WHERE YEAR  =  2000 INTERSECT SELECT director FROM movie WHERE YEAR  =  1999
+select movie.director from movie where  movie.year = 2000   intersect select movie.director from movie where  movie.year = 1999
+SELECT director FROM movie WHERE YEAR  =  1999 OR YEAR  =  2000
+select movie.director from movie where  movie.year = 1999 or movie.year = 2000
+SELECT director FROM movie WHERE YEAR  =  1999 OR YEAR  =  2000
+select movie.director from movie where  movie.year = 1999 or movie.year = 2000
+SELECT avg(budget_million) ,  max(budget_million) ,  min(budget_million) FROM movie WHERE YEAR  <  2000
+select avg(movie.budget_million) , max(movie.budget_million) , min(movie.budget_million) from movie where  movie.year < 2000
+SELECT avg(budget_million) ,  max(budget_million) ,  min(budget_million) FROM movie WHERE YEAR  <  2000
+select avg(movie.budget_million) , max(movie.budget_million) , min(movie.budget_million) from movie where  movie.year < 2000
+SELECT T1.company_name FROM culture_company AS T1 JOIN book_club AS T2 ON T1.book_club_id  =  T2.book_club_id WHERE T2.publisher  =  'Alyson'
+select culture_company.company_name from culture_company join book_club on culture_company.book_club_id = book_club.book_club_id where  book_club.publisher = "Alyson"
+SELECT T1.company_name FROM culture_company AS T1 JOIN book_club AS T2 ON T1.book_club_id  =  T2.book_club_id WHERE T2.publisher  =  'Alyson'
+select culture_company.company_name from culture_company join book_club on culture_company.book_club_id = book_club.book_club_id where  book_club.publisher = "Alyson"
+SELECT T1.title ,  T3.book_title FROM movie AS T1 JOIN culture_company AS T2 ON T1.movie_id  =  T2.movie_id JOIN book_club AS T3 ON T3.book_club_id  =  T2.book_club_id WHERE T2.incorporated_in  =  'China'
+select movie.title , book_club.book_title from culture_company join movie on culture_company.movie_id = movie.movie_id join book_club on culture_company.book_club_id = book_club.book_club_id where  culture_company.incorporated_in = "China"
+SELECT T1.title ,  T3.book_title FROM movie AS T1 JOIN culture_company AS T2 ON T1.movie_id  =  T2.movie_id JOIN book_club AS T3 ON T3.book_club_id  =  T2.book_club_id WHERE T2.incorporated_in  =  'China'
+select movie.title , book_club.book_title from culture_company join movie on culture_company.movie_id = movie.movie_id join book_club on culture_company.book_club_id = book_club.book_club_id where  culture_company.incorporated_in = "China"
+SELECT T2.company_name FROM movie AS T1 JOIN culture_company AS T2 ON T1.movie_id  =  T2.movie_id WHERE T1.year  =  1999
+select culture_company.company_name from culture_company join movie on culture_company.movie_id = movie.movie_id where  movie.year = 1999
+SELECT T2.company_name FROM movie AS T1 JOIN culture_company AS T2 ON T1.movie_id  =  T2.movie_id WHERE T1.year  =  1999
+select culture_company.company_name from culture_company join movie on culture_company.movie_id = movie.movie_id where  movie.year = 1999

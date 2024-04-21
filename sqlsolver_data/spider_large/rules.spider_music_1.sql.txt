@@ -1,0 +1,200 @@
+SELECT song_name ,  releasedate FROM song ORDER BY releasedate DESC LIMIT 1
+select song.song_name , song.releasedate from song   order by song.releasedate desc limit 1
+SELECT song_name ,  releasedate FROM song ORDER BY releasedate DESC LIMIT 1
+select song.song_name , song.releasedate from song   order by song.releasedate desc limit 1
+SELECT f_id FROM files ORDER BY duration DESC LIMIT 1
+select files.f_id from files   order by files.duration desc limit 1
+SELECT f_id FROM files ORDER BY duration DESC LIMIT 1
+select files.f_id from files   order by files.duration desc limit 1
+SELECT song_name FROM song WHERE languages  =  "english"
+select song.song_name from song where  song.languages = "english"
+SELECT song_name FROM song WHERE languages  =  "english"
+select song.song_name from song where  song.languages = "english"
+SELECT f_id FROM files WHERE formats  =  "mp3"
+select files.f_id from files where  files.formats = "mp3"
+SELECT f_id FROM files WHERE formats  =  "mp3"
+select files.f_id from files where  files.formats = "mp3"
+SELECT DISTINCT T1.artist_name ,  T1.country FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T2.rating  >  9
+select distinct artist.artist_name , artist.country from song join artist on song.artist_name = artist.artist_name where  song.rating > 9
+SELECT DISTINCT T1.artist_name ,  T1.country FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T2.rating  >  9
+select distinct artist.artist_name , artist.country from song join artist on song.artist_name = artist.artist_name where  song.rating > 9
+SELECT DISTINCT T1.file_size ,  T1.formats FROM files AS T1 JOIN song AS T2 ON T1.f_id  =  T2.f_id WHERE T2.resolution  <  800
+select distinct files.file_size , files.formats from song join files on song.f_id = files.f_id where  song.resolution < 800
+SELECT DISTINCT T1.file_size ,  T1.formats FROM files AS T1 JOIN song AS T2 ON T1.f_id  =  T2.f_id WHERE T2.resolution  <  800
+select distinct files.file_size , files.formats from song join files on song.f_id = files.f_id where  song.resolution < 800
+SELECT T1.artist_name FROM song AS T1 JOIN files AS T2 ON T1.f_id  =  T2.f_id ORDER BY T2.duration LIMIT 1
+select song.artist_name from song join files on song.f_id = files.f_id   order by files.duration asc limit 1
+SELECT T1.artist_name FROM song AS T1 JOIN files AS T2 ON T1.f_id  =  T2.f_id ORDER BY T2.duration LIMIT 1
+select song.artist_name from song join files on song.f_id = files.f_id   order by files.duration asc limit 1
+SELECT T1.artist_name ,  T1.country FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name ORDER BY T2.rating DESC LIMIT 3
+select artist.artist_name , artist.country from song join artist on song.artist_name = artist.artist_name   order by song.rating desc limit 3
+SELECT T1.artist_name ,  T1.country FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name ORDER BY T2.rating DESC LIMIT 3
+select artist.artist_name , artist.country from song join artist on song.artist_name = artist.artist_name   order by song.rating desc limit 3
+SELECT count(*) FROM files WHERE duration LIKE "4:%"
+select count(*) from files where  files.duration like "4:%"
+SELECT count(*) FROM files WHERE duration LIKE "4:%"
+select count(*) from files where  files.duration like "4:%"
+SELECT count(*) FROM artist WHERE country  =  "Bangladesh"
+select count(*) from artist where  artist.country = "Bangladesh"
+SELECT count(*) FROM artist WHERE country  =  "Bangladesh"
+select count(*) from artist where  artist.country = "Bangladesh"
+SELECT avg(T2.rating) FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T1.gender  =  "Female"
+select avg(song.rating) from song join artist on song.artist_name = artist.artist_name where  artist.gender = "Female"
+SELECT avg(T2.rating) FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T1.gender  =  "Female"
+select avg(song.rating) from song join artist on song.artist_name = artist.artist_name where  artist.gender = "Female"
+SELECT formats FROM files GROUP BY formats ORDER BY COUNT (*) DESC LIMIT 1
+select files.formats from files  group by files.formats  order by count(*) desc limit 1
+SELECT formats FROM files GROUP BY formats ORDER BY COUNT (*) DESC LIMIT 1
+select files.formats from files  group by files.formats  order by count(*) desc limit 1
+SELECT artist_name FROM artist WHERE country  =  "UK" INTERSECT SELECT artist_name FROM song WHERE languages  =  "english"
+select artist.artist_name from artist where  artist.country = "UK" and artist.artist_name in (select song.artist_name from song where  song.languages = "english"  )
+SELECT artist_name FROM artist WHERE country  =  "UK" INTERSECT SELECT artist_name FROM song WHERE languages  =  "english"
+select artist.artist_name from artist where  artist.country = "UK" and artist.artist_name in (select song.artist_name from song where  song.languages = "english"  )
+SELECT f_id FROM files WHERE formats  =  "mp4" INTERSECT SELECT f_id FROM song WHERE resolution  <  1000
+select files.f_id from song join files on song.f_id = files.f_id where  files.formats = "mp4" and song.resolution < 1000
+SELECT f_id FROM files WHERE formats  =  "mp4" INTERSECT SELECT f_id FROM song WHERE resolution  <  1000
+select files.f_id from song join files on song.f_id = files.f_id where  files.formats = "mp4" and song.resolution < 1000
+SELECT T1.country FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T1.gender  =  "Female" AND T2.languages  =  "bangla"
+select artist.country from song join artist on song.artist_name = artist.artist_name where  artist.gender = "Female" and song.languages = "bangla"
+SELECT T1.country FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T1.gender  =  "Female" AND T2.languages  =  "bangla"
+select artist.country from song join artist on song.artist_name = artist.artist_name where  artist.gender = "Female" and song.languages = "bangla"
+SELECT avg(T1.duration) FROM files AS T1 JOIN song AS T2 ON T1.f_id  =  T2.f_id WHERE T1.formats  =  "mp3" AND T2.resolution   <  800
+select avg(files.duration) from song join files on song.f_id = files.f_id where  files.formats = "mp3" and song.resolution < 800
+SELECT avg(T1.duration) FROM files AS T1 JOIN song AS T2 ON T1.f_id  =  T2.f_id WHERE T1.formats  =  "mp3" AND T2.resolution   <  800
+select avg(files.duration) from song join files on song.f_id = files.f_id where  files.formats = "mp3" and song.resolution < 800
+SELECT count(*) ,  gender FROM artist GROUP BY gender
+select count(*) , artist.gender from artist  group by artist.gender
+SELECT count(*) ,  gender FROM artist GROUP BY gender
+select count(*) , artist.gender from artist  group by artist.gender
+SELECT avg(rating) ,  languages FROM song GROUP BY languages
+select avg(song.rating) , song.languages from song  group by song.languages
+SELECT avg(rating) ,  languages FROM song GROUP BY languages
+select avg(song.rating) , song.languages from song  group by song.languages
+SELECT T1.gender ,  T1.artist_name FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name ORDER BY T2.resolution LIMIT 1
+select artist.gender , artist.artist_name from song join artist on song.artist_name = artist.artist_name   order by song.resolution asc limit 1
+SELECT T1.gender ,  T1.artist_name FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name ORDER BY T2.resolution LIMIT 1
+select artist.gender , artist.artist_name from song join artist on song.artist_name = artist.artist_name   order by song.resolution asc limit 1
+SELECT count(*) ,  formats FROM files GROUP BY formats
+select count(*) , files.formats from files  group by files.formats
+SELECT count(*) ,  formats FROM files GROUP BY formats
+select count(*) , files.formats from song join files on song.f_id = files.f_id  group by files.formats
+SELECT DISTINCT song_name FROM song WHERE resolution  >  (SELECT min(resolution) FROM song WHERE languages  =  "english")
+select distinct song.song_name from song where  song.resolution > (select min(song.resolution) from song where  song.languages = "english"  )
+SELECT DISTINCT song_name FROM song WHERE resolution  >  (SELECT min(resolution) FROM song WHERE languages  =  "english")
+select distinct song.song_name from song where  song.resolution > (select min(song.resolution) from song where  song.languages = "english"  )
+SELECT song_name FROM song WHERE rating  <  (SELECT max(rating) FROM song WHERE genre_is  =  "blues")
+select song.song_name from song where  song.rating < (select max(song.rating) from song where  song.genre_is = "blues"  )
+SELECT song_name FROM song WHERE rating  <  (SELECT max(rating) FROM song WHERE genre_is  =  "blues")
+select song.song_name from song where  song.rating < (select max(song.rating) from song where  song.genre_is = "blues"  )
+SELECT T1.artist_name ,  T1.country FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T2.song_name LIKE "%love%"
+select artist.artist_name , artist.country from song join artist on song.artist_name = artist.artist_name where  song.song_name like "%love%"
+SELECT T1.artist_name ,  T1.country FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T2.song_name LIKE "%love%"
+select artist.artist_name , artist.country from song join artist on song.artist_name = artist.artist_name where  song.song_name like "%love%"
+SELECT T1.artist_name ,  T1.gender FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T2.releasedate LIKE "%Mar%"
+select artist.artist_name , artist.gender from song join artist on song.artist_name = artist.artist_name where  song.releasedate like "%Mar%"
+SELECT T1.artist_name ,  T1.gender FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T2.releasedate LIKE "%Mar%"
+select artist.artist_name , artist.gender from song join artist on song.artist_name = artist.artist_name where  song.releasedate like "%Mar%"
+SELECT g_name ,  rating FROM genre ORDER BY g_name
+select genre.g_name , genre.rating from genre   order by genre.g_name asc
+SELECT g_name ,  rating FROM genre ORDER BY g_name
+select genre.g_name , genre.rating from genre   order by genre.g_name asc
+SELECT song_name FROM song ORDER BY resolution
+select song.song_name from song   order by song.resolution asc
+SELECT song_name FROM song ORDER BY resolution
+select song.song_name from song   order by song.resolution asc
+SELECT f_id FROM files WHERE formats  =  "mp4" UNION SELECT f_id FROM song WHERE resolution  >  720
+select files.f_id from files where  files.formats = "mp4"   union select files.f_id from files where  files.f_id in (select song.f_id from song where  song.resolution > 720  )
+SELECT f_id FROM files WHERE formats  =  "mp4" UNION SELECT f_id FROM song WHERE resolution  >  720
+select files.f_id from song join files on song.f_id = files.f_id where  files.formats = "mp4" or song.resolution > 720
+SELECT T2.song_name FROM files AS T1 JOIN song AS T2 ON T1.f_id  =  T2.f_id WHERE T1.duration LIKE "4:%" UNION SELECT song_name FROM song WHERE languages  =  "english"
+select song.song_name from song join files on song.f_id = files.f_id where  files.duration like "4:%" or song.languages = "english"
+SELECT T2.song_name FROM files AS T1 JOIN song AS T2 ON T1.f_id  =  T2.f_id WHERE T1.duration LIKE "4:%" UNION SELECT song_name FROM song WHERE languages  =  "english"
+select song.song_name from song join files on song.f_id = files.f_id where  files.duration like "4:%" or song.languages = "english"
+SELECT languages FROM song GROUP BY languages ORDER BY count(*) DESC LIMIT 1
+select song.languages from song  group by song.languages  order by count(*) desc limit 1
+SELECT languages FROM song GROUP BY languages ORDER BY count(*) DESC LIMIT 1
+select song.languages from song  group by song.languages  order by count(*) desc limit 1
+SELECT artist_name FROM song WHERE resolution  >  500 GROUP BY languages ORDER BY count(*) DESC LIMIT 1
+select song.languages from song where  song.resolution > 500  group by song.languages  order by count(*) desc limit 1
+SELECT artist_name FROM song WHERE resolution  >  500 GROUP BY languages ORDER BY count(*) DESC LIMIT 1
+select artist.artist_name from song join artist on song.artist_name = artist.artist_name where  song.resolution > 500  group by song.languages  order by count(*) desc limit 1
+SELECT artist_name FROM artist WHERE country  =  "UK" AND gender  =  "Male"
+select artist.artist_name from artist where  artist.country = "UK" and artist.gender = "Male"
+SELECT artist_name FROM artist WHERE country  =  "UK" AND gender  =  "Male"
+select artist.artist_name from artist where  artist.country = "UK" and artist.gender = "Male"
+SELECT song_name FROM song WHERE genre_is  =  "modern" OR languages  =  "english"
+select song.song_name from song where  song.genre_is = "modern" or song.languages = "english"
+SELECT song_name FROM song WHERE genre_is  =  "modern" OR languages  =  "english"
+select song.song_name from song where  song.genre_is = "modern" or song.languages = "english"
+SELECT T2.song_name FROM files AS T1 JOIN song AS T2 ON T1.f_id  =  T2.f_id WHERE T1.formats  =  "mp3" INTERSECT SELECT song_name FROM song WHERE resolution  <  1000
+select song.song_name from song join files on song.f_id = files.f_id where  files.formats = "mp3" and song.resolution < 1000
+SELECT T2.song_name FROM files AS T1 JOIN song AS T2 ON T1.f_id  =  T2.f_id WHERE T1.formats  =  "mp3" INTERSECT SELECT song_name FROM song WHERE resolution  <  1000
+select song.song_name from song join files on song.f_id = files.f_id where  files.formats = "mp3" and song.resolution < 1000
+SELECT artist_name FROM artist WHERE country  =  "UK" INTERSECT SELECT T1.artist_name FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T2.languages  =  "english"
+select artist.artist_name from song join artist on song.artist_name = artist.artist_name where  artist.country = "UK" and song.languages = "english"
+SELECT artist_name FROM artist WHERE country  =  "UK" INTERSECT SELECT T1.artist_name FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T2.languages  =  "english"
+select artist.artist_name from song join artist on song.artist_name = artist.artist_name where  artist.country = "UK" and song.languages = "english"
+SELECT avg(rating) ,  avg(resolution) FROM song WHERE languages  =  "bangla"
+select avg(song.rating) , avg(song.resolution) from song where  song.languages = "bangla"
+SELECT avg(rating) ,  avg(resolution) FROM song WHERE languages  =  "bangla"
+select avg(song.rating) , avg(song.resolution) from song where  song.languages = "bangla"
+SELECT max(T2.resolution) ,  min(T2.resolution) FROM files AS T1 JOIN song AS T2 ON T1.f_id  =  T2.f_id WHERE T1.duration LIKE "3:%"
+select max(song.resolution) , min(song.resolution) from song join files on song.f_id = files.f_id where  files.duration like "3:%"
+SELECT max(T2.resolution) ,  min(T2.resolution) FROM files AS T1 JOIN song AS T2 ON T1.f_id  =  T2.f_id WHERE T1.duration LIKE "3:%"
+select max(song.resolution) , min(song.resolution) from song join files on song.f_id = files.f_id where  files.duration like "3:%"
+SELECT max(T1.duration) ,  max(T2.resolution) ,  T2.languages FROM files AS T1 JOIN song AS T2 ON T1.f_id  =  T2.f_id GROUP BY T2.languages ORDER BY T2.languages
+select max(files.duration) , max(song.resolution) , song.languages from song join files on song.f_id = files.f_id  group by song.languages  order by song.languages asc
+SELECT max(T1.duration) ,  max(T2.resolution) ,  T2.languages FROM files AS T1 JOIN song AS T2 ON T1.f_id  =  T2.f_id GROUP BY T2.languages ORDER BY T2.languages
+select max(files.duration) , max(song.resolution) , song.languages from song join files on song.f_id = files.f_id  group by song.languages  order by song.languages asc
+SELECT min(T1.duration) ,  min(T2.rating) ,  T2.genre_is FROM files AS T1 JOIN song AS T2 ON T1.f_id  =  T2.f_id GROUP BY T2.genre_is ORDER BY T2.genre_is
+select min(files.duration) , min(song.rating) , song.genre_is from song join files on song.f_id = files.f_id  group by song.genre_is  order by song.genre_is asc
+SELECT min(T1.duration) ,  min(T2.rating) ,  T2.genre_is FROM files AS T1 JOIN song AS T2 ON T1.f_id  =  T2.f_id GROUP BY T2.genre_is ORDER BY T2.genre_is
+select min(files.duration) , min(song.rating) , song.genre_is from song join files on song.f_id = files.f_id  group by song.genre_is  order by song.genre_is asc
+SELECT T1.artist_name ,  count(*) FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T2.languages  =  "english" GROUP BY T2.artist_name HAVING count(*)  >=  1
+select artist.artist_name , count(*) from song join artist on song.artist_name = artist.artist_name where  song.languages = "english"  group by song.artist_name having  count(*) >= 1
+SELECT T1.artist_name ,  count(*) FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T2.languages  =  "english" GROUP BY T2.artist_name HAVING count(*)  >=  1
+select artist.artist_name , count(*) from song join artist on song.artist_name = artist.artist_name where  song.languages = "english"  group by song.artist_name having  count(*) >= 1
+SELECT T1.artist_name ,  T1.country FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T2.resolution  >  900 GROUP BY T2.artist_name HAVING count(*)  >=  1
+select artist.artist_name , artist.country from song join artist on song.artist_name = artist.artist_name where  song.resolution > 900  group by song.artist_name having  count(*) >= 1
+SELECT T1.artist_name ,  T1.country FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T2.resolution  >  900 GROUP BY T2.artist_name HAVING count(*)  >=  1
+select artist.artist_name , artist.country from song join artist on song.artist_name = artist.artist_name where  song.resolution > 900  group by song.artist_name having  count(*) >= 1
+SELECT T1.artist_name ,  count(*) FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name GROUP BY T2.artist_name ORDER BY count(*) DESC LIMIT 3
+select artist.artist_name , count(*) from song join artist on song.artist_name = artist.artist_name  group by song.artist_name  order by count(*) desc limit 3
+SELECT T1.artist_name ,  count(*) FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name GROUP BY T2.artist_name ORDER BY count(*) DESC LIMIT 3
+select artist.artist_name , count(*) from song join artist on song.artist_name = artist.artist_name  group by song.artist_name  order by count(*) desc limit 3
+SELECT T1.country FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name GROUP BY T2.artist_name ORDER BY count(*) LIMIT 1
+select artist.country from song join artist on song.artist_name = artist.artist_name  group by song.artist_name  order by count(*) asc limit 1
+SELECT T1.country FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name GROUP BY T2.artist_name ORDER BY count(*) LIMIT 1
+select artist.country from song join artist on song.artist_name = artist.artist_name  group by song.artist_name  order by count(*) asc limit 1
+SELECT song_name FROM song WHERE rating  <   (SELECT min(rating) FROM song WHERE languages  =  'english')
+select song.song_name from song where  song.rating < (select min(song.rating) from song where  song.languages = "english"  )
+SELECT song_name FROM song WHERE rating  <   (SELECT min(rating) FROM song WHERE languages  =  'english')
+select song.song_name from song where  song.rating < (select min(song.rating) from song where  song.languages = "english"  )
+SELECT f_id FROM song WHERE resolution  >  (SELECT max(resolution) FROM song WHERE rating  <  8)
+select song.f_id from song where  song.resolution > (select max(song.resolution) from song where  song.rating < 8  )
+SELECT f_id FROM song WHERE resolution  >  (SELECT max(resolution) FROM song WHERE rating  <  8)
+select song.f_id from song where  song.resolution > (select max(song.resolution) from song where  song.rating < 8  )
+SELECT f_id FROM song WHERE resolution  >  (SELECT avg(resolution) FROM song WHERE genre_is  =  "modern")
+select song.f_id from song where  song.resolution > (select avg(song.resolution) from song where  song.genre_is = "modern"  )
+SELECT f_id FROM song WHERE resolution  >  (SELECT avg(resolution) FROM song WHERE genre_is  =  "modern")
+select song.f_id from song where  song.resolution > (select avg(song.resolution) from song where  song.genre_is = "modern"  )
+SELECT T1.artist_name FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T2.languages  =  "bangla" GROUP BY T2.artist_name ORDER BY count(*) DESC LIMIT 3
+select artist.artist_name from song join artist on song.artist_name = artist.artist_name where  song.languages = "bangla"  group by song.artist_name  order by count(*) desc limit 3
+SELECT T1.artist_name FROM artist AS T1 JOIN song AS T2 ON T1.artist_name  =  T2.artist_name WHERE T2.languages  =  "bangla" GROUP BY T2.artist_name ORDER BY count(*) DESC LIMIT 3
+select artist.artist_name from song join artist on song.artist_name = artist.artist_name where  song.languages = "bangla"  group by song.artist_name  order by count(*) desc limit 3
+SELECT f_id ,  genre_is ,  artist_name FROM song WHERE languages  =   "english" ORDER BY rating
+select song.f_id , song.genre_is , song.artist_name from song where  song.languages = "english"   order by song.rating asc
+SELECT f_id ,  genre_is ,  artist_name FROM song WHERE languages  =   "english" ORDER BY rating
+select song.f_id , song.genre_is , song.artist_name from song where  song.languages = "english"   order by song.rating asc
+SELECT T1.duration ,  T1.file_size ,  T1.formats FROM files AS T1 JOIN song AS T2 ON T1.f_id  =  T2.f_id WHERE T2.genre_is  =  "pop" ORDER BY T2.song_name
+select files.duration , files.file_size , files.formats from song join files on song.f_id = files.f_id where  song.genre_is = "pop"   order by song.song_name asc
+SELECT T1.duration ,  T1.file_size ,  T1.formats FROM files AS T1 JOIN song AS T2 ON T1.f_id  =  T2.f_id WHERE T2.genre_is  =  "pop" ORDER BY T2.song_name
+select files.duration , files.file_size , files.formats from song join files on song.f_id = files.f_id where  song.genre_is = "pop"   order by song.song_name asc
+SELECT DISTINCT artist_name FROM song WHERE languages  =  "english" EXCEPT SELECT DISTINCT artist_name FROM song WHERE rating  >  8
+select distinct artist.artist_name from song join artist on song.artist_name = artist.artist_name where  song.languages = "english"   except select song.artist_name from song where  song.rating > 8
+SELECT DISTINCT artist_name FROM song WHERE languages  =  "english" EXCEPT SELECT DISTINCT artist_name FROM song WHERE rating  >  8
+select distinct song.artist_name from song where  song.languages = "english"   except select distinct song.artist_name from song where  song.rating > 8
+SELECT DISTINCT artist_name FROM artist WHERE country  =  "Bangladesh" EXCEPT SELECT DISTINCT artist_name FROM song WHERE rating  >  7
+select distinct artist.artist_name from artist where  artist.country = "Bangladesh"   except select song.artist_name from song where  song.rating > 7
+SELECT DISTINCT artist_name FROM artist WHERE country  =  "Bangladesh" EXCEPT SELECT DISTINCT artist_name FROM song WHERE rating  >  7
+select distinct artist.artist_name from artist where  artist.country = "Bangladesh"   except select song.artist_name from song where  song.rating > 7

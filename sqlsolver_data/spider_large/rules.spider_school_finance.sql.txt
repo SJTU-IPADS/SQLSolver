@@ -1,0 +1,52 @@
+SELECT count(*) FROM school
+select count(*) from School
+SELECT count(*) FROM school
+select count(*) from School
+SELECT school_name FROM school ORDER BY school_name
+select school.school_name from School   order by school.school_name asc
+SELECT school_name ,  LOCATION ,  mascot FROM school
+select school.school_name , school.location , school.mascot from School
+SELECT sum(enrollment) ,  avg(enrollment) FROM school
+select sum(school.enrollment) , avg(school.enrollment) from School
+SELECT mascot FROM school WHERE enrollment  >  (SELECT avg(enrollment) FROM school)
+select school.mascot from School where  school.enrollment > (select avg(school.enrollment) from School  )
+SELECT school_name FROM school ORDER BY enrollment LIMIT 1
+select school.school_name from School   order by school.enrollment asc limit 1
+SELECT avg(enrollment) ,  max(enrollment) ,  min(enrollment) FROM school
+select avg(school.enrollment) , max(school.enrollment) , min(school.enrollment) from School
+SELECT county ,  count(*) ,  sum(enrollment) FROM school GROUP BY county
+select school.county , count(*) , sum(school.enrollment) from School  group by school.county
+SELECT count(DISTINCT T1.donator_name) FROM endowment AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id WHERE T2.school_name  =  "Glenn"
+select count( distinct endowment.donator_name) from endowment join School on endowment.School_id = School.School_id where  school.school_name = "Glenn"
+SELECT donator_name ,  sum(amount) FROM endowment GROUP BY donator_name ORDER BY sum(amount) DESC
+select endowment.donator_name , sum(endowment.amount) from endowment  group by endowment.donator_name  order by sum(endowment.amount) desc
+SELECT school_name FROM school WHERE school_id NOT IN (SELECT school_id FROM endowment)
+select school.school_name from School where  school.school_id not in (select endowment.School_id from endowment  )
+SELECT T2.school_name FROM endowment AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id GROUP BY T1.school_id HAVING sum(T1.amount)  <=  10
+select school.school_name from endowment join School on endowment.School_id = School.School_id  group by endowment.school_id having  sum(endowment.amount) < 10
+SELECT T1.donator_name FROM endowment AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id WHERE T2.school_name  =  'Glenn' INTERSECT SELECT T1.donator_name FROM endowment AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id WHERE T2.school_name  =  'Triton'
+select endowment.donator_name from endowment join School on endowment.School_id = School.School_id where  school.school_name = "Glenn"   intersect select endowment.donator_name from endowment join School on endowment.School_id = School.School_id where  school.school_name = "Triton"
+SELECT donator_name FROM endowment EXCEPT SELECT donator_name FROM endowment WHERE amount  <  9
+select endowment.donator_name from endowment   except select endowment.donator_name from endowment where  endowment.amount < 9
+SELECT amount ,  donator_name FROM endowment ORDER BY amount DESC LIMIT 1
+select endowment.amount , endowment.donator_name from endowment   order by endowment.amount desc limit 1
+SELECT count(*) FROM budget WHERE budgeted  >  3000 AND YEAR  <=  2001
+select count(*) from budget where  budget.budgeted > 3000 and budget.year < 2001
+SELECT count(*) FROM budget WHERE budgeted  >  3000 AND YEAR  <=  2001
+select count(*) from budget where  budget.budgeted > 3000 and budget.year < 2001
+SELECT T2.school_name ,  T1.budgeted ,  T1.invested FROM budget AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id WHERE T1.year  >=  2002
+select school.school_name , budget.budgeted , budget.invested from budget join School on budget.School_id = School.School_id where  budget.year >= 2002
+SELECT DISTINCT donator_name FROM endowment
+select distinct endowment.donator_name from endowment
+SELECT count(*) FROM budget WHERE budgeted  <  invested
+select count(*) from budget where  budget.budgeted < budget.invested
+SELECT sum(T1.budgeted) FROM budget AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id WHERE T2.school_name  =  'Glenn'
+select sum(budget.budgeted) from budget join School on budget.School_id = School.School_id where  school.school_name = "Glenn"
+SELECT T2.school_name FROM budget AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id JOIN endowment AS T3 ON T2.school_id  =  T3.school_id GROUP BY T2.school_name HAVING sum(T1.budgeted)  >  100 OR sum(T3.amount)  >  10
+select school.school_name from budget join School on budget.School_id = School.School_id  group by school.school_name having  sum(budget.budgeted) > 100  union select school.school_name from endowment join School on endowment.School_id = School.School_id  group by school.school_name having  sum(endowment.amount) > 10
+SELECT T2.School_name FROM endowment AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id WHERE T1.amount  >  8.5 GROUP BY T1.school_id HAVING count(*)  >  1
+select school.school_name from endowment join School on endowment.School_id = School.School_id where  endowment.amount > (select school.school_name from School join endowment on School.School_id = endowment.School_id  group by school.school_name having  count(*) > 1 )   group by endowment.school_id
+SELECT count(*) FROM (SELECT * FROM endowment WHERE amount  >  8.5 GROUP BY school_id HAVING count(*)  >  1)
+select count(*) from endowment where  endowment.amount > (select endowment.amount from endowment  group by endowment.amount having  count(*) > 1 )
+SELECT T1.School_name ,  T1.Mascot ,  T1.IHSAA_Football_Class FROM school AS T1 JOIN budget AS T2 ON T1.school_id  =  T2.school_id WHERE Budgeted  >  6000 OR YEAR  <  2003 ORDER BY T2.total_budget_percent_invested ,  T2.total_budget_percent_budgeted
+select school.school_name , school.mascot , school.ihsaa_football_class from budget join School on budget.School_id = School.School_id where  budget.budgeted > 6000 or budget.year < 2003   order by budget.total_budget_percent_invested,budget.total_budget_percent_budgeted asc

@@ -1,0 +1,28 @@
+SELECT T1.name ,  T2.name FROM Country AS T1 JOIN League AS T2 ON T1.id  =  T2.country_id
+select country.name , league.name from League join Country on League.country_id = Country.id
+SELECT count(*) FROM Country AS T1 JOIN League AS T2 ON T1.id  =  T2.country_id WHERE T1.name  =  "England"
+select count(*) from League join Country on League.country_id = Country.id where  country.name = "England"
+SELECT avg(weight) FROM Player
+select avg(player.weight) from Player
+SELECT max(weight) ,  min(weight) FROM Player
+select max(player.weight) , min(player.weight) from Player
+SELECT DISTINCT T1.player_name FROM Player AS T1 JOIN Player_Attributes AS T2 ON T1.player_api_id = T2.player_api_id WHERE T2.overall_rating  >  ( SELECT avg(overall_rating) FROM Player_Attributes )
+select distinct player.player_name from Player_Attributes join Player on Player_Attributes.player_api_id = Player.player_api_id where  player_attributes.overall_rating > (select avg(Player_Attributes.overall_rating) from Player_Attributes  )
+SELECT DISTINCT T1.player_name FROM Player AS T1 JOIN Player_Attributes AS T2 ON T1.player_api_id = T2.player_api_id WHERE T2.dribbling  =  ( SELECT max(overall_rating) FROM Player_Attributes)
+select distinct player.player_name from Player_Attributes join Player on Player_Attributes.player_api_id = Player.player_api_id where  player_attributes.dribbling = (select max(player_attributes.overall_rating) from Player_Attributes  )
+SELECT DISTINCT T1.player_name FROM Player AS T1 JOIN Player_Attributes AS T2 ON T1.player_api_id = T2.player_api_id WHERE T2.crossing  >  90 AND T2.preferred_foot  =  "right"
+select distinct player.player_name from Player_Attributes join Player on Player_Attributes.player_api_id = Player.player_api_id where  player_attributes.crossing > 90 and player_attributes.preferred_foot = "right"
+SELECT DISTINCT T1.player_name FROM Player AS T1 JOIN Player_Attributes AS T2 ON T1.player_api_id = T2.player_api_id WHERE T2.preferred_foot  =  "left" AND T2.overall_rating  >=  85 AND T2.overall_rating  <=  90
+select distinct player.player_name from Player_Attributes join Player on Player_Attributes.player_api_id = Player.player_api_id where  player_attributes.preferred_foot = "left" and player_attributes.overall_rating >= 85 and player_attributes.overall_rating < 90
+SELECT preferred_foot ,  avg(overall_rating) FROM Player_Attributes GROUP BY preferred_foot
+select player_attributes.preferred_foot , avg(player_attributes.overall_rating) from Player_Attributes  group by player_attributes.preferred_foot
+SELECT preferred_foot ,  count(*) FROM Player_Attributes WHERE overall_rating  >  80 GROUP BY preferred_foot
+select player_attributes.preferred_foot , count(*) from Player_Attributes where  player_attributes.overall_rating > 80  group by player_attributes.preferred_foot
+SELECT player_api_id FROM Player WHERE height  >=  180 INTERSECT SELECT player_api_id FROM Player_Attributes WHERE overall_rating  >  85
+select distinct player.player_api_id from Player_Attributes join Player on Player_Attributes.player_api_id = Player.player_api_id where  player.height >= 180 and player_attributes.overall_rating > 85
+SELECT player_api_id FROM Player WHERE height  >=  180 AND height  <=  190 INTERSECT SELECT player_api_id FROM Player_Attributes WHERE preferred_foot  =  "left"
+select distinct player.player_api_id from Player_Attributes join Player on Player_Attributes.player_api_id = Player.player_api_id where  player.height >= 180 and player.height < 190 and player_attributes.preferred_foot = "left"
+SELECT DISTINCT T1.player_name FROM Player AS T1 JOIN Player_Attributes AS T2 ON T1.player_api_id  =  T2.player_api_id ORDER BY overall_rating DESC LIMIT 3
+select distinct player.player_name from Player_Attributes join Player on Player_Attributes.player_api_id = Player.player_api_id   order by player_attributes.overall_rating desc limit 3
+SELECT DISTINCT T1.player_name ,  T1.birthday FROM Player AS T1 JOIN Player_Attributes AS T2 ON T1.player_api_id  =  T2.player_api_id ORDER BY potential DESC LIMIT 5
+select distinct player.player_name , player.birthday from Player_Attributes join Player on Player_Attributes.player_api_id = Player.player_api_id   order by player_attributes.potential desc limit 5

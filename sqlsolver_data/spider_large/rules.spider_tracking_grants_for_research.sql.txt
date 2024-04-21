@@ -1,0 +1,156 @@
+SELECT T1.grant_amount FROM Grants AS T1 JOIN Documents AS T2 ON T1.grant_id  =  T2.grant_id WHERE T2.sent_date  <  '1986-08-26 20:49:27' INTERSECT SELECT grant_amount FROM grants WHERE grant_end_date  >  '1989-03-16 18:27:16'
+select grants.grant_amount from Documents join Grants on Documents.grant_id = Grants.grant_id where  documents.sent_date < "1986-08-26 20:49:27" and grants.grant_end_date > "1989-03-16 18:27:16"
+SELECT T1.grant_amount FROM Grants AS T1 JOIN Documents AS T2 ON T1.grant_id  =  T2.grant_id WHERE T2.sent_date  <  '1986-08-26 20:49:27' INTERSECT SELECT grant_amount FROM grants WHERE grant_end_date  >  '1989-03-16 18:27:16'
+select grants.grant_amount from Documents join Grants on Documents.grant_id = Grants.grant_id where  documents.sent_date < "1986-08-26 20:49:27" and grants.grant_end_date > "1989-03-16 18:27:16"
+SELECT T1.project_details FROM Projects AS T1 JOIN Project_outcomes AS T2 ON T1.project_id  =  T2.project_id WHERE T2.outcome_code  =  'Paper' INTERSECT SELECT T1.project_details FROM Projects AS T1 JOIN Project_outcomes AS T2 ON T1.project_id  =  T2.project_id WHERE T2.outcome_code  =  'Patent'
+select projects.project_details from Project_Outcomes join Research_Outcomes on Project_Outcomes.outcome_code = Research_Outcomes.outcome_code join Projects on Project_Outcomes.project_id = Projects.project_id where  project_outcomes.outcome_code = "Paper" and research_outcomes.outcome_code = "Patent"
+SELECT T1.project_details FROM Projects AS T1 JOIN Project_outcomes AS T2 ON T1.project_id  =  T2.project_id WHERE T2.outcome_code  =  'Paper' INTERSECT SELECT T1.project_details FROM Projects AS T1 JOIN Project_outcomes AS T2 ON T1.project_id  =  T2.project_id WHERE T2.outcome_code  =  'Patent'
+select projects.project_details from Project_Outcomes join Research_Outcomes on Project_Outcomes.outcome_code = Research_Outcomes.outcome_code join Projects on Project_Outcomes.project_id = Projects.project_id where  project_outcomes.outcome_code = "Paper" and research_outcomes.outcome_code = "Patent"
+SELECT sum(grant_amount) FROM Grants AS T1 JOIN Organisations AS T2 ON T1.organisation_id  =  T2.organisation_id JOIN organisation_Types AS T3 ON T2.organisation_type  =  T3.organisation_type WHERE T3.organisation_type_description  =  'Research'
+select sum(grants.grant_amount) from Grants join Organisations on Grants.organisation_id = Organisations.organisation_id join Organisation_Types on Organisations.organisation_type = Organisation_Types.organisation_type where  organisation_types.organisation_type_description = "Research"
+SELECT sum(grant_amount) FROM Grants AS T1 JOIN Organisations AS T2 ON T1.organisation_id  =  T2.organisation_id JOIN organisation_Types AS T3 ON T2.organisation_type  =  T3.organisation_type WHERE T3.organisation_type_description  =  'Research'
+select sum(grants.grant_amount) from Grants join Organisations on Grants.organisation_id = Organisations.organisation_id join Organisation_Types on Organisations.organisation_type = Organisation_Types.organisation_type where  organisation_types.organisation_type_description = "Research"
+SELECT date_from ,  date_to FROM Project_Staff WHERE project_id IN( SELECT project_id FROM Project_Staff GROUP BY project_id ORDER BY count(*) DESC LIMIT 1 ) UNION SELECT date_from ,  date_to FROM Project_Staff WHERE role_code  =  'leader'
+select project_staff.date_from , project_staff.date_to from Project_Staff where  project_staff.project_id in (select project_staff.project_id from Project_Staff  group by project_staff.project_id  ORDER BY count(*) DESC LIMIT 1 )    union select project_staff.date_from , project_staff.date_to from Project_Staff where  project_staff.role_code = "leader"
+SELECT date_from ,  date_to FROM Project_Staff WHERE project_id IN( SELECT project_id FROM Project_Staff GROUP BY project_id ORDER BY count(*) DESC LIMIT 1 ) UNION SELECT date_from ,  date_to FROM Project_Staff WHERE role_code  =  'leader'
+select project_staff.date_from , project_staff.date_to from Project_Staff where  project_staff.project_id in (select project_staff.project_id from Project_Staff  group by project_staff.project_id  ORDER BY count(*) DESC LIMIT 1 )    union select project_staff.date_from , project_staff.date_to from Project_Staff where  project_staff.role_code = "leader"
+SELECT T2.organisation_id ,  T2.organisation_details FROM Grants AS T1 JOIN Organisations AS T2 ON T1.organisation_id  =  T2.organisation_id GROUP BY T2.organisation_id HAVING sum(T1.grant_amount)  >  6000
+select organisations.organisation_id , organisations.organisation_details from Projects join Organisations on Projects.organisation_id = Organisations.organisation_id
+SELECT T2.organisation_id ,  T2.organisation_details FROM Grants AS T1 JOIN Organisations AS T2 ON T1.organisation_id  =  T2.organisation_id GROUP BY T2.organisation_id HAVING sum(T1.grant_amount)  >  6000
+select organisations.organisation_id , organisations.organisation_details from Grants join Organisations on Grants.organisation_id = Organisations.organisation_id  group by organisations.organisation_id having  sum(grants.grant_amount) > 6000
+SELECT T1.organisation_type ,  T1.organisation_id FROM Organisations AS T1 JOIN Research_Staff AS T2 ON T1.organisation_id  =  T2.employer_organisation_id GROUP BY T1.organisation_id ORDER BY count(*) DESC LIMIT 1
+select organisations.organisation_type , organisations.organisation_id from Research_Staff join Organisations on Research_Staff.employer_organisation_id = Organisations.organisation_id  group by organisations.organisation_id  order by count(*) desc limit 1
+SELECT T1.organisation_type ,  T1.organisation_id FROM Organisations AS T1 JOIN Research_Staff AS T2 ON T1.organisation_id  =  T2.employer_organisation_id GROUP BY T1.organisation_id ORDER BY count(*) DESC LIMIT 1
+select organisations.organisation_type , organisations.organisation_id from Research_Staff join Organisations on Research_Staff.employer_organisation_id = Organisations.organisation_id  group by organisations.organisation_id  order by count(*) desc limit 1
+SELECT T1.organisation_type FROM Organisations AS T1 JOIN Research_Staff AS T2 ON T1.organisation_id  =  T2.employer_organisation_id GROUP BY T1.organisation_type ORDER BY count(*) DESC LIMIT 1
+select organisations.organisation_type from Research_Staff join Organisations on Research_Staff.employer_organisation_id = Organisations.organisation_id  group by organisations.organisation_type  order by count(*) desc limit 1
+SELECT T1.organisation_type FROM Organisations AS T1 JOIN Research_Staff AS T2 ON T1.organisation_id  =  T2.employer_organisation_id GROUP BY T1.organisation_type ORDER BY count(*) DESC LIMIT 1
+select organisations.organisation_type from Research_Staff join Organisations on Research_Staff.employer_organisation_id = Organisations.organisation_id  group by organisations.organisation_type  order by count(*) desc limit 1
+SELECT T1.sent_date FROM documents AS T1 JOIN Grants AS T2 ON T1.grant_id  =  T2.grant_id JOIN Organisations AS T3 ON T2.organisation_id  =  T3.organisation_id JOIN organisation_Types AS T4 ON T3.organisation_type  =  T4.organisation_type WHERE T2.grant_amount  >  5000 AND T4.organisation_type_description  =  'Research'
+select documents.sent_date from Documents join Grants on Documents.grant_id = Grants.grant_id join Organisations on Grants.organisation_id = Organisations.organisation_id join Organisation_Types on Organisations.organisation_type = Organisation_Types.organisation_type where  grants.grant_amount > 5000 and organisation_types.organisation_type_description = "Research"
+SELECT T1.sent_date FROM documents AS T1 JOIN Grants AS T2 ON T1.grant_id  =  T2.grant_id JOIN Organisations AS T3 ON T2.organisation_id  =  T3.organisation_id JOIN organisation_Types AS T4 ON T3.organisation_type  =  T4.organisation_type WHERE T2.grant_amount  >  5000 AND T4.organisation_type_description  =  'Research'
+select documents.sent_date from Documents join Grants on Documents.grant_id = Grants.grant_id join Organisations on Grants.organisation_id = Organisations.organisation_id join Organisation_Types on Organisations.organisation_type = Organisation_Types.organisation_type where  grants.grant_amount > 5000 and organisation_types.organisation_type_description = "Research"
+SELECT T1.response_received_date FROM Documents AS T1 JOIN Document_Types AS T2 ON T1.document_type_code  =  T2.document_type_code JOIN Grants AS T3 ON T1.grant_id  =  T3.grant_id WHERE T2.document_description  =  'Regular' OR T3.grant_amount  >  100
+select documents.response_received_date from Documents join Grants on Documents.grant_id = Grants.grant_id join Document_Types on Documents.document_type_code = Document_Types.document_type_code where  document_types.document_description = "Regular" or grants.grant_amount > 100
+SELECT T1.response_received_date FROM Documents AS T1 JOIN Document_Types AS T2 ON T1.document_type_code  =  T2.document_type_code JOIN Grants AS T3 ON T1.grant_id  =  T3.grant_id WHERE T2.document_description  =  'Regular' OR T3.grant_amount  >  100
+select documents.response_received_date from Documents join Grants on Documents.grant_id = Grants.grant_id join Document_Types on Documents.document_type_code = Document_Types.document_type_code where  document_types.document_description = "Regular" or grants.grant_amount > 100
+SELECT project_details FROM Projects WHERE project_id NOT IN ( SELECT project_id FROM Project_Staff WHERE role_code  =  'researcher' )
+select projects.project_details from Projects where  projects.project_id not in (select Project_Staff.project_id from Project_Staff where  project_staff.role_code = "researcher"  )
+SELECT project_details FROM Projects WHERE project_id NOT IN ( SELECT project_id FROM Project_Staff WHERE role_code  =  'researcher' )
+select projects.project_details from Projects where  projects.project_id not in (select Project_Staff.project_id from Project_Staff where  project_staff.role_code = "researcher"  )
+SELECT T1.task_details ,  T1.task_id ,  T2.project_id FROM Tasks AS T1 JOIN Projects AS T2 ON T1.project_id  =  T2.project_id WHERE T2.project_details  =  'omnis' UNION SELECT T1.task_details ,  T1.task_id ,  T2.project_id FROM Tasks AS T1 JOIN Projects AS T2 ON T1.project_id  =  T2.project_id JOIN Project_outcomes AS T3 ON T2.project_id  =  T3.project_id GROUP BY T2.project_id HAVING count(*)  >  2
+select tasks.task_details , tasks.task_id , projects.project_id from Tasks join Projects on Tasks.project_id = Projects.project_id where  projects.project_details = "omnis"   union select tasks.task_details , tasks.task_id , projects.project_id from Project_Outcomes join Projects on Project_Outcomes.project_id = Projects.project_id join Tasks on Projects.project_id = Tasks.project_id  group by project_outcomes.project_id having  count(*) > 2
+SELECT T1.task_details ,  T1.task_id ,  T2.project_id FROM Tasks AS T1 JOIN Projects AS T2 ON T1.project_id  =  T2.project_id WHERE T2.project_details  =  'omnis' UNION SELECT T1.task_details ,  T1.task_id ,  T2.project_id FROM Tasks AS T1 JOIN Projects AS T2 ON T1.project_id  =  T2.project_id JOIN Project_outcomes AS T3 ON T2.project_id  =  T3.project_id GROUP BY T2.project_id HAVING count(*)  >  2
+select tasks.task_details , tasks.task_id , projects.project_id from Tasks join Projects on Tasks.project_id = Projects.project_id where  projects.project_details = "omnis"   union select tasks.task_details , tasks.task_id , projects.project_id from Project_Outcomes join Projects on Project_Outcomes.project_id = Projects.project_id join Tasks on Projects.project_id = Tasks.project_id  group by project_outcomes.project_id having  count(*) > 2
+SELECT date_from ,  date_to FROM Project_Staff WHERE role_code  =  'researcher'
+select project_staff.date_from , project_staff.date_to from Project_Staff where  project_staff.role_code = "researcher"
+SELECT date_from ,  date_to FROM Project_Staff WHERE role_code  =  'researcher'
+select project_staff.date_from , project_staff.date_to from Project_Staff where  project_staff.role_code = "researcher"
+SELECT count(DISTINCT role_code) FROM Project_Staff
+select count( distinct project_staff.role_code) from Project_Staff
+SELECT count(DISTINCT role_code) FROM Project_Staff
+select count( distinct project_staff.role_code) from Project_Staff
+SELECT sum(grant_amount) ,  organisation_id FROM Grants GROUP BY organisation_id
+select sum(grants.grant_amount) , grants.organisation_id from Grants  group by grants.organisation_id
+SELECT sum(grant_amount) ,  organisation_id FROM Grants GROUP BY organisation_id
+select sum(grants.grant_amount) , grants.organisation_id from Grants  group by grants.organisation_id
+SELECT T1.project_details FROM Projects AS T1 JOIN Project_outcomes AS T2 ON T1.project_id  =  T2.project_id JOIN Research_outcomes AS T3 ON T2.outcome_code  =  T3.outcome_code WHERE T3.outcome_description LIKE '%Published%'
+select projects.project_details from Project_Outcomes join Research_Outcomes on Project_Outcomes.outcome_code = Research_Outcomes.outcome_code join Projects on Project_Outcomes.project_id = Projects.project_id where  research_outcomes.outcome_description like "%Published%"
+SELECT T1.project_details FROM Projects AS T1 JOIN Project_outcomes AS T2 ON T1.project_id  =  T2.project_id JOIN Research_outcomes AS T3 ON T2.outcome_code  =  T3.outcome_code WHERE T3.outcome_description LIKE '%Published%'
+select projects.project_details from Project_Outcomes join Research_Outcomes on Project_Outcomes.outcome_code = Research_Outcomes.outcome_code join Projects on Project_Outcomes.project_id = Projects.project_id where  research_outcomes.outcome_description like "%Published%"
+SELECT T1.project_id ,  count(*) FROM Project_Staff AS T1 JOIN Projects AS T2 ON T1.project_id  =  T2.project_id GROUP BY T1.project_id ORDER BY count(*) ASC
+select projects.project_id , count(*) from Project_Staff join Projects on Project_Staff.project_id = Projects.project_id  group by project_staff.project_id  order by count(*) asc
+SELECT T1.project_id ,  count(*) FROM Project_Staff AS T1 JOIN Projects AS T2 ON T1.project_id  =  T2.project_id GROUP BY T1.project_id ORDER BY count(*) ASC
+select projects.project_id , count(*) from Project_Staff join Projects on Project_Staff.project_id = Projects.project_id  group by project_staff.project_id  order by count(*) asc
+SELECT role_description FROM Staff_Roles WHERE role_code  =  'researcher'
+select staff_roles.role_description from Staff_Roles where  staff_roles.role_code = "researcher"
+SELECT role_description FROM Staff_Roles WHERE role_code  =  'researcher'
+select staff_roles.role_description from Staff_Roles where  staff_roles.role_code = "researcher"
+SELECT date_from FROM Project_Staff ORDER BY date_from ASC LIMIT 1
+select project_staff.date_from from Project_Staff   order by project_staff.date_from asc limit 1
+SELECT date_from FROM Project_Staff ORDER BY date_from ASC LIMIT 1
+select project_staff.date_from from Project_Staff   order by project_staff.date_from asc limit 1
+SELECT T1.project_details ,  T1.project_id FROM Projects AS T1 JOIN Project_outcomes AS T2 ON T1.project_id  =  T2.project_id GROUP BY T1.project_id ORDER BY count(*) DESC LIMIT 1
+select projects.project_details , projects.project_id from Project_Outcomes join Projects on Project_Outcomes.project_id = Projects.project_id  group by projects.project_id  order by count(*) desc limit 1
+SELECT T1.project_details ,  T1.project_id FROM Projects AS T1 JOIN Project_outcomes AS T2 ON T1.project_id  =  T2.project_id GROUP BY T1.project_id ORDER BY count(*) DESC LIMIT 1
+select projects.project_details , projects.project_id from Project_Outcomes join Projects on Project_Outcomes.project_id = Projects.project_id  group by projects.project_id  order by count(*) desc limit 1
+SELECT project_details FROM Projects WHERE project_id NOT IN ( SELECT project_id FROM Project_outcomes )
+select projects.project_details from Projects where  projects.project_id not in (select Project_Outcomes.project_id from Project_Outcomes  )
+SELECT project_details FROM Projects WHERE project_id NOT IN ( SELECT project_id FROM Project_outcomes )
+select projects.project_details from Projects where  projects.project_id not in (select Project_Outcomes.project_id from Project_Outcomes  )
+SELECT T1.organisation_id ,  T1.organisation_type ,  T1.organisation_details FROM Organisations AS T1 JOIN Research_Staff AS T2 ON T1.organisation_id  =  T2.employer_organisation_id GROUP BY T1.organisation_id ORDER BY count(*) DESC LIMIT 1
+select organisations.organisation_id , organisations.organisation_type , organisations.organisation_details from Research_Staff join Organisations on Research_Staff.employer_organisation_id = Organisations.organisation_id  group by research_staff.employer_organisation_id  order by count(*) desc limit 1
+SELECT T1.organisation_id ,  T1.organisation_type ,  T1.organisation_details FROM Organisations AS T1 JOIN Research_Staff AS T2 ON T1.organisation_id  =  T2.employer_organisation_id GROUP BY T1.organisation_id ORDER BY count(*) DESC LIMIT 1
+select organisations.organisation_id , organisations.organisation_type , organisations.organisation_details from Research_Staff join Organisations on Research_Staff.employer_organisation_id = Organisations.organisation_id  group by organisations.organisation_id  order by count(*) desc limit 1
+SELECT T1.role_description ,  T2.staff_id FROM Staff_Roles AS T1 JOIN Project_Staff AS T2 ON T1.role_code  =  T2.role_code JOIN Project_outcomes AS T3 ON T2.project_id  =  T3.project_id GROUP BY T2.staff_id ORDER BY count(*) DESC LIMIT 1
+select staff_roles.role_description , project_staff.staff_id from Project_Outcomes join Projects on Project_Outcomes.project_id = Projects.project_id join Project_Staff on Projects.project_id = Project_Staff.project_id join Staff_Roles on Project_Staff.role_code = Staff_Roles.role_code  group by project_staff.staff_id  order by count(*) desc limit 1
+SELECT T1.role_description ,  T2.staff_id FROM Staff_Roles AS T1 JOIN Project_Staff AS T2 ON T1.role_code  =  T2.role_code JOIN Project_outcomes AS T3 ON T2.project_id  =  T3.project_id GROUP BY T2.staff_id ORDER BY count(*) DESC LIMIT 1
+select staff_roles.role_description , project_staff.staff_id from Project_Staff join Staff_Roles on Project_Staff.role_code = Staff_Roles.role_code  group by project_staff.staff_id  order by count(*) desc limit 1
+SELECT document_type_code FROM Document_Types WHERE document_description LIKE 'Initial%'
+select document_types.document_type_code from Document_Types where  document_types.document_description like "Initial%"
+SELECT document_type_code FROM Document_Types WHERE document_description LIKE 'Initial%'
+select document_types.document_type_code from Document_Types where  document_types.document_description like "Initial%"
+SELECT T1.grant_start_date FROM Grants AS T1 JOIN Documents AS T2 ON T1.grant_id  =  T2.grant_id JOIN Document_Types AS T3 ON T2.document_type_code  =  T3.document_type_code WHERE T3.document_description  =  'Regular' INTERSECT SELECT T1.grant_start_date FROM Grants AS T1 JOIN Documents AS T2 ON T1.grant_id  =  T2.grant_id JOIN Document_Types AS T3 ON T2.document_type_code  =  T3.document_type_code WHERE T3.document_description  =  'Initial Application'
+select grants.grant_start_date from Documents join Grants on Documents.grant_id = Grants.grant_id join Document_Types on Documents.document_type_code = Document_Types.document_type_code where  document_types.document_description = "Regular"   intersect select grants.grant_start_date from Documents join Grants on Documents.grant_id = Grants.grant_id join Document_Types on Documents.document_type_code = Document_Types.document_type_code where  document_types.document_description = "Initial Application"
+SELECT T1.grant_start_date FROM Grants AS T1 JOIN Documents AS T2 ON T1.grant_id  =  T2.grant_id JOIN Document_Types AS T3 ON T2.document_type_code  =  T3.document_type_code WHERE T3.document_description  =  'Regular' INTERSECT SELECT T1.grant_start_date FROM Grants AS T1 JOIN Documents AS T2 ON T1.grant_id  =  T2.grant_id JOIN Document_Types AS T3 ON T2.document_type_code  =  T3.document_type_code WHERE T3.document_description  =  'Initial Application'
+select grants.grant_start_date from Documents join Grants on Documents.grant_id = Grants.grant_id join Document_Types on Documents.document_type_code = Document_Types.document_type_code where  document_types.document_description = "Regular"   intersect select grants.grant_start_date from Documents join Grants on Documents.grant_id = Grants.grant_id join Document_Types on Documents.document_type_code = Document_Types.document_type_code where  document_types.document_description = "Initial Application"
+SELECT grant_id ,  count(*) FROM Documents GROUP BY grant_id ORDER BY count(*) DESC LIMIT 1
+select documents.grant_id , count(*) from Documents  group by documents.grant_id  order by count(*) desc limit 1
+SELECT grant_id ,  count(*) FROM Documents GROUP BY grant_id ORDER BY count(*) DESC LIMIT 1
+select documents.grant_id , count(*) from Documents  group by documents.grant_id  order by count(*) desc limit 1
+SELECT T1.organisation_type_description FROM organisation_Types AS T1 JOIN Organisations AS T2 ON T1.organisation_type  =  T2.organisation_type WHERE T2.organisation_details  =  'quo'
+select organisation_types.organisation_type_description from Organisations join Organisation_Types on Organisations.organisation_type = Organisation_Types.organisation_type where  organisations.organisation_details = "quo"
+SELECT T1.organisation_type_description FROM organisation_Types AS T1 JOIN Organisations AS T2 ON T1.organisation_type  =  T2.organisation_type WHERE T2.organisation_details  =  'quo'
+select organisation_types.organisation_type_description from Organisations join Organisation_Types on Organisations.organisation_type = Organisation_Types.organisation_type where  organisations.organisation_details = "quo"
+SELECT organisation_details FROM Organisations AS T1 JOIN organisation_Types AS T2 ON T1.organisation_type  =  T2.organisation_type WHERE T2.organisation_type_description  =  'Sponsor' ORDER BY organisation_details
+select organisations.organisation_details from Organisations join Organisation_Types on Organisations.organisation_type = Organisation_Types.organisation_type where  organisation_types.organisation_type_description = "Sponsor"   order by organisations.organisation_details asc
+SELECT organisation_details FROM Organisations AS T1 JOIN organisation_Types AS T2 ON T1.organisation_type  =  T2.organisation_type WHERE T2.organisation_type_description  =  'Sponsor' ORDER BY organisation_details
+select organisations.organisation_details from Organisations join Organisation_Types on Organisations.organisation_type = Organisation_Types.organisation_type where  organisation_types.organisation_type_description = "Sponsor"   order by organisations.organisation_details asc
+SELECT count(*) FROM Project_outcomes WHERE outcome_code  =  'Patent'
+select count(*) from Project_Outcomes where  project_outcomes.outcome_code = "Patent"
+SELECT count(*) FROM Project_outcomes WHERE outcome_code  =  'Patent'
+select count(*) from Project_Outcomes where  project_outcomes.outcome_code = "Patent"
+SELECT count(*) FROM Project_Staff WHERE role_code  =  'leader' OR date_from  <  '1989-04-24 23:51:54'
+select count(*) from Project_Staff where  project_staff.role_code = "leader" or project_staff.date_from < "1989-04-24 23:51:54"
+SELECT count(*) FROM Project_Staff WHERE role_code  =  'leader' OR date_from  <  '1989-04-24 23:51:54'
+select count(*) from Project_Staff where  project_staff.role_code = "leader" or project_staff.date_from < "1989-04-24 23:51:54"
+SELECT date_to FROM Project_Staff ORDER BY date_to DESC LIMIT 1
+select project_staff.date_to from Project_Staff   order by project_staff.date_to desc limit 1
+SELECT date_to FROM Project_Staff ORDER BY date_to DESC LIMIT 1
+select project_staff.date_to from Project_Staff   order by project_staff.date_to desc limit 1
+SELECT T1.outcome_description FROM Research_outcomes AS T1 JOIN Project_outcomes AS T2 ON T1.outcome_code  =  T2.outcome_code JOIN Projects AS T3 ON T2.project_id  =  T3.project_id WHERE T3.project_details  =  'sint'
+select research_outcomes.outcome_description from Project_Outcomes join Research_Outcomes on Project_Outcomes.outcome_code = Research_Outcomes.outcome_code join Projects on Project_Outcomes.project_id = Projects.project_id where  projects.project_details = "sint"
+SELECT T1.outcome_description FROM Research_outcomes AS T1 JOIN Project_outcomes AS T2 ON T1.outcome_code  =  T2.outcome_code JOIN Projects AS T3 ON T2.project_id  =  T3.project_id WHERE T3.project_details  =  'sint'
+select research_outcomes.outcome_description from Project_Outcomes join Research_Outcomes on Project_Outcomes.outcome_code = Research_Outcomes.outcome_code join Projects on Project_Outcomes.project_id = Projects.project_id where  projects.project_details = "sint"
+SELECT T1.organisation_id ,  count(*) FROM Projects AS T1 JOIN Project_outcomes AS T2 ON T1.project_id  =  T2.project_id GROUP BY T1.organisation_id ORDER BY count(*) DESC LIMIT 1
+select organisations.organisation_id , count(*) from Project_Outcomes join Projects on Project_Outcomes.project_id = Projects.project_id join Organisations on Projects.organisation_id = Organisations.organisation_id  group by projects.organisation_id  order by count(*) desc limit 1
+SELECT T1.organisation_id ,  count(*) FROM Projects AS T1 JOIN Project_outcomes AS T2 ON T1.project_id  =  T2.project_id GROUP BY T1.organisation_id ORDER BY count(*) DESC LIMIT 1
+select organisations.organisation_id , count(*) from Project_Outcomes join Projects on Project_Outcomes.project_id = Projects.project_id join Organisations on Projects.organisation_id = Organisations.organisation_id  group by organisations.organisation_id  order by count(*) desc limit 1
+SELECT project_details FROM Projects WHERE organisation_id IN ( SELECT organisation_id FROM Projects GROUP BY organisation_id ORDER BY count(*) DESC LIMIT 1 )
+select projects.project_details from Projects where  projects.organisation_id in (select projects.organisation_id from Projects join Project_Outcomes on Projects.project_id = Project_Outcomes.project_id  group by projects.organisation_id  order by count(*) desc limit 1 )
+SELECT project_details FROM Projects WHERE organisation_id IN ( SELECT organisation_id FROM Projects GROUP BY organisation_id ORDER BY count(*) DESC LIMIT 1 )
+select projects.project_details from Projects where  projects.organisation_id in (select projects.organisation_id from Projects join Project_Outcomes on Projects.project_id = Project_Outcomes.project_id  group by projects.organisation_id  order by count(*) desc limit 1 )
+SELECT staff_details FROM Research_Staff ORDER BY staff_details ASC
+select research_staff.staff_details from Research_Staff   order by research_staff.staff_details asc
+SELECT staff_details FROM Research_Staff ORDER BY staff_details ASC
+select research_staff.staff_details from Research_Staff   order by research_staff.staff_details asc
+SELECT count(*) FROM Tasks
+select count(*) from Tasks
+SELECT count(*) FROM Tasks
+select count(*) from Tasks
+SELECT count(*) ,  T1.project_details FROM Projects AS T1 JOIN Tasks AS T2 ON T1.project_id  =  T2.project_id GROUP BY T1.project_id
+select count(*) , projects.project_details from Tasks join Projects on Tasks.project_id = Projects.project_id  group by projects.project_details
+SELECT count(*) ,  T1.project_details FROM Projects AS T1 JOIN Tasks AS T2 ON T1.project_id  =  T2.project_id GROUP BY T1.project_id
+select count(*) , projects.project_details from Tasks join Projects on Tasks.project_id = Projects.project_id  group by projects.project_id
+SELECT role_code FROM Project_Staff WHERE date_from  >  '2003-04-19 15:06:20' AND date_to  <  '2016-03-15 00:33:18'
+select staff_roles.role_description from Staff_Roles   union select staff_roles.role_description from Project_Staff join Staff_Roles on Project_Staff.role_code = Staff_Roles.role_code
+SELECT role_code FROM Project_Staff WHERE date_from  >  '2003-04-19 15:06:20' AND date_to  <  '2016-03-15 00:33:18'
+select staff_roles.role_description from Project_Staff join Staff_Roles on Project_Staff.role_code = Staff_Roles.role_code where  project_staff.date_from > "2003-04-19 15:06:20" and project_staff.date_to < "2016-03-15 00:33:18"
+SELECT T1.outcome_description FROM Research_outcomes AS T1 JOIN Project_outcomes AS T2 ON T1.outcome_code  =  T2.outcome_code
+select research_outcomes.outcome_description from Project_Outcomes join Research_Outcomes on Project_Outcomes.outcome_code = Research_Outcomes.outcome_code join Projects on Project_Outcomes.project_id = Projects.project_id
+SELECT T1.outcome_description FROM Research_outcomes AS T1 JOIN Project_outcomes AS T2 ON T1.outcome_code  =  T2.outcome_code
+select research_outcomes.outcome_description from Project_Outcomes join Research_Outcomes on Project_Outcomes.outcome_code = Research_Outcomes.outcome_code join Projects on Project_Outcomes.project_id = Projects.project_id
+SELECT role_code FROM Project_Staff GROUP BY role_code ORDER BY count(*) DESC LIMIT 1
+select project_staff.role_code from Project_Staff join Staff_Roles on Project_Staff.role_code = Staff_Roles.role_code  group by project_staff.role_code  order by count(*) desc limit 1
+SELECT role_code FROM Project_Staff GROUP BY role_code ORDER BY count(*) DESC LIMIT 1
+select project_staff.role_code from Project_Staff  group by project_staff.role_code  order by count(*) desc limit 1

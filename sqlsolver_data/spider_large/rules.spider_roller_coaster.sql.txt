@@ -1,0 +1,34 @@
+SELECT count(*) FROM roller_coaster
+select count(*) from roller_coaster
+SELECT Name FROM roller_coaster ORDER BY LENGTH ASC
+select roller_coaster.name from roller_coaster   order by roller_coaster.length asc
+SELECT LENGTH ,  Height FROM roller_coaster
+select roller_coaster.length , roller_coaster.height from roller_coaster
+SELECT Name FROM country WHERE Languages != "German"
+select country.name from country where  country.languages != "German"
+SELECT Status FROM roller_coaster WHERE LENGTH  >  3300 OR Height  >  100
+select roller_coaster.status from roller_coaster where  roller_coaster.length > 3300 or roller_coaster.height > 100
+SELECT Speed FROM roller_coaster ORDER BY LENGTH DESC LIMIT 1
+select roller_coaster.speed from roller_coaster   order by roller_coaster.length desc limit 1
+SELECT avg(Speed) FROM roller_coaster
+select avg(roller_coaster.speed) from roller_coaster
+SELECT Status ,  COUNT(*) FROM roller_coaster GROUP BY Status
+select roller_coaster.status , count(*) from roller_coaster  group by roller_coaster.status
+SELECT Status FROM roller_coaster GROUP BY Status ORDER BY COUNT(*) DESC LIMIT 1
+select roller_coaster.status from roller_coaster  group by roller_coaster.status  order by count(*) desc limit 1
+SELECT Status FROM roller_coaster GROUP BY Status HAVING COUNT(*)  >  2
+select roller_coaster.status from roller_coaster  group by roller_coaster.status having  count(*) > 2
+SELECT Park FROM roller_coaster ORDER BY Speed DESC LIMIT 1
+select roller_coaster.park from roller_coaster   order by roller_coaster.speed desc limit 1
+SELECT T2.Name ,  T1.Name FROM country AS T1 JOIN roller_coaster AS T2 ON T1.Country_ID  =  T2.Country_ID
+select roller_coaster.name , country.name from roller_coaster join country on roller_coaster.Country_ID = country.Country_ID
+SELECT T1.Name FROM country AS T1 JOIN roller_coaster AS T2 ON T1.Country_ID  =  T2.Country_ID GROUP BY T1.Name HAVING COUNT(*)  >  1
+select country.name from roller_coaster join country on roller_coaster.Country_ID = country.Country_ID  group by country.name having  count(*) > 1
+SELECT T1.Name ,  T1.population FROM country AS T1 JOIN roller_coaster AS T2 ON T1.Country_ID  =  T2.Country_ID ORDER BY T2.Height DESC LIMIT 1
+select country.name , country.population from roller_coaster join country on roller_coaster.Country_ID = country.Country_ID   order by roller_coaster.height desc limit 1
+SELECT T1.Name ,  avg(T2.Speed) FROM country AS T1 JOIN roller_coaster AS T2 ON T1.Country_ID  =  T2.Country_ID GROUP BY T1.Name
+select country.name , avg(roller_coaster.speed) from roller_coaster join country on roller_coaster.Country_ID = country.Country_ID  group by country.name
+SELECT count(*) FROM country WHERE country_id NOT IN ( SELECT country_id FROM roller_coaster WHERE LENGTH  >  3000 )
+select count(*) from country where  country.country_id not in (select roller_coaster.Country_ID from roller_coaster where  roller_coaster.length > 3000  )
+SELECT T1.name ,  T1.area ,  T1.population FROM country AS T1 JOIN roller_coaster AS T2 ON T1.Country_ID  =  T2.Country_ID WHERE T2.speed  >  60 INTERSECT SELECT T1.name ,  T1.area ,  T1.population FROM country AS T1 JOIN roller_coaster AS T2 ON T1.Country_ID  =  T2.Country_ID WHERE T2.speed  <  55
+select country.name , country.area , country.population from roller_coaster join country on roller_coaster.Country_ID = country.Country_ID where  roller_coaster.speed > 60   intersect select country.name , country.area , country.population from roller_coaster join country on roller_coaster.Country_ID = country.Country_ID where  roller_coaster.speed < 55

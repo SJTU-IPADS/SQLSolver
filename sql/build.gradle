@@ -1,0 +1,112 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+dependencies {
+    implementation project(':common')
+    implementation('org.antlr:antlr4-runtime:4.8-1')
+    implementation('com.google.guava:guava:29.0-jre')
+    implementation('org.apache.commons:commons-lang3:3.10')
+    implementation('net.sf.trove4j:trove4j:3.0.3')
+    implementation('org.apache.calcite:calcite-core:1.36.0')
+    implementation('org.apache.calcite.avatica:avatica-core:1.23.0')
+    implementation('org.apache.calcite:calcite-babel:1.34.0')
+}
+
+def mysqlDir = "src/main/java/sqlsolver/sql/mysql/internal"
+def pgDir = "src/main/java/sqlsolver/sql/pg/internal"
+def genDir = "src/gen/"
+def resourceDir = "src/main/resources"
+
+task antlrMysql {
+    doFirst {
+        if (!file("$mysqlDir/MySQLLexer.java").exists() || !file("$mysqlDir/MySQLParser.java").exists()) {
+            println("generating mysql parser")
+            if (Os.isFamily(Os.FAMILY_WINDOWS))
+                exec {
+                    workingDir resourceDir
+                    commandLine 'powershell', 'java', '-Xmx1024m', '-jar', "$rootDir\\lib\\antlr-4.8-complete.jar",
+                            '-Dlanguage=Java', '-no-listener', '-visitor', '-o', "../../../$genDir",
+                            '-package', 'sqlsolver.sql.mysql.internal', 'MySQLLexer.g4', 'MySQLParser.g4'
+                }
+            else
+                exec {
+                    workingDir resourceDir
+                    commandLine 'java', '-Xmx1024m', '-jar', "$rootDir/lib/antlr-4.8-complete.jar",
+                            '-Dlanguage=Java', '-no-listener', '-visitor', '-o', "../../../$genDir",
+                            '-package', 'sqlsolver.sql.mysql.internal', 'MySQLLexer.g4', 'MySQLParser.g4'
+                }
+        } else {
+//            println("use generated parser file for mysql")
+        }
+    }
+}
+
+task antlrPg {
+    doFirst {
+        if (!file("$pgDir/PGLexer.java").exists() || !file("$pgDir/PGParser.java").exists()) {
+            println("generating pg parser")
+            if (Os.isFamily(Os.FAMILY_WINDOWS))
+                exec {
+                    workingDir resourceDir
+                    commandLine 'powershell', 'java', '-Xmx1024m', '-jar', "$rootDir\\lib\\antlr-4.8-complete.jar",
+                            '-Dlanguage=Java', '-no-listener', '-visitor', '-o', "../../../$genDir",
+                            '-package', 'sqlsolver.sql.pg.internal', 'PGLexer.g4', 'PGParser.g4'
+                }
+            else
+                exec {
+                    workingDir resourceDir
+                    commandLine 'java', '-Xmx1024m', '-jar', "$rootDir/lib/antlr-4.8-complete.jar",
+                            '-Dlanguage=Java', '-no-listener', '-visitor', '-o', "../../../$genDir",
+                            '-package', 'sqlsolver.sql.pg.internal', 'PGLexer.g4', 'PGParser.g4'
+                }
+        } else {
+//            println("use generated parser file for postgresql")
+        }
+    }
+}
+
+task copyMysql(type: Copy) {
+    dependsOn antlrMysql
+    if (!file("$mysqlDir/MySQLLexer.java").exists() || !file("$mysqlDir/MySQLParser.java").exists()) {
+        from(genDir) {
+            include 'MySQL*.java'
+        }
+        into(mysqlDir)
+    }
+}
+
+task copyPg(type: Copy) {
+    dependsOn antlrPg
+    if (!file("$pgDir/PGLexer.java").exists() || !file("$pgDir/PGParser.java").exists()) {
+        from(genDir) {
+            include 'PG*.java'
+        }
+        into(pgDir)
+    }
+}
+
+task removeMysql(type: Delete) {
+    delete fileTree(genDir)
+    delete fileTree(mysqlDir) {
+        include "MySQLLexer.java"
+        include "MySQLParser.java"
+        include "MySQLParserBaseVisitor.java"
+        include "MySQLParserVisitor.java"
+    }
+}
+
+task removePg(type: Delete) {
+    delete fileTree(genDir)
+    delete fileTree(pgDir) {
+        include "PGLexer.java"
+        include "PGParser.java"
+        include "PGParserBaseVisitor.java"
+        include "PGParserVisitor.java"
+    }
+}
+
+task cleanAll
+cleanAll.dependsOn clean
+cleanAll.dependsOn removeMysql
+cleanAll.dependsOn removePg
+compileJava.dependsOn copyMysql
+compileJava.dependsOn copyPg

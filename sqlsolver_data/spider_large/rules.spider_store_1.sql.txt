@@ -1,0 +1,224 @@
+SELECT billing_country ,  COUNT(*) FROM invoices GROUP BY billing_country ORDER BY count(*) DESC LIMIT 5;
+select invoices.billing_country , count(*) from invoices  group by invoices.billing_country  order by count(*) desc limit 5
+SELECT billing_country ,  COUNT(*) FROM invoices GROUP BY billing_country ORDER BY count(*) DESC LIMIT 5;
+select invoices.billing_country , count(*) from invoices  group by invoices.billing_country  order by count(*) desc limit 5
+SELECT billing_country ,  SUM(total) FROM invoices GROUP BY billing_country ORDER BY SUM(total) DESC LIMIT 8;
+select invoices.billing_country , sum(invoices.total) from invoices  group by invoices.billing_country  order by sum(invoices.total) desc limit 8
+SELECT billing_country ,  SUM(total) FROM invoices GROUP BY billing_country ORDER BY SUM(total) DESC LIMIT 8;
+select invoices.billing_country , sum(invoices.total) from invoices  group by invoices.billing_country  order by sum(invoices.total) desc limit 8
+SELECT billing_country ,  AVG(total) FROM invoices GROUP BY billing_country ORDER BY AVG(total) DESC LIMIT 10;
+select invoices.billing_country , avg(invoices.total) from invoices  group by invoices.billing_country  order by avg(invoices.total) desc limit 10
+SELECT billing_country ,  AVG(total) FROM invoices GROUP BY billing_country ORDER BY AVG(total) DESC LIMIT 10;
+select invoices.billing_country , avg(invoices.total) from invoices  group by invoices.billing_country  order by avg(invoices.total) desc limit 10
+SELECT T1.first_name ,  T1.last_name FROM customers AS T1 JOIN invoices AS T2 ON T2.customer_id  =  T1.id ORDER BY T2.invoice_date DESC LIMIT 5;
+select customers.first_name , customers.last_name from invoices join customers on invoices.customer_id = customers.id   order by invoices.invoice_date desc limit 5
+SELECT T1.first_name ,  T1.last_name FROM customers AS T1 JOIN invoices AS T2 ON T2.customer_id  =  T1.id ORDER BY T2.invoice_date DESC LIMIT 5;
+select customers.first_name , customers.last_name from invoices join customers on invoices.customer_id = customers.id   order by invoices.invoice_date desc limit 5
+SELECT T1.first_name ,  T1.last_name ,  COUNT(*) FROM customers AS T1 JOIN invoices AS T2 ON T2.customer_id  =  T1.id GROUP BY T1.id ORDER BY COUNT(*) DESC LIMIT 10;
+select customers.first_name , customers.last_name , count(*) from invoices join customers on invoices.customer_id = customers.id  group by invoices.customer_id  order by count(*) desc limit 10
+SELECT T1.first_name ,  T1.last_name ,  COUNT(*) FROM customers AS T1 JOIN invoices AS T2 ON T2.customer_id  =  T1.id GROUP BY T1.id ORDER BY COUNT(*) DESC LIMIT 10;
+select customers.first_name , customers.last_name , count(*) from invoices join customers on invoices.customer_id = customers.id  group by invoices.customer_id  order by count(*) desc limit 10
+SELECT T1.first_name ,  T1.last_name ,  SUM(T2.total) FROM customers AS T1 JOIN invoices AS T2 ON T2.customer_id  =  T1.id GROUP BY T1.id ORDER BY SUM(T2.total) DESC LIMIT 10;
+select customers.first_name , customers.last_name , sum(invoices.total) from invoices join customers on invoices.customer_id = customers.id  group by customers.id  order by sum(invoices.total) desc limit 10
+SELECT T1.first_name ,  T1.last_name ,  SUM(T2.total) FROM customers AS T1 JOIN invoices AS T2 ON T2.customer_id  =  T1.id GROUP BY T1.id ORDER BY SUM(T2.total) DESC LIMIT 10;
+select customers.first_name , customers.last_name , sum(invoices.total) from invoices join customers on invoices.customer_id = customers.id  group by customers.id  order by sum(invoices.total) desc limit 10
+SELECT T1.name ,  COUNT(*) FROM genres AS T1 JOIN tracks AS T2 ON T2.genre_id  =  T1.id GROUP BY T1.id ORDER BY count(*) DESC LIMIT 5;
+select genres.name , count(*) from tracks join genres on tracks.genre_id = genres.id  group by tracks.genre_id  order by count(*) desc limit 5
+SELECT T1.name ,  COUNT(*) FROM genres AS T1 JOIN tracks AS T2 ON T2.genre_id  =  T1.id GROUP BY T1.id ORDER BY count(*) DESC LIMIT 5;
+select genres.name , count(*) from tracks join genres on tracks.genre_id = genres.id  group by tracks.genre_id  order by count(*) desc limit 5
+SELECT title FROM albums;
+select albums.title from albums
+SELECT title FROM albums;
+select albums.title from albums
+SELECT title FROM albums ORDER BY title;
+select albums.title from albums   order by albums.title asc
+SELECT title FROM albums ORDER BY title;
+select albums.title from albums   order by albums.title asc
+SELECT title FROM albums WHERE title LIKE 'A%' ORDER BY title;
+select albums.title from albums where  albums.title like "A%"   order by albums.title asc
+SELECT title FROM albums WHERE title LIKE 'A%' ORDER BY title;
+select albums.title from albums where  albums.title like "A%"   order by albums.title asc
+SELECT T1.first_name ,  T1.last_name FROM customers AS T1 JOIN invoices AS T2 ON T2.customer_id  =  T1.id ORDER BY total LIMIT 10;
+select customers.first_name , customers.last_name from invoices join customers on invoices.customer_id = customers.id   order by invoices.total asc limit 10
+SELECT T1.first_name ,  T1.last_name FROM customers AS T1 JOIN invoices AS T2 ON T2.customer_id  =  T1.id ORDER BY total LIMIT 10;
+select customers.first_name , customers.last_name from invoices join customers on invoices.customer_id = customers.id   order by invoices.total asc limit 10
+SELECT sum(total) FROM invoices WHERE billing_city  =  "Chicago" AND billing_state  =  "IL";
+select sum(invoices.total) from invoices where  invoices.billing_city = "Chicago" and invoices.billing_state = "IL"
+SELECT sum(total) FROM invoices WHERE billing_city  =  "Chicago" AND billing_state  =  "IL";
+select sum(invoices.total) from invoices where  invoices.billing_city = "Chicago" and invoices.billing_state = "IL"
+SELECT COUNT(*) FROM invoices WHERE billing_city  =  "Chicago" AND billing_state  =  "IL";
+select count(*) from invoices where  invoices.billing_city = "Chicago" and invoices.billing_state = "IL"
+SELECT COUNT(*) FROM invoices WHERE billing_city  =  "Chicago" AND billing_state  =  "IL";
+select count(*) from invoices where  invoices.billing_city = "Chicago" and invoices.billing_state = "IL"
+SELECT billing_state ,  COUNT(*) FROM invoices WHERE billing_country  =  "USA" GROUP BY billing_state;
+select invoices.billing_state , count(*) from invoices where  invoices.billing_country = "USA"  group by invoices.billing_state
+SELECT billing_state ,  COUNT(*) FROM invoices WHERE billing_country  =  "USA" GROUP BY billing_state;
+select invoices.billing_state , count(*) from invoices where  invoices.billing_country = "USA"  group by invoices.billing_state
+SELECT billing_state ,  COUNT(*) FROM invoices WHERE billing_country  =  "USA" GROUP BY billing_state ORDER BY COUNT(*) DESC LIMIT 1;
+select invoices.billing_state , count(*) from invoices where  invoices.billing_country = "USA"  group by invoices.billing_state  order by count(*) desc limit 1
+SELECT billing_state ,  COUNT(*) FROM invoices WHERE billing_country  =  "USA" GROUP BY billing_state ORDER BY COUNT(*) DESC LIMIT 1;
+select invoices.billing_state , count(*) from invoices where  invoices.billing_country = "USA"  group by invoices.billing_state  order by count(*) desc limit 1
+SELECT billing_state ,  COUNT(*) ,  SUM(total) FROM invoices WHERE billing_state  =  "CA";
+select invoices.billing_state , count(*) , sum(invoices.total) from invoices where  invoices.billing_country = "CA"
+SELECT billing_state ,  COUNT(*) ,  SUM(total) FROM invoices WHERE billing_state  =  "CA";
+select invoices.billing_state , count(*) , sum(invoices.total) from invoices where  invoices.billing_state = "CA"
+SELECT T1.title FROM albums AS T1 JOIN artists AS T2 ON  T1.artist_id = T2.id WHERE T2.name = "Aerosmith";
+select albums.title from albums join artists on albums.artist_id = artists.id where  artists.name = "Aerosmith"
+SELECT T1.title FROM albums AS T1 JOIN artists AS T2 ON  T1.artist_id = T2.id WHERE T2.name = "Aerosmith";
+select albums.title from albums join artists on albums.artist_id = artists.id where  artists.name = "Aerosmith"
+SELECT count(*) FROM albums AS T1 JOIN artists AS T2 ON  T1.artist_id = T2.id WHERE T2.name = "Billy Cobham";
+select count(*) from albums join artists on albums.artist_id = artists.id where  artists.name = "Billy Cobham"
+SELECT count(*) FROM albums AS T1 JOIN artists AS T2 ON  T1.artist_id = T2.id WHERE T2.name = "Billy Cobham";
+select count(*) from tracks join albums on tracks.album_id = albums.id where  tracks.composer = "Billy Cobham"
+SELECT company FROM customers WHERE first_name = "Eduardo" AND last_name = "Martins";
+select customers.company from customers where  customers.first_name = "Eduardo" and customers.last_name = "Martins"
+SELECT company FROM customers WHERE first_name = "Eduardo" AND last_name = "Martins";
+select customers.company from customers where  customers.first_name = "Eduardo" and customers.last_name = "Martins"
+SELECT email ,  phone FROM customers WHERE first_name = "Astrid" AND last_name = "Gruber";
+select customers.email , customers.phone from customers where  customers.first_name = "Astrid" and customers.last_name = "Gruber"
+SELECT email ,  phone FROM customers WHERE first_name = "Astrid" AND last_name = "Gruber";
+select customers.email , customers.phone from customers where  customers.first_name = "Astrid" and customers.last_name = "Gruber"
+SELECT count(*) FROM customers WHERE city = "Prague";
+select count(*) from customers where  customers.city = "Prague"
+SELECT count(*) FROM customers WHERE city = "Prague";
+select count(*) from customers where  customers.city = "Prague"
+SELECT count(*) FROM customers WHERE state = "CA";
+select count(*) from customers where  customers.state = "CA"
+SELECT count(*) FROM customers WHERE state = "CA";
+select count(*) from customers where  customers.state = "CA"
+SELECT country FROM customers WHERE first_name = "Roberto" AND last_name = "Almeida";
+select customers.country from customers where  customers.first_name = "Roberto" and customers.last_name = "Almeida"
+SELECT country FROM customers WHERE first_name = "Roberto" AND last_name = "Almeida";
+select customers.country from customers where  customers.first_name = "Roberto" and customers.last_name = "Almeida"
+SELECT T2.title FROM artists AS T1 JOIN albums AS T2 ON T1.id  =  T2.artist_id WHERE T1.name LIKE '%Led%'
+select albums.title from albums join artists on albums.artist_id = artists.id where  artists.name like "%Led%"
+SELECT T2.title FROM artists AS T1 JOIN albums AS T2 ON T1.id  =  T2.artist_id WHERE T1.name LIKE '%Led%'
+select albums.title from albums join artists on albums.artist_id = artists.id where  artists.name like "%Led%"
+SELECT count(*) FROM employees AS T1 JOIN customers AS T2 ON T2.support_rep_id = T1.id WHERE T1.first_name = "Steve" AND T1.last_name = "Johnson";
+select count(*) from customers join employees on customers.support_rep_id = employees.id where  employees.first_name = "Steve" and employees.last_name = "Johnson"
+SELECT count(*) FROM employees AS T1 JOIN customers AS T2 ON T2.support_rep_id = T1.id WHERE T1.first_name = "Steve" AND T1.last_name = "Johnson";
+select count(*) from customers join employees on customers.support_rep_id = employees.id where  employees.first_name = "Steve" and employees.last_name = "Johnson"
+SELECT title ,  phone ,  hire_date FROM employees WHERE first_name = "Nancy" AND last_name = "Edwards";
+select employees.title , employees.phone , employees.hire_date from employees where  employees.first_name = "Nancy" and employees.last_name = "Edwards"
+SELECT title ,  phone ,  hire_date FROM employees WHERE first_name = "Nancy" AND last_name = "Edwards";
+select employees.title , employees.phone , employees.hire_date from employees where  employees.first_name = "Nancy" and employees.last_name = "Edwards"
+SELECT T2.first_name , T2.last_name FROM employees AS T1 JOIN employees AS T2 ON T1.id = T2.reports_to WHERE T1.first_name = "Nancy" AND T1.last_name = "Edwards";
+select employees.first_name , employees.last_name from employees where  employees.reports_to = "Nancy" and employees.last_name = "Edwards"
+SELECT T2.first_name , T2.last_name FROM employees AS T1 JOIN employees AS T2 ON T1.id = T2.reports_to WHERE T1.first_name = "Nancy" AND T1.last_name = "Edwards";
+select employees.first_name , employees.last_name from employees where  employees.reports_to = "Nancy" and employees.last_name = "Edwards"
+SELECT address FROM employees WHERE first_name = "Nancy" AND last_name = "Edwards";
+select employees.address from employees where  employees.first_name = "Nancy" and employees.last_name = "Edwards"
+SELECT address FROM employees WHERE first_name = "Nancy" AND last_name = "Edwards";
+select employees.address from employees where  employees.first_name = "Nancy" and employees.last_name = "Edwards"
+SELECT T1.first_name , T1.last_name FROM employees AS T1 JOIN customers AS T2 ON T1.id  =  T2.support_rep_id GROUP BY T1.id ORDER BY count(*) DESC LIMIT 1
+select employees.first_name , employees.last_name from customers join employees on customers.support_rep_id = employees.id  group by customers.support_rep_id  order by count(*) desc limit 1
+SELECT T1.first_name , T1.last_name FROM employees AS T1 JOIN customers AS T2 ON T1.id  =  T2.support_rep_id GROUP BY T1.id ORDER BY count(*) DESC LIMIT 1
+select employees.first_name , employees.last_name from customers join employees on customers.support_rep_id = employees.id  group by customers.id  order by count(*) desc limit 1
+SELECT count(*) FROM employees WHERE country = "Canada";
+select count(*) from employees where  employees.country = "Canada"
+SELECT count(*) FROM employees WHERE country = "Canada";
+select count(*) from employees where  employees.country = "Canada"
+SELECT phone FROM employees WHERE first_name = "Nancy" AND last_name = "Edwards";
+select employees.phone from employees where  employees.first_name = "Nancy" and employees.last_name = "Edwards"
+SELECT phone FROM employees WHERE first_name = "Nancy" AND last_name = "Edwards";
+select employees.phone from employees where  employees.first_name = "Nancy" and employees.last_name = "Edwards"
+SELECT first_name , last_name FROM employees ORDER BY birth_date DESC LIMIT 1;
+select employees.first_name , employees.last_name from employees   order by employees.birth_date desc limit 1
+SELECT first_name , last_name FROM employees ORDER BY birth_date DESC LIMIT 1;
+select employees.first_name , employees.last_name from employees   order by employees.birth_date desc limit 1
+SELECT first_name , last_name FROM employees ORDER BY hire_date ASC LIMIT 10;
+select employees.first_name , employees.last_name from employees   order by employees.hire_date asc limit 10
+SELECT first_name , last_name FROM employees ORDER BY hire_date ASC LIMIT 10;
+select employees.first_name , employees.last_name from employees   order by employees.hire_date asc limit 10
+SELECT count(*) ,  city FROM employees WHERE title  =  'IT Staff' GROUP BY city
+select count(*) , employees.city from employees where  employees.title = "IT Staff"  group by employees.city
+SELECT count(*) ,  city FROM employees WHERE title  =  'IT Staff' GROUP BY city
+select employees.city , count(*) from employees where  employees.title = "IT Staff"  group by employees.city
+SELECT T2.first_name , T2.last_name ,  count(T1.reports_to) FROM employees AS T1 JOIN employees AS T2 ON T1.reports_to = T2.id GROUP BY T1.reports_to ORDER BY count(T1.reports_to) DESC LIMIT 1;
+select employees.first_name , employees.last_name , count( distinct employees.reports_to) from employees  group by employees.reports_to  order by count( distinct employees.reports_to) desc limit 1
+SELECT T2.first_name , T2.last_name ,  count(T1.reports_to) FROM employees AS T1 JOIN employees AS T2 ON T1.reports_to = T2.id GROUP BY T1.reports_to ORDER BY count(T1.reports_to) DESC LIMIT 1;
+select employees.first_name , employees.last_name , count( distinct employees.reports_to) from employees  group by employees.reports_to
+SELECT count(*) FROM customers AS T1 JOIN invoices AS T2 ON T1.id = T2.customer_id WHERE T1.first_name = "Lucas" AND T1.last_name = "Mancini";
+select count(*) from invoices join customers on invoices.customer_id = customers.id where  customers.first_name = "Lucas" and customers.last_name = "Mancini"
+SELECT count(*) FROM customers AS T1 JOIN invoices AS T2 ON T1.id = T2.customer_id WHERE T1.first_name = "Lucas" AND T1.last_name = "Mancini";
+select count(*) from invoices join customers on invoices.customer_id = customers.id where  customers.first_name = "Lucas" and customers.last_name = "Mancini"
+SELECT sum(T2.total) FROM customers AS T1 JOIN invoices AS T2 ON T1.id = T2.customer_id WHERE T1.first_name = "Lucas" AND T1.last_name = "Mancini";
+select sum(invoices.total) from invoices join customers on invoices.customer_id = customers.id where  customers.first_name = "Lucas" and customers.last_name = "Mancini"
+SELECT sum(T2.total) FROM customers AS T1 JOIN invoices AS T2 ON T1.id = T2.customer_id WHERE T1.first_name = "Lucas" AND T1.last_name = "Mancini";
+select sum(invoices.total) from invoices join customers on invoices.customer_id = customers.id where  customers.first_name = "Lucas" and customers.last_name = "Mancini"
+SELECT name FROM media_types;
+select media_types.name from media_types
+SELECT name FROM media_types;
+select media_types.name from media_types
+SELECT DISTINCT name FROM genres;
+select distinct genres.name from genres
+SELECT DISTINCT name FROM genres;
+select distinct genres.name from genres
+SELECT name FROM playlists;
+select playlists.name from playlists
+SELECT name FROM playlists;
+select playlists.name from playlists
+SELECT composer FROM tracks WHERE name = "Fast As a Shark";
+select tracks.composer from tracks where  tracks.name = "Fast As a Shark"
+SELECT composer FROM tracks WHERE name = "Fast As a Shark";
+select tracks.composer from tracks where  tracks.name = "Fast As a Shark"
+SELECT milliseconds FROM tracks WHERE name = "Fast As a Shark";
+select tracks.milliseconds from tracks where  tracks.name = "Fast As a Shark"
+SELECT milliseconds FROM tracks WHERE name = "Fast As a Shark";
+select tracks.milliseconds from tracks where  tracks.name = "Fast As a Shark"
+SELECT T2.name FROM genres AS T1 JOIN tracks AS T2 ON T1.id = T2.genre_id WHERE T1.name = "Rock";
+select tracks.name from tracks join genres on tracks.genre_id = genres.id where  genres.name = "Rock"
+SELECT T2.name FROM genres AS T1 JOIN tracks AS T2 ON T1.id = T2.genre_id WHERE T1.name = "Rock";
+select tracks.name from tracks join genres on tracks.genre_id = genres.id where  genres.name = "Rock"
+SELECT T1.title FROM albums AS T1 JOIN tracks AS T2 ON T1.id = T2.genre_id WHERE T2.name = "Balls to the Wall";
+select albums.title from tracks join albums on tracks.album_id = albums.id where  tracks.name = "Balls to the Wall"
+SELECT T1.title FROM albums AS T1 JOIN tracks AS T2 ON T1.id = T2.genre_id WHERE T2.name = "Balls to the Wall";
+select albums.title from tracks join albums on tracks.album_id = albums.id where  tracks.name = "Balls to the Wall"
+SELECT T2.name FROM albums AS T1 JOIN tracks AS T2 ON T1.id = T2.genre_id WHERE T1.title = "Balls to the Wall";
+select tracks.name from tracks join albums on tracks.album_id = albums.id where  albums.title = "Balls to the Wall"
+SELECT T2.name FROM albums AS T1 JOIN tracks AS T2 ON T1.id = T2.genre_id WHERE T1.title = "Balls to the Wall";
+select tracks.name from tracks join albums on tracks.album_id = albums.id where  albums.title = "Balls to the Wall"
+SELECT T1.title FROM albums AS T1 JOIN tracks AS T2 ON T1.id = T2.album_id GROUP BY T1.id HAVING count(T1.id)  >  10;
+select albums.title from tracks join albums on tracks.album_id = albums.id  group by albums.title having  count(*) > 10
+SELECT T1.title FROM albums AS T1 JOIN tracks AS T2 ON T1.id = T2.album_id GROUP BY T1.id HAVING count(T1.id)  >  10;
+select albums.title from tracks join albums on tracks.album_id = albums.id  group by albums.title having  count(*) > 10
+SELECT T2.name FROM genres AS T1 JOIN tracks AS T2 ON T1.id = T2.genre_id JOIN media_types AS T3 ON T3.id = T2.media_type_id WHERE T1.name = "Rock" AND T3.name = "MPEG audio file";
+select tracks.name from tracks join media_types on tracks.media_type_id = media_types.id join genres on tracks.genre_id = genres.id where  genres.name = "Rock" and media_types.name = "MPEG audio file"
+SELECT T2.name FROM genres AS T1 JOIN tracks AS T2 ON T1.id = T2.genre_id JOIN media_types AS T3 ON T3.id = T2.media_type_id WHERE T1.name = "Rock" AND T3.name = "MPEG audio file";
+select tracks.name from tracks join media_types on tracks.media_type_id = media_types.id join genres on tracks.genre_id = genres.id where  genres.name = "Rock" and media_types.name = "MPEG audio file"
+SELECT T2.name FROM genres AS T1 JOIN tracks AS T2 ON T1.id = T2.genre_id JOIN media_types AS T3 ON T3.id = T2.media_type_id WHERE T1.name = "Rock" OR T3.name = "MPEG audio file";
+select tracks.name from tracks join media_types on tracks.media_type_id = media_types.id join genres on tracks.genre_id = genres.id where  genres.name = "Rock" or media_types.name = "MPEG audio file"
+SELECT T2.name FROM genres AS T1 JOIN tracks AS T2 ON T1.id = T2.genre_id JOIN media_types AS T3 ON T3.id = T2.media_type_id WHERE T1.name = "Rock" OR T3.name = "MPEG audio file";
+select tracks.name from tracks join media_types on tracks.media_type_id = media_types.id join genres on tracks.genre_id = genres.id where  genres.name = "Rock" or media_types.name = "MPEG audio file"
+SELECT T2.name FROM genres AS T1 JOIN tracks AS T2 ON T1.id = T2.genre_id WHERE T1.name = "Rock" OR T1.name = "Jazz"
+select tracks.name from tracks join genres on tracks.genre_id = genres.id where  genres.name = "Rock" or genres.name = "Jazz"
+SELECT T2.name FROM genres AS T1 JOIN tracks AS T2 ON T1.id = T2.genre_id WHERE T1.name = "Rock" OR T1.name = "Jazz"
+select tracks.name from tracks join genres on tracks.genre_id = genres.id where  genres.name = "Rock" or genres.name = "Jazz"
+SELECT T1.name FROM tracks AS T1 JOIN playlist_tracks AS T2 ON T1.id = T2.track_id JOIN playlists AS T3 ON T3.id = T2.playlist_id WHERE T3.name = "Movies";
+select tracks.name from playlist_tracks join tracks on playlist_tracks.track_id = tracks.id join playlists on playlist_tracks.playlist_id = playlists.id where  playlists.name = "Movies"
+SELECT T1.name FROM tracks AS T1 JOIN playlist_tracks AS T2 ON T1.id = T2.track_id JOIN playlists AS T3 ON T3.id = T2.playlist_id WHERE T3.name = "Movies";
+select tracks.name from playlist_tracks join tracks on playlist_tracks.track_id = tracks.id join playlists on playlist_tracks.playlist_id = playlists.id where  playlists.name = "Movies"
+SELECT T2.name FROM playlist_tracks AS T1 JOIN playlists AS T2 ON T2.id = T1.playlist_id GROUP BY T1.playlist_id HAVING count(T1.track_id)  >  100;
+select playlists.name from playlist_tracks join playlists on playlist_tracks.playlist_id = playlists.id  group by playlist_tracks.playlist_id having  count(playlist_tracks.track_id) > 100
+SELECT T2.name FROM playlist_tracks AS T1 JOIN playlists AS T2 ON T2.id = T1.playlist_id GROUP BY T1.playlist_id HAVING count(T1.track_id)  >  100;
+select playlists.name from playlist_tracks join playlists on playlist_tracks.playlist_id = playlists.id  group by playlist_tracks.playlist_id having  count(playlist_tracks.track_id) > 100
+SELECT T1.name FROM tracks AS T1 JOIN invoice_lines AS T2 ON T1.id = T2.track_id JOIN invoices AS T3 ON T3.id = T2.invoice_id JOIN customers AS T4 ON T4.id = T3.customer_id WHERE T4.first_name = "Daan" AND T4.last_name = "Peeters";
+select tracks.name from invoice_lines join tracks on invoice_lines.track_id = tracks.id join invoices on invoice_lines.invoice_id = invoices.id join customers on invoices.customer_id = customers.id where  customers.first_name = "Daan" and customers.last_name = "Peeters"
+SELECT T1.name FROM tracks AS T1 JOIN invoice_lines AS T2 ON T1.id = T2.track_id JOIN invoices AS T3 ON T3.id = T2.invoice_id JOIN customers AS T4 ON T4.id = T3.customer_id WHERE T4.first_name = "Daan" AND T4.last_name = "Peeters";
+select tracks.name from invoice_lines join tracks on invoice_lines.track_id = tracks.id join invoices on invoice_lines.invoice_id = invoices.id join customers on invoices.customer_id = customers.id where  customers.first_name = "Daan" and customers.last_name = "Peeters"
+SELECT unit_price FROM tracks WHERE name = "Fast As a Shark";
+select tracks.unit_price from tracks where  tracks.name = "Fast As a Shark"
+SELECT unit_price FROM tracks WHERE name = "Fast As a Shark";
+select tracks.unit_price from tracks where  tracks.name = "Fast As a Shark"
+SELECT T1.name FROM tracks AS T1 JOIN playlist_tracks AS T2 ON T1.id  =  T2.track_id JOIN playlists AS T3 ON T2.playlist_id  =  T3.id WHERE T3.name  =  'Movies' EXCEPT SELECT T1.name FROM tracks AS T1 JOIN playlist_tracks AS T2 ON T1.id  =  T2.track_id JOIN playlists AS T3 ON T2.playlist_id  =  T3.id WHERE T3.name  =  'Music'
+select tracks.name from playlist_tracks join tracks on playlist_tracks.track_id = tracks.id join playlists on playlist_tracks.playlist_id = playlists.id where  playlists.name = "Movies"   except select tracks.name from playlist_tracks join tracks on playlist_tracks.track_id = tracks.id join playlists on playlist_tracks.playlist_id = playlists.id where  playlists.name = "Music"
+SELECT T1.name FROM tracks AS T1 JOIN playlist_tracks AS T2 ON T1.id  =  T2.track_id JOIN playlists AS T3 ON T2.playlist_id  =  T3.id WHERE T3.name  =  'Movies' EXCEPT SELECT T1.name FROM tracks AS T1 JOIN playlist_tracks AS T2 ON T1.id  =  T2.track_id JOIN playlists AS T3 ON T2.playlist_id  =  T3.id WHERE T3.name  =  'Music'
+select tracks.name from playlist_tracks join tracks on playlist_tracks.track_id = tracks.id join playlists on playlist_tracks.playlist_id = playlists.id where  playlists.name = "Movies"   except select tracks.name from playlist_tracks join tracks on playlist_tracks.track_id = tracks.id join playlists on playlist_tracks.playlist_id = playlists.id where  playlists.name = "Music"
+SELECT T1.name FROM tracks AS T1 JOIN playlist_tracks AS T2 ON T1.id  =  T2.track_id JOIN playlists AS T3 ON T2.playlist_id  =  T3.id WHERE T3.name  =  'Movies' INTERSECT SELECT T1.name FROM tracks AS T1 JOIN playlist_tracks AS T2 ON T1.id  =  T2.track_id JOIN playlists AS T3 ON T2.playlist_id  =  T3.id WHERE T3.name  =  'Music'
+select tracks.name from playlist_tracks join tracks on playlist_tracks.track_id = tracks.id join playlists on playlist_tracks.playlist_id = playlists.id where  playlists.name = "Movies"   intersect select tracks.name from playlist_tracks join tracks on playlist_tracks.track_id = tracks.id join playlists on playlist_tracks.playlist_id = playlists.id where  playlists.name = "Music"
+SELECT T1.name FROM tracks AS T1 JOIN playlist_tracks AS T2 ON T1.id  =  T2.track_id JOIN playlists AS T3 ON T2.playlist_id  =  T3.id WHERE T3.name  =  'Movies' INTERSECT SELECT T1.name FROM tracks AS T1 JOIN playlist_tracks AS T2 ON T1.id  =  T2.track_id JOIN playlists AS T3 ON T2.playlist_id  =  T3.id WHERE T3.name  =  'Music'
+select tracks.name from playlist_tracks join tracks on playlist_tracks.track_id = tracks.id join playlists on playlist_tracks.playlist_id = playlists.id where  playlists.name = "Movies"   intersect select tracks.name from playlist_tracks join tracks on playlist_tracks.track_id = tracks.id join playlists on playlist_tracks.playlist_id = playlists.id where  playlists.name = "Music"
+SELECT count(*) ,  T1.name FROM genres AS T1 JOIN tracks AS T2 ON T1.id = T2.genre_id GROUP BY T1.name;
+select count(*) , genres.name from tracks join genres on tracks.genre_id = genres.id  group by tracks.genre_id
+SELECT count(*) ,  T1.name FROM genres AS T1 JOIN tracks AS T2 ON T1.id = T2.genre_id GROUP BY T1.name;
+select genres.name , count(*) from tracks join genres on tracks.genre_id = genres.id  group by tracks.genre_id

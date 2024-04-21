@@ -1,0 +1,168 @@
+SELECT count(*) FROM ALBUM
+select count(*) from Album
+SELECT count(*) FROM ALBUM
+select count(*) from Album
+SELECT Name FROM GENRE
+select genre.name from Genre
+SELECT Name FROM GENRE
+select genre.name from Genre
+SELECT * FROM CUSTOMER WHERE State  =  "NY"
+select * from Customer where  customer.state = "NY"
+SELECT * FROM CUSTOMER WHERE State  =  "NY"
+select * from Customer where  customer.state = "NY"
+SELECT FirstName ,  LastName FROM EMPLOYEE WHERE City  =  "Calgary"
+select employee.firstname , employee.lastname from Employee where  employee.city = "Calgary"
+SELECT FirstName ,  LastName FROM EMPLOYEE WHERE City  =  "Calgary"
+select employee.firstname , employee.lastname from Employee where  employee.city = "Calgary"
+SELECT distinct(BillingCountry) FROM INVOICE
+select distinct invoice.billingcountry from Invoice
+SELECT distinct(BillingCountry) FROM INVOICE
+select distinct invoice.billingcountry from Invoice
+SELECT Name FROM ARTIST WHERE Name LIKE "%a%"
+select artist.name from Artist where  artist.name like "%a%"
+SELECT Name FROM ARTIST WHERE Name LIKE "%a%"
+select artist.name from Artist where  artist.name like "%a%"
+SELECT Title FROM ALBUM AS T1 JOIN ARTIST AS T2 ON T1.ArtistId  =  T2.ArtistId WHERE T2.Name  =  "AC/DC"
+select album.title from Album join Artist on Album.ArtistId = Artist.ArtistId where  artist.name = "AC/DC"
+SELECT Title FROM ALBUM AS T1 JOIN ARTIST AS T2 ON T1.ArtistId  =  T2.ArtistId WHERE T2.Name  =  "AC/DC"
+select album.title from Album join Artist on Album.ArtistId = Artist.ArtistId where  artist.name = "AC/DC"
+SELECT COUNT(*) FROM ALBUM AS T1 JOIN ARTIST AS T2 ON T1.ArtistId  =  T2.ArtistId WHERE T2.Name  =  "Metallica"
+select count(*) from Album join Artist on Album.ArtistId = Artist.ArtistId where  artist.name = "Metallica"
+SELECT COUNT(*) FROM ALBUM AS T1 JOIN ARTIST AS T2 ON T1.ArtistId  =  T2.ArtistId WHERE T2.Name  =  "Metallica"
+select count(*) from Album join Artist on Album.ArtistId = Artist.ArtistId where  artist.name = "Metallica"
+SELECT T2.Name FROM ALBUM AS T1 JOIN ARTIST AS T2 ON T1.ArtistId  =  T2.ArtistId WHERE T1.Title  =  "Balls to the Wall"
+select artist.name from Album join Artist on Album.ArtistId = Artist.ArtistId where  album.title = "Balls to the Wall"
+SELECT T2.Name FROM ALBUM AS T1 JOIN ARTIST AS T2 ON T1.ArtistId  =  T2.ArtistId WHERE T1.Title  =  "Balls to the Wall"
+select artist.name from Album join Artist on Album.ArtistId = Artist.ArtistId where  album.title = "Balls to the Wall"
+SELECT T2.Name FROM ALBUM AS T1 JOIN ARTIST AS T2 ON T1.ArtistId  =  T2.ArtistId GROUP BY T2.Name ORDER BY COUNT(*) DESC LIMIT 1
+select artist.name from Album join Artist on Album.ArtistId = Artist.ArtistId  group by album.artistid  order by count(*) desc limit 1
+SELECT T2.Name FROM ALBUM AS T1 JOIN ARTIST AS T2 ON T1.ArtistId  =  T2.ArtistId GROUP BY T2.Name ORDER BY COUNT(*) DESC LIMIT 1
+select artist.name from Album join Artist on Album.ArtistId = Artist.ArtistId  group by album.artistid  order by count(*) desc limit 1
+SELECT Name FROM TRACK WHERE Name LIKE '%you%'
+select track.name from Track where  track.name like "%you%"
+SELECT Name FROM TRACK WHERE Name LIKE '%you%'
+select track.name from Track where  track.name like "%you%"
+SELECT AVG(UnitPrice) FROM TRACK
+select avg(track.unitprice) from Track
+SELECT AVG(UnitPrice) FROM TRACK
+select avg(track.unitprice) from Track
+SELECT max(Milliseconds) ,  min(Milliseconds) FROM TRACK
+select max(track.milliseconds) , min(track.milliseconds) from Track
+SELECT max(Milliseconds) ,  min(Milliseconds) FROM TRACK
+select max(track.milliseconds) , min(track.milliseconds) from Track
+SELECT T1.Title ,  T2.AlbumID ,  COUNT(*) FROM ALBUM AS T1 JOIN TRACK AS T2 ON T1.AlbumId  =  T2.AlbumId GROUP BY T2.AlbumID
+select album.title , track.albumid , count(*) from Track join Album on Track.AlbumId = Album.AlbumId  group by track.albumid
+SELECT T1.Title ,  T2.AlbumID ,  COUNT(*) FROM ALBUM AS T1 JOIN TRACK AS T2 ON T1.AlbumId  =  T2.AlbumId GROUP BY T2.AlbumID
+select album.title , track.albumid , count(*) from Track join Album on Track.AlbumId = Album.AlbumId  group by track.albumid
+SELECT T1.Name FROM GENRE AS T1 JOIN TRACK AS T2 ON T1.GenreId  =  T2.GenreId GROUP BY T2.GenreId ORDER BY COUNT(*) DESC LIMIT 1
+select genre.name from Track join Genre on Track.GenreId = Genre.GenreId  group by track.genreid  order by count(*) desc limit 1
+SELECT T1.Name FROM GENRE AS T1 JOIN TRACK AS T2 ON T1.GenreId  =  T2.GenreId GROUP BY T2.GenreId ORDER BY COUNT(*) DESC LIMIT 1
+select genre.name from Track join Genre on Track.GenreId = Genre.GenreId  group by track.genreid  order by count(*) desc limit 1
+SELECT T1.Name FROM MEDIATYPE AS T1 JOIN TRACK AS T2 ON T1.MediaTypeId  =  T2.MediaTypeId GROUP BY T2.MediaTypeId ORDER BY COUNT(*) ASC LIMIT 1
+select mediatype.name from Track join MediaType on Track.MediaTypeId = MediaType.MediaTypeId  group by track.mediatypeid  order by count(*) asc limit 1
+SELECT T1.Name FROM MEDIATYPE AS T1 JOIN TRACK AS T2 ON T1.MediaTypeId  =  T2.MediaTypeId GROUP BY T2.MediaTypeId ORDER BY COUNT(*) ASC LIMIT 1
+select mediatype.name from Track join MediaType on Track.MediaTypeId = MediaType.MediaTypeId  group by track.mediatypeid  order by count(*) asc limit 1
+SELECT T1.Title ,  T2.AlbumID FROM ALBUM AS T1 JOIN TRACK AS T2 ON T1.AlbumId  =  T2.AlbumId WHERE T2.UnitPrice  >  1 GROUP BY T2.AlbumID
+select album.title , track.albumid from Track join Album on Track.AlbumId = Album.AlbumId where  track.unitprice > 1  group by track.albumid
+SELECT T1.Title ,  T2.AlbumID FROM ALBUM AS T1 JOIN TRACK AS T2 ON T1.AlbumId  =  T2.AlbumId WHERE T2.UnitPrice  >  1 GROUP BY T2.AlbumID
+select distinct album.title , track.albumid from Track join Album on Track.AlbumId = Album.AlbumId where  track.unitprice > 1  group by track.albumid
+SELECT COUNT(*) FROM GENRE AS T1 JOIN TRACK AS T2 ON T1.GenreId  =  T2.GenreId WHERE T1.Name  =  "Rock"
+select count(*) from Track join Genre on Track.GenreId = Genre.GenreId where  genre.name = "Rock"
+SELECT COUNT(*) FROM GENRE AS T1 JOIN TRACK AS T2 ON T1.GenreId  =  T2.GenreId WHERE T1.Name  =  "Rock"
+select count(*) from Track join Genre on Track.GenreId = Genre.GenreId where  genre.name = "Rock"
+SELECT AVG(UnitPrice) FROM GENRE AS T1 JOIN TRACK AS T2 ON T1.GenreId  =  T2.GenreId WHERE T1.Name  =  "Jazz"
+select avg(track.unitprice) from Track join Genre on Track.GenreId = Genre.GenreId where  genre.name = "Jazz"
+SELECT AVG(UnitPrice) FROM GENRE AS T1 JOIN TRACK AS T2 ON T1.GenreId  =  T2.GenreId WHERE T1.Name  =  "Jazz"
+select avg(track.unitprice) from Track join Genre on Track.GenreId = Genre.GenreId where  genre.name = "Jazz"
+SELECT FirstName ,  LastName FROM CUSTOMER WHERE Email  =  "luisg@embraer.com.br"
+select customer.firstname , customer.lastname from Customer where  customer.email = "luisg@embraer.com.br"
+SELECT FirstName ,  LastName FROM CUSTOMER WHERE Email  =  "luisg@embraer.com.br"
+select customer.firstname , customer.lastname from Customer where  customer.email = "luisg@embraer.com.br"
+SELECT COUNT(*) FROM CUSTOMER WHERE Email LIKE "%gmail.com%"
+select count(*) from Customer where  customer.email like "%gmail.com%"
+SELECT COUNT(*) FROM CUSTOMER WHERE Email LIKE "%gmail.com%"
+select count(*) from Customer where  customer.email like "%gmail.com%"
+SELECT T2.FirstName ,  T2.LastName FROM CUSTOMER AS T1 JOIN EMPLOYEE AS T2 ON T1.SupportRepId  =  T2.EmployeeId WHERE T1.FirstName  =  "Leonie"
+select employee.firstname , employee.lastname from Customer join Employee on Customer.SupportRepId = Employee.EmployeeId where  customer.firstname = "Leonie"
+SELECT T2.FirstName ,  T2.LastName FROM CUSTOMER AS T1 JOIN EMPLOYEE AS T2 ON T1.SupportRepId  =  T2.EmployeeId WHERE T1.FirstName  =  "Leonie"
+select employee.firstname , employee.lastname from Customer join Employee on Customer.SupportRepId = Employee.EmployeeId where  customer.firstname = "Leonie"
+SELECT T2.City FROM CUSTOMER AS T1 JOIN EMPLOYEE AS T2 ON T1.SupportRepId  =  T2.EmployeeId WHERE T1.PostalCode  =  "70174"
+select employee.city from Customer join Employee on Customer.SupportRepId = Employee.EmployeeId where  customer.postalcode = "70174"
+SELECT T2.City FROM CUSTOMER AS T1 JOIN EMPLOYEE AS T2 ON T1.SupportRepId  =  T2.EmployeeId WHERE T1.PostalCode  =  "70174"
+select employee.city from Customer join Employee on Customer.SupportRepId = Employee.EmployeeId where  customer.postalcode = "70174"
+SELECT COUNT(DISTINCT city) FROM EMPLOYEE
+select count( distinct employee.city) from Employee
+SELECT COUNT(DISTINCT city) FROM EMPLOYEE
+select count( distinct employee.city) from Employee
+SELECT T2.InvoiceDate FROM CUSTOMER AS T1 JOIN INVOICE AS T2 ON T1.CustomerId  =  T2.CustomerId WHERE T1.FirstName  =  "Astrid" AND LastName  =  "Gruber"
+select invoice.invoicedate from Invoice join Customer on Invoice.CustomerId = Customer.CustomerId where  customer.firstname = "Astrid" and customer.lastname = "Gruber"
+SELECT T2.InvoiceDate FROM CUSTOMER AS T1 JOIN INVOICE AS T2 ON T1.CustomerId  =  T2.CustomerId WHERE T1.FirstName  =  "Astrid" AND LastName  =  "Gruber"
+select invoice.invoicedate from Invoice join Customer on Invoice.CustomerId = Customer.CustomerId where  customer.firstname = "Astrid" and customer.lastname = "Gruber"
+SELECT LastName FROM CUSTOMER EXCEPT SELECT T1.LastName FROM CUSTOMER AS T1 JOIN Invoice AS T2 ON T1.CustomerId  =  T2.CustomerId WHERE T2.total  >  20
+select customer.lastname from Customer   except select customer.lastname from Invoice join Customer on Invoice.CustomerId = Customer.CustomerId where  invoice.total > 20
+SELECT LastName FROM CUSTOMER EXCEPT SELECT T1.LastName FROM CUSTOMER AS T1 JOIN Invoice AS T2 ON T1.CustomerId  =  T2.CustomerId WHERE T2.total  >  20
+select customer.lastname from Customer   except select customer.lastname from Invoice join Customer on Invoice.CustomerId = Customer.CustomerId where  invoice.total > 20
+SELECT DISTINCT T1.FirstName FROM CUSTOMER AS T1 JOIN INVOICE AS T2 ON T1.CustomerId  =  T2.CustomerId WHERE T1.country  =  "Brazil"
+select distinct customer.firstname from Invoice join Customer on Invoice.CustomerId = Customer.CustomerId where  customer.country = "Brazil"
+SELECT DISTINCT T1.FirstName FROM CUSTOMER AS T1 JOIN INVOICE AS T2 ON T1.CustomerId  =  T2.CustomerId WHERE T1.country  =  "Brazil"
+select distinct customer.firstname from Invoice join Customer on Invoice.CustomerId = Customer.CustomerId where  customer.country = "Brazil"
+SELECT DISTINCT T1.Address FROM CUSTOMER AS T1 JOIN INVOICE AS T2 ON T1.CustomerId  =  T2.CustomerId WHERE T1.country  =  "Germany"
+select distinct customer.address from Invoice join Customer on Invoice.CustomerId = Customer.CustomerId where  customer.country = "Germany"
+SELECT DISTINCT T1.Address FROM CUSTOMER AS T1 JOIN INVOICE AS T2 ON T1.CustomerId  =  T2.CustomerId WHERE T1.country  =  "Germany"
+select distinct customer.address from Invoice join Customer on Invoice.CustomerId = Customer.CustomerId where  customer.country = "Germany"
+SELECT Phone FROM EMPLOYEE
+select employee.phone from Employee
+SELECT Phone FROM EMPLOYEE
+select employee.phone from Employee
+SELECT COUNT(*) FROM MEDIATYPE AS T1 JOIN TRACK AS T2 ON T1.MediaTypeId  =  T2.MediaTypeId WHERE T1.Name  =  "AAC audio file"
+select count(*) from Track join MediaType on Track.MediaTypeId = MediaType.MediaTypeId where  mediatype.name = "AAC audio file"
+SELECT COUNT(*) FROM MEDIATYPE AS T1 JOIN TRACK AS T2 ON T1.MediaTypeId  =  T2.MediaTypeId WHERE T1.Name  =  "AAC audio file"
+select count(*) from Track join MediaType on Track.MediaTypeId = MediaType.MediaTypeId where  mediatype.name = "AAC audio file"
+SELECT AVG(Milliseconds) FROM GENRE AS T1 JOIN TRACK AS T2 ON T1.GenreId  =  T2.GenreId WHERE T1.Name  =  "Latin" OR T1.Name  =  "Pop"
+select avg(track.milliseconds) from Track join Genre on Track.GenreId = Genre.GenreId where  genre.name = "Latin" or genre.name = "Pop"
+SELECT AVG(Milliseconds) FROM GENRE AS T1 JOIN TRACK AS T2 ON T1.GenreId  =  T2.GenreId WHERE T1.Name  =  "Latin" OR T1.Name  =  "Pop"
+select avg(track.milliseconds) from Track join Genre on Track.GenreId = Genre.GenreId where  genre.name = "Latin" or genre.name = "Pop"
+SELECT T1.FirstName ,  T1.SupportRepId FROM CUSTOMER AS T1 JOIN EMPLOYEE AS T2 ON T1.SupportRepId  =  T2.EmployeeId GROUP BY T1.SupportRepId HAVING COUNT(*)  >=  10
+select employee.firstname , employee.employeeid from Customer join Employee on Customer.SupportRepId = Employee.EmployeeId  group by customer.supportrepid having  count(*) >= 10
+SELECT T1.FirstName ,  T1.SupportRepId FROM CUSTOMER AS T1 JOIN EMPLOYEE AS T2 ON T1.SupportRepId  =  T2.EmployeeId GROUP BY T1.SupportRepId HAVING COUNT(*)  >=  10
+select employee.firstname , employee.employeeid from Customer join Employee on Customer.SupportRepId = Employee.EmployeeId  group by customer.supportrepid having  count(*) >= 10
+SELECT T1.LastName FROM CUSTOMER AS T1 JOIN EMPLOYEE AS T2 ON T1.SupportRepId  =  T2.EmployeeId GROUP BY T1.SupportRepId HAVING COUNT(*)  <=  20
+select employee.lastname from Customer join Employee on Customer.SupportRepId = Employee.EmployeeId  group by customer.supportrepid having  count(*) < 20
+SELECT T1.LastName FROM CUSTOMER AS T1 JOIN EMPLOYEE AS T2 ON T1.SupportRepId  =  T2.EmployeeId GROUP BY T1.SupportRepId HAVING COUNT(*)  <=  20
+select employee.lastname from Customer join Employee on Customer.SupportRepId = Employee.EmployeeId  group by customer.supportrepid having  count(*) < 20
+SELECT Title FROM ALBUM ORDER BY Title
+select album.title from Album   order by album.title asc
+SELECT Title FROM ALBUM ORDER BY Title
+select album.title from Album   order by album.title asc
+SELECT T2.Name ,  T1.ArtistId FROM ALBUM AS T1 JOIN ARTIST AS T2 ON T1.ArtistId  =  T2.ArtistID GROUP BY T1.ArtistId HAVING COUNT(*)  >=  3 ORDER BY T2.Name
+select artist.name , artist.artistid from Album join Artist on Album.ArtistId = Artist.ArtistId  group by album.artistid having  count(*) >= 3  order by artist.name asc
+SELECT T2.Name ,  T1.ArtistId FROM ALBUM AS T1 JOIN ARTIST AS T2 ON T1.ArtistId  =  T2.ArtistID GROUP BY T1.ArtistId HAVING COUNT(*)  >=  3 ORDER BY T2.Name
+select artist.name , artist.artistid from Album join Artist on Album.ArtistId = Artist.ArtistId  group by album.artistid having  count(*) >= 3  order by artist.name asc
+SELECT Name FROM ARTIST EXCEPT SELECT T2.Name FROM ALBUM AS T1 JOIN ARTIST AS T2 ON T1.ArtistId  =  T2.ArtistId
+select artist.name from Artist   except select artist.name from Album join Artist on Album.ArtistId = Artist.ArtistId
+SELECT Name FROM ARTIST EXCEPT SELECT T2.Name FROM ALBUM AS T1 JOIN ARTIST AS T2 ON T1.ArtistId  =  T2.ArtistId
+select artist.name from Artist   except select artist.name from Album join Artist on Album.ArtistId = Artist.ArtistId
+SELECT AVG(T2.UnitPrice) FROM GENRE AS T1 JOIN TRACK AS T2 ON T1.GenreId  =  T2.GenreId WHERE T1.Name  =  "Rock"
+select avg(track.unitprice) from Track join Genre on Track.GenreId = Genre.GenreId where  genre.name = "Rock"
+SELECT AVG(T2.UnitPrice) FROM GENRE AS T1 JOIN TRACK AS T2 ON T1.GenreId  =  T2.GenreId WHERE T1.Name  =  "Rock"
+select avg(track.unitprice) from Track join Genre on Track.GenreId = Genre.GenreId where  genre.name = "Rock"
+SELECT max(Milliseconds) ,  min(Milliseconds) FROM GENRE AS T1 JOIN TRACK AS T2 ON T1.GenreId  =  T2.GenreId WHERE T1.Name  =  "Pop"
+select max(track.milliseconds) , min(track.milliseconds) from Track join Genre on Track.GenreId = Genre.GenreId where  genre.name = "Pop"
+SELECT max(Milliseconds) ,  min(Milliseconds) FROM GENRE AS T1 JOIN TRACK AS T2 ON T1.GenreId  =  T2.GenreId WHERE T1.Name  =  "Pop"
+select max(track.milliseconds) , min(track.milliseconds) from Track join Genre on Track.GenreId = Genre.GenreId where  genre.name = "Pop"
+SELECT BirthDate FROM EMPLOYEE WHERE City  =  "Edmonton"
+select employee.birthdate from Employee where  employee.city = "Edmonton"
+SELECT BirthDate FROM EMPLOYEE WHERE City  =  "Edmonton"
+select employee.birthdate from Employee where  employee.city = "Edmonton"
+SELECT distinct(UnitPrice) FROM TRACK
+select distinct track.unitprice from Track
+SELECT distinct(UnitPrice) FROM TRACK
+select distinct track.unitprice from Track
+SELECT count(*) FROM ARTIST WHERE artistid NOT IN(SELECT artistid FROM ALBUM)
+select count(*) from Artist where  artist.artistid not in (select Album.ArtistId from Album  )
+SELECT count(*) FROM ARTIST WHERE artistid NOT IN(SELECT artistid FROM ALBUM)
+select count(*) from Artist where  artist.artistid not in (select Album.ArtistId from Album  )
+SELECT T1.Title FROM Album AS T1 JOIN Track AS T2 ON T1.AlbumId  =  T2.AlbumId JOIN Genre AS T3 ON T2.GenreID  =  T3.GenreID WHERE T3.Name  =  'Reggae' INTERSECT SELECT T1.Title FROM Album AS T1 JOIN Track AS T2 ON T1.AlbumId  =  T2.AlbumId JOIN Genre AS T3 ON T2.GenreID  =  T3.GenreID WHERE T3.Name  =  'Rock'
+select album.title from Track join Genre on Track.GenreId = Genre.GenreId join Album on Track.AlbumId = Album.AlbumId where  genre.name = "Reggae"   intersect select album.title from Track join Genre on Track.GenreId = Genre.GenreId join Album on Track.AlbumId = Album.AlbumId where  genre.name = "Rock"
+SELECT T1.Title FROM Album AS T1 JOIN Track AS T2 ON T1.AlbumId  =  T2.AlbumId JOIN Genre AS T3 ON T2.GenreID  =  T3.GenreID WHERE T3.Name  =  'Reggae' INTERSECT SELECT T1.Title FROM Album AS T1 JOIN Track AS T2 ON T1.AlbumId  =  T2.AlbumId JOIN Genre AS T3 ON T2.GenreID  =  T3.GenreID WHERE T3.Name  =  'Rock'
+select album.title from Track join Genre on Track.GenreId = Genre.GenreId join Album on Track.AlbumId = Album.AlbumId where  genre.name = "Reggae"   intersect select album.title from Track join Genre on Track.GenreId = Genre.GenreId join Album on Track.AlbumId = Album.AlbumId where  genre.name = "Rock"

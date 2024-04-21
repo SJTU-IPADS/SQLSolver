@@ -1,0 +1,200 @@
+SELECT name FROM department GROUP BY departmentID ORDER BY count(departmentID) DESC LIMIT 1;
+select department.name from Department  group by department.departmentid  order by count(department.departmentid) desc limit 1
+SELECT name FROM department GROUP BY departmentID ORDER BY count(departmentID) DESC LIMIT 1;
+select department.name from Department  group by department.departmentid  order by count(department.departmentid) desc limit 1
+SELECT head FROM department GROUP BY departmentID ORDER BY count(departmentID) LIMIT 1;
+select department.head from Department  group by department.departmentid  order by count(department.departmentid) asc limit 1
+SELECT head FROM department GROUP BY departmentID ORDER BY count(departmentID) LIMIT 1;
+select department.head from Department  group by department.departmentid  order by count(department.departmentid) asc limit 1
+SELECT T2.name ,  T2.position FROM department AS T1 JOIN physician AS T2 ON T1.head  =  T2.EmployeeID GROUP BY departmentID ORDER BY count(departmentID) LIMIT 1;
+select department.head , physician.position from Department join Physician on Department.Head = Physician.EmployeeID  group by department.departmentid  order by count(department.departmentid) asc limit 1
+SELECT T2.name ,  T2.position FROM department AS T1 JOIN physician AS T2 ON T1.head  =  T2.EmployeeID GROUP BY departmentID ORDER BY count(departmentID) LIMIT 1;
+select physician.name , physician.position from Department join Physician on Department.Head = Physician.EmployeeID  group by department.departmentid  order by count(department.departmentid) asc limit 1
+SELECT name FROM appointment AS T1 JOIN patient AS T2 ON T1.patient  =  T2.ssn
+select patient.name from Appointment join Patient on Appointment.Patient = Patient.SSN
+SELECT name FROM appointment AS T1 JOIN patient AS T2 ON T1.patient  =  T2.ssn
+select patient.name from Appointment join Patient on Appointment.Patient = Patient.SSN
+SELECT name ,  phone FROM appointment AS T1 JOIN patient AS T2 ON T1.patient  =  T2.ssn GROUP BY T1.patient HAVING count(*)  >  1
+select patient.name , patient.phone from Appointment join Patient on Appointment.Patient = Patient.SSN  group by appointment.patient having  count(*) > 1
+SELECT name ,  phone FROM appointment AS T1 JOIN patient AS T2 ON T1.patient  =  T2.ssn GROUP BY T1.patient HAVING count(*)  >  1
+select patient.name , patient.phone from Appointment join Patient on Appointment.Patient = Patient.SSN  group by appointment.patient having  count(*) > 1
+SELECT appointmentid FROM appointment ORDER BY START DESC LIMIT 1
+select appointment.appointmentid from Appointment   order by appointment.start desc limit 1
+SELECT appointmentid FROM appointment ORDER BY START DESC LIMIT 1
+select appointment.appointmentid from Appointment   order by appointment.start desc limit 1
+SELECT T2.name FROM appointment AS T1 JOIN physician AS T2 ON T1.Physician  =  T2.EmployeeID
+select physician.name from Appointment join Physician on Appointment.Physician = Physician.EmployeeID
+SELECT T2.name FROM appointment AS T1 JOIN physician AS T2 ON T1.Physician  =  T2.EmployeeID
+select physician.name from Appointment join Physician on Appointment.Physician = Physician.EmployeeID
+SELECT name FROM physician EXCEPT SELECT T2.name FROM appointment AS T1 JOIN physician AS T2 ON T1.Physician  =  T2.EmployeeID
+select physician.name from Physician   except select physician.name from Appointment join Physician on Appointment.Physician = Physician.EmployeeID
+SELECT name FROM physician EXCEPT SELECT T2.name FROM appointment AS T1 JOIN physician AS T2 ON T1.Physician  =  T2.EmployeeID
+select physician.name from Physician   except select physician.name from Appointment join Physician on Appointment.Physician = Physician.EmployeeID
+SELECT T1.name ,  T3.name FROM physician AS T1 JOIN affiliated_with AS T2 ON T1.EmployeeID  =  T2.physician JOIN department AS T3 ON T2.department  =  T3.DepartmentID WHERE T2.PrimaryAffiliation  =  1
+select physician.name , department.name from Affiliated_With join Department on Affiliated_With.Department = Department.DepartmentID join Physician on Department.Head = Physician.EmployeeID where  affiliated_with.primaryaffiliation = 1
+SELECT T1.name ,  T3.name FROM physician AS T1 JOIN affiliated_with AS T2 ON T1.EmployeeID  =  T2.physician JOIN department AS T3 ON T2.department  =  T3.DepartmentID WHERE T2.PrimaryAffiliation  =  1
+select physician.name , department.name from Affiliated_With join Department on Affiliated_With.Department = Department.DepartmentID join Physician on Department.Head = Physician.EmployeeID where  affiliated_with.primaryaffiliation = 1
+SELECT T1.name FROM patient AS T1 JOIN appointment AS T2 ON T1.ssn = T2.patient ORDER BY T2.start DESC LIMIT 1
+select patient.name from Appointment join Patient on Appointment.Patient = Patient.SSN   order by appointment.start desc limit 1
+SELECT T1.name FROM patient AS T1 JOIN appointment AS T2 ON T1.ssn = T2.patient ORDER BY T2.start DESC LIMIT 1
+select patient.name from Appointment join Patient on Appointment.Patient = Patient.SSN   order by appointment.start desc limit 1
+SELECT count(patient) FROM stay WHERE room  =  112
+select count( distinct stay.patient) from Stay where  stay.room = 112
+SELECT count(patient) FROM stay WHERE room  =  112
+select count( distinct stay.patient) from Stay where  stay.room = 112
+SELECT count(T1.SSN) FROM patient AS T1 JOIN prescribes AS T2 ON T1.SSN  =  T2.patient JOIN physician AS T3 ON T2.physician  =  T3.employeeid WHERE T3.name = "John Dorian"
+select count( distinct patient.ssn) from Prescribes join Patient on Prescribes.Patient = Patient.SSN join Physician on Patient.PCP = Physician.EmployeeID where  physician.name = "John Dorian"
+SELECT count(T1.SSN) FROM patient AS T1 JOIN prescribes AS T2 ON T1.SSN  =  T2.patient JOIN physician AS T3 ON T2.physician  =  T3.employeeid WHERE T3.name = "John Dorian"
+select count(patient.ssn) from Prescribes join Patient on Prescribes.Patient = Patient.SSN join Physician on Patient.PCP = Physician.EmployeeID where  physician.name = "John Dorian"
+SELECT T4.name FROM stay AS T1 JOIN patient AS T2 ON T1.Patient  =  T2.SSN JOIN Prescribes AS T3 ON T3.Patient  =  T2.SSN JOIN Medication AS T4 ON T3.Medication  =  T4.Code WHERE room  =  111
+select medication.name from Prescribes join Medication on Prescribes.Medication = Medication.Code join Patient on Prescribes.Patient = Patient.SSN join Stay on Patient.SSN = Stay.Patient where  stay.room = 111
+SELECT T4.name FROM stay AS T1 JOIN patient AS T2 ON T1.Patient  =  T2.SSN JOIN Prescribes AS T3 ON T3.Patient  =  T2.SSN JOIN Medication AS T4 ON T3.Medication  =  T4.Code WHERE room  =  111
+select medication.name from Prescribes join Medication on Prescribes.Medication = Medication.Code join Patient on Prescribes.Patient = Patient.SSN join Stay on Patient.SSN = Stay.Patient where  stay.room = 111
+SELECT patient FROM stay WHERE room  =  111 ORDER BY staystart DESC LIMIT 1
+select stay.patient from Stay where  stay.room = 111   order by stay.staystart desc limit 1
+SELECT patient FROM stay WHERE room  =  111 ORDER BY staystart DESC LIMIT 1
+select stay.patient from Stay where  stay.room = 111   order by stay.staystart desc limit 1
+SELECT T1.name FROM nurse AS T1 JOIN appointment AS T2 ON T1.employeeid  =  T2.prepnurse GROUP BY T1.employeeid ORDER BY count(*) DESC LIMIT 1
+select nurse.name from Appointment join Nurse on Appointment.PrepNurse = Nurse.EmployeeID  group by nurse.employeeid  order by count(*) desc limit 1
+SELECT T1.name FROM nurse AS T1 JOIN appointment AS T2 ON T1.employeeid  =  T2.prepnurse GROUP BY T1.employeeid ORDER BY count(*) DESC LIMIT 1
+select nurse.name from Appointment join Nurse on Appointment.PrepNurse = Nurse.EmployeeID  group by nurse.employeeid  order by count(*) desc limit 1
+SELECT T1.name ,  count(*) FROM physician AS T1 JOIN patient AS T2 ON T1.employeeid  =  T2.PCP GROUP BY T1.employeeid
+select physician.name , count(*) from Patient join Physician on Patient.PCP = Physician.EmployeeID  group by physician.employeeid
+SELECT T1.name ,  count(*) FROM physician AS T1 JOIN patient AS T2 ON T1.employeeid  =  T2.PCP GROUP BY T1.employeeid
+select physician.name , count(*) from Patient join Physician on Patient.PCP = Physician.EmployeeID  group by physician.employeeid
+SELECT T1.name FROM physician AS T1 JOIN patient AS T2 ON T1.employeeid  =  T2.PCP GROUP BY T1.employeeid HAVING count(*)  >  1
+select physician.name from Patient join Physician on Patient.PCP = Physician.EmployeeID  group by physician.employeeid having  count(*) > 1
+SELECT T1.name FROM physician AS T1 JOIN patient AS T2 ON T1.employeeid  =  T2.PCP GROUP BY T1.employeeid HAVING count(*)  >  1
+select physician.name from Patient join Physician on Patient.PCP = Physician.EmployeeID  group by physician.employeeid having  count(*) > 1
+SELECT count(*) ,  T1.blockfloor FROM BLOCK AS T1 JOIN room AS T2 ON T1.blockfloor  =  T2.blockfloor AND T1.blockcode  =  T2.blockcode GROUP BY T1.blockfloor
+select count(*) , block.blockfloor from Room join Block on Room.BlockFloor = Block.BlockFloor  group by block.blockfloor
+SELECT count(*) ,  T1.blockfloor FROM BLOCK AS T1 JOIN room AS T2 ON T1.blockfloor  =  T2.blockfloor AND T1.blockcode  =  T2.blockcode GROUP BY T1.blockfloor
+select count(*) , block.blockfloor from Room join Block on Room.BlockFloor = Block.BlockFloor  group by block.blockfloor
+SELECT count(*) ,  T1.blockcode FROM BLOCK AS T1 JOIN room AS T2 ON T1.blockfloor  =  T2.blockfloor AND T1.blockcode  =  T2.blockcode GROUP BY T1.blockcode
+select count(*) , block.blockcode from Room join Block on Room.BlockFloor = Block.BlockFloor  group by block.blockcode
+SELECT count(*) ,  T1.blockcode FROM BLOCK AS T1 JOIN room AS T2 ON T1.blockfloor  =  T2.blockfloor AND T1.blockcode  =  T2.blockcode GROUP BY T1.blockcode
+select block.blockcode , count(*) from Room join Block on Room.BlockFloor = Block.BlockFloor  group by block.blockcode
+SELECT DISTINCT blockcode FROM room WHERE unavailable  =  0
+select distinct room.blockcode from Room where  room.unavailable = 0
+SELECT DISTINCT blockcode FROM room WHERE unavailable  =  0
+select distinct room.blockcode from Room where  room.unavailable = 0
+SELECT count(DISTINCT roomtype) FROM room
+select count( distinct room.roomtype) from Room
+SELECT count(DISTINCT roomtype) FROM room
+select count( distinct room.roomtype) from Room
+SELECT DISTINCT T1.name FROM physician AS T1 JOIN prescribes AS T2 ON T1.employeeid = T2.physician JOIN medication AS T3 ON T3.code = T2.medication WHERE T3.name  =  "Thesisin"
+select distinct physician.name from Prescribes join Medication on Prescribes.Medication = Medication.Code join Physician on Prescribes.Physician = Physician.EmployeeID where  medication.name = "Thesisin"
+SELECT DISTINCT T1.name FROM physician AS T1 JOIN prescribes AS T2 ON T1.employeeid = T2.physician JOIN medication AS T3 ON T3.code = T2.medication WHERE T3.name  =  "Thesisin"
+select distinct physician.name from Prescribes join Medication on Prescribes.Medication = Medication.Code join Physician on Prescribes.Physician = Physician.EmployeeID where  medication.name = "Thesisin"
+SELECT DISTINCT T1.name ,  T1.position FROM physician AS T1 JOIN prescribes AS T2 ON T1.employeeid = T2.physician JOIN medication AS T3 ON T3.code = T2.medication WHERE T3.Brand  =  "X"
+select distinct physician.name , physician.position from Prescribes join Medication on Prescribes.Medication = Medication.Code join Physician on Prescribes.Physician = Physician.EmployeeID where  medication.brand = "X"
+SELECT DISTINCT T1.name ,  T1.position FROM physician AS T1 JOIN prescribes AS T2 ON T1.employeeid = T2.physician JOIN medication AS T3 ON T3.code = T2.medication WHERE T3.Brand  =  "X"
+select distinct physician.name , physician.position from Prescribes join Medication on Prescribes.Medication = Medication.Code join Physician on Prescribes.Physician = Physician.EmployeeID where  medication.brand = "X"
+SELECT count(*) ,  T1.name FROM medication AS T1 JOIN prescribes AS T2 ON T1.code = T2.medication GROUP BY T1.brand
+select count(*) , medication.brand from Prescribes join Medication on Prescribes.Medication = Medication.Code  group by medication.brand
+SELECT count(*) ,  T1.name FROM medication AS T1 JOIN prescribes AS T2 ON T1.code = T2.medication GROUP BY T1.brand
+select count(*) , medication.brand from Prescribes join Medication on Prescribes.Medication = Medication.Code  group by medication.brand
+SELECT name FROM physician WHERE POSITION LIKE '%senior%'
+select physician.name from Physician where  physician.position like "%senior%"
+SELECT name FROM physician WHERE POSITION LIKE '%senior%'
+select physician.name from Physician where  physician.position like "%senior%"
+SELECT patient FROM undergoes ORDER BY dateundergoes LIMIT 1
+select undergoes.patient from Undergoes   order by undergoes.dateundergoes asc limit 1
+SELECT patient FROM undergoes ORDER BY dateundergoes LIMIT 1
+select patient.name from Undergoes join Patient on Undergoes.Patient = Patient.SSN   order by undergoes.dateundergoes asc limit 1
+SELECT DISTINCT T2.name FROM undergoes AS T1 JOIN patient AS T2 ON T1.patient = T2.SSN JOIN stay AS T3 ON T1.Stay  =  T3.StayID WHERE T3.room  =  111
+select distinct patient.name from Undergoes join Stay on Undergoes.Stay = Stay.StayID join Patient on Stay.Patient = Patient.SSN where  stay.room = 111
+SELECT DISTINCT T2.name FROM undergoes AS T1 JOIN patient AS T2 ON T1.patient = T2.SSN JOIN stay AS T3 ON T1.Stay  =  T3.StayID WHERE T3.room  =  111
+select distinct patient.name from Undergoes join Stay on Undergoes.Stay = Stay.StayID join Patient on Stay.Patient = Patient.SSN where  stay.room = 111
+SELECT DISTINCT name FROM nurse ORDER BY name
+select distinct nurse.name from Nurse   order by nurse.name asc
+SELECT DISTINCT name FROM nurse ORDER BY name
+select distinct nurse.name from Nurse   order by nurse.name asc
+SELECT DISTINCT T2.name FROM undergoes AS T1 JOIN nurse AS T2 ON T1.AssistingNurse  =  T2.EmployeeID
+select distinct nurse.name from Undergoes join Nurse on Undergoes.AssistingNurse = Nurse.EmployeeID
+SELECT DISTINCT T2.name FROM undergoes AS T1 JOIN nurse AS T2 ON T1.AssistingNurse  =  T2.EmployeeID
+select distinct undergoes.assistingnurse from Undergoes
+SELECT DISTINCT name FROM medication ORDER BY name
+select distinct medication.name from Medication   order by medication.name asc
+SELECT DISTINCT name FROM medication ORDER BY name
+select distinct medication.name from Medication   order by medication.name asc
+SELECT T1.name FROM physician AS T1 JOIN prescribes AS T2 ON T1.employeeid = T2.physician ORDER BY T2.dose DESC LIMIT 1
+select physician.name from Prescribes join Physician on Prescribes.Physician = Physician.EmployeeID   order by prescribes.dose desc limit 1
+SELECT T1.name FROM physician AS T1 JOIN prescribes AS T2 ON T1.employeeid = T2.physician ORDER BY T2.dose DESC LIMIT 1
+select physician.name from Prescribes join Physician on Prescribes.Physician = Physician.EmployeeID   order by prescribes.dose desc limit 1
+SELECT physician ,  department FROM affiliated_with WHERE primaryaffiliation  =  1
+select affiliated_with.physician , affiliated_with.department from Affiliated_With where  affiliated_with.primaryaffiliation = 1
+SELECT physician ,  department FROM affiliated_with WHERE primaryaffiliation  =  1
+select affiliated_with.physician , affiliated_with.department from Affiliated_With where  affiliated_with.primaryaffiliation = 1
+SELECT DISTINCT T2.name FROM affiliated_with AS T1 JOIN department AS T2 ON T1.department = T2.departmentid WHERE PrimaryAffiliation  =  1
+select distinct department.name from Affiliated_With join Department on Affiliated_With.Department = Department.DepartmentID where  affiliated_with.primaryaffiliation = 1
+SELECT DISTINCT T2.name FROM affiliated_with AS T1 JOIN department AS T2 ON T1.department = T2.departmentid WHERE PrimaryAffiliation  =  1
+select distinct department.name from Affiliated_With join Department on Affiliated_With.Department = Department.DepartmentID where  affiliated_with.primaryaffiliation = 1
+SELECT nurse FROM on_call WHERE blockfloor  =  1 AND blockcode  =  1
+select on_call.nurse from On_Call where  on_call.blockfloor = 1 and on_call.blockcode = 1
+SELECT nurse FROM on_call WHERE blockfloor  =  1 AND blockcode  =  1
+select on_call.nurse from On_Call where  on_call.blockfloor = 1 and on_call.blockcode = 1
+SELECT MAX(cost) ,  MIN(cost) ,  AVG(cost) FROM procedures
+select max(procedures.cost) , min(procedures.cost) , avg(procedures.cost) from Procedures
+SELECT MAX(cost) ,  MIN(cost) ,  AVG(cost) FROM procedures
+select max(procedures.cost) , min(procedures.cost) , avg(procedures.cost) from Procedures
+SELECT name ,  cost FROM procedures ORDER BY cost DESC
+select procedures.name , procedures.cost from Procedures   order by procedures.cost desc
+SELECT name ,  cost FROM procedures ORDER BY cost DESC
+select procedures.name , procedures.cost from Procedures   order by procedures.cost desc
+SELECT name FROM procedures ORDER BY cost LIMIT 3
+select procedures.name from Procedures   order by procedures.cost desc limit 3
+SELECT name FROM procedures ORDER BY cost LIMIT 3
+select procedures.name from Procedures   order by procedures.cost asc limit 3
+SELECT T1.name FROM physician AS T1 JOIN trained_in AS T2 ON T1.employeeid  =  T2.physician JOIN procedures AS T3 ON T3.code  =  T2.treatment WHERE T3.cost  >  5000
+select physician.name from Trained_In join Procedures on Trained_In.Treatment = Procedures.Code join Physician on Trained_In.Physician = Physician.EmployeeID where  procedures.cost > 5000
+SELECT T1.name FROM physician AS T1 JOIN trained_in AS T2 ON T1.employeeid  =  T2.physician JOIN procedures AS T3 ON T3.code  =  T2.treatment WHERE T3.cost  >  5000
+select physician.name from Trained_In join Procedures on Trained_In.Treatment = Procedures.Code join Physician on Trained_In.Physician = Physician.EmployeeID where  procedures.cost > 5000
+SELECT T1.name FROM physician AS T1 JOIN trained_in AS T2 ON T1.employeeid  =  T2.physician JOIN procedures AS T3 ON T3.code  =  T2.treatment ORDER BY T3.cost DESC LIMIT 1
+select physician.name from Trained_In join Procedures on Trained_In.Treatment = Procedures.Code join Physician on Trained_In.Physician = Physician.EmployeeID   order by procedures.cost desc limit 1
+SELECT T1.name FROM physician AS T1 JOIN trained_in AS T2 ON T1.employeeid  =  T2.physician JOIN procedures AS T3 ON T3.code  =  T2.treatment ORDER BY T3.cost DESC LIMIT 1
+select physician.name from Trained_In join Procedures on Trained_In.Treatment = Procedures.Code join Physician on Trained_In.Physician = Physician.EmployeeID   order by procedures.cost desc limit 1
+SELECT avg(T3.cost) FROM physician AS T1 JOIN trained_in AS T2 ON T1.employeeid  =  T2.physician JOIN procedures AS T3 ON T3.code  =  T2.treatment WHERE T1.name  =  "John Wen"
+select avg(procedures.cost) from Trained_In join Procedures on Trained_In.Treatment = Procedures.Code join Physician on Trained_In.Physician = Physician.EmployeeID where  physician.name = "John Wen"
+SELECT avg(T3.cost) FROM physician AS T1 JOIN trained_in AS T2 ON T1.employeeid  =  T2.physician JOIN procedures AS T3 ON T3.code  =  T2.treatment WHERE T1.name  =  "John Wen"
+select avg(procedures.cost) from Trained_In join Procedures on Trained_In.Treatment = Procedures.Code join Physician on Trained_In.Physician = Physician.EmployeeID where  physician.name = "John Wen"
+SELECT T3.name FROM physician AS T1 JOIN trained_in AS T2 ON T1.employeeid  =  T2.physician JOIN procedures AS T3 ON T3.code  =  T2.treatment WHERE T1.name  =  "John Wen"
+select procedures.name from Trained_In join Procedures on Trained_In.Treatment = Procedures.Code join Physician on Trained_In.Physician = Physician.EmployeeID where  physician.name = "John Wen"
+SELECT T3.name FROM physician AS T1 JOIN trained_in AS T2 ON T1.employeeid  =  T2.physician JOIN procedures AS T3 ON T3.code  =  T2.treatment WHERE T1.name  =  "John Wen"
+select procedures.name from Trained_In join Procedures on Trained_In.Treatment = Procedures.Code join Physician on Trained_In.Physician = Physician.EmployeeID where  physician.name = "John Wen"
+SELECT name FROM procedures WHERE cost  >  1000 UNION SELECT T3.name FROM physician AS T1 JOIN trained_in AS T2 ON T1.employeeid  =  T2.physician JOIN procedures AS T3 ON T3.code  =  T2.treatment WHERE T1.name  =  "John Wen"
+select procedures.name from Procedures where  procedures.cost > 1000   union select procedures.name from Trained_In join Procedures on Trained_In.Treatment = Procedures.Code join Physician on Trained_In.Physician = Physician.EmployeeID where  physician.name = "John Wen"
+SELECT name FROM procedures WHERE cost  >  1000 UNION SELECT T3.name FROM physician AS T1 JOIN trained_in AS T2 ON T1.employeeid  =  T2.physician JOIN procedures AS T3 ON T3.code  =  T2.treatment WHERE T1.name  =  "John Wen"
+select procedures.name from Procedures where  procedures.cost > 1000   union select procedures.name from Trained_In join Procedures on Trained_In.Treatment = Procedures.Code join Physician on Trained_In.Physician = Physician.EmployeeID where  physician.name = "John Wen"
+SELECT name FROM procedures WHERE cost  >  1000 EXCEPT SELECT T3.name FROM physician AS T1 JOIN trained_in AS T2 ON T1.employeeid  =  T2.physician JOIN procedures AS T3 ON T3.code  =  T2.treatment WHERE T1.name  =  "John Wen"
+select procedures.name from Trained_In join Procedures on Trained_In.Treatment = Procedures.Code join Physician on Trained_In.Physician = Physician.EmployeeID where  procedures.cost > 1000 and physician.name != "John Wen"
+SELECT name FROM procedures WHERE cost  >  1000 EXCEPT SELECT T3.name FROM physician AS T1 JOIN trained_in AS T2 ON T1.employeeid  =  T2.physician JOIN procedures AS T3 ON T3.code  =  T2.treatment WHERE T1.name  =  "John Wen"
+select procedures.name from Trained_In join Procedures on Trained_In.Treatment = Procedures.Code join Physician on Trained_In.Physician = Physician.EmployeeID where  procedures.cost > 1000 and physician.name != "John Wen"
+SELECT name FROM procedures WHERE cost  <  5000 INTERSECT SELECT T3.name FROM physician AS T1 JOIN trained_in AS T2 ON T1.employeeid  =  T2.physician JOIN procedures AS T3 ON T3.code  =  T2.treatment WHERE T1.name  =  "John Wen"
+select procedures.name from Trained_In join Procedures on Trained_In.Treatment = Procedures.Code join Physician on Trained_In.Physician = Physician.EmployeeID where  procedures.cost < 5000 and physician.name = "John Wen"
+SELECT name FROM procedures WHERE cost  <  5000 INTERSECT SELECT T3.name FROM physician AS T1 JOIN trained_in AS T2 ON T1.employeeid  =  T2.physician JOIN procedures AS T3 ON T3.code  =  T2.treatment WHERE T1.name  =  "John Wen"
+select procedures.name from Trained_In join Procedures on Trained_In.Treatment = Procedures.Code join Physician on Trained_In.Physician = Physician.EmployeeID where  procedures.cost < 5000 and physician.name = "John Wen"
+SELECT T1.name FROM physician AS T1 JOIN affiliated_with AS T2 ON T1.EmployeeID  =  T2.physician JOIN department AS T3 ON T2.department  =  T3.DepartmentID WHERE T3.name  =  'Surgery' INTERSECT SELECT T1.name FROM physician AS T1 JOIN affiliated_with AS T2 ON T1.EmployeeID  =  T2.physician JOIN department AS T3 ON T2.department  =  T3.DepartmentID WHERE T3.name  =  'Psychiatry'
+select physician.name from Affiliated_With join Department on Affiliated_With.Department = Department.DepartmentID join Physician on Department.Head = Physician.EmployeeID where  department.name = "Surgery"   intersect select physician.name from Affiliated_With join Department on Affiliated_With.Department = Department.DepartmentID join Physician on Department.Head = Physician.EmployeeID where  department.name = "Psychiatry"
+SELECT T1.name FROM physician AS T1 JOIN affiliated_with AS T2 ON T1.EmployeeID  =  T2.physician JOIN department AS T3 ON T2.department  =  T3.DepartmentID WHERE T3.name  =  'Surgery' INTERSECT SELECT T1.name FROM physician AS T1 JOIN affiliated_with AS T2 ON T1.EmployeeID  =  T2.physician JOIN department AS T3 ON T2.department  =  T3.DepartmentID WHERE T3.name  =  'Psychiatry'
+select physician.name from Affiliated_With join Department on Affiliated_With.Department = Department.DepartmentID join Physician on Department.Head = Physician.EmployeeID where  department.name = "Surgery"   intersect select physician.name from Affiliated_With join Department on Affiliated_With.Department = Department.DepartmentID join Physician on Department.Head = Physician.EmployeeID where  department.name = "Psychiatry"
+SELECT T1.name FROM physician AS T1 JOIN affiliated_with AS T2 ON T1.EmployeeID  =  T2.physician JOIN department AS T3 ON T2.department  =  T3.DepartmentID WHERE T3.name  =  'Surgery' OR T3.name  =  'Psychiatry'
+select physician.name from Affiliated_With join Department on Affiliated_With.Department = Department.DepartmentID join Physician on Department.Head = Physician.EmployeeID where  department.name = "Surgery" or department.name = "Psychiatry"
+SELECT T1.name FROM physician AS T1 JOIN affiliated_with AS T2 ON T1.EmployeeID  =  T2.physician JOIN department AS T3 ON T2.department  =  T3.DepartmentID WHERE T3.name  =  'Surgery' OR T3.name  =  'Psychiatry'
+select physician.name from Affiliated_With join Department on Affiliated_With.Department = Department.DepartmentID join Physician on Department.Head = Physician.EmployeeID where  department.name = "Surgery" or department.name = "Psychiatry"
+SELECT name FROM patient EXCEPT SELECT T1.name FROM patient AS T1 JOIN Prescribes AS T2 ON T2.Patient  =  T1.SSN JOIN Medication AS T3 ON T2.Medication  =  T3.Code WHERE T3.name  =  'Procrastin-X'
+select patient.name from Patient   except select patient.name from Prescribes join Medication on Prescribes.Medication = Medication.Code join Patient on Prescribes.Patient = Patient.SSN where  medication.name = "Procrastin-X"
+SELECT name FROM patient EXCEPT SELECT T1.name FROM patient AS T1 JOIN Prescribes AS T2 ON T2.Patient  =  T1.SSN JOIN Medication AS T3 ON T2.Medication  =  T3.Code WHERE T3.name  =  'Procrastin-X'
+select patient.name from Patient   except select patient.name from Prescribes join Medication on Prescribes.Medication = Medication.Code join Patient on Prescribes.Patient = Patient.SSN where  medication.name = "Procrastin-X"
+SELECT count(*) FROM patient WHERE SSN NOT IN ( SELECT T1.patient FROM Prescribes AS T1 JOIN Medication AS T2 ON T1.Medication  =  T2.Code WHERE T2.name  =  'Procrastin-X' )
+select count(patient.ssn) from Patient where  patient.ssn not in (select Prescribes.Patient from Prescribes join Medication on Prescribes.Medication = Medication.Code where  medication.name = "Procrastin-X"  )
+SELECT count(*) FROM patient WHERE SSN NOT IN ( SELECT T1.patient FROM Prescribes AS T1 JOIN Medication AS T2 ON T1.Medication  =  T2.Code WHERE T2.name  =  'Procrastin-X' )
+select count(*) from Patient where  patient.ssn not in (select Prescribes.Patient from Prescribes join Medication on Prescribes.Medication = Medication.Code where  medication.name = "Procrastin-X"  )
+SELECT count(*) FROM appointment
+select count(*) from Appointment
+SELECT count(*) FROM appointment
+select count(*) from Appointment
+SELECT DISTINCT T1.name FROM nurse AS T1 JOIN on_call AS T2 ON T1.EmployeeID  =  T2.nurse
+select nurse.name from On_Call join Nurse on On_Call.Nurse = Nurse.EmployeeID
+SELECT DISTINCT T1.name FROM nurse AS T1 JOIN on_call AS T2 ON T1.EmployeeID  =  T2.nurse
+select distinct nurse.name from On_Call join Nurse on On_Call.Nurse = Nurse.EmployeeID

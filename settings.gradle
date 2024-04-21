@@ -1,0 +1,6 @@
+rootProject.name = 'sqlsolver'
+include 'common', 'sql'
+include 'stmt'
+include 'superopt'
+include 'api'
+

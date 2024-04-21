@@ -1,0 +1,54 @@
+SELECT email FROM user_profiles WHERE name  =  'Mary'
+select user_profiles.email from user_profiles where  user_profiles.name = "Mary"
+SELECT partitionid FROM user_profiles WHERE name  =  'Iron Man'
+select user_profiles.partitionid from user_profiles where  user_profiles.name = "Iron Man"
+SELECT count(*) FROM user_profiles
+select count(*) from user_profiles
+SELECT count(*) FROM follows
+select count(*) from follows
+SELECT count(*) FROM follows GROUP BY f1
+select count(*) from follows  group by follows.f1
+SELECT count(*) FROM tweets
+select count(*) from tweets
+SELECT count(DISTINCT UID) FROM tweets
+select count( distinct tweets.uid) from tweets
+SELECT name ,  email FROM user_profiles WHERE name LIKE '%Swift%'
+select user_profiles.name , user_profiles.email from user_profiles where  user_profiles.name like "%Swift%"
+SELECT name FROM user_profiles WHERE email LIKE '%superstar%' OR email LIKE '%edu%'
+select user_profiles.name from user_profiles where  user_profiles.email like "%superstar%" or user_profiles.email like "%edu%"
+SELECT text FROM tweets WHERE text LIKE '%intern%'
+select tweets.text from tweets where  tweets.text like "%intern%"
+SELECT name ,  email FROM user_profiles WHERE followers  >  1000
+select user_profiles.name , user_profiles.email from user_profiles where  user_profiles.followers > 1000
+SELECT T1.name FROM user_profiles AS T1 JOIN follows AS T2 ON T1.uid  =  T2.f1 GROUP BY T2.f1 HAVING count(*)  >  (SELECT count(*) FROM user_profiles AS T1 JOIN follows AS T2 ON T1.uid  =  T2.f1 WHERE T1.name  =  'Tyler Swift')
+select user_profiles.name from user_profiles where  user_profiles.followers > (select max(user_profiles.followers) from user_profiles where  user_profiles.name = "Tyler Swift"  )
+SELECT T1.name ,  T1.email FROM user_profiles AS T1 JOIN follows AS T2 ON T1.uid  =  T2.f1 GROUP BY T2.f1 HAVING count(*)  >  1
+select user_profiles.name , user_profiles.email from follows join user_profiles on follows.f2 = user_profiles.uid  group by follows.f1 having  count(*) > 1
+SELECT T1.name FROM user_profiles AS T1 JOIN tweets AS T2 ON T1.uid  =  T2.uid GROUP BY T2.uid HAVING count(*)  >  1
+select user_profiles.name from tweets join user_profiles on tweets.uid = user_profiles.uid  group by tweets.uid having  count(*) > 1
+SELECT T2.f1 FROM user_profiles AS T1 JOIN follows AS T2 ON T1.uid  =  T2.f2 WHERE T1.name  =  "Mary" INTERSECT SELECT T2.f1 FROM user_profiles AS T1 JOIN follows AS T2 ON T1.uid  =  T2.f2 WHERE T1.name  =  "Susan"
+select follows.f1 from follows join user_profiles on follows.f2 = user_profiles.uid where  user_profiles.name = "Mary"   intersect select user_profiles.uid from user_profiles where  user_profiles.name = "Susan"
+SELECT T2.f1 FROM user_profiles AS T1 JOIN follows AS T2 ON T1.uid  =  T2.f2 WHERE T1.name  =  "Mary" OR T1.name  =  "Susan"
+select follows.f1 from follows join user_profiles on follows.f2 = user_profiles.uid where  user_profiles.name = "Mary" or user_profiles.name = "Susan"
+SELECT name FROM user_profiles ORDER BY followers DESC LIMIT 1
+select user_profiles.name from user_profiles   order by user_profiles.followers desc limit 1
+SELECT name ,  email FROM user_profiles ORDER BY followers LIMIT 1
+select user_profiles.name , user_profiles.email from user_profiles   order by user_profiles.followers asc limit 1
+SELECT name ,  followers FROM user_profiles ORDER BY followers DESC
+select user_profiles.name , user_profiles.followers from user_profiles   order by user_profiles.followers desc
+SELECT name FROM user_profiles ORDER BY followers DESC LIMIT 5
+select user_profiles.name from user_profiles   order by user_profiles.followers desc limit 5
+SELECT text FROM tweets ORDER BY createdate
+select tweets.text from tweets   order by tweets.createdate asc
+SELECT T1.name ,  count(*) FROM user_profiles AS T1 JOIN tweets AS T2 ON T1.uid  =  T2.uid GROUP BY T2.uid
+select user_profiles.name , count(*) from tweets join user_profiles on tweets.uid = user_profiles.uid  group by tweets.uid
+SELECT T1.name ,  T1.partitionid FROM user_profiles AS T1 JOIN tweets AS T2 ON T1.uid  =  T2.uid GROUP BY T2.uid HAVING count(*)  <  2
+select user_profiles.name , user_profiles.partitionid from tweets join user_profiles on tweets.uid = user_profiles.uid  group by tweets.uid having  count(*) < 2
+SELECT T1.name ,  count(*) FROM user_profiles AS T1 JOIN tweets AS T2 ON T1.uid  =  T2.uid GROUP BY T2.uid HAVING count(*)  >  1
+select user_profiles.name , count(*) from tweets join user_profiles on tweets.uid = user_profiles.uid  group by tweets.uid having  count(*) > 1
+SELECT avg(followers) FROM user_profiles WHERE UID NOT IN (SELECT UID FROM tweets)
+select avg(user_profiles.followers) from user_profiles where  user_profiles.uid not in (select tweets.uid from tweets  )
+SELECT avg(followers) FROM user_profiles WHERE UID IN (SELECT UID FROM tweets)
+select avg(user_profiles.followers) from user_profiles where  user_profiles.uid in (select tweets.uid from tweets  )
+SELECT max(followers) ,  sum(followers) FROM user_profiles
+select max(user_profiles.followers) , sum(user_profiles.followers) from user_profiles

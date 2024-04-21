@@ -1,0 +1,120 @@
+SELECT order_id FROM orders ORDER BY date_order_placed DESC LIMIT 1
+select orders.order_id from Orders   order by orders.date_order_placed desc limit 1
+SELECT order_id FROM orders ORDER BY date_order_placed DESC LIMIT 1
+select orders.order_id from Orders   order by orders.date_order_placed desc limit 1
+SELECT order_id ,  customer_id FROM orders ORDER BY date_order_placed LIMIT 1
+select orders.order_id , orders.customer_id from Orders   order by orders.date_order_placed desc limit 1
+SELECT order_id ,  customer_id FROM orders ORDER BY date_order_placed LIMIT 1
+select orders.order_id , orders.customer_id from Orders   order by orders.date_order_placed asc limit 1
+SELECT order_id FROM shipments WHERE shipment_tracking_number = "3452"
+select shipments.order_id from Shipments where  shipments.shipment_tracking_number = "3452"
+SELECT order_id FROM shipments WHERE shipment_tracking_number = "3452"
+select shipments.order_id from Shipments where  shipments.shipment_tracking_number = "3452"
+SELECT order_item_id FROM order_items WHERE product_id = 11
+select order_items.order_item_id from Order_Items where  order_items.product_id = 11
+SELECT order_item_id FROM order_items WHERE product_id = 11
+select order_items.order_item_id from Order_Items where  order_items.product_id = 11
+SELECT DISTINCT T1.customer_name FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T2.order_status = "Packing"
+select distinct customers.customer_name from Orders join Customers on Orders.customer_id = Customers.customer_id where  orders.order_status = "Packing"
+SELECT DISTINCT T1.customer_name FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T2.order_status = "Packing"
+select distinct customers.customer_name from Orders join Customers on Orders.customer_id = Customers.customer_id where  orders.order_status = "Packing"
+SELECT DISTINCT T1.customer_details FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T2.order_status = "On Road"
+select distinct customers.customer_details from Orders join Customers on Orders.customer_id = Customers.customer_id where  orders.order_status = "On Road"
+SELECT DISTINCT T1.customer_details FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T2.order_status = "On Road"
+select distinct customers.customer_details from Orders join Customers on Orders.customer_id = Customers.customer_id where  orders.order_status = "On Road"
+SELECT T1.customer_name FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) DESC LIMIT 1
+select customers.customer_name from Orders join Customers on Orders.customer_id = Customers.customer_id  group by customers.customer_name  order by count(*) desc limit 1
+SELECT T1.customer_name FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) DESC LIMIT 1
+select customers.customer_name from Orders join Customers on Orders.customer_id = Customers.customer_id  group by customers.customer_name  order by count(*) desc limit 1
+SELECT T1.customer_id FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) DESC LIMIT 1
+select customers.customer_id from Orders join Customers on Orders.customer_id = Customers.customer_id  group by customers.customer_id  order by count(*) desc limit 1
+SELECT T1.customer_id FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) DESC LIMIT 1
+select customers.customer_id from Orders join Customers on Orders.customer_id = Customers.customer_id  group by customers.customer_id  order by count(*) desc limit 1
+SELECT T2.order_id ,  T2.order_status FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T1.customer_name = "Jeramie"
+select orders.order_id , orders.order_status from Orders join Customers on Orders.customer_id = Customers.customer_id where  customers.customer_name = "Jeramie"
+SELECT T2.order_id ,  T2.order_status FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T1.customer_name = "Jeramie"
+select orders.order_id , orders.order_status from Orders join Customers on Orders.customer_id = Customers.customer_id where  customers.customer_name = "Jeramie"
+SELECT T2.date_order_placed FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T1.customer_name = "Jeramie"
+select orders.date_order_placed from Orders join Customers on Orders.customer_id = Customers.customer_id where  customers.customer_name = "Jeramie"
+SELECT T2.date_order_placed FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T1.customer_name = "Jeramie"
+select orders.date_order_placed from Orders join Customers on Orders.customer_id = Customers.customer_id where  customers.customer_name = "Jeramie"
+SELECT T1.customer_name FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T2.date_order_placed >= "2009-01-01" AND T2.date_order_placed <= "2010-01-01"
+select customers.customer_name from Orders join Customers on Orders.customer_id = Customers.customer_id where  orders.date_order_placed >= "2009-01-01" and orders.date_order_placed < "2010-01-01"
+SELECT T1.customer_name FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T2.date_order_placed >= "2009-01-01" AND T2.date_order_placed <= "2010-01-01"
+select customers.customer_name from Orders join Customers on Orders.customer_id = Customers.customer_id where  orders.date_order_placed >= "2009-01-01" and orders.date_order_placed < "2010-01-01"
+SELECT DISTINCT T2.product_id FROM orders AS T1 JOIN order_items AS T2 ON T1.order_id = T2.order_id WHERE T1.date_order_placed >= "1975-01-01" AND T1.date_order_placed <= "1976-01-01"
+select distinct order_items.product_id from Order_Items join Orders on Order_Items.order_id = Orders.order_id where  orders.date_order_placed >= "1975-01-01" and orders.date_order_placed < "1976-01-01"
+SELECT DISTINCT T2.product_id FROM orders AS T1 JOIN order_items AS T2 ON T1.order_id = T2.order_id WHERE T1.date_order_placed >= "1975-01-01" AND T1.date_order_placed <= "1976-01-01"
+select distinct order_items.product_id from Order_Items join Orders on Order_Items.order_id = Orders.order_id where  orders.date_order_placed >= "1975-01-01" and orders.date_order_placed < "1976-01-01"
+SELECT T1.customer_name FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T2.order_status = "On Road" INTERSECT SELECT T1.customer_name FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T2.order_status = "Shipped"
+select customers.customer_name from Orders join Customers on Orders.customer_id = Customers.customer_id where  orders.order_status = "On Road"   intersect select customers.customer_name from Orders join Customers on Orders.customer_id = Customers.customer_id where  orders.order_status = "Shipped"
+SELECT T1.customer_name FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T2.order_status = "On Road" INTERSECT SELECT T1.customer_name FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T2.order_status = "Shipped"
+select customers.customer_name from Orders join Customers on Orders.customer_id = Customers.customer_id where  orders.order_status = "On Road"   intersect select customers.customer_name from Orders join Customers on Orders.customer_id = Customers.customer_id where  orders.order_status = "Shipped"
+SELECT T1.customer_id FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T2.order_status = "On Road" INTERSECT SELECT T1.customer_id FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T2.order_status = "Shipped"
+select customers.customer_id from Orders join Customers on Orders.customer_id = Customers.customer_id where  orders.order_status = "On Road"   intersect select orders.customer_id from Orders where  orders.order_status = "Shipped"
+SELECT T1.customer_id FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T2.order_status = "On Road" INTERSECT SELECT T1.customer_id FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id WHERE T2.order_status = "Shipped"
+select customers.customer_id from Orders join Customers on Orders.customer_id = Customers.customer_id where  orders.order_status = "On Road"   intersect select orders.customer_id from Orders where  orders.order_status = "Shipped"
+SELECT T1.date_order_placed FROM orders AS T1 JOIN shipments AS T2 ON T1.order_id = T2.order_id WHERE T2.shipment_tracking_number = 3452
+select orders.date_order_placed from Shipments join Orders on Shipments.order_id = Orders.order_id where  shipments.shipment_tracking_number = 3452
+SELECT T1.date_order_placed FROM orders AS T1 JOIN shipments AS T2 ON T1.order_id = T2.order_id WHERE T2.shipment_tracking_number = 3452
+select orders.date_order_placed from Shipments join Orders on Shipments.order_id = Orders.order_id where  shipments.shipment_tracking_number = 3452
+SELECT T1.date_order_placed FROM orders AS T1 JOIN shipments AS T2 ON T1.order_id = T2.order_id WHERE T2.invoice_number = 10
+select orders.date_order_placed from Shipments join Invoices on Shipments.invoice_number = Invoices.invoice_number join Orders on Shipments.order_id = Orders.order_id where  invoices.invoice_number = 10
+SELECT T1.date_order_placed FROM orders AS T1 JOIN shipments AS T2 ON T1.order_id = T2.order_id WHERE T2.invoice_number = 10
+select orders.date_order_placed from Shipments join Invoices on Shipments.invoice_number = Invoices.invoice_number join Orders on Shipments.order_id = Orders.order_id where  invoices.invoice_number = 10
+SELECT count(*) ,  T3.product_id FROM orders AS T1 JOIN order_items AS T2 JOIN products AS T3 ON T1.order_id = T2.order_id AND T2.product_id = T3.product_id GROUP BY T3.product_id
+select count(*) , products.product_id from Order_Items join Products on Order_Items.product_id = Products.product_id join Orders on Order_Items.order_id = Orders.order_id  group by products.product_id
+SELECT count(*) ,  T3.product_id FROM orders AS T1 JOIN order_items AS T2 JOIN products AS T3 ON T1.order_id = T2.order_id AND T2.product_id = T3.product_id GROUP BY T3.product_id
+select count(*) , products.product_id from Order_Items join Products on Order_Items.product_id = Products.product_id join Orders on Order_Items.order_id = Orders.order_id  group by products.product_id
+SELECT T3.product_name ,  count(*) FROM orders AS T1 JOIN order_items AS T2 JOIN products AS T3 ON T1.order_id = T2.order_id AND T2.product_id = T3.product_id GROUP BY T3.product_id
+select products.product_name , count(*) from Order_Items join Products on Order_Items.product_id = Products.product_id join Orders on Order_Items.order_id = Orders.order_id  group by products.product_name
+SELECT T3.product_name ,  count(*) FROM orders AS T1 JOIN order_items AS T2 JOIN products AS T3 ON T1.order_id = T2.order_id AND T2.product_id = T3.product_id GROUP BY T3.product_id
+select products.product_name , count(*) from Order_Items join Products on Order_Items.product_id = Products.product_id join Orders on Order_Items.order_id = Orders.order_id  group by products.product_id
+SELECT order_id FROM shipments WHERE shipment_date > "2000-01-01"
+select shipments.order_id from Shipments where  shipments.shipment_date > "2000-01-01"
+SELECT order_id FROM shipments WHERE shipment_date > "2000-01-01"
+select shipments.order_id from Shipments where  shipments.shipment_date > "2000-01-01"
+SELECT order_id FROM shipments WHERE shipment_date  =  (SELECT max(shipment_date) FROM shipments)
+select shipments.order_id from Shipments   order by shipments.shipment_date desc limit 1
+SELECT order_id FROM shipments WHERE shipment_date  =  (SELECT max(shipment_date) FROM shipments)
+select shipments.order_id from Shipments where  shipments.shipment_date = (select max(shipments.shipment_date) from Shipments  )
+SELECT DISTINCT product_name FROM products ORDER BY product_name
+select distinct products.product_name from Products   order by products.product_name asc
+SELECT DISTINCT product_name FROM products ORDER BY product_name
+select distinct products.product_name from Products   order by products.product_name asc
+SELECT DISTINCT order_id FROM orders ORDER BY date_order_placed
+select distinct orders.order_id from Orders   order by orders.date_order_placed asc
+SELECT DISTINCT order_id FROM orders ORDER BY date_order_placed
+select distinct orders.order_id from Orders   order by orders.date_order_placed asc
+SELECT T1.order_id FROM orders AS T1 JOIN order_items AS T2 ON T1.order_id = T2.order_id GROUP BY T1.order_id ORDER BY count(*) DESC LIMIT 1
+select orders.order_id from Order_Items join Orders on Order_Items.order_id = Orders.order_id  group by orders.order_id  order by count(*) desc limit 1
+SELECT T1.order_id FROM orders AS T1 JOIN order_items AS T2 ON T1.order_id = T2.order_id GROUP BY T1.order_id ORDER BY count(*) DESC LIMIT 1
+select orders.order_id from Order_Items join Orders on Order_Items.order_id = Orders.order_id  group by orders.order_id  order by count(*) desc limit 1
+SELECT T1.customer_name FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) DESC LIMIT 1
+select customers.customer_name from Orders join Customers on Orders.customer_id = Customers.customer_id  group by orders.customer_id  order by count(*) desc limit 1
+SELECT T1.customer_name FROM customers AS T1 JOIN orders AS T2 ON T1.customer_id = T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) DESC LIMIT 1
+select customers.customer_name from Orders join Customers on Orders.customer_id = Customers.customer_id  group by orders.customer_id  order by count(*) desc limit 1
+SELECT invoice_number FROM invoices WHERE invoice_date < "1989-09-03" OR invoice_date > "2007-12-25"
+select invoices.invoice_number from Invoices where  invoices.invoice_date < "1989-09-03" or invoices.invoice_date > "2007-12-25"
+SELECT invoice_number FROM invoices WHERE invoice_date < "1989-09-03" OR invoice_date > "2007-12-25"
+select invoices.invoice_number from Invoices where  invoices.invoice_date < "1989-09-03" or invoices.invoice_date > "2007-12-25"
+SELECT DISTINCT invoice_details FROM invoices WHERE invoice_date < "1989-09-03" OR invoice_date > "2007-12-25"
+select distinct invoices.invoice_details from Invoices where  invoices.invoice_date < "1989-09-03" or invoices.invoice_date > "2007-12-25"
+SELECT DISTINCT invoice_details FROM invoices WHERE invoice_date < "1989-09-03" OR invoice_date > "2007-12-25"
+select distinct invoices.invoice_details from Invoices where  invoices.invoice_date < "1989-09-03" or invoices.invoice_date > "2007-12-25"
+SELECT T2.customer_name ,  count(*) FROM orders AS T1 JOIN customers AS T2 ON T1.customer_id = T2.customer_id GROUP BY T2.customer_id HAVING count(*)  >=  2
+select customers.customer_name , count(*) from Orders join Customers on Orders.customer_id = Customers.customer_id  group by orders.customer_id having  count(*) >= 2
+SELECT T2.customer_name ,  count(*) FROM orders AS T1 JOIN customers AS T2 ON T1.customer_id = T2.customer_id GROUP BY T2.customer_id HAVING count(*)  >=  2
+select customers.customer_name , count(*) from Orders join Customers on Orders.customer_id = Customers.customer_id  group by customers.customer_name having  count(*) >= 2
+SELECT T2.customer_name FROM orders AS T1 JOIN customers AS T2 ON T1.customer_id = T2.customer_id GROUP BY T2.customer_id HAVING count(*)  <=  2
+select customers.customer_name from Orders join Customers on Orders.customer_id = Customers.customer_id  group by orders.customer_id having  count(*) < 2
+SELECT T2.customer_name FROM orders AS T1 JOIN customers AS T2 ON T1.customer_id = T2.customer_id GROUP BY T2.customer_id HAVING count(*)  <=  2
+select customers.customer_name from Orders join Customers on Orders.customer_id = Customers.customer_id  group by orders.customer_id having  count(*) < 2
+SELECT T1.customer_name FROM customers AS T1 JOIN orders AS T2 JOIN order_items AS T3 JOIN products AS T4 ON T1.customer_id = T2.customer_id AND T2.order_id = T3.order_id AND T3.product_id = T4.product_id WHERE T4.product_name = "food" GROUP BY T1.customer_id HAVING count(*)  >=  1
+select customers.customer_name from Order_Items join Products on Order_Items.product_id = Products.product_id join Orders on Order_Items.order_id = Orders.order_id join Customers on Orders.customer_id = Customers.customer_id where  products.product_name = "food"  group by customers.customer_id having  count(*) >= 1
+SELECT T1.customer_name FROM customers AS T1 JOIN orders AS T2 JOIN order_items AS T3 JOIN products AS T4 ON T1.customer_id = T2.customer_id AND T2.order_id = T3.order_id AND T3.product_id = T4.product_id WHERE T4.product_name = "food" GROUP BY T1.customer_id HAVING count(*)  >=  1
+select customers.customer_name from Order_Items join Products on Order_Items.product_id = Products.product_id join Orders on Order_Items.order_id = Orders.order_id join Customers on Orders.customer_id = Customers.customer_id where  products.product_name = "food"  group by customers.customer_name having  count(*) >= 1
+SELECT T1.customer_name FROM customers AS T1 JOIN orders AS T2 JOIN order_items AS T3 JOIN products AS T4 ON T1.customer_id = T2.customer_id AND T2.order_id = T3.order_id AND T3.product_id = T4.product_id WHERE T3.order_item_status = "Cancel" AND T4.product_name = "food" GROUP BY T1.customer_id HAVING count(*)  >=  1
+select customers.customer_name from Order_Items join Products on Order_Items.product_id = Products.product_id join Orders on Order_Items.order_id = Orders.order_id join Customers on Orders.customer_id = Customers.customer_id where  order_items.order_item_status = "Cancel" and products.product_name = "food"  group by customers.customer_name having  count(*) >= 1
+SELECT T1.customer_name FROM customers AS T1 JOIN orders AS T2 JOIN order_items AS T3 JOIN products AS T4 ON T1.customer_id = T2.customer_id AND T2.order_id = T3.order_id AND T3.product_id = T4.product_id WHERE T3.order_item_status = "Cancel" AND T4.product_name = "food" GROUP BY T1.customer_id HAVING count(*)  >=  1
+select customers.customer_name from Order_Items join Products on Order_Items.product_id = Products.product_id join Orders on Order_Items.order_id = Orders.order_id join Customers on Orders.customer_id = Customers.customer_id where  order_items.order_item_status = "Cancel" and products.product_name = "food"  group by customers.customer_name having  count(*) >= 1

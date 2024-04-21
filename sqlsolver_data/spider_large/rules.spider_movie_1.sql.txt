@@ -1,0 +1,196 @@
+SELECT title FROM Movie WHERE director = 'Steven Spielberg'
+select movie.title from Movie where  movie.director = "Steven Spielberg"
+SELECT title FROM Movie WHERE director = 'Steven Spielberg'
+select movie.title from Movie where  movie.director = "Steven Spielberg"
+SELECT title FROM Movie WHERE director = 'James Cameron' AND YEAR  >  2000
+select movie.title from Movie where  movie.director = "James Cameron" and movie.year > 2000
+SELECT title FROM Movie WHERE director = 'James Cameron' AND YEAR  >  2000
+select movie.title from Movie where  movie.director = "James Cameron" and movie.year > 2000
+SELECT count(*) FROM Movie WHERE YEAR  <  2000
+select count(*) from Movie where  movie.year < 2000
+SELECT count(*) FROM Movie WHERE YEAR  <  2000
+select count(*) from Movie where  movie.year < 2000
+SELECT director FROM Movie WHERE title  = 'Avatar'
+select movie.director from Movie where  movie.title = "Avatar"
+SELECT director FROM Movie WHERE title  = 'Avatar'
+select movie.director from Movie where  movie.title = "Avatar"
+SELECT count(*) FROM Reviewer
+select count(*) from Reviewer
+SELECT count(*) FROM Reviewer
+select count(*) from Reviewer
+SELECT rID FROM Reviewer WHERE name LIKE "%Mike%"
+select reviewer.rid from Reviewer where  reviewer.name like "%Mike%"
+SELECT rID FROM Reviewer WHERE name LIKE "%Mike%"
+select reviewer.rid from Reviewer where  reviewer.name like "%Mike%"
+SELECT rID FROM Reviewer WHERE name  =  "Daniel Lewis"
+select reviewer.rid from Reviewer where  reviewer.name = "Daniel Lewis"
+SELECT rID FROM Reviewer WHERE name  =  "Daniel Lewis"
+select reviewer.rid from Reviewer where  reviewer.name = "Daniel Lewis"
+SELECT count(*) FROM Rating WHERE stars  >  3
+select count(*) from Rating where  rating.stars > 3
+SELECT count(*) FROM Rating WHERE stars  >  3
+select count(*) from Rating where  rating.stars > 3
+SELECT max(stars) ,  min(stars) FROM Rating
+select max(rating.stars) , min(rating.stars) from Rating
+SELECT max(stars) ,  min(stars) FROM Rating
+select max(rating.stars) , min(rating.stars) from Rating
+SELECT DISTINCT YEAR FROM Movie AS T1 JOIN Rating AS T2 ON T1.mID  =  T2.mID WHERE T2.stars  >=  4 ORDER BY T1.year
+select distinct movie.year from Rating join Movie on Rating.mID = Movie.mID where  rating.stars >= 4   order by movie.year asc
+SELECT DISTINCT YEAR FROM Movie AS T1 JOIN Rating AS T2 ON T1.mID  =  T2.mID WHERE T2.stars  >=  4 ORDER BY T1.year
+select distinct movie.year from Rating join Movie on Rating.mID = Movie.mID where  rating.stars >= 4   order by movie.year asc
+SELECT T1.director ,  T1.title FROM Movie AS T1 JOIN Rating AS T2 ON T1.mID  =  T2.mID WHERE T2.stars  =  5
+select movie.director , movie.title from Rating join Movie on Rating.mID = Movie.mID where  rating.stars = 5
+SELECT T1.director ,  T1.title FROM Movie AS T1 JOIN Rating AS T2 ON T1.mID  =  T2.mID WHERE T2.stars  =  5
+select movie.director , movie.title from Rating join Movie on Rating.mID = Movie.mID where  rating.stars = 5
+SELECT T2.name ,  avg(T1.stars) FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID GROUP BY T2.name
+select reviewer.name , avg(rating.stars) from Rating join Reviewer on Rating.rID = Reviewer.rID  group by reviewer.name
+SELECT T2.name ,  avg(T1.stars) FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID GROUP BY T2.name
+select reviewer.name , avg(rating.stars) from Rating join Reviewer on Rating.rID = Reviewer.rID  group by reviewer.name
+SELECT title FROM Movie WHERE mID NOT IN (SELECT mID FROM Rating)
+select movie.title from Movie where  movie.mid not in (select Rating.mID from Rating  )
+SELECT title FROM Movie WHERE mID NOT IN (SELECT mID FROM Rating)
+select movie.title from Movie where  movie.mid not in (select Rating.mID from Rating  )
+SELECT DISTINCT name FROM Reviewer AS T1 JOIN Rating AS T2 ON T1.rID  =  T2.rID WHERE ratingDate  =  "null"
+select distinct reviewer.name from Rating join Reviewer on Rating.rID = Reviewer.rID where  rating.ratingdate = "null"
+SELECT DISTINCT name FROM Reviewer AS T1 JOIN Rating AS T2 ON T1.rID  =  T2.rID WHERE ratingDate  =  "null"
+select distinct reviewer.name from Rating join Reviewer on Rating.rID = Reviewer.rID where  rating.ratingdate = "null"
+SELECT avg(T1.stars) ,  T2.title FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID WHERE T2.year  =  (SELECT min(YEAR) FROM Movie)
+select avg(rating.stars) , avg(movie.title) from Rating join Movie on Rating.mID = Movie.mID where  movie.year = (select min(movie.year) from Movie  )
+SELECT avg(T1.stars) ,  T2.title FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID WHERE T2.year  =  (SELECT min(YEAR) FROM Movie)
+select avg(rating.stars) , avg(movie.title) from Rating join Movie on Rating.mID = Movie.mID where  movie.year = (select min(movie.year) from Movie  )
+SELECT title FROM Movie WHERE YEAR  =  (SELECT max(YEAR) FROM Movie)
+select movie.title from Movie where  movie.year = (select max(movie.year) from Movie  )
+SELECT title FROM Movie WHERE YEAR  =  (SELECT max(YEAR) FROM Movie)
+select movie.title from Movie where  movie.year = (select max(movie.year) from Movie  )
+SELECT max(T1.stars) ,  T2.year FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID WHERE T2.year  =  (SELECT max(YEAR) FROM Movie)
+select max(rating.stars) , movie.year from Rating join Movie on Rating.mID = Movie.mID where  movie.year = (select max(movie.year) from Movie  )
+SELECT max(T1.stars) ,  T2.year FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID WHERE T2.year  =  (SELECT max(YEAR) FROM Movie)
+select max(rating.stars) , rating.mid from Rating join Movie on Rating.mID = Movie.mID where  movie.year = (select max(Movie.year) from Movie  )
+SELECT title FROM Movie WHERE YEAR  >  (SELECT max(YEAR) FROM Movie WHERE director  =  "Steven Spielberg")
+select movie.title from Movie where  movie.year > (select max(movie.year) from Movie where  movie.director = "Steven Spielberg"  )
+SELECT title FROM Movie WHERE YEAR  >  (SELECT max(YEAR) FROM Movie WHERE director  =  "Steven Spielberg")
+select movie.title from Movie where  movie.year > (select max(movie.year) from Movie where  movie.director = "Steven Spielberg"  )
+SELECT T2.title ,  T2.director FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID WHERE T1.stars  >  (SELECT avg(T1.stars) FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID WHERE T2.director  =  "James Cameron")
+select movie.title , movie.director from Rating join Movie on Rating.mID = Movie.mID where  rating.stars > (select avg(Rating.stars) from Rating join Movie on Rating.mID = Movie.mID where  movie.director = "James Cameron"  )
+SELECT T2.title ,  T2.director FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID WHERE T1.stars  >  (SELECT avg(T1.stars) FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID WHERE T2.director  =  "James Cameron")
+select movie.title , movie.director from Rating join Movie on Rating.mID = Movie.mID where  rating.stars > (select avg(Rating.stars) from Rating join Movie on Rating.mID = Movie.mID where  movie.director = "James Cameron"  )
+SELECT T3.name ,  T2.title ,  T1.stars ,  T1.ratingDate FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID JOIN Reviewer AS T3 ON T1.rID  =  T3.rID ORDER BY T3.name ,  T2.title ,  T1.stars
+select reviewer.name , movie.title , rating.stars , rating.ratingdate from Rating join Reviewer on Rating.rID = Reviewer.rID join Movie on Rating.mID = Movie.mID   order by reviewer.name,movie.title,rating.stars asc
+SELECT T3.name ,  T2.title ,  T1.stars ,  T1.ratingDate FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID JOIN Reviewer AS T3 ON T1.rID  =  T3.rID ORDER BY T3.name ,  T2.title ,  T1.stars
+select reviewer.name , movie.title , rating.stars , rating.ratingdate from Rating join Reviewer on Rating.rID = Reviewer.rID join Movie on Rating.mID = Movie.mID   order by reviewer.name,movie.title,rating.stars asc
+SELECT T2.name FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID GROUP BY T1.rID HAVING COUNT(*)  >=  3
+select reviewer.name from Rating join Reviewer on Rating.rID = Reviewer.rID  group by rating.rid having  count(*) >= 3
+SELECT T2.name FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID GROUP BY T1.rID HAVING COUNT(*)  >=  3
+select reviewer.name from Rating join Reviewer on Rating.rID = Reviewer.rID  group by rating.rid having  count(*) >= 3
+SELECT DISTINCT T3.name FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID JOIN Reviewer AS T3 ON T1.rID  =  T3.rID WHERE T2.title  =  'Gone with the Wind'
+select distinct reviewer.name from Rating join Reviewer on Rating.rID = Reviewer.rID join Movie on Rating.mID = Movie.mID where  movie.title = "Gone with the Wind"
+SELECT DISTINCT T3.name FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID JOIN Reviewer AS T3 ON T1.rID  =  T3.rID WHERE T2.title  =  'Gone with the Wind'
+select distinct reviewer.name from Rating join Reviewer on Rating.rID = Reviewer.rID join Movie on Rating.mID = Movie.mID where  movie.title = "Gone with the Wind"
+SELECT DISTINCT T2.director FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID JOIN Reviewer AS T3 ON T1.rID  =  T3.rID WHERE T3.name  =  'Sarah Martinez'
+select distinct movie.director from Rating join Reviewer on Rating.rID = Reviewer.rID join Movie on Rating.mID = Movie.mID where  reviewer.name = "Sarah Martinez"
+SELECT DISTINCT T2.director FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID JOIN Reviewer AS T3 ON T1.rID  =  T3.rID WHERE T3.name  =  'Sarah Martinez'
+select distinct movie.director from Rating join Reviewer on Rating.rID = Reviewer.rID join Movie on Rating.mID = Movie.mID where  reviewer.name = "Sarah Martinez"
+SELECT DISTINCT T3.name ,  T2.title ,  T1.stars FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID JOIN Reviewer AS T3 ON T1.rID  =  T3.rID WHERE T2.director  =  T3.name
+select distinct reviewer.name , movie.title , rating.stars from Rating join Reviewer on Rating.rID = Reviewer.rID join Movie on Rating.mID = Movie.mID where  movie.director = (select reviewer.name from Reviewer  )
+SELECT DISTINCT T3.name ,  T2.title ,  T1.stars FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID JOIN Reviewer AS T3 ON T1.rID  =  T3.rID WHERE T2.director  =  T3.name
+select distinct reviewer.name , movie.title , rating.stars from Rating join Reviewer on Rating.rID = Reviewer.rID join Movie on Rating.mID = Movie.mID where  movie.director = (select reviewer.name from Reviewer  )
+SELECT name FROM Reviewer UNION SELECT title FROM Movie
+select reviewer.name from Reviewer   union select reviewer.name from Rating join Reviewer on Rating.rID = Reviewer.rID join Movie on Rating.mID = Movie.mID
+SELECT name FROM Reviewer UNION SELECT title FROM Movie
+select reviewer.name from Reviewer   union select reviewer.name from Rating join Reviewer on Rating.rID = Reviewer.rID join Movie on Rating.mID = Movie.mID
+SELECT DISTINCT title FROM Movie EXCEPT SELECT T2.title FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID JOIN Reviewer AS T3 ON T1.rID  =  T3.rID WHERE T3.name  =  'Chris Jackson'
+select distinct movie.title from Movie   except select distinct movie.title from Rating join Reviewer on Rating.rID = Reviewer.rID join Movie on Rating.mID = Movie.mID where  reviewer.name = "Chris Jackson"
+SELECT DISTINCT title FROM Movie EXCEPT SELECT T2.title FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID JOIN Reviewer AS T3 ON T1.rID  =  T3.rID WHERE T3.name  =  'Chris Jackson'
+select distinct movie.title from Movie   except select distinct movie.title from Rating join Reviewer on Rating.rID = Reviewer.rID join Movie on Rating.mID = Movie.mID where  reviewer.name = "Chris Jackson"
+SELECT T1.title ,  T1.director FROM Movie AS T1 JOIN Movie AS T2 ON T1.director  =  T2.director WHERE T1.title != T2.title ORDER BY T1.director ,  T1.title
+select movie.title , movie.director from Movie where  movie.title != (select movie.title from Movie  )   order by movie.director,movie.title asc
+SELECT T1.title ,  T1.director FROM Movie AS T1 JOIN Movie AS T2 ON T1.director  =  T2.director WHERE T1.title != T2.title ORDER BY T1.director ,  T1.title
+select movie.title , movie.director from Movie where  movie.title != (select movie.title from Movie  )   order by movie.director,movie.title asc
+SELECT T1.title ,  T1.year FROM Movie AS T1 JOIN Movie AS T2 ON T1.director  =  T2.director WHERE T1.title != T2.title
+select movie.title , movie.year from Movie where  movie.director = (select movie.director from Movie  ) and movie.title != (select movie.title from Movie  )
+SELECT T1.title ,  T1.year FROM Movie AS T1 JOIN Movie AS T2 ON T1.director  =  T2.director WHERE T1.title != T2.title
+select movie.title , movie.year from Movie where  movie.director = (select movie.director from Movie  ) and movie.title != (select movie.title from Movie  )
+SELECT director FROM Movie GROUP BY director HAVING count(*)  =  1
+select movie.director from Movie  group by movie.director having  count(*) = 1
+SELECT director FROM Movie GROUP BY director HAVING count(*)  =  1
+select movie.director from Movie  group by movie.director having  count(*) = 1
+SELECT director FROM Movie WHERE director != "null" GROUP BY director HAVING count(*)  =  1
+select movie.director from Movie where  movie.director != "null"  group by movie.director having  count(*) = 1
+SELECT director FROM Movie WHERE director != "null" GROUP BY director HAVING count(*)  =  1
+select movie.director from Movie where  movie.director != "null"  group by movie.director having  count(*) = 1
+SELECT count(*) ,  T1.director FROM Movie AS T1 JOIN Rating AS T2 ON T1.mID  =  T2.mID GROUP BY T1.director
+select count(*) , movie.director from Rating join Movie on Rating.mID = Movie.mID  group by movie.director
+SELECT count(*) ,  T1.director FROM Movie AS T1 JOIN Rating AS T2 ON T1.mID  =  T2.mID GROUP BY T1.director
+select count(*) , movie.director from Rating join Movie on Rating.mID = Movie.mID  group by movie.director
+SELECT T2.title ,  avg(T1.stars) FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID GROUP BY T1.mID ORDER BY avg(T1.stars) DESC LIMIT 1
+select movie.title , avg(rating.stars) from Rating join Movie on Rating.mID = Movie.mID  group by rating.mid  order by avg(rating.stars) desc limit 1
+SELECT T2.title ,  avg(T1.stars) FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID GROUP BY T1.mID ORDER BY avg(T1.stars) DESC LIMIT 1
+select movie.title , avg(rating.stars) from Rating join Movie on Rating.mID = Movie.mID  group by rating.mid  order by avg(rating.stars) desc limit 1
+SELECT T2.title ,  avg(T1.stars) FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID GROUP BY T1.mID ORDER BY avg(T1.stars) LIMIT 1
+select movie.title , avg(rating.stars) from Rating join Movie on Rating.mID = Movie.mID  group by rating.mid  order by avg(rating.stars) asc limit 1
+SELECT T2.title ,  avg(T1.stars) FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID GROUP BY T1.mID ORDER BY avg(T1.stars) LIMIT 1
+select movie.title , avg(rating.stars) from Rating join Movie on Rating.mID = Movie.mID  group by rating.mid  order by avg(rating.stars) asc limit 1
+SELECT T2.title ,  T2.year FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID ORDER BY T1.stars DESC LIMIT 3
+select movie.title , movie.year from Rating join Movie on Rating.mID = Movie.mID   order by rating.stars desc limit 3
+SELECT T2.title ,  T2.year FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID ORDER BY T1.stars DESC LIMIT 3
+select movie.title , movie.year from Rating join Movie on Rating.mID = Movie.mID   order by rating.stars desc limit 3
+SELECT T2.title ,  T1.stars ,  T2.director ,  max(T1.stars) FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID WHERE director != "null" GROUP BY director
+select movie.title , rating.stars , movie.director , max(rating.stars) from Rating join Movie on Rating.mID = Movie.mID where  movie.director != "null"  group by movie.director
+SELECT T2.title ,  T1.stars ,  T2.director ,  max(T1.stars) FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID WHERE director != "null" GROUP BY director
+select movie.title , rating.stars , movie.director , max(rating.stars) from Rating join Movie on Rating.mID = Movie.mID where  movie.director != "null"  group by movie.director
+SELECT T2.title ,  T1.rID ,  T1.stars ,  min(T1.stars) FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID GROUP BY T1.rID
+select movie.title , rating.rid , rating.stars , min(rating.stars) from Rating join Movie on Rating.mID = Movie.mID  group by rating.rid
+SELECT T2.title ,  T1.rID ,  T1.stars ,  min(T1.stars) FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID GROUP BY T1.rID
+select movie.title , rating.rid , rating.stars , min(rating.stars) from Rating join Movie on Rating.mID = Movie.mID  group by rating.rid
+SELECT T2.title ,  T1.stars ,  T2.director ,  min(T1.stars) FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID GROUP BY T2.director
+select movie.title , rating.stars , movie.director , min(rating.stars) from Rating join Movie on Rating.mID = Movie.mID  group by movie.director
+SELECT T2.title ,  T1.stars ,  T2.director ,  min(T1.stars) FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID GROUP BY T2.director
+select movie.title , rating.stars , movie.director , min(rating.stars) from Rating join Movie on Rating.mID = Movie.mID  group by movie.director
+SELECT T2.title ,  T1.mID FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID GROUP BY T1.mID ORDER BY count(*) DESC LIMIT 1
+select movie.title , movie.mid from Rating join Movie on Rating.mID = Movie.mID  group by rating.mid  order by count(*) desc limit 1
+SELECT T2.title ,  T1.mID FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID GROUP BY T1.mID ORDER BY count(*) DESC LIMIT 1
+select movie.title , movie.mid from Rating join Movie on Rating.mID = Movie.mID  group by rating.mid  order by count(*) desc limit 1
+SELECT T2.title FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID WHERE T1.stars BETWEEN 3 AND 5
+select movie.title from Rating join Movie on Rating.mID = Movie.mID where  rating.stars between 3 and 5
+SELECT T2.title FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID WHERE T1.stars BETWEEN 3 AND 5
+select movie.title from Rating join Movie on Rating.mID = Movie.mID where  rating.stars between 3 and 5
+SELECT T2.name FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID WHERE T1.stars  >  3
+select reviewer.name from Rating join Reviewer on Rating.rID = Reviewer.rID where  rating.stars > 3
+SELECT T2.name FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID WHERE T1.stars  >  3
+select reviewer.name from Rating join Reviewer on Rating.rID = Reviewer.rID where  rating.stars > 3
+SELECT mID ,  avg(stars) FROM Rating WHERE mID NOT IN (SELECT T1.mID FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID WHERE T2.name  =  "Brittany Harris") GROUP BY mID
+select rating.mid , avg(rating.stars) from Rating where  rating.mid not in (select rating.mid from Rating join Reviewer on Rating.rID = Reviewer.rID where  reviewer.name = "Brittany Harris"  )   group by rating.mid
+SELECT mID ,  avg(stars) FROM Rating WHERE mID NOT IN (SELECT T1.mID FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID WHERE T2.name  =  "Brittany Harris") GROUP BY mID
+select rating.mid , avg(rating.stars) from Rating where  rating.mid not in (select rating.mid from Rating join Reviewer on Rating.rID = Reviewer.rID where  reviewer.name = "Brittany Harris"  )   group by rating.mid
+SELECT mID FROM Rating EXCEPT SELECT T1.mID FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID WHERE T2.name  =  "Brittany Harris"
+select rating.mid from Rating   except select rating.mid from Rating join Reviewer on Rating.rID = Reviewer.rID where  reviewer.name = "Brittany Harris"
+SELECT mID FROM Rating EXCEPT SELECT T1.mID FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID WHERE T2.name  =  "Brittany Harris"
+select rating.mid from Rating   except select rating.mid from Rating join Reviewer on Rating.rID = Reviewer.rID where  reviewer.name = "Brittany Harris"
+SELECT mID ,  avg(stars) FROM Rating GROUP BY mID HAVING count(*)  >=  2
+select rating.mid , avg(rating.stars) from Rating  group by rating.mid having  count(*) >= 2
+SELECT mID ,  avg(stars) FROM Rating GROUP BY mID HAVING count(*)  >=  2
+select rating.mid , avg(rating.stars) from Rating  group by rating.mid having  count(*) >= 2
+SELECT rID FROM Rating EXCEPT SELECT rID FROM Rating WHERE stars  =  4
+select rating.rid from Rating   except select rating.rid from Rating where  rating.stars = 4
+SELECT rID FROM Rating EXCEPT SELECT rID FROM Rating WHERE stars  =  4
+select rating.rid from Rating   except select rating.rid from Rating where  rating.stars = 4
+SELECT rID FROM Rating WHERE stars != 4
+select rating.rid from Rating where  rating.stars != 4
+SELECT rID FROM Rating WHERE stars != 4
+select rating.rid from Rating where  rating.stars != 4
+SELECT DISTINCT T2.title FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID JOIN Reviewer AS T3 ON T1.rID  =  T3.rID WHERE T3.name  =  'Brittany Harris' OR T2.year  >  2000
+select distinct movie.title from Rating join Reviewer on Rating.rID = Reviewer.rID join Movie on Rating.mID = Movie.mID where  reviewer.name = "Brittany Harris" or movie.year > 2000
+SELECT DISTINCT T2.title FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID JOIN Reviewer AS T3 ON T1.rID  =  T3.rID WHERE T3.name  =  'Brittany Harris' OR T2.year  >  2000
+select distinct movie.title from Rating join Reviewer on Rating.rID = Reviewer.rID join Movie on Rating.mID = Movie.mID where  reviewer.name = "Brittany Harris" or movie.year > 2000
+SELECT title FROM Movie WHERE director  =  "James Cameron" OR YEAR   <  1980
+select movie.title from Movie where  movie.director = "James Cameron" or movie.year < 1980
+SELECT title FROM Movie WHERE director  =  "James Cameron" OR YEAR   <  1980
+select movie.title from Movie where  movie.director = "James Cameron" or movie.year < 1980
+SELECT T2.name FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID WHERE T1.stars  =  3 INTERSECT SELECT T2.name FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID WHERE T1.stars  =  4
+select reviewer.name from Rating join Reviewer on Rating.rID = Reviewer.rID where  rating.stars = 3   intersect select reviewer.name from Rating join Reviewer on Rating.rID = Reviewer.rID where  rating.stars = 4
+SELECT T2.name FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID WHERE T1.stars  =  3 INTERSECT SELECT T2.name FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID WHERE T1.stars  =  4
+select reviewer.name from Rating join Reviewer on Rating.rID = Reviewer.rID where  rating.stars = 3   intersect select reviewer.name from Rating join Reviewer on Rating.rID = Reviewer.rID where  rating.stars = 4
+SELECT T2.title FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID WHERE T1.stars  =  3 INTERSECT SELECT T2.title FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID WHERE T1.stars  =  4
+select movie.title from Rating join Movie on Rating.mID = Movie.mID where  rating.stars = 3   intersect select movie.title from Rating join Movie on Rating.mID = Movie.mID where  rating.stars = 4
+SELECT T2.title FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID WHERE T1.stars  =  3 INTERSECT SELECT T2.title FROM Rating AS T1 JOIN Movie AS T2 ON T1.mID  =  T2.mID WHERE T1.stars  =  4
+select movie.title from Rating join Movie on Rating.mID = Movie.mID where  rating.stars = 3   intersect select movie.title from Rating join Movie on Rating.mID = Movie.mID where  rating.stars = 4

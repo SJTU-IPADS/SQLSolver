@@ -1,0 +1,80 @@
+SELECT count(*) FROM farm
+select count(*) from farm
+SELECT count(*) FROM farm
+select count(*) from farm
+SELECT Total_Horses FROM farm ORDER BY Total_Horses ASC
+select farm.total_horses from farm   order by farm.total_horses asc
+SELECT Total_Horses FROM farm ORDER BY Total_Horses ASC
+select farm.total_horses from farm   order by farm.total_horses asc
+SELECT Hosts FROM farm_competition WHERE Theme !=  'Aliens'
+select farm_competition.hosts from farm_competition where  farm_competition.theme != "Aliens"
+SELECT Hosts FROM farm_competition WHERE Theme !=  'Aliens'
+select farm_competition.hosts from farm_competition where  farm_competition.theme != "Aliens"
+SELECT Theme FROM farm_competition ORDER BY YEAR ASC
+select farm_competition.theme from farm_competition   order by farm_competition.year asc
+SELECT Theme FROM farm_competition ORDER BY YEAR ASC
+select farm_competition.theme from farm_competition   order by farm_competition.year asc
+SELECT avg(Working_Horses) FROM farm WHERE Total_Horses  >  5000
+select avg(farm.working_horses) from farm where  farm.total_horses > 5000
+SELECT avg(Working_Horses) FROM farm WHERE Total_Horses  >  5000
+select avg(farm.working_horses) from farm where  farm.total_horses > 5000
+SELECT max(Cows) ,  min(Cows) FROM farm
+select max(farm.cows) , min(farm.cows) from farm
+SELECT max(Cows) ,  min(Cows) FROM farm
+select max(farm.cows) , min(farm.cows) from farm
+SELECT count(DISTINCT Status) FROM city
+select count( distinct city.status) from city
+SELECT count(DISTINCT Status) FROM city
+select count( distinct city.status) from city
+SELECT Official_Name FROM city ORDER BY Population DESC
+select city.official_name from city   order by city.population desc
+SELECT Official_Name FROM city ORDER BY Population DESC
+select city.official_name from city   order by city.population desc
+SELECT Official_Name ,  Status FROM city ORDER BY Population DESC LIMIT 1
+select city.official_name , city.status from city   order by city.population desc limit 1
+SELECT Official_Name ,  Status FROM city ORDER BY Population DESC LIMIT 1
+select city.official_name , city.status from city   order by city.population desc limit 1
+SELECT T2.Year ,  T1.Official_Name FROM city AS T1 JOIN farm_competition AS T2 ON T1.City_ID  =  T2.Host_city_ID
+select farm_competition.year , city.official_name from farm_competition join city on farm_competition.Host_city_ID = city.City_ID
+SELECT T2.Year ,  T1.Official_Name FROM city AS T1 JOIN farm_competition AS T2 ON T1.City_ID  =  T2.Host_city_ID
+select farm_competition.year , city.official_name from farm_competition join city on farm_competition.Host_city_ID = city.City_ID
+SELECT T1.Official_Name FROM city AS T1 JOIN farm_competition AS T2 ON T1.City_ID  =  T2.Host_city_ID GROUP BY T2.Host_city_ID HAVING COUNT(*)  >  1
+select city.official_name from farm_competition join city on farm_competition.Host_city_ID = city.City_ID  group by farm_competition.host_city_id having  count(*) > 1
+SELECT T1.Official_Name FROM city AS T1 JOIN farm_competition AS T2 ON T1.City_ID  =  T2.Host_city_ID GROUP BY T2.Host_city_ID HAVING COUNT(*)  >  1
+select city.official_name from farm_competition join city on farm_competition.Host_city_ID = city.City_ID  group by farm_competition.host_city_id having  count(*) > 1
+SELECT T1.Status FROM city AS T1 JOIN farm_competition AS T2 ON T1.City_ID  =  T2.Host_city_ID GROUP BY T2.Host_city_ID ORDER BY COUNT(*) DESC LIMIT 1
+select city.status from farm_competition join city on farm_competition.Host_city_ID = city.City_ID  group by farm_competition.host_city_id  order by count(*) desc limit 1
+SELECT T1.Status FROM city AS T1 JOIN farm_competition AS T2 ON T1.City_ID  =  T2.Host_city_ID GROUP BY T2.Host_city_ID ORDER BY COUNT(*) DESC LIMIT 1
+select city.status from farm_competition join city on farm_competition.Host_city_ID = city.City_ID  group by farm_competition.host_city_id  order by count(*) desc limit 1
+SELECT T2.Theme FROM city AS T1 JOIN farm_competition AS T2 ON T1.City_ID  =  T2.Host_city_ID WHERE T1.Population  >  1000
+select farm_competition.theme from farm_competition join city on farm_competition.Host_city_ID = city.City_ID where  city.population > 1000
+SELECT T2.Theme FROM city AS T1 JOIN farm_competition AS T2 ON T1.City_ID  =  T2.Host_city_ID WHERE T1.Population  >  1000
+select farm_competition.theme from farm_competition join city on farm_competition.Host_city_ID = city.City_ID where  city.population > 1000
+SELECT Status ,  avg(Population) FROM city GROUP BY Status
+select city.status , avg(city.population) from city  group by city.status
+SELECT Status ,  avg(Population) FROM city GROUP BY Status
+select city.status , avg(city.population) from city  group by city.status
+SELECT Status FROM city GROUP BY Status ORDER BY COUNT(*) ASC
+select city.status from city  group by city.status  order by count(*) asc
+SELECT Status FROM city GROUP BY Status ORDER BY COUNT(*) ASC
+select city.status from city  group by city.status  order by count(*) asc
+SELECT Status FROM city GROUP BY Status ORDER BY COUNT(*) DESC LIMIT 1
+select city.status from city  group by city.status  order by count(*) desc limit 1
+SELECT Status FROM city GROUP BY Status ORDER BY COUNT(*) DESC LIMIT 1
+select city.status from city  group by city.status  order by count(*) desc limit 1
+SELECT Official_Name FROM city WHERE City_ID NOT IN (SELECT Host_city_ID FROM farm_competition)
+select city.official_name from city where  city.city_id not in (select farm_competition.Host_city_ID from farm_competition  )
+SELECT Official_Name FROM city WHERE City_ID NOT IN (SELECT Host_city_ID FROM farm_competition)
+select city.official_name from city where  city.city_id not in (select farm_competition.Host_city_ID from farm_competition  )
+SELECT Status FROM city WHERE Population  >  1500 INTERSECT SELECT Status FROM city WHERE Population  <  500
+select city.status from city where  city.population > 1500   intersect select city.status from city where  city.population < 500
+SELECT Status FROM city WHERE Population  >  1500 INTERSECT SELECT Status FROM city WHERE Population  <  500
+select city.status from city where  city.population > 1500   intersect select city.status from city where  city.population < 500
+SELECT Official_Name FROM city WHERE Population  >  1500 OR Population  <  500
+select city.official_name from city where  city.population > 1500 or city.population < 500
+SELECT Official_Name FROM city WHERE Population  >  1500 OR Population  <  500
+select city.official_name from city where  city.population > 1500 or city.population < 500
+SELECT Census_Ranking FROM city WHERE Status !=  "Village"
+select city.census_ranking from city where  city.status != "Village"
+SELECT Census_Ranking FROM city WHERE Status !=  "Village"
+select city.census_ranking from city where  city.status != "Village"

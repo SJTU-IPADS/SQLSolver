@@ -1,0 +1,176 @@
+SELECT count(*) FROM Faculty
+select count(*) from Faculty
+SELECT count(*) FROM Faculty
+select count(*) from Faculty
+SELECT DISTINCT rank FROM Faculty
+select distinct faculty.rank from Faculty
+SELECT DISTINCT rank FROM Faculty
+select distinct faculty.rank from Faculty
+SELECT DISTINCT building FROM Faculty
+select distinct faculty.building from Faculty
+SELECT DISTINCT building FROM Faculty
+select distinct faculty.building from Faculty
+SELECT rank ,  Fname ,  Lname FROM Faculty
+select faculty.rank , faculty.fname , faculty.lname from Faculty
+SELECT rank ,  Fname ,  Lname FROM Faculty
+select faculty.rank , faculty.fname , faculty.lname from Faculty
+SELECT Fname ,  Lname ,  phone FROM Faculty WHERE Sex  =  'F'
+select faculty.fname , faculty.lname , faculty.phone from Faculty where  faculty.sex = "F"
+SELECT Fname ,  Lname ,  phone FROM Faculty WHERE Sex  =  'F'
+select faculty.fname , faculty.lname , faculty.phone from Faculty where  faculty.sex = "F"
+SELECT FacID FROM Faculty WHERE Sex  =  'M'
+select faculty.facid from Faculty where  faculty.sex = "M"
+SELECT FacID FROM Faculty WHERE Sex  =  'M'
+select faculty.facid from Faculty where  faculty.sex = "M"
+SELECT count(*) FROM Faculty WHERE Sex  =  'F' AND Rank  =  "Professor"
+select count(*) from Faculty where  faculty.sex = "F" and faculty.rank = "Professor"
+SELECT count(*) FROM Faculty WHERE Sex  =  'F' AND Rank  =  "Professor"
+select count(*) from Faculty where  faculty.sex = "F" and faculty.rank = "Professor"
+SELECT phone ,  room ,  building FROM Faculty WHERE Fname  =  "Jerry" AND Lname  =  "Prince"
+select faculty.phone , faculty.room , faculty.building from Faculty where  faculty.fname = "Jerry" and faculty.lname = "Prince"
+SELECT phone ,  room ,  building FROM Faculty WHERE Fname  =  "Jerry" AND Lname  =  "Prince"
+select faculty.phone , faculty.room , faculty.building from Faculty where  faculty.fname = "Jerry" and faculty.lname = "Prince"
+SELECT count(*) FROM Faculty WHERE Rank  =  "Professor" AND building  =  "NEB"
+select count(*) from Faculty where  faculty.rank = "Professor" and faculty.building = "NEB"
+SELECT count(*) FROM Faculty WHERE Rank  =  "Professor" AND building  =  "NEB"
+select count(*) from Faculty where  faculty.rank = "Professor" and faculty.building = "NEB"
+SELECT fname ,  lname FROM Faculty WHERE Rank  =  "Instructor"
+select faculty.fname , faculty.lname from Faculty where  faculty.rank = "Instructor"
+SELECT fname ,  lname FROM Faculty WHERE Rank  =  "Instructor"
+select faculty.fname , faculty.lname from Faculty where  faculty.rank = "Instructor"
+SELECT building ,  count(*) FROM Faculty GROUP BY building
+select faculty.building , count(*) from Faculty  group by faculty.building
+SELECT building ,  count(*) FROM Faculty GROUP BY building
+select faculty.building , count(*) from Faculty  group by faculty.building
+SELECT building FROM Faculty GROUP BY building ORDER BY count(*) DESC LIMIT 1
+select faculty.building from Faculty  group by faculty.building  order by count(*) desc limit 1
+SELECT building FROM Faculty GROUP BY building ORDER BY count(*) DESC LIMIT 1
+select faculty.building from Faculty  group by faculty.building  order by count(*) desc limit 1
+SELECT building FROM Faculty WHERE rank  =  "Professor" GROUP BY building HAVING count(*)  >=  10
+select faculty.building from Faculty where  faculty.rank = "Professor"  group by faculty.building having  count(*) >= 10
+SELECT building FROM Faculty WHERE rank  =  "Professor" GROUP BY building HAVING count(*)  >=  10
+select faculty.building from Faculty where  faculty.rank = "Professor"  group by faculty.building having  count(*) >= 10
+SELECT rank ,  count(*) FROM Faculty GROUP BY rank
+select faculty.rank , count(*) from Faculty  group by faculty.rank
+SELECT rank ,  count(*) FROM Faculty GROUP BY rank
+select faculty.rank , count(*) from Faculty  group by faculty.rank
+SELECT rank ,  sex ,  count(*) FROM Faculty GROUP BY rank ,  sex
+select faculty.rank , faculty.sex , count(*) from Faculty  group by faculty.rank, faculty.sex
+SELECT rank ,  sex ,  count(*) FROM Faculty GROUP BY rank ,  sex
+select faculty.rank , faculty.sex , count(*) from Faculty  group by faculty.rank, faculty.sex
+SELECT rank FROM Faculty GROUP BY rank ORDER BY count(*) ASC LIMIT 1
+select faculty.rank from Faculty  group by faculty.rank  order by count(*) asc limit 1
+SELECT rank FROM Faculty GROUP BY rank ORDER BY count(*) ASC LIMIT 1
+select faculty.rank from Faculty  group by faculty.rank  order by count(*) asc limit 1
+SELECT sex ,  count(*) FROM Faculty WHERE rank  =  "AsstProf" GROUP BY sex
+select faculty.sex , count(*) from Faculty where  faculty.rank = "AsstProf"  group by faculty.sex
+SELECT sex ,  count(*) FROM Faculty WHERE rank  =  "AsstProf" GROUP BY sex
+select faculty.sex , count(*) from Faculty where  faculty.rank = "AsstProf"  group by faculty.sex
+SELECT T1.fname ,  T1.lname FROM Faculty AS T1 JOIN Student AS T2 ON T1.FacID  =  T2.advisor WHERE T2.fname  =  "Linda" AND T2.lname  =  "Smith"
+select faculty.fname , faculty.lname from Participates_in join Student on Participates_in.stuid = Student.StuID join Activity on Participates_in.actid = Activity.actid join Faculty_Participates_in on Activity.actid = Faculty_Participates_in.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  student.fname = "Linda" and student.lname = "Smith"
+SELECT T1.fname ,  T1.lname FROM Faculty AS T1 JOIN Student AS T2 ON T1.FacID  =  T2.advisor WHERE T2.fname  =  "Linda" AND T2.lname  =  "Smith"
+select faculty.fname , faculty.lname from Participates_in join Student on Participates_in.stuid = Student.StuID join Activity on Participates_in.actid = Activity.actid join Faculty_Participates_in on Activity.actid = Faculty_Participates_in.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  student.fname = "Linda" and student.lname = "Smith"
+SELECT T2.StuID FROM Faculty AS T1 JOIN Student AS T2 ON T1.FacID  =  T2.advisor WHERE T1.rank  =  "Professor"
+select student.stuid from Participates_in join Student on Participates_in.stuid = Student.StuID join Activity on Participates_in.actid = Activity.actid join Faculty_Participates_in on Activity.actid = Faculty_Participates_in.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  faculty.rank = "Professor"
+SELECT T2.StuID FROM Faculty AS T1 JOIN Student AS T2 ON T1.FacID  =  T2.advisor WHERE T1.rank  =  "Professor"
+select student.stuid from Participates_in join Student on Participates_in.stuid = Student.StuID join Activity on Participates_in.actid = Activity.actid join Faculty_Participates_in on Activity.actid = Faculty_Participates_in.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  faculty.rank = "Professor"
+SELECT T2.fname ,  T2.lname FROM Faculty AS T1 JOIN Student AS T2 ON T1.FacID  =  T2.advisor WHERE T1.fname  =  "Michael" AND T1.lname  =  "Goodrich"
+select student.fname , student.lname from Participates_in join Student on Participates_in.stuid = Student.StuID join Activity on Participates_in.actid = Activity.actid join Faculty_Participates_in on Activity.actid = Faculty_Participates_in.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  faculty.fname = "Michael" and faculty.lname = "Goodrich"
+SELECT T2.fname ,  T2.lname FROM Faculty AS T1 JOIN Student AS T2 ON T1.FacID  =  T2.advisor WHERE T1.fname  =  "Michael" AND T1.lname  =  "Goodrich"
+select student.fname , student.lname from Participates_in join Student on Participates_in.stuid = Student.StuID join Activity on Participates_in.actid = Activity.actid join Faculty_Participates_in on Activity.actid = Faculty_Participates_in.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  faculty.fname = "Michael" and faculty.lname = "Goodrich"
+SELECT T1.FacID ,  count(*) FROM Faculty AS T1 JOIN Student AS T2 ON T1.FacID  =  T2.advisor GROUP BY T1.FacID
+select faculty.facid , count(*) from Participates_in join Student on Participates_in.stuid = Student.StuID join Activity on Participates_in.actid = Activity.actid join Faculty_Participates_in on Activity.actid = Faculty_Participates_in.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID  group by faculty.facid
+SELECT T1.FacID ,  count(*) FROM Faculty AS T1 JOIN Student AS T2 ON T1.FacID  =  T2.advisor GROUP BY T1.FacID
+select faculty.facid , count(*) from Participates_in join Student on Participates_in.stuid = Student.StuID join Activity on Participates_in.actid = Activity.actid join Faculty_Participates_in on Activity.actid = Faculty_Participates_in.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID  group by faculty.facid
+SELECT T1.rank ,  count(*) FROM Faculty AS T1 JOIN Student AS T2 ON T1.FacID  =  T2.advisor GROUP BY T1.rank
+select faculty.rank , count(*) from Participates_in join Student on Participates_in.stuid = Student.StuID join Activity on Participates_in.actid = Activity.actid join Faculty_Participates_in on Activity.actid = Faculty_Participates_in.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID  group by faculty.rank
+SELECT T1.rank ,  count(*) FROM Faculty AS T1 JOIN Student AS T2 ON T1.FacID  =  T2.advisor GROUP BY T1.rank
+select faculty.rank , count(*) from Participates_in join Student on Participates_in.stuid = Student.StuID join Activity on Participates_in.actid = Activity.actid join Faculty_Participates_in on Activity.actid = Faculty_Participates_in.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID  group by faculty.rank
+SELECT T1.fname ,  T1.lname FROM Faculty AS T1 JOIN Student AS T2 ON T1.FacID  =  T2.advisor GROUP BY T1.FacID ORDER BY count(*) DESC LIMIT 1
+select faculty.fname , faculty.lname from Participates_in join Student on Participates_in.stuid = Student.StuID join Activity on Participates_in.actid = Activity.actid join Faculty_Participates_in on Activity.actid = Faculty_Participates_in.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID  group by faculty.facid  order by count(*) desc limit 1
+SELECT T1.fname ,  T1.lname FROM Faculty AS T1 JOIN Student AS T2 ON T1.FacID  =  T2.advisor GROUP BY T1.FacID ORDER BY count(*) DESC LIMIT 1
+select faculty.fname , faculty.lname from Participates_in join Student on Participates_in.stuid = Student.StuID join Activity on Participates_in.actid = Activity.actid join Faculty_Participates_in on Activity.actid = Faculty_Participates_in.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID  group by faculty.facid  order by count(*) desc limit 1
+SELECT T1.FacID FROM Faculty AS T1 JOIN Student AS T2 ON T1.FacID  =  T2.advisor GROUP BY T1.FacID HAVING count(*)  >=  2
+select faculty.facid from Participates_in join Student on Participates_in.stuid = Student.StuID join Activity on Participates_in.actid = Activity.actid join Faculty_Participates_in on Activity.actid = Faculty_Participates_in.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID  group by faculty.facid having  count(*) >= 2
+SELECT T1.FacID FROM Faculty AS T1 JOIN Student AS T2 ON T1.FacID  =  T2.advisor GROUP BY T1.FacID HAVING count(*)  >=  2
+select faculty.facid from Participates_in join Student on Participates_in.stuid = Student.StuID join Activity on Participates_in.actid = Activity.actid join Faculty_Participates_in on Activity.actid = Faculty_Participates_in.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID  group by faculty.facid having  count(*) >= 2
+SELECT FacID FROM Faculty EXCEPT SELECT advisor FROM Student
+select faculty.facid from Faculty   except select student.stuid from Student
+SELECT FacID FROM Faculty EXCEPT SELECT advisor FROM Student
+select faculty.facid from Faculty   except select student.stuid from Student
+SELECT activity_name FROM Activity
+select activity.activity_name from Activity
+SELECT activity_name FROM Activity
+select activity.activity_name from Activity
+SELECT count(*) FROM Activity
+select count(*) from Activity
+SELECT count(*) FROM Activity
+select count(*) from Activity
+SELECT count(DISTINCT FacID) FROM Faculty_participates_in
+select count( distinct faculty_participates_in.facid) from Faculty_Participates_in
+SELECT count(DISTINCT FacID) FROM Faculty_participates_in
+select count( distinct faculty_participates_in.facid) from Faculty_Participates_in
+SELECT FacID FROM Faculty EXCEPT SELECT FacID FROM Faculty_participates_in
+select faculty.facid from Faculty   except select faculty_participates_in.facid from Faculty_Participates_in
+SELECT FacID FROM Faculty EXCEPT SELECT FacID FROM Faculty_participates_in
+select faculty.facid from Faculty   except select faculty_participates_in.facid from Faculty_Participates_in
+SELECT FacID FROM Faculty_participates_in INTERSECT SELECT advisor FROM Student
+select faculty_participates_in.facid from Faculty_Participates_in   intersect select faculty_participates_in.facid from Faculty_Participates_in join Activity on Faculty_Participates_in.actid = Activity.actid join Participates_in on Activity.actid = Participates_in.actid join Student on Participates_in.stuid = Student.StuID
+SELECT FacID FROM Faculty_participates_in INTERSECT SELECT advisor FROM Student
+select faculty_participates_in.facid from Faculty_Participates_in   intersect select faculty_participates_in.facid from Faculty_Participates_in join Activity on Faculty_Participates_in.actid = Activity.actid join Participates_in on Activity.actid = Participates_in.actid join Student on Participates_in.stuid = Student.StuID
+SELECT count(*) FROM Faculty AS T1 JOIN Faculty_participates_in AS T2 ON T1.facID  =  T2.facID WHERE T1.fname  =  "Mark" AND T1.lname  =  "Giuliano"
+select count(*) from Faculty_Participates_in join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  faculty.fname = "Mark" and faculty.lname = "Giuliano"
+SELECT count(*) FROM Faculty AS T1 JOIN Faculty_participates_in AS T2 ON T1.facID  =  T2.facID WHERE T1.fname  =  "Mark" AND T1.lname  =  "Giuliano"
+select count(*) from Faculty_Participates_in join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  faculty.fname = "Mark" and faculty.lname = "Giuliano"
+SELECT T3.activity_name FROM Faculty AS T1 JOIN Faculty_participates_in AS T2 ON T1.facID  =  T2.facID JOIN Activity AS T3 ON T3.actid  =  T2.actid WHERE T1.fname  =  "Mark" AND T1.lname  =  "Giuliano"
+select activity.activity_name from Faculty_Participates_in join Activity on Faculty_Participates_in.actid = Activity.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  faculty.fname = "Mark" and faculty.lname = "Giuliano"
+SELECT T3.activity_name FROM Faculty AS T1 JOIN Faculty_participates_in AS T2 ON T1.facID  =  T2.facID JOIN Activity AS T3 ON T3.actid  =  T2.actid WHERE T1.fname  =  "Mark" AND T1.lname  =  "Giuliano"
+select activity.activity_name from Faculty_Participates_in join Activity on Faculty_Participates_in.actid = Activity.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  faculty.fname = "Mark" and faculty.lname = "Giuliano"
+SELECT  T1.fname ,  T1.lname ,  count(*) ,  T1.FacID FROM Faculty AS T1 JOIN Faculty_participates_in AS T2 ON T1.facID  =  T2.facID GROUP BY T1.FacID
+select faculty.fname , faculty.lname , count(*) , faculty.facid from Faculty_Participates_in join Faculty on Faculty_Participates_in.FacID = Faculty.FacID  group by faculty.facid
+SELECT  T1.fname ,  T1.lname ,  count(*) ,  T1.FacID FROM Faculty AS T1 JOIN Faculty_participates_in AS T2 ON T1.facID  =  T2.facID GROUP BY T1.FacID
+select faculty.fname , faculty.lname , count(*) , faculty.facid from Faculty_Participates_in join Faculty on Faculty_Participates_in.FacID = Faculty.FacID  group by faculty.facid
+SELECT T1.activity_name ,  count(*) FROM Activity AS T1 JOIN Faculty_participates_in AS T2 ON T1.actID  =  T2.actID GROUP BY T1.actID
+select activity.activity_name , count(*) from Faculty_Participates_in join Activity on Faculty_Participates_in.actid = Activity.actid  group by activity.actid
+SELECT T1.activity_name ,  count(*) FROM Activity AS T1 JOIN Faculty_participates_in AS T2 ON T1.actID  =  T2.actID GROUP BY T1.actID
+select activity.activity_name , count(*) from Faculty_Participates_in join Activity on Faculty_Participates_in.actid = Activity.actid  group by activity.actid
+SELECT  T1.fname ,  T1.lname FROM Faculty AS T1 JOIN Faculty_participates_in AS T2 ON T1.facID  =  T2.facID GROUP BY T1.FacID ORDER BY count(*) DESC LIMIT 1
+select faculty.fname , faculty.lname from Faculty_Participates_in join Faculty on Faculty_Participates_in.FacID = Faculty.FacID  group by faculty.facid  order by count(*) desc limit 1
+SELECT  T1.fname ,  T1.lname FROM Faculty AS T1 JOIN Faculty_participates_in AS T2 ON T1.facID  =  T2.facID GROUP BY T1.FacID ORDER BY count(*) DESC LIMIT 1
+select faculty.fname , faculty.lname from Faculty_Participates_in join Faculty on Faculty_Participates_in.FacID = Faculty.FacID  group by faculty.facid  order by count(*) desc limit 1
+SELECT T1.activity_name FROM Activity AS T1 JOIN Faculty_participates_in AS T2 ON T1.actID  =  T2.actID GROUP BY T1.actID ORDER BY count(*) DESC LIMIT 1
+select activity.activity_name from Faculty_Participates_in join Activity on Faculty_Participates_in.actid = Activity.actid  group by activity.actid  order by count(*) desc limit 1
+SELECT T1.activity_name FROM Activity AS T1 JOIN Faculty_participates_in AS T2 ON T1.actID  =  T2.actID GROUP BY T1.actID ORDER BY count(*) DESC LIMIT 1
+select activity.activity_name from Faculty_Participates_in join Activity on Faculty_Participates_in.actid = Activity.actid  group by activity.actid  order by count(*) desc limit 1
+SELECT StuID FROM Student EXCEPT SELECT StuID FROM Participates_in
+select student.stuid from Student   except select participates_in.stuid from Participates_in
+SELECT StuID FROM Student EXCEPT SELECT StuID FROM Participates_in
+select student.stuid from Student   except select participates_in.stuid from Participates_in
+SELECT StuID FROM Participates_in INTERSECT SELECT StuID FROM Student WHERE age  <  20
+select participates_in.stuid from Participates_in   intersect select student.stuid from Student where  student.age < 20
+SELECT StuID FROM Participates_in INTERSECT SELECT StuID FROM Student WHERE age  <  20
+select participates_in.stuid from Participates_in   intersect select student.stuid from Student where  student.age < 20
+SELECT T1.fname ,  T1.lname FROM Student AS T1 JOIN Participates_in AS T2 ON T1.StuID  =  T2.StuID GROUP BY T1.StuID ORDER BY count(*) DESC LIMIT 1
+select student.fname , student.lname from Participates_in join Student on Participates_in.stuid = Student.StuID  group by participates_in.stuid  order by count(*) desc limit 1
+SELECT T1.fname ,  T1.lname FROM Student AS T1 JOIN Participates_in AS T2 ON T1.StuID  =  T2.StuID GROUP BY T1.StuID ORDER BY count(*) DESC LIMIT 1
+select student.fname , student.lname from Participates_in join Student on Participates_in.stuid = Student.StuID  group by participates_in.stuid  order by count(*) desc limit 1
+SELECT T1.activity_name FROM Activity AS T1 JOIN Participates_in AS T2 ON T1.actID  =  T2.actID GROUP BY T1.actID ORDER BY count(*) DESC LIMIT 1
+select activity.activity_name from Participates_in join Activity on Participates_in.actid = Activity.actid  group by activity.actid  order by count(*) desc limit 1
+SELECT T1.activity_name FROM Activity AS T1 JOIN Participates_in AS T2 ON T1.actID  =  T2.actID GROUP BY T1.actID ORDER BY count(*) DESC LIMIT 1
+select activity.activity_name from Participates_in join Activity on Participates_in.actid = Activity.actid  group by activity.actid  order by count(*) desc limit 1
+SELECT DISTINCT T1.lname FROM Faculty AS T1 JOIN Faculty_participates_in AS T2 ON T1.facID  =  T2.facID JOIN activity AS T3 ON T2.actid  =  T2.actid WHERE T3.activity_name  =  'Canoeing' OR T3.activity_name  =  'Kayaking'
+select distinct faculty.lname from Faculty_Participates_in join Activity on Faculty_Participates_in.actid = Activity.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  activity.activity_name = "Canoeing" or activity.activity_name = "Kayaking"
+SELECT DISTINCT T1.lname FROM Faculty AS T1 JOIN Faculty_participates_in AS T2 ON T1.facID  =  T2.facID JOIN activity AS T3 ON T2.actid  =  T2.actid WHERE T3.activity_name  =  'Canoeing' OR T3.activity_name  =  'Kayaking'
+select distinct faculty.lname from Faculty_Participates_in join Activity on Faculty_Participates_in.actid = Activity.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  activity.activity_name = "Canoeing" or activity.activity_name = "Kayaking"
+SELECT lname FROM faculty WHERE rank  =  'Professor' EXCEPT SELECT DISTINCT T1.lname FROM Faculty AS T1 JOIN Faculty_participates_in AS T2 ON T1.facID  =  T2.facID JOIN activity AS T3 ON T2.actid  =  T2.actid WHERE T3.activity_name  =  'Canoeing' OR T3.activity_name  =  'Kayaking'
+select faculty.fname from Faculty where  faculty.rank = "Professor"   except select faculty.fname from Faculty_Participates_in join Activity on Faculty_Participates_in.actid = Activity.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  activity.activity_name = "Canoeing" or activity.activity_name = "Kayaking"
+SELECT lname FROM faculty WHERE rank  =  'Professor' EXCEPT SELECT DISTINCT T1.lname FROM Faculty AS T1 JOIN Faculty_participates_in AS T2 ON T1.facID  =  T2.facID JOIN activity AS T3 ON T2.actid  =  T2.actid WHERE T3.activity_name  =  'Canoeing' OR T3.activity_name  =  'Kayaking'
+select faculty.fname from Faculty where  faculty.rank = "Professor"   except select faculty.fname from Faculty_Participates_in join Activity on Faculty_Participates_in.actid = Activity.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  activity.activity_name = "Canoeing" or activity.activity_name = "Kayaking"
+SELECT T1.lname FROM Faculty AS T1 JOIN Faculty_participates_in AS T2 ON T1.facID  =  T2.facID JOIN activity AS T3 ON T2.actid  =  T2.actid WHERE T3.activity_name  =  'Canoeing' INTERSECT SELECT T1.lname FROM Faculty AS T1 JOIN Faculty_participates_in AS T2 ON T1.facID  =  T2.facID JOIN activity AS T3 ON T2.actid  =  T2.actid WHERE T3.activity_name  =  'Kayaking'
+select faculty.lname from Faculty_Participates_in join Activity on Faculty_Participates_in.actid = Activity.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  activity.activity_name = "Canoeing"   intersect select faculty.lname from Faculty_Participates_in join Activity on Faculty_Participates_in.actid = Activity.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  activity.activity_name = "Kayaking"
+SELECT T1.lname FROM Faculty AS T1 JOIN Faculty_participates_in AS T2 ON T1.facID  =  T2.facID JOIN activity AS T3 ON T2.actid  =  T2.actid WHERE T3.activity_name  =  'Canoeing' INTERSECT SELECT T1.lname FROM Faculty AS T1 JOIN Faculty_participates_in AS T2 ON T1.facID  =  T2.facID JOIN activity AS T3 ON T2.actid  =  T2.actid WHERE T3.activity_name  =  'Kayaking'
+select faculty.lname from Faculty_Participates_in join Activity on Faculty_Participates_in.actid = Activity.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  activity.activity_name = "Canoeing"   intersect select faculty.lname from Faculty_Participates_in join Activity on Faculty_Participates_in.actid = Activity.actid join Faculty on Faculty_Participates_in.FacID = Faculty.FacID where  activity.activity_name = "Kayaking"
+SELECT T1.stuid FROM participates_in AS T1 JOIN activity AS T2 ON T2.actid  =  T2.actid WHERE T2.activity_name  =  'Canoeing' INTERSECT SELECT T1.stuid FROM participates_in AS T1 JOIN activity AS T2 ON T2.actid  =  T2.actid WHERE T2.activity_name  =  'Kayaking'
+select participates_in.stuid from Participates_in join Activity on Participates_in.actid = Activity.actid where  activity.activity_name = "Canoeing"   intersect select participates_in.stuid from Participates_in join Activity on Participates_in.actid = Activity.actid where  activity.activity_name = "Kayaking"
+SELECT T1.stuid FROM participates_in AS T1 JOIN activity AS T2 ON T2.actid  =  T2.actid WHERE T2.activity_name  =  'Canoeing' INTERSECT SELECT T1.stuid FROM participates_in AS T1 JOIN activity AS T2 ON T2.actid  =  T2.actid WHERE T2.activity_name  =  'Kayaking'
+select participates_in.stuid from Participates_in join Activity on Participates_in.actid = Activity.actid where  activity.activity_name = "Canoeing"   intersect select participates_in.stuid from Participates_in join Activity on Participates_in.actid = Activity.actid where  activity.activity_name = "Kayaking"

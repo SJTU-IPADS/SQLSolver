@@ -1,0 +1,40 @@
+SELECT count(*) FROM election
+select count(*) from election
+SELECT Votes FROM election ORDER BY Votes DESC
+select election.votes from election   order by election.votes desc
+SELECT Date ,  Vote_Percent FROM election
+select election.date , election.vote_percent from election
+SELECT min(Vote_Percent) ,  max(Vote_Percent) FROM election
+select min(election.vote_percent) , max(election.vote_percent) from election
+SELECT Name ,  Party FROM representative
+select representative.name , representative.party from representative
+SELECT Name FROM Representative WHERE Party != "Republican"
+select representative.name from representative where  representative.party != "Republican"
+SELECT Lifespan FROM representative WHERE State  =  "New York" OR State  =  "Indiana"
+select representative.lifespan from representative where  representative.state = "New York" or representative.state = "Indiana"
+SELECT T2.Name ,  T1.Date FROM election AS T1 JOIN representative AS T2 ON T1.Representative_ID  =  T2.Representative_ID
+select representative.name , election.date from election join representative on election.Representative_ID = representative.Representative_ID
+SELECT T2.Name FROM election AS T1 JOIN representative AS T2 ON T1.Representative_ID  =  T2.Representative_ID WHERE Votes  >  10000
+select representative.name from election join representative on election.Representative_ID = representative.Representative_ID where  election.votes > 10000
+SELECT T2.Name FROM election AS T1 JOIN representative AS T2 ON T1.Representative_ID  =  T2.Representative_ID ORDER BY votes DESC
+select representative.name from election join representative on election.Representative_ID = representative.Representative_ID   order by election.votes desc
+SELECT T2.Party FROM election AS T1 JOIN representative AS T2 ON T1.Representative_ID  =  T2.Representative_ID ORDER BY votes ASC LIMIT 1
+select representative.party from election join representative on election.Representative_ID = representative.Representative_ID   order by election.votes asc limit 1
+SELECT T2.Lifespan FROM election AS T1 JOIN representative AS T2 ON T1.Representative_ID  =  T2.Representative_ID ORDER BY Vote_Percent DESC
+select representative.lifespan from election join representative on election.Representative_ID = representative.Representative_ID   order by election.vote_percent desc
+SELECT avg(T1.Votes) FROM election AS T1 JOIN representative AS T2 ON T1.Representative_ID  =  T2.Representative_ID WHERE T2.Party  =  "Republican"
+select avg(election.votes) from election join representative on election.Representative_ID = representative.Representative_ID where  representative.party = "Republican"
+SELECT Party ,  COUNT(*) FROM representative GROUP BY Party
+select representative.party , count(*) from representative  group by representative.party
+SELECT Party ,  COUNT(*) FROM representative GROUP BY Party ORDER BY COUNT(*) DESC LIMIT 1
+select representative.party , count(*) from representative  group by representative.party  order by count(*) desc limit 1
+SELECT Party FROM representative GROUP BY Party HAVING COUNT(*)  >=  3
+select representative.party from representative  group by representative.party having  count(*) >= 3
+SELECT State FROM representative GROUP BY State HAVING COUNT(*)  >=  2
+select representative.state from representative  group by representative.state having  count(*) >= 2
+SELECT Name FROM representative WHERE Representative_ID NOT IN (SELECT Representative_ID FROM election)
+select representative.name from representative where  representative.representative_id not in (select election.Representative_ID from election  )
+SELECT Party FROM representative WHERE State  =  "New York" INTERSECT SELECT Party FROM representative WHERE State  =  "Pennsylvania"
+select representative.party from representative where  representative.state = "New York"   intersect select representative.party from representative where  representative.state = "Pennsylvania"
+SELECT count(DISTINCT Party) FROM representative
+select count( distinct representative.party) from representative

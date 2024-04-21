@@ -1,0 +1,200 @@
+SELECT dorm_name FROM dorm WHERE gender  =  'F'
+select dorm.dorm_name from Dorm where  dorm.gender = "F"
+SELECT dorm_name FROM dorm WHERE gender  =  'F'
+select dorm.dorm_name from Dorm where  dorm.gender = "F"
+SELECT dorm_name FROM dorm WHERE student_capacity  >  300
+select dorm.dorm_name from Dorm where  dorm.student_capacity > 300
+SELECT dorm_name FROM dorm WHERE student_capacity  >  300
+select dorm.dorm_name from Dorm where  dorm.student_capacity > 300
+SELECT count(*) FROM student WHERE sex  =  'F' AND age  <  25
+select count(*) from Student where  student.sex = "F" and student.age < 25
+SELECT count(*) FROM student WHERE sex  =  'F' AND age  <  25
+select count(*) from Student where  student.sex = "F" and student.age < 25
+SELECT fname FROM student WHERE age  >  20
+select student.fname from Student where  student.age > 20
+SELECT fname FROM student WHERE age  >  20
+select student.fname from Student where  student.age > 20
+SELECT fname FROM student WHERE city_code  =  'PHL' AND age BETWEEN 20 AND 25
+select student.fname from Student where  student.city_code = "PHL" and student.age between 20 and 25
+SELECT fname FROM student WHERE city_code  =  'PHL' AND age BETWEEN 20 AND 25
+select student.fname from Student where  student.city_code = "PHL" and student.age between 20 and 25
+SELECT count(*) FROM dorm
+select count(*) from Dorm
+SELECT count(*) FROM dorm
+select count(*) from Dorm
+SELECT count(*) FROM dorm_amenity
+select count(*) from Dorm_amenity
+SELECT count(*) FROM dorm_amenity
+select count(*) from Dorm_amenity
+SELECT sum(student_capacity) FROM dorm
+select sum(dorm.student_capacity) from Dorm
+SELECT sum(student_capacity) FROM dorm
+select sum(dorm.student_capacity) from Dorm
+SELECT count(*) FROM student
+select count(*) from Student
+SELECT count(*) FROM student
+select count(*) from Student
+SELECT avg(age) ,  city_code FROM student GROUP BY city_code
+select avg(student.age) , student.city_code from Student  group by student.city_code
+SELECT avg(age) ,  city_code FROM student GROUP BY city_code
+select avg(student.age) , student.city_code from Student  group by student.city_code
+SELECT avg(student_capacity) ,  sum(student_capacity) FROM dorm WHERE gender  =  'X'
+select avg(dorm.student_capacity) , sum(dorm.student_capacity) from Dorm where  dorm.gender = "X"
+SELECT avg(student_capacity) ,  sum(student_capacity) FROM dorm WHERE gender  =  'X'
+select avg(dorm.student_capacity) , sum(dorm.student_capacity) from Dorm where  dorm.gender = "X"
+SELECT count(DISTINCT dormid) FROM has_amenity
+select count( distinct has_amenity.dormid) from Has_amenity
+SELECT count(DISTINCT dormid) FROM has_amenity
+select count( distinct has_amenity.dormid) from Has_amenity
+SELECT dorm_name FROM dorm WHERE dormid NOT IN (SELECT dormid FROM has_amenity)
+select dorm.dorm_name from Dorm where  dorm.dormid not in (select Has_amenity.dormid from Has_amenity  )
+SELECT dorm_name FROM dorm WHERE dormid NOT IN (SELECT dormid FROM has_amenity)
+select dorm.dorm_name from Dorm where  dorm.dormid not in (select Has_amenity.dormid from Has_amenity  )
+SELECT count(DISTINCT gender) FROM dorm
+select count( distinct dorm.gender) from Dorm
+SELECT count(DISTINCT gender) FROM dorm
+select count( distinct dorm.gender) from Dorm
+SELECT student_capacity ,  gender FROM dorm WHERE dorm_name LIKE '%Donor%'
+select dorm.student_capacity , dorm.gender from Dorm where  dorm.dorm_name like "%Donor%"
+SELECT student_capacity ,  gender FROM dorm WHERE dorm_name LIKE '%Donor%'
+select dorm.student_capacity , dorm.gender from Dorm where  dorm.dorm_name like "%Donor%"
+SELECT dorm_name ,  gender FROM dorm WHERE student_capacity  >  300 OR student_capacity  <  100
+select dorm.dorm_name , dorm.gender from Dorm where  dorm.student_capacity > 300 or dorm.student_capacity < 100
+SELECT dorm_name ,  gender FROM dorm WHERE student_capacity  >  300 OR student_capacity  <  100
+select dorm.dorm_name , dorm.gender from Dorm where  dorm.student_capacity > 300 or dorm.student_capacity < 100
+SELECT count(DISTINCT major) ,  count(DISTINCT city_code) FROM student
+select count( distinct student.major) , count( distinct student.city_code) from Student
+SELECT count(DISTINCT major) ,  count(DISTINCT city_code) FROM student
+select count( distinct student.major) , count( distinct student.city_code) from Student
+SELECT T1.dorm_name FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid WHERE T3.amenity_name  =  'TV Lounge' INTERSECT SELECT T1.dorm_name FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid WHERE T3.amenity_name  =  'Study Room'
+select dorm.dorm_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm_amenity.amenity_name = "TV Lounge"   intersect select dorm.dorm_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm_amenity.amenity_name = "Study Room"
+SELECT T1.dorm_name FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid WHERE T3.amenity_name  =  'TV Lounge' INTERSECT SELECT T1.dorm_name FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid WHERE T3.amenity_name  =  'Study Room'
+select dorm.dorm_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm_amenity.amenity_name = "TV Lounge"   intersect select dorm.dorm_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm_amenity.amenity_name = "Study Room"
+SELECT T1.dorm_name FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid WHERE T3.amenity_name  =  'TV Lounge' EXCEPT SELECT T1.dorm_name FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid WHERE T3.amenity_name  =  'Study Room'
+select dorm.dorm_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm_amenity.amenity_name = "TV Lounge"   except select dorm.dorm_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm_amenity.amenity_name = "Study Room"
+SELECT T1.dorm_name FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid WHERE T3.amenity_name  =  'TV Lounge' EXCEPT SELECT T1.dorm_name FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid WHERE T3.amenity_name  =  'Study Room'
+select dorm.dorm_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm_amenity.amenity_name = "TV Lounge"   except select dorm.dorm_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm_amenity.amenity_name = "Study Room"
+SELECT lname FROM student WHERE sex  =  'F' AND city_code  =  'BAL' UNION SELECT lname FROM student WHERE sex  =  'M' AND age  <  20
+select student.lname from Student where  student.sex = "F" and student.city_code = "BAL"   union select student.lname from Student where  student.sex = "M" and student.age < 20
+SELECT lname FROM student WHERE sex  =  'F' AND city_code  =  'BAL' UNION SELECT lname FROM student WHERE sex  =  'M' AND age  <  20
+select student.lname from Student where  student.sex = "F" and student.city_code = "BAL"   union select student.lname from Student where  student.sex = "M" and student.age < 20
+SELECT dorm_name FROM dorm ORDER BY student_capacity DESC LIMIT 1
+select dorm.dorm_name from Dorm   order by dorm.student_capacity desc limit 1
+SELECT dorm_name FROM dorm ORDER BY student_capacity DESC LIMIT 1
+select dorm.dorm_name from Dorm   order by dorm.student_capacity desc limit 1
+SELECT amenity_name FROM dorm_amenity ORDER BY amenity_name
+select dorm_amenity.amenity_name from Dorm_amenity   order by dorm_amenity.amenity_name asc
+SELECT amenity_name FROM dorm_amenity ORDER BY amenity_name
+select dorm_amenity.amenity_name from Dorm_amenity   order by dorm_amenity.amenity_name asc
+SELECT city_code FROM student GROUP BY city_code ORDER BY count(*) DESC LIMIT 1
+select student.city_code from Student  group by student.city_code  order by count(*) desc limit 1
+SELECT city_code FROM student GROUP BY city_code ORDER BY count(*) DESC LIMIT 1
+select student.city_code from Student  group by student.city_code  order by count(*) desc limit 1
+SELECT fname ,  lname FROM student WHERE age  <  (SELECT avg(age) FROM student)
+select student.fname , student.lname from Student where  student.age < (select avg(student.age) from Student  )
+SELECT fname ,  lname FROM student WHERE age  <  (SELECT avg(age) FROM student)
+select student.fname , student.lname from Student where  student.age < (select avg(student.age) from Student  )
+SELECT fname ,  lname FROM student WHERE city_code != 'HKG' ORDER BY age
+select student.fname , student.lname from Student where  student.city_code != "HKG"   order by student.age asc
+SELECT fname ,  lname FROM student WHERE city_code != 'HKG' ORDER BY age
+select student.fname , student.lname from Student where  student.city_code != "HKG"   order by student.age asc
+SELECT T1.amenity_name FROM dorm_amenity AS T1 JOIN has_amenity AS T2 ON T2.amenid  =  T1.amenid JOIN dorm AS T3 ON T2.dormid  =  T3.dormid WHERE T3.dorm_name  =  'Anonymous Donor Hall' ORDER BY T1.amenity_name
+select dorm_amenity.amenity_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm.dorm_name = "Anonymous Donor Hall"   order by dorm_amenity.amenity_name asc
+SELECT T1.amenity_name FROM dorm_amenity AS T1 JOIN has_amenity AS T2 ON T2.amenid  =  T1.amenid JOIN dorm AS T3 ON T2.dormid  =  T3.dormid WHERE T3.dorm_name  =  'Anonymous Donor Hall' ORDER BY T1.amenity_name
+select dorm_amenity.amenity_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm.dorm_name = "Anonymous Donor Hall"   order by dorm_amenity.amenity_name asc
+SELECT count(*) ,  sum(student_capacity) ,  gender FROM dorm GROUP BY gender
+select count(*) , sum(dorm.student_capacity) , dorm.gender from Dorm  group by dorm.gender
+SELECT count(*) ,  sum(student_capacity) ,  gender FROM dorm GROUP BY gender
+select count(*) , sum(dorm.student_capacity) , dorm.gender from Dorm  group by dorm.gender
+SELECT avg(age) ,  max(age) ,  sex FROM student GROUP BY sex
+select avg(student.age) , max(student.age) , student.sex from Student  group by student.sex
+SELECT avg(age) ,  max(age) ,  sex FROM student GROUP BY sex
+select avg(student.age) , max(student.age) , student.sex from Student  group by student.sex
+SELECT count(*) ,  major FROM student GROUP BY major
+select count(*) , student.major from Student  group by student.major
+SELECT count(*) ,  major FROM student GROUP BY major
+select student.major , count(*) from Student  group by student.major
+SELECT count(*) ,  avg(age) ,  city_code FROM student GROUP BY city_code
+select count(*) , avg(student.age) , student.city_code from Student  group by student.city_code
+SELECT count(*) ,  avg(age) ,  city_code FROM student GROUP BY city_code
+select count(*) , avg(student.age) , student.city_code from Student  group by student.city_code
+SELECT count(*) ,  avg(age) ,  city_code FROM student WHERE sex  =  'M' GROUP BY city_code
+select count(*) , avg(student.age) , student.city_code from Student where  student.sex = "M"  group by student.city_code
+SELECT count(*) ,  avg(age) ,  city_code FROM student WHERE sex  =  'M' GROUP BY city_code
+select count(*) , avg(student.age) , student.city_code from Student where  student.sex = "M"  group by student.city_code
+SELECT count(*) ,  city_code FROM student GROUP BY city_code HAVING count(*)  >  1
+select count(*) , student.city_code from Student  group by student.city_code having  count(*) > 1
+SELECT count(*) ,  city_code FROM student GROUP BY city_code HAVING count(*)  >  1
+select count(*) , student.city_code from Student  group by student.city_code having  count(*) > 1
+SELECT fname ,  lname FROM student WHERE major != (SELECT major FROM student GROUP BY major ORDER BY count(*) DESC LIMIT 1)
+select student.fname , student.lname from Student where  student.major != (select student.major from Student  group by student.major  order by count(*) desc limit 1 )
+SELECT fname ,  lname FROM student WHERE major != (SELECT major FROM student GROUP BY major ORDER BY count(*) DESC LIMIT 1)
+select student.fname , student.lname from Student where  student.major != (select student.major from Student  group by student.major  order by count(*) desc limit 1 )
+SELECT count(*) ,  sex FROM student WHERE age  >  (SELECT avg(age) FROM student) GROUP BY sex
+select count(*) , student.sex from Student where  student.age > (select avg(student.age) from Student  )  group by student.sex
+SELECT count(*) ,  sex FROM student WHERE age  >  (SELECT avg(age) FROM student) GROUP BY sex
+select count(*) , student.sex from Student where  student.age > (select avg(student.age) from Student  )  group by student.sex
+SELECT avg(T1.age) ,  T3.dorm_name FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid JOIN dorm AS T3 ON T3.dormid  =  T2.dormid GROUP BY T3.dorm_name
+select avg(student.age) , dorm.dorm_name from Lives_in join Dorm on Lives_in.dormid = Dorm.dormid join Student on Lives_in.stuid = Student.StuID  group by dorm.dorm_name
+SELECT avg(T1.age) ,  T3.dorm_name FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid JOIN dorm AS T3 ON T3.dormid  =  T2.dormid GROUP BY T3.dorm_name
+select avg(student.age) , dorm.dorm_name from Lives_in join Dorm on Lives_in.dormid = Dorm.dormid join Student on Lives_in.stuid = Student.StuID  group by dorm.dorm_name
+SELECT count(*) ,  T1.dormid FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid WHERE T1.student_capacity  >  100 GROUP BY T1.dormid
+select count(*) , dorm.dormid from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm.student_capacity > 100  group by dorm.dormid
+SELECT count(*) ,  T1.dormid FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid WHERE T1.student_capacity  >  100 GROUP BY T1.dormid
+select count(*) , dorm.dormid from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm.student_capacity > 100  group by dorm.dormid
+SELECT count(*) ,  T3.dorm_name FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid JOIN dorm AS T3 ON T3.dormid  =  T2.dormid WHERE T1.age  >  20 GROUP BY T3.dorm_name
+select count(*) , dorm.dorm_name from Lives_in join Dorm on Lives_in.dormid = Dorm.dormid join Student on Lives_in.stuid = Student.StuID where  student.age > 20  group by dorm.dorm_name
+SELECT count(*) ,  T3.dorm_name FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid JOIN dorm AS T3 ON T3.dormid  =  T2.dormid WHERE T1.age  >  20 GROUP BY T3.dorm_name
+select count(*) , dorm.dorm_name from Lives_in join Dorm on Lives_in.dormid = Dorm.dormid join Student on Lives_in.stuid = Student.StuID where  student.age > 20  group by dorm.dorm_name
+SELECT T1.fname FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid JOIN dorm AS T3 ON T3.dormid  =  T2.dormid WHERE T3.dorm_name  =  'Smith Hall'
+select student.fname from Lives_in join Dorm on Lives_in.dormid = Dorm.dormid join Student on Lives_in.stuid = Student.StuID where  dorm.dorm_name = "Smith Hall"
+SELECT T1.fname FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid JOIN dorm AS T3 ON T3.dormid  =  T2.dormid WHERE T3.dorm_name  =  'Smith Hall'
+select student.fname from Lives_in join Dorm on Lives_in.dormid = Dorm.dormid join Student on Lives_in.stuid = Student.StuID where  dorm.dorm_name = "Smith Hall"
+SELECT avg(T1.age) FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid JOIN dorm AS T3 ON T3.dormid  =  T2.dormid WHERE T3.student_capacity  =  (SELECT max(student_capacity) FROM dorm)
+select avg(student.age) from Lives_in join Dorm on Lives_in.dormid = Dorm.dormid join Student on Lives_in.stuid = Student.StuID where  dorm.student_capacity = (select max(Dorm.student_capacity) from Dorm  )
+SELECT avg(T1.age) FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid JOIN dorm AS T3 ON T3.dormid  =  T2.dormid WHERE T3.student_capacity  =  (SELECT max(student_capacity) FROM dorm)
+select avg(student.age) from Lives_in join Dorm on Lives_in.dormid = Dorm.dormid join Student on Lives_in.stuid = Student.StuID where  dorm.student_capacity = (select max(Dorm.student_capacity) from Dorm  )
+SELECT count(*) FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid JOIN dorm AS T3 ON T3.dormid  =  T2.dormid WHERE T3.gender  =  'M'
+select count(*) from Lives_in join Dorm on Lives_in.dormid = Dorm.dormid join Student on Lives_in.stuid = Student.StuID where  dorm.gender = "M"
+SELECT count(*) FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid JOIN dorm AS T3 ON T3.dormid  =  T2.dormid WHERE T3.gender  =  'M'
+select count(*) from Lives_in join Dorm on Lives_in.dormid = Dorm.dormid join Student on Lives_in.stuid = Student.StuID where  dorm.gender = "M"
+SELECT count(*) FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid JOIN dorm AS T3 ON T3.dormid  =  T2.dormid WHERE T3.dorm_name  =  'Smith Hall' AND T1.sex  =  'F'
+select count(*) from Lives_in join Dorm on Lives_in.dormid = Dorm.dormid join Student on Lives_in.stuid = Student.StuID where  dorm.dorm_name = "Smith Hall" and student.sex = "F"
+SELECT count(*) FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid JOIN dorm AS T3 ON T3.dormid  =  T2.dormid WHERE T3.dorm_name  =  'Smith Hall' AND T1.sex  =  'F'
+select count(*) from Lives_in join Dorm on Lives_in.dormid = Dorm.dormid join Student on Lives_in.stuid = Student.StuID where  dorm.dorm_name = "Smith Hall" and student.sex = "F"
+SELECT T3.amenity_name FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid WHERE T1.dorm_name  =  'Smith Hall'
+select dorm_amenity.amenity_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm.dorm_name = "Smith Hall"
+SELECT T3.amenity_name FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid WHERE T1.dorm_name  =  'Smith Hall'
+select dorm_amenity.amenity_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm.dorm_name = "Smith Hall"
+SELECT T3.amenity_name FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid WHERE T1.dorm_name  =  'Smith Hall' ORDER BY T3.amenity_name
+select dorm_amenity.amenity_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm.dorm_name = "Smith Hall"   order by dorm_amenity.amenity_name asc
+SELECT T3.amenity_name FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid WHERE T1.dorm_name  =  'Smith Hall' ORDER BY T3.amenity_name
+select dorm_amenity.amenity_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm.dorm_name = "Smith Hall"   order by dorm_amenity.amenity_name asc
+SELECT T1.amenity_name FROM dorm_amenity AS T1 JOIN has_amenity AS T2 ON T1.amenid  =  T2.amenid GROUP BY T2.amenid ORDER BY count(*) DESC LIMIT 1
+select dorm_amenity.amenity_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid  group by has_amenity.amenid  order by count(*) desc limit 1
+SELECT T1.amenity_name FROM dorm_amenity AS T1 JOIN has_amenity AS T2 ON T1.amenid  =  T2.amenid GROUP BY T2.amenid ORDER BY count(*) DESC LIMIT 1
+select dorm_amenity.amenity_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid  group by has_amenity.amenid  order by count(*) desc limit 1
+SELECT T1.fname FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid WHERE T2.dormid IN (SELECT T2.dormid FROM dorm AS T3 JOIN has_amenity AS T4 ON T3.dormid  =  T4.dormid JOIN dorm_amenity AS T5 ON T4.amenid  =  T5.amenid GROUP BY T3.dormid ORDER BY count(*) DESC LIMIT 1)
+select student.fname from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid join Lives_in on Dorm.dormid = Lives_in.dormid join Student on Lives_in.stuid = Student.StuID  group by has_amenity.dormid  order by count(*) desc limit 1
+SELECT T1.fname FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid WHERE T2.dormid IN (SELECT T2.dormid FROM dorm AS T3 JOIN has_amenity AS T4 ON T3.dormid  =  T4.dormid JOIN dorm_amenity AS T5 ON T4.amenid  =  T5.amenid GROUP BY T3.dormid ORDER BY count(*) DESC LIMIT 1)
+select student.fname from Lives_in join Student on Lives_in.stuid = Student.StuID where  lives_in.dormid in (select Lives_in.dormid from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid join Lives_in on Dorm.dormid = Lives_in.dormid  group by Lives_in.dormid  order by count(*) desc limit 1 )
+SELECT T1.dorm_name ,  T1.student_capacity FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid GROUP BY T2.dormid ORDER BY count(*) LIMIT 1
+select dorm.dorm_name , dorm.student_capacity from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid  group by has_amenity.dormid  order by count(*) asc limit 1
+SELECT T1.dorm_name ,  T1.student_capacity FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid GROUP BY T2.dormid ORDER BY count(*) LIMIT 1
+select dorm.dorm_name , dorm.student_capacity from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid  group by has_amenity.dormid  order by count(*) asc limit 1
+SELECT dorm_name FROM dorm EXCEPT SELECT T1.dorm_name FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid WHERE T3.amenity_name  =  'TV Lounge'
+select dorm.dorm_name from Dorm   except select dorm.dorm_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm_amenity.amenity_name = "TV Lounge"
+SELECT dorm_name FROM dorm EXCEPT SELECT T1.dorm_name FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid WHERE T3.amenity_name  =  'TV Lounge'
+select dorm.dorm_name from Dorm   except select dorm.dorm_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid where  dorm_amenity.amenity_name = "TV Lounge"
+SELECT T1.fname ,  T1.lname FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid WHERE T2.dormid IN (SELECT T3.dormid FROM has_amenity AS T3 JOIN dorm_amenity AS T4 ON T3.amenid  =  T4.amenid WHERE T4.amenity_name  =  'TV Lounge')
+select student.fname , student.lname from Lives_in join Student on Lives_in.stuid = Student.StuID where  lives_in.dormid in (select Has_amenity.dormid from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid where  dorm_amenity.amenity_name = "TV Lounge"  )
+SELECT T1.fname ,  T1.lname FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid WHERE T2.dormid IN (SELECT T3.dormid FROM has_amenity AS T3 JOIN dorm_amenity AS T4 ON T3.amenid  =  T4.amenid WHERE T4.amenity_name  =  'TV Lounge')
+select student.fname , student.lname from Lives_in join Student on Lives_in.stuid = Student.StuID where  lives_in.dormid not in (select Has_amenity.dormid from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid where  dorm_amenity.amenity_name = "TV Lounge"  )
+SELECT T1.fname ,  T1.age FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid WHERE T2.dormid NOT IN (SELECT T3.dormid FROM has_amenity AS T3 JOIN dorm_amenity AS T4 ON T3.amenid  =  T4.amenid WHERE T4.amenity_name  =  'TV Lounge')
+select student.fname , student.age from Lives_in join Student on Lives_in.stuid = Student.StuID where  lives_in.dormid not in (select Has_amenity.dormid from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid where  dorm_amenity.amenity_name = "TV Lounge"  )
+SELECT T1.fname ,  T1.age FROM student AS T1 JOIN lives_in AS T2 ON T1.stuid  =  T2.stuid WHERE T2.dormid NOT IN (SELECT T3.dormid FROM has_amenity AS T3 JOIN dorm_amenity AS T4 ON T3.amenid  =  T4.amenid WHERE T4.amenity_name  =  'TV Lounge')
+select student.fname , student.age from Lives_in join Student on Lives_in.stuid = Student.StuID where  lives_in.dormid not in (select Has_amenity.dormid from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid where  dorm_amenity.amenity_name = "TV Lounge"  )
+SELECT T3.amenity_name FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid JOIN lives_in AS T4 ON T4.dormid  =  T1.dormid JOIN student AS T5 ON T5.stuid  =  T4.stuid WHERE T5.lname  =  'Smith'
+select dorm_amenity.amenity_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid join Lives_in on Dorm.dormid = Lives_in.dormid join Student on Lives_in.stuid = Student.StuID where  student.lname = "Smith"
+SELECT T3.amenity_name FROM dorm AS T1 JOIN has_amenity AS T2 ON T1.dormid  =  T2.dormid JOIN dorm_amenity AS T3 ON T2.amenid  =  T3.amenid JOIN lives_in AS T4 ON T4.dormid  =  T1.dormid JOIN student AS T5 ON T5.stuid  =  T4.stuid WHERE T5.lname  =  'Smith'
+select dorm_amenity.amenity_name from Has_amenity join Dorm_amenity on Has_amenity.amenid = Dorm_amenity.amenid join Dorm on Has_amenity.dormid = Dorm.dormid join Lives_in on Dorm.dormid = Lives_in.dormid join Student on Lives_in.stuid = Student.StuID where  student.lname = "Smith"

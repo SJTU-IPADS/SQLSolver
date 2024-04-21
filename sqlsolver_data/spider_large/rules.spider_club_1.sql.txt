@@ -1,0 +1,140 @@
+SELECT count(*) FROM club
+select count(*) from Club
+SELECT count(*) FROM club
+select count(*) from Club
+SELECT clubname FROM club
+select club.clubname from Club
+SELECT clubname FROM club
+select club.clubname from Club
+SELECT count(*) FROM student
+select count(*) from Student
+SELECT count(*) FROM student
+select count(*) from Student
+SELECT DISTINCT fname FROM student
+select distinct student.fname from Student
+SELECT DISTINCT fname FROM student
+select distinct student.fname from Student
+SELECT t3.lname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Bootup Baltimore"
+select student.lname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Bootup Baltimore"
+SELECT t3.lname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Bootup Baltimore"
+select student.lname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Bootup Baltimore"
+SELECT t3.lname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Hopkins Student Enterprises"
+select student.lname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Hopkins Student Enterprises"
+SELECT t3.lname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Hopkins Student Enterprises"
+select student.lname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Hopkins Student Enterprises"
+SELECT count(*) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Tennis Club"
+select count(*) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Tennis Club"
+SELECT count(*) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Tennis Club"
+select count(*) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Tennis Club"
+SELECT count(*) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Pen and Paper Gaming"
+select count(*) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Pen and Paper Gaming"
+SELECT count(*) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Pen and Paper Gaming"
+select count(*) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID where  club.clubname = "Pen and Paper Gaming"
+SELECT count(*) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.fname  =  "Linda" AND t3.lname  =  "Smith"
+select count(*) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.fname = "Linda" and student.lname = "Smith"
+SELECT count(*) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.fname  =  "Linda" AND t3.lname  =  "Smith"
+select count(*) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.fname = "Linda" and student.lname = "Smith"
+SELECT count(*) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.fname  =  "Tracy" AND t3.lname  =  "Kim"
+select count( distinct club.clubname) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.fname = "Tracy" and student.lname = "Kim"
+SELECT count(*) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.fname  =  "Tracy" AND t3.lname  =  "Kim"
+select count(*) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.fname = "Tracy" and student.lname = "Kim"
+SELECT t3.fname ,  t3.lname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Bootup Baltimore" AND t3.sex  =  "F"
+select student.fname , student.lname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Bootup Baltimore" and student.sex = "F"
+SELECT t3.fname ,  t3.lname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Bootup Baltimore" AND t3.sex  =  "F"
+select student.fname , student.lname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Bootup Baltimore" and student.sex = "F"
+SELECT t3.fname ,  t3.lname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Hopkins Student Enterprises" AND t3.sex  =  "M"
+select student.fname , student.lname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Hopkins Student Enterprises" and student.sex = "M"
+SELECT t3.fname ,  t3.lname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Hopkins Student Enterprises" AND t3.sex  =  "M"
+select student.fname , student.lname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Hopkins Student Enterprises" and student.sex = "M"
+SELECT t3.fname ,  t3.lname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Bootup Baltimore" AND t3.major  =  "600"
+select student.fname , student.lname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Bootup Baltimore" and student.major = "600"
+SELECT t3.fname ,  t3.lname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Bootup Baltimore" AND t3.major  =  "600"
+select student.fname , student.lname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Bootup Baltimore" and student.major = "600"
+SELECT t1.clubname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.major  =  "600" GROUP BY t1.clubname ORDER BY count(*) DESC LIMIT 1
+select club.clubname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.major = "600"  group by club.clubname  order by count(*) desc limit 1
+SELECT t1.clubname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.major  =  "600" GROUP BY t1.clubname ORDER BY count(*) DESC LIMIT 1
+select club.clubname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.major = "600"  group by club.clubname  order by count(*) desc limit 1
+SELECT t1.clubname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.sex  =  "F" GROUP BY t1.clubname ORDER BY count(*) DESC LIMIT 1
+select club.clubname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.sex = "F"  group by club.clubname  order by count(*) desc limit 1
+SELECT t1.clubname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.sex  =  "F" GROUP BY t1.clubname ORDER BY count(*) DESC LIMIT 1
+select club.clubname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.sex = "F"  group by club.clubname  order by count(*) desc limit 1
+SELECT clubdesc FROM club WHERE clubname  =  "Tennis Club"
+select club.clubdesc from Club where  club.clubname = "Tennis Club"
+SELECT clubdesc FROM club WHERE clubname  =  "Tennis Club"
+select club.clubdesc from Club where  club.clubname = "Tennis Club"
+SELECT clubdesc FROM club WHERE clubname  =  "Pen and Paper Gaming"
+select club.clubdesc from Club where  club.clubname = "Pen and Paper Gaming"
+SELECT clubdesc FROM club WHERE clubname  =  "Pen and Paper Gaming"
+select club.clubdesc from Club where  club.clubname = "Pen and Paper Gaming"
+SELECT clublocation FROM club WHERE clubname  =  "Tennis Club"
+select club.clublocation from Club where  club.clubname = "Tennis Club"
+SELECT clublocation FROM club WHERE clubname  =  "Tennis Club"
+select club.clublocation from Club where  club.clubname = "Tennis Club"
+SELECT clublocation FROM club WHERE clubname  =  "Pen and Paper Gaming"
+select club.clublocation from Club where  club.clubname = "Pen and Paper Gaming"
+SELECT clublocation FROM club WHERE clubname  =  "Pen and Paper Gaming"
+select club.clublocation from Club where  club.clubname = "Pen and Paper Gaming"
+SELECT clublocation FROM club WHERE clubname  =  "Hopkins Student Enterprises"
+select club.clublocation from Club where  club.clubname = "Hopkins Student Enterprises"
+SELECT clublocation FROM club WHERE clubname  =  "Hopkins Student Enterprises"
+select club.clublocation from Club where  club.clubname = "Hopkins Student Enterprises"
+SELECT clubname FROM club WHERE clublocation  =  "AKW"
+select club.clubname from Club where  club.clublocation = "AKW"
+SELECT clubname FROM club WHERE clublocation  =  "AKW"
+select club.clubname from Club where  club.clublocation = "AKW"
+SELECT count(*) FROM club WHERE clublocation  =  "HHH"
+select count(*) from Club where  club.clublocation = "HHH"
+SELECT count(*) FROM club WHERE clublocation  =  "HHH"
+select count(*) from Club where  club.clublocation = "HHH"
+SELECT t3.fname ,  t3.lname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Bootup Baltimore" AND t2.position  =  "President"
+select student.fname , student.lname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Bootup Baltimore" and member_of_club.position = "President"
+SELECT t3.fname ,  t3.lname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Bootup Baltimore" AND t2.position  =  "President"
+select student.fname , student.lname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Bootup Baltimore" and member_of_club.position = "President"
+SELECT t3.fname ,  t3.lname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Hopkins Student Enterprises" AND t2.position  =  "CTO"
+select student.fname , student.lname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Hopkins Student Enterprises" and member_of_club.position = "CTO"
+SELECT t3.fname ,  t3.lname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Hopkins Student Enterprises" AND t2.position  =  "CTO"
+select student.fname , student.lname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Hopkins Student Enterprises" and member_of_club.position = "CTO"
+SELECT count(DISTINCT t2.position) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid WHERE t1.clubname  =  "Bootup Baltimore"
+select count( distinct member_of_club.position) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID where  club.clubname = "Bootup Baltimore"
+SELECT count(DISTINCT t2.position) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid WHERE t1.clubname  =  "Bootup Baltimore"
+select count( distinct member_of_club.position) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID where  club.clubname = "Bootup Baltimore"
+SELECT count(*) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Bootup Baltimore" AND t3.age  >  18
+select count(*) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Bootup Baltimore" and student.age > 18
+SELECT count(*) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Bootup Baltimore" AND t3.age  >  18
+select count(*) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Bootup Baltimore" and student.age > 18
+SELECT count(*) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Bootup Baltimore" AND t3.age  <  18
+select count(*) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Bootup Baltimore" and student.age < 18
+SELECT count(*) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Bootup Baltimore" AND t3.age  <  18
+select count(*) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Bootup Baltimore" and student.age < 18
+SELECT DISTINCT t1.clubname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.city_code  =  "BAL"
+select distinct club.clubname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.city_code = "BAL"
+SELECT DISTINCT t1.clubname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.city_code  =  "BAL"
+select distinct club.clubname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.city_code = "BAL"
+SELECT DISTINCT t1.clubname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.city_code  =  "HOU"
+select distinct club.clubname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.city_code = "HOU"
+SELECT DISTINCT t1.clubname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.city_code  =  "HOU"
+select distinct club.clubname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.city_code = "HOU"
+SELECT count(DISTINCT t1.clubname) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.fname  =  "Eric" AND t3.lname  =  "Tai"
+select count( distinct club.clubname) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.fname = "Eric" and student.lname = "Tai"
+SELECT count(DISTINCT t1.clubname) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.fname  =  "Eric" AND t3.lname  =  "Tai"
+select count( distinct club.clubname) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.fname = "Eric" and student.lname = "Tai"
+SELECT DISTINCT t1.clubname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.fname  =  "Davis" AND t3.lname  =  "Steven"
+select distinct club.clubname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.fname = "Davis" and student.lname = "Steven"
+SELECT DISTINCT t1.clubname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.fname  =  "Davis" AND t3.lname  =  "Steven"
+select distinct club.clubname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.fname = "Davis" and student.lname = "Steven"
+SELECT DISTINCT t1.clubname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.advisor  =  1121
+select distinct club.clubname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.advisor = 1121
+SELECT DISTINCT t1.clubname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.advisor  =  1121
+select distinct club.clubname from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  student.advisor = 1121
+SELECT avg(t3.age) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Bootup Baltimore"
+select avg(student.age) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Bootup Baltimore"
+SELECT avg(t3.age) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Bootup Baltimore"
+select avg(student.age) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Bootup Baltimore"
+SELECT avg(t3.age) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Hopkins Student Enterprises"
+select avg(student.age) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Hopkins Student Enterprises"
+SELECT avg(t3.age) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Hopkins Student Enterprises"
+select avg(student.age) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Hopkins Student Enterprises"
+SELECT avg(t3.age) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Tennis Club"
+select avg(student.age) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Tennis Club"
+SELECT avg(t3.age) FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t1.clubname  =  "Tennis Club"
+select avg(student.age) from Member_of_club join Club on Member_of_club.ClubID = Club.ClubID join Student on Member_of_club.StuID = Student.StuID where  club.clubname = "Tennis Club"

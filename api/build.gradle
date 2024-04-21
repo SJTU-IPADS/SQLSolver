@@ -1,0 +1,15 @@
+dependencies {
+    implementation project(":sql")
+    implementation project(":common")
+    implementation project(":superopt")
+    implementation project(":stmt")
+    implementation('org.apache.calcite:calcite-core:1.36.0')
+}
+
+task run(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainModule = 'sqlsolver.api'
+    mainClass = 'sqlsolver.api.Entry'
+    modularity.inferModulePath = false
+    jvmArgs += ['--module-path', classpath.asPath]
+}

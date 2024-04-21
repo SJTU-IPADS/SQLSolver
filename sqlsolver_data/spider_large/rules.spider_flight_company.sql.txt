@@ -1,0 +1,38 @@
+SELECT count(*) FROM flight WHERE velocity  >  200
+select count(*) from flight where  flight.velocity > 200
+SELECT vehicle_flight_number ,  date ,  pilot FROM flight ORDER BY altitude ASC
+select flight.vehicle_flight_number , flight.date , flight.pilot from flight   order by flight.altitude asc
+SELECT id ,  country ,  city ,  name FROM airport ORDER BY name
+select airport.id , airport.country , airport.city , airport.name from airport   order by airport.name asc
+SELECT max(group_equity_shareholding) FROM operate_company
+select max(operate_company.group_equity_shareholding) from operate_company
+SELECT avg(velocity) FROM flight WHERE pilot  =  'Thompson'
+select avg(flight.velocity) from flight where  flight.pilot = "Thompson"
+SELECT T1.name ,  T1.type FROM operate_company AS T1 JOIN flight AS t2 ON T1.id  =  T2.company_id
+select operate_company.name , operate_company.type from flight join operate_company on flight.company_id = operate_company.id
+SELECT name FROM airport WHERE country != 'Iceland'
+select airport.name from airport where  airport.country != "Iceland"
+SELECT DISTINCT T1.type FROM operate_company AS T1 JOIN flight AS t2 ON T1.id  =  T2.company_id WHERE T2.velocity  <  200
+select distinct operate_company.type from flight join operate_company on flight.company_id = operate_company.id where  flight.velocity < 200
+SELECT T1.id ,  T1.name FROM operate_company AS T1 JOIN flight AS t2 ON T1.id  =  T2.company_id GROUP BY T1.id HAVING count(*)  >  1
+select operate_company.id , operate_company.name from flight join operate_company on flight.company_id = operate_company.id  group by operate_company.id having  count(*) > 1
+SELECT T1.id ,  T1.name ,  T1.IATA FROM airport AS T1 JOIN flight AS T2 ON T1.id  =  T2.airport_id GROUP BY T2.id ORDER BY count(*) DESC LIMIT 1
+select airport.id , airport.name , airport.iata from flight join airport on flight.airport_id = airport.id  group by flight.id  order by count(*) desc limit 1
+SELECT DISTINCT T2.pilot FROM airport AS T1 JOIN flight AS T2 ON T1.id  =  T2.airport_id WHERE T1.country  =  'United States' OR T1.name  =  'Billund Airport'
+select distinct flight.pilot from flight join airport on flight.airport_id = airport.id where  airport.country = "United States" or airport.name = "Billund Airport"
+SELECT TYPE ,  count(*) FROM operate_company GROUP BY TYPE ORDER BY count(*) DESC LIMIT 1
+select operate_company.type , count(*) from operate_company  group by operate_company.type  order by count(*) desc limit 1
+SELECT count(*) FROM airport WHERE id NOT IN ( SELECT airport_id FROM flight WHERE pilot  =  'Thompson' );
+select count(*) from airport where  airport.id not in (select flight.airport_id from flight where  flight.pilot = "Thompson"  )
+SELECT T2.pilot FROM operate_company AS T1 JOIN flight AS t2 ON T1.id  =  T2.company_id WHERE T1.principal_activities  =  'Cargo' INTERSECT SELECT T2.pilot FROM operate_company AS T1 JOIN flight AS t2 ON T1.id  =  T2.company_id WHERE T1.principal_activities  =  'Catering services'
+select flight.pilot from flight join operate_company on flight.company_id = operate_company.id where  operate_company.principal_activities = "Cargo"   intersect select flight.pilot from flight join operate_company on flight.company_id = operate_company.id where  operate_company.principal_activities = "Catering services"
+SELECT name FROM airport WHERE name LIKE '%international%'
+select airport.name from airport where  airport.name like "%international%"
+SELECT T3.id ,  count(*) FROM operate_company AS T1 JOIN flight AS t2 ON T1.id  =  T2.company_id JOIN airport AS T3 ON T2.airport_id  =  T3.id GROUP BY T3.id
+select airport.id , count(*) from flight join operate_company on flight.company_id = operate_company.id join airport on flight.airport_id = airport.id  group by airport.id
+SELECT count(*) ,  country FROM airport GROUP BY country
+select count(*) , airport.country from airport  group by airport.country
+SELECT country FROM airport GROUP BY country HAVING count(*)  >  2
+select airport.country from airport  group by airport.country having  count(*) > 2
+SELECT pilot FROM flight GROUP BY pilot ORDER BY count(*) DESC LIMIT 1
+select flight.pilot from flight  group by flight.pilot  order by count(*) desc limit 1

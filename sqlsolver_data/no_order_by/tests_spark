@@ -1,0 +1,14 @@
+SELECT 1 AS X, 2 AS Y, emp.empno FROM emp AS emp
+SELECT 1 AS X, 2 AS Y, emp.empno FROM emp AS emp
+SELECT emp.empno FROM emp AS emp
+SELECT emp.empno FROM emp AS emp
+SELECT emp.empno FROM emp AS emp
+SELECT emp.empno FROM emp AS emp
+SELECT t0.empno FROM (SELECT emp.empno FROM emp AS emp) t0
+SELECT t0.empno FROM (SELECT emp.empno FROM emp AS emp) t0
+SELECT * FROM (SELECT * FROM dept AS dept) d1 INNER JOIN (SELECT * FROM dept AS dept) d2
+SELECT * FROM (SELECT * FROM dept AS dept) d1 INNER JOIN (SELECT * FROM dept AS dept) d2
+SELECT MIN(t0.empno) FROM (SELECT * FROM emp AS emp) t0
+SELECT MIN(t0.empno) FROM (SELECT * FROM emp AS emp) t0
+SELECT * FROM emp AS emp
+SELECT * FROM emp AS emp

@@ -1,0 +1,116 @@
+SELECT count(*) FROM country
+select count(*) from country
+SELECT count(*) FROM country
+select count(*) from country
+SELECT Country_name ,  Capital FROM country
+select country.country_name , country.capital from country
+SELECT Country_name ,  Capital FROM country
+select country.country_name , country.capital from country
+SELECT Official_native_language FROM country WHERE Official_native_language LIKE "%English%"
+select country.official_native_language from country where  country.official_native_language like "%English%"
+SELECT Official_native_language FROM country WHERE Official_native_language LIKE "%English%"
+select country.official_native_language from country where  country.official_native_language like "%English%"
+SELECT DISTINCT POSITION FROM match_season
+select distinct match_season.position from match_season
+SELECT DISTINCT POSITION FROM match_season
+select distinct match_season.position from match_season
+SELECT Player FROM match_season WHERE College  =  "UCLA"
+select match_season.player from match_season where  match_season.college = "UCLA"
+SELECT Player FROM match_season WHERE College  =  "UCLA"
+select match_season.player from match_season where  match_season.college = "UCLA"
+SELECT DISTINCT POSITION FROM match_season WHERE College  =  "UCLA" OR College  =  "Duke"
+select distinct match_season.position from match_season where  match_season.college = "UCLA" or match_season.college = "Duke"
+SELECT DISTINCT POSITION FROM match_season WHERE College  =  "UCLA" OR College  =  "Duke"
+select distinct match_season.position from match_season where  match_season.college = "UCLA" or match_season.college = "Duke"
+SELECT Draft_Pick_Number ,  Draft_Class FROM match_season WHERE POSITION  =  "Defender"
+select match_season.draft_pick_number , match_season.draft_class from match_season where  match_season.position = "Defender"
+SELECT Draft_Pick_Number ,  Draft_Class FROM match_season WHERE POSITION  =  "Defender"
+select match_season.draft_pick_number , match_season.draft_class from match_season where  match_season.position = "Defender"
+SELECT count(DISTINCT Team) FROM match_season
+select count( distinct match_season.team) from match_season
+SELECT count(DISTINCT Team) FROM match_season
+select count( distinct match_season.team) from match_season
+SELECT Player ,  Years_Played FROM player
+select player.player , player.years_played from player
+SELECT Player ,  Years_Played FROM player
+select player.player , player.years_played from player
+SELECT Name FROM Team
+select team.name from team
+SELECT Name FROM Team
+select team.name from team
+SELECT T2.Season ,  T2.Player ,  T1.Country_name FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country
+select match_season.season , match_season.player , country.country_name from match_season join country on match_season.Country = country.Country_id
+SELECT T2.Season ,  T2.Player ,  T1.Country_name FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country
+select match_season.season , match_season.player , country.country_name from match_season join country on match_season.Country = country.Country_id
+SELECT T2.Player FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T1.Country_name  =  "Indonesia"
+select match_season.player from match_season join country on match_season.Country = country.Country_id where  country.country_name = "Indonesia"
+SELECT T2.Player FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T1.Country_name  =  "Indonesia"
+select match_season.player from match_season join country on match_season.Country = country.Country_id where  country.country_name = "Indonesia"
+SELECT DISTINCT T2.Position FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T1.Capital  =  "Dublin"
+select distinct match_season.position from match_season join country on match_season.Country = country.Country_id where  country.capital = "Dublin"
+SELECT DISTINCT T2.Position FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T1.Capital  =  "Dublin"
+select distinct match_season.position from match_season join country on match_season.Country = country.Country_id where  country.capital = "Dublin"
+SELECT T1.Official_native_language FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T2.College  =  "Maryland" OR T2.College  =  "Duke"
+select country.official_native_language from match_season join country on match_season.Country = country.Country_id where  match_season.college = "Maryland" or match_season.college = "Duke"
+SELECT T1.Official_native_language FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T2.College  =  "Maryland" OR T2.College  =  "Duke"
+select country.official_native_language from match_season join country on match_season.Country = country.Country_id where  match_season.college = "Maryland" or match_season.college = "Duke"
+SELECT count(DISTINCT T1.Official_native_language) FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T2.Position  =  "Defender"
+select count( distinct country.official_native_language) from match_season join country on match_season.Country = country.Country_id where  match_season.position = "Defender"
+SELECT count(DISTINCT T1.Official_native_language) FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T2.Position  =  "Defender"
+select count( distinct country.official_native_language) from match_season join country on match_season.Country = country.Country_id where  match_season.position = "Defender"
+SELECT T1.Season ,  T1.Player ,  T2.Name FROM match_season AS T1 JOIN team AS T2 ON T1.Team  =  T2.Team_id
+select match_season.season , match_season.player , team.name from match_season join team on match_season.Team = team.Team_id
+SELECT T1.Season ,  T1.Player ,  T2.Name FROM match_season AS T1 JOIN team AS T2 ON T1.Team  =  T2.Team_id
+select match_season.season , match_season.player , team.name from match_season join team on match_season.Team = team.Team_id
+SELECT T1.Position FROM match_season AS T1 JOIN team AS T2 ON T1.Team  =  T2.Team_id WHERE T2.Name  =  "Ryley Goldner"
+select match_season.position from match_season join team on match_season.Team = team.Team_id where  team.name = "Ryley Goldner"
+SELECT T1.Position FROM match_season AS T1 JOIN team AS T2 ON T1.Team  =  T2.Team_id WHERE T2.Name  =  "Ryley Goldner"
+select match_season.position from match_season join team on match_season.Team = team.Team_id where  team.name = "Ryley Goldner"
+SELECT count(DISTINCT T1.College) FROM match_season AS T1 JOIN team AS T2 ON T1.Team  =  T2.Team_id WHERE T2.Name  =  "Columbus Crew"
+select count( distinct match_season.college) from match_season join team on match_season.Team = team.Team_id where  team.name = "Columbus Crew"
+SELECT count(DISTINCT T1.College) FROM match_season AS T1 JOIN team AS T2 ON T1.Team  =  T2.Team_id WHERE T2.Name  =  "Columbus Crew"
+select count( distinct match_season.college) from match_season join team on match_season.Team = team.Team_id where  team.name = "Columbus Crew"
+SELECT T1.Player , T1.Years_Played FROM player AS T1 JOIN team AS T2 ON T1.Team  =  T2.Team_id WHERE T2.Name  =  "Columbus Crew"
+select player.player , player.years_played from player join team on player.Team = team.Team_id where  team.name = "Columbus Crew"
+SELECT T1.Player , T1.Years_Played FROM player AS T1 JOIN team AS T2 ON T1.Team  =  T2.Team_id WHERE T2.Name  =  "Columbus Crew"
+select player.player , player.years_played from player join team on player.Team = team.Team_id where  team.name = "Columbus Crew"
+SELECT POSITION ,  COUNT(*) FROM match_season GROUP BY POSITION
+select match_season.position , count(*) from match_season  group by match_season.position
+SELECT POSITION ,  COUNT(*) FROM match_season GROUP BY POSITION
+select match_season.position , count(*) from match_season  group by match_season.position
+SELECT Country_name ,  COUNT(*) FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country GROUP BY T1.Country_name
+select country.country_name , count(*) from match_season join country on match_season.Country = country.Country_id  group by country.country_name
+SELECT Country_name ,  COUNT(*) FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country GROUP BY T1.Country_name
+select country.country_name , count(*) from match_season join country on match_season.Country = country.Country_id  group by country.country_name
+SELECT player FROM match_season ORDER BY College ASC
+select match_season.player from match_season   order by match_season.college asc
+SELECT player FROM match_season ORDER BY College ASC
+select match_season.player from match_season   order by match_season.college asc
+SELECT POSITION FROM match_season GROUP BY POSITION ORDER BY count(*) DESC LIMIT 1
+select match_season.position from match_season  group by match_season.position  order by count(*) desc limit 1
+SELECT POSITION FROM match_season GROUP BY POSITION ORDER BY count(*) DESC LIMIT 1
+select match_season.position from match_season  group by match_season.position  order by count(*) desc limit 1
+SELECT College FROM match_season GROUP BY College ORDER BY count(*) DESC LIMIT 3
+select match_season.college from match_season  group by match_season.college  order by count(*) desc limit 3
+SELECT College FROM match_season GROUP BY College ORDER BY count(*) DESC LIMIT 3
+select match_season.college from match_season  group by match_season.college  order by count(*) desc limit 3
+SELECT College FROM match_season GROUP BY College HAVING count(*)  >=  2
+select match_season.college from match_season  group by match_season.college having  count(*) >= 2
+SELECT College FROM match_season GROUP BY College HAVING count(*)  >=  2
+select match_season.college from match_season  group by match_season.college having  count(*) >= 2
+SELECT College FROM match_season GROUP BY College HAVING count(*)  >=  2 ORDER BY College DESC
+select match_season.college from match_season  group by match_season.college having  count(*) >= 2  order by match_season.college desc
+SELECT College FROM match_season GROUP BY College HAVING count(*)  >=  2 ORDER BY College DESC
+select match_season.college from match_season  group by match_season.college having  count(*) >= 2  order by match_season.college desc
+SELECT Name FROM team WHERE Team_id NOT IN (SELECT Team FROM match_season)
+select team.name from team where  team.team_id not in (select match_season.Team from match_season  )
+SELECT Name FROM team WHERE Team_id NOT IN (SELECT Team FROM match_season)
+select team.name from team where  team.team_id not in (select match_season.Team from match_season  )
+SELECT T1.Country_name FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T2.Position  =  "Forward" INTERSECT SELECT T1.Country_name FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T2.Position  =  "Defender"
+select country.country_name from match_season join country on match_season.Country = country.Country_id where  match_season.position = "Forward"   intersect select country.country_name from match_season join country on match_season.Country = country.Country_id where  match_season.position = "Defender"
+SELECT T1.Country_name FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T2.Position  =  "Forward" INTERSECT SELECT T1.Country_name FROM country AS T1 JOIN match_season AS T2 ON T1.Country_id  =  T2.Country WHERE T2.Position  =  "Defender"
+select country.country_name from match_season join country on match_season.Country = country.Country_id where  match_season.position = "Forward"   intersect select country.country_name from match_season join country on match_season.Country = country.Country_id where  match_season.position = "Defender"
+SELECT College FROM match_season WHERE POSITION  =  "Midfielder" INTERSECT SELECT College FROM match_season WHERE POSITION  =  "Defender"
+select match_season.college from match_season where  match_season.position = "Midfielder"   intersect select match_season.college from match_season where  match_season.position = "Defender"
+SELECT College FROM match_season WHERE POSITION  =  "Midfielder" INTERSECT SELECT College FROM match_season WHERE POSITION  =  "Defender"
+select match_season.college from match_season where  match_season.position = "Midfielder"   intersect select match_season.college from match_season where  match_season.position = "Defender"

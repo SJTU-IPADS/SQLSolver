@@ -1,0 +1,164 @@
+SELECT Name FROM WINE ORDER BY Score LIMIT 1
+select wine.name from wine   order by wine.score asc limit 1
+SELECT Name FROM WINE ORDER BY Score LIMIT 1
+select wine.name from wine   order by wine.score asc limit 1
+SELECT Winery FROM WINE ORDER BY SCORE LIMIT 1
+select wine.winery from wine   order by wine.score asc limit 1
+SELECT Winery FROM WINE ORDER BY SCORE LIMIT 1
+select wine.winery from wine   order by wine.score asc limit 1
+SELECT Name FROM WINE WHERE YEAR  =  "2008"
+select wine.name from wine where  wine.year = "2008"
+SELECT Name FROM WINE WHERE YEAR  =  "2008"
+select wine.name from wine where  wine.year = "2008"
+SELECT Grape ,  Appelation FROM WINE
+select wine.grape , wine.appelation from wine
+SELECT Grape ,  Appelation FROM WINE
+select wine.grape , wine.appelation from wine
+SELECT Name ,  Score FROM WINE
+select wine.name , wine.score from wine
+SELECT Name ,  Score FROM WINE
+select wine.name , wine.score from wine
+SELECT Area ,  County FROM APPELLATIONS
+select appellations.area , appellations.county from appellations
+SELECT Area ,  County FROM APPELLATIONS
+select appellations.area , appellations.county from appellations
+SELECT Price FROM WINE WHERE YEAR  <  2010
+select wine.price from wine where  wine.year < 2010
+SELECT Price FROM WINE WHERE YEAR  <  2010
+select wine.price from wine where  wine.year < 2010
+SELECT Name FROM WINE WHERE score  >  90
+select wine.name from wine where  wine.score > 90
+SELECT Name FROM WINE WHERE score  >  90
+select wine.name from wine where  wine.score > 90
+SELECT DISTINCT T2.Name FROM GRAPES AS T1 JOIN WINE AS T2 ON T1.Grape  =  T2.Grape WHERE T1.Color  =  "Red"
+select distinct wine.name from wine join grapes on wine.Grape = grapes.Grape where  grapes.color = "Red"
+SELECT DISTINCT T2.Name FROM GRAPES AS T1 JOIN WINE AS T2 ON T1.Grape  =  T2.Grape WHERE T1.Color  =  "Red"
+select distinct wine.name from wine join grapes on wine.Grape = grapes.Grape where  grapes.color = "Red"
+SELECT DISTINCT T2.Name FROM APPELLATIONs AS T1 JOIN WINE AS T2 ON T1.Appelation  =  T2.Appelation WHERE T1.Area  =  "North Coast"
+select distinct wine.name from wine join appellations on wine.Appelation = appellations.Appelation where  appellations.area = "North Coast"
+SELECT DISTINCT T2.Name FROM APPELLATIONs AS T1 JOIN WINE AS T2 ON T1.Appelation  =  T2.Appelation WHERE T1.Area  =  "North Coast"
+select distinct wine.name from wine join appellations on wine.Appelation = appellations.Appelation where  appellations.area = "North Coast"
+SELECT count(*) FROM WINE WHERE Winery  =  "Robert Biale"
+select count(*) from wine where  wine.winery = "Robert Biale"
+SELECT count(*) FROM WINE WHERE Winery  =  "Robert Biale"
+select count(*) from wine where  wine.winery = "Robert Biale"
+SELECT count(*) FROM APPELLATIONS WHERE County  =  "Napa"
+select count(*) from appellations where  appellations.county = "Napa"
+SELECT count(*) FROM APPELLATIONS WHERE County  =  "Napa"
+select count(*) from appellations where  appellations.county = "Napa"
+SELECT AVG(T2.Price) FROM APPELLATIONS AS T1 JOIN WINE AS T2 ON T1.Appelation  =  T2.Appelation WHERE T1.County  =  "Sonoma"
+select avg(wine.price) from wine join appellations on wine.Appelation = appellations.Appelation where  appellations.county = "Sonoma"
+SELECT AVG(T2.Price) FROM APPELLATIONS AS T1 JOIN WINE AS T2 ON T1.Appelation  =  T2.Appelation WHERE T1.County  =  "Sonoma"
+select avg(wine.price) from wine join appellations on wine.Appelation = appellations.Appelation where  appellations.county = "Sonoma"
+SELECT T2.Name ,   T2.Score FROM GRAPES AS T1 JOIN WINE AS T2 ON T1.Grape  =  T2.Grape WHERE T1.Color  =  "White"
+select wine.name , wine.score from wine join grapes on wine.Grape = grapes.Grape where  grapes.color = "White"
+SELECT T2.Name ,   T2.Score FROM GRAPES AS T1 JOIN WINE AS T2 ON T1.Grape  =  T2.Grape WHERE T1.Color  =  "White"
+select wine.name , wine.score from wine join grapes on wine.Grape = grapes.Grape where  grapes.color = "White"
+SELECT max(T2.Price) FROM APPELLATIONS AS T1 JOIN WINE AS T2 ON T1.Appelation  =  T2.Appelation WHERE T1.Area  =  "Central Coast" AND T2.year  <  2005
+select max(wine.price) from wine join appellations on wine.Appelation = appellations.Appelation where  appellations.area = "Central Coast" and wine.year < 2005
+SELECT max(T2.Price) FROM APPELLATIONS AS T1 JOIN WINE AS T2 ON T1.Appelation  =  T2.Appelation WHERE T1.Area  =  "Central Coast" AND T2.year  <  2005
+select max(wine.price) from wine join appellations on wine.Appelation = appellations.Appelation where  appellations.area = "Central Coast" and wine.year < 2005
+SELECT DISTINCT T1.Grape FROM GRAPES AS T1 JOIN WINE AS T2 ON T1.Grape  =  T2.Grape WHERE T1.Color  =  "White" AND T2.score  >  90
+select distinct wine.grape from wine join grapes on wine.Grape = grapes.Grape where  grapes.color = "White" and wine.score > 90
+SELECT DISTINCT T1.Grape FROM GRAPES AS T1 JOIN WINE AS T2 ON T1.Grape  =  T2.Grape WHERE T1.Color  =  "White" AND T2.score  >  90
+select distinct grapes.grape from wine join grapes on wine.Grape = grapes.Grape where  grapes.color = "White" and wine.score > 90
+SELECT T2.Name FROM Grapes AS T1 JOIN WINE AS T2 ON T1.Grape  =  T2.Grape WHERE T1.Color  =  "Red" AND T2.price  >  50
+select wine.name from wine join grapes on wine.Grape = grapes.Grape where  grapes.color = "Red" and wine.price > 50
+SELECT T2.Name FROM Grapes AS T1 JOIN WINE AS T2 ON T1.Grape  =  T2.Grape WHERE T1.Color  =  "Red" AND T2.price  >  50
+select wine.name from wine join grapes on wine.Grape = grapes.Grape where  grapes.color = "Red" and wine.price > 50
+SELECT T2.Name FROM APPELLATIONS AS T1 JOIN WINE AS T2 ON T1.Appelation  =  T2.Appelation WHERE T1.County  =  "Monterey" AND T2.price  <  50
+select wine.name from wine join appellations on wine.Appelation = appellations.Appelation where  appellations.county = "Monterey" and wine.price < 50
+SELECT T2.Name FROM APPELLATIONS AS T1 JOIN WINE AS T2 ON T1.Appelation  =  T2.Appelation WHERE T1.County  =  "Monterey" AND T2.price  <  50
+select wine.name from wine join appellations on wine.Appelation = appellations.Appelation where  appellations.county = "Monterey" and wine.price < 50
+SELECT count(*) ,  Grape FROM WINE GROUP BY Grape
+select count(*) , wine.grape from wine  group by wine.grape
+SELECT count(*) ,  Grape FROM WINE GROUP BY Grape
+select wine.grape , count(*) from wine  group by wine.grape
+SELECT avg(Price) ,  YEAR FROM WINE GROUP BY YEAR
+select avg(wine.price) , wine.year from wine  group by wine.year
+SELECT avg(Price) ,  YEAR FROM WINE GROUP BY YEAR
+select avg(wine.price) , wine.year from wine  group by wine.year
+SELECT DISTINCT Name FROM WINE WHERE Price  >  (SELECT min(Price) FROM wine WHERE Winery  =  "John Anthony")
+select distinct wine.name from wine where  wine.price > (select min(wine.price) from wine where  wine.winery = "John Anthony"  )
+SELECT DISTINCT Name FROM WINE WHERE Price  >  (SELECT min(Price) FROM wine WHERE Winery  =  "John Anthony")
+select distinct wine.name from wine where  wine.price > (select min(wine.price) from wine where  wine.winery = "John Anthony"  )
+SELECT DISTINCT Name FROM WINE ORDER BY Name
+select distinct wine.name from wine   order by wine.name asc
+SELECT DISTINCT Name FROM WINE ORDER BY Name
+select distinct wine.name from wine   order by wine.name asc
+SELECT DISTINCT Name FROM WINE ORDER BY price
+select distinct wine.name from wine   order by wine.price asc
+SELECT DISTINCT Name FROM WINE ORDER BY price
+select distinct wine.name from wine   order by wine.price asc
+SELECT T1.Area FROM APPELLATIONS AS T1 JOIN WINE AS T2 ON T1.Appelation  =  T2.Appelation GROUP BY T2.Appelation HAVING T2.year  <  2010 ORDER BY count(*) DESC LIMIT 1
+select appellations.area from wine join appellations on wine.Appelation = appellations.Appelation where  wine.year < 2010  group by wine.appelation  order by count(*) desc limit 1
+SELECT T1.Area FROM APPELLATIONS AS T1 JOIN WINE AS T2 ON T1.Appelation  =  T2.Appelation GROUP BY T2.Appelation HAVING T2.year  <  2010 ORDER BY count(*) DESC LIMIT 1
+select appellations.area from wine join appellations on wine.Appelation = appellations.Appelation where  wine.year < 2010  group by wine.appelation  order by count(*) desc limit 1
+SELECT T1.Color FROM GRAPES AS T1 JOIN WINE AS T2 ON T1.Grape  =  T2.Grape GROUP BY T2.Grape ORDER BY AVG(Price) DESC LIMIT 1
+select grapes.color from wine join grapes on wine.Grape = grapes.Grape  group by wine.grape  order by avg(wine.price) desc limit 1
+SELECT T1.Color FROM GRAPES AS T1 JOIN WINE AS T2 ON T1.Grape  =  T2.Grape GROUP BY T2.Grape ORDER BY AVG(Price) DESC LIMIT 1
+select grapes.color from wine join grapes on wine.Grape = grapes.Grape  group by wine.grape  order by avg(wine.price) desc limit 1
+SELECT DISTINCT Name FROM WINE WHERE YEAR  <  2000 OR YEAR  >  2010
+select distinct wine.name from wine where  wine.year < 2000 or wine.year > 2010
+SELECT DISTINCT Name FROM WINE WHERE YEAR  <  2000 OR YEAR  >  2010
+select distinct wine.name from wine where  wine.year < 2000 or wine.year > 2010
+SELECT DISTINCT Winery FROM WINE WHERE Price BETWEEN 50 AND 100
+select distinct wine.winery from wine where  wine.price between 50 and 100
+SELECT DISTINCT Winery FROM WINE WHERE Price BETWEEN 50 AND 100
+select distinct wine.winery from wine where  wine.price between 50 and 100
+SELECT AVG(Price) ,  AVG(Cases) FROM WINE WHERE YEAR  =  2009 AND Grape  =  "Zinfandel"
+select avg(wine.price) , avg(wine.cases) from wine where  wine.year = 2009 and wine.grape = "Zinfandel"
+SELECT AVG(Price) ,  AVG(Cases) FROM WINE WHERE YEAR  =  2009 AND Grape  =  "Zinfandel"
+select avg(wine.price) , avg(wine.cases) from wine where  wine.year = 2009 and wine.grape = "Zinfandel"
+SELECT max(Price) ,  max(Score) FROM WINE WHERE Appelation  =  "St. Helena"
+select max(wine.price) , max(wine.score) from wine where  wine.appelation = "St. Helena"
+SELECT max(Price) ,  max(Score) FROM WINE WHERE Appelation  =  "St. Helena"
+select max(wine.price) , max(wine.score) from wine where  wine.appelation = "St. Helena"
+SELECT max(Price) ,  max(Score) ,  YEAR FROM WINE GROUP BY YEAR
+select max(wine.price) , max(wine.score) , wine.year from wine  group by wine.year
+SELECT max(Price) ,  max(Score) ,  YEAR FROM WINE GROUP BY YEAR
+select max(wine.price) , max(wine.score) , wine.year from wine  group by wine.year
+SELECT avg(Price) ,  avg(Score) ,  Appelation FROM WINE GROUP BY Appelation
+select avg(wine.price) , avg(wine.score) , wine.appelation from wine  group by wine.appelation
+SELECT avg(Price) ,  avg(Score) ,  Appelation FROM WINE GROUP BY Appelation
+select avg(wine.price) , avg(wine.score) , wine.appelation from wine  group by wine.appelation
+SELECT Winery FROM WINE GROUP BY Winery HAVING count(*)  >=  4
+select wine.winery from wine  group by wine.winery having  count(*) >= 4
+SELECT Winery FROM WINE GROUP BY Winery HAVING count(*)  >=  4
+select wine.winery from wine  group by wine.winery having  count(*) >= 4
+SELECT T1.County FROM APPELLATIONS AS T1 JOIN WINE AS T2 ON T1.Appelation  =  T2.Appelation GROUP BY T2.Appelation HAVING count(*)  <=  3
+select appellations.county from wine join appellations on wine.Appelation = appellations.Appelation  group by wine.appelation having  count(*) < 3
+SELECT T1.County FROM APPELLATIONS AS T1 JOIN WINE AS T2 ON T1.Appelation  =  T2.Appelation GROUP BY T2.Appelation HAVING count(*)  <=  3
+select appellations.county from wine join appellations on wine.Appelation = appellations.Appelation  group by wine.appelation having  count(*) < 3
+SELECT Name FROM WINE WHERE YEAR  <  (SELECT min(YEAR) FROM WINE WHERE Winery  =  "Brander")
+select wine.name from wine where  wine.year < (select min(wine.year) from wine where  wine.winery = "Brander"  )
+SELECT Name FROM WINE WHERE YEAR  <  (SELECT min(YEAR) FROM WINE WHERE Winery  =  "Brander")
+select wine.name from wine where  wine.year < (select min(wine.year) from wine where  wine.winery = "Brander"  )
+SELECT Name FROM WINE WHERE Price  >  (SELECT max(Price) FROM WINE WHERE YEAR  =  2006)
+select wine.name from wine where  wine.price > (select max(wine.price) from wine where  wine.year = 2006  )
+SELECT Name FROM WINE WHERE Price  >  (SELECT max(Price) FROM WINE WHERE YEAR  =  2006)
+select wine.name from wine where  wine.price > (select max(wine.price) from wine where  wine.year = 2006  )
+SELECT T2.Winery FROM GRAPES AS T1 JOIN WINE AS T2 ON T1.GRAPE  =  T2.GRAPE WHERE T1.Color  =  "White" GROUP BY T2.Winery ORDER BY count(*) DESC LIMIT 3
+select wine.winery from wine join grapes on wine.Grape = grapes.Grape where  grapes.color = "White"  group by wine.winery  order by count(*) desc limit 3
+SELECT T2.Winery FROM GRAPES AS T1 JOIN WINE AS T2 ON T1.GRAPE  =  T2.GRAPE WHERE T1.Color  =  "White" GROUP BY T2.Winery ORDER BY count(*) DESC LIMIT 3
+select wine.winery from wine join grapes on wine.Grape = grapes.Grape where  grapes.color = "White"  group by wine.winery  order by count(*) desc limit 3
+SELECT Grape ,  Winery ,  YEAR FROM WINE WHERE Price  >   100 ORDER BY YEAR
+select wine.grape , wine.winery , wine.year from wine where  wine.price > 100   order by wine.year asc
+SELECT Grape ,  Winery ,  YEAR FROM WINE WHERE Price  >   100 ORDER BY YEAR
+select wine.grape , wine.winery , wine.year from wine where  wine.price > 100   order by wine.year asc
+SELECT Grape ,  Appelation ,  Name FROM WINE WHERE Score  >  93 ORDER BY Name
+select wine.grape , wine.appelation , wine.name from wine where  wine.score > 93   order by wine.name asc
+SELECT Grape ,  Appelation ,  Name FROM WINE WHERE Score  >  93 ORDER BY Name
+select wine.grape , wine.appelation , wine.name from wine where  wine.score > 93   order by wine.name asc
+SELECT Appelation FROM WINE WHERE YEAR  >  2008 EXCEPT SELECT Appelation FROM APPELLATIONS WHERE Area  =  "Central Coast"
+select wine.appelation from wine where  wine.year > 2008   except select appellations.appelation from appellations where  appellations.area = "Central Coast"
+SELECT Appelation FROM WINE WHERE YEAR  >  2008 EXCEPT SELECT Appelation FROM APPELLATIONS WHERE Area  =  "Central Coast"
+select wine.appelation from wine where  wine.year > 2008   except select appellations.appelation from appellations where  appellations.area = "Central Coast"
+SELECT avg(price) FROM wine WHERE Appelation NOT IN (SELECT T1.Appelation FROM APPELLATIONS AS T1 JOIN WINE AS T2 ON T1.Appelation  =  T2.Appelation WHERE T1.County  =  'Sonoma')
+select avg(wine.price) from wine where  wine.appelation not in (select appellations.Appelation from appellations join wine on appellations.Appelation = wine.Appelation where  appellations.county = "Sonoma"  )
+SELECT avg(price) FROM wine WHERE Appelation NOT IN (SELECT T1.Appelation FROM APPELLATIONS AS T1 JOIN WINE AS T2 ON T1.Appelation  =  T2.Appelation WHERE T1.County  =  'Sonoma')
+select avg(wine.price) from wine where  wine.appelation not in (select appellations.Appelation from appellations join wine on appellations.Appelation = wine.Appelation where  appellations.county = "Sonoma"  )
+SELECT T1.County FROM APPELLATIONS AS T1 JOIN WINE AS T2 ON T1.Appelation  =  T2.Appelation WHERE T2.Score  >  90 GROUP BY T1.County ORDER BY count(*) DESC LIMIT 1
+select appellations.county from wine join appellations on wine.Appelation = appellations.Appelation where  wine.score > 90  group by appellations.county  order by count(*) desc limit 1
+SELECT T1.County FROM APPELLATIONS AS T1 JOIN WINE AS T2 ON T1.Appelation  =  T2.Appelation WHERE T2.Score  >  90 GROUP BY T1.County ORDER BY count(*) DESC LIMIT 1
+select appellations.county from wine join appellations on wine.Appelation = appellations.Appelation where  wine.score > 90  group by appellations.county  order by count(*) desc limit 1

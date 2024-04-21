@@ -1,0 +1,88 @@
+SELECT count(*) FROM enzyme
+select count(*) from enzyme
+SELECT count(*) FROM enzyme
+select count(*) from enzyme
+SELECT name FROM enzyme ORDER BY name DESC
+select enzyme.name from enzyme   order by enzyme.name desc
+SELECT name FROM enzyme ORDER BY name DESC
+select enzyme.name from enzyme   order by enzyme.name desc
+SELECT name ,  LOCATION FROM enzyme
+select enzyme.name , enzyme.location from enzyme
+SELECT name ,  LOCATION FROM enzyme
+select enzyme.name , enzyme.location from enzyme
+SELECT max(OMIM) FROM enzyme
+select max(enzyme.omim) from enzyme
+SELECT max(OMIM) FROM enzyme
+select max(enzyme.omim) from enzyme
+SELECT product ,  chromosome ,  porphyria FROM enzyme WHERE LOCATION  =  'Cytosol'
+select enzyme.product , enzyme.chromosome , enzyme.porphyria from enzyme where  enzyme.location = "Cytosol"
+SELECT product ,  chromosome ,  porphyria FROM enzyme WHERE LOCATION  =  'Cytosol'
+select enzyme.product , enzyme.chromosome , enzyme.porphyria from enzyme where  enzyme.location = "Cytosol"
+SELECT name FROM enzyme WHERE product != 'Heme'
+select enzyme.name from enzyme where  enzyme.product != "Heme"
+SELECT name FROM enzyme WHERE product != 'Heme'
+select enzyme.name from enzyme where  enzyme.product != "Heme"
+SELECT name ,  trade_name FROM medicine WHERE FDA_approved  =  'Yes'
+select medicine.name , medicine.trade_name from medicine where  medicine.fda_approved = "Yes"
+SELECT name ,  trade_name FROM medicine WHERE FDA_approved  =  'Yes'
+select medicine.name , medicine.trade_name from medicine where  medicine.fda_approved = "Yes"
+SELECT T1.name FROM enzyme AS T1 JOIN medicine_enzyme_interaction AS T2 ON T1.id  =  T2.enzyme_id JOIN medicine AS T3 ON T2.medicine_id  =  T3.id WHERE T3.name  =  'Amisulpride' AND T2.interaction_type  =  'inhibitor'
+select enzyme.name from medicine_enzyme_interaction join medicine on medicine_enzyme_interaction.medicine_id = medicine.id join enzyme on medicine_enzyme_interaction.enzyme_id = enzyme.id where  medicine.name = "Amisulpride" and medicine_enzyme_interaction.interaction_type = "inhibitor"
+SELECT T1.name FROM enzyme AS T1 JOIN medicine_enzyme_interaction AS T2 ON T1.id  =  T2.enzyme_id JOIN medicine AS T3 ON T2.medicine_id  =  T3.id WHERE T3.name  =  'Amisulpride' AND T2.interaction_type  =  'inhibitor'
+select enzyme.name from medicine_enzyme_interaction join medicine on medicine_enzyme_interaction.medicine_id = medicine.id join enzyme on medicine_enzyme_interaction.enzyme_id = enzyme.id where  medicine.name = "Amisulpride" and medicine_enzyme_interaction.interaction_type = "inhibitor"
+SELECT T1.id ,  T1.Name FROM medicine AS T1 JOIN medicine_enzyme_interaction AS T2 ON T2.medicine_id  =  T1.id GROUP BY T1.id HAVING count(*)  >=  2
+select medicine.id , medicine.name from medicine_enzyme_interaction join medicine on medicine_enzyme_interaction.medicine_id = medicine.id  group by medicine.id having  count(*) >= 2
+SELECT T1.id ,  T1.Name FROM medicine AS T1 JOIN medicine_enzyme_interaction AS T2 ON T2.medicine_id  =  T1.id GROUP BY T1.id HAVING count(*)  >=  2
+select medicine.name from medicine_enzyme_interaction join medicine on medicine_enzyme_interaction.medicine_id = medicine.id  group by medicine.id having  count(*) >= 2
+SELECT T1.id ,  T1.Name ,  T1.FDA_approved FROM medicine AS T1 JOIN medicine_enzyme_interaction AS T2 ON T2.medicine_id  =  T1.id GROUP BY T1.id ORDER BY count(*) DESC
+select medicine.id , medicine.name , medicine.fda_approved from medicine_enzyme_interaction join medicine on medicine_enzyme_interaction.medicine_id = medicine.id  group by medicine.id  order by count(*) desc
+SELECT T1.id ,  T1.Name ,  T1.FDA_approved FROM medicine AS T1 JOIN medicine_enzyme_interaction AS T2 ON T2.medicine_id  =  T1.id GROUP BY T1.id ORDER BY count(*) DESC
+select medicine.id , medicine.name , medicine.fda_approved from medicine_enzyme_interaction join medicine on medicine_enzyme_interaction.medicine_id = medicine.id  group by medicine.id  order by count(*) desc
+SELECT T1.id ,  T1.name FROM enzyme AS T1 JOIN medicine_enzyme_interaction AS T2 ON T1.id  =  T2.enzyme_id WHERE T2.interaction_type  =  'activitor' GROUP BY T1.id ORDER BY count(*) DESC LIMIT 1
+select enzyme.id , enzyme.name from medicine_enzyme_interaction join enzyme on medicine_enzyme_interaction.enzyme_id = enzyme.id where  medicine_enzyme_interaction.interaction_type = "activitor"  group by enzyme.id  order by count(*) desc limit 1
+SELECT T1.id ,  T1.name FROM enzyme AS T1 JOIN medicine_enzyme_interaction AS T2 ON T1.id  =  T2.enzyme_id WHERE T2.interaction_type  =  'activitor' GROUP BY T1.id ORDER BY count(*) DESC LIMIT 1
+select enzyme.id , enzyme.name from medicine_enzyme_interaction join enzyme on medicine_enzyme_interaction.enzyme_id = enzyme.id where  medicine_enzyme_interaction.interaction_type = "activitor"  group by enzyme.id  order by count(*) desc limit 1
+SELECT T1.interaction_type FROM medicine_enzyme_interaction AS T1 JOIN medicine AS T2 ON T1.medicine_id  =  T2.id JOIN enzyme AS T3 ON T1.enzyme_id  =  T3.id WHERE T3.name  =  'ALA synthase' AND T2.name  =  'Aripiprazole'
+select medicine_enzyme_interaction.interaction_type from medicine_enzyme_interaction join medicine on medicine_enzyme_interaction.medicine_id = medicine.id join enzyme on medicine_enzyme_interaction.enzyme_id = enzyme.id where  enzyme.name = "ALA synthase" and medicine.name = "Aripiprazole"
+SELECT T1.interaction_type FROM medicine_enzyme_interaction AS T1 JOIN medicine AS T2 ON T1.medicine_id  =  T2.id JOIN enzyme AS T3 ON T1.enzyme_id  =  T3.id WHERE T3.name  =  'ALA synthase' AND T2.name  =  'Aripiprazole'
+select medicine_enzyme_interaction.interaction_type from medicine_enzyme_interaction join medicine on medicine_enzyme_interaction.medicine_id = medicine.id join enzyme on medicine_enzyme_interaction.enzyme_id = enzyme.id where  enzyme.name = "ALA synthase" and medicine.name = "Aripiprazole"
+SELECT interaction_type ,  count(*) FROM medicine_enzyme_interaction GROUP BY interaction_type ORDER BY count(*) DESC LIMIT 1
+select medicine_enzyme_interaction.interaction_type , count(*) from medicine_enzyme_interaction  group by medicine_enzyme_interaction.interaction_type  order by count(*) desc limit 1
+SELECT interaction_type ,  count(*) FROM medicine_enzyme_interaction GROUP BY interaction_type ORDER BY count(*) DESC LIMIT 1
+select medicine_enzyme_interaction.interaction_type , count(*) from medicine_enzyme_interaction  group by medicine_enzyme_interaction.interaction_type  order by count(*) desc limit 1
+SELECT count(*) FROM medicine WHERE FDA_approved  =  'No'
+select count(*) from medicine where  medicine.fda_approved = "No"
+SELECT count(*) FROM medicine WHERE FDA_approved  =  'No'
+select count(*) from medicine where  medicine.fda_approved = "No"
+SELECT count(*) FROM enzyme WHERE id NOT IN ( SELECT enzyme_id FROM medicine_enzyme_interaction );
+select count(*) from enzyme where  enzyme.id not in (select medicine_enzyme_interaction.enzyme_id from medicine_enzyme_interaction  )
+SELECT count(*) FROM enzyme WHERE id NOT IN ( SELECT enzyme_id FROM medicine_enzyme_interaction );
+select count(*) from enzyme where  enzyme.id not in (select medicine_enzyme_interaction.enzyme_id from medicine_enzyme_interaction  )
+SELECT T1.id ,  T1.trade_name FROM medicine AS T1 JOIN medicine_enzyme_interaction AS T2 ON T2.medicine_id  =  T1.id GROUP BY T1.id HAVING COUNT(*)  >=  3
+select medicine.id , medicine.trade_name from medicine_enzyme_interaction join medicine on medicine_enzyme_interaction.medicine_id = medicine.id  group by medicine.id having  count(*) >= 3
+SELECT T1.id ,  T1.trade_name FROM medicine AS T1 JOIN medicine_enzyme_interaction AS T2 ON T2.medicine_id  =  T1.id GROUP BY T1.id HAVING COUNT(*)  >=  3
+select medicine.id , medicine.trade_name from medicine_enzyme_interaction join medicine on medicine_enzyme_interaction.medicine_id = medicine.id  group by medicine.id having  count(*) >= 3
+SELECT DISTINCT T1.name ,  T1.location ,  T1.product FROM enzyme AS T1 JOIN medicine_enzyme_interaction AS T2 ON T2.enzyme_id  =  T1.id WHERE T2.interaction_type  =  'inhibitor'
+select distinct enzyme.name , enzyme.location , enzyme.product from medicine_enzyme_interaction join enzyme on medicine_enzyme_interaction.enzyme_id = enzyme.id where  medicine_enzyme_interaction.interaction_type = "inhibitor"
+SELECT DISTINCT T1.name ,  T1.location ,  T1.product FROM enzyme AS T1 JOIN medicine_enzyme_interaction AS T2 ON T2.enzyme_id  =  T1.id WHERE T2.interaction_type  =  'inhibitor'
+select distinct enzyme.name , enzyme.location , enzyme.product from medicine_enzyme_interaction join enzyme on medicine_enzyme_interaction.enzyme_id = enzyme.id where  medicine_enzyme_interaction.interaction_type = "inhibitor"
+SELECT T1.name ,  T1.trade_name FROM medicine AS T1 JOIN medicine_enzyme_interaction AS T2 ON T2.medicine_id  =  T1.id WHERE interaction_type  =  'inhibitor' INTERSECT SELECT T1.name ,  T1.trade_name FROM medicine AS T1 JOIN medicine_enzyme_interaction AS T2 ON T2.medicine_id  =  T1.id WHERE interaction_type  =  'activitor'
+select medicine.name , medicine.trade_name from medicine_enzyme_interaction join medicine on medicine_enzyme_interaction.medicine_id = medicine.id where  medicine_enzyme_interaction.interaction_type = "inhibitor"   intersect select medicine.name , medicine.trade_name from medicine_enzyme_interaction join medicine on medicine_enzyme_interaction.medicine_id = medicine.id where  medicine_enzyme_interaction.interaction_type = "activitor"
+SELECT T1.name ,  T1.trade_name FROM medicine AS T1 JOIN medicine_enzyme_interaction AS T2 ON T2.medicine_id  =  T1.id WHERE interaction_type  =  'inhibitor' INTERSECT SELECT T1.name ,  T1.trade_name FROM medicine AS T1 JOIN medicine_enzyme_interaction AS T2 ON T2.medicine_id  =  T1.id WHERE interaction_type  =  'activitor'
+select medicine.name , medicine.trade_name from medicine_enzyme_interaction join medicine on medicine_enzyme_interaction.medicine_id = medicine.id where  medicine_enzyme_interaction.interaction_type = "inhibitor"   intersect select medicine.name , medicine.trade_name from medicine_enzyme_interaction join medicine on medicine_enzyme_interaction.medicine_id = medicine.id where  medicine_enzyme_interaction.interaction_type = "activitor"
+SELECT name ,  trade_name FROM medicine EXCEPT SELECT T1.name ,  T1.trade_name FROM medicine AS T1 JOIN medicine_enzyme_interaction AS T2 ON T2.medicine_id  =  T1.id JOIN enzyme AS T3 ON T3.id  =  T2.enzyme_id WHERE T3.product  =  'Protoporphyrinogen IX'
+select medicine.name , medicine.trade_name from medicine   except select medicine.name , medicine.trade_name from medicine_enzyme_interaction join medicine on medicine_enzyme_interaction.medicine_id = medicine.id join enzyme on medicine_enzyme_interaction.enzyme_id = enzyme.id where  enzyme.product = "Protoporphyrinogen IX"
+SELECT name ,  trade_name FROM medicine EXCEPT SELECT T1.name ,  T1.trade_name FROM medicine AS T1 JOIN medicine_enzyme_interaction AS T2 ON T2.medicine_id  =  T1.id JOIN enzyme AS T3 ON T3.id  =  T2.enzyme_id WHERE T3.product  =  'Protoporphyrinogen IX'
+select medicine.name , medicine.trade_name from medicine   except select medicine.name , medicine.trade_name from medicine_enzyme_interaction join medicine on medicine_enzyme_interaction.medicine_id = medicine.id join enzyme on medicine_enzyme_interaction.enzyme_id = enzyme.id where  enzyme.product = "Protoporphyrinogen IX"
+SELECT count(DISTINCT FDA_approved) FROM medicine
+select count( distinct medicine.fda_approved) from medicine
+SELECT count(DISTINCT FDA_approved) FROM medicine
+select count( distinct medicine.fda_approved) from medicine
+SELECT name FROM enzyme WHERE name LIKE "%ALA%"
+select enzyme.name from enzyme where  enzyme.name like "%ALA%"
+SELECT name FROM enzyme WHERE name LIKE "%ALA%"
+select enzyme.name from enzyme where  enzyme.name like "%ALA%"
+SELECT trade_name ,  count(*) FROM medicine GROUP BY trade_name
+select medicine.trade_name , count(*) from medicine  group by medicine.trade_name
+SELECT trade_name ,  count(*) FROM medicine GROUP BY trade_name
+select medicine.trade_name , count(*) from medicine  group by medicine.trade_name

@@ -1,0 +1,42 @@
+SELECT count(*) FROM book
+select count(*) from book
+SELECT Writer FROM book ORDER BY Writer ASC
+select book.writer from book   order by book.writer asc
+SELECT Title FROM book ORDER BY Issues ASC
+select book.title from book   order by book.issues asc
+SELECT Title FROM book WHERE Writer != "Elaine Lee"
+select book.title from book where  book.writer != "Elaine Lee"
+SELECT Title ,  Issues FROM book
+select book.title , book.issues from book
+SELECT Publication_Date FROM publication ORDER BY Price DESC
+select publication.publication_date from publication   order by publication.price desc
+SELECT DISTINCT Publisher FROM publication WHERE Price  >  5000000
+select distinct publication.publisher from publication where  publication.price > 5000000
+SELECT Publisher FROM publication ORDER BY Price DESC LIMIT 1
+select publication.publisher from publication   order by publication.price desc limit 1
+SELECT Publication_Date FROM publication ORDER BY Price ASC LIMIT 3
+select publication.publication_date from publication   order by publication.price asc limit 3
+SELECT T1.Title ,  T2.Publication_Date FROM book AS T1 JOIN publication AS T2 ON T1.Book_ID  =  T2.Book_ID
+select book.title , publication.publication_date from publication join book on publication.Book_ID = book.Book_ID
+SELECT T1.Writer FROM book AS T1 JOIN publication AS T2 ON T1.Book_ID  =  T2.Book_ID WHERE T2.Price  >  4000000
+select book.writer from publication join book on publication.Book_ID = book.Book_ID where  publication.price > 4000000
+SELECT T1.Title FROM book AS T1 JOIN publication AS T2 ON T1.Book_ID  =  T2.Book_ID ORDER BY T2.Price DESC
+select book.title from publication join book on publication.Book_ID = book.Book_ID   order by publication.price desc
+SELECT Publisher FROM publication GROUP BY Publisher HAVING COUNT(*)  >  1
+select publication.publisher from publication  group by publication.publisher having  count(*) > 1
+SELECT Publisher ,  COUNT(*) FROM publication GROUP BY Publisher
+select publication.publisher , count(*) from publication  group by publication.publisher
+SELECT Publication_Date FROM publication GROUP BY Publication_Date ORDER BY COUNT(*) DESC LIMIT 1
+select publication.publication_date from publication  group by publication.publication_date  order by count(*) desc limit 1
+SELECT Writer FROM book GROUP BY Writer HAVING COUNT(*)  >  1
+select book.writer from book  group by book.writer having  count(*) > 1
+SELECT Title FROM book WHERE Book_ID NOT IN (SELECT Book_ID FROM publication)
+select book.title from book where  book.book_id not in (select publication.Book_ID from publication  )
+SELECT Publisher FROM publication WHERE Price  >  10000000 INTERSECT SELECT Publisher FROM publication WHERE Price  <  5000000
+select publication.publisher from publication where  publication.price > 10000000   intersect select publication.publisher from publication where  publication.price < 5000000
+SELECT COUNT (DISTINCT Publication_Date) FROM publication
+select count( distinct publication.publication_date) from publication
+SELECT COUNT (DISTINCT Publication_Date) FROM publication
+select count( distinct publication.publication_date) from publication
+SELECT Price FROM publication WHERE Publisher  =  "Person" OR Publisher  =  "Wiley"
+select publication.price from publication where  publication.publisher = "Person" or publication.publisher = "Wiley"

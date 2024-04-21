@@ -1,0 +1,60 @@
+SELECT i_id FROM item WHERE title  =  "orange"
+select item.i_id from item where  item.title = "orange"
+SELECT * FROM item
+select * from item
+SELECT count(*) FROM review
+select count(*) from review
+SELECT count(*) FROM useracct
+select count(*) from useracct
+SELECT avg(rating) ,  max(rating) FROM review
+select avg(review.rating) , max(review.rating) from review
+SELECT min(rank) FROM review
+select min(review.rank) from review
+SELECT count(DISTINCT u_id) FROM review
+select count( distinct review.u_id) from review
+SELECT count(DISTINCT i_id) FROM review
+select count( distinct review.i_id) from review
+SELECT count(*) FROM item WHERE i_id NOT IN (SELECT i_id FROM review)
+select count(*) from item where  item.i_id not in (select review.i_id from review  )
+SELECT name FROM useracct WHERE u_id NOT IN (SELECT u_id FROM review)
+select useracct.name from useracct where  useracct.u_id not in (select review.u_id from review  )
+SELECT T1.title FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id WHERE T2.rating  =  10
+select item.title from review join item on review.i_id = item.i_id where  review.rating = 10
+SELECT T1.title FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id WHERE T2.rating  >  (SELECT avg(rating) FROM review)
+select item.title from review join item on review.i_id = item.i_id where  review.rating > (select avg(review.rating) from review  )
+SELECT T1.title FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id WHERE T2.rating  <  5
+select item.title from review join item on review.i_id = item.i_id where  review.rating < 5
+SELECT T1.title FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id WHERE T2.rating  >  8 INTERSECT SELECT T1.title FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id WHERE T2.rating  <  5
+select item.title from review join item on review.i_id = item.i_id where  review.rating > 8   intersect select item.title from review join item on review.i_id = item.i_id where  review.rating < 5
+SELECT T1.title FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id WHERE T2.rank  >  3 INTERSECT SELECT T1.title FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id GROUP BY T2.i_id HAVING avg(T2.rating)  >  5
+select item.title from review join item on review.i_id = item.i_id where  review.rank > 3   intersect select item.title from review join item on review.i_id = item.i_id  group by review.i_id having  avg(review.rating) > 5
+SELECT T1.title FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id GROUP BY T2.i_id ORDER BY avg(T2.rating) LIMIT 1
+select item.title from review join item on review.i_id = item.i_id  group by review.rating  order by avg(review.rating) asc limit 1
+SELECT title FROM item ORDER BY title
+select item.title from item   order by item.title asc
+SELECT T1.name FROM useracct AS T1 JOIN review AS T2 ON T1.u_id  =  T2.u_id GROUP BY T2.u_id ORDER BY count(*) DESC LIMIT 1
+select useracct.name from review join useracct on review.u_id = useracct.u_id  group by review.u_id  order by count(*) desc limit 1
+SELECT T1.title ,  T1.i_id FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id GROUP BY T2.i_id ORDER BY avg(T2.rating) DESC LIMIT 1
+select item.title , review.i_id from review join item on review.i_id = item.i_id  group by review.i_id  order by avg(review.rating) desc limit 1
+SELECT T1.title ,  T1.i_id FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id GROUP BY T2.i_id ORDER BY avg(T2.rank) DESC LIMIT 1
+select item.title , item.i_id from review join item on review.i_id = item.i_id  group by review.i_id  order by avg(review.rank) desc limit 1
+SELECT T1.name ,  avg(T2.rating) FROM useracct AS T1 JOIN review AS T2 ON T1.u_id  =  T2.u_id GROUP BY T2.u_id
+select useracct.name , avg(review.rating) from review join useracct on review.u_id = useracct.u_id  group by review.u_id
+SELECT T1.name ,  count(*) FROM useracct AS T1 JOIN review AS T2 ON T1.u_id  =  T2.u_id GROUP BY T2.u_id
+select useracct.name , count(*) from review join useracct on review.u_id = useracct.u_id  group by review.u_id
+SELECT T1.name FROM useracct AS T1 JOIN review AS T2 ON T1.u_id  =  T2.u_id ORDER BY T2.rating DESC LIMIT 1
+select useracct.name from review join useracct on review.u_id = useracct.u_id   order by review.rating desc limit 1
+SELECT T1.name FROM useracct AS T1 JOIN trust AS T2 ON T1.u_id  =  T2.source_u_id GROUP BY T2.source_u_id ORDER BY avg(trust) DESC LIMIT 1
+select useracct.name from trust join useracct on trust.target_u_id = useracct.u_id  group by trust.source_u_id  order by avg(trust.trust) desc limit 1
+SELECT T1.name ,  avg(trust) FROM useracct AS T1 JOIN trust AS T2 ON T1.u_id  =  T2.target_u_id GROUP BY T2.target_u_id
+select useracct.name , avg(trust.trust) from trust join useracct on trust.target_u_id = useracct.u_id  group by trust.target_u_id
+SELECT T1.name FROM useracct AS T1 JOIN trust AS T2 ON T1.u_id  =  T2.target_u_id ORDER BY trust LIMIT 1
+select useracct.name from trust join useracct on trust.target_u_id = useracct.u_id   order by trust.trust asc limit 1
+SELECT title FROM item WHERE i_id NOT IN (SELECT i_id FROM review)
+select item.title from item where  item.i_id not in (select review.i_id from review  )
+SELECT name FROM useracct WHERE u_id NOT IN (SELECT u_id FROM review)
+select useracct.name from useracct where  useracct.u_id not in (select review.u_id from review  )
+SELECT count(*) FROM useracct WHERE u_id NOT IN (SELECT u_id FROM review)
+select count(*) from useracct where  useracct.u_id not in (select review.u_id from review  )
+SELECT count(*) FROM item WHERE i_id NOT IN (SELECT i_id FROM review)
+select count(*) from item where  item.i_id not in (select review.i_id from review  )

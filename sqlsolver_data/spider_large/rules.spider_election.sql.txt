@@ -1,0 +1,136 @@
+SELECT count(*) FROM county
+select count(*) from county
+SELECT count(*) FROM county
+select count(*) from county
+SELECT County_name ,  Population FROM county
+select county.county_name , county.population from county
+SELECT County_name ,  Population FROM county
+select county.county_name , county.population from county
+SELECT avg(Population) FROM county
+select avg(county.population) from county
+SELECT avg(Population) FROM county
+select avg(county.population) from county
+SELECT max(Population) ,  min(Population) FROM county
+select max(county.population) , min(county.population) from county
+SELECT max(Population) ,  min(Population) FROM county
+select max(county.population) , min(county.population) from county
+SELECT DISTINCT District FROM election
+select distinct election.district from election
+SELECT DISTINCT District FROM election
+select distinct election.district from election
+SELECT Zip_code FROM county WHERE County_name  =  "Howard"
+select county.zip_code from county where  county.county_name = "Howard"
+SELECT Zip_code FROM county WHERE County_name  =  "Howard"
+select county.zip_code from county where  county.county_name = "Howard"
+SELECT Delegate FROM election WHERE District  =  1
+select election.delegate from election where  election.district = 1
+SELECT Delegate FROM election WHERE District  =  1
+select election.delegate from election where  election.district = 1
+SELECT Delegate ,  Committee FROM election
+select election.delegate , election.committee from election
+SELECT Delegate ,  Committee FROM election
+select election.delegate , election.committee from election
+SELECT count(DISTINCT Governor) FROM party
+select count( distinct party.governor) from party
+SELECT count(DISTINCT Governor) FROM party
+select count( distinct party.governor) from party
+SELECT Lieutenant_Governor ,  Comptroller FROM party WHERE Party  =  "Democratic"
+select party.lieutenant_governor , party.comptroller from party where  party.party = "Democratic"
+SELECT Lieutenant_Governor ,  Comptroller FROM party WHERE Party  =  "Democratic"
+select party.lieutenant_governor , party.comptroller from party where  party.party = "Democratic"
+SELECT DISTINCT YEAR FROM party WHERE Governor  =  "Eliot Spitzer"
+select distinct party.year from party where  party.governor = "Eliot Spitzer"
+SELECT DISTINCT YEAR FROM party WHERE Governor  =  "Eliot Spitzer"
+select distinct party.year from party where  party.governor = "Eliot Spitzer"
+SELECT * FROM election
+select * from election
+SELECT * FROM election
+select * from election
+SELECT T2.Delegate ,  T1.County_name FROM county AS T1 JOIN election AS T2 ON T1.County_id  =  T2.District
+select election.delegate , county.county_name from election join county on election.District = county.County_Id
+SELECT T2.Delegate ,  T1.County_name FROM county AS T1 JOIN election AS T2 ON T1.County_id  =  T2.District
+select election.delegate , county.county_name from election join county on election.District = county.County_Id
+SELECT T2.Delegate FROM county AS T1 JOIN election AS T2 ON T1.County_id  =  T2.District WHERE T1.Population  <  100000
+select election.delegate from election join county on election.District = county.County_Id where  county.population < 100000
+SELECT T2.Delegate FROM county AS T1 JOIN election AS T2 ON T1.County_id  =  T2.District WHERE T1.Population  <  100000
+select election.delegate from election join county on election.District = county.County_Id where  county.population < 100000
+SELECT count(DISTINCT T2.Delegate) FROM county AS T1 JOIN election AS T2 ON T1.County_id  =  T2.District WHERE T1.Population  >  50000
+select count( distinct election.delegate) from election join county on election.District = county.County_Id where  county.population > 50000
+SELECT count(DISTINCT T2.Delegate) FROM county AS T1 JOIN election AS T2 ON T1.County_id  =  T2.District WHERE T1.Population  >  50000
+select count( distinct election.delegate) from election join county on election.District = county.County_Id where  county.population > 50000
+SELECT T1.County_name FROM county AS T1 JOIN election AS T2 ON T1.County_id  =  T2.District WHERE T2.Committee  =  "Appropriations"
+select county.county_name from election join county on election.District = county.County_Id where  election.committee = "Appropriations"
+SELECT T1.County_name FROM county AS T1 JOIN election AS T2 ON T1.County_id  =  T2.District WHERE T2.Committee  =  "Appropriations"
+select county.county_name from election join county on election.District = county.County_Id where  election.committee = "Appropriations"
+SELECT T1.Delegate ,  T2.Party FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID
+select election.delegate , party.party from election join party on election.Party = party.Party_ID
+SELECT T1.Delegate ,  T2.Party FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID
+select election.delegate , party.party from election join party on election.Party = party.Party_ID
+SELECT T2.Governor FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID WHERE T1.District  =  1
+select party.governor from election join party on election.Party = party.Party_ID where  election.district = 1
+SELECT T2.Governor FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID WHERE T1.District  =  1
+select party.governor from election join party on election.Party = party.Party_ID where  election.district = 1
+SELECT T2.Comptroller FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID WHERE T1.District  =  1 OR T1.District  =  2
+select party.comptroller from election join party on election.Party = party.Party_ID where  election.district = 1 or election.district = 2
+SELECT T2.Comptroller FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID WHERE T1.District  =  1 OR T1.District  =  2
+select party.comptroller from election join party on election.Party = party.Party_ID where  election.district = 1 or election.district = 2
+SELECT T1.Committee FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID WHERE T2.Party  =  "Democratic"
+select election.committee from election join party on election.Party = party.Party_ID where  party.party = "Democratic"
+SELECT T1.Committee FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID WHERE T2.Party  =  "Democratic"
+select election.committee from election join party on election.Party = party.Party_ID where  party.party = "Democratic"
+SELECT T1.County_name ,  COUNT(*) FROM county AS T1 JOIN election AS T2 ON T1.County_id  =  T2.District GROUP BY T1.County_id
+select county.county_name , count(*) from election join county on election.District = county.County_Id  group by county.county_id
+SELECT T1.County_name ,  COUNT(*) FROM county AS T1 JOIN election AS T2 ON T1.County_id  =  T2.District GROUP BY T1.County_id
+select county.county_name , count(*) from election join county on election.District = county.County_Id  group by county.county_id
+SELECT T2.Party ,  COUNT(*) FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID GROUP BY T1.Party
+select party.party , count(*) from election join party on election.Party = party.Party_ID  group by election.party
+SELECT T2.Party ,  COUNT(*) FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID GROUP BY T1.Party
+select party.party , count(*) from election join party on election.Party = party.Party_ID  group by election.party
+SELECT County_name FROM county ORDER BY Population ASC
+select county.county_name from county   order by county.population asc
+SELECT County_name FROM county ORDER BY Population ASC
+select county.county_name from county   order by county.population asc
+SELECT County_name FROM county ORDER BY County_name DESC
+select county.county_name from county   order by county.county_name desc
+SELECT County_name FROM county ORDER BY County_name DESC
+select county.county_name from county   order by county.county_name desc
+SELECT County_name FROM county ORDER BY Population DESC LIMIT 1
+select county.county_name from county   order by county.population desc limit 1
+SELECT County_name FROM county ORDER BY Population DESC LIMIT 1
+select county.county_name from county   order by county.population desc limit 1
+SELECT County_name FROM county ORDER BY Population ASC LIMIT 3
+select county.county_name from county   order by county.population asc limit 3
+SELECT County_name FROM county ORDER BY Population ASC LIMIT 3
+select county.county_name from county   order by county.population asc limit 3
+SELECT T1.County_name FROM county AS T1 JOIN election AS T2 ON T1.County_id  =  T2.District GROUP BY T1.County_id HAVING COUNT(*)  >=  2
+select county.county_name from election join county on election.District = county.County_Id  group by county.county_name having  count(*) >= 2
+SELECT T1.County_name FROM county AS T1 JOIN election AS T2 ON T1.County_id  =  T2.District GROUP BY T1.County_id HAVING COUNT(*)  >=  2
+select county.county_name from election join county on election.District = county.County_Id  group by county.county_name having  count(*) >= 2
+SELECT Party FROM party GROUP BY Party HAVING COUNT(*)  >=  2
+select party.party from party  group by party.party having  count(*) >= 2
+SELECT Party FROM party GROUP BY Party HAVING COUNT(*)  >=  2
+select party.party from party  group by party.party having  count(*) >= 2
+SELECT T2.Party FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID GROUP BY T1.Party ORDER BY COUNT(*) DESC LIMIT 1
+select party.party from election join party on election.Party = party.Party_ID  group by election.party  order by count(*) desc limit 1
+SELECT T2.Party FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID GROUP BY T1.Party ORDER BY COUNT(*) DESC LIMIT 1
+select party.party from election join party on election.Party = party.Party_ID  group by election.party  order by count(*) desc limit 1
+SELECT Governor FROM party GROUP BY Governor ORDER BY COUNT(*) DESC LIMIT 1
+select party.governor from party  group by party.governor  order by count(*) desc limit 1
+SELECT Governor FROM party GROUP BY Governor ORDER BY COUNT(*) DESC LIMIT 1
+select party.governor from party  group by party.governor  order by count(*) desc limit 1
+SELECT Comptroller ,  COUNT(*) FROM party GROUP BY Comptroller ORDER BY COUNT(*) DESC LIMIT 1
+select party.comptroller , count(*) from party  group by party.comptroller  order by count(*) desc limit 1
+SELECT Comptroller ,  COUNT(*) FROM party GROUP BY Comptroller ORDER BY COUNT(*) DESC LIMIT 1
+select party.comptroller , count(*) from party  group by party.comptroller  order by count(*) desc limit 1
+SELECT Party FROM party WHERE Party_ID NOT IN (SELECT Party FROM election)
+select party.party from party where  party.party_id not in (select election.Party from election  )
+SELECT Party FROM party WHERE Party_ID NOT IN (SELECT Party FROM election)
+select party.party from party where  party.party_id not in (select election.Party from election  )
+SELECT T2.Party FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID WHERE T1.Committee  =  "Appropriations" INTERSECT SELECT T2.Party FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID WHERE T1.Committee  =  "Economic Matters"
+select party.party from election join party on election.Party = party.Party_ID where  election.committee = "Appropriations"   intersect select party.party from election join party on election.Party = party.Party_ID where  election.committee = "Economic Matters"
+SELECT T2.Party FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID WHERE T1.Committee  =  "Appropriations" INTERSECT SELECT T2.Party FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID WHERE T1.Committee  =  "Economic Matters"
+select party.party from election join party on election.Party = party.Party_ID where  election.committee = "Appropriations"   intersect select party.party from election join party on election.Party = party.Party_ID where  election.committee = "Economic Matters"
+SELECT T1.Committee FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID WHERE T2.Party  =  "Democratic" INTERSECT SELECT T1.Committee FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID WHERE T2.Party  =  "Liberal"
+select election.committee from election join party on election.Party = party.Party_ID where  party.party = "Democratic"   intersect select election.committee from election join party on election.Party = party.Party_ID where  party.party = "Liberal"
+SELECT T1.Committee FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID WHERE T2.Party  =  "Democratic" INTERSECT SELECT T1.Committee FROM election AS T1 JOIN party AS T2 ON T1.Party  =  T2.Party_ID WHERE T2.Party  =  "Liberal"
+select election.committee from election join party on election.Party = party.Party_ID where  party.party = "Democratic"   intersect select election.committee from election join party on election.Party = party.Party_ID where  party.party = "Liberal"

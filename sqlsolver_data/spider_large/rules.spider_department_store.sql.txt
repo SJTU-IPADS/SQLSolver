@@ -1,0 +1,176 @@
+SELECT product_id FROM product_suppliers ORDER BY total_amount_purchased DESC LIMIT 3
+select product_suppliers.product_id from Product_Suppliers   order by product_suppliers.total_amount_purchased desc limit 3
+SELECT product_id FROM product_suppliers ORDER BY total_amount_purchased DESC LIMIT 3
+select product_suppliers.product_id from Product_Suppliers   order by product_suppliers.total_amount_purchased desc limit 3
+SELECT product_id ,  product_type_code FROM products ORDER BY product_price LIMIT 1
+select products.product_id , products.product_type_code from Products   order by products.product_price asc limit 1
+SELECT product_id ,  product_type_code FROM products ORDER BY product_price LIMIT 1
+select products.product_id , products.product_type_code from Products   order by products.product_price asc limit 1
+SELECT count(DISTINCT product_type_code) FROM products
+select count( distinct products.product_type_code) from Products
+SELECT count(DISTINCT product_type_code) FROM products
+select count( distinct products.product_type_code) from Products
+SELECT T1.address_details FROM addresses AS T1 JOIN customer_addresses AS T2 ON T1.address_id  =  T2.address_id WHERE T2.customer_id  =  10
+select addresses.address_details from Customer_Addresses join Customers on Customer_Addresses.customer_id = Customers.customer_id join Addresses on Customer_Addresses.address_id = Addresses.address_id where  customers.customer_address = 10
+SELECT T1.address_details FROM addresses AS T1 JOIN customer_addresses AS T2 ON T1.address_id  =  T2.address_id WHERE T2.customer_id  =  10
+select addresses.address_details from Customer_Addresses join Addresses on Customer_Addresses.address_id = Addresses.address_id where  customer_addresses.customer_id = 10
+SELECT T1.staff_id ,  T1.staff_gender FROM staff AS T1 JOIN staff_department_assignments AS T2 ON T1.staff_id  =  T2.staff_id WHERE T2.job_title_code  =  "Department Manager"
+select staff.staff_id , staff.staff_gender from Staff_Department_Assignments join Staff on Staff_Department_Assignments.staff_id = Staff.staff_id where  staff_department_assignments.job_title_code = "Department Manager"
+SELECT T1.staff_id ,  T1.staff_gender FROM staff AS T1 JOIN staff_department_assignments AS T2 ON T1.staff_id  =  T2.staff_id WHERE T2.job_title_code  =  "Department Manager"
+select staff.staff_id , staff.staff_gender from Staff_Department_Assignments join Staff on Staff_Department_Assignments.staff_id = Staff.staff_id where  staff_department_assignments.job_title_code = "Department Manager"
+SELECT payment_method_code ,  count(*) FROM customers GROUP BY payment_method_code
+select customers.payment_method_code , count(*) from Customers  group by customers.payment_method_code
+SELECT payment_method_code ,  count(*) FROM customers GROUP BY payment_method_code
+select customers.payment_method_code , count(*) from Customers  group by customers.payment_method_code
+SELECT product_id FROM order_items GROUP BY product_id ORDER BY count(*) DESC LIMIT 1
+select order_items.product_id from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id  group by order_items.product_id  order by count(*) desc limit 1
+SELECT product_id FROM order_items GROUP BY product_id ORDER BY count(*) DESC LIMIT 1
+select order_items.product_id from Order_Items  group by order_items.product_id  order by count(*) desc limit 1
+SELECT T1.customer_name ,  T1.customer_phone ,  T1.customer_email FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T2.customer_id ORDER BY count(*) DESC LIMIT 1
+select customers.customer_name , customers.customer_phone , customers.customer_email from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id  group by customer_orders.customer_id  order by count(*) desc limit 1
+SELECT T1.customer_name ,  T1.customer_phone ,  T1.customer_email FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T2.customer_id ORDER BY count(*) DESC LIMIT 1
+select customers.customer_name , customers.customer_phone , customers.customer_email from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id  group by customer_orders.customer_id  order by count(*) desc limit 1
+SELECT product_type_code ,  avg(product_price) FROM products GROUP BY product_type_code
+select products.product_type_code , avg(products.product_price) from Products  group by products.product_type_code
+SELECT product_type_code ,  avg(product_price) FROM products GROUP BY product_type_code
+select products.product_type_code , avg(products.product_price) from Products  group by products.product_type_code
+SELECT count(*) FROM department_stores AS T1 JOIN department_store_chain AS T2 ON T1.dept_store_chain_id  =  T2.dept_store_chain_id WHERE T2.dept_store_chain_name  =  "South"
+select count(*) from Department_Stores join Department_Store_Chain on Department_Stores.dept_store_chain_id = Department_Store_Chain.dept_store_chain_id where  department_store_chain.dept_store_chain_name = "South"
+SELECT count(*) FROM department_stores AS T1 JOIN department_store_chain AS T2 ON T1.dept_store_chain_id  =  T2.dept_store_chain_id WHERE T2.dept_store_chain_name  =  "South"
+select count(*) from Department_Stores join Department_Store_Chain on Department_Stores.dept_store_chain_id = Department_Store_Chain.dept_store_chain_id where  department_store_chain.dept_store_chain_name = "South"
+SELECT T1.staff_name ,  T2.job_title_code FROM staff AS T1 JOIN staff_department_assignments AS T2 ON T1.staff_id  =  T2.staff_id ORDER BY T2.date_assigned_to DESC LIMIT 1
+select staff.staff_name , staff_department_assignments.job_title_code from Staff_Department_Assignments join Staff on Staff_Department_Assignments.staff_id = Staff.staff_id   order by staff_department_assignments.date_assigned_to desc limit 1
+SELECT T1.staff_name ,  T2.job_title_code FROM staff AS T1 JOIN staff_department_assignments AS T2 ON T1.staff_id  =  T2.staff_id ORDER BY T2.date_assigned_to DESC LIMIT 1
+select staff.staff_name , staff_department_assignments.job_title_code from Staff_Department_Assignments join Staff on Staff_Department_Assignments.staff_id = Staff.staff_id   order by staff_department_assignments.date_assigned_to desc limit 1
+SELECT T2.product_type_code ,  T2.product_name ,  T2.product_price FROM product_suppliers AS T1 JOIN products AS T2 ON T1.product_id  =  T2.product_id WHERE T1.supplier_id  =  3
+select products.product_type_code , products.product_name , products.product_price from Product_Suppliers join Products on Product_Suppliers.product_id = Products.product_id where  product_suppliers.supplier_id = 3
+SELECT T2.product_type_code ,  T2.product_name ,  T2.product_price FROM product_suppliers AS T1 JOIN products AS T2 ON T1.product_id  =  T2.product_id WHERE T1.supplier_id  =  3
+select products.product_type_code , products.product_name , products.product_price from Product_Suppliers join Products on Product_Suppliers.product_id = Products.product_id where  product_suppliers.supplier_id = 3
+SELECT DISTINCT T1.customer_name FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.order_status_code  =  "Pending" ORDER BY T2.customer_id
+select distinct customers.customer_name from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id where  customer_orders.order_status_code = "Pending"   order by customer_orders.customer_id asc
+SELECT DISTINCT T1.customer_name FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.order_status_code  =  "Pending" ORDER BY T2.customer_id
+select distinct customers.customer_name from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id where  customer_orders.order_status_code = "Pending"   order by customers.customer_id asc
+SELECT T1.customer_name ,  T1.customer_address FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.order_status_code  =  "New" INTERSECT SELECT T1.customer_name ,  T1.customer_address FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.order_status_code  =  "Pending"
+select customers.customer_name , customers.customer_address from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id where  customer_orders.order_status_code = "New"   intersect select customers.customer_name , customers.customer_address from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id where  customer_orders.order_status_code = "Pending"
+SELECT T1.customer_name ,  T1.customer_address FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.order_status_code  =  "New" INTERSECT SELECT T1.customer_name ,  T1.customer_address FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id WHERE T2.order_status_code  =  "Pending"
+select customers.customer_name , customers.customer_address from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id where  customer_orders.order_status_code = "New"   intersect select customers.customer_name , customers.customer_address from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id where  customer_orders.order_status_code = "Pending"
+SELECT T1.product_id FROM product_suppliers AS T1 JOIN products AS T2 ON T1.product_id  =  T2.product_id WHERE T1.supplier_id  =  2 AND T2.product_price  >  (SELECT avg(product_price) FROM products)
+select product_suppliers.product_id from Product_Suppliers join Products on Product_Suppliers.product_id = Products.product_id where  product_suppliers.supplier_id = 2 and products.product_price > (select avg(Products.product_price) from Products  )
+SELECT T1.product_id FROM product_suppliers AS T1 JOIN products AS T2 ON T1.product_id  =  T2.product_id WHERE T1.supplier_id  =  2 AND T2.product_price  >  (SELECT avg(product_price) FROM products)
+select product_suppliers.product_id from Product_Suppliers join Products on Product_Suppliers.product_id = Products.product_id where  product_suppliers.supplier_id = 2 and products.product_price > (select avg(Products.product_price) from Products  )
+SELECT T2.dept_store_id ,  T2.store_name FROM departments AS T1 JOIN department_stores AS T2 ON T1.dept_store_id  =  T2.dept_store_id WHERE T1.department_name  =  "marketing" INTERSECT SELECT T2.dept_store_id ,  T2.store_name FROM departments AS T1 JOIN department_stores AS T2 ON T1.dept_store_id  =  T2.dept_store_id WHERE T1.department_name  =  "managing"
+select department_stores.dept_store_id , department_stores.store_name from Departments join Department_Stores on Departments.dept_store_id = Department_Stores.dept_store_id where  departments.department_name = "marketing"   intersect select department_stores.dept_store_id , department_stores.store_name from Departments join Department_Stores on Departments.dept_store_id = Department_Stores.dept_store_id where  departments.department_name = "managing"
+SELECT T2.dept_store_id ,  T2.store_name FROM departments AS T1 JOIN department_stores AS T2 ON T1.dept_store_id  =  T2.dept_store_id WHERE T1.department_name  =  "marketing" INTERSECT SELECT T2.dept_store_id ,  T2.store_name FROM departments AS T1 JOIN department_stores AS T2 ON T1.dept_store_id  =  T2.dept_store_id WHERE T1.department_name  =  "managing"
+select department_stores.dept_store_id , department_stores.store_name from Departments join Department_Stores on Departments.dept_store_id = Department_Stores.dept_store_id where  departments.department_name = "marketing"   intersect select department_stores.dept_store_id , department_stores.store_name from Departments join Department_Stores on Departments.dept_store_id = Department_Stores.dept_store_id where  departments.department_name = "managing"
+SELECT dept_store_chain_id FROM department_stores GROUP BY dept_store_chain_id ORDER BY count(*) DESC LIMIT 2
+select department_stores.dept_store_chain_id from Department_Stores  group by department_stores.dept_store_chain_id  order by count(*) desc limit 2
+SELECT dept_store_chain_id FROM department_stores GROUP BY dept_store_chain_id ORDER BY count(*) DESC LIMIT 2
+select department_stores.dept_store_chain_id from Department_Stores  group by department_stores.dept_store_chain_id  order by count(*) desc limit 2
+SELECT department_id FROM staff_department_assignments GROUP BY department_id ORDER BY count(*) LIMIT 1
+select staff_department_assignments.department_id from Staff_Department_Assignments  group by staff_department_assignments.department_id  order by count(*) asc limit 1
+SELECT department_id FROM staff_department_assignments GROUP BY department_id ORDER BY count(*) LIMIT 1
+select staff_department_assignments.department_id from Staff_Department_Assignments  group by staff_department_assignments.department_id  order by count(*) asc limit 1
+SELECT product_type_code ,  max(product_price) ,  min(product_price) FROM products GROUP BY product_type_code
+select products.product_type_code , max(products.product_price) , min(products.product_price) from Products  group by products.product_type_code
+SELECT product_type_code ,  max(product_price) ,  min(product_price) FROM products GROUP BY product_type_code
+select products.product_type_code , max(products.product_price) , min(products.product_price) from Products  group by products.product_type_code
+SELECT product_type_code FROM products GROUP BY product_type_code HAVING avg(product_price)  >  (SELECT avg(product_price) FROM products)
+select products.product_type_code from Products  group by products.product_type_code having  avg(products.product_price) > (select avg(products.product_price) from Products  )
+SELECT product_type_code FROM products GROUP BY product_type_code HAVING avg(product_price)  >  (SELECT avg(product_price) FROM products)
+select products.product_type_code from Products  group by products.product_type_code having  avg(products.product_price) > (select avg(products.product_price) from Products  )
+SELECT T1.staff_id ,  T1.staff_name FROM staff AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.staff_id  =  T2.staff_id ORDER BY date_assigned_to - date_assigned_from LIMIT 1
+select staff.staff_id , staff.staff_name from Staff_Department_Assignments join Staff on Staff_Department_Assignments.staff_id = Staff.staff_id   order by staff_department_assignments.date_assigned_to - staff_department_assignments.date_assigned_from asc limit 1
+SELECT T1.staff_id ,  T1.staff_name FROM staff AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.staff_id  =  T2.staff_id ORDER BY date_assigned_to - date_assigned_from LIMIT 1
+select staff.staff_id , staff.staff_name from Staff_Department_Assignments join Staff on Staff_Department_Assignments.staff_id = Staff.staff_id   order by staff_department_assignments.date_assigned_to - staff_department_assignments.date_assigned_from asc limit 1
+SELECT product_name ,  product_id FROM products WHERE product_price BETWEEN 600 AND 700
+select products.product_name , products.product_id from Products where  products.product_price between 600 and 700
+SELECT product_name ,  product_id FROM products WHERE product_price BETWEEN 600 AND 700
+select products.product_name , product_suppliers.product_id from Product_Suppliers join Products on Product_Suppliers.product_id = Products.product_id where  products.product_price between 600 and 700
+SELECT DISTINCT customer_id FROM Customer_Orders WHERE order_date  >  (SELECT min(order_date) FROM Customer_Orders WHERE order_status_code  =  "Cancelled")
+select distinct customer_orders.customer_id from Customer_Orders where  customer_orders.order_date > (select min(customer_orders.order_date) from Customer_Orders where  customer_orders.order_status_code = "Cancelled"  )
+SELECT DISTINCT customer_id FROM Customer_Orders WHERE order_date  >  (SELECT min(order_date) FROM Customer_Orders WHERE order_status_code  =  "Cancelled")
+select distinct customers.customer_id from Customer_Orders join Customers on Customer_Orders.customer_id = Customers.customer_id where  customer_orders.order_date > (select min(Customer_Orders.order_date) from Customer_Orders where  customer_orders.order_status_code = "Cancelled"  )
+SELECT staff_id FROM Staff_Department_Assignments WHERE date_assigned_to  <  (SELECT max(date_assigned_to) FROM Staff_Department_Assignments WHERE job_title_code  =  'Clerical Staff')
+select staff.staff_id from Staff_Department_Assignments join Staff on Staff_Department_Assignments.staff_id = Staff.staff_id where  staff_department_assignments.date_assigned_to < (select max(Staff_Department_Assignments.date_assigned_to) from Staff_Department_Assignments where  staff_department_assignments.job_title_code = "Clerical Staff"  )
+SELECT staff_id FROM Staff_Department_Assignments WHERE date_assigned_to  <  (SELECT max(date_assigned_to) FROM Staff_Department_Assignments WHERE job_title_code  =  'Clerical Staff')
+select staff.staff_id from Staff_Department_Assignments join Staff on Staff_Department_Assignments.staff_id = Staff.staff_id where  staff_department_assignments.date_assigned_to < (select max(Staff_Department_Assignments.date_assigned_to) from Staff_Department_Assignments where  staff_department_assignments.job_title_code = "Clerical Staff"  )
+SELECT customer_name ,  customer_id FROM customers WHERE customer_address LIKE "%TN%"
+select customers.customer_name , customers.customer_id from Customers where  customers.customer_address like "%TN%"
+SELECT customer_name ,  customer_id FROM customers WHERE customer_address LIKE "%TN%"
+select customers.customer_name , customers.customer_id from Customers where  customers.customer_address like "%TN%"
+SELECT T1.staff_name ,  T1.staff_gender FROM staff AS T1 JOIN staff_department_assignments AS T2 ON T1.staff_id  =  T2.staff_id WHERE T2.date_assigned_from LIKE "2016%"
+select staff.staff_name , staff.staff_gender from Staff_Department_Assignments join Staff on Staff_Department_Assignments.staff_id = Staff.staff_id where  staff_department_assignments.date_assigned_to like "2016%"
+SELECT T1.staff_name ,  T1.staff_gender FROM staff AS T1 JOIN staff_department_assignments AS T2 ON T1.staff_id  =  T2.staff_id WHERE T2.date_assigned_from LIKE "2016%"
+select staff.staff_name , staff.staff_gender from Staff_Department_Assignments join Staff on Staff_Department_Assignments.staff_id = Staff.staff_id where  staff_department_assignments.date_assigned_to like "2016%"
+SELECT T1.staff_name FROM staff AS T1 JOIN staff_department_assignments AS T2 ON T1.staff_id  =  T2.staff_id GROUP BY T2.staff_id HAVING COUNT (*)  >  1
+select staff.staff_name from Staff_Department_Assignments join Staff on Staff_Department_Assignments.staff_id = Staff.staff_id  group by staff_department_assignments.staff_id having  count(*) > 1
+SELECT T1.staff_name FROM staff AS T1 JOIN staff_department_assignments AS T2 ON T1.staff_id  =  T2.staff_id GROUP BY T2.staff_id HAVING COUNT (*)  >  1
+select staff.staff_name from Staff_Department_Assignments join Staff on Staff_Department_Assignments.staff_id = Staff.staff_id  group by staff_department_assignments.staff_id having  count(*) > 1
+SELECT T1.supplier_name ,  T1.supplier_phone FROM Suppliers AS T1 JOIN supplier_addresses AS T2 ON T1.supplier_id  =  T2.supplier_id JOIN addresses AS T3 ON T2.address_id  =  T3.address_id ORDER BY T3.address_details
+select suppliers.supplier_name , suppliers.supplier_phone from Supplier_Addresses join Suppliers on Supplier_Addresses.supplier_id = Suppliers.supplier_id join Addresses on Supplier_Addresses.address_id = Addresses.address_id   order by addresses.address_details asc
+SELECT T1.supplier_name ,  T1.supplier_phone FROM Suppliers AS T1 JOIN supplier_addresses AS T2 ON T1.supplier_id  =  T2.supplier_id JOIN addresses AS T3 ON T2.address_id  =  T3.address_id ORDER BY T3.address_details
+select suppliers.supplier_name , suppliers.supplier_phone from Supplier_Addresses join Suppliers on Supplier_Addresses.supplier_id = Suppliers.supplier_id join Addresses on Supplier_Addresses.address_id = Addresses.address_id   order by addresses.address_details asc
+SELECT customer_phone FROM customers UNION SELECT supplier_phone FROM suppliers
+select customers.customer_phone from Customers   union select suppliers.supplier_phone from Suppliers
+SELECT customer_phone FROM customers UNION SELECT supplier_phone FROM suppliers
+select customers.customer_phone from Customers   union select suppliers.supplier_phone from Suppliers
+SELECT product_id FROM Order_Items GROUP BY product_id HAVING count(*)  >  3 UNION SELECT product_id FROM Product_Suppliers GROUP BY product_id HAVING sum(total_amount_purchased)  >  80000
+select order_items.product_id from Order_Items  group by order_items.product_id having  count(*) > 3  union select order_items.product_id from Order_Items join Products on Order_Items.product_id = Products.product_id join Product_Suppliers on Products.product_id = Product_Suppliers.product_id  group by order_items.product_id having  sum(product_suppliers.total_amount_purchased) > 80000
+SELECT product_id FROM Order_Items GROUP BY product_id HAVING count(*)  >  3 UNION SELECT product_id FROM Product_Suppliers GROUP BY product_id HAVING sum(total_amount_purchased)  >  80000
+select order_items.product_id from Order_Items  group by order_items.product_id having  count(*) > 3  union select order_items.product_id from Order_Items join Products on Order_Items.product_id = Products.product_id join Product_Suppliers on Products.product_id = Product_Suppliers.product_id  group by order_items.product_id having  sum(product_suppliers.total_amount_purchased) > 80000
+SELECT product_id ,  product_name FROM products WHERE product_price  <  600 OR product_price  >  900
+select products.product_id , products.product_name from Products where  products.product_price < 600 or products.product_price > 900
+SELECT product_id ,  product_name FROM products WHERE product_price  <  600 OR product_price  >  900
+select products.product_id , products.product_name from Products where  products.product_price < 600 or products.product_price > 900
+SELECT supplier_id FROM Product_Suppliers GROUP BY supplier_id HAVING avg(total_amount_purchased)  >  50000 OR avg(total_amount_purchased)  <  30000
+select suppliers.supplier_id from Product_Suppliers join Suppliers on Product_Suppliers.supplier_id = Suppliers.supplier_id  group by suppliers.supplier_id having  avg(product_suppliers.total_amount_purchased) > 50000 or avg(product_suppliers.total_amount_purchased) < 30000
+SELECT supplier_id FROM Product_Suppliers GROUP BY supplier_id HAVING avg(total_amount_purchased)  >  50000 OR avg(total_amount_purchased)  <  30000
+select product_suppliers.supplier_id from Product_Suppliers  group by product_suppliers.supplier_id having  avg(product_suppliers.total_amount_purchased) > 50000 or avg(product_suppliers.total_amount_purchased) < 30000
+SELECT avg(total_amount_purchased) ,  avg(total_value_purchased) FROM Product_Suppliers WHERE supplier_id  =  (SELECT supplier_id FROM Product_Suppliers GROUP BY supplier_id ORDER BY count(*) DESC LIMIT 1)
+select avg(product_suppliers.total_amount_purchased) , avg(product_suppliers.total_value_purchased) from Product_Suppliers where  product_suppliers.supplier_id = (select Suppliers.supplier_id from Suppliers join Product_Suppliers on Suppliers.supplier_id = Product_Suppliers.supplier_id  group by Suppliers.supplier_id  order by count(*) desc limit 1 )
+SELECT avg(total_amount_purchased) ,  avg(total_value_purchased) FROM Product_Suppliers WHERE supplier_id  =  (SELECT supplier_id FROM Product_Suppliers GROUP BY supplier_id ORDER BY count(*) DESC LIMIT 1)
+select avg(product_suppliers.total_amount_purchased) , avg(product_suppliers.total_value_purchased) from Product_Suppliers where  product_suppliers.supplier_id = (select Suppliers.supplier_id from Suppliers join Product_Suppliers on Suppliers.supplier_id = Product_Suppliers.supplier_id  group by Suppliers.supplier_id  order by count(*) desc limit 1 )
+SELECT max(customer_code) ,  min(customer_code) FROM Customers
+select max(customers.customer_code) , min(customers.customer_code) from Customers
+SELECT max(customer_code) ,  min(customer_code) FROM Customers
+select max(customers.customer_code) , min(customers.customer_code) from Customers
+SELECT DISTINCT T1.customer_name FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id JOIN order_items AS T3 ON T2.order_id  =  T3.order_id JOIN products AS T4 ON T3.product_id  =  T4.product_id WHERE T4.product_name  =  "keyboard"
+select distinct customers.customer_name from Order_Items join Products on Order_Items.product_id = Products.product_id join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id join Customers on Customer_Orders.customer_id = Customers.customer_id where  products.product_name = "keyboard"
+SELECT DISTINCT T1.customer_name FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id JOIN order_items AS T3 ON T2.order_id  =  T3.order_id JOIN products AS T4 ON T3.product_id  =  T4.product_id WHERE T4.product_name  =  "keyboard"
+select distinct customers.customer_name from Order_Items join Products on Order_Items.product_id = Products.product_id join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id join Customers on Customer_Orders.customer_id = Customers.customer_id where  products.product_name = "keyboard"
+SELECT DISTINCT T1.supplier_name ,  T1.supplier_phone FROM suppliers AS T1 JOIN product_suppliers AS T2 ON T1.supplier_id  =  T2.supplier_id JOIN products AS T3 ON T2.product_id  =  T3.product_id WHERE T3.product_name  =  "red jeans"
+select distinct suppliers.supplier_name , suppliers.supplier_phone from Product_Suppliers join Products on Product_Suppliers.product_id = Products.product_id join Suppliers on Product_Suppliers.supplier_id = Suppliers.supplier_id where  products.product_name = "red jeans"
+SELECT DISTINCT T1.supplier_name ,  T1.supplier_phone FROM suppliers AS T1 JOIN product_suppliers AS T2 ON T1.supplier_id  =  T2.supplier_id JOIN products AS T3 ON T2.product_id  =  T3.product_id WHERE T3.product_name  =  "red jeans"
+select distinct suppliers.supplier_name , suppliers.supplier_phone from Product_Suppliers join Products on Product_Suppliers.product_id = Products.product_id join Suppliers on Product_Suppliers.supplier_id = Suppliers.supplier_id where  products.product_name = "red jeans"
+SELECT max(product_price) ,  min(product_price) ,  product_type_code FROM products GROUP BY product_type_code ORDER BY product_type_code
+select max(products.product_price) , min(products.product_price) , products.product_type_code from Products  group by products.product_type_code  order by products.product_type_code asc
+SELECT max(product_price) ,  min(product_price) ,  product_type_code FROM products GROUP BY product_type_code ORDER BY product_type_code
+select max(products.product_price) , min(products.product_price) , products.product_type_code from Products  group by products.product_type_code  order by products.product_type_code asc
+SELECT order_id ,  customer_id FROM customer_orders WHERE order_status_code  =   "Cancelled" ORDER BY order_date
+select customer_orders.order_id , customer_orders.customer_id from Customer_Orders where  customer_orders.order_status_code = "Cancelled"   order by customer_orders.order_date asc
+SELECT order_id ,  customer_id FROM customer_orders WHERE order_status_code  =   "Cancelled" ORDER BY order_date
+select customer_orders.order_id , customer_orders.customer_id from Customer_Orders where  customer_orders.order_status_code = "Cancelled"   order by customer_orders.order_date asc
+SELECT DISTINCT T3.product_name FROM customer_orders AS T1 JOIN order_items AS T2 ON T1.order_id  =  T2.order_id JOIN products AS T3 ON T2.product_id  =  T3.product_id GROUP BY T3.product_id HAVING COUNT (DISTINCT T1.customer_id)  >=  2
+select distinct products.product_name from Order_Items join Products on Order_Items.product_id = Products.product_id join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id  group by products.product_name having  count( distinct customer_orders.customer_id) >= 2
+SELECT DISTINCT T3.product_name FROM customer_orders AS T1 JOIN order_items AS T2 ON T1.order_id  =  T2.order_id JOIN products AS T3 ON T2.product_id  =  T3.product_id GROUP BY T3.product_id HAVING COUNT (DISTINCT T1.customer_id)  >=  2
+select distinct products.product_name from Order_Items join Products on Order_Items.product_id = Products.product_id join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id  group by products.product_name having  count( distinct customer_orders.customer_id) >= 2
+SELECT DISTINCT T1.customer_name FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id JOIN order_items AS T3 ON T2.order_id  =  T3.order_id GROUP BY T1.customer_id HAVING COUNT (DISTINCT T3.product_id)  >=  3
+select distinct customers.customer_name from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id join Customers on Customer_Orders.customer_id = Customers.customer_id  group by customers.customer_id having  count( distinct order_items.product_id) >= 3
+SELECT DISTINCT T1.customer_name FROM customers AS T1 JOIN customer_orders AS T2 ON T1.customer_id  =  T2.customer_id JOIN order_items AS T3 ON T2.order_id  =  T3.order_id GROUP BY T1.customer_id HAVING COUNT (DISTINCT T3.product_id)  >=  3
+select distinct customers.customer_name from Order_Items join Customer_Orders on Order_Items.order_id = Customer_Orders.order_id join Customers on Customer_Orders.customer_id = Customers.customer_id  group by customers.customer_id having  count( distinct order_items.product_id) >= 3
+SELECT T1.staff_name ,  T1.staff_gender FROM staff AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.staff_id  =  T2.staff_id WHERE T2.job_title_code  =  "Sales Person" EXCEPT SELECT T1.staff_name ,  T1.staff_gender FROM staff AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.staff_id  =  T2.staff_id WHERE T2.job_title_code  =  "Clerical Staff"
+select staff.staff_name , staff.staff_gender from Staff_Department_Assignments join Staff on Staff_Department_Assignments.staff_id = Staff.staff_id where  staff_department_assignments.job_title_code = "Sales Person"   except select staff.staff_name , staff.staff_gender from Staff_Department_Assignments join Staff on Staff_Department_Assignments.staff_id = Staff.staff_id where  staff_department_assignments.job_title_code = "Clerical Staff"
+SELECT T1.staff_name ,  T1.staff_gender FROM staff AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.staff_id  =  T2.staff_id WHERE T2.job_title_code  =  "Sales Person" EXCEPT SELECT T1.staff_name ,  T1.staff_gender FROM staff AS T1 JOIN Staff_Department_Assignments AS T2 ON T1.staff_id  =  T2.staff_id WHERE T2.job_title_code  =  "Clerical Staff"
+select staff.staff_name , staff.staff_gender from Staff_Department_Assignments join Staff on Staff_Department_Assignments.staff_id = Staff.staff_id where  staff_department_assignments.job_title_code = "Sales Person"   except select staff.staff_name , staff.staff_gender from Staff_Department_Assignments join Staff on Staff_Department_Assignments.staff_id = Staff.staff_id where  staff_department_assignments.job_title_code = "Clerical Staff"
+SELECT customer_id ,  customer_name FROM customers WHERE customer_address LIKE "%WY%" AND payment_method_code != "Credit Card"
+select customers.customer_id , customers.customer_name from Customers where  customers.customer_address like "%WY%" and customers.payment_method_code != "Credit Card"
+SELECT customer_id ,  customer_name FROM customers WHERE customer_address LIKE "%WY%" AND payment_method_code != "Credit Card"
+select customers.customer_id , customers.customer_name from Customer_Addresses join Customers on Customer_Addresses.customer_id = Customers.customer_id where  customer_addresses.address_id like "%WY%" and customers.payment_method_code != "Credit Card"
+SELECT avg(product_price) FROM products WHERE product_type_code  =  'Clothes'
+select avg(products.product_price) from Products where  products.product_type_code = "Clothes"
+SELECT avg(product_price) FROM products WHERE product_type_code  =  'Clothes'
+select avg(products.product_price) from Products where  products.product_type_code = "Clothes"
+SELECT product_name FROM products WHERE product_type_code  =  'Hardware' ORDER BY product_price DESC LIMIT 1
+select products.product_name from Products where  products.product_type_code = "Hardware"   order by products.product_price desc limit 1
+SELECT product_name FROM products WHERE product_type_code  =  'Hardware' ORDER BY product_price DESC LIMIT 1
+select products.product_name from Products where  products.product_type_code = "Hardware"   order by products.product_price desc limit 1

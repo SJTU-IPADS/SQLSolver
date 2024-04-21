@@ -1,0 +1,80 @@
+SELECT host_city FROM hosting_city ORDER BY YEAR DESC LIMIT 1
+select hosting_city.host_city from hosting_city   order by hosting_city.year desc limit 1
+SELECT host_city FROM hosting_city ORDER BY YEAR DESC LIMIT 1
+select hosting_city.host_city from hosting_city   order by hosting_city.year desc limit 1
+SELECT matchh_id FROM matchh WHERE competition = "1994 FIFA World Cup qualification"
+select matchh.matchh_id from matchh where  matchh.competition = "1994 FIFA World Cup qualification"
+SELECT matchh_id FROM matchh WHERE competition = "1994 FIFA World Cup qualification"
+select matchh.matchh_id from matchh where  matchh.competition = "1994 FIFA World Cup qualification"
+SELECT T1.city FROM city AS T1 JOIN hosting_city AS T2 ON T1.city_id = T2.host_city WHERE T2.year  >  2010
+select city.city from hosting_city join city on hosting_city.Host_City = city.City_ID where  hosting_city.year > 2010
+SELECT T1.city FROM city AS T1 JOIN hosting_city AS T2 ON T1.city_id = T2.host_city WHERE T2.year  >  2010
+select city.city from hosting_city join city on hosting_city.Host_City = city.City_ID where  hosting_city.year > 2010
+SELECT T1.city FROM city AS T1 JOIN hosting_city AS T2 ON T1.city_id  =  T2.host_city GROUP BY T2.host_city ORDER BY count(*) DESC LIMIT 1
+select city.city from hosting_city join city on hosting_city.Host_City = city.City_ID  group by hosting_city.host_city  order by count(*) desc limit 1
+SELECT T1.city FROM city AS T1 JOIN hosting_city AS T2 ON T1.city_id  =  T2.host_city GROUP BY T2.host_city ORDER BY count(*) DESC LIMIT 1
+select city.city from hosting_city join city on hosting_city.Host_City = city.City_ID  group by hosting_city.host_city  order by count(*) desc limit 1
+SELECT T3.venue FROM city AS T1 JOIN hosting_city AS T2 ON T1.city_id = T2.host_city JOIN matchh AS T3 ON T2.matchh_id = T3.matchh_id WHERE T1.city = "Nanjing ( Jiangsu )" AND T3.competition = "1994 FIFA World Cup qualification"
+select matchh.venue from hosting_city join matchh on hosting_city.matchh_ID = matchh.matchh_ID join city on hosting_city.Host_City = city.City_ID where  city.city = "Nanjing ( Jiangsu )" and matchh.competition = "1994 FIFA World Cup qualification"
+SELECT T3.venue FROM city AS T1 JOIN hosting_city AS T2 ON T1.city_id = T2.host_city JOIN matchh AS T3 ON T2.matchh_id = T3.matchh_id WHERE T1.city = "Nanjing ( Jiangsu )" AND T3.competition = "1994 FIFA World Cup qualification"
+select matchh.venue from hosting_city join matchh on hosting_city.matchh_ID = matchh.matchh_ID join city on hosting_city.Host_City = city.City_ID where  city.city = "Nanjing ( Jiangsu )" and matchh.competition = "1994 FIFA World Cup qualification"
+SELECT T2.Jan FROM city AS T1 JOIN temperature AS T2 ON T1.city_id = T2.city_id WHERE T1.city = "Shanghai"
+select temperature.jan from temperature join city on temperature.City_ID = city.City_ID where  city.city = "Shanghai"
+SELECT T2.Jan FROM city AS T1 JOIN temperature AS T2 ON T1.city_id = T2.city_id WHERE T1.city = "Shanghai"
+select temperature.jan from temperature join city on temperature.City_ID = city.City_ID where  city.city = "Shanghai"
+SELECT T2.year FROM city AS T1 JOIN hosting_city AS T2 ON T1.city_id  =  T2.host_city WHERE T1.city  =  "Taizhou ( Zhejiang )"
+select hosting_city.year from hosting_city join city on hosting_city.Host_City = city.City_ID where  city.city = "Taizhou ( Zhejiang )"
+SELECT T2.year FROM city AS T1 JOIN hosting_city AS T2 ON T1.city_id  =  T2.host_city WHERE T1.city  =  "Taizhou ( Zhejiang )"
+select hosting_city.year from hosting_city join city on hosting_city.Host_City = city.City_ID where  city.city = "Taizhou ( Zhejiang )"
+SELECT city FROM city ORDER BY regional_population DESC LIMIT 3
+select city.city from city   order by city.regional_population desc limit 3
+SELECT city FROM city ORDER BY regional_population DESC LIMIT 3
+select city.city from city   order by city.regional_population desc limit 3
+SELECT city ,  GDP FROM city ORDER BY GDP LIMIT 1
+select city.city , city.gdp from city   order by city.gdp asc limit 1
+SELECT city ,  GDP FROM city ORDER BY GDP LIMIT 1
+select city.city , city.gdp from city   order by city.gdp asc limit 1
+SELECT T1.city FROM city AS T1 JOIN temperature AS T2 ON T1.city_id  =  T2.city_id ORDER BY T2.Feb DESC LIMIT 1
+select city.city from temperature join city on temperature.City_ID = city.City_ID   order by temperature.feb desc limit 1
+SELECT T1.city FROM city AS T1 JOIN temperature AS T2 ON T1.city_id  =  T2.city_id ORDER BY T2.Feb DESC LIMIT 1
+select city.city from temperature join city on temperature.City_ID = city.City_ID   order by temperature.feb desc limit 1
+SELECT T1.city FROM city AS T1 JOIN temperature AS T2 ON T1.city_id  =  T2.city_id WHERE T2.Mar  <  T2.Jul OR T2.Mar  >  T2.Oct
+select city.city from temperature join city on temperature.City_ID = city.City_ID where  temperature.mar < temperature.jul or temperature.mar > temperature.oct
+SELECT T1.city FROM city AS T1 JOIN temperature AS T2 ON T1.city_id  =  T2.city_id WHERE T2.Mar  <  T2.Jul OR T2.Mar  >  T2.Oct
+select city.city from temperature join city on temperature.City_ID = city.City_ID where  temperature.mar < temperature.jul or temperature.mar > temperature.oct
+SELECT T1.city FROM city AS T1 JOIN temperature AS T2 ON T1.city_id  =  T2.city_id WHERE T2.Mar  <  T2.Jul INTERSECT SELECT T3.city FROM city AS T3 JOIN hosting_city AS T4 ON T3.city_id  =  T4.host_city
+select city.city from temperature join city on temperature.City_ID = city.City_ID join hosting_city on city.City_ID = hosting_city.Host_City where  temperature.mar < temperature.jul
+SELECT T1.city FROM city AS T1 JOIN temperature AS T2 ON T1.city_id  =  T2.city_id WHERE T2.Mar  <  T2.Jul INTERSECT SELECT T3.city FROM city AS T3 JOIN hosting_city AS T4 ON T3.city_id  =  T4.host_city
+select city.city from temperature join city on temperature.City_ID = city.City_ID join hosting_city on city.City_ID = hosting_city.Host_City where  temperature.mar < temperature.jul
+SELECT T1.city FROM city AS T1 JOIN temperature AS T2 ON T1.city_id  =  T2.city_id WHERE T2.Mar  <  T2.Dec EXCEPT SELECT T3.city FROM city AS T3 JOIN hosting_city AS T4 ON T3.city_id  =  T4.host_city
+select city.city from temperature join city on temperature.City_ID = city.City_ID where  temperature.mar < temperature.dec   except select city.city from hosting_city join city on hosting_city.Host_City = city.City_ID
+SELECT T1.city FROM city AS T1 JOIN temperature AS T2 ON T1.city_id  =  T2.city_id WHERE T2.Mar  <  T2.Dec EXCEPT SELECT T3.city FROM city AS T3 JOIN hosting_city AS T4 ON T3.city_id  =  T4.host_city
+select city.city from temperature join city on temperature.City_ID = city.City_ID where  temperature.mar < temperature.dec   except select city.city from hosting_city join city on hosting_city.Host_City = city.City_ID
+SELECT T1.city FROM city AS T1 JOIN temperature AS T2 ON T1.city_id  =  T2.city_id WHERE T2.Feb  >  T2.Jun UNION SELECT T3.city FROM city AS T3 JOIN hosting_city AS T4 ON T3.city_id  =  T4.host_city
+select city.city from temperature join city on temperature.City_ID = city.City_ID where  temperature.feb > temperature.jun   union select city.city from hosting_city join city on hosting_city.Host_City = city.City_ID
+SELECT T1.city FROM city AS T1 JOIN temperature AS T2 ON T1.city_id  =  T2.city_id WHERE T2.Feb  >  T2.Jun UNION SELECT T3.city FROM city AS T3 JOIN hosting_city AS T4 ON T3.city_id  =  T4.host_city
+select city.city from temperature join city on temperature.City_ID = city.City_ID where  temperature.feb > temperature.jun   union select city.city from hosting_city join city on hosting_city.Host_City = city.City_ID
+SELECT city FROM city WHERE regional_population  >  10000000
+select city.city from city where  city.regional_population > 10000000
+SELECT city FROM city WHERE regional_population  >  10000000
+select city.city from city where  city.regional_population > 10000000
+SELECT city FROM city WHERE regional_population  >  10000000 UNION SELECT city FROM city WHERE regional_population  <  5000000
+select city.city from city where  city.regional_population > 10000000 or city.regional_population < 5000000
+SELECT city FROM city WHERE regional_population  >  10000000 UNION SELECT city FROM city WHERE regional_population  <  5000000
+select city.city from city where  city.regional_population > 10000000 or city.regional_population < 5000000
+SELECT count(*) ,  Competition FROM matchh GROUP BY Competition
+select count(*) , matchh.competition from matchh  group by matchh.competition
+SELECT count(*) ,  Competition FROM matchh GROUP BY Competition
+select count(*) , matchh.competition from matchh  group by matchh.competition
+SELECT venue FROM matchh ORDER BY date DESC
+select matchh.venue from matchh   order by matchh.date desc
+SELECT venue FROM matchh ORDER BY date DESC
+select matchh.venue from matchh   order by matchh.date desc
+SELECT gdp FROM city ORDER BY Regional_Population DESC LIMIT 1
+select city.gdp from city   order by city.regional_population desc limit 1
+SELECT gdp FROM city ORDER BY Regional_Population DESC LIMIT 1
+select city.gdp from city   order by city.regional_population desc limit 1
+SELECT t1.gdp ,  t1.Regional_Population FROM city AS T1 JOIN hosting_city AS T2 ON T1.city_id  =  T2.host_city GROUP BY t2.Host_City HAVING count(*)  >  1
+select city.gdp , city.regional_population from hosting_city join city on hosting_city.Host_City = city.City_ID  group by hosting_city.host_city having  count(*) > 1
+SELECT t1.gdp ,  t1.Regional_Population FROM city AS T1 JOIN hosting_city AS T2 ON T1.city_id  =  T2.host_city GROUP BY t2.Host_City HAVING count(*)  >  1
+select city.gdp , city.regional_population from hosting_city join city on hosting_city.Host_City = city.City_ID  group by hosting_city.host_city having  count(*) > 1

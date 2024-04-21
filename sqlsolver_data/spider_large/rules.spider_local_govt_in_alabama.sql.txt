@@ -1,0 +1,30 @@
+SELECT T1.event_details FROM EVENTS AS T1 JOIN Services AS T2 ON T1.Service_ID  =  T2.Service_ID WHERE T2.Service_Type_Code  =  'Marriage'
+select events.event_details from Events join Services on Events.Service_ID = Services.Service_ID where  services.service_type_code = "Marriage"
+SELECT T1.event_id ,  T1.event_details FROM EVENTS AS T1 JOIN Participants_in_Events AS T2 ON T1.Event_ID  =  T2.Event_ID GROUP BY T1.Event_ID HAVING count(*)  >  1
+select events.event_id , events.event_details from Participants_in_Events join Events on Participants_in_Events.Event_ID = Events.Event_ID  group by events.event_details having  count(*) > 1
+SELECT T1.Participant_ID ,  T1.Participant_Type_Code ,  count(*) FROM Participants AS T1 JOIN Participants_in_Events AS T2 ON T1.Participant_ID  =  T2.Participant_ID GROUP BY T1.Participant_ID
+select participants.participant_id , participants.participant_type_code , count(*) from Participants_in_Events join Participants on Participants_in_Events.Participant_ID = Participants.Participant_ID  group by participants.participant_id
+SELECT Participant_ID ,  Participant_Type_Code ,  Participant_Details FROM  Participants
+select participants.participant_id , participants.participant_type_code , participants.participant_details from Participants
+SELECT count(*) FROM participants WHERE participant_type_code  =  'Organizer'
+select count(*) from Participants where  participants.participant_type_code = "Organizer"
+SELECT service_type_code FROM services ORDER BY service_type_code
+select services.service_type_code from Services   order by services.service_type_code asc
+SELECT service_id ,  event_details FROM EVENTS
+select events.service_id , events.event_details from Events
+SELECT count(*) FROM participants AS T1 JOIN Participants_in_Events AS T2 ON T1.Participant_ID  =  T2.Participant_ID WHERE T1.participant_details LIKE '%Dr.%'
+select count(*) from Participants_in_Events join Participants on Participants_in_Events.Participant_ID = Participants.Participant_ID where  participants.participant_details like "%Dr.%"
+SELECT participant_type_code FROM participants GROUP BY participant_type_code ORDER BY count(*) DESC LIMIT 1
+select participants.participant_type_code from Participants  group by participants.participant_type_code  order by count(*) desc limit 1
+SELECT T3.service_id ,  T4.Service_Type_Code FROM participants AS T1 JOIN Participants_in_Events AS T2 ON T1.Participant_ID  =  T2.Participant_ID JOIN EVENTS AS T3 ON T2.Event_ID   =  T3.Event_ID JOIN services AS T4 ON T3.service_id  =  T4.service_id GROUP BY T3.service_id ORDER BY count(*) ASC LIMIT 1
+select services.service_id , services.service_type_code from Events join Services on Events.Service_ID = Services.Service_ID join Participants_in_Events on Events.Event_ID = Participants_in_Events.Event_ID join Participants on Participants_in_Events.Participant_ID = Participants.Participant_ID  group by events.service_id  order by count(*) asc limit 1
+SELECT Event_ID FROM Participants_in_Events GROUP BY Event_ID ORDER BY count(*) DESC LIMIT 1
+select participants_in_events.event_id from Participants_in_Events  group by participants_in_events.event_id  order by count(*) desc limit 1
+SELECT event_id FROM EVENTS EXCEPT SELECT T1.event_id FROM Participants_in_Events AS T1 JOIN Participants AS T2 ON T1.Participant_ID  =  T2.Participant_ID WHERE Participant_Details  =  'Kenyatta Kuhn'
+select events.event_id from Events   except select events.event_id from Participants_in_Events join Events on Participants_in_Events.Event_ID = Events.Event_ID join Participants on Participants_in_Events.Participant_ID = Participants.Participant_ID where  participants.participant_details = "Kenyatta Kuhn"
+SELECT T1.service_type_code FROM services AS T1 JOIN EVENTS AS T2 ON T1.service_id  =  T2.service_id WHERE T2.event_details  =  'Success' INTERSECT SELECT T1.service_type_code FROM services AS T1 JOIN EVENTS AS T2 ON T1.service_id  =  T2.service_id WHERE T2.event_details  =  'Fail'
+select services.service_type_code from Events join Services on Events.Service_ID = Services.Service_ID where  events.event_details = "Success"   intersect select services.service_type_code from Events join Services on Events.Service_ID = Services.Service_ID where  events.event_details = "Fail"
+SELECT count(*) FROM EVENTS WHERE event_id NOT IN (SELECT event_id FROM Participants_in_Events)
+select count(*) from Events where  events.event_id not in (select Participants_in_Events.Event_ID from Participants_in_Events  )
+SELECT count(DISTINCT participant_id) FROM participants_in_Events
+select count( distinct participants_in_events.participant_id) from Participants_in_Events

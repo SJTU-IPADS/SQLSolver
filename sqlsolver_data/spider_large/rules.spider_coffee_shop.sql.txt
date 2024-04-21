@@ -1,0 +1,36 @@
+SELECT count(*) FROM member WHERE Membership_card  =  'Black'
+select count(*) from member where  member.membership_card = "Black"
+SELECT count(*) ,  address FROM member GROUP BY address
+select count(*) , member.address from member  group by member.address
+SELECT name FROM member WHERE address  =  'Harford' OR address  =  'Waterbury'
+select member.name from member where  member.address = "Harford" or member.address = "Waterbury"
+SELECT name ,  member_id FROM member WHERE Membership_card  =  'Black' OR age  <  30
+select member.name , member.member_id from member where  member.membership_card = "Black" or member.age < 30
+SELECT Time_of_purchase ,  age ,  address FROM member ORDER BY Time_of_purchase
+select member.time_of_purchase , member.age , member.address from member   order by member.time_of_purchase asc
+SELECT Membership_card FROM member GROUP BY Membership_card HAVING count(*)  >  5
+select member.membership_card from member  group by member.membership_card having  count(*) > 5
+SELECT address FROM member WHERE age  <  30 INTERSECT SELECT address FROM member WHERE age  >  40
+select member.address from member where  member.age < 30   intersect select member.address from member where  member.age > 40
+SELECT membership_card FROM member WHERE address  =  'Hartford' INTERSECT SELECT membership_card FROM member WHERE address  =  'Waterbury'
+select member.membership_card from member where  member.address = "Hartford"   intersect select member.membership_card from member where  member.address = "Waterbury"
+SELECT count(*) FROM member WHERE address != 'Hartford'
+select count(*) from member where  member.address != "Hartford"
+SELECT address FROM member EXCEPT SELECT address FROM member WHERE Membership_card  =  'Black'
+select member.address from member   except select member.address from member where  member.membership_card = "Black"
+SELECT address FROM shop ORDER BY open_year
+select shop.address from shop   order by shop.open_year asc
+SELECT avg(num_of_staff) ,  avg(score) FROM shop
+select avg(shop.num_of_staff) , avg(shop.score) from shop
+SELECT shop_id ,  address FROM shop WHERE score  <  (SELECT avg(score) FROM shop)
+select shop.shop_id , shop.address from shop where  shop.score < (select avg(shop.score) from shop  )
+SELECT address ,  num_of_staff FROM shop WHERE shop_id NOT IN (SELECT shop_id FROM happy_hour)
+select shop.address , shop.num_of_staff from shop where  shop.shop_id not in (select happy_hour.Shop_ID from happy_hour  )
+SELECT t1.address ,  t1.shop_id FROM shop AS t1 JOIN happy_hour AS t2 ON t1.shop_id  =  t2.shop_id WHERE MONTH  =  'May'
+select happy_hour.shop_id , shop.address from happy_hour join shop on happy_hour.Shop_ID = shop.Shop_ID where  happy_hour.month = "May"
+SELECT shop_id ,  count(*) FROM happy_hour GROUP BY shop_id ORDER BY count(*) DESC LIMIT 1
+select happy_hour.shop_id , count(*) from happy_hour  group by happy_hour.shop_id  order by count(*) desc limit 1
+SELECT MONTH FROM happy_hour GROUP BY MONTH ORDER BY count(*) DESC LIMIT 1
+select happy_hour.month from happy_hour  group by happy_hour.month  order by count(*) desc limit 1
+SELECT MONTH FROM happy_hour GROUP BY MONTH HAVING count(*)  >  2
+select happy_hour.month from happy_hour  group by happy_hour.month having  count(*) > 2

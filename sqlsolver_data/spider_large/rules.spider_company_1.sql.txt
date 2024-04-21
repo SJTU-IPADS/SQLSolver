@@ -1,0 +1,14 @@
+SELECT dname FROM department ORDER BY mgr_start_date
+select department.dname from department   order by department.mgr_start_date asc
+SELECT Dependent_name FROM dependent WHERE relationship  =  'Spouse'
+select dependent.dependent_name from dependent where  dependent.relationship = "Spouse"
+SELECT count(*) FROM dependent WHERE sex  =  'F'
+select count(*) from dependent where  dependent.sex = "F"
+SELECT t1.dname FROM department AS t1 JOIN dept_locations AS t2 ON t1.dnumber  =  t2.dnumber WHERE t2.dlocation  =  'Houston'
+select department.dname from department join dept_locations on department.Dnumber = dept_locations.Dnumber where  dept_locations.dlocation = "Houston"
+SELECT fname ,  lname FROM employee WHERE salary  >  30000
+select employee.fname , employee.lname from employee where  employee.salary > 30000
+SELECT count(*) ,  sex FROM employee WHERE salary  <  50000 GROUP BY sex
+select count(*) , employee.sex from employee where  employee.salary < 50000  group by employee.sex
+SELECT fname ,  lname ,  address FROM employee ORDER BY Bdate
+select employee.fname , employee.lname , employee.address from employee   order by employee.bdate asc
