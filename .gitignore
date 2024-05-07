@@ -27,3 +27,4 @@ gradle/
 enum.log*
 target/
 #support/
+.DS_Store
