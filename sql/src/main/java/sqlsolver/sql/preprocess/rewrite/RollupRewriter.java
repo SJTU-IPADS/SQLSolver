@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 // ROLLUP(x,y) -> GROUPING SETS ((x,y), (x), ())
-public class RollupRewriter extends SqlNodePreprocess {
+public class RollupRewriter extends RecursiveRewriter {
 
   private boolean needsHandle(SqlSelect select) {
     SqlNodeList group = select.getGroup();
@@ -25,7 +25,7 @@ public class RollupRewriter extends SqlNodePreprocess {
   }
 
   @Override
-  public SqlNode preprocess(SqlNode node) {
+  public SqlNode handleNode(SqlNode node) {
     if (node instanceof SqlSelect select) {
       // check if node needs to be handled
       if (needsHandle(select)) {
@@ -33,19 +33,9 @@ public class RollupRewriter extends SqlNodePreprocess {
         SqlBasicCall rollup = (SqlBasicCall) select.getGroup().get(0);
         SqlNodeList newGroup = new SqlNodeList(SqlParserPos.ZERO);
         newGroup.add(convertRollup(rollup.getOperandList()));
-        select.setGroupBy(newGroup);
-      } else {
-        // recursion
-        select.setFrom(preprocess(select.getFrom()));
-      }
-    } else if (node instanceof SqlBasicCall call) {
-      // recursion
-      for (int i = 0; i < call.getOperandList().size(); i++) {
-        SqlNode child = call.operand(i);
-        SqlNode childNew = preprocess(child);
-        if (childNew != child) {
-          call.setOperand(i, childNew);
-        }
+        final SqlSelect result = (SqlSelect) select.clone(SqlParserPos.ZERO);
+        result.setGroupBy(newGroup);
+        return result;
       }
     }
     return node;

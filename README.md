@@ -241,7 +241,6 @@ This repository includes the source code and benchmarks.
 
 ## Citation
 If you use SQLSolver in your projects or research, please kindly cite our [paper](https://dl.acm.org/doi/abs/10.1145/3626768):
-
 ```
 @article{sqlsolver,  
   author = {Ding, Haoran and Wang, Zhaoguo and Yang, Yicun and Zhang, Dexin and Xu, Zhenglin and Chen, Haibo and Piskac, Ruzica and Li, Jinyang},  
@@ -258,8 +257,6 @@ If you use SQLSolver in your projects or research, please kindly cite our [paper
   numpages = {26},  
 }
 ```
-
-
 ## Contact
 
 If you have any questions, please submit an issue or contact our <a href="mailto:nhaorand@sjtu.edu.cn">email</a>.

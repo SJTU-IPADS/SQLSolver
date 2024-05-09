@@ -32,6 +32,7 @@ public abstract class SqlNodePreprocess {
     rewriters.add(new OrderByConstRewriter());
     rewriters.add(new GroupByConstRewriter());
     rewriters.add(new LimitZeroRewriter());
+    rewriters.add(new RollupRewriter());
     rewriters.add(new GroupingSetsRewriter());
     rewriters.add(new ColumnReorderRewriter());
     // TODO: spider cases need this rewrite rule.

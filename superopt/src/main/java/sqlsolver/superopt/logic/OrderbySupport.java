@@ -16,6 +16,7 @@ import sqlsolver.sql.schema.Table;
 import sqlsolver.superopt.uexpr.UConst;
 import sqlsolver.superopt.uexpr.UExprConcreteTranslationResult;
 import sqlsolver.superopt.uexpr.UExprSupport;
+import sqlsolver.superopt.util.Timeout;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -90,6 +91,7 @@ public class OrderbySupport {
 
       return patternMatching(plan0, plan1);
     } catch (Exception e) {
+      Timeout.bypassTimeout(e);
       if (LogicSupport.dumpLiaFormulas)
         e.printStackTrace();
       return VerificationResult.UNKNOWN;
@@ -182,7 +184,7 @@ public class OrderbySupport {
             deleteSortLimit(root, node);
           } else {
             replaceNode(root, node, LogicalSort.create(sort.getInput(),
-                    RelCollations.of(newSortCollations), null, null));
+                    RelCollations.of(newSortCollations), sort.offset, sort.fetch));
           }
         }
       }
@@ -529,6 +531,7 @@ public class OrderbySupport {
         return uExprsWithIC.sourceExpr().equals(UConst.zero()) && uExprsWithIC.targetExpr().equals(UConst.zero());
       }
     } catch (Exception e) {
+      Timeout.bypassTimeout(e);
       return false;
     }
     return false;

@@ -47,7 +47,7 @@ public class LiaProveTest {
     Path testCasesPath = dataDir().resolve("prepared").resolve("rules.tpch.spark.txt");
     int targetId = -1;
     int[] eqCases = new int[]{1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 20, 21, 22};
-    final Set<Integer> timeouts = Set.of(2, 16);
+    final Set<Integer> timeouts = Set.of();
     testLiaOnRulesConcrete(testCasesPath, targetId, eqCases, timeouts, "tpch");
   }
 
@@ -163,7 +163,7 @@ public class LiaProveTest {
         case EQ -> integer = 1;
         case NEQ -> integer = 0;
         case UNKNOWN -> integer = -1;
-        case EXCEPTION -> integer = -2;
+        case TIMEOUT -> integer = -2;
       }
       integers.add(integer);
     }
@@ -286,7 +286,7 @@ public class LiaProveTest {
       }
     }
 
-    List<VerificationResult> results = Verification.verify(sqlList0, sqlList1, schema);
+    List<VerificationResult> results = Verification.verify(sqlList0, sqlList1, schema, timeout);
 
     for (int t : timeouts) {
       results.set(t - 1, VerificationResult.UNKNOWN);

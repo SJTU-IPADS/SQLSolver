@@ -13,6 +13,7 @@ import sqlsolver.superopt.uexpr.*;
 import sqlsolver.superopt.uexpr.normalizer.QueryUExprICRewriter;
 import sqlsolver.superopt.fragment.AggFuncKind;
 import sqlsolver.superopt.fragment.Symbol;
+import sqlsolver.superopt.util.Timeout;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -91,6 +92,7 @@ public abstract class LogicSupport {
     try {
       return new SqlSolver(uExprs, schema).proveEq();
     } catch (Exception e) {
+      Timeout.bypassTimeout(e);
       if (LogicSupport.dumpLiaFormulas)
         e.printStackTrace();
       return VerificationResult.UNKNOWN;

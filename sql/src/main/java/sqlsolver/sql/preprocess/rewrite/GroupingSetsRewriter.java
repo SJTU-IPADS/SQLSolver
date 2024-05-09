@@ -4,11 +4,14 @@ import org.apache.calcite.sql.*;
 import org.apache.calcite.sql.fun.SqlRowOperator;
 import org.apache.calcite.sql.fun.SqlStdOperatorTable;
 import org.apache.calcite.sql.parser.SqlParserPos;
+import sqlsolver.sql.calcite.CalciteSupport;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static sqlsolver.sql.preprocess.rewrite.RewriterUtils.tail;
 
 //  SELECT
 //    DEPTNO, ENAME, JOB,
@@ -41,7 +44,7 @@ import java.util.Set;
 //    EMP
 //  GROUP BY
 //    JOB, DEPTNO
-public class GroupingSetsRewriter extends SqlNodePreprocess {
+public class GroupingSetsRewriter extends RecursiveRewriter {
 
   private static final int GROUP_GROUPING_SETS = 1;
   private static final int GROUP_SIMPLE = 2;
@@ -132,7 +135,12 @@ public class GroupingSetsRewriter extends SqlNodePreprocess {
   private boolean containsAgg(SqlNodeList list) {
     for (SqlNode node : list) {
       if (node instanceof SqlBasicCall call
-              && call.getOperator() instanceof SqlAggFunction) {
+              && call.getOperator() instanceof SqlAsOperator) {
+        node = call.operand(0);
+      }
+      if (node instanceof SqlBasicCall call
+              && (call.getOperator() instanceof SqlAggFunction
+              || CalciteSupport.isAggOperator(call.getOperator()))) {
         return true;
       }
     }
@@ -166,26 +174,16 @@ public class GroupingSetsRewriter extends SqlNodePreprocess {
   }
 
   @Override
-  public SqlNode preprocess(SqlNode node) {
+  public SqlNode handleNode(SqlNode node) {
     if (node instanceof SqlSelect select) {
       // check if node needs to be handled
       if (needsHandle(select)) {
         // generate a subquery for each grouping set
         List<SqlNode> queries = queriesFromGroupingSets(select);
         // return UNION ALL of generated subqueries
+        // TODO: remap column aliases (t.a -> t_a)
+        //  and rename corresponding column references in the direct parent
         return unionAll(queries);
-      } else {
-        // recursion
-        select.setFrom(preprocess(select.getFrom()));
-      }
-    } else if (node instanceof SqlBasicCall call) {
-      // recursion
-      for (int i = 0; i < call.getOperandList().size(); i++) {
-        SqlNode child = call.operand(i);
-        SqlNode childNew = preprocess(child);
-        if (childNew != child) {
-          call.setOperand(i, childNew);
-        }
       }
     }
     return node;
@@ -260,9 +258,10 @@ public class GroupingSetsRewriter extends SqlNodePreprocess {
             && call.getOperator() instanceof SqlAsOperator) {
       newItem = call.operand(0);
       alias = call.operand(1);
-    } else if (item instanceof SqlIdentifier) {
+    } else if (item instanceof SqlIdentifier id) {
       // column name itself as an alias
-      alias = item;
+      // qualification needs to be removed
+      alias = tail(id);
     }
     newItem = convertNode(newItem, groupingSet, groupColumns);
     if (newItem == item) return item;

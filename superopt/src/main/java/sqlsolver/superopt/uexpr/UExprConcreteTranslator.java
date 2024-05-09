@@ -8,6 +8,7 @@ import org.apache.calcite.rel.core.*;
 import org.apache.calcite.rel.type.RelDataType;
 import org.apache.calcite.rex.*;
 import org.apache.calcite.sql.SqlKind;
+import org.apache.calcite.sql.type.SqlTypeName;
 import org.apache.calcite.util.DateString;
 import org.apache.calcite.util.NlsString;
 import org.apache.calcite.util.TimeString;
@@ -1276,7 +1277,14 @@ public class UExprConcreteTranslator {
           // Literal case
           final RexLiteral literal = (RexLiteral) node;
           final RelDataType type = literal.getType();
-          switch (type.getSqlTypeName()) {
+          final SqlTypeName typeName;
+          if (NULL.equals(literal.getTypeName())) {
+            // NULL literals override the data type
+            typeName = NULL;
+          } else {
+            typeName = type.getSqlTypeName();
+          }
+          switch (typeName) {
             case INTEGER, INTERVAL_DAY, BIGINT -> {
               // Interval_day here consider milliseconds
               final BigDecimal bigDecimal = (BigDecimal) literal.getValue();

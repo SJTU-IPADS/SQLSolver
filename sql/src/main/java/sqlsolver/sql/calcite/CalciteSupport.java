@@ -467,7 +467,7 @@ public abstract class CalciteSupport {
       SqlNode sqlNode = planner.parse(string);
       return planner.validate(sqlNode);
     } catch (SqlParseException | ValidationException e) {
-      System.err.println(e.getMessage());
+      //System.err.println(e.getMessage());
       return null;
     }
   }

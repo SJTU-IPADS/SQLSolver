@@ -9,6 +9,7 @@ import sqlsolver.sql.plan.Value;
 import sqlsolver.superopt.liastar.LiaAndImpl;
 import sqlsolver.superopt.liastar.LiaStar;
 import sqlsolver.superopt.liastar.LiaVarImpl;
+import sqlsolver.superopt.util.Timeout;
 import sqlsolver.superopt.util.Z3Support;
 
 /**
@@ -49,7 +50,8 @@ public class LiaTransformer {
     // transform into equivalent LIA
     try {
       return transformEquivalent(g, v, w, constraint);
-    } catch (RuntimeException ignored) {
+    } catch (RuntimeException e) {
+      Timeout.bypassTimeout(e);
     }
     // if fails, transform into over-approximation
     return transformOverApprox(g, v, w, f, s);
@@ -153,7 +155,8 @@ public class LiaTransformer {
       // transform f into SLS then LIA
       try {
         overApprox = LiaStar.mkAnd(true, overApprox, transformSls(g, v, w, f));
-      } catch (RuntimeException ignored) {
+      } catch (RuntimeException e) {
+        Timeout.bypassTimeout(e);
         // if fails, transform only part of f related to v into SLS then LIA
         try {
           overApprox =
@@ -161,7 +164,8 @@ public class LiaTransformer {
                   true,
                   overApprox,
                   transformSls(g, v, w, removeUnrelatedTerms(f, w.subList(0, v.size()))));
-        } catch (RuntimeException ignored1) {
+        } catch (RuntimeException e1) {
+          Timeout.bypassTimeout(e1);
         }
       }
     } else {
@@ -173,7 +177,8 @@ public class LiaTransformer {
                 true,
                 overApprox,
                 transformSls(g, v, w, removeUnrelatedTerms(f, w.subList(0, v.size()))));
-      } catch (RuntimeException ignored) {
+      } catch (RuntimeException e) {
+        Timeout.bypassTimeout(e);
       }
     }
     return overApprox;
@@ -253,7 +258,8 @@ public class LiaTransformer {
                 LiaStar.mkEq(false, LiaStar.mkVar(false, outVar1), LiaStar.mkVar(false, outVar2));
             result = LiaStar.mkAnd(false, result, outEq);
           }
-        } catch (RuntimeException ignored) {
+        } catch (RuntimeException e) {
+          Timeout.bypassTimeout(e);
         }
       }
     }
@@ -302,7 +308,8 @@ public class LiaTransformer {
             final LiaStar nonZeroImplication = LiaStar.mkImplies(false, nonZeroW1, nonZeroW2);
             result = LiaStar.mkAnd(false, result, nonZeroImplication);
           }
-        } catch (RuntimeException ignored) {
+        } catch (RuntimeException e) {
+          Timeout.bypassTimeout(e);
         }
       }
     }

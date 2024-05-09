@@ -232,6 +232,7 @@ public class Z3Support {
    *     (i.e. always true); the "exists" part covers free vars in lia except universalBVs.
    */
   public static boolean isValidLia(LiaStar lia, Set<String> universalBVNames) {
+    Timeout.checkTimeout();
     // Since LIA does not contain forall/exists,
     // let FVs in universalBVs be bound by "forall",
     // and other FVs be bound by "exists"

@@ -17,6 +17,7 @@ import sqlsolver.sql.schema.Schema;
 import sqlsolver.superopt.liastar.LiaStar;
 import sqlsolver.superopt.liastar.translator.LiaTranslator;
 import sqlsolver.superopt.uexpr.*;
+import sqlsolver.superopt.util.Timeout;
 
 /**
  * Translate U-expressions into FOL formulas. It aims at U-expressions whose summations are always
@@ -195,6 +196,7 @@ public abstract class SetTranslator {
     try {
       return isValidLia(toCheck);
     } catch (Throwable e) {
+      Timeout.bypassTimeout(e);
       // non-integral values are considered non-binary
       return false;
     }

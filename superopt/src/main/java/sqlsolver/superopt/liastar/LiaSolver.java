@@ -6,6 +6,7 @@ import sqlsolver.superopt.liastar.parameter.InwardParamRemover;
 import sqlsolver.superopt.logic.LogicSupport;
 import sqlsolver.superopt.logic.SqlSolver;
 import sqlsolver.superopt.uexpr.PredefinedFunctions;
+import sqlsolver.superopt.util.Timeout;
 import sqlsolver.superopt.util.Z3Support;
 
 public class LiaSolver {
@@ -46,6 +47,7 @@ public class LiaSolver {
       if (result.equals("SAT")) return LiaSolverStatus.SAT;
       return LiaSolverStatus.UNKNOWN;
     } catch (Exception e) {
+      Timeout.bypassTimeout(e);
       if (LogicSupport.dumpLiaFormulas) {
         e.printStackTrace();
       }

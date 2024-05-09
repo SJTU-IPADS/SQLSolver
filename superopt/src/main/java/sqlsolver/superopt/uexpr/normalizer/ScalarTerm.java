@@ -7,6 +7,7 @@ import sqlsolver.sql.plan.Value;
 import sqlsolver.superopt.liastar.LiaStar;
 import sqlsolver.superopt.liastar.translator.LiaTranslator;
 import sqlsolver.superopt.uexpr.*;
+import sqlsolver.superopt.util.Timeout;
 import sqlsolver.superopt.util.Z3Support;
 
 import java.util.*;
@@ -106,7 +107,9 @@ public record ScalarTerm(UVar outVar, List<Value> schema, UTerm term) {
         if (Z3Support.isValidLia(toCheck)) {
           return y;
         }
-      } catch (Throwable ignored) {}
+      } catch (Throwable e) {
+        Timeout.bypassTimeout(e);
+      }
     }
     return null;
   }

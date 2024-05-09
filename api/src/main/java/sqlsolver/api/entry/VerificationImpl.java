@@ -2,7 +2,6 @@ package sqlsolver.api.entry;
 
 import org.apache.calcite.jdbc.CalciteSchema;
 import org.apache.calcite.rel.RelNode;
-import org.apache.calcite.schema.SchemaPlus;
 import org.apache.calcite.sql.SqlNode;
 import org.apache.calcite.tools.Planner;
 import sqlsolver.api.query.QueryPair;
@@ -13,10 +12,11 @@ import sqlsolver.superopt.logic.LogicSupport;
 import sqlsolver.superopt.logic.SqlSolver;
 import sqlsolver.superopt.logic.VerificationResult;
 import sqlsolver.superopt.uexpr.normalizer.QueryUExprICRewriter;
+import sqlsolver.superopt.util.Timeout;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static sqlsolver.sql.SqlSupport.parsePreprocess;
 import static sqlsolver.sql.plan.PlanSupport.isLiteralEq;
@@ -92,10 +92,10 @@ final public class VerificationImpl implements Verification {
   private static VerificationResult getVerifyLiaStarResult(QueryPair pair) {
     try {
       return LogicSupport.proveEqByLIAStarConcrete(pair.getPlan0(), pair.getPlan1(), pair.getSchema());
-    } catch (Exception | Error e) {
+    } catch (Throwable e) {
       if (LogicSupport.dumpLiaFormulas)
         e.printStackTrace();
-      return VerificationResult.UNKNOWN;
+      return Timeout.isTimeout(e) ? VerificationResult.TIMEOUT : VerificationResult.UNKNOWN;
     }
   }
 
@@ -104,49 +104,99 @@ final public class VerificationImpl implements Verification {
    * if both sql have semantic errors, they both return empty set -> EQ.
    * if both sql have the same plans -> EQ.
    * otherwise, use the Lia Star method to verify two sql.
+   * Each pair has a time budget {@code timeout} if {@code timeout} is positive;
+   * pairs exceeding this budget return UNKNOWN.
    */
-  private static List<VerificationResult> getVerifyResult(List<QueryPair> pairs, String schemaString) {
+  private static List<VerificationResult> getVerifyResult(List<QueryPair> pairs, String schemaString, long timeout) {
     final List<VerificationResult> results = new ArrayList<>();
+    final List<Long> times = new ArrayList<>();
 
     int count = 0;
+    // TODO: timing is temporarily disabled
+    final Timer timer = new Timer();
     for (QueryPair pair : pairs) {
       System.out.println("Verifying pair " + ++count);
-      SqlSolver.initialize();
-      QueryUExprICRewriter.selectIC(-1);
-
-      // Some special cases
-      if (pair.getPlan0() == null || pair.getPlan1() == null) {
-        // both two plan tree are literal same -> EQ
-        if (isLiteralEq(pair.getSql0(), pair.getSql1(), schemaString)) {
-          results.add(VerificationResult.EQ);
-          System.out.println(pair.pairId() + " " + VerificationResult.EQ);
-          continue;
-        }
-        if (pair.getSql0().contains("VALUES") || pair.getSql1().contains("VALUES")) {
-          final VerificationResult result = getVerifyLiaStarResult(pair);
-          results.add(result);
-          System.out.println(pair.pairId() + " " + result);
-        } else {
-          // cannot process other cases currently
-          System.out.println(pair.pairId() + " " + VerificationResult.UNKNOWN);
+      if (timeout > 0) {
+        final AtomicReference<VerificationResult> atomicResult = new AtomicReference<>();
+        final Thread worker = new Thread(() -> {
+          final VerificationResult result = getVerifyResult(pair, schemaString);
+          atomicResult.set(result);
+        });
+        final long timeStart = System.currentTimeMillis();
+        worker.start();
+        final AtomicLong timeInterrupt = new AtomicLong();
+        timer.schedule(new TimerTask() {
+          @Override
+          public void run() {
+            worker.interrupt();
+            timeInterrupt.set(System.currentTimeMillis());
+          }
+        }, timeout * 1000);
+        try {
+          worker.join();
+          final long timeEnd = System.currentTimeMillis();
+          final long timeVerify = timeEnd - timeStart;
+          times.add(timeVerify);
+          //System.out.println("Verification time: " + timeVerify + " ms");
+          final VerificationResult result = atomicResult.get();
+          // TODO: TIMEOUT as a separate type
+          results.add(result == VerificationResult.TIMEOUT ? VerificationResult.UNKNOWN : result);
+          //if (result == VerificationResult.TIMEOUT)
+          //  System.out.println("Timeout delay: " + (timeEnd - timeInterrupt.get()) + " ms");
+        } catch (InterruptedException e) {
+          // should not be interrupted
           results.add(VerificationResult.UNKNOWN);
         }
-        continue;
+        System.out.println(pair.pairId() + " " + results.get(count - 1));
+      } else {
+        final long timeStart = System.currentTimeMillis();
+        final VerificationResult result = getVerifyResult(pair, schemaString);
+        final long timeEnd = System.currentTimeMillis();
+        final long timeVerify = timeEnd - timeStart;
+        times.add(timeVerify);
+        results.add(result);
+        System.out.println(pair.pairId() + " " + result);
       }
-
-      // both two plan tree are literal same -> EQ
-      if (isLiteralEq(pair.getSql0(), pair.getSql1(), schemaString)) {
-        results.add(VerificationResult.EQ);
-        System.out.println(pair.pairId() + " " + VerificationResult.EQ);
-        continue;
-      }
-      // verify the sql pair
-      VerificationResult result = getVerifyLiaStarResult(pair);
-      System.out.println(pair.pairId() + " " + result);
-      results.add(result);
     }
 
+    /*System.out.println("===== Time stats (ms) =====");
+    for (long time : times) {
+      System.out.println(time);
+    }*/
+
     return results;
+  }
+
+  /**
+   * Get verify result of a query pair.
+   * if both sql have semantic errors, they both return empty set -> EQ.
+   * if both sql have the same plans -> EQ.
+   * otherwise, use the Lia Star method to verify two sql.
+   */
+  private static VerificationResult getVerifyResult(QueryPair pair, String schemaString) {
+    SqlSolver.initialize();
+    QueryUExprICRewriter.selectIC(-1);
+
+    // Some special cases
+    if (pair.getPlan0() == null || pair.getPlan1() == null) {
+      // both two plan tree are literal same -> EQ
+      if (isLiteralEq(pair.getSql0(), pair.getSql1(), schemaString)) {
+        return VerificationResult.EQ;
+      }
+      if (pair.getSql0().contains("VALUES") || pair.getSql1().contains("VALUES")) {
+        return getVerifyLiaStarResult(pair);
+      } else {
+        // cannot process other cases currently
+        return VerificationResult.UNKNOWN;
+      }
+    }
+
+    // both two plan tree are literal same -> EQ
+    if (isLiteralEq(pair.getSql0(), pair.getSql1(), schemaString)) {
+      return VerificationResult.EQ;
+    }
+    // verify the sql pair
+    return getVerifyLiaStarResult(pair);
   }
 
   /**
@@ -156,7 +206,7 @@ final public class VerificationImpl implements Verification {
     try {
       final Schema schema = CalciteSupport.getSchema(schemaString);
       final List<QueryPair> pairs = readPairs(Arrays.asList(sql0, sql1), schema);
-      return getVerifyResult(pairs, schemaString).get(0);
+      return getVerifyResult(pairs, schemaString, -1).get(0);
     } catch (Exception | Error e) {
       if (LogicSupport.dumpLiaFormulas)
         e.printStackTrace();
@@ -169,7 +219,7 @@ final public class VerificationImpl implements Verification {
    * The two sql to verify are in the same index of both lists.
    * The two sqlList should have same size.
    */
-  static List<VerificationResult> verify(List<String> sqlList0, List<String> sqlList1, String schemaString) {
+  static List<VerificationResult> verify(List<String> sqlList0, List<String> sqlList1, String schemaString, long timeout) {
     final Schema schema = CalciteSupport.getSchema(schemaString);
 
     final List<String> mergedSqlList = new ArrayList<>();
@@ -182,6 +232,6 @@ final public class VerificationImpl implements Verification {
     }
 
     final List<QueryPair> pairs = readPairs(mergedSqlList, schema);
-    return getVerifyResult(pairs, schemaString);
+    return getVerifyResult(pairs, schemaString, timeout);
   }
 }

@@ -5,6 +5,7 @@ import sqlsolver.sql.plan.Value;
 import sqlsolver.sql.schema.Schema;
 import sqlsolver.superopt.uexpr.UTerm;
 import sqlsolver.superopt.uexpr.UVar;
+import sqlsolver.superopt.util.Timeout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,6 +81,7 @@ public class SetSolver {
         solver.add(z3.mkNot(z3.mkEq(arithExp1, arithExp2)));
         return trResult(solver.check());
       } catch (Throwable e) {
+        Timeout.bypassTimeout(e);
         return VerificationResult.UNKNOWN;
       }
     }

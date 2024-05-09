@@ -33,6 +33,22 @@ public interface Verification {
    * @return a list of string indicates that whether two sql are equivalent.
    */
   static List<VerificationResult> verify(List<String> sqlList0, List<String> sqlList1, String schema) {
-    return VerificationImpl.verify(sqlList0, sqlList1, schema);
+    return VerificationImpl.verify(sqlList0, sqlList1, schema, -1);
+  }
+
+  /**
+   * Verify pairwise sql equivalence in the sqlList.
+   * It resembles {@link Verification#verify(List, List, String)} except that it sets an upper bound
+   * for each run of verifying a pair.
+   *
+   * @param timeout when verification of a pair takes this amount of time, the pair is skipped;
+   *                timeout should be in seconds;
+   *                negative timeout indicates no time limit
+   * @return a list of string indicates that whether two sql are equivalent.
+   *
+   * @see Verification#verify(List, List, String)
+   */
+  static List<VerificationResult> verify(List<String> sqlList0, List<String> sqlList1, String schema, long timeout) {
+    return VerificationImpl.verify(sqlList0, sqlList1, schema, timeout);
   }
 }

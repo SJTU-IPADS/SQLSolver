@@ -1,6 +1,7 @@
 package sqlsolver.superopt.uexpr.normalizer;
 
 import sqlsolver.superopt.uexpr.*;
+import sqlsolver.superopt.util.Timeout;
 
 import java.util.*;
 import java.util.function.Function;
@@ -119,6 +120,7 @@ public class UNormalization {
 
   protected UTerm performNormalizeRule(Function<UTerm, UTerm> transformation) {
     expr = transformation.apply(expr);
+    Timeout.checkTimeout();
     // Routine normalizations
     expr = flatSingletonAddAndMul(expr);
     expr = flatAddAndMul(expr);

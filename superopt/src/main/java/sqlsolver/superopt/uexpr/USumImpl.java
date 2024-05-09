@@ -4,6 +4,7 @@ import sqlsolver.common.utils.ListSupport;
 import sqlsolver.superopt.liastar.LiaStar;
 import sqlsolver.superopt.util.AbstractPrettyPrinter;
 import sqlsolver.superopt.util.SetMatching;
+import sqlsolver.superopt.util.Timeout;
 
 import java.util.*;
 
@@ -275,6 +276,7 @@ public record USumImpl(Set<UVar> boundedVars, UTerm body) implements USum {
   }
 
   private static boolean tryMatch(int depth, SetMatching<UVar> matching, UTerm t1, UTerm t2) {
+    Timeout.checkTimeout();
     // border of search
     if (depth == matching.size()) return t1.equals(t2);
     // search for different matching within matching[depth]
