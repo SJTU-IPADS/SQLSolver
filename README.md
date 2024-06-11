@@ -20,7 +20,7 @@ the paper "[Proving Query Equivalence Using Linear Integer Arithmetic](https://d
 - [File Structure](#file-structure)
 - [Citation](#citation)
 - [Contact](#contact)
-
+- [Contributors](#contributors)
 
 ## Environment setup
 
@@ -261,4 +261,17 @@ If you use SQLSolver in your projects or research, please kindly cite our [paper
 
 If you have any questions, please submit an issue or contact our <a href="mailto:nhaorand@sjtu.edu.cn">email</a>.
 
+## Contributors
 
+Students
+- [Haoran Ding](https://ipads.se.sjtu.edu.cn/pub/members/haoran_ding), [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
+- [Zhuoran Wei](https://zhuoran-wei.github.io/zhuoran-wei/), [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
+- Zhenglin Xu, [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
+- Yicun Yang, [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
+- Dexin Zhang, Princeton University
+
+Professors
+- [Zhaoguo Wang](https://ipads.se.sjtu.edu.cn/pub/members/zhaoguo_wang), [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
+- [Haibo Chen](https://ipads.se.sjtu.edu.cn/pub/members/haibo_chen), [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
+- [Ruzica Piskac](https://www.cs.yale.edu/homes/piskac/), [ROSE](https://rose.yale.edu/), Yale University
+- [Jinyang Li](https://www.news.cs.nyu.edu/~jinyang/), New York University
