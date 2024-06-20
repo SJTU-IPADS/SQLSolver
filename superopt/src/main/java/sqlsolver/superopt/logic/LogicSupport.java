@@ -243,7 +243,7 @@ public abstract class LogicSupport {
       final VerificationResult res0 = LogicSupport.proveEqByLIAStar(uExprs, schema);
       if (res0 == VerificationResult.EQ) return VerificationResult.EQ;
     }
-    return (resICUnexplainedPred == VerificationResult.UNKNOWN && resIC == VerificationResult.UNKNOWN) ?
+    return (resICUnexplainedPred == VerificationResult.UNKNOWN || resIC == VerificationResult.UNKNOWN) ?
             VerificationResult.UNKNOWN : VerificationResult.NEQ;
   }
 

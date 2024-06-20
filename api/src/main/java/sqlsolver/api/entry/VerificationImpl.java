@@ -30,6 +30,8 @@ final public class VerificationImpl implements Verification {
     final CalciteSchema schemaPlus = CalciteSupport.getCalciteSchema(schema);
 
     SqlNodePreprocess.setSchema(schema);
+    CalciteSupport.USER_DEFINED_FUNCTIONS.clear();
+    CalciteSupport.addUserDefinedFunctions(sqlList);
 
     final List<QueryPair> pairs = new ArrayList<>(sqlList.size() >> 1);
     for (int i = 0, bound = sqlList.size(); i < bound; i += 2) {
@@ -112,8 +114,7 @@ final public class VerificationImpl implements Verification {
     final List<Long> times = new ArrayList<>();
 
     int count = 0;
-    // TODO: timing is temporarily disabled
-    final Timer timer = new Timer();
+    final Timer timer = new Timer(true);
     for (QueryPair pair : pairs) {
       System.out.println("Verifying pair " + ++count);
       if (timeout > 0) {
@@ -137,14 +138,14 @@ final public class VerificationImpl implements Verification {
           final long timeEnd = System.currentTimeMillis();
           final long timeVerify = timeEnd - timeStart;
           times.add(timeVerify);
-          //System.out.println("Verification time: " + timeVerify + " ms");
+          System.out.println("Verification time: " + timeVerify + " ms");
           final VerificationResult result = atomicResult.get();
-          // TODO: TIMEOUT as a separate type
-          results.add(result == VerificationResult.TIMEOUT ? VerificationResult.UNKNOWN : result);
+          results.add(result);
           //if (result == VerificationResult.TIMEOUT)
           //  System.out.println("Timeout delay: " + (timeEnd - timeInterrupt.get()) + " ms");
         } catch (InterruptedException e) {
           // should not be interrupted
+          System.out.println("Verification is interrupted");
           results.add(VerificationResult.UNKNOWN);
         }
         System.out.println(pair.pairId() + " " + results.get(count - 1));
@@ -154,6 +155,7 @@ final public class VerificationImpl implements Verification {
         final long timeEnd = System.currentTimeMillis();
         final long timeVerify = timeEnd - timeStart;
         times.add(timeVerify);
+        System.out.println("Verification time: " + timeVerify + " ms");
         results.add(result);
         System.out.println(pair.pairId() + " " + result);
       }

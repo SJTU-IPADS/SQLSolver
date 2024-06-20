@@ -76,9 +76,9 @@ public class OrderbySupport {
       deleteEmptySort(plan0, true);
       deleteEmptySort(plan1, false);
 
-      // if one plan has sort while the other doesn't, it is an unknown case
+      // if one plan has sort while the other doesn't, they are regarded as inequivalent queries
       if (hasNodeOfKind(plan0, Sort.class) != hasNodeOfKind(plan1, Sort.class)) {
-        return VerificationResult.UNKNOWN;
+        return VerificationResult.NEQ;
       }
 
       // promote sort node, the concrete usage can be seen in comment
@@ -383,7 +383,7 @@ public class OrderbySupport {
     boolean hasOrderBy1 = hasNodeOfKind(p1, Sort.class);
 
     if (hasOrderBy0 != hasOrderBy1) {
-      return VerificationResult.UNKNOWN;
+      return VerificationResult.NEQ;
     }
 
     if (!hasOrderBy0) {
@@ -413,7 +413,7 @@ public class OrderbySupport {
         RelNode[] subTree1 = splitPlanContext(p1, sortNode1, tempQueries);
 
         if (subTree0.length != subTree1.length) {
-          return VerificationResult.UNKNOWN;
+          return VerificationResult.NEQ;
         }
 
         boolean isEqual = true;
@@ -421,7 +421,7 @@ public class OrderbySupport {
           RelNode subPlan0 = subTree0[i];
           RelNode subPlan1 = subTree1[i];
           if (subPlan0 == null && subPlan1 == null) break;
-          if (subPlan0 == null || subPlan1 == null) return VerificationResult.UNKNOWN;
+          if (subPlan0 == null || subPlan1 == null) return VerificationResult.NEQ;
 
           VerificationResult matchingFlag = patternMatching(subPlan0, subPlan1);
           if (matchingFlag == VerificationResult.UNKNOWN) {
@@ -447,7 +447,7 @@ public class OrderbySupport {
       }
     }
 
-    return VerificationResult.UNKNOWN;
+    return VerificationResult.NEQ;
   }
 
   /**

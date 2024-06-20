@@ -21,10 +21,6 @@ nohup.out
 enum_result*
 transform_result*
 opt_result*
-gradlew
-gradlew.bat
-gradle/
 enum.log*
 target/
 #support/
-.DS_Store

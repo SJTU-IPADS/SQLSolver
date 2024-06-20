@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface UFunc extends UTerm {
   enum FuncKind {
-    STRING("string"),
+    NON_INT("non-integer"),
     INTEGER("integer");
     private final String text;
 

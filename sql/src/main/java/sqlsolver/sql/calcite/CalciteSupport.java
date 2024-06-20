@@ -17,13 +17,13 @@ import org.apache.calcite.sql.fun.SqlLibraryOperatorTableFactory;
 import org.apache.calcite.sql.parser.SqlParseException;
 import org.apache.calcite.sql.parser.SqlParser;
 import org.apache.calcite.sql.parser.babel.SqlBabelParserImpl;
-import org.apache.calcite.sql.type.OperandTypes;
-import org.apache.calcite.sql.type.ReturnTypes;
-import org.apache.calcite.sql.type.SqlTypeFamily;
+import org.apache.calcite.sql.type.*;
+import org.apache.calcite.sql.util.SqlBasicVisitor;
 import org.apache.calcite.sql.util.SqlOperatorTables;
 import org.apache.calcite.sql.validate.SqlValidator;
 import org.apache.calcite.tools.*;
 import sqlsolver.common.utils.IterableSupport;
+import sqlsolver.common.utils.ListSupport;
 import sqlsolver.common.utils.NameSequence;
 import sqlsolver.sql.ast.constants.ConstraintKind;
 import sqlsolver.sql.plan.Value;
@@ -52,10 +52,8 @@ public abstract class CalciteSupport {
    */
   public static final JavaTypeFactory JAVA_TYPE_FACTORY = new JavaTypeFactoryImpl(RelDataTypeSystem.DEFAULT);
 
-  /**
-   * Constant of user defined functions.
-   */
-  public static final List<SqlOperator> USER_DEFINED_FUNCTIONS = new ArrayList<>();
+  /** Constant of user defined functions. */
+  public static final Set<SqlOperator> USER_DEFINED_FUNCTIONS = new HashSet<>();
 
   /**
    * Constant of temporary table's name prefix.
@@ -455,6 +453,19 @@ public abstract class CalciteSupport {
     return Frameworks.getPlanner(config);
   }
 
+  /**
+   * Get calcite planner for SQL-to-AST parsing only.
+   */
+  public static Planner getParser() {
+    // parser config
+    Frameworks.ConfigBuilder builder = Frameworks.newConfigBuilder()
+            .parserConfig(SqlParser.config().withCaseSensitive(false).withParserFactory(SqlBabelParserImpl.FACTORY))
+            .operatorTable(SqlOperatorTables.chain(getCalciteOperators(), SqlOperatorTables.of(USER_DEFINED_FUNCTIONS)))
+            .sqlValidatorConfig(SqlValidator.Config.DEFAULT.withTypeCoercionEnabled(true));
+    FrameworkConfig config = builder.build();
+    return Frameworks.getPlanner(config);
+  }
+
   /*
    * AST related functions
    */
@@ -502,16 +513,78 @@ public abstract class CalciteSupport {
   }
 
   /**
-   * Add a user defined function.
+   * Return operators supported by Calcite.
+   * User-defined functions are not included.
+   */
+  public static SqlOperatorTable getCalciteOperators() {
+    return SqlLibraryOperatorTableFactory.INSTANCE.getOperatorTable(
+                    SqlLibrary.BIG_QUERY,
+                    SqlLibrary.SPARK,
+                    SqlLibrary.MYSQL,
+                    SqlLibrary.STANDARD);
+  }
+
+  /**
+   * Add a user defined function without specifying its return type.
    */
   public static void addUserDefinedFunction(String name, int argumentNum) {
+    addUserDefinedFunction(name, argumentNum, SqlTypeName.ANY);
+  }
+
+  /**
+   * Add a user defined function.
+   */
+  public static void addUserDefinedFunction(String name, int argumentNum, SqlTypeName returnTypeName) {
     final SqlOperator custom_function = new SqlFunction(name,
             SqlKind.OTHER_FUNCTION,
-            ReturnTypes.INTEGER,
+            ReturnTypes.explicit(returnTypeName),
             null,
             OperandTypes.family(Collections.nCopies(argumentNum, SqlTypeFamily.ANY)),
             SqlFunctionCategory.USER_DEFINED_FUNCTION);
     USER_DEFINED_FUNCTIONS.add(custom_function);
+  }
+
+  /**
+   * Collect user defined functions from a collection of SQLs.
+   */
+  public static void addUserDefinedFunctions(Collection<String> sqls) {
+    final Planner parser = getParser();
+    final Collection<String> calciteOpNames = new HashSet<>(ListSupport.map(getCalciteOperators().getOperatorList(), Objects::toString));
+    for (String sql : sqls) {
+      try {
+        final SqlNode ast = parser.parse(sql);
+        ast.accept(new SqlBasicVisitor<>() {
+          @Override
+          public Object visit(SqlCall call) {
+            if (call instanceof SqlSelect select) {
+              // the top-level term in WHERE/HAVING must be a predicate
+              if (select.getWhere() instanceof SqlBasicCall pred) {
+                addNewUDF(pred, true);
+              }
+              if (select.getHaving() instanceof SqlBasicCall pred) {
+                addNewUDF(pred, true);
+              }
+            } else if (call instanceof SqlBasicCall basicCall) {
+              // cannot decide whether basicCall is a predicate
+              addNewUDF(basicCall, false);
+            }
+            super.visit(call);
+            return null;
+          }
+          private void addNewUDF(SqlBasicCall call, boolean isPredicate) {
+            final SqlOperator op = call.getOperator();
+            final String opStr = op.toString();
+            if (!calciteOpNames.contains(opStr)) {
+              calciteOpNames.add(opStr);
+              if (isPredicate)
+                addUserDefinedFunction(op.toString(), call.operandCount(), SqlTypeName.BOOLEAN);
+              else
+                addUserDefinedFunction(op.toString(), call.operandCount());
+            }
+          }
+        });
+      } catch (Throwable ignored) {}
+    }
   }
 
   /*

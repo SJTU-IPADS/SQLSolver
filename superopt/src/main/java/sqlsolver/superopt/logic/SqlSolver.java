@@ -1,6 +1,7 @@
 package sqlsolver.superopt.logic;
 
 import org.apache.commons.lang3.tuple.Pair;
+import sqlsolver.common.config.GlobalConfig;
 import sqlsolver.common.utils.SetSupport;
 import sqlsolver.sql.plan.Value;
 import sqlsolver.sql.schema.Schema;
@@ -19,7 +20,7 @@ import static sqlsolver.common.utils.IterableSupport.any;
 import static sqlsolver.superopt.uexpr.UExprSupport.isPredOfVarArg;
 
 public class SqlSolver {
-  public static final Integer Z3_TIMEOUT = 2000; // ms
+  public static final Integer Z3_TIMEOUT = GlobalConfig.SQLSOLVER_Z3_TIMEOUT; // ms
   private static final Properties[] LIA_SOLVER_CONFIGS;
 
   static {
@@ -118,13 +119,8 @@ public class SqlSolver {
       // move onto next BVM
       currentBVM = bvmEnumerator.next();
     }
-    // 1. IF the enumerator only enumerates limited BVMs
-    // then there may be BVMs that are not tried
-    // so the result should be unknown;
-    // 2. IF results contain UNKNOWN but no UNSAT, the result should be unknown.
-    return bvmEnumerator.hasNextBeyondLimit() || !allSAT
-        ? VerificationResult.UNKNOWN
-        : VerificationResult.NEQ;
+    // a handful of BVMs have been enumerated; the result is perceived as NEQ
+    return VerificationResult.NEQ;
   }
 
   public static void initialize() {

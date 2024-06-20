@@ -1,6 +1,6 @@
 package sqlsolver.superopt.uexpr.normalizer;
 
-import sqlsolver.common.utils.Congruence;
+import org.apache.commons.lang3.tuple.Pair;
 import sqlsolver.common.utils.NameSequence;
 import sqlsolver.common.utils.NaturalCongruence;
 import sqlsolver.sql.ast.constants.ConstraintKind;
@@ -226,12 +226,15 @@ public class QueryUExprICRewriter extends UNormalization {
   private UTerm applyForeign(UTerm expr) {
     final List<Constraint> primarys = new ArrayList<>();
     final List<Constraint> foreigns = new ArrayList<>();
+    final List<Constraint> notNulls = new ArrayList<>();
     for (Table table : schema.tables()) {
       table.constraints(ConstraintKind.PRIMARY).forEach(primarys::add);
       table.constraints(ConstraintKind.FOREIGN).forEach(foreigns::add);
+      table.constraints(ConstraintKind.NOT_NULL).forEach(notNulls::add);
     }
 
     expr = applyForeignRemoveRedundantBoundVar(expr, primarys, foreigns);
+    expr = applyForeignSimplifySumInSet(expr, foreigns, notNulls, new HashMap<>(), NaturalCongruence.mk(), false);
     return expr;
   }
 
@@ -300,13 +303,13 @@ public class QueryUExprICRewriter extends UNormalization {
     final List<Constraint> primaries = new ArrayList<>();
     if (selectedIC < 0) {
       for (Table table : schema.tables()) {
-        table.constraints(ConstraintKind.PRIMARY).forEach(primaries::add);
+        collectPrimaryKeyConstraints(table, primaries);
       }
     } else {
       // select the selectedIC-th nonempty IC
       int nonemptyICIndex = 0;
       for (Table table : schema.tables()) {
-        table.constraints(ConstraintKind.PRIMARY).forEach(primaries::add);
+        collectPrimaryKeyConstraints(table, primaries);
         if (!primaries.isEmpty() && nonemptyICIndex < selectedIC) {
           primaries.clear();
           nonemptyICIndex = nonemptyICIndex + 1;
@@ -320,6 +323,17 @@ public class QueryUExprICRewriter extends UNormalization {
     expr = applyPrimaryReplaceBoundedVar(expr, primaries);
     expr = applyPrimaryImplyTupleEq(expr, primaries);
     return expr;
+  }
+
+  private void collectPrimaryKeyConstraints(Table table, List<Constraint> primaries) {
+    table.constraints(ConstraintKind.PRIMARY).forEach(primaries::add);
+    table.constraints(ConstraintKind.UNIQUE).forEach(u -> {
+      // PKs do not need to be counted twice
+      if (u.kind() == ConstraintKind.PRIMARY) return;
+      // UNIQUE columns are regarded as PK if all of them are NOT NULL
+      if (all(u.columns(), column -> column.constraints(ConstraintKind.NOT_NULL).iterator().hasNext()))
+        primaries.add(Constraint.build(ConstraintKind.PRIMARY, u.columns()));
+    });
   }
 
   /**
@@ -452,6 +466,238 @@ public class QueryUExprICRewriter extends UNormalization {
     }
 
     return expr;
+  }
+
+  /**
+   * Given constraints "FOREIGN KEY (a0) REFERENCES t1 (a1)"
+   * and "a0 NOT NULL" in table t0,
+   * "t0(x) * (... sum{y}(t1(y) * [a1(y) = a0(x)]) ...)"
+   * can be simplified to
+   * "t0(x) * (... 1 ...)"
+   * if sum{y} is under set semantics (i.e. within negation/squash).
+   */
+  private UTerm applyForeignSimplifySumInSet(
+      UTerm expr, List<Constraint> foreigns, List<Constraint> notNulls, Map<String, String> varToTable, NaturalCongruence<UTerm> eqClasses, boolean inSet) {
+    // decide "inSet" for children
+    final boolean inSetSub;
+    if (expr.kind().isUnary()) inSetSub = true;
+    else if (expr.kind() == PRED || expr.kind() == FUNC) inSetSub = false;
+    else inSetSub = inSet;
+    // update context and transform subterms
+    if (expr instanceof UMul mul) {
+      final List<UTerm> factors = mul.subTerms();
+      expr = transformSubTerms(expr, t -> {
+        final Map<String, String> newVarToTable = new HashMap<>(varToTable);
+        final NaturalCongruence<UTerm> newEqClasses = (NaturalCongruence<UTerm>) eqClasses.copy();
+        // exclude the factor itself from context
+        final List<UTerm> filteredFactors = filter(factors, factor -> !factor.equals(t));
+        findVarTableMap(newVarToTable, filteredFactors);
+        addToCongruence(newEqClasses, filteredFactors);
+        return applyForeignSimplifySumInSet(t, foreigns, notNulls, newVarToTable, newEqClasses, inSetSub);
+      });
+    } else {
+      // only copy context on write
+      expr = transformSubTerms(expr, t -> applyForeignSimplifySumInSet(t, foreigns, notNulls, varToTable, eqClasses, inSetSub));
+    }
+
+    if (!inSet || expr.kind() != UKind.SUMMATION || ((USum) expr).body().kind() != MULTIPLY) return expr;
+
+    // recognize "sum{y}(t1(y) * [a1(y) = a0(x)])"
+    final UMul mul = (UMul) ((USum) expr).body();
+    final Set<UVar> bvs = ((USum) expr).boundedVars();
+    for (UVar y : bvs) {
+      // deduplicate occurrences of PROJ vars of y in factors
+      // so that this rule can be applied to a great extent
+      final List<UTerm> newFactors = dedupProjVarsOf(y, mul.subTerms());
+      // update context with terms irrelevant to y
+      final Map<String, String> newVarToTable = new HashMap<>(varToTable);
+      final NaturalCongruence<UTerm> newEqClasses = (NaturalCongruence<UTerm>) eqClasses.copy();
+      final List<UTerm> irrelevantTerms = filter(newFactors, factor -> !factor.isUsing(y));
+      findVarTableMap(newVarToTable, irrelevantTerms);
+      addToCongruence(newEqClasses, irrelevantTerms);
+      // for each y, recognize "t1(y) * [a1(y) = E]"
+      // where E should be equal to some a0(x) according to congruence
+      final List<UTerm> yTerms = filter(newFactors, t -> t.isUsing(y));
+      if (yTerms.size() < 2) continue;
+      final List<UTerm> tableYs = filter(yTerms, t -> t instanceof UTable);
+      final List<UTerm> predYs = filter(yTerms, t -> t instanceof UPred pred
+              && pred.predKind() == UPred.PredKind.EQ
+              && (pred.args().get(0) instanceof UVarTerm vt && vt.var().is(UVar.VarKind.PROJ) && vt.var().args()[0].equals(y)
+              || pred.args().get(1) instanceof UVarTerm vt1 && vt1.var().is(UVar.VarKind.PROJ) && vt1.var().args()[0].equals(y))
+              // if E contains y, then E cannot be equal to some a(x) due to absence of congruence
+              && !(pred.args().get(0).isUsing(y) && pred.args().get(1).isUsing(y)));
+      if (tableYs.size() != 1 || predYs.isEmpty()
+              || tableYs.size() + predYs.size() != yTerms.size())
+        continue;
+      final UTable tableY = (UTable) tableYs.get(0);
+      final String t1 = tableY.tableName().toString();
+      // recognize E
+      final List<UTerm> es = map(predYs, p -> {
+        final UPred pred = (UPred) p;
+        // E must not contain y
+        // or E cannot be equal to some a0(x)
+        // so the following "isUsing" check is enough to tell the difference between a1(y) and E
+        if (pred.args().get(0).isUsing(y)) return pred.args().get(1);
+        else return pred.args().get(0);
+      });
+      // recognize a1
+      final List<String> a1 = map(predYs, p -> {
+        final UPred pred = (UPred) p;
+        if (pred.args().get(0).isUsing(y))
+          return ((UVarTerm) pred.args().get(0)).var().name().toString();
+        else
+          return ((UVarTerm) pred.args().get(1)).var().name().toString();
+      });
+      // find the corresponding x via E and congruence
+      final Set<UVar> possibleXs = getBaseVarsOfEqualProjTerms(es.get(0), newEqClasses);
+      for (int i = 1, bound = es.size(); i < bound; i++) {
+        possibleXs.retainAll(getBaseVarsOfEqualProjTerms(es.get(i), newEqClasses));
+      }
+      // for each possible x
+      for (UVar x : possibleXs) {
+        // find t0
+        final String t0 = newVarToTable.get(x.toString());
+        if (t0 == null) continue;
+        // enumerate FK constraints and find a0
+        loopFK:
+        for (Constraint foreign : foreigns) {
+          // for each pair of columns in the FOREIGN KEY constraint
+          for (Pair<Column, Column> pair : zip(foreign.columns(), foreign.refColumns())) {
+            final Column src = pair.getLeft(); // correspond to t0.a0
+            final Column dst = pair.getRight(); // correspond to t1.a1
+            // check whether the src table is t0 and the dst table is t1
+            if (!t0.equals(src.tableName()) || !t1.equals(dst.tableName()))
+              continue loopFK;
+            // check whether the referring column is NOT NULL
+            if (none(notNulls, nn -> nn.columns().size() == 1 && nn.columns().get(0).equals(src))) {
+              // NULLABLE; the FK constraint cannot be applied
+              continue loopFK;
+            }
+            // check whether this pair of columns correspond to the present PROJ vars
+            final String srcColName = getIndexStringByInfo(t0, src.name(), translator.getTupleVarSchema(x));
+            final String dstColName = getIndexStringByInfo(t1, dst.name(), translator.getTupleVarSchema(y));
+            final int index = a1.indexOf(dstColName);
+            if (index < 0) continue loopFK;
+            final UTerm e = es.get(index);
+            final Set<UVar> a0ProjVarsAtIndex = getEqualProjVars(e, newEqClasses);
+            if (none(a0ProjVarsAtIndex, a0ProjVar -> a0ProjVar.name().toString().equals(srcColName)))
+              continue loopFK;
+          }
+          // simplify sum{y} to 1
+          final Set<UVar> newBVs = new HashSet<>(bvs);
+          newBVs.remove(y);
+          newFactors.removeAll(yTerms);
+          UTerm newBody = newFactors.isEmpty() ? UConst.one() : UMul.mk(newFactors);
+          return newBVs.isEmpty() ? newBody : USum.mk(newBVs, newBody);
+        }
+      }
+    }
+    return expr;
+  }
+
+  /**
+   * Deduplicate PROJ vars of baseVar in factors.
+   * For example, "[a1(baseVar) = e1] * [a1(baseVar) = e2]"
+   * is turned into "[a1(baseVar) = e1] * [e1 = e2]".
+   */
+  private List<UTerm> dedupProjVarsOf(UVar baseVar, List<UTerm> factors) {
+    // find irrelevant factors
+    // and congruence involving relevant factors
+    final List<UTerm> relevantFactors = new ArrayList<>();
+    final List<UTerm> irrelevantFactors = new ArrayList<>();
+    final NaturalCongruence<UTerm> congruence = NaturalCongruence.mk();
+    for (UTerm factor : factors) {
+      if (!(factor instanceof UPred pred) || !pred.isPredKind(UPred.PredKind.EQ)) {
+        irrelevantFactors.add(factor);
+        continue;
+      }
+      // find PROJ var of baseVar
+      if (none(pred.args(), t -> t instanceof UVarTerm vt
+              && vt.var().is(UVar.VarKind.PROJ)
+              && vt.var().args()[0].equals(baseVar))) {
+        irrelevantFactors.add(factor);
+        continue;
+      }
+      // update congruence
+      congruence.putCongruent(pred.args().get(0), pred.args().get(1));
+    }
+    // modify (not in-place) relevant factors:
+    // for each congruence class, generate corresponding predicates
+    for (UTerm key : congruence.keys()) {
+      final Set<UTerm> eqClass = congruence.eqClassAt(key);
+      // (non-)PROJ vars of baseVar
+      final List<UTerm> projVars = filter(eqClass, t -> t instanceof UVarTerm vt
+              && vt.var().is(UVar.VarKind.PROJ)
+              && vt.var().args()[0].equals(baseVar));
+      final List<UTerm> nonProjVars = filter(eqClass, t -> !(t instanceof UVarTerm vt
+              && vt.var().is(UVar.VarKind.PROJ)
+              && vt.var().args()[0].equals(baseVar)));
+      // find a joint and build EQ predicates upon it
+      UTerm joint = null;
+      for (UTerm term : nonProjVars) {
+        if (joint == null) {
+          joint = term;
+        } else {
+          relevantFactors.add(UPred.mkBinary(UPred.PredKind.EQ, joint, term));
+        }
+      }
+      // forge bonds between the joint and PROJ vars of baseVar
+      for (UTerm term : projVars) {
+        if (joint == null) {
+          // forcefully set a joint if all terms are PROJ vars of baseVar
+          // projVars cannot be empty
+          joint = term;
+        } else {
+          relevantFactors.add(UPred.mkBinary(UPred.PredKind.EQ, joint, term));
+        }
+      }
+    }
+    // merge
+    irrelevantFactors.addAll(relevantFactors);
+    return irrelevantFactors;
+  }
+
+  /** Find "t(x)" in factors and add {x -> t} to ctx. */
+  private void findVarTableMap(Map<String, String> varToTable, List<UTerm> factors) {
+    for (UTerm factor : factors) {
+      if (factor instanceof UTable table) {
+        final String tableName = table.tableName().toString();
+        final String varName = table.var().toString();
+        varToTable.put(varName, tableName);
+      }
+    }
+  }
+
+  /** Find congruence in factors. */
+  private void addToCongruence(NaturalCongruence<UTerm> congruence, List<UTerm> factors) {
+    for (UTerm factor : factors) {
+      if (factor instanceof UPred pred && pred.isPredKind(UPred.PredKind.EQ)) {
+        congruence.putCongruent(pred.args().get(0), pred.args().get(1));
+      }
+    }
+  }
+
+  /**
+   * Return {x | term equals a(x) for some "a"}.
+   */
+  private Set<UVar> getBaseVarsOfEqualProjTerms(UTerm term, NaturalCongruence<UTerm> congruence) {
+    final Set<UVar> result = new HashSet<>();
+    for (UTerm eqTerm : congruence.eqClassOf(term)) {
+      if (eqTerm instanceof UVarTerm vt && vt.var().is(UVar.VarKind.PROJ)) {
+        result.add(vt.var().args()[0]);
+      }
+    }
+    return result;
+  }
+
+  private Set<UVar> getEqualProjVars(UTerm term, NaturalCongruence<UTerm> congruence) {
+    final Set<UVar> result = new HashSet<>();
+    for (UTerm eqTerm : congruence.eqClassOf(term)) {
+      if (eqTerm instanceof UVarTerm vt && vt.var().is(UVar.VarKind.PROJ)) {
+        result.add(vt.var());
+      }
+    }
+    return result;
   }
 
   /**

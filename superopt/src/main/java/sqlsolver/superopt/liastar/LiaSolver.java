@@ -159,16 +159,17 @@ public class LiaSolver {
       // append rules applicable to f
       target = appendRules(ctx, target);
 
-      if (LogicSupport.dumpLiaFormulas) {
-        System.out.println("FOL: " + target.toString());
-      }
-
       Solver s =
           (f.toString().contains(PredefinedFunctions.NAME_SQRT))
               ? ctx.mkSolver()
               : ctx.mkSolver(ctx.tryFor(ctx.mkTactic("qflia"), SqlSolver.Z3_TIMEOUT));
       //       Solver s = ctx.mkSolver();
       s.add(target);
+
+      if (LogicSupport.dumpLiaFormulas) {
+        System.out.println("FOL: " + s);
+      }
+
       Status q = s.check();
       if (LogicSupport.dumpLiaFormulas) {
         System.out.println("smt solver: " + q.toString());

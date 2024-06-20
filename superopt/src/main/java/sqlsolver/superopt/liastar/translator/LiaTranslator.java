@@ -217,17 +217,13 @@ public class LiaTranslator {
       case FUNC -> {
         final UFunc func = (UFunc) exp;
         final String funcName = func.funcName().toString();
-        final int arity = func.args().size();
-        if (PredefinedFunctions.isPredefinedFunction(funcName, arity)) {
-          final List<LiaStar> liaOps = new ArrayList<>();
-          final List<UTerm> args = exp.subTerms();
-          for (UTerm arg : args) {
-            LiaStar liaOp = translateRecursive(arg, varMap);
-            liaOps.add(liaOp);
-          }
-          return translateFunc(false, funcName, liaOps);
+        final List<LiaStar> liaOps = new ArrayList<>();
+        final List<UTerm> args = exp.subTerms();
+        for (UTerm arg : args) {
+          LiaStar liaOp = translateRecursive(arg, varMap);
+          liaOps.add(liaOp);
         }
-        throw new UnsupportedOperationException("unsupported function: " + funcName);
+        return translateFunc(false, funcName, liaOps);
       }
       default -> {
         throw new IllegalArgumentException("unsupported Uexpr type.");

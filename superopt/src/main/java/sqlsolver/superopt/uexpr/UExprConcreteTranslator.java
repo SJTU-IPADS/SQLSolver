@@ -1155,7 +1155,7 @@ public class UExprConcreteTranslator {
               return UPred.mkBinary(UPred.PredKind.EQ, lhsComposedUTerm.toPredUTerm(), rhsComposedUTerm.toPredUTerm(), false);
             } else {
               final UName funcName = UName.mk(PredefinedFunctions.NAME_LIKE);
-              final UFunc func = UFunc.mk(UFunc.FuncKind.STRING, funcName, new ArrayList<>(List.of(lhsComposedUTerm.toPredUTerm(), rhsComposedUTerm.toPredUTerm())));
+              final UFunc func = UFunc.mk(UFunc.FuncKind.NON_INT, funcName, new ArrayList<>(List.of(lhsComposedUTerm.toPredUTerm(), rhsComposedUTerm.toPredUTerm())));
               return UPred.mkBinary(UPred.PredKind.LT, UConst.zero(), func);
             }
           }
@@ -1248,6 +1248,13 @@ public class UExprConcreteTranslator {
           final UTerm decoratedRhs = USum.mk(UVar.getBaseVars(rhsVisibleVar), UMul.mk(eqCond, rhs));
           return USquash.mk(decoratedRhs);
         }
+        case OTHER_FUNCTION -> {
+          // a symbolic predicate
+          final RexCall call = (RexCall) exprCtx;
+          final UName funcName = UName.mk(call.getOperator().getName());
+          final List<UTerm> operands = map(call.getOperands(), op -> mkValue(op, baseVar).toPredUTerm());
+          return UPred.mkBinary(UPred.PredKind.NEQ, UFunc.mk(UFunc.FuncKind.INTEGER, funcName, operands), UConst.zero());
+        }
       }
       throw new IllegalArgumentException("[Exception] Unsupported expr kind: " + exprKind);
     }
@@ -1321,13 +1328,13 @@ public class UExprConcreteTranslator {
               }
               // otherwise, treat it as an unresolved function
               final UName funcName = UName.mk(String.valueOf(value));
-              return ComposedUTerm.mk(ComposedUTerm.mkFuncCall(UFunc.FuncKind.STRING, funcName, new ArrayList<>()));
+              return ComposedUTerm.mk(ComposedUTerm.mkFuncCall(UFunc.FuncKind.NON_INT, funcName, new ArrayList<>()));
             }
             case DATE -> {
               final DateString value = literal.getValueAs(DateString.class);
               assert value != null;
               final UName funcName = UName.mk("Date");
-              return ComposedUTerm.mk(ComposedUTerm.mkFuncCall(UFunc.FuncKind.STRING, funcName, new ArrayList<>(List.of(ComposedUTerm.mk(UString.mk(value.toString()))))));
+              return ComposedUTerm.mk(ComposedUTerm.mkFuncCall(UFunc.FuncKind.NON_INT, funcName, new ArrayList<>(List.of(ComposedUTerm.mk(UString.mk(value.toString()))))));
             }
             case TIMESTAMP -> {
               final TimeString value = literal.getValueAs(TimeString.class);
@@ -1487,7 +1494,7 @@ public class UExprConcreteTranslator {
           assert call.getOperands().size() == 2;
           final ComposedUTerm rhs = mkValue(call.getOperands().get(1), baseVar);
           if (call.getOperands().get(0) instanceof RexLiteral literal) {
-            return ComposedUTerm.mk(ComposedUTerm.mkFuncCall(UFunc.FuncKind.STRING,
+            return ComposedUTerm.mk(ComposedUTerm.mkFuncCall(UFunc.FuncKind.NON_INT,
                     UName.mk(literal.getValue().toString().toLowerCase()),
                     new ArrayList<>(List.of(rhs))));
           }
@@ -1500,7 +1507,7 @@ public class UExprConcreteTranslator {
           for (final RexNode argument : function.getOperands()) {
             arguments.add(mkValue(argument, baseVar));
           }
-          return ComposedUTerm.mk(ComposedUTerm.mkFuncCall(UFunc.FuncKind.STRING, funcName, arguments));
+          return ComposedUTerm.mk(ComposedUTerm.mkFuncCall(UFunc.FuncKind.NON_INT, funcName, arguments));
         }
       }
       throw new IllegalArgumentException("[Exception] Unsupported value kind: " + nodeKind);

@@ -20,7 +20,7 @@ the paper "[Proving Query Equivalence Using Linear Integer Arithmetic](https://d
 - [File Structure](#file-structure)
 - [Citation](#citation)
 - [Contact](#contact)
-- [Contributors](#contributors)
+
 
 ## Environment setup
 
@@ -146,6 +146,9 @@ EQ
 ```
 
 ## API
+
+### Overview
+
 The Java users can directly download SQLSolver's source code and access the package `sqlsolver.api`.
 The entry of SQLSolver is in `sqlsolver.api.entry.Verification`.
 
@@ -163,22 +166,33 @@ There are two main interfaces:
    * The two sqlList (sqlList0 and sqlList1) should have same size.
    */
   List<VerificationResult> verify(List<String> sqlList0, List<String> sqlList1, String schema)
-
+  /**
+   * Verify pairwise sql equivalence in the sqlList.
+   * It resembles Verification#verify(List, List, String) except that it sets a time limitation for verification.
+   */
+  List<VerificationResult> verify(List<String> sqlList0, List<String> sqlList1, String schema, long timeout)
 ```
 
 The VerificationResult is an enum class for verification result which has four cases:
 
-- **EQ**: two SQLs are equivalent
-- **NEQ**: two SQLs are not equivalent
-- **UNKNOWN**: SQLSolver doesn't know the equivalency between the two SQLs
+- **EQ**: two SQL queries are equivalent
+- **NEQ**: two SQL queries are not equivalent
+- **UNKNOWN**: SQLSolver cannot determine the equivalence of two SQL queries due to some reasons, such as unsupported SQL features and syntax errors
+- **TIMEOUT**: SQLSolver can not determine the equivalence within a given time limitation
 
 Note that verifying the equivalence of two SQL queries is an undecidable problem.
 Thus, the verification algorithm of SQLSolver does not guarantee to identify all equivalent queries.
 SQLSolver may output NEQ or UNKNOWN for some equivalent query pairs.
 
+If you invoke the API with the parameter `timeout`, SQLSolver may still run beyond the time limitation.
+Beause SQLSolver invokes external libraries/binaries like Z3.
+Sometimes SQLSolver has to wait for those libraries to finish.
+You can also configure the time limitation for Z3 via the configuration file `sqlsolver.properties`.
+An example `sqlsolver.properties` is under the project root directory.
+
 ### Demo
 
-You can import SQLSolver by JAR File or directly by downloading source code in your JAVA's project.
+You can import SQLSolver as a Jar file or directly download and compile the source code in your project.
 
 By calling the interface of SQLSolver, you can get the SQLs verification result.
 Before you use SQLSolver, you should put `libz3.so` and `libz3java.so` in a custom directory: `<path/to/lib>`
@@ -261,17 +275,4 @@ If you use SQLSolver in your projects or research, please kindly cite our [paper
 
 If you have any questions, please submit an issue or contact our <a href="mailto:nhaorand@sjtu.edu.cn">email</a>.
 
-## Contributors
 
-Students
-- [Haoran Ding](https://ipads.se.sjtu.edu.cn/pub/members/haoran_ding), [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
-- [Zhuoran Wei](https://zhuoran-wei.github.io/zhuoran-wei/), [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
-- Zhenglin Xu, [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
-- Yicun Yang, [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
-- Dexin Zhang, Princeton University
-
-Professors
-- [Zhaoguo Wang](https://ipads.se.sjtu.edu.cn/pub/members/zhaoguo_wang), [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
-- [Haibo Chen](https://ipads.se.sjtu.edu.cn/pub/members/haibo_chen), [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
-- [Ruzica Piskac](https://www.cs.yale.edu/homes/piskac/), [ROSE](https://rose.yale.edu/), Yale University
-- [Jinyang Li](https://www.news.cs.nyu.edu/~jinyang/), New York University

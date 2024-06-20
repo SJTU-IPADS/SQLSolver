@@ -38,7 +38,7 @@ public interface Verification {
 
   /**
    * Verify pairwise sql equivalence in the sqlList.
-   * It resembles {@link Verification#verify(List, List, String)} except that it sets an upper bound
+   * It resembles {@link Verification#verify(List, List, String)} except that it sets an intended upper bound
    * for each run of verifying a pair.
    *
    * @param timeout when verification of a pair takes this amount of time, the pair is skipped;

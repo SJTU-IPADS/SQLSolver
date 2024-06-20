@@ -5,6 +5,7 @@ import static sqlsolver.superopt.util.Z3Support.defineNonNegativeVars;
 
 import com.microsoft.z3.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import sqlsolver.superopt.liastar.LiaStar;
@@ -38,6 +39,11 @@ public class SemiLinearSet {
 
   public LinearSet get(int index) {
     return linearSets.get(index);
+  }
+
+  public int largestLinearSetSize() {
+    return linearSets.stream().map(LinearSet::offsetSize)
+            .max(Comparator.comparingInt(t -> t)).orElse(0);
   }
 
   /**

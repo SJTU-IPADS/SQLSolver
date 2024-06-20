@@ -28,6 +28,10 @@ public interface Constraint {
     return kind() == ConstraintKind.PRIMARY || kind() == ConstraintKind.UNIQUE;
   }
 
+  static Constraint build(ConstraintKind type, List<Column> columns) {
+    return ConstraintImpl.build(type, columns);
+  }
+
   static Iterable<Constraint> filterUniqueKey(Iterable<Constraint> constraints) {
     return lazyFilter(constraints, Constraint::isUnique);
   }

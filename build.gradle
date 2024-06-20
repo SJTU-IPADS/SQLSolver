@@ -9,7 +9,7 @@ plugins {
 
 allprojects {
     group = 'sqlsolver'
-    version = 'v1.0.0'
+    version = 'v1.1.0'
 }
 
 subprojects {
@@ -118,7 +118,7 @@ jar {
         )
     }
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    archiveVersion = 'v1.0.0'
+    archiveVersion = 'v1.1.0'
     from subprojects.collect { it.sourceSets.main.output }
 }
 

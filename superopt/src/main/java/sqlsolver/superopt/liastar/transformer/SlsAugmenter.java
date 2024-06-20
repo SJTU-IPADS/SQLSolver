@@ -4,12 +4,10 @@ import static sqlsolver.common.utils.ListSupport.*;
 import static sqlsolver.superopt.util.VectorSupport.*;
 import static sqlsolver.superopt.util.Z3Support.*;
 
-import com.microsoft.z3.*;
 import java.util.*;
 
 import sqlsolver.sql.plan.Value;
 import sqlsolver.superopt.liastar.LiaStar;
-import sqlsolver.superopt.logic.SqlSolver;
 
 /**
  * An augmenter starts from an empty semi-linear set (SLS) and augments that SLS towards the
@@ -19,10 +17,6 @@ import sqlsolver.superopt.logic.SqlSolver;
 //  this requires those names are not used in the target LIA formula
 public class SlsAugmenter {
   public static final String MSG_SLS_UNKNOWN = "the corresponding SLS is unknown";
-  // absolute value of each dimension of an augmenting vector must not exceed this value
-  public static final int AUGMENT_VECTOR_LIMIT = 4;
-  // how many times of augmentation are allowed
-  public static final int MAX_AUGMENT_TRIES = 64;
 
   private final SemiLinearSet sls;
   // index of the newly-created/updated linear set in sls, or -1
@@ -31,7 +25,7 @@ public class SlsAugmenter {
   private final List<String> slsVector;
   // the target to approach
   private final LiaStar target;
-  private int augmentTries;
+  private final AugmentationFinder finder;
 
   /**
    * Create an augmenter with a target and a vector of variables that corresponds to dimensions of
@@ -45,7 +39,7 @@ public class SlsAugmenter {
     updatedLSIndex = -1;
     this.slsVector = slsVector;
     this.target = target;
-    augmentTries = 0;
+    finder = new AugmentationFinder(sls, slsVector, target);
   }
 
   /**
@@ -53,12 +47,12 @@ public class SlsAugmenter {
    * the target) and add it to the SLS. Return false if there is no such vector.
    */
   public boolean augment() {
-    if (augmentTries >= MAX_AUGMENT_TRIES) {
+    // too large SLS
+    if (sls.largestLinearSetSize() > slsVector.size()){
       reportUnknownSls();
     }
-    augmentTries++;
     // try to find an augmentation vector
-    final List<Long> augmentation = findAugmentation();
+    final List<Long> augmentation = finder.find();
     if (augmentation == null) {
       return false;
     }
@@ -71,56 +65,6 @@ public class SlsAugmenter {
 
   public SemiLinearSet sls() {
     return sls;
-  }
-
-  private List<Long> findAugmentation() {
-    // if there is no augmentation vector with unlimited scale
-    // then end augmentation
-    if (findAugmentation(false, 0, 0) == null) {
-      return null;
-    }
-    // try to find an augmentation vector with increasing scale
-    for (int limit = 1; limit <= AUGMENT_VECTOR_LIMIT; limit <<= 1) {
-      final List<Long> result = findAugmentation(true, -limit, limit);
-      if (result != null) {
-        return result;
-      }
-    }
-    // too large vector may cause performance degrade; abort
-    reportUnknownSls();
-    return null;
-  }
-
-  // find a vector satisfying target but not in SLS
-  // each dimension of the vector should be within [lowerBound,upperBound] (when limit > 0)
-  private List<Long> findAugmentation(boolean withLimit, int lowerBound, int upperBound) {
-    try (final Context ctx = new Context()) {
-      // construct "target(vector) /\ ~LIA(sls)(vector)"
-      // where LIA(sls)(vector) is a LIA formula indicating that vector is in sls
-      final Map<String, Expr> varDef = new HashMap<>();
-      final BoolExpr limitFormula = defineVarsByNamesWithLimit(ctx, varDef, slsVector, withLimit, lowerBound, upperBound);
-      final BoolExpr varConstraint = defineVarsByVars(ctx, varDef, target.collectAllVars());
-      final BoolExpr targetFormula = (BoolExpr) target.transToSMT(ctx, varDef);
-      final BoolExpr slsNegFormula = sls.toLiaZ3Neg(ctx, varDef, slsVector);
-      final BoolExpr toCheck = ctx.mkAnd(limitFormula, varConstraint, targetFormula, slsNegFormula);
-      // check its satisfiability
-      final Solver s = ctx.mkSolver(ctx.tryFor(ctx.mkTactic("lia"), SqlSolver.Z3_TIMEOUT));
-      s.add(toCheck);
-      final Status q = s.check();
-      if (q == Status.UNSATISFIABLE) {
-        return null;
-      }
-      if (q == Status.UNKNOWN) {
-        reportUnknownSls();
-      }
-      // satisfiable; get vector from the model
-      final List<Long> vectorInstance = new ArrayList<>();
-      for (String var : slsVector) {
-        final Long value = Long.parseLong(s.getModel().getConstInterp(varDef.get(var)).toString());
-        vectorInstance.add(value);
-      }
-      return vectorInstance;
-    }
   }
 
   private void reportUnknownSls() {

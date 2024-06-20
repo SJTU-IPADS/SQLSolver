@@ -743,7 +743,7 @@ public class UNormalization {
         final UFunc subFunc = (UFunc) arguments.get(0);
         if (Objects.equals(subFunc.funcName().toString().toUpperCase(), "UPPER")
                 || Objects.equals(subFunc.funcName().toString().toUpperCase(), "LOWER"))
-          return UFunc.mk(UFunc.FuncKind.STRING, funcName, subFunc.args());
+          return UFunc.mk(UFunc.FuncKind.NON_INT, funcName, subFunc.args());
       }
       default -> {
       }

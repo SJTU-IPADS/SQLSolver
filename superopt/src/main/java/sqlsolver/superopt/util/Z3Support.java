@@ -156,12 +156,21 @@ public class Z3Support {
         if (func == null) {
           // create function definition upon first use
           final PredefinedFunctions.FunctionFamily ff = PredefinedFunctions.getFunctionFamily(funcName, arity);
-          final Sort returnSort = ff.getReturnSort(ctx);
-          final Sort[] argSorts = new Sort[arity];
-          for (int i = 0; i < arity; i++) {
-            argSorts[i] = ff.getArgSort(ctx, i);
+          if (ff == null) {
+            // unknown functions are regarded as uninterpreted integer functions
+            final Sort intSort = ctx.mkIntSort();
+            final Sort[] argSorts = new Sort[arity];
+            Arrays.fill(argSorts, intSort);
+            func = ctx.mkFuncDecl(funcName, argSorts, intSort);
+          } else {
+            // predefined functions have registered arg/return types
+            final Sort returnSort = ff.getReturnSort(ctx);
+            final Sort[] argSorts = new Sort[arity];
+            for (int i = 0; i < arity; i++) {
+              argSorts[i] = ff.getArgSort(ctx, i);
+            }
+            func = ctx.mkFuncDecl(funcName, argSorts, returnSort);
           }
-          func = ctx.mkFuncDecl(funcName, argSorts, returnSort);
           funcs.put(funcName, func);
         }
         return ctx.mkApp(func, args.toArray(new Expr[0]));
