@@ -168,7 +168,7 @@ There are two main interfaces:
   List<VerificationResult> verify(List<String> sqlList0, List<String> sqlList1, String schema)
   /**
    * Verify pairwise sql equivalence in the sqlList.
-   * It resembles Verification#verify(List, List, String) except that it sets a time limitation for verification.
+   * It resembles Verification#verify(List, List, String) except that it sets a time limitation for proving each pair of SQL queries.
    */
   List<VerificationResult> verify(List<String> sqlList0, List<String> sqlList1, String schema, long timeout)
 ```
