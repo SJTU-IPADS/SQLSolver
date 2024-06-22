@@ -168,7 +168,7 @@ There are two main interfaces:
   List<VerificationResult> verify(List<String> sqlList0, List<String> sqlList1, String schema)
   /**
    * Verify pairwise sql equivalence in the sqlList.
-   * It resembles Verification#verify(List, List, String) except that it sets a time limitation for proving each pair of SQL queries.
+   * It resembles Verification#verify(List, List, String) except that it sets a time limitation (seconds) for proving each pair of SQL queries.
    */
   List<VerificationResult> verify(List<String> sqlList0, List<String> sqlList1, String schema, long timeout)
 ```
@@ -281,7 +281,7 @@ Students
 - [Haoran Ding](https://ipads.se.sjtu.edu.cn/pub/members/haoran_ding), [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
 - [Zhuoran Wei](https://zhuoran-wei.github.io/zhuoran-wei/), [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
 - Zhenglin Xu, [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
-- Yicun Yang, [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
+- [Yicun Yang](https://yicun0720.github.io/yicun/), [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
 - Dexin Zhang, Princeton University
 
 Professors
