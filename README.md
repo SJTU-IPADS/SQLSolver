@@ -2,6 +2,7 @@
 
 SQLSolver is an automated prover that verifies the equivalence of SQL queries, which is presented in
 the paper "[Proving Query Equivalence Using Linear Integer Arithmetic](https://dl.acm.org/doi/abs/10.1145/3626768)" (SIGMOD 2024).
+We also provide an online [demo](https://sqlsolver.systems/sqlsolver/home) and you can try it :-)
 
 ## Table of Contents
 
@@ -15,7 +16,6 @@ the paper "[Proving Query Equivalence Using Linear Integer Arithmetic](https://d
   - [Using the JAR file](#using-the-jar-file)
     - [Example](#example) 
 - [API](#api)
-  - [DEMO](#demo)
 - [Benchmark](#benchmark)
 - [File Structure](#file-structure)
 - [Citation](#citation)
@@ -146,12 +146,8 @@ EQ
 ```
 
 ## API
-
-### Overview
-
 The Java users can directly download SQLSolver's source code and access the package `sqlsolver.api`.
 The entry of SQLSolver is in `sqlsolver.api.entry.Verification`.
-
 
 There are two main interfaces:
 
@@ -190,8 +186,6 @@ Sometimes SQLSolver has to wait for those libraries to finish.
 You can also configure the time limitation for Z3 via the configuration file `sqlsolver.properties`.
 An example `sqlsolver.properties` is under the project root directory.
 
-### Demo
-
 You can import SQLSolver as a Jar file or directly download and compile the source code in your project.
 
 By calling the interface of SQLSolver, you can get the SQLs verification result.
@@ -201,7 +195,7 @@ and then use the command:
 export LD_LIBRARY_PATH=<path/to/lib>
 ```
 
-Here is a little demo that shows how to use SQLSolver's interface:
+Here is a simple example that shows how to use SQLSolver's interface:
 
 ```java
 import sqlsolver.api.entry.Verification;
