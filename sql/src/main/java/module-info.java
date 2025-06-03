@@ -22,4 +22,5 @@ module sqlsolver.sql {
   requires calcite.core;
   requires avatica.core;
   requires calcite.babel;
+  requires lombok;
 }

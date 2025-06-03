@@ -12,6 +12,8 @@ import sqlsolver.sql.ast.SqlNode;
 
 import java.util.Properties;
 import java.util.function.Function;
+import java.util.function.BiConsumer;
+import sqlsolver.sql.RefreshableParserInitializer;
 
 public class MySQLAstParser implements AstParser {
   private long serverVersion = 0;
@@ -40,6 +42,11 @@ public class MySQLAstParser implements AstParser {
     lexer.addErrorListener(ThrowingErrorListener.instance());
     parser.removeErrorListeners();
     parser.addErrorListener(ThrowingErrorListener.instance());
+
+    // 注意，此处需要构造一个匿名类
+    BiConsumer<MySQLLexer, MySQLParser> initializer = new RefreshableParserInitializer<MySQLLexer, MySQLParser>(){};
+    // refresh lexer和parser
+    initializer.accept(lexer, parser);
 
     return rule.apply(parser).accept(new MySQLAstBuilder());
   }

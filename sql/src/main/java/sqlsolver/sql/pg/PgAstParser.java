@@ -11,6 +11,8 @@ import sqlsolver.sql.pg.internal.PGParser;
 import sqlsolver.sql.ast.SqlNode;
 
 import java.util.function.Function;
+import java.util.function.BiConsumer;
+import sqlsolver.sql.RefreshableParserInitializer;
 
 public class PgAstParser implements AstParser {
   public SqlNode parse(String str, Function<PGParser, ParserRuleContext> rule) {
@@ -21,6 +23,11 @@ public class PgAstParser implements AstParser {
     lexer.addErrorListener(ThrowingErrorListener.instance());
     parser.removeErrorListeners();
     parser.addErrorListener(ThrowingErrorListener.instance());
+
+    // 注意，此处需要构造一个匿名类
+    BiConsumer<PGLexer, PGParser> initializer = new RefreshableParserInitializer<PGLexer, PGParser>(){};
+// refresh lexer和parser
+    initializer.accept(lexer, parser);
 
     //    lexer.getInterpreter().clearDFA();
     //    parser.getInterpreter().clearDFA();
