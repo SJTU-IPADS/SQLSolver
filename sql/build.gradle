@@ -9,6 +9,8 @@ dependencies {
     implementation('org.apache.calcite:calcite-core:1.36.0')
     implementation('org.apache.calcite.avatica:avatica-core:1.23.0')
     implementation('org.apache.calcite:calcite-babel:1.34.0')
+    compileOnly('org.projectlombok:lombok:1.18.26')
+    annotationProcessor('org.projectlombok:lombok:1.18.26')
 }
 
 def mysqlDir = "src/main/java/sqlsolver/sql/mysql/internal"
