@@ -236,4 +236,35 @@ final public class VerificationImpl implements Verification {
     final List<QueryPair> pairs = readPairs(mergedSqlList, schema);
     return getVerifyResult(pairs, schemaString, timeout);
   }
+
+  /**
+   * Verify two sql plan equivalence.
+   */
+  static VerificationResult verify(RelNode plan0, RelNode plan1, String schemaString) {
+    try {
+      final Schema schema = CalciteSupport.getSchema(schemaString);
+      SqlSolver.initialize();
+      QueryUExprICRewriter.selectIC(-1);
+      return LogicSupport.proveEqByLIAStarConcrete(plan0, plan1, schema);
+    } catch (Exception | Error e) {
+      if (LogicSupport.dumpLiaFormulas)
+        e.printStackTrace();
+      return VerificationResult.UNKNOWN;
+    }
+  }
+
+  /**
+   * Verify two sql plan equivalence.
+   */
+  static VerificationResult verify(RelNode plan0, RelNode plan1, Schema schema) {
+    try {
+      SqlSolver.initialize();
+      QueryUExprICRewriter.selectIC(-1);
+      return LogicSupport.proveEqByLIAStarConcrete(plan0, plan1, schema);
+    } catch (Exception | Error e) {
+      if (LogicSupport.dumpLiaFormulas)
+        e.printStackTrace();
+      return VerificationResult.UNKNOWN;
+    }
+  }
 }

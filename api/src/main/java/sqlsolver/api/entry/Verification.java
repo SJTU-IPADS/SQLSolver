@@ -1,7 +1,8 @@
 package sqlsolver.api.entry;
 
 import sqlsolver.superopt.logic.VerificationResult;
-
+import org.apache.calcite.rel.RelNode;
+import sqlsolver.sql.schema.Schema;
 import java.util.List;
 
 /**
@@ -50,5 +51,29 @@ public interface Verification {
    */
   static List<VerificationResult> verify(List<String> sqlList0, List<String> sqlList1, String schema, long timeout) {
     return VerificationImpl.verify(sqlList0, sqlList1, schema, timeout);
+  }
+
+  /**
+   * Verify two sql equivalence.
+   *
+   * @param plan0 given the plan of the first sql.
+   * @param plan1 given the plan of the second sql.
+   * @param schema  given a schema string, it is the schema of all sql in the sqlList.
+   * @return a list of string indicates that whether two sql are equivalent.
+   */
+  static VerificationResult verify(RelNode plan0, RelNode plan1, String schema) {
+    return VerificationImpl.verify(plan0, plan1, schema);
+  }
+
+  /**
+   * Verify two sql equivalence.
+   *
+   * @param plan0 given the plan of the first sql.
+   * @param plan1 given the plan of the second sql.
+   * @param schema  given a schema, it is the schema of all sql in the sqlList.
+   * @return a list of string indicates that whether two sql are equivalent.
+   */
+  static VerificationResult verify(RelNode plan0, RelNode plan1, Schema schema) {
+    return VerificationImpl.verify(plan0, plan1, schema);
   }
 }
