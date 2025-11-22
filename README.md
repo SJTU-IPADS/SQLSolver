@@ -267,15 +267,15 @@ If you use SQLSolver in your projects or research, please kindly cite our [paper
 ```
 ## Contact
 
-If you have any questions, please submit an issue or contact our <a href="mailto:nhaorand@sjtu.edu.cn">email</a>.
+If you have any questions, please submit an issue or contact our <a href="mailto:nhaorand@gmail.com">email</a>.
 
 ## Contributors
 
 Students
-- [Haoran Ding](https://ipads.se.sjtu.edu.cn/pub/members/haoran_ding), [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
-- [Zhuoran Wei](https://zhuoran-wei.github.io/zhuoran-wei/), [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
-- Zhenglin Xu, [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
-- [Yicun Yang](https://yicun0720.github.io/yicun/), [IPADS](https://ipads.se.sjtu.edu.cn/start), Shanghai Jiao Tong University
+- [Haoran Ding](https://haoran-ding.github.io/), Shanghai Jiao Tong University
+- [Zhuoran Wei](https://zhuoran-wei.github.io/zhuoran-wei/), Shanghai Jiao Tong University
+- Zhenglin Xu, Shanghai Jiao Tong University
+- [Yicun Yang](https://yicun0720.github.io/yicun/), Shanghai Jiao Tong University
 - Dexin Zhang, Princeton University
 
 Professors
